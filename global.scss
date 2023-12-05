@@ -105,14 +105,26 @@ body {
   --color-background: #ffffff;
   --color-text: #000000;
 
-  font-size: 48px;
   background: var(--color-background);
   color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    helvetica neue,
+    helvetica,
+    sans-serif;
   scrollbar-width: none;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
   ::-webkit-scrollbar {
     display: none;
+  }
+}
+
+html {
+  font-size: 48px;
+  @media (max-width: 768px) {
+    font-size: 24px;
   }
 }
