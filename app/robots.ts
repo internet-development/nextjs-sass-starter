@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'http://localhost:3005/sitemap.xml',
+    sitemap: 'https://int-dev-testing.onrender.com/sitemap.xml',
   };
 }

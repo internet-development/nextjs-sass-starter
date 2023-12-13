@@ -1,5 +1,6 @@
 {
-  "name": "nextjs-saas-starter",
+  "name": "nextjs-sass-starter",
+  "description": "A starting repository for the Internet Development Studio team. This description is optimized for SEO length.",
   "engines": {
     "node": ">=18"
   },

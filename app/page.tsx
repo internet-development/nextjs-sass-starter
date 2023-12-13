@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import Package from '@root/package.json';
 import { headers } from 'next/headers';
 
 import '@root/global.scss';
@@ -6,12 +7,13 @@ import '@root/global.scss';
 import DefaultLayout from '@components/DefaultLayout';
 
 export async function generateMetadata({ params, searchParams }) {
-  const title = 'Hello world';
-  const description = 'Time to build your website.';
-  const url = 'http://localhost:3005';
+  const title = Package.name;
+  const description = Package.description;
+  const url = 'https://int-dev-testing.onrender.com';
   const handle = '@internetxstudio';
 
   return {
+    metadataBase: new URL('https://int-dev-testing.onrender.com'),
     title,
     description,
     url,
@@ -19,15 +21,38 @@ export async function generateMetadata({ params, searchParams }) {
       title,
       description,
       url,
-      // SUMMARY_LARGE_IMAGE: 1500x785
-      images: [''],
+      type: 'website',
+      images: [
+        {
+          url: 'https://intdev-global.s3.us-west-2.amazonaws.com/template-twitter-summary-large.png',
+          width: 1200,
+          height: 628,
+        },
+        {
+          url: 'https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png',
+          width: 1200,
+          height: 1200,
+        },
+      ],
     },
     twitter: {
       title,
       description,
       url,
       handle,
-      cardType: 'summary_large_image',
+      card: 'summary_large_image',
+      images: ['https://intdev-global.s3.us-west-2.amazonaws.com/template-twitter-summary-large.png'],
+    },
+    icons: {
+      icon: '/favicon-32x32.png',
+      shortcut: '/favicon-16x16.png',
+      apple: [{ url: '/apple-touch-icon.png' }, { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+      other: [
+        {
+          rel: 'apple-touch-icon-precomposed',
+          url: '/apple-touch-icon-precomposed.png',
+        },
+      ],
     },
   };
 }
@@ -63,6 +88,14 @@ export default async function Page(props) {
       {absoluteURL}/api
       <br />
       API server response text: "{text}"
+      <br />
+      <br />
+      <br />
+      Image Tests
+      <br />
+      <img style={{ display: 'block' }} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-twitter-summary-large.png" />
+      <br />
+      <img style={{ display: 'block' }} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png" />
     </DefaultLayout>
   );
 }
