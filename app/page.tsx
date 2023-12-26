@@ -67,7 +67,7 @@ export default async function Page(props) {
   const { text } = await response.json();
 
   return (
-    <DefaultLayout>
+    <DefaultLayout previewPixelSRC="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png">
       <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
       <Script id="google-analytics">
         {`
@@ -91,11 +91,11 @@ export default async function Page(props) {
       <br />
       <br />
       <br />
-      Image Tests
+      Image Test
       <br />
-      <img style={{ display: 'block' }} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-twitter-summary-large.png" />
+      Google should pick up the `previewPixelSRC` over this image in a SEO preview
       <br />
-      <img style={{ display: 'block' }} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png" />
+      <img style={{ display: 'block', width: '100%' }} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-twitter-summary-large.png" />
     </DefaultLayout>
   );
 }
