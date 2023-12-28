@@ -10,6 +10,8 @@ Why would I use this?
 
 Start by cloning the repository, or by clicking on **Use this template** above.
 
+You will have wanted to setup your development environment by following steps [here](https://github.com/internet-development/nextjs-sass-starter/issues/3).
+
 Then run the server
 
 ```sh
