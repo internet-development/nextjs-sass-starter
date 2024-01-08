@@ -78,24 +78,33 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script>
-      Below is a list of templates provided by nextjs-sass-starter. Use any of them as a starting point for a website or a way to use our API.
-      <ul style={{ paddingLeft: 64, marginTop: 64 }}>
+      Here are templates provided by{' '}
+      <a href="https://github.com/internet-development/nextjs-sass-starter" target="_blank">
+        nextjs-sass-starter
+      </a>
+      . Use the templates as a starting point for your next project. The API for some of these examples is real and you can get access if you find it useful.
+      <ul>
         <li>
-          <a href="/examples">[1] Navigation, hero text</a>
+          <a href="/examples">Navigation, hero text</a>
         </li>
         <li>
-          <a href="/examples/full-section">[2] Navigation, full browser height sections</a>
+          <a href="/examples/full-section">Navigation, full browser height sections</a>
         </li>
         <li>
-          <a href="/examples/full-section">[3] Navigation, half browser height sections</a>
+          <a href="/examples/full-section">Navigation, half browser height sections</a>
         </li>
         <li>
-          <a href="/examples/full-section">[4] Navigation, no sections, just components</a>
+          <a href="/examples/full-section">Navigation, no sections, just components</a>
         </li>
-        <li>[5] Authentication</li>
-        <li>[6] Payment</li>
-        <li>[7] Subscription management</li>
-        <li>[8] Messages</li>
+        <li>Form Components</li>
+        <li>Authentication</li>
+        <li>Invoices</li>
+        <li>Surveys</li>
+        <li>Blog Posts</li>
+        <li>Statements of Work</li>
+        <li>Payment Flow</li>
+        <li>Subscription management</li>
+        <li>Messages</li>
       </ul>
     </DefaultLayout>
   );
