@@ -94,7 +94,7 @@ export default async function Page(props) {
           <a href="/examples/half-section">Navigation, half browser height sections</a>
         </li>
         <li>
-          <a href="/examples/no-section">Navigation, no sections, just components</a>
+          <a href="/examples/no-sections">Navigation, no sections, just components</a>
         </li>
         <li>Form Components</li>
         <li>Authentication</li>
