@@ -10,11 +10,11 @@ const DB = knex({
   client: 'pg',
   connection: {
     ssl: ssl,
-    port: Number(process.env.EXAMPLE_DATABASE_PORT),
-    host: process.env.EXAMPLE_DATABASE_HOST,
-    database: process.env.EXAMPLE_DATABASE_NAME,
-    user: process.env.EXAMPLE_DATABASE_USERNAME,
-    password: process.env.EXAMPLE_DATABASE_PASSWORD,
+    port: Number(process.env.DATABASE_PORT),
+    host: process.env.DATABASE_HOST,
+    database: process.env.DATABASE_NAME,
+    user: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
   },
 });
 
