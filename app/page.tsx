@@ -78,11 +78,12 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script>
-      Here are templates provided by{' '}
+      Explore the array of templates offered by{' '}
       <a href="https://github.com/internet-development/nextjs-sass-starter" target="_blank">
         nextjs-sass-starter
       </a>
-      . Use the templates as a starting point for your next project. The API for some of these examples is real and you can get access if you find it useful.
+      , designed to kick-start your upcoming projects. These templates serve as an ideal foundation, and some even feature real APIs that you can access and integrate if they meet
+      your project's needs.
       <ul>
         <li>
           <a href="/examples">Navigation, hero text</a>

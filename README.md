@@ -2,14 +2,14 @@
 
 **[Live Demo](https://wireframes.internet.dev)**
 
-The team at [Internet Development Studio Company](https://internet.dev) uses this repository to build templates. We build a lot of websites, so its nice to have a starting point. If you want to build websites with us, you should use this template to build a website too.
+Our extensive experience in building numerous websites has led us to create this template repository as an efficient starting point. If you're keen on developing websites alongside the [Internet Development Studio Company](https://internet.dev), we highly recommend utilizing this template as your foundation.
 
 Why would I use this?
 
-- Quickly start a project with TypeScript, SASS, and NextJS.
-- You want to use a template.
-- You want to make a website quickly.
-- You're learning web development and [@wwwjim](https://x.com/wwwjim) forced you to. Check out the [issues](https://github.com/internet-development/nextjs-sass-starter/issues?q=is%3Aissue+is%3Aopen+label%3ADocumentation) for some documentation.
+- **Jumpstart Your Project** → Leverage the power of TypeScript, SASS, and NextJS to quickly get your project off the ground.
+- **Template Efficiency** → Streamline your development process by using a pre-configured template.
+- **Speed and Simplicity** → Ideal for rapid website creation without compromising on quality.
+- **Learning Opportunity** → If you're delving into web development, perhaps under the guidance of [@wwwjim](https://x.com/wwwjim), this template is a perfect starting point. Enhance your learning experience by exploring the [issues section](https://github.com/internet-development/nextjs-sass-starter/issues?q=is%3Aissue+is%3Aopen+label%3ADocumentation), which includes helpful documentation.
 
 ### Setup (MacOS)
 
@@ -26,7 +26,7 @@ npm run dev
 
 Go to `http://localhost:10000` in your browser of choice.
 
-Enjoy! We use `10000` as our `port` for more compatibility with [Render.com](https://render.com)
+Enjoy! The template uses `10000` as our `port` for more compatibility with [Render.com](https://render.com)
 
 ### Scripts (Optional)
 
