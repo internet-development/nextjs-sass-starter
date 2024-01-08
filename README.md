@@ -1,6 +1,6 @@
 # NEXTJS-SASS-STARTER
 
-[Live Demo](https://wireframes.internet.dev)
+**[Live Demo](https://wireframes.internet.dev)**
 
 The team at [Internet Development Studio Company](https://internet.dev) uses this repository to build templates. We build a lot of websites, so its nice to have a starting point. If you want to build websites with us, you should use this template to build a website too.
 
