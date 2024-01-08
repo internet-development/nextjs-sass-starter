@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 const OutsideElementEvent = ({ className, children, onOutsideEvent }) => {
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleOutsideEvent = (event) => {
     if (event.target.hasAttribute('data-detector-ignore-navigation')) {

@@ -24,7 +24,7 @@ const onHandleThemeChange = () => {
 };
 
 function ExampleHalfLanding(props) {
-  const [showModal, setModal] = React.useState(null);
+  const [showModal, setModal] = React.useState<string | null>(null);
 
   return (
     <Page
