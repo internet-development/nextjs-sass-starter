@@ -1,0 +1,137 @@
+.root {
+  padding: 0 24px 0 24px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 0 0 0;
+  }
+}
+
+.container {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin-top: 48px;
+
+  @media (max-width: 768px) {
+    border-bottom: 0px solid var(--color-border);
+  }
+}
+
+.grid {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.contentSection {
+  border-right: 1px solid var(--color-border);
+  width: 25%;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 124px 48px 24px 24px;
+
+  @media (max-width: 960px) {
+    width: 33.3333%;
+    justify-content: flex-start;
+    padding: 40px 48px 24px 24px;
+  }
+
+  @media (max-width: 768px) {
+    border-right: 0px solid var(--color-border);
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    display: block;
+    margin-top: 48px;
+  }
+}
+
+.columnSection {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  @media (max-width: 960px) {
+    width: 66.6666%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
+.row {
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+
+  &:last-child {
+    border-bottom: 0px solid var(--color-border);
+  }
+
+  @media (max-width: 960px) {
+    border-bottom: 0px solid var(--color-border);
+    display: block;
+  }
+}
+
+.column {
+  border-right: 1px solid var(--color-border);
+  padding: 12px;
+  width: 33.3333%;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+
+  &:last-child {
+    border-right: 0px solid var(--color-border);
+  }
+
+  @media (max-width: 960px) {
+    border-right: 0px solid var(--color-border);
+    width: 100%;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    margin-top: 24px;
+
+    &:last-child {
+      border-right: 1px solid var(--color-border);
+    }
+  }
+}
+
+.content {
+  padding: 48px 12px 12px 12px;
+  text-align: left;
+
+  @media (max-width: 960px) {
+    padding: 12px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0px;
+  }
+}

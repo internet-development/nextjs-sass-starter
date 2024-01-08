@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://int-dev-testing.onrender.com/sitemap.xml',
+    sitemap: 'https://wireframes.internet.dev/sitemap.xml',
   };
 }

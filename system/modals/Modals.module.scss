@@ -1,0 +1,43 @@
+.modal {
+  -webkit-appearance: none;
+  box-shadow: var(--theme-modal);
+  border-radius: 4px;
+  position: absolute;
+  top: 64px;
+  right: 12px;
+  padding: 12px 0 12px 0;
+}
+
+.divider {
+  margin: 12px auto 12px auto;
+  width: 80%;
+  display: block;
+  height: 1px;
+  background: var(--color-border);
+  opacity: 0.8;
+  border: 0px;
+}
+
+.item {
+  display: block;
+  width: 240px;
+  font-size: 12px;
+  text-align: right;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-text);
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  padding: 12px 12px 12px 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: 200ms ease all;
+
+  &:visited {
+    color: var(--color-text);
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+}

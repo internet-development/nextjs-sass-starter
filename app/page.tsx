@@ -9,11 +9,11 @@ import DefaultLayout from '@components/DefaultLayout';
 export async function generateMetadata({ params, searchParams }) {
   const title = Package.name;
   const description = Package.description;
-  const url = 'https://int-dev-testing.onrender.com';
+  const url = 'https://wireframes.internet.dev';
   const handle = '@internetxstudio';
 
   return {
-    metadataBase: new URL('https://int-dev-testing.onrender.com'),
+    metadataBase: new URL('https://wireframes.internet.dev'),
     title,
     description,
     url,
@@ -78,24 +78,25 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script>
-      Your objective should always be to eliminate instructions entirely by making everything self-explanatory, or as close to it as possible. When instructions are absolutely
-      necessary, cut them back to a bare minimum.
-      <br />
-      <br />
-      <br />
-      Scratches
-      <br />
-      {absoluteURL}/api
-      <br />
-      API server response text: "{text}"
-      <br />
-      <br />
-      <br />
-      Image Test
-      <br />
-      Google should pick up the `previewPixelSRC` over this image in a SEO preview
-      <br />
-      <img style={{ display: 'block', width: '100%' }} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-twitter-summary-large.png" />
+      Below is a list of templates provided by nextjs-sass-starter. Use any of them as a starting point for a website or a way to use our API.
+      <ul style={{ paddingLeft: 64, marginTop: 64 }}>
+        <li>
+          <a href="/examples">[1] Navigation, hero text</a>
+        </li>
+        <li>
+          <a href="/examples/full-section">[2] Navigation, full browser height sections</a>
+        </li>
+        <li>
+          <a href="/examples/full-section">[3] Navigation, half browser height sections</a>
+        </li>
+        <li>
+          <a href="/examples/full-section">[4] Navigation, no sections, just components</a>
+        </li>
+        <li>[5] Authentication</li>
+        <li>[6] Payment</li>
+        <li>[7] Subscription management</li>
+        <li>[8] Messages</li>
+      </ul>
     </DefaultLayout>
   );
 }

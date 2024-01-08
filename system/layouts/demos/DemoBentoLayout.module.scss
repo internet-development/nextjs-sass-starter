@@ -1,0 +1,61 @@
+.root {
+  width: 100%;
+}
+
+.bento {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.row {
+  padding: 0px 12px 0px 12px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  @media (max-width: 960px) {
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0px;
+  }
+}
+
+.column {
+  width: 25%;
+  padding: 12px;
+
+  @media (max-width: 960px) {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0px;
+    margin-top: 24px;
+  }
+}
+
+.columnWide {
+  width: 50%;
+  padding: 12px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0px;
+    margin-top: 24px;
+  }
+}
+
+.full {
+  border: 1px solid var(--color-border);
+  font-size: var(--type-scale-1);
+  border-radius: 4px;
+  height: 256px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
