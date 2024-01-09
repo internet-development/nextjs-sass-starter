@@ -1,44 +1,33 @@
 import React, { useState } from 'react';
 
+import * as Utilities from '@common/utilities';
+
 import Content from '@system/layouts/Content';
 import DemoBentoLayout from 'system/layouts/demos/DemoBentoLayout';
 import DemoPricing from 'system/layouts/demos/DemoPricing';
 import DemoSimpleGrid from 'system/layouts/demos/DemoSimpleGrid';
 import Footer from '@system/Footer';
-import Modals from '@system/modals/Modals';
-import ModalNavigation from '@system/modals/ModalNavigation';
+import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import SectionHalfHeight from '@system/sections/SectionHalfHeight';
 
 import { H1, H1Sub } from '@system/typography';
 
-const onHandleThemeChange = () => {
-  const body = document.body;
-
-  if (body.classList.contains('theme-light')) {
-    body.classList.replace('theme-light', 'theme-dark');
-  } else {
-    body.classList.replace('theme-dark', 'theme-light');
-  }
-};
-
 function ExampleNoSections(props) {
-  const [showModal, setModal] = React.useState<string | null>(null);
+  const [currentModal, setModal] = React.useState<string | null>(null);
 
   return (
     <Page
-      title="nextjs-sass-starter: No section"
+      title="nextjs-sass-starter: No sections"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev"
+      url="https://wireframes.internet.dev/examples/no-sections"
     >
       <Navigation
-        isModalVisible={!!showModal}
-        onHandleThemeChange={() => onHandleThemeChange()}
+        isModalVisible={!!currentModal}
+        onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
         onHandleShowSubNavigation={() => setModal('MODAL_NAVIGATION')}
       />
-
       <Content>
         <H1>nextjs-sass-starter</H1>
         <H1Sub>
@@ -47,26 +36,11 @@ function ExampleNoSections(props) {
           This example tests a navigation, theming, mobile responsiveness, a SEO pixel, and half browser height sections so more content is above the fold.
         </H1Sub>
       </Content>
-
       <DemoBentoLayout />
-
       <DemoSimpleGrid />
-
       <DemoPricing />
-
       <Footer />
-      {showModal ? (
-        <Modals>
-          {showModal === 'MODAL_NAVIGATION' && (
-            <ModalNavigation
-              onHandleThemeChange={() => onHandleThemeChange()}
-              onOutsideEvent={() => {
-                setModal(null);
-              }}
-            />
-          )}
-        </Modals>
-      ) : null}
+      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
   );
 }

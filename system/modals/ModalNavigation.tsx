@@ -7,12 +7,18 @@ import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 export default function ModalNavigation(props) {
   return (
     <OutsideElementEvent className={styles.modal} onOutsideEvent={props.onOutsideEvent}>
-      <div className={styles.item} onClick={props.onHandleThemeChange}>
+      <span className={styles.item} onClick={props.onHandleThemeChange}>
         Toggle Theme
-      </div>
-      <div className={styles.item}>Item II</div>
-      <div className={styles.item}>Item III</div>
-      <div className={styles.item}>Item IV</div>
+      </span>
+      <a href="#" className={styles.item}>
+        Item II
+      </a>
+      <a href="#" className={styles.item}>
+        Item III
+      </a>
+      <a href="#" className={styles.item}>
+        Item IV
+      </a>
       <hr className={styles.divider} />
       <a href="https://x.com/internetxstudio" className={styles.item} target="_blank">
         X

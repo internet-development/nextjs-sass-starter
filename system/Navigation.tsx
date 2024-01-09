@@ -6,7 +6,7 @@ export default function Navigation(props) {
   return (
     <nav className={styles.root}>
       <section className={styles.left}>
-        <a href="#" className={styles.item}>
+        <a href="/" className={styles.item}>
           Logo
         </a>
       </section>
@@ -14,15 +14,15 @@ export default function Navigation(props) {
         <span className={styles.item} onClick={props.onHandleThemeChange}>
           Toggle Theme
         </span>
-        <span className={styles.item} onClick={props.onHandleThemeChange}>
+        <a className={styles.item} href="#">
           Item II
-        </span>
-        <span className={styles.item} onClick={props.onHandleThemeChange}>
+        </a>
+        <a className={styles.item} href="#">
           Item III
-        </span>
-        <span className={styles.item} onClick={props.onHandleThemeChange}>
+        </a>
+        <a className={styles.item} href="#">
           Item IV
-        </span>
+        </a>
       </section>
       <section className={styles.right}>
         <span className={styles.item} onClick={props.isModalVisible ? props.onHandleHideSubNavigation : props.onHandleShowSubNavigation} data-detector-ignore-navigation>

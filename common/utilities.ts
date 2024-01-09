@@ -1,13 +1,21 @@
 const hasOwn = {}.hasOwnProperty;
-const protocolAndDomainRE = /^(?:\w+:)?\/\/(\S+)$/;
 const localhostDomainRE = /^localhost[\:?\d]*(?:[^\:?\d]\S*)?$/;
 const nonLocalhostDomainRE = /^[^\s\.]+\.\S{2,}$/;
+const protocolAndDomainRE = /^(?:\w+:)?\/\/(\S+)$/;
 
-export const noop = () => {};
+export function noop() {
+  return null;
+}
 
-export const pluralize = (text, count) => {
+export function pluralize(text: string, count: number) {
   return count > 1 || count === 0 ? `${text}s` : text;
-};
+}
+
+export function onHandleThemeChange() {
+  const body = document.body;
+  const isLight = body.classList.contains('theme-light');
+  return isLight ? body.classList.replace('theme-light', 'theme-dark') : body.classList.replace('theme-dark', 'theme-light');
+}
 
 export function toDateISOString(data: string) {
   const date = new Date(data);
@@ -19,7 +27,7 @@ export function toDateISOString(data: string) {
   });
 }
 
-export const elide = (string, length = 140, emptyState = '...') => {
+export function elide(string, length = 140, emptyState = '...') {
   if (isEmpty(string)) {
     return emptyState;
   }
@@ -29,7 +37,7 @@ export const elide = (string, length = 140, emptyState = '...') => {
   }
 
   return `${string.substring(0, length)}...`;
-};
+}
 
 export function bytesToSize(bytes: number, decimals: number = 2) {
   if (bytes === 0) return '0 Bytes';

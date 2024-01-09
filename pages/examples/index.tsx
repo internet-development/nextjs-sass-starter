@@ -1,37 +1,28 @@
 import React, { useState } from 'react';
 
+import * as Utilities from '@common/utilities';
+
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
-import Modals from '@system/modals/Modals';
-import ModalNavigation from '@system/modals/ModalNavigation';
+import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
 import { H1, H1Sub } from '@system/typography';
 
-const onHandleThemeChange = () => {
-  const body = document.body;
-
-  if (body.classList.contains('theme-light')) {
-    body.classList.replace('theme-light', 'theme-dark');
-  } else {
-    body.classList.replace('theme-dark', 'theme-light');
-  }
-};
-
 function ExampleBase(props) {
-  const [showModal, setModal] = React.useState<string | null>(null);
+  const [currentModal, setModal] = React.useState<string | null>(null);
 
   return (
     <Page
       title="nextjs-sass-starter: Example"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev"
+      url="https://wireframes.internet.dev/examples"
     >
       <Navigation
-        isModalVisible={!!showModal}
-        onHandleThemeChange={() => onHandleThemeChange()}
+        isModalVisible={!!currentModal}
+        onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
         onHandleShowSubNavigation={() => setModal('MODAL_NAVIGATION')}
       />
@@ -45,18 +36,7 @@ function ExampleBase(props) {
           </H1Sub>
         </Content>
       </SectionFullHeight>
-      {showModal ? (
-        <Modals>
-          {showModal === 'MODAL_NAVIGATION' && (
-            <ModalNavigation
-              onHandleThemeChange={() => onHandleThemeChange()}
-              onOutsideEvent={() => {
-                setModal(null);
-              }}
-            />
-          )}
-        </Modals>
-      ) : null}
+      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
   );
 }

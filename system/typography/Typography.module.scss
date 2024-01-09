@@ -49,3 +49,27 @@
   text-weight: 600;
   letter-spacing: 0.2px;
 }
+
+.formHeading {
+  font-size: var(--type-scale-4);
+  line-height: 1;
+  font-weight: 600;
+  display: block;
+}
+
+.formCaption {
+  line-height: 1.5;
+  font-size: var(--type-scale-5);
+  font-weight: 400;
+  display: block;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.inputLabel {
+  font-size: var(--type-scale-6);
+  line-height: var(--type-scale-6);
+  text-weight: 600;
+  display: block;
+  letter-spacing: 0.2px;
+}

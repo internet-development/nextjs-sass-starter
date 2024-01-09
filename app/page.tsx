@@ -97,7 +97,9 @@ export default async function Page(props) {
         <li>
           <a href="/examples/no-sections">Navigation, no sections, just components</a>
         </li>
-        <li>Form Components</li>
+        <li>
+          <a href="/examples/forms">Navigation, form components</a>
+        </li>
         <li>Authentication</li>
         <li>Invoices</li>
         <li>Surveys</li>

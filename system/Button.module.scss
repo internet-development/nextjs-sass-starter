@@ -23,7 +23,30 @@
   transform: scale(1);
   text-decoration: none;
 
+  &:visited {
+    color: var(--theme-button-color);
+  }
+
   &:hover {
     box-shadow: var(--theme-button-shadow-hover);
   }
+}
+
+.loader {
+  color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-border);
+  flex-shrink: 0;
+  border-radius: 8px;
+  outline: 0;
+  border: 0;
+  min-height: 40px;
+  padding: 4px 24px 4px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: wait;
+  transition: 200ms ease all;
+  transform: scale(1);
+  text-decoration: none;
 }

@@ -1,0 +1,61 @@
+.root {
+  position: relative;
+  font-family: var(--font-family);
+  background: var(--color-background);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--color-border);
+  &:hover {
+    box-shadow:
+      0 0 0 1px var(--color-border),
+      0 0 0 4px var(--color-accent);
+  }
+}
+
+.disabled {
+  position: relative;
+  font-family: var(--font-family);
+  background: var(--color-background);
+}
+
+.select {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(180deg);
+  transition: 200ms ease all;
+  color: var(--color-text);
+}
+
+.activeText {
+  color: var(--color-text);
+  display: block;
+  padding: 12px 16px 12px 16px;
+  border-radius: 4px;
+  line-height: 1.5;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.passiveText {
+  color: var(--color-border);
+  display: block;
+  padding: 12px 16px 12px 16px;
+  border-radius: 4px;
+  line-height: 1.5;
+  font-size: 16px;
+  white-space: pre-wrap;
+  box-shadow: 0 0 0 1px var(--color-border);
+  cursor: not-allowed;
+}
