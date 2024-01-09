@@ -62,7 +62,7 @@ function ExampleForms(props) {
         <TextArea style={{ marginTop: 8 }} />
         <InputLabel style={{ marginTop: 24 }}>Textarea with placeholder</InputLabel>
         <TextArea style={{ marginTop: 8 }} placeholder={PLACEHOLDER} />
-        <Button href="/" style={{ marginTop: 16, width: '100%' }}>
+        <Button href="#" style={{ marginTop: 16, width: '100%' }}>
           Submit
         </Button>
         <Button loading style={{ marginTop: 16, width: '100%' }}>

@@ -41,6 +41,13 @@
   font-size: var(--type-scale-5);
   line-height: 1.5;
   font-weight: 400;
+  display: block;
+  text-decoration: none;
+  color: var(--color-text);
+
+  &:visited {
+    color: var(--color-text);
+  }
 }
 
 .subtitle {

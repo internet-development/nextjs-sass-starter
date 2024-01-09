@@ -25,6 +25,10 @@ export function H3Sub(props) {
 }
 
 export function P(props) {
+  if (props.href) {
+    return <a {...props} className={styles.p} />;
+  }
+
   return <p className={styles.p} {...props} />;
 }
 
