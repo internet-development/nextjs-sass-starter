@@ -15,5 +15,5 @@ export default function Button(props) {
     return <a className={styles.root} {...props} />;
   }
 
-  return <button className={styles.root} {...props} />;
+  return <button children={props.children} className={styles.root} disabled={props.disabled} onClick={props.onClick} style={props.style} />;
 }

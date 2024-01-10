@@ -12,7 +12,7 @@ import SectionFullHeight from '@system/sections/SectionFullHeight';
 import { H1, H1Sub } from '@system/typography';
 
 function ExampleBase(props) {
-  const [currentModal, setModal] = React.useState<string | null>(null);
+  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
 
   return (
     <Page
@@ -24,7 +24,7 @@ function ExampleBase(props) {
         isModalVisible={!!currentModal}
         onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal('MODAL_NAVIGATION')}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION' })}
       />
       <SectionFullHeight>
         <Content>

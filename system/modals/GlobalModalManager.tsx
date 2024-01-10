@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Modals from '@system/modals/Modals';
+import ModalError from '@system/modals/ModalError';
 import ModalNavigation from '@system/modals/ModalNavigation';
 
 export default function GlobalModalManager(props) {
@@ -8,16 +9,32 @@ export default function GlobalModalManager(props) {
     return null;
   }
 
-  return (
-    <Modals>
-      {props.currentalModal === 'MODAL_NAVIGATION' && (
-        <ModalNavigation
-          onHandleThemeChange={() => props.onHandleThemeChange()}
-          onOutsideEvent={() => {
-            props.setModal(null);
-          }}
-        />
-      )}
-    </Modals>
-  );
+  let nextModal;
+  if (props.currentModal && props.currentModal.name === 'NAVIGATION') {
+    nextModal = (
+      <ModalNavigation
+        key="NAVIGATION"
+        onHandleThemeChange={() => props.onHandleThemeChange()}
+        onOutsideEvent={() => {
+          props.setModal(null);
+        }}
+      />
+    );
+  }
+
+  if (props.currentModal && props.currentModal.name === 'ERROR') {
+    nextModal = (
+      <ModalError
+        key="ERROR"
+        message={props.currentModal.message}
+        onOutsideEvent={() => {
+          props.setModal(null);
+        }}
+      />
+    );
+  }
+
+  console.log(nextModal);
+
+  return <Modals>{nextModal}</Modals>;
 }

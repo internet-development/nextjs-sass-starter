@@ -1,0 +1,20 @@
+.root {
+  font-size: var(--type-scale-7);
+  font-family: var(--font-family-mono);
+  box-shadow: var(--theme-modal);
+}
+
+.title {
+  background: var(--color-background-2);
+  padding: 2px 4px 2px 4px;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.children {
+  background: var(--color-background-3);
+  padding: 2px 4px 2px 4px;
+  color: var(--color-text);
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}

@@ -24,7 +24,7 @@ const options = [
 ];
 
 function ExampleForms(props) {
-  const [currentModal, setModal] = React.useState<string | null>(null);
+  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentSelectValue, setSelectValue] = React.useState<string | null>(null);
 
   return (
@@ -37,7 +37,7 @@ function ExampleForms(props) {
         isModalVisible={!!currentModal}
         onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal('MODAL_NAVIGATION')}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION' })}
       />
       <ThinAppLayout>
         <FormHeading>Example Form</FormHeading>

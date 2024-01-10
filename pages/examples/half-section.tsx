@@ -15,7 +15,7 @@ import SectionHalfHeight from '@system/sections/SectionHalfHeight';
 import { H1, H1Sub } from '@system/typography';
 
 function ExampleHalfLanding(props) {
-  const [currentModal, setModal] = React.useState<string | null>(null);
+  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
 
   return (
     <Page
@@ -27,7 +27,7 @@ function ExampleHalfLanding(props) {
         isModalVisible={!!currentModal}
         onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal('MODAL_NAVIGATION')}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION' })}
       />
       <SectionHalfHeight>
         <Content>

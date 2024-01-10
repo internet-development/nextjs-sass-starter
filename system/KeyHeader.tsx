@@ -11,7 +11,15 @@ export default function Navigation(props) {
         </span>
       </section>
       <section className={styles.stretch}>
-        <input className={styles.input} type="password" placeholder="Copy and paste your API key here!" value={props.value} onChange={(e) => props.onInputChange(e.target.value)} />
+        <input
+          autoComplete="off"
+          className={styles.input}
+          type="password"
+          name="key"
+          placeholder="Copy and paste your API key here!"
+          value={props.value}
+          onChange={(e) => props.onInputChange(e.target.value)}
+        />
       </section>
     </nav>
   );

@@ -102,6 +102,8 @@ section {
 
 body.theme-light {
   --color-background: var(--color-white);
+  --color-background-2: var(--color-black-faded-2);
+  --color-background-3: var(--color-black-faded-3);
   --color-text: var(--color-black);
   --color-border: var(--color-grey);
   --color-accent: rgba(1, 141, 255, 0.1);
@@ -117,6 +119,8 @@ body.theme-light {
 
 body.theme-dark {
   --color-background: var(--color-black);
+  --color-background-2: var(--color-white-faded-2);
+  --color-background-3: var(--color-white-faded-3);
   --color-text: var(--color-white);
   --color-border: var(--color-dark-grey);
   --color-accent: rgba(1, 141, 255, 0.1);
@@ -136,7 +140,11 @@ body.theme-dark {
 html,
 body {
   --color-black: #000b00;
+  --color-black-faded-2: rgba(0, 11, 0, 0.075);
+  --color-black-faded-3: rgba(0, 11, 0, 0.125);
   --color-white: #fbfaf5;
+  --color-white-faded-2: rgba(251, 250, 245, 0.075);
+  --color-white-faded-3: rgba(251, 250, 245, 0.125);
   --color-grey: #dcdddd;
   --color-dark-grey: #2b2b2b;
 
@@ -148,6 +156,7 @@ body {
   --type-scale-6: 0.875rem;
   --type-scale-7: 0.75rem;
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
+  --font-family-mono: Consolas, monaco, monospace;
 
   background: var(--color-background);
   color: var(--color-text);

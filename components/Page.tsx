@@ -12,6 +12,7 @@ export default function Page(props) {
         <meta httpEquiv="content-language" content="en-us" />
         <meta name="title" content={props.title} />
         <meta name="description" content={props.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content={props.url} />

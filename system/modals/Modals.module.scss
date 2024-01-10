@@ -9,6 +9,22 @@
   padding: 12px 0 12px 0;
 }
 
+.wrapper {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
 .divider {
   margin: 12px auto 12px auto;
   width: 80%;
@@ -41,4 +57,29 @@
   &:hover {
     opacity: 0.6;
   }
+}
+
+.errorModal {
+  -webkit-appearance: none;
+  box-shadow: var(--theme-modal);
+  background: var(--color-background);
+  border-radius: 4px;
+  display: flex;
+  padding: 16px 20px 16px 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 376px;
+}
+
+.errorModalLeft {
+  color: var(--color-error);
+  flex-shrink: 0;
+}
+
+.errorModalRight {
+  min-width: 10%;
+  width: 100%;
+  padding: 1px 0px 0px 8px;
+  line-height: 1.5;
+  font-size: var(--type-scale-5);
 }

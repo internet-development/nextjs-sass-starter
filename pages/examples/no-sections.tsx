@@ -14,7 +14,7 @@ import Page from '@components/Page';
 import { H1, H1Sub } from '@system/typography';
 
 function ExampleNoSections(props) {
-  const [currentModal, setModal] = React.useState<string | null>(null);
+  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
 
   return (
     <Page
@@ -26,7 +26,7 @@ function ExampleNoSections(props) {
         isModalVisible={!!currentModal}
         onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal('MODAL_NAVIGATION')}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION' })}
       />
       <Content>
         <H1>nextjs-sass-starter</H1>
