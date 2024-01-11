@@ -128,7 +128,7 @@ function ExampleForms(props) {
     <Page
       title="api.internet.dev: Files"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/authentication"
+      url="https://wireframes.internet.dev/examples/files"
     >
       <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>

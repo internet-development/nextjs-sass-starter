@@ -1,0 +1,80 @@
+.root {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.subdued {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.byline {
+  width: 100%;
+  max-width: 648px;
+  margin: 128px auto 0 auto;
+  padding: 0 24px 0 24px;
+  text-transform: uppercase;
+  font-size: var(--type-scale-7);
+  margin-bottom: 16px;
+}
+
+.content {
+  width: 100%;
+  max-width: 648px;
+  margin: 0 auto 0 auto;
+  padding: 0 24px 128px 24px;
+}
+
+.center {
+  width: 100%;
+  background: var(--color-background-2);
+  height: 2px;
+  padding: 0 24px 0 24px;
+  margin: 0px 0px 128px 0px;
+}
+
+.border {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 0 auto;
+  height: 2px;
+  background: var(--color-background-3);
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 648px;
+  margin: 24px auto 0 auto;
+}
+
+.image {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto 0 auto;
+  margin-top: 1rem;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 64px;
+}
+
+.left {
+  flex-shrink: 0;
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+  padding-left: 16px;
+}
+
+.name {
+  margin-top: 11px;
+}
+
+.title {
+  margin-top: 4px;
+}

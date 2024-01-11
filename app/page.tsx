@@ -106,6 +106,9 @@ export default async function Page(props) {
         <li>
           <a href="/examples/files">File upload and management</a>
         </li>
+        <li>
+          <a href="/examples/post">Navigation, blog post, footer</a>
+        </li>
         <li>Invoices</li>
         <li>Surveys</li>
         <li>Blog Posts</li>
