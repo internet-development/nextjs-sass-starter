@@ -9,6 +9,18 @@
   padding: 2px 4px 2px 4px;
   color: var(--color-text);
   text-transform: uppercase;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.left {
+  min-width: 10%;
+  width: 100%;
+}
+
+.right {
+  flex-shrink: 0;
 }
 
 .children {
