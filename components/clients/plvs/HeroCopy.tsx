@@ -2,7 +2,7 @@ import styles from '@components/clients/plvs/HeroCopy.module.scss';
 
 import * as React from 'react';
 
-import Pipeline from '@components/clients/plvs/svg/Pipeline';
+import PipelineII from '@components/clients/plvs/svg/PipelineII';
 
 import { H1 } from '@components/clients/plvs/typography';
 
@@ -16,7 +16,7 @@ export default function HeroCopy(props) {
           </div>
         </div>
       </div>
-      <Pipeline style={{ marginTop: 48, marginBottom: 48 }} width="100%" />
+      <PipelineII style={{ marginTop: 48, marginBottom: 48 }} width="100%" />
     </>
   );
 }
