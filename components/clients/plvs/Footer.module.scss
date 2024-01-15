@@ -1,0 +1,21 @@
+.footer {
+  border-top: 1px solid var(--color-border);
+}
+
+.container {
+  max-width: 1440px;
+  padding: 88px 24px 0 24px;
+  margin: 0 auto 0 auto;
+}
+
+.subtext {
+  padding: 48px 24px 88px 24px;
+  max-width: 1440px;
+  margin: 0 auto 0 auto;
+}
+
+.legal {
+  text-transform: uppercase;
+  opacity: 0.2;
+  margin-top: 1rem;
+}

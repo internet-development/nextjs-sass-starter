@@ -1,0 +1,32 @@
+.grid {
+}
+
+.container {
+  max-width: 1440px;
+  padding: 0 24px 0 24px;
+  margin: 0 auto 0 auto;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: auto;
+  padding-bottom: 88px;
+
+  @media (max-width: 768px) {
+    display: block;
+    padding: 24px 24px 88px 24px;
+  }
+}
+
+.column {
+  padding: 24px;
+  width: 50%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0px;
+  }
+}

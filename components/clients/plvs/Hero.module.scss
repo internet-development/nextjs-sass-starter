@@ -1,0 +1,31 @@
+.root {
+}
+
+.container {
+  max-width: 1440px;
+  padding: 0 24px 0 24px;
+  margin: 0 auto 48px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.left {
+  flex-shrink: 0;
+  height: 288px;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--color-text);
+
+  @media (max-width: 768px) {
+    width: 248px;
+  }
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+  align-self: stretch;
+  border-bottom: 2px solid var(--color-border);
+}

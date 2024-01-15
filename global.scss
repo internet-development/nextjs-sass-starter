@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('https://rsms.me/inter/font-files/InterVariable.woff2?v=4.0');
+}
+
 html,
 body,
 div,
@@ -155,7 +160,7 @@ body {
   --type-scale-5: 1rem;
   --type-scale-6: 0.875rem;
   --type-scale-7: 0.75rem;
-  --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
+  --font-family: Inter, -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
   --font-family-mono: Consolas, monaco, monospace;
 
   background: var(--color-background);
