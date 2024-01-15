@@ -11,7 +11,6 @@ function Card(props) {
           <div className={styles.name}>Person</div>
           <div className={styles.desc}>Title</div>
           <div className={styles.social}>@xhandle</div>
-          <div className={styles.website}>website.com</div>
         </div>
       </div>
     </div>

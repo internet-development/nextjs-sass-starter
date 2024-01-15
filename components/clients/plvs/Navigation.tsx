@@ -11,7 +11,7 @@ export default function Navigation(props) {
       <nav className={styles.navigation}>
         <div className={styles.left}>
           <a className={styles.boldLinkWeb} href="/clients/plvs">
-            Protocol Lab Venture Studio
+            Protocol Labs Venture Studio
           </a>
           <a className={styles.boldLinkMobile} href="/clients/plvs">
             <PLVS height="16px" />
