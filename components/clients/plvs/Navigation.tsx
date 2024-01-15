@@ -3,14 +3,18 @@ import styles from '@components/clients/plvs/Navigation.module.scss';
 import * as React from 'react';
 
 import X from '@system/svg/social/X';
+import PLVS from '@system/svg/clients/PLVS';
 
 export default function Navigation(props) {
   return (
     <div className={styles.root}>
       <nav className={styles.navigation}>
         <div className={styles.left}>
-          <a className={styles.boldLink} href="/clients/plvs">
+          <a className={styles.boldLinkWeb} href="/clients/plvs">
             Protocol Lab Venture Studio
+          </a>
+          <a className={styles.boldLinkMobile} href="/clients/plvs">
+            <PLVS height="16px" />
           </a>
         </div>
         <div className={styles.right}>
