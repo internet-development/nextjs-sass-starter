@@ -48,6 +48,12 @@
   height: 228px;
   width: 100%;
   background: rgba(220, 221, 221, 0.6);
+  background-size: cover;
+  background-position: 50% 50%;
+
+  @media (max-width: 768px) {
+    height: 348px;
+  }
 }
 
 .bottom {

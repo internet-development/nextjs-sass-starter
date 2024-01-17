@@ -31,6 +31,9 @@
 .card {
   width: 25%;
   padding: 12px;
+  color: var(--color-text);
+  text-decoration: none;
+  cursor: pointer;
 
   @media (max-width: 960px) {
     width: 50%;
@@ -49,6 +52,10 @@
   height: 188px;
   width: 100%;
   background: rgba(220, 221, 221, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
 
 .bottom {
@@ -62,4 +69,5 @@
 
 .companyDesc {
   padding: 8px 12px 12px 12px;
+  line-height: 1.5;
 }
