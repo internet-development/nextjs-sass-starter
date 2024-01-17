@@ -18,4 +18,13 @@
   text-transform: uppercase;
   opacity: 0.2;
   margin-top: 1rem;
+  display: block;
+
+  &:visited {
+    color: var(--color-text);
+  }
+
+  &:hover {
+    color: var(--color-text);
+  }
 }
