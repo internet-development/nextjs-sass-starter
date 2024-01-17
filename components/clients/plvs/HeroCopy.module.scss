@@ -16,4 +16,8 @@
   margin-top: 88px;
   border: 1px solid var(--color-border);
   padding-bottom: 48px;
+
+  @media (max-width: 768px) {
+    padding-bottom: 0px;
+  }
 }

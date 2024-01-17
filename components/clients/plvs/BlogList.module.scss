@@ -92,30 +92,30 @@
 }
 
 .rowLeft {
+  padding-right: 16px;
   flex-shrink: 0;
 }
 
 .rowRight {
   min-width: 10%;
   width: 100%;
-  padding-left: 16px;
 }
 
 .rowName {
   margin-top: 2px;
-  font-size: var(--type-scale-7);
+  font-size: var(--type-scale-5);
 
   @media (max-width: 768px) {
     margin-top: 3px;
-    font-size: var(--type-scale-6);
+    font-size: var(--type-scale-5);
   }
 }
 
 .rowTitle {
-  font-size: var(--type-scale-7);
+  font-size: var(--type-scale-5);
 
   @media (max-width: 768px) {
-    font-size: var(--type-scale-6);
+    font-size: var(--type-scale-5);
   }
 }
 

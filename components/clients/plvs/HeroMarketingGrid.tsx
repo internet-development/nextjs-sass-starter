@@ -17,6 +17,8 @@ export default function HeroMarketingGrid(props) {
           <H2Sub>We believe that computing breakthroughs will unlock transcendental possibilities and elevate humanity to new heights.</H2Sub>
 
           <H2Sub>We believe that those who think they can change the future are those who do.</H2Sub>
+          <br />
+          <br />
         </div>
         <div className={styles.column}>
           <P>

@@ -8,16 +8,9 @@ function Post(props) {
   return (
     <div className={styles.post}>
       <div className={styles.left}>
-        <div className={styles.byline}>
-          <strong className={styles.subdued}>❒ Research</strong>
-          <br />
-          Thursday, January 11th, 2024 — 2:33 AM
-        </div>
+        <div className={styles.byline}>Thursday, January 11th, 2024 — 2:33 AM</div>
 
         <div className={styles.row}>
-          <div className={styles.rowLeft}>
-            <img className={styles.avatar} src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/54ce8027-2910-437d-8fe1-37d89deefbd7.jpg" />
-          </div>
           <div className={styles.rowRight}>
             <div className={styles.rowName}>
               <strong>Leopold Kohr</strong>
