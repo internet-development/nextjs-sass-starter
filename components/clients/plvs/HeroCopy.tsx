@@ -12,7 +12,7 @@ export default function HeroCopy(props) {
       <div className={styles.root}>
         <div className={styles.container}>
           <div className={styles.text}>
-            <H1 style={{ opacity: 0.6 }}>We build startups driving breakthroughs in computing</H1>
+            <H1>We build startups driving breakthroughs in computing</H1>
           </div>
           <div className={styles.border}>
             <PipelineIII width="100%" />
