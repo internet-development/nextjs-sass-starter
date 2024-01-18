@@ -1,6 +1,6 @@
 export default function Station(props) {
   return (
-    <svg viewBox="0 0 397 84" {...props} xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 397 84" {...props}>
       <g>
         <path d="m71 28.1106482h-47.4956653l-23.5043347 19.6677118v-31.8865169l18.8117956-15.8918431h52.1882044zm-71 27.7787036h47.4974756l23.5025244-19.6677118v31.891929l-18.8099852 15.886431h-52.1900148z" />
         <path

@@ -1,6 +1,6 @@
 export default function PipelineIII(props) {
   return (
-    <svg fill="none" viewBox="0 0 1312 393" {...props} xmlns="http://www.w3.org/2000/svg">
+    <svg fill="none" viewBox="0 0 1312 393" {...props}>
       <g fill="#808080">
         <path d="m372.052 364.066c2.205 0 3.508 1.358 3.508 3.693s-1.297 3.718-3.508 3.718h-2.615v-7.416h2.615zm-1.463 6.419h1.358c1.574 0 2.441-.962 2.441-2.711s-.872-2.711-2.441-2.711h-1.358v5.427z" />
         <path d="m381.58 371.481h-4.706v-7.417h4.706v.993h-3.558v2.17h3.367v.957h-3.367v2.3h3.558z" />
