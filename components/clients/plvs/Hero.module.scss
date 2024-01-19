@@ -16,7 +16,7 @@
   width: 320px;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid var(--color-text);
+  border-bottom: 1px solid var(--color-border);
 
   @media (max-width: 768px) {
     width: 248px;
@@ -27,5 +27,5 @@
   min-width: 10%;
   width: 100%;
   align-self: stretch;
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }

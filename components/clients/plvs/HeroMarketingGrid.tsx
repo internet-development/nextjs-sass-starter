@@ -8,33 +8,40 @@ export default function HeroMarketingGrid(props) {
   return (
     <div className={styles.grid}>
       <div className={styles.container}>
-        <H2>Our beliefs</H2>
+        <H2>Our Core Belief</H2>
       </div>
       <div className={styles.row}>
         <div className={styles.column}>
-          <H2Sub>We believe exponential change is transforming civilization.</H2Sub>
+          <H2Sub>
+            We believe exponential change is transforming civilization. Radical computing breakthroughs are needed to unlock humanities potential and realize a blueprint for
+            prosperity.
+          </H2Sub>
 
-          <H2Sub>We believe that computing breakthroughs will unlock transcendental possibilities and elevate humanity to new heights.</H2Sub>
-
-          <H2Sub>We believe that those who think they can change the future are those who do.</H2Sub>
+          <H2Sub>In this pursuit, we partner with exceptional founders translating cutting edge R&D into groundbreaking startups.</H2Sub>
           <br />
           <br />
         </div>
-        <div className={styles.column}>
-          <P>
-            <strong>Initiate</strong>
-          </P>
-          <P>We explore and drive frontier R&D to identify and launch breakthrough startups that drive humanity forward.</P>
+        <div className={styles.columnx}>
+          <div className={styles.subcolumn}>
+            <P>
+              <strong>Initiate</strong>
+            </P>
+            <P>We explore and drive frontier R&D to identify and launch breakthrough startups that drive humanity forward.</P>
+          </div>
 
-          <P>
-            <strong>Grow</strong>
-          </P>
-          <P>We bring deep strategic and operational experience to drive exponential growth.</P>
+          <div className={styles.subcolumn}>
+            <P>
+              <strong>Grow</strong>
+            </P>
+            <P>We bring decades of strategic and operational experience into a hands-on partnership characterized by mutual trust and growth.</P>
+          </div>
 
-          <P>
-            <strong>Scale</strong>
-          </P>
-          <P>We engineer internet-scale network effects to allow for outsized value generation.</P>
+          <div className={styles.subcolumn}>
+            <P>
+              <strong>Scale</strong>
+            </P>
+            <P>We co-engineer internet-scale network effects to allow for outsized value generation.</P>
+          </div>
         </div>
       </div>
     </div>
