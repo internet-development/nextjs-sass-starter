@@ -37,7 +37,7 @@ export default function PortfolioGrid(props) {
         <Card description="Ansa Research is a research firm focused on distributed infrastructure." src="" href="https://ansaresearch.ai/">
           <Ansa height="96px" />
         </Card>
-        <Card description="web3mine is an innovation lab that helps people collectively coordinate" src="" href="https://www.web3mine.io/">
+        <Card description="web3mine is an innovation lab that helps people collectively coordinate." src="" href="https://www.web3mine.io/">
           <Web3Mine height="48px" />
         </Card>
         <Card description="Verifiable, unpredictable and unbiased random numbers as a service." src="" href="https://drand.love/">
@@ -52,7 +52,7 @@ export default function PortfolioGrid(props) {
         <Card description="Blockchain technology that powers planetary-scale web3 apps." src="" href="https://www.ipc.space/">
           <H1 style={{ textTransform: 'none' }}>IPC</H1>
         </Card>
-        <Card description="Banyan bridges the gap between decentralized storage and all your data needs." href="https://www.banyan.computer/">
+        <Card description="Banyan bridges the gap between decentralized storage and all your data." href="https://www.banyan.computer/">
           <Banyan height="48px" />
         </Card>
         <Card description="A Turing-complete programming language for Zero Knowledge Proofs." href="https://lurk-lang.org/">
