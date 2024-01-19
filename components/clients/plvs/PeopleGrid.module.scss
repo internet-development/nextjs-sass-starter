@@ -33,32 +33,56 @@
   padding: 12px;
 
   @media (max-width: 960px) {
+    width: 25%;
+  }
+
+  @media (max-width: 768px) {
     width: 50%;
+  }
+
+  @media (max-width: 424px) {
+    width: 100%;
   }
 }
 
 .frame {
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.image {
+  width: 100%;
 }
 
 .top {
-  height: 228px;
   width: 100%;
-  background: rgba(220, 221, 221, 0.6);
   background-size: cover;
   background-position: 50% 50%;
 
   @media (max-width: 768px) {
-    height: 348px;
+    width: 256px;
   }
 }
 
 .bottom {
-  border-top: 1px solid var(--color-border);
+  min-width: 10%;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding-left: 24px;
+  }
 }
 
 .name {
   padding: 12px 0px 0px 0px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    padding: 8px 0px 0px 0px;
+  }
 }
 
 .desc {

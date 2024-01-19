@@ -6,7 +6,9 @@ function Card(props) {
   return (
     <div className={styles.card}>
       <div className={styles.frame}>
-        <div className={styles.top} style={{ backgroundImage: `url(${props.src})` }}></div>
+        <div className={styles.top}>
+          <img className={styles.image} src={props.src} />
+        </div>
         <div className={styles.bottom}>
           <div className={styles.name}>{props.name}</div>
           <div className={styles.desc}>{props.title}</div>
