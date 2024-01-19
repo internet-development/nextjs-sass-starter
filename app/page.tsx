@@ -28,11 +28,6 @@ export async function generateMetadata({ params, searchParams }) {
           width: 1200,
           height: 628,
         },
-        {
-          url: 'https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png',
-          width: 1200,
-          height: 1200,
-        },
       ],
     },
     twitter: {
