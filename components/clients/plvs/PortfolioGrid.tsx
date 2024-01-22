@@ -52,9 +52,6 @@ export default function PortfolioGrid(props) {
         <Card description="Blockchain technology that powers planetary-scale web3 apps." src="" href="https://www.ipc.space/">
           <H1 style={{ textTransform: 'none' }}>IPC</H1>
         </Card>
-        <Card description="Banyan bridges the gap between decentralized storage and all your data." href="https://www.banyan.computer/">
-          <Banyan height="48px" />
-        </Card>
         <Card description="A Turing-complete programming language for Zero Knowledge Proofs." href="https://lurk-lang.org/">
           <Lurk height="100px" />
         </Card>
