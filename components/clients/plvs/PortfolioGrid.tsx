@@ -6,7 +6,6 @@ import Ansa from '@system/svg/clients/Ansa';
 import Web3Mine from '@system/svg/clients/Web3Mine';
 import Station from '@system/svg/clients/Station';
 import Expanso from '@system/svg/clients/Expanso';
-import Banyan from '@system/svg/clients/Banyan';
 import Lurk from '@system/svg/clients/Lurk';
 
 import { H1 } from '@components/clients/plvs/typography';
