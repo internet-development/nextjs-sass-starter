@@ -74,6 +74,15 @@
   @media (max-width: 768px) {
     padding-left: 24px;
   }
+
+  @media (max-width: 568px) {
+    padding-left: 16px;
+  }
+
+  @media (max-width: 424px) {
+    padding-left: 24px;
+    font-size: var(--type-scale-4);
+  }
 }
 
 .name {
