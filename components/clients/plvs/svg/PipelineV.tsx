@@ -4,7 +4,7 @@ export function PipelineV(props) {
       <clipPath id="a">
         <path d="m0 0h2618.02v756.26h-2618.02z" />
       </clipPath>
-      <g clip-path="url(#a)">
+      <g clipPath="url(#a)">
         <path
           d="m742.42 726.471h-5.22v14.8h5.22c4.41 0 7-2.75 7-7.42s-2.6-7.37-7-7.37zm-.22 12.81h-2.71v-10.83h2.71c3.13 0 4.87 1.93 4.87 5.41s-1.73 5.41-4.87 5.41z"
           fill="#808080"
