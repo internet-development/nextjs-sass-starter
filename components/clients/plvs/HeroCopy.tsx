@@ -2,7 +2,7 @@ import styles from '@components/clients/plvs/HeroCopy.module.scss';
 
 import * as React from 'react';
 
-import PipelineIV from '@components/clients/plvs/svg/PipelineIV';
+import PipelineV from '@components/clients/plvs/svg/PipelineV';
 
 import { H1, P } from '@components/clients/plvs/typography';
 
@@ -15,7 +15,7 @@ export default function HeroCopy(props) {
             <H1>We build startups driving breakthroughs in computing</H1>
           </div>
           <div className={styles.border}>
-            <PipelineIV width="100%" />
+            <PipelineV width="100%" />
           </div>
           <P>Research & Development pipeline </P>
         </div>

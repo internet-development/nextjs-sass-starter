@@ -1,6 +1,6 @@
 export default function PLVS(props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 37" fill="none" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 37" fill="currentColor" {...props}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

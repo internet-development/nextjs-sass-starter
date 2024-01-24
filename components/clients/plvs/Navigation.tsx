@@ -2,7 +2,7 @@ import styles from '@components/clients/plvs/Navigation.module.scss';
 
 import * as React from 'react';
 
-import X from '@system/svg/social/X';
+import Twitter from '@system/svg/social/Twitter';
 import PLVS from '@system/svg/clients/PLVS';
 
 export default function Navigation(props) {
@@ -10,12 +10,16 @@ export default function Navigation(props) {
     <div className={styles.root}>
       <nav className={styles.navigation}>
         <div className={styles.left}>
-          <a className={styles.boldLinkWeb} href="/clients/plvs">
-            Protocol Labs Venture Studio
-          </a>
-          <a className={styles.boldLinkMobile} href="/clients/plvs">
-            <PLVS height="16px" />
-          </a>
+          {!props.hideLogo ? (
+            <a className={styles.boldLinkWeb} href="/clients/plvs">
+              <PLVS height="16px" />
+            </a>
+          ) : null}
+          {!props.hideLogo ? (
+            <a className={styles.boldLinkMobile} href="/clients/plvs">
+              <PLVS height="16px" />
+            </a>
+          ) : null}
         </div>
         <div className={styles.right}>
           <a className={styles.link} href="/clients/plvs/portfolio">
@@ -28,7 +32,7 @@ export default function Navigation(props) {
             Blog
           </a>
           <a className={styles.link} href="https://twitter.com/protocollabs" target="_blank">
-            <X height="16px" width="16px" />
+            <Twitter height="16px" width="16px" />
           </a>
         </div>
       </nav>

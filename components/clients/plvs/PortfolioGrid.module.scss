@@ -42,6 +42,12 @@
   @media (max-width: 568px) {
     width: 100%;
   }
+
+  &:hover {
+    figure {
+      color: var(--color-primary);
+    }
+  }
 }
 
 .frame {
@@ -51,7 +57,6 @@
 .top {
   height: 188px;
   width: 100%;
-  background: rgba(220, 221, 221, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;

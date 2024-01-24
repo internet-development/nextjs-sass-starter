@@ -14,7 +14,7 @@ function Card(props) {
   return (
     <a className={styles.card} href={props.href} target="_blank">
       <div className={styles.frame}>
-        <div className={styles.top}>{props.children}</div>
+        <figure className={styles.top}>{props.children}</figure>
         <div className={styles.bottom}>
           <div className={styles.companyName}>{props.title}</div>
           <div className={styles.companyDesc}>{props.description}</div>

@@ -48,6 +48,7 @@
   justify-content: space-between;
   border-top: 1px solid var(--color-border);
   padding: 48px 0 64px 0;
+  width: 100%;
 
   @media (max-width: 768px) {
     display: block;
@@ -65,6 +66,19 @@
 
   @media (max-width: 768px) {
     padding: 24px 0 24px 0;
+  }
+}
+
+.blogTitle {
+  font-size: var(--type-scale-2);
+  line-height: 1;
+  font-weight: 400;
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--color-primary);
   }
 }
 

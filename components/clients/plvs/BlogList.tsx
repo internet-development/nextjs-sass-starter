@@ -20,16 +20,15 @@ function Post(props) {
         </div>
       </div>
       <div className={styles.middle}>
-        <H2>What Is Appropriate in the Scheme of Things?</H2>
-        <P>
+        <a href="#" className={styles.blogTitle}>
+          What Is Appropriate in the Scheme of Things?
+        </a>
+        <P style={{ maxWidth: 768 }}>
           The idea of ‘appropriate’ implies the existence of limits. When something is inappropriate, it means it is either too large or too small, too advanced or too retarded,
           too slow or too fast, too rich or too poor. As the prince of advertisers, the late Howard Gossage, used to say when he defined poison as ‘too much’, so also we can say of
           the ‘inappropriate’ that it can be defined quite simply as ‘too much’ — too much in either direction. It is as inappropriate to be too virtuous as it is to be too
           depraved.
         </P>
-      </div>
-      <div className={styles.right}>
-        <div className={styles.button}>READ</div>
       </div>
     </div>
   );

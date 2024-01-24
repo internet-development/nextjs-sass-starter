@@ -14,7 +14,7 @@ import { H1, H2 } from '@components/clients/plvs/typography';
 function ClientPLVS(props) {
   return (
     <Page title="Prototype: PLVS" description="This is a prototype." url="https://wireframes.internet.dev/clients/plvs">
-      <Navigation />
+      <Navigation hideLogo />
       <Hero />
       <HeroCopy />
       <HeroMarketingGrid />

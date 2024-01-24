@@ -13,11 +13,11 @@ export default function HeroMarketingGrid(props) {
       <div className={styles.row}>
         <div className={styles.column}>
           <H2Sub>
-            We believe exponential change is transforming civilization. Radical computing breakthroughs are needed to unlock humanities potential and realize a blueprint for
-            prosperity.
+            We believe exponential change is transforming civilization. They require technology companies to transform superpowers into products and disseminate them to humanity on
+            a large scale.
           </H2Sub>
 
-          <H2Sub>In this pursuit, we partner with exceptional founders translating cutting edge R&D into groundbreaking startups.</H2Sub>
+          <H2Sub>We partner with exceptional founders translating cutting edge R&D into groundbreaking startups.</H2Sub>
           <br />
           <br />
         </div>
