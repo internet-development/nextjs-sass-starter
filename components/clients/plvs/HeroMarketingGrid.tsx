@@ -12,9 +12,9 @@ export default function HeroMarketingGrid(props) {
       </div>
       <div className={styles.row}>
         <div className={styles.column}>
-          <H2Sub>
-            We believe exponential change is transforming civilization. It requires technology companies to turn superpowers into products and distribute them widely to humanity.
-          </H2Sub>
+          <H2Sub>We believe exponential change is transforming civilization.</H2Sub>
+
+          <H2Sub>It requires technology companies to turn superpowers into products and distribute them widely to humanity.</H2Sub>
 
           <H2Sub>We partner with exceptional founders translating cutting edge R&D into groundbreaking startups.</H2Sub>
           <br />

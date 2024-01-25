@@ -48,17 +48,12 @@ export default function PeopleGrid(props) {
           title="Operations Leadership"
           src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/41942819-8e59-4eb1-bf57-a208654277b0.png"
         />
-        <Card
-          name="Cathrine Hammack"
-          title="Legal Leadership"
-          src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/5e7fc299-245f-4721-8416-9258492903f1.png"
-        />
+        <Card name="Cathrine Hammack" title="Legal" src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/5e7fc299-245f-4721-8416-9258492903f1.png" />
         <Card
           name="Danielle Andrzejewski"
           title="Operations Leadership"
           src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/a8ba9191-93b8-4045-b540-1231bf50ea04.png"
         />
-        <Card name="Nicola Greco" title="Research Leadership" src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/8eef307f-000c-4ede-860c-1cdd5f0b5749.png" />
       </div>
     </>
   );
