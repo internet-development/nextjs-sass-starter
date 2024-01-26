@@ -1,0 +1,23 @@
+.item {
+  padding: 16px 0 16px 0;
+  border-bottom: 1px solid #dcdddd;
+  list-style-type: none;
+
+  &:first-child {
+    border-top: 1px solid #dcdddd;
+    margin-top: 48px;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-text);
+
+  &:visited {
+    color: var(--color-text);
+  }
+
+  &:hover {
+    color: #0047ff;
+  }
+}

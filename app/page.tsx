@@ -5,6 +5,7 @@ import { headers } from 'next/headers';
 import '@root/global.scss';
 
 import DefaultLayout from '@components/DefaultLayout';
+import ListItem from '@components/ListItem';
 
 export async function generateMetadata({ params, searchParams }) {
   const title = Package.name;
@@ -73,45 +74,25 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script>
-      Explore the array of templates offered by{' '}
-      <a href="https://github.com/internet-development/nextjs-sass-starter" target="_blank">
-        nextjs-sass-starter
-      </a>
-      , designed to kick-start your upcoming projects. These templates serve as an ideal foundation, and some even feature real APIs that you can access and integrate if they meet
-      your project's needs.
-      <ul>
-        <li>
-          <a href="/examples">Navigation, hero text</a>
-        </li>
-        <li>
-          <a href="/examples/full-section">Navigation, full browser height sections</a>
-        </li>
-        <li>
-          <a href="/examples/half-section">Navigation, half browser height sections</a>
-        </li>
-        <li>
-          <a href="/examples/no-sections">Navigation, no sections, just components</a>
-        </li>
-        <li>
-          <a href="/examples/forms">Navigation, form components</a>
-        </li>
-        <li>
-          <a href="/examples/authentication">Authentication</a>
-        </li>
-        <li>
-          <a href="/examples/files">File upload and management</a>
-        </li>
-        <li>
-          <a href="/examples/post">Navigation, blog post, footer</a>
-        </li>
-        <li>Invoices</li>
-        <li>Surveys</li>
-        <li>Blog Posts</li>
-        <li>Statements of Work</li>
-        <li>Payment Flow</li>
-        <li>Subscription management</li>
-        <li>Messages</li>
-      </ul>
+      <div>
+        Explore the array of templates offered by{' '}
+        <a href="https://github.com/internet-development/nextjs-sass-starter" target="_blank">
+          nextjs-sass-starter
+        </a>
+        , designed to kick-start your upcoming projects. These templates serve as an ideal foundation, and some even feature real APIs that you can access and integrate if they
+        meet your project's needs.
+      </div>
+      <div>
+        <ListItem href="/examples">[navigation] [hero section]</ListItem>
+        <ListItem href="/examples/full-section">[navigation] [full dvh sections]</ListItem>
+        <ListItem href="/examples/half-section">[navigation] [½ dvh sections]</ListItem>
+        <ListItem href="/examples/no-sections">[navigation] [naked components]</ListItem>
+        <ListItem href="/examples/forms">[navigation] [form components]</ListItem>
+        <ListItem href="/examples/authentication">Authentication to API key</ListItem>
+        <ListItem href="/examples/files">File management</ListItem>
+        <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>
+        <ListItem href="/examples/invoices">Invoice management</ListItem>
+      </div>
     </DefaultLayout>
   );
 }
