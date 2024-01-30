@@ -1,0 +1,15 @@
+.popover {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.popover-trigger {
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.popover.open .popover-content {
+    display: block;
+}

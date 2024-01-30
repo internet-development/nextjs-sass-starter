@@ -1,0 +1,135 @@
+.button{
+  cursor: pointer;
+  border:none;
+  width: 148px;
+  height: 48px;
+  padding: 8px;
+  border-radius: 36px;
+  text-wrap: nowrap;
+  font-family: SpaceGrotesk, sans-serif;
+  font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 88px;
+    height: 32px;
+    padding: 4px;
+    border-radius: 24px;
+  }
+}
+
+.buttonText{
+transform: translateX(10px);
+}
+
+.buttonStyleGreen{
+color: var(--color-black);
+background-color: var(--color-lime-green);
+}
+
+.buttonStyleBlack{
+  color: var(--color-lime-green);
+  background-color: var(--color-black);
+}
+
+
+.buttonStyleGreenWithArrow {
+  min-width: 132px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 32px rgba(154, 255, 99, 0.231);
+  background-color: var(--color-lime-green);
+
+  .buttonText{
+    transform: translateX(10px);
+  }
+
+  .arrowIcon {
+    opacity:0;
+    height:16px;
+    stroke: var(--color-black);
+
+    @media (max-width:768px) {
+      height:0.5rem;
+    }
+  }
+
+
+  &:hover{
+    .buttonText{
+      animation: buttonTextFadeIn 1s forwards;
+
+    }
+    .arrowIcon{
+      opacity:1;
+      animation: arrowFadeIn 1s forwards;
+    }
+
+    transition: box-shadow 200ms ease;
+    box-shadow: 0px 0px 32px rgba(154, 255, 99, 0.483);
+  }
+
+ 
+}
+
+.buttonStyleBlackWithArrow {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+box-shadow: 0px 0px 32px rgba(154, 255, 99, 0.231);
+color: var(--color-lime-green);
+background-color: var(--color-black);
+min-width: 192px;
+
+.buttonText{
+  transform: translateX(10px);
+}
+
+.arrowIcon {
+  opacity:0;
+  height:0.4rem;
+  stroke: var(--color-lime-green);
+
+  @media (max-width:768px) {
+    height:16px;
+  }
+}
+
+
+&:hover{
+  .buttonText{
+    animation: buttonTextFadeIn 1s forwards;
+
+  }
+  .arrowIcon{
+    opacity:1;
+    animation: arrowFadeIn 1s forwards;
+  }
+
+  transition: box-shadow 200ms ease;
+  box-shadow: 0px 0px 32px rgba(154, 255, 99, 0.483);
+}
+
+
+}
+
+@keyframes buttonTextFadeIn {
+from{
+  transform: translateX(0px)
+}
+to{
+  transform: translateX(-4px);
+}
+}
+
+@keyframes arrowFadeIn {
+from{
+  transform: translateX(-2px)
+}
+to{
+  transform: translateX(2px);
+}
+}
