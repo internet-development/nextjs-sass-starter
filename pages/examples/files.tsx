@@ -63,7 +63,7 @@ async function onDeleteData({ id, key }) {
   return result;
 }
 
-async function onUploadData({ file, key, setModal }) {
+async function onUploadData({ file, domain, key, setModal }) {
   let signedResult;
   const name = file.name;
   const type = file.type;
@@ -81,7 +81,7 @@ async function onUploadData({ file, key, setModal }) {
         'X-API-KEY': key,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ type, file: name, size }),
+      body: JSON.stringify({ type, domain:domain, file: name, size }),
     });
     signedResult = await signedResponse.json();
   } catch (e) {
@@ -120,6 +120,7 @@ function ExampleForms(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>('');
+  const [domain, setDomain] = React.useState<string>('internet.dev');
   const [files, setFiles] = React.useState([]);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [uploading, setUploading] = React.useState<boolean>(false);
@@ -131,6 +132,7 @@ function ExampleForms(props) {
       url="https://wireframes.internet.dev/examples/files"
     >
       <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      
       <ThinAppLayout>
         <FormHeading>Files</FormHeading>
         <FormParagraph>Organize files you have uploaded using this template.</FormParagraph>
@@ -188,11 +190,17 @@ function ExampleForms(props) {
           The following steps represent whether or not you have permissions to upload a file. To upload a file you need to be part of an organization and have been granted
           permissions.
         </FormParagraph>
+        
+        <div style={{display:'grid', rowGap:'0.5rem'}}>
+          <FormParagraph>Enter your domain: </FormParagraph>
+          <Input value={domain} onInputChange={(e) => setDomain(e.target.value)} />
+        </div> 
+       
         <FormUpload
           loading={uploading}
           onSetFile={async (file) => {
             setUploading(true);
-            const response = await onUploadData({ file, key, setModal });
+            const response = await onUploadData({ file, domain, key, setModal });
             if (!response) {
               setUploading(false);
               return;
