@@ -81,7 +81,7 @@ async function onUploadData({ file, domain, key, setModal }) {
         'X-API-KEY': key,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ type, domain:domain, file: name, size }),
+      body: JSON.stringify({ type, domain: domain, file: name, size }),
     });
     signedResult = await signedResponse.json();
   } catch (e) {
@@ -132,7 +132,7 @@ function ExampleForms(props) {
       url="https://wireframes.internet.dev/examples/files"
     >
       <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
-      
+
       <ThinAppLayout>
         <FormHeading>Files</FormHeading>
         <FormParagraph>Organize files you have uploaded using this template.</FormParagraph>
@@ -190,12 +190,10 @@ function ExampleForms(props) {
           The following steps represent whether or not you have permissions to upload a file. To upload a file you need to be part of an organization and have been granted
           permissions.
         </FormParagraph>
-        
-        <div style={{display:'grid', rowGap:'0.5rem'}}>
-          <FormParagraph>Enter your domain: </FormParagraph>
-          <Input value={domain} onInputChange={(e) => setDomain(e.target.value)} />
-        </div> 
-       
+
+        <InputLabel style={{ marginTop: 24 }}>Domain (optional)</InputLabel>
+        <Input autoComplete="off" onChange={(e) => setDomain(e.target.value)} style={{ marginTop: 8 }} type="text" value={domain} />
+
         <FormUpload
           loading={uploading}
           onSetFile={async (file) => {
