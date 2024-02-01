@@ -91,7 +91,17 @@ export default async function Page(props) {
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/files">File management</ListItem>
         <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>
-        <ListItem href="/examples/invoices">Invoice management</ListItem>
+        <ListItem href="/examples/invoices">[WIP] Invoice management</ListItem>
+      </div>
+      <div style={{ marginTop: 64 }}>
+        Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?
+      </div>
+      <div>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/2">Part I ➝ Setting up SSH keys locally (MacOS)</ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/3">Part II ➝ The software we recommend for web development (MacOS)</ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/4">[WIP] Part III ➝ The anatomy of a nextjs-sass-starter</ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/5">Part IV ➝ Accounts, grants, organizations, and data upload</ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/6">[WIP] Part V ➝ Additional endpoints</ListItem>
       </div>
     </DefaultLayout>
   );
