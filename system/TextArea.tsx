@@ -31,7 +31,7 @@ function TextArea(props) {
       onChange={(e) => {
         resizeTextArea();
         if (props.onChange) {
-          props.onChange(e.target.value);
+          props.onChange(e);
         }
       }}
     />

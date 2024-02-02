@@ -2,6 +2,14 @@
   font-size: var(--type-scale-7);
   font-family: var(--font-family-mono);
   box-shadow: var(--theme-modal);
+  opacity: 0.4;
+}
+
+.active {
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 0 0 4px var(--color-accent);
+  opacity: 1;
 }
 
 .title {

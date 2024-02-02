@@ -1,12 +1,13 @@
 import styles from '@system/MonospacePreview.module.scss';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 import Cross from '@system/svg/Cross';
 
 export default function MonospacePreview(props) {
   return (
-    <div className={styles.root} style={props.style}>
+    <div className={Utilities.classNames(styles.root, props.isActive ? styles.active : null)} style={props.style} onClick={props.onClick}>
       <div className={styles.title}>
         <span className={styles.left}>{props.title}</span>
         {props.onDelete ? (

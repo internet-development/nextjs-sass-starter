@@ -2,7 +2,11 @@ import styles from '@system/KeyHeader.module.scss';
 
 import * as React from 'react';
 
-export default function Navigation(props) {
+export default function KeyHeader(props) {
+  if (props.isHidden) {
+    return <nav className={styles.root} />;
+  }
+
   return (
     <nav className={styles.root}>
       <section className={styles.left}>
@@ -10,6 +14,7 @@ export default function Navigation(props) {
           Toggle Theme
         </span>
       </section>
+
       <section className={styles.stretch}>
         <input
           autoComplete="off"

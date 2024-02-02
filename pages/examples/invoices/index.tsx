@@ -1,0 +1,363 @@
+import React, { useState } from 'react';
+
+import * as Utilities from '@common/utilities';
+
+import Button from '@system/Button';
+import Content from '@system/layouts/Content';
+import GlobalModalManager from '@system/modals/GlobalModalManager';
+import Input from '@system/Input';
+import KeyHeader from '@system/KeyHeader';
+import MonospacePreview from '@system/MonospacePreview';
+import Page from '@components/Page';
+import TextArea from '@system/TextArea';
+import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
+
+import { P } from '@system/typography';
+import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+
+async function onRefreshInvoices({ key, setModal }) {
+  if (Utilities.isEmpty(key)) {
+    return setModal({ name: 'ERROR', message: 'You must provide an API key' });
+  }
+
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/documents', {
+      method: 'GET',
+      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  if (!result.data) {
+    return null;
+  }
+
+  return result;
+}
+
+async function onCreateInvoice({ key, setModal }) {
+  if (Utilities.isEmpty(key)) {
+    return setModal({ name: 'ERROR', message: 'You must provide an API key' });
+  }
+
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/documents/create', {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'INVOICE' }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  if (!result.data) {
+    return null;
+  }
+
+  return result;
+}
+
+async function onDeleteInvoice({ id, key }) {
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/documents/delete', {
+      method: 'DELETE',
+      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  if (result.error) {
+    return null;
+  }
+
+  return result;
+}
+
+async function onUpdateInvoice({ id, key, updates }) {
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/documents/update', {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, updates }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  if (result.error) {
+    return null;
+  }
+
+  return result;
+}
+
+function ExampleInvoices(props) {
+  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const [currentInvoice, setCurrentInvoice] = React.useState(null);
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [invoices, setInvoices] = React.useState<Array<any>>([]);
+  const [key, setKey] = React.useState<string>('');
+  const [updates, setUpdates] = React.useState<Record<string, any>>(null);
+
+  const sidebar = (
+    <div style={{ padding: `48px 24px 24px 24px` }}>
+      <FormHeading>Invoices</FormHeading>
+      <FormParagraph>This is an example application using production data to manage, edit, and view invoices.</FormParagraph>
+      <FormParagraph>Each invoice gets a unique page with a unique ID that is only discoverable if you share it.</FormParagraph>
+      <Button
+        onClick={async () => {
+          const invoiceResult = await onCreateInvoice({ key, setModal });
+          if (!invoiceResult) {
+            return;
+          }
+
+          const results = await onRefreshInvoices({ key, setModal });
+          if (!results) {
+            return;
+          }
+
+          setInvoices(results.data);
+        }}
+        style={{ marginTop: 24, width: '100%' }}
+      >
+        Create new invoice
+      </Button>
+      <P style={{ userSelect: 'none' }} href="/">
+        ← Return home
+      </P>
+      <P
+        style={{ cursor: 'pointer', userSelect: 'none' }}
+        onClick={async () => {
+          const results = await onRefreshInvoices({ key, setModal });
+          if (!results) {
+            return;
+          }
+
+          setInvoices(results.data);
+        }}
+      >
+        → Refresh
+      </P>
+    </div>
+  );
+
+  const details = (
+    <div style={{ padding: `48px 24px 24px 24px` }}>
+      {invoices.map((each) => {
+        return (
+          <MonospacePreview
+            isActive={currentInvoice && each.id === currentInvoice.id}
+            key={each.id}
+            onClick={() => {
+              setCurrentInvoice(each);
+              setUpdates({
+                subject: each.data.subject || '',
+                description: each.data.description || '',
+                payment_date: each.data.payment_date || '',
+                amount: each.data.amount || '',
+                client: each.data.client || '',
+                address: each.data.address || '',
+                location: each.data.location || '',
+                email: each.data.email || '',
+                phone: each.data.phone || '',
+              });
+            }}
+            onDelete={async () => {
+              const confirm = window.confirm(`Are you sure you want to delete ${each.id}? This action is irreversible.`);
+              if (!confirm) {
+                return;
+              }
+
+              const response = await onDeleteInvoice({ id: each.id, key });
+
+              const results = await onRefreshInvoices({ key, setModal });
+              if (!results) {
+                return;
+              }
+
+              if (currentInvoice && currentInvoice.id === each.id) {
+                setCurrentInvoice(null);
+              }
+
+              setInvoices(results.data);
+            }}
+            style={{ marginTop: 16 }}
+            title={each.data.type}
+          >
+            {JSON.stringify({ id: each.id, subject: each.data.subject }, null, 2)}
+          </MonospacePreview>
+        );
+      })}
+    </div>
+  );
+
+  return (
+    <Page
+      title="nextjs-sass-starter: Invoices"
+      description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
+      url="https://wireframes.internet.dev/examples/invoices"
+    >
+      <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <ThreeColumnAppLayout sidebar={sidebar} details={details}>
+        {currentInvoice ? (
+          <div style={{ padding: `48px 24px 24px 24px` }}>
+            <InputLabel style={{ marginTop: 16 }}>Subject</InputLabel>
+            <Input
+              autoComplete="off"
+              name="subject"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="INTDEV Project"
+              style={{ marginTop: 8 }}
+              value={updates.subject}
+            />
+            <InputLabel style={{ marginTop: 24 }}>Description</InputLabel>
+            <TextArea
+              autoComplete="off"
+              name="description"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              style={{ marginTop: 8 }}
+              value={updates.description}
+            />
+            <InputLabel style={{ marginTop: 24 }}>Payment date</InputLabel>
+            <Input
+              autoComplete="off"
+              name="payment_date"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="February 20th, 2030"
+              style={{ marginTop: 8 }}
+              value={updates.payment_date}
+            />
+            <InputLabel style={{ marginTop: 24 }}>Amount</InputLabel>
+            <Input
+              autoComplete="off"
+              name="amount"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="$100,000 USD"
+              style={{ marginTop: 8 }}
+              value={updates.amount}
+            />
+            <InputLabel style={{ marginTop: 24 }}>Client</InputLabel>
+            <Input
+              autoComplete="off"
+              name="client"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="Example Company"
+              style={{ marginTop: 8 }}
+              value={updates.client}
+            />
+            <InputLabel style={{ marginTop: 24 }}>Client Address</InputLabel>
+            <Input
+              name="address"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="1912 Pike Place"
+              style={{ marginTop: 8 }}
+              value={updates.address}
+            />
+            <InputLabel style={{ marginTop: 24 }}>City, State, Zipcode</InputLabel>
+            <Input
+              name="location"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="Seattle, WA, 98101"
+              style={{ marginTop: 8 }}
+              value={updates.location}
+            />
+            <InputLabel style={{ marginTop: 24 }}>E-mail</InputLabel>
+            <Input
+              name="email"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="company@example.com"
+              style={{ marginTop: 8 }}
+              value={updates.email}
+            />
+            <InputLabel style={{ marginTop: 24 }}>Phone Number</InputLabel>
+            <Input
+              name="phone"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="(555) 555-5555"
+              style={{ marginTop: 8 }}
+              value={updates.phone}
+            />
+            <Button
+              onClick={async () => {
+                setLoading(true);
+                const invoiceResult = await onUpdateInvoice({ id: currentInvoice.id, key, setModal, updates });
+                if (!invoiceResult) {
+                  setLoading(false);
+                  return;
+                }
+
+                const results = await onRefreshInvoices({ key, setModal });
+                setLoading(false);
+                if (!results) {
+                  return;
+                }
+
+                setInvoices(results.data);
+              }}
+              style={{ marginTop: 24, width: '100%' }}
+            >
+              Save changes
+            </Button>
+            <P style={{ cursor: 'pointer', userSelect: 'none' }} href={`/examples/invoices/${currentInvoice.id}`}>
+              → View shareable invoice
+            </P>
+          </div>
+        ) : null}
+      </ThreeColumnAppLayout>
+      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+    </Page>
+  );
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
+
+export default ExampleInvoices;

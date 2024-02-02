@@ -11,6 +11,10 @@ export function pluralize(text: string, count: number) {
   return count > 1 || count === 0 ? `${text}s` : text;
 }
 
+export function getOrdinalNumber(n) {
+  return n + (n > 0 ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10] : '');
+}
+
 export function onHandleThemeChange() {
   const body = document.body;
   const isLight = body.classList.contains('theme-light');
@@ -19,12 +23,18 @@ export function onHandleThemeChange() {
 
 export function toDateISOString(data: string) {
   const date = new Date(data);
-  return date.toLocaleDateString('en-US', {
+  const dayOfWeek = date.toLocaleDateString('en-US', {
     weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
   });
+  const month = date.toLocaleDateString('en-US', {
+    month: 'long',
+  });
+  const dayOfMonth = getOrdinalNumber(date.getDate());
+  const year = date.getFullYear();
+
+  const formattedDate = `${dayOfWeek}, ${month} ${dayOfMonth}, ${year}`;
+
+  return formattedDate;
 }
 
 export function elide(string, length = 140, emptyState = '...') {
