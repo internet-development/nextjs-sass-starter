@@ -20,6 +20,10 @@ export function H3(props) {
   return <h3 className={styles.h3} {...props} />;
 }
 
+export function H4(props) {
+  return <h3 className={styles.h4} {...props} />;
+}
+
 export function H3Sub(props) {
   return <aside className={styles.h3sub} {...props} />;
 }

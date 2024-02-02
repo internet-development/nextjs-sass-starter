@@ -94,7 +94,7 @@ async function onDeleteInvoice({ id, key }) {
   return result;
 }
 
-async function onUpdateInvoice({ id, key, updates }) {
+async function onUpdateInvoice({ id, key, setModal, updates }) {
   let result;
   try {
     const response = await fetch('https://api.internet.dev/api/documents/update', {
@@ -120,11 +120,11 @@ async function onUpdateInvoice({ id, key, updates }) {
 
 function ExampleInvoices(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const [currentInvoice, setCurrentInvoice] = React.useState(null);
+  const [currentInvoice, setCurrentInvoice] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [invoices, setInvoices] = React.useState<Array<any>>([]);
   const [key, setKey] = React.useState<string>('');
-  const [updates, setUpdates] = React.useState<Record<string, any>>(null);
+  const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
 
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>
@@ -187,6 +187,7 @@ function ExampleInvoices(props) {
                 location: each.data.location || '',
                 email: each.data.email || '',
                 phone: each.data.phone || '',
+                contact: each.data.contact || '',
               });
             }}
             onDelete={async () => {
@@ -226,7 +227,7 @@ function ExampleInvoices(props) {
     >
       <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
-        {currentInvoice ? (
+        {updates && currentInvoice ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
             <InputLabel style={{ marginTop: 16 }}>Subject</InputLabel>
             <Input
@@ -248,6 +249,16 @@ function ExampleInvoices(props) {
               }}
               style={{ marginTop: 8 }}
               value={updates.description}
+            />
+            <InputLabel style={{ marginTop: 24 }}>Supplier contact</InputLabel>
+            <TextArea
+              autoComplete="off"
+              name="contact"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              style={{ marginTop: 8 }}
+              value={updates.contact}
             />
             <InputLabel style={{ marginTop: 24 }}>Payment date</InputLabel>
             <Input
@@ -282,7 +293,7 @@ function ExampleInvoices(props) {
               style={{ marginTop: 8 }}
               value={updates.client}
             />
-            <InputLabel style={{ marginTop: 24 }}>Client Address</InputLabel>
+            <InputLabel style={{ marginTop: 24 }}>Client address</InputLabel>
             <Input
               name="address"
               onChange={(e) => {
@@ -292,7 +303,7 @@ function ExampleInvoices(props) {
               style={{ marginTop: 8 }}
               value={updates.address}
             />
-            <InputLabel style={{ marginTop: 24 }}>City, State, Zipcode</InputLabel>
+            <InputLabel style={{ marginTop: 24 }}>Client city, state, zip</InputLabel>
             <Input
               name="location"
               onChange={(e) => {
@@ -302,7 +313,7 @@ function ExampleInvoices(props) {
               style={{ marginTop: 8 }}
               value={updates.location}
             />
-            <InputLabel style={{ marginTop: 24 }}>E-mail</InputLabel>
+            <InputLabel style={{ marginTop: 24 }}>Client e-mail</InputLabel>
             <Input
               name="email"
               onChange={(e) => {
@@ -312,7 +323,7 @@ function ExampleInvoices(props) {
               style={{ marginTop: 8 }}
               value={updates.email}
             />
-            <InputLabel style={{ marginTop: 24 }}>Phone Number</InputLabel>
+            <InputLabel style={{ marginTop: 24 }}>Client phone number</InputLabel>
             <Input
               name="phone"
               onChange={(e) => {
