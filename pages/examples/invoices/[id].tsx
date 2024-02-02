@@ -56,12 +56,13 @@ function ExampleInvoice(props) {
           We will provide the payment details, including bank information and any additional necessary information, in a separate communication. Please review the invoice at your
           earliest convenience.
         </P>
-        <P style={{ opacity: 0.4 }}>If you have any questions or require further details regarding the payment, please feel free to contact us. Thank you!</P>
+        <P style={{ opacity: 0.4 }}>If you have any questions or require further details regarding the payment, please feel free to contact us.</P>
         <P style={{ opacity: 0.4 }}>
           Please be advised that this invoice contains confidential information intended only for the authorized recipient. If you are not the intended recipient, you should not
           disseminate, distribute, or copy this document. We kindly request that you notify the sender immediately by email if you have received this invoice by mistake and delete
-          this email from your system. Your cooperation in maintaining the confidentiality of this communication is greatly appreciated. Thank you.
+          this email from your system. Your cooperation in maintaining the confidentiality of this communication is greatly appreciated.
         </P>
+        <P style={{ opacity: 0.4 }}>Thank you!</P>
       </InvoiceLayout>
     </Page>
   );

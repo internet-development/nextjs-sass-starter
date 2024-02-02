@@ -176,6 +176,10 @@ function ExampleInvoices(props) {
             isActive={currentInvoice && each.id === currentInvoice.id}
             key={each.id}
             onClick={() => {
+              if (currentInvoice && currentInvoice.id === each.id) {
+                return;
+              }
+
               setCurrentInvoice(each);
               setUpdates({
                 subject: each.data.subject || '',
@@ -354,7 +358,7 @@ function ExampleInvoices(props) {
             >
               Save changes
             </Button>
-            <P style={{ cursor: 'pointer', userSelect: 'none' }} href={`/examples/invoices/${currentInvoice.id}`}>
+            <P style={{ cursor: 'pointer', userSelect: 'none' }} href={`/examples/invoices/${currentInvoice.id}`} target="_blank">
               → View shareable invoice
             </P>
           </div>
