@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 14px;
+  border-top: 1px solid var(--color-background-3);
+}
+
+.column {
+  width: 25%;
+  min-width: 10%;
+  align-self: stretch;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.shaded {
+  background: var(--color-background-3);
+}
+
+.subshaded {
+  background: var(--color-background-2);
+  text-align: right;
+}
+
+.remainder {
+  flex-shrink: 0;
+  width: 50%;
+  min-width: 10%;
+  align-self: stretch;
+  padding: 8px;
+}
