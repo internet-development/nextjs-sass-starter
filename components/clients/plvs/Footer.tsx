@@ -3,6 +3,7 @@ import styles from '@components/clients/plvs/Footer.module.scss';
 import * as React from 'react';
 
 import PLVS from '@system/svg/clients/PLVS';
+import Link from 'next/link';
 
 export default function Footer(props) {
   return (
@@ -12,9 +13,9 @@ export default function Footer(props) {
       </div>
       <div className={styles.subtext}>
         <div className={styles.legal}>© PROTOCOL LABS VENTURE STUDIO 2024</div>
-        <a href="/clients/plvs/disclosures" className={styles.legal}>
+        <Link href="/clients/plvs/disclosures" className={styles.legal}>
           Important disclosures
-        </a>
+        </Link>
       </div>
     </footer>
   );

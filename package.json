@@ -10,7 +10,8 @@
     "dev": "next -p 10000",
     "build": "next build",
     "start": "PORT=10000 next start",
-    "script": "ts-node -O '{\"module\":\"commonjs\"}' scripts/index.js"
+    "script": "ts-node -O '{\"module\":\"commonjs\"}' scripts/index.js",
+    "lint": "next lint"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -24,6 +25,8 @@
   "devDependencies": {
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }

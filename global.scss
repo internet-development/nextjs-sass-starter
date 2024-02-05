@@ -159,6 +159,8 @@ body {
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
   --font-family-mono: Consolas, monaco, monospace;
 
+  --color-border: var(--color-black);
+
   background: var(--color-background);
   color: var(--color-text);
 

@@ -3,6 +3,7 @@ import styles from '@system/layouts/demos/DemoPost.module.scss';
 import * as React from 'react';
 
 import { H1, H2, H3, P } from '@system/typography';
+import Image from 'next/image';
 
 export default function DemoPost(props) {
   return (
@@ -16,7 +17,7 @@ export default function DemoPost(props) {
         <H1>What Is Appropriate in the Scheme of Things?</H1>
         <div className={styles.row}>
           <div className={styles.left}>
-            <img className={styles.avatar} src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/54ce8027-2910-437d-8fe1-37d89deefbd7.jpg" />
+            <Image className={styles.avatar} src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/54ce8027-2910-437d-8fe1-37d89deefbd7.jpg" alt={''} />
           </div>
           <div className={styles.right}>
             <div className={styles.name}>
@@ -108,7 +109,7 @@ export default function DemoPost(props) {
           ingredients of the good life that is available in smaller societies must be curtailed as they become afflicted by cancerous overgrowth.
         </P>
 
-        <img src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/ea57b16e-5946-437a-affc-66cac282fd96.jpg" className={styles.image} />
+        <Image src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/ea57b16e-5946-437a-affc-66cac282fd96.jpg" className={styles.image} alt={''} />
 
         <P>
           The first to suffer is the fullness of our cultural life. This is why large populations organized in single states can afford, for example, fewer opera houses than the
