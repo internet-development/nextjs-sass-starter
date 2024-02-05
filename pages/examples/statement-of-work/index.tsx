@@ -161,7 +161,6 @@ function ExampleStatementOfWorks(props) {
         style={{ cursor: 'pointer', userSelect: 'none' }}
         onClick={async () => {
           const results = await onRefreshSOW({ key, setModal });
-          console.log(results);
           if (!results) {
             return;
           }
@@ -187,30 +186,35 @@ function ExampleStatementOfWorks(props) {
               }
 
               setCurrentSOW(each);
+
+              console.log(each);
               setUpdates({
-                supplier_incorporation: '',
-                supplier_incorporation_address: '',
-                supplier_physical_address: '',
-                supplier_amount_billed: '',
-                client_name: '',
-                client_billing_address: '',
-                client_incorporation: '',
-                client_signer: '',
-                client_title: '',
-                client_email: '',
-                client_email_legal: '',
-                client_email_invoices: '',
-                client_contact_name: '',
-                client_effective_date: '',
-                client_end_date: '',
-                service_design: true,
-                service_collaboration: true,
-                service_brand: true,
-                service_development: true,
-                service_audits: true,
-                service_maintenance: true,
-                service_launch: true,
-                service_embedding: true,
+                milestones: each.data.milestones || '',
+                summary: each.data.summary || '',
+                location: each.data.location || '',
+                supplier_incorporation: each.data.supplier_incorporation || '',
+                supplier_incorporation_address: each.data.supplier_incorporation_address || '',
+                supplier_physical_address: each.data.supplier_physical_address || '',
+                supplier_amount_billed: each.data.supplier_amount_billed || '',
+                client_name: each.data.client_name || '',
+                client_billing_address: each.data.client_billing_address || '',
+                client_incorporation: each.data.client_incorporation || '',
+                client_signer: each.data.client_signer || '',
+                client_title: each.data.client_title || '',
+                client_email: each.data.client_email || '',
+                client_email_legal: each.data.client_email_legal || '',
+                client_email_invoices: each.data.client_email_invoices || '',
+                client_contact_name: each.data.client_contact_name || '',
+                client_effective_date: each.data.client_effective_date || '',
+                client_end_date: each.data.client_end_date || '',
+                service_design: each.data.service_design,
+                service_collaboration: each.data.service_collaboration,
+                service_brand: each.data.service_brand,
+                service_development: each.data.service_development,
+                service_audits: each.data.service_audits,
+                service_maintenance: each.data.service_maintenance,
+                service_launch: each.data.service_launch,
+                service_embedding: each.data.service_embedding,
               });
             }}
             onDelete={async () => {
