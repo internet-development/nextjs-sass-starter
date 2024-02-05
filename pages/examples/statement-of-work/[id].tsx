@@ -12,7 +12,7 @@ import SignatureBox from '@system/documents/SignatureBox';
 
 import { H1, H2, H3, H4, P } from '@system/typography';
 
-function ExampleInvoice(props) {
+function ExampleSOW(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
 
   // NOTE(jimmylee):
@@ -59,7 +59,11 @@ function ExampleInvoice(props) {
   };
 
   return (
-    <Page title={`nextjs-sass-starter: statement of work ${props.id}`} description={`test`} url={`https://wireframes.internet.dev/examples/statement-of-work/${props.id}`}>
+    <Page
+      title={`nextjs-sass-starter: SOW ${props.id}`}
+      description={`This Statement of Work (“SOW”) is between ${supplier.name} (“${supplier.shorthand}”) and the client listed below (“Client”).`}
+      url={`https://wireframes.internet.dev/examples/statement-of-work/${props.id}`}
+    >
       <InvoiceLayout>
         <IntDev height="32px" style={{ marginTop: 88 }} />
         <H3 style={{ marginTop: 16 }}>
@@ -421,4 +425,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleInvoice;
+export default ExampleSOW;
