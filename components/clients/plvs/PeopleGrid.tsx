@@ -1,14 +1,13 @@
 import styles from '@components/clients/plvs/PeopleGrid.module.scss';
 
 import * as React from 'react';
-import Image from 'next/image';
 
 function Card(props) {
   return (
     <div className={styles.card}>
       <div className={styles.frame}>
         <div className={styles.top}>
-          <Image className={styles.image} src={props.src} alt={''} />
+          <img className={styles.image} src={props.src} alt={''} />
         </div>
         <div className={styles.bottom}>
           <div className={styles.name}>{props.name}</div>

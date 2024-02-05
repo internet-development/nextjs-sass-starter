@@ -3,7 +3,6 @@ import styles from '@system/layouts/demos/DemoPost.module.scss';
 import * as React from 'react';
 
 import { H1, H2, H3, P } from '@system/typography';
-import Image from 'next/image';
 
 export default function DemoPost(props) {
   return (
@@ -17,7 +16,7 @@ export default function DemoPost(props) {
         <H1>What Is Appropriate in the Scheme of Things?</H1>
         <div className={styles.row}>
           <div className={styles.left}>
-            <Image className={styles.avatar} src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/54ce8027-2910-437d-8fe1-37d89deefbd7.jpg" alt={''} />
+            <img className={styles.avatar} src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/54ce8027-2910-437d-8fe1-37d89deefbd7.jpg" alt={''} />
           </div>
           <div className={styles.right}>
             <div className={styles.name}>
