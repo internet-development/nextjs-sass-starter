@@ -23,8 +23,9 @@ async function onRefreshInvoices({ key, setModal }) {
   let result;
   try {
     const response = await fetch('https://api.internet.dev/api/documents', {
-      method: 'GET',
+      method: 'POST',
       headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'INVOICE' }),
     });
     result = await response.json();
   } catch (e) {
@@ -147,7 +148,7 @@ function ExampleInvoices(props) {
         }}
         style={{ marginTop: 24, width: '100%' }}
       >
-        Create new invoice
+        Create
       </Button>
       <P style={{ userSelect: 'none' }} href="/">
         ← Return home
@@ -356,7 +357,7 @@ function ExampleInvoices(props) {
               }}
               style={{ marginTop: 24, width: '100%' }}
             >
-              Save changes
+              Save
             </Button>
             <P style={{ cursor: 'pointer', userSelect: 'none' }} href={`/examples/invoices/${currentInvoice.id}`} target="_blank">
               → View shareable invoice

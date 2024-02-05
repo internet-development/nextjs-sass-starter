@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
+import Checkbox from '@system/Checkbox';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import Navigation from '@system/Navigation';
@@ -62,6 +63,10 @@ function ExampleForms(props) {
         <TextArea style={{ marginTop: 8 }} />
         <InputLabel style={{ marginTop: 24 }}>Textarea with placeholder</InputLabel>
         <TextArea style={{ marginTop: 8 }} placeholder={PLACEHOLDER} />
+        <Checkbox value={true} style={{ marginTop: 8 }}>
+          This is a description, the box should be checked.
+        </Checkbox>
+        <Checkbox style={{ marginTop: 8 }}>This is a description, the box should not be checked. This description is longer to test how that would feel.</Checkbox>
         <Button href="#" style={{ marginTop: 16, width: '100%' }}>
           Submit
         </Button>

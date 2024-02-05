@@ -28,6 +28,7 @@
 }
 
 .remainder {
+  white-space: pre-wrap;
   flex-shrink: 0;
   width: 50%;
   min-width: 10%;
@@ -64,6 +65,7 @@
 }
 
 .serviceRemainder {
+  white-space: pre-wrap;
   width: 50%;
   min-width: 10%;
   align-self: stretch;

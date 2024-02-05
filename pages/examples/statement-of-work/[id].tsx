@@ -23,43 +23,43 @@ function ExampleInvoice(props) {
   // props.updated_at
   const supplier = {
     name: 'Internet Development Studio Company',
-    incorporation: 'Alaska',
-    incorporation_address: '5000 W. International Airport Rd. P.O. Box 196960 Anchorage, AK 99519-6960',
-    physical_address: 'Starbucks, 1912 Pike Pl, Seattle, WA 98101',
+    incorporation: props.data.supplier_incorporation,
+    incorporation_address: props.data.supplier_incorporation_address,
+    physical_address: props.data.supplier_physical_address,
     shorthand: 'INTDEV',
     signer: 'Jimmy Lee',
     title: 'General Manager',
-    amount: '$X,XXX,XXX',
+    amount: props.data.supplier_amount_billed,
     currency: 'USD',
   };
 
   const client = {
-    name: 'The Example Client',
-    address: '1912 Pike Place',
-    signer: 'The Example Signer',
-    title: 'CEO',
-    incorporation: 'Arkansas',
-    email: 'fun@fun.com',
-    email_legal: 'legal@fun.com',
-    email_invoices: 'invoices@fun.com',
-    contact: 'The Example Person',
-    effective_date: 'March 14th, 2024',
-    end_date: 'June 14th, 2024',
+    name: props.data.client_name,
+    address: props.data.client_billing_address,
+    signer: props.data.client_signer,
+    title: props.data.client_title,
+    incorporation: props.data.client_incorporation,
+    email: props.data.client_email,
+    email_legal: props.data.client_email_legal,
+    email_invoices: props.data.client_email_invoices,
+    contact: props.data.client_contact_name,
+    effective_date: props.data.client_effective_date,
+    end_date: props.data.client_end_date,
   };
 
   const services = {
-    design: true,
-    collaboration: true,
-    brand: true,
-    development: true,
-    audits: true,
-    maintenance: true,
-    launch: true,
-    embedding: true,
+    design: props.data.service_design,
+    collaboration: props.data.service_collaboration,
+    brand: props.data.service_brand,
+    development: props.data.service_development,
+    audits: props.data.service_audits,
+    maintenance: props.data.service_maintenance,
+    launch: props.data.service_launch,
+    embedding: props.data.service_embedding,
   };
 
   return (
-    <Page title={`nextjs-sass-starter: invoice ${props.id}`} description={`test`} url={`https://wireframes.internet.dev/examples/statement-of-work/${props.id}`}>
+    <Page title={`nextjs-sass-starter: statement of work ${props.id}`} description={`test`} url={`https://wireframes.internet.dev/examples/statement-of-work/${props.id}`}>
       <InvoiceLayout>
         <IntDev height="32px" style={{ marginTop: 88 }} />
         <H3 style={{ marginTop: 16 }}>
@@ -195,19 +195,19 @@ function ExampleInvoice(props) {
         <section className={styles.row} style={{ marginTop: 24 }}>
           <section className={Utilities.classNames(styles.column, styles.shaded)}>4. Services and Deliverables</section>
           <section className={Utilities.classNames(styles.column, styles.subshaded)}>4.1. Background and Project Summary:</section>
-          <section className={styles.remainder}>{props.summary}</section>
+          <section className={styles.remainder}>{props.data.summary}</section>
         </section>
 
         <section className={styles.row}>
           <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
           <section className={Utilities.classNames(styles.column, styles.subshaded)}>4.2. Provisioning and Services Location:</section>
-          <section className={styles.remainder}>{props.location}</section>
+          <section className={styles.remainder}>{props.data.location}</section>
         </section>
 
         <section className={styles.row}>
           <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
           <section className={Utilities.classNames(styles.column, styles.subshaded)}>4.3. Major Milestones:</section>
-          <section className={styles.remainder}>{props.milestones}</section>
+          <section className={styles.remainder}>{props.data.milestones}</section>
         </section>
 
         <section className={styles.row}>
@@ -295,46 +295,54 @@ function ExampleInvoice(props) {
           </section>
         </section>
 
-        <section className={styles.row} style={{ marginTop: 24 }}>
-          <section className={Utilities.classNames(styles.column, styles.shaded)}>5. Payment</section>
-          <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees:</section>
-          <section className={styles.remainder}>
-            After {supplier.name} (“{supplier.shorthand}”) accepts the completed Services and Deliverables, Client will pay INTDEV a flat fee of{' '}
-            <strong>
-              [{supplier.amount}] [{supplier.currency}]
-            </strong>
-            .
+        {supplier.amount ? (
+          <section className={styles.row} style={{ marginTop: 24 }}>
+            <section className={Utilities.classNames(styles.column, styles.shaded)}>5. Payment</section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees:</section>
+            <section className={styles.remainder}>
+              After {supplier.name} (“{supplier.shorthand}”) accepts the completed Services and Deliverables, Client will pay INTDEV a flat fee of{' '}
+              <strong>
+                [{Utilities.formatDollars(supplier.amount)}] [{supplier.currency}]
+              </strong>
+              .
+            </section>
           </section>
-        </section>
+        ) : null}
 
-        <section className={styles.row}>
-          <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
-          <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.2. Maximum Total Cost:</section>
-          <section className={styles.remainder}>
-            Under this SOW, the total aggregate invoiced amount for the Services and Deliverables (including expenses <strong>[but excluding Taxes]</strong>) will not exceed the
-            following Maximum Total Cost:{' '}
-            <strong>
-              [{supplier.amount}] [{supplier.currency}]
-            </strong>
-            . The parties agree that the Maximum Total Cost does not constitute a minimum volume commitment or spend commitment.
+        {supplier.amount ? (
+          <section className={styles.row}>
+            <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.2. Maximum Total Cost:</section>
+            <section className={styles.remainder}>
+              Under this SOW, the total aggregate invoiced amount for the Services and Deliverables (including expenses <strong>[but excluding Taxes]</strong>) will not exceed the
+              following Maximum Total Cost:{' '}
+              <strong>
+                [{Utilities.formatDollars(supplier.amount)}] [{supplier.currency}]
+              </strong>
+              . The parties agree that the Maximum Total Cost does not constitute a minimum volume commitment or spend commitment.
+            </section>
           </section>
-        </section>
+        ) : null}
 
-        <section className={styles.row}>
-          <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
-          <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.3. Invoices: </section>
-          <section className={styles.remainder}>
-            <strong>[{supplier.shorthand} will invoice Client for Services and Deliverables after Client’s acceptance.]</strong>
+        {supplier.amount ? (
+          <section className={styles.row}>
+            <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.3. Invoices: </section>
+            <section className={styles.remainder}>
+              <strong>[{supplier.shorthand} will invoice Client for Services and Deliverables after Client’s acceptance.]</strong>
+            </section>
           </section>
-        </section>
+        ) : null}
 
-        <section className={styles.row}>
-          <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
-          <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Expenses:</section>
-          <section className={styles.remainder}>
-            <strong>[{supplier.shorthand}’s expenses are included in the fees in SOW Section 5.1 (Fees). No other expenses will be reimbursed.]</strong>
+        {supplier.amount ? (
+          <section className={styles.row}>
+            <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Expenses:</section>
+            <section className={styles.remainder}>
+              <strong>[{supplier.shorthand}’s expenses are included in the fees in SOW Section 5.1 (Fees). No other expenses will be reimbursed.]</strong>
+            </section>
           </section>
-        </section>
+        ) : null}
 
         <section className={styles.row} style={{ marginTop: 24 }}>
           <section className={Utilities.classNames(styles.column, styles.shaded)}>6. Changes</section>
@@ -387,7 +395,6 @@ function ExampleInvoice(props) {
 }
 
 export async function getServerSideProps(context) {
-  /*
   const response = await fetch(`https://api.internet.dev/api/documents/${context.params.id}`);
   const results = await response.json();
 
@@ -409,14 +416,8 @@ export async function getServerSideProps(context) {
     };
   }
 
-
   return {
     props: { ...results.data },
-  };
-  */
-
-  return {
-    props: {},
   };
 }
 

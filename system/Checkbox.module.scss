@@ -1,0 +1,22 @@
+.section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.input {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+  padding: 2px 0px 0px 8px;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    padding: 5px 0px 0px 8px;
+  }
+}

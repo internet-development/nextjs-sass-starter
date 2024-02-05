@@ -21,6 +21,13 @@ export function onHandleThemeChange() {
   return isLight ? body.classList.replace('theme-light', 'theme-dark') : body.classList.replace('theme-dark', 'theme-light');
 }
 
+export function formatDollars(value: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(value);
+}
+
 export function toDateISOString(data: string) {
   const date = new Date(data);
   const dayOfWeek = date.toLocaleDateString('en-US', {
