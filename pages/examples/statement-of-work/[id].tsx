@@ -17,18 +17,20 @@ function ExampleSOW(props) {
 
   // NOTE(jimmylee):
   // props.id
+  // props.team
   // props.summary
   // props.milestones
   // props.location
   // props.updated_at
   const supplier = {
-    name: 'Internet Development Studio Company',
+    name: props.data.supplier_name,
     incorporation: props.data.supplier_incorporation,
     incorporation_address: props.data.supplier_incorporation_address,
     physical_address: props.data.supplier_physical_address,
-    shorthand: 'INTDEV',
-    signer: 'Jimmy Lee',
-    title: 'General Manager',
+    shorthand: props.data.supplier_shorthand_name,
+    signer: props.data.supplier_signer,
+    email: props.data.supplier_email,
+    title: props.data.supplier_title,
     amount: props.data.supplier_amount_billed,
     currency: 'USD',
   };
@@ -144,7 +146,9 @@ function ExampleSOW(props) {
         <section className={styles.row}>
           <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
           <section className={Utilities.classNames(styles.column, styles.subshaded)}>Point of Contact:</section>
-          <section className={styles.remainder}>{supplier.signer} (j@internet.dev)</section>
+          <section className={styles.remainder}>
+            {supplier.signer} ({supplier.email})
+          </section>
         </section>
 
         <section className={styles.row}>
@@ -161,14 +165,7 @@ function ExampleSOW(props) {
         <section className={styles.row}>
           <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
           <section className={Utilities.classNames(styles.column, styles.subshaded)}>Team:</section>
-          <section className={styles.remainder}>
-            Andrew Alimbuyuguen “Andy” (andy@internet.dev)
-            <br />
-            Anastasiya Uraleva “Ana” (ana@internet.dev)
-            <br />
-            Xiangan He “Balbinus” (xiangan@internet.dev)
-            <br />
-          </section>
+          <section className={styles.remainder}>{props.data.team}</section>
         </section>
 
         <section className={styles.row} style={{ marginTop: 24 }}>
@@ -304,7 +301,7 @@ function ExampleSOW(props) {
             <section className={Utilities.classNames(styles.column, styles.shaded)}>5. Payment</section>
             <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees:</section>
             <section className={styles.remainder}>
-              After {supplier.name} (“{supplier.shorthand}”) accepts the completed Services and Deliverables, Client will pay INTDEV a flat fee of{' '}
+              After {supplier.name} (“{supplier.shorthand}”) accepts the completed Services and Deliverables, Client will pay {supplier.shorthand} a flat fee of{' '}
               <strong>
                 [{Utilities.formatDollars(supplier.amount)}] [{supplier.currency}]
               </strong>

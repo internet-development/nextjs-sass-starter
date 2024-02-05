@@ -187,15 +187,20 @@ function ExampleStatementOfWorks(props) {
 
               setCurrentSOW(each);
 
-              console.log(each);
               setUpdates({
                 milestones: each.data.milestones || '',
                 summary: each.data.summary || '',
                 location: each.data.location || '',
+                team: each.data.team || '',
                 supplier_incorporation: each.data.supplier_incorporation || '',
                 supplier_incorporation_address: each.data.supplier_incorporation_address || '',
                 supplier_physical_address: each.data.supplier_physical_address || '',
                 supplier_amount_billed: each.data.supplier_amount_billed || '',
+                supplier_signer: each.data.supplier_signer || '',
+                supplier_title: each.data.supplier_title || '',
+                supplier_name: each.data.supplier_name || '',
+                supplier_shorthand_name: each.data.supplier_shorthand_name || '',
+                supplier_email: each.data.supplier_email || '',
                 client_name: each.data.client_name || '',
                 client_billing_address: each.data.client_billing_address || '',
                 client_incorporation: each.data.client_incorporation || '',
@@ -256,7 +261,78 @@ function ExampleStatementOfWorks(props) {
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentSOW ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
-            <InputLabel style={{ marginTop: 16 }}>4.1. Background and Project Summary</InputLabel>
+            <InputLabel style={{ marginTop: 16 }}>2. Your company name</InputLabel>
+            <Input
+              autoComplete="off"
+              name="supplier_name"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="Internet Development Studio Company"
+              style={{ marginTop: 8 }}
+              value={updates.supplier_name}
+            />
+
+            <InputLabel style={{ marginTop: 16 }}>2. Your company abbreviation</InputLabel>
+            <Input
+              autoComplete="off"
+              name="supplier_shorthand_name"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="INTDEV"
+              style={{ marginTop: 8 }}
+              value={updates.supplier_shorthand_name}
+            />
+
+            <InputLabel style={{ marginTop: 16 }}>2. Your job title</InputLabel>
+            <Input
+              autoComplete="off"
+              name="supplier_title"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="General Manager"
+              style={{ marginTop: 8 }}
+              value={updates.supplier_title}
+            />
+
+            <InputLabel style={{ marginTop: 16 }}>2. Who has the authority to sign?</InputLabel>
+            <Input
+              autoComplete="off"
+              name="supplier_signer"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="Frank Ocean"
+              style={{ marginTop: 8 }}
+              value={updates.supplier_signer}
+            />
+
+            <InputLabel style={{ marginTop: 16 }}>2. What is their e-mail?</InputLabel>
+            <Input
+              autoComplete="off"
+              name="supplier_email"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              placeholder="frank.ocean@microsoft.com"
+              style={{ marginTop: 8 }}
+              value={updates.supplier_email}
+            />
+
+            <InputLabel style={{ marginTop: 16 }}>2. Who on the team is working on this?</InputLabel>
+            <TextArea
+              autoComplete="off"
+              name="team"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              style={{ marginTop: 8 }}
+              value={updates.team}
+            />
+
+            <InputLabel style={{ marginTop: 64 }}>4.1. Background and Project Summary</InputLabel>
             <TextArea
               autoComplete="off"
               name="summary"
