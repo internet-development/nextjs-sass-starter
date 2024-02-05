@@ -2,7 +2,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: var(--type-scale-6);
   border-top: 1px solid var(--color-background-3);
 }
 
@@ -12,6 +12,10 @@
   align-self: stretch;
   padding: 8px;
   flex-shrink: 0;
+}
+
+.right {
+  text-align: right;
 }
 
 .shaded {
@@ -29,4 +33,40 @@
   min-width: 10%;
   align-self: stretch;
   padding: 8px;
+}
+
+.service {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.inactive {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.fact {
+  width: 33.33%;
+  min-width: 10%;
+  align-self: stretch;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.serviceColumn {
+  width: 25%;
+  min-width: 10%;
+  align-self: stretch;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.serviceRemainder {
+  width: 50%;
+  min-width: 10%;
+  align-self: stretch;
+  padding: 8px;
+  flex-shrink: 0;
 }

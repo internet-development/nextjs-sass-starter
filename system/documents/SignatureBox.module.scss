@@ -1,0 +1,26 @@
+.root {
+  position: relative;
+  font-size: var(--type-scale-6);
+}
+
+.title {
+  font-weight: 600;
+}
+
+.signature {
+  border: 1px solid var(--color-border);
+  margin-top: 8px;
+  padding: 4px 4px 88px 4px;
+}
+
+.row {
+  margin-top: 2px;
+  padding: 4px;
+  background: var(--color-background-2);
+}
+
+.date {
+  margin-top: 2px;
+  padding: 4px 4px 24px 4px;
+  border: 1px solid var(--color-border);
+}
