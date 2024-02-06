@@ -88,6 +88,7 @@ export default async function Page(props) {
         <ListItem href="/examples/half-section">[navigation] [½ dvh sections]</ListItem>
         <ListItem href="/examples/no-sections">[navigation] [naked components]</ListItem>
         <ListItem href="/examples/forms">[navigation] [form components]</ListItem>
+        <ListItem href="/examples/application-empty-template">Application Empty Template</ListItem>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/files">File management</ListItem>
         <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>

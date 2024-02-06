@@ -4,6 +4,7 @@ import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
 import Checkbox from '@system/Checkbox';
+import Cookies from 'js-cookie';
 import Content from '@system/layouts/Content';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
@@ -128,9 +129,26 @@ function ExampleStatementOfWorks(props) {
   const [key, setKey] = React.useState<string>('');
   const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
 
+  React.useEffect(() => {
+    const key = Cookies.get('sitekey', { domain: props.host, secure: true });
+    if (!Utilities.isEmpty(key)) {
+      setKey(key);
+    }
+  });
+
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>
-      <FormHeading>Statement of Works</FormHeading>
+      <P href="/">← Return home</P>
+      <P
+        style={{ cursor: 'pointer' }}
+        onClick={() => {
+          setKey('');
+          Cookies.remove('sitekey');
+        }}
+      >
+        ← Reset key and cookie if applicable (sign out example)
+      </P>
+      <FormHeading style={{ marginTop: 64 }}>Statement of Works</FormHeading>
       <FormParagraph>
         This is an example application using production data to manage, edit, and view Statement of Works for Clients that the Interent Development Studio Company ("INTDEV") work
         for.
@@ -154,9 +172,6 @@ function ExampleStatementOfWorks(props) {
       >
         Create
       </Button>
-      <P style={{ userSelect: 'none' }} href="/">
-        ← Return home
-      </P>
       <P
         style={{ cursor: 'pointer', userSelect: 'none' }}
         onClick={async () => {
@@ -168,7 +183,7 @@ function ExampleStatementOfWorks(props) {
           setSOWs(results.data);
         }}
       >
-        → Refresh
+        → Refresh / List SOWs
       </P>
     </div>
   );
@@ -656,7 +671,7 @@ function ExampleStatementOfWorks(props) {
 
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: { host: context.req.headers.host.replace(':10000', '') },
   };
 }
 

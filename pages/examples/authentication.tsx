@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
+import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
@@ -70,21 +71,35 @@ function ExampleForms(props) {
   const [password, setPassword] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
+  React.useEffect(() => {
+    const key = Cookies.get('sitekey', { domain: props.host, secure: true });
+    if (!Utilities.isEmpty(key)) {
+      setKey(key);
+    }
+  });
+
   return (
     <Page
       title="api.internet.dev: Authentication"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/authentication"
     >
-      <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>
-        <FormHeading>Sign in</FormHeading>
+        <P href="/">← Return home</P>
+        <P
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            setKey('');
+            Cookies.remove('sitekey');
+          }}
+        >
+          ← Reset key and cookie if applicable (sign out example)
+        </P>
+        <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
+        <FormParagraph>Enhance your experience by signing in or creating an account. Simply enter your e-mail and password to get started.</FormParagraph>
         <FormParagraph>
-          Enhance your experience by signing in or creating an account. Simply enter your e-mail and password to get started. Please note that our site prioritizes your privacy and
-          does not use cookies for tracking.
-        </FormParagraph>
-        <FormParagraph>
-          It also does not use local storage. As a result, you'll need to manually input your API key to use <strong>api.internet.dev</strong> each time.
+          Using a Cookie to maintain your session is entirely optional. Once you've successfully signed in, you'll have the option to use one to persist your session.
         </FormParagraph>
         <FormParagraph>Remember to handle your API key with care for security purposes. This is just an example template.</FormParagraph>
         <InputLabel style={{ marginTop: 48 }}>E-mail</InputLabel>
@@ -134,7 +149,6 @@ function ExampleForms(props) {
         >
           Submit
         </Button>
-        <P href="/">← Return home</P>
 
         {currentUser ? (
           <>
@@ -174,10 +188,21 @@ function ExampleForms(props) {
                   });
                   return;
                 }
+                Cookies.remove('sitekey');
                 setUser(response.user);
               }}
             >
               → Reset API key
+            </P>
+            <P
+              style={{ cursor: 'pointer' }}
+              onClick={async () => {
+                setKey(currentUser.key);
+                Cookies.set('sitekey', currentUser.key, { domain: props.host, secure: true });
+                alert('Your API key was attached to a cookie with domain and secure options.');
+              }}
+            >
+              → Set Cookie (persistent session / sign in)
             </P>
             <P
               style={{ cursor: 'pointer' }}
@@ -197,7 +222,7 @@ function ExampleForms(props) {
 
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: { host: context.req.headers.host.replace(':10000', '') },
   };
 }
 

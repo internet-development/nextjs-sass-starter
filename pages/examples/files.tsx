@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
+import Cookies from 'js-cookie';
 import FormUpload from '@system/FormUpload';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
@@ -125,16 +126,33 @@ function ExampleForms(props) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [uploading, setUploading] = React.useState<boolean>(false);
 
+  React.useEffect(() => {
+    const key = Cookies.get('sitekey', { domain: props.host, secure: true });
+    if (!Utilities.isEmpty(key)) {
+      setKey(key);
+    }
+  });
+
   return (
     <Page
       title="api.internet.dev: Files"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/files"
     >
-      <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
 
       <ThinAppLayout>
-        <FormHeading>Files</FormHeading>
+        <P href="/">← Return home</P>
+        <P
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            setKey('');
+            Cookies.remove('sitekey');
+          }}
+        >
+          ← Reset key and cookie if applicable (sign out example)
+        </P>
+        <FormHeading style={{ marginTop: 64 }}>Files</FormHeading>
         <FormParagraph>Organize files you have uploaded using this template.</FormParagraph>
         <Button
           style={{ margin: `24px 0 0 0`, width: '100%' }}
@@ -156,7 +174,6 @@ function ExampleForms(props) {
         >
           List files
         </Button>
-        <P href="/">← Return home</P>
         {files.map((each: Record<string, any>) => {
           return (
             <MonospacePreview
@@ -229,7 +246,7 @@ function ExampleForms(props) {
 
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: { host: context.req.headers.host.replace(':10000', '') },
   };
 }
 

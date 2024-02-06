@@ -4,6 +4,7 @@ import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
 import Content from '@system/layouts/Content';
+import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
@@ -127,9 +128,26 @@ function ExampleInvoices(props) {
   const [key, setKey] = React.useState<string>('');
   const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
 
+  React.useEffect(() => {
+    const key = Cookies.get('sitekey', { domain: props.host, secure: true });
+    if (!Utilities.isEmpty(key)) {
+      setKey(key);
+    }
+  });
+
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>
-      <FormHeading>Invoices</FormHeading>
+      <P href="/">← Return home</P>
+      <P
+        style={{ cursor: 'pointer' }}
+        onClick={() => {
+          setKey('');
+          Cookies.remove('sitekey');
+        }}
+      >
+        ← Reset key and cookie if applicable (sign out example)
+      </P>
+      <FormHeading style={{ marginTop: 64 }}>Invoices</FormHeading>
       <FormParagraph>This is an example application using production data to manage, edit, and view invoices.</FormParagraph>
       <FormParagraph>Each invoice gets a unique page with a unique ID that is only discoverable if you share it.</FormParagraph>
       <Button
@@ -150,9 +168,6 @@ function ExampleInvoices(props) {
       >
         Create
       </Button>
-      <P style={{ userSelect: 'none' }} href="/">
-        ← Return home
-      </P>
       <P
         style={{ cursor: 'pointer', userSelect: 'none' }}
         onClick={async () => {
@@ -164,7 +179,7 @@ function ExampleInvoices(props) {
           setInvoices(results.data);
         }}
       >
-        → Refresh
+        → Refresh / List invoices
       </P>
     </div>
   );
@@ -230,7 +245,7 @@ function ExampleInvoices(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/invoices"
     >
-      <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentInvoice ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
@@ -372,7 +387,7 @@ function ExampleInvoices(props) {
 
 export async function getServerSideProps(context) {
   return {
-    props: {},
+    props: { host: context.req.headers.host.replace(':10000', '') },
   };
 }
 

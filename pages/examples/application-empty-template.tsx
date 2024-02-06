@@ -1,0 +1,53 @@
+import * as React from 'react';
+import * as Utilities from '@common/utilities';
+
+import Cookies from 'js-cookie';
+import GlobalModalManager from '@system/modals/GlobalModalManager';
+import KeyHeader from '@system/KeyHeader';
+import Page from '@components/Page';
+import ThinAppLayout from '@system/layouts/ThinAppLayout';
+
+import { P } from '@system/typography';
+
+function ExampleEmptyApplicationTemplate(props) {
+  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const [key, setKey] = React.useState<string>('');
+
+  React.useEffect(() => {
+    const key = Cookies.get('sitekey', { domain: props.host, secure: true });
+    if (!Utilities.isEmpty(key)) {
+      setKey(key);
+    }
+  });
+
+  return (
+    <Page
+      title="api.internet.dev: Empty Application Template"
+      description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
+      url="https://wireframes.internet.dev/examples/authentication"
+    >
+      <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <ThinAppLayout>
+        <P href="/">← Return home</P>
+        <P
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            setKey('');
+            Cookies.remove('sitekey');
+          }}
+        >
+          ← Reset key and cookie if applicable (sign out example)
+        </P>
+      </ThinAppLayout>
+      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+    </Page>
+  );
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: { host: context.req.headers.host.replace(':10000', '') },
+  };
+}
+
+export default ExampleEmptyApplicationTemplate;

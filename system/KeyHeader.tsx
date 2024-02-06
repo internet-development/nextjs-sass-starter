@@ -2,6 +2,8 @@ import styles from '@system/KeyHeader.module.scss';
 
 import * as React from 'react';
 
+import Cookies from 'js-cookie';
+
 export default function KeyHeader(props) {
   if (props.isHidden) {
     return <nav className={styles.root} />;
@@ -23,7 +25,10 @@ export default function KeyHeader(props) {
           name="key"
           placeholder="Copy and paste your API key here!"
           value={props.value}
-          onChange={(e) => props.onInputChange(e.target.value)}
+          onChange={(e) => {
+            Cookies.remove('sitekey');
+            props.onInputChange(e.target.value);
+          }}
         />
       </section>
     </nav>
