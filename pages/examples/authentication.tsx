@@ -62,7 +62,7 @@ async function onRefreshAPIKey({ email, password }) {
   return result;
 }
 
-function ExampleForms(props) {
+function ExampleAuthentication(props) {
   const [currentError, setError] = useState<string | null>(null);
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
@@ -226,4 +226,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleForms;
+export default ExampleAuthentication;

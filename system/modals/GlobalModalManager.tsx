@@ -34,7 +34,5 @@ export default function GlobalModalManager(props) {
     );
   }
 
-  console.log(nextModal);
-
   return <Modals>{nextModal}</Modals>;
 }

@@ -116,7 +116,7 @@ async function onUploadData({ file, domain, key, setModal }) {
   return signedResult;
 }
 
-function ExampleForms(props) {
+function ExampleFiles(props) {
   const [currentError, setError] = useState<string | null>(null);
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
@@ -250,4 +250,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleForms;
+export default ExampleFiles;
