@@ -133,7 +133,7 @@ function ExampleInvoices(props) {
     if (!Utilities.isEmpty(key)) {
       setKey(key);
     }
-  });
+  }, [props.host]);
 
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>

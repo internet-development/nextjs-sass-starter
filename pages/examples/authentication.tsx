@@ -76,7 +76,7 @@ function ExampleAuthentication(props) {
     if (!Utilities.isEmpty(key)) {
       setKey(key);
     }
-  });
+  }, [props.host]);
 
   return (
     <Page
