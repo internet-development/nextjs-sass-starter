@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import * as Utilities from '@common/utilities';
 
+import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
 import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
@@ -10,6 +11,7 @@ import KeyHeader from '@system/KeyHeader';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
+import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
@@ -86,16 +88,13 @@ function ExampleAuthentication(props) {
     >
       <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>
-        <P href="/">← Return home</P>
-        <P
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
+        <ThinAppLayoutHeader
+          token={key}
+          onSignOut={() => {
             setKey('');
             Cookies.remove('sitekey');
           }}
-        >
-          ← Reset key and cookie if applicable (sign out example)
-        </P>
+        />
         <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
         <FormParagraph>Enhance your experience by signing in or creating an account. Simply enter your e-mail and password to get started.</FormParagraph>
         <FormParagraph>
@@ -161,57 +160,61 @@ function ExampleAuthentication(props) {
             <MonospacePreview style={{ marginTop: 24 }} title="User Response - /api/users/authenticate">
               {JSON.stringify(currentUser, null, 2)}
             </MonospacePreview>
-            <P
-              style={{ cursor: 'pointer' }}
-              onClick={async () => {
-                const response = await onAuthenticate({ email, password });
-                if (!response) {
-                  setModal({
-                    name: 'ERROR',
-                    message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-                  });
-                  return;
-                }
-                setUser(response.user);
-              }}
-            >
-              → Refresh
-            </P>
-            <P
-              style={{ cursor: 'pointer' }}
-              onClick={async () => {
-                const response = await onRefreshAPIKey({ email, password });
-                if (!response) {
-                  setModal({
-                    name: 'ERROR',
-                    message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-                  });
-                  return;
-                }
-                Cookies.remove('sitekey');
-                setUser(response.user);
-              }}
-            >
-              → Reset API key
-            </P>
-            <P
-              style={{ cursor: 'pointer' }}
-              onClick={async () => {
-                setKey(currentUser.key);
-                Cookies.set('sitekey', currentUser.key, { domain: props.host, secure: true });
-                alert('Your API key was attached to a cookie with domain and secure options.');
-              }}
-            >
-              → Set Cookie (persistent session / sign in)
-            </P>
-            <P
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                setUser(null);
-              }}
-            >
-              ↑ Hide user information
-            </P>
+            <div style={{ marginTop: 16 }}>
+              <ActionItem
+                icon={`✳`}
+                onClick={async () => {
+                  const response = await onAuthenticate({ email, password });
+                  if (!response) {
+                    setModal({
+                      name: 'ERROR',
+                      message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
+                    });
+                    return;
+                  }
+                  setUser(response.user);
+                  alert('The user data was refreshed.');
+                }}
+              >
+                Refresh
+              </ActionItem>
+              <ActionItem
+                icon={`✳`}
+                onClick={async () => {
+                  const response = await onRefreshAPIKey({ email, password });
+                  if (!response) {
+                    setModal({
+                      name: 'ERROR',
+                      message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
+                    });
+                    return;
+                  }
+                  Cookies.remove('sitekey');
+                  setUser(response.user);
+                  alert('A new API key was issued. You will need to set the Cookie again.');
+                }}
+              >
+                Generate new API key
+              </ActionItem>
+              <ActionItem
+                icon={`✳`}
+                onClick={async () => {
+                  setKey(currentUser.key);
+                  Cookies.set('sitekey', currentUser.key, { domain: props.host, secure: true });
+                  alert('Your API key was attached to a cookie with domain and secure options.');
+                }}
+              >
+                Set Cookie (persistent session / sign in)
+              </ActionItem>
+              <ActionItem
+                icon={`⭡`}
+                onClick={() => {
+                  setUser(null);
+                }}
+              >
+                Hide user information
+              </ActionItem>
+            </div>
           </>
         ) : null}
       </ThinAppLayout>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as Utilities from '@common/utilities';
 
+import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
 import Checkbox from '@system/Checkbox';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
@@ -46,7 +47,17 @@ function ExampleForms(props) {
           Developing a web form requires meticulous attention to several key elements to ensure it is both user-friendly and effective. Firstly, simplicity and clarity are
           paramount; the form should ask for only necessary information, avoiding any superfluous fields that could deter users.
         </FormParagraph>
-        <InputLabel style={{ marginTop: 48 }}>Input</InputLabel>
+        <div style={{ marginTop: 48 }}>
+          <ActionItem icon={`⭡`}>Hide item example</ActionItem>
+          <ActionItem icon={`⭢`}>Next item example</ActionItem>
+          <ActionItem icon={`⭣`}>Show item example</ActionItem>
+          <ActionItem icon={`⭠`} href="/">
+            Return item example
+          </ActionItem>
+          <ActionItem icon={`✳`}>Action item example</ActionItem>
+        </div>
+
+        <InputLabel style={{ marginTop: 24 }}>Input</InputLabel>
         <Input style={{ marginTop: 8 }} />
         <InputLabel style={{ marginTop: 24 }}>Input with placeholder</InputLabel>
         <Input style={{ marginTop: 8 }} placeholder="This is a placeholder" />
@@ -63,11 +74,11 @@ function ExampleForms(props) {
         <TextArea style={{ marginTop: 8 }} />
         <InputLabel style={{ marginTop: 24 }}>Textarea with placeholder</InputLabel>
         <TextArea style={{ marginTop: 8 }} placeholder={PLACEHOLDER} />
-        <Checkbox value={true} style={{ marginTop: 8 }}>
+        <Checkbox defaultChecked style={{ marginTop: 16 }}>
           This is a description, the box should be checked.
         </Checkbox>
-        <Checkbox style={{ marginTop: 8 }}>This is a description, the box should not be checked. This description is longer to test how that would feel.</Checkbox>
-        <Button href="#" style={{ marginTop: 16, width: '100%' }}>
+        <Checkbox style={{ marginTop: 16 }}>This is a description, the box should not be checked. This description is longer to test how that would feel.</Checkbox>
+        <Button href="#" style={{ marginTop: 48, width: '100%' }}>
           Submit
         </Button>
         <Button loading style={{ marginTop: 16, width: '100%' }}>

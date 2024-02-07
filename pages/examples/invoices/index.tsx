@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as Utilities from '@common/utilities';
 
+import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
 import Content from '@system/layouts/Content';
 import Cookies from 'js-cookie';
@@ -11,6 +12,7 @@ import KeyHeader from '@system/KeyHeader';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import TextArea from '@system/TextArea';
+import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
@@ -137,16 +139,13 @@ function ExampleInvoices(props) {
 
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>
-      <P href="/">← Return home</P>
-      <P
-        style={{ cursor: 'pointer' }}
-        onClick={() => {
+      <ThinAppLayoutHeader
+        token={key}
+        onSignOut={() => {
           setKey('');
           Cookies.remove('sitekey');
         }}
-      >
-        ← Reset key and cookie if applicable (sign out example)
-      </P>
+      />
       <FormHeading style={{ marginTop: 64 }}>Invoices</FormHeading>
       <FormParagraph>This is an example application using production data to manage, edit, and view invoices.</FormParagraph>
       <FormParagraph>Each invoice gets a unique page with a unique ID that is only discoverable if you share it.</FormParagraph>
@@ -168,8 +167,9 @@ function ExampleInvoices(props) {
       >
         Create
       </Button>
-      <P
-        style={{ cursor: 'pointer', userSelect: 'none' }}
+
+      <ActionItem
+        icon={`✳`}
         onClick={async () => {
           const results = await onRefreshInvoices({ key, setModal });
           if (!results) {
@@ -178,9 +178,10 @@ function ExampleInvoices(props) {
 
           setInvoices(results.data);
         }}
+        style={{ marginTop: 16 }}
       >
-        → Refresh / List invoices
-      </P>
+        Refresh / List invoices
+      </ActionItem>
     </div>
   );
 
@@ -229,7 +230,7 @@ function ExampleInvoices(props) {
 
               setInvoices(results.data);
             }}
-            style={{ marginTop: 16 }}
+            style={{ marginBottom: 16 }}
             title={each.data.type}
           >
             {JSON.stringify({ id: each.id, subject: each.data.subject }, null, 2)}
@@ -249,7 +250,12 @@ function ExampleInvoices(props) {
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentInvoice ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
-            <InputLabel style={{ marginTop: 16 }}>Subject</InputLabel>
+            <div>
+              <ActionItem icon={`⭢`} href={`/examples/invoices/${currentInvoice.id}`} target="_blank">
+                View shareable invoice
+              </ActionItem>
+            </div>
+            <InputLabel style={{ marginTop: 32 }}>Subject</InputLabel>
             <Input
               autoComplete="off"
               name="subject"
@@ -374,9 +380,9 @@ function ExampleInvoices(props) {
             >
               Save
             </Button>
-            <P style={{ cursor: 'pointer', userSelect: 'none' }} href={`/examples/invoices/${currentInvoice.id}`} target="_blank">
-              → View shareable invoice
-            </P>
+            <ActionItem icon={`⭢`} href={`/examples/invoices/${currentInvoice.id}`} target="_blank" style={{ marginTop: 16 }}>
+              View shareable invoice
+            </ActionItem>
           </div>
         ) : null}
       </ThreeColumnAppLayout>

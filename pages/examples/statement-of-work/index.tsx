@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as Utilities from '@common/utilities';
 
+import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
 import Checkbox from '@system/Checkbox';
 import Cookies from 'js-cookie';
@@ -12,6 +13,7 @@ import KeyHeader from '@system/KeyHeader';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import TextArea from '@system/TextArea';
+import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
@@ -138,16 +140,13 @@ function ExampleStatementOfWorks(props) {
 
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>
-      <P href="/">← Return home</P>
-      <P
-        style={{ cursor: 'pointer' }}
-        onClick={() => {
+      <ThinAppLayoutHeader
+        token={key}
+        onSignOut={() => {
           setKey('');
           Cookies.remove('sitekey');
         }}
-      >
-        ← Reset key and cookie if applicable (sign out example)
-      </P>
+      />
       <FormHeading style={{ marginTop: 64 }}>Statement of Works</FormHeading>
       <FormParagraph>
         This is an example application using production data to manage, edit, and view Statement of Works for Clients that the Interent Development Studio Company ("INTDEV") work
@@ -172,8 +171,8 @@ function ExampleStatementOfWorks(props) {
       >
         Create
       </Button>
-      <P
-        style={{ cursor: 'pointer', userSelect: 'none' }}
+      <ActionItem
+        icon={`✳`}
         onClick={async () => {
           const results = await onRefreshSOW({ key, setModal });
           if (!results) {
@@ -182,9 +181,10 @@ function ExampleStatementOfWorks(props) {
 
           setSOWs(results.data);
         }}
+        style={{ marginTop: 16 }}
       >
-        → Refresh / List SOWs
-      </P>
+        Refresh / List SOWs
+      </ActionItem>
     </div>
   );
 
@@ -256,7 +256,7 @@ function ExampleStatementOfWorks(props) {
 
               setSOWs(results.data);
             }}
-            style={{ marginTop: 16 }}
+            style={{ marginBottom: 16 }}
             title={each.data.type}
           >
             {JSON.stringify({ id: each.id, subject: each.data.subject }, null, 2)}
@@ -276,7 +276,12 @@ function ExampleStatementOfWorks(props) {
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentSOW ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
-            <InputLabel style={{ marginTop: 16 }}>2. Your company name</InputLabel>
+            <div>
+              <ActionItem icon={`⭢`} href={`/examples/statement-of-work/${currentSOW.id}`} target="_blank">
+                View shareable statement of work
+              </ActionItem>
+            </div>
+            <InputLabel style={{ marginTop: 32 }}>2. Your company name</InputLabel>
             <Input
               autoComplete="off"
               name="supplier_name"
@@ -658,9 +663,9 @@ function ExampleStatementOfWorks(props) {
             >
               Save changes
             </Button>
-            <P style={{ cursor: 'pointer', userSelect: 'none' }} href={`/examples/statement-of-work/${currentSOW.id}`} target="_blank">
-              → View shareable statement of work
-            </P>
+            <ActionItem icon={`⭢`} href={`/examples/statement-of-work/${currentSOW.id}`} target="_blank" style={{ marginTop: 16 }}>
+              View shareable statement of work
+            </ActionItem>
           </div>
         ) : null}
       </ThreeColumnAppLayout>

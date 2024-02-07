@@ -6,6 +6,7 @@ import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
+import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 
@@ -28,16 +29,13 @@ function ExampleEmptyApplicationTemplate(props) {
     >
       <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>
-        <P href="/">← Return home</P>
-        <P
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
+        <ThinAppLayoutHeader
+          token={key}
+          onSignOut={() => {
             setKey('');
             Cookies.remove('sitekey');
           }}
-        >
-          ← Reset key and cookie if applicable (sign out example)
-        </P>
+        />
       </ThinAppLayout>
       <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
