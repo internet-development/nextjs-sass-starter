@@ -10,7 +10,7 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 
-function ExampleEmptyApplicationTemplate(props) {
+function ExampleSettings(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>('');
 
@@ -23,9 +23,9 @@ function ExampleEmptyApplicationTemplate(props) {
 
   return (
     <Page
-      title="api.internet.dev: Empty Application Template"
+      title="api.internet.dev: Settings"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/empty-application-template-page"
+      url="https://wireframes.internet.dev/examples/settings"
     >
       <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>
@@ -48,4 +48,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleEmptyApplicationTemplate;
+export default ExampleSettings;
