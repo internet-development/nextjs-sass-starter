@@ -15,6 +15,7 @@ import { P } from '@system/typography';
 function ExampleSettings(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
+  const [active, setActive] = React.useState<string>('PERSONAL');
 
   return (
     <Page
@@ -29,14 +30,27 @@ function ExampleSettings(props) {
             <ActionItem icon={`⭠`} href="/">
               Return home
             </ActionItem>
-            <ActionItem icon={`⭢`} active>
-              Personal
+            <ActionItem icon={`⭢`} active={active === 'PERSONAL'} onClick={() => setActive('PERSONAL')}>
+              Your settings
             </ActionItem>
-            <ActionItem icon={`⭢`}>Business</ActionItem>
-            <ActionItem icon={`⭢`}>Content</ActionItem>
-            <ActionItem icon={`⭢`}>Purchase services</ActionItem>
-            <ActionItem icon={`⭢`}>End services</ActionItem>
-            <ActionItem icon={`⭢`}>Delete user</ActionItem>
+            <ActionItem icon={`⭢`} active={active === 'DOCUMENTS'} onClick={() => setActive('DOCUMENTS')}>
+              Documents
+            </ActionItem>
+            <ActionItem icon={`⭢`} active={active === 'CONTENT'} onClick={() => setActive('CONTENT')}>
+              Content
+            </ActionItem>
+            <ActionItem icon={`⭢`} active={active === 'CREDITS'} onClick={() => setActive('CREDITS')}>
+              Credits
+            </ActionItem>
+            <ActionItem icon={`⭢`} active={active === 'PURCHASE'} onClick={() => setActive('PURCHASE')}>
+              Purchase services
+            </ActionItem>
+            <ActionItem icon={`⭢`} active={active === 'END'} onClick={() => setActive('END')}>
+              End services
+            </ActionItem>
+            <ActionItem icon={`⭢`} active={active === 'DELETE'} onClick={() => setActive('DELETE')}>
+              Delete user
+            </ActionItem>
             <ActionItem
               icon={`⭠`}
               onClick={() => {
@@ -53,7 +67,7 @@ function ExampleSettings(props) {
           </DemoSettingsSidebar>
         }
       >
-        <DemoSettings />
+        <DemoSettings active={active} />
       </TwoColumnLayout>
       <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
