@@ -12,14 +12,7 @@ import { P } from '@system/typography';
 
 function ExampleEmptyApplicationTemplate(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const [key, setKey] = React.useState<string>('');
-
-  React.useEffect(() => {
-    const key = Cookies.get('sitekey', { domain: props.host, secure: true });
-    if (!Utilities.isEmpty(key)) {
-      setKey(key);
-    }
-  }, [props.host]);
+  const [key, setKey] = React.useState<string>(props.sessionKey);
 
   return (
     <Page
@@ -43,8 +36,24 @@ function ExampleEmptyApplicationTemplate(props) {
 }
 
 export async function getServerSideProps(context) {
+  let viewer = null;
+  let sessionKey = context.req.cookies['sitekey'];
+
+  try {
+    const response = await fetch('https://api.internet.dev/api/users/viewer', {
+      method: 'PUT',
+      headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
+    });
+    const result = await response.json();
+    if (result && result.viewer) {
+      viewer = result.viewer;
+    }
+  } catch (e) {
+    return null;
+  }
+
   return {
-    props: { host: context.req.headers.host.replace(':10000', '') },
+    props: { sessionKey, viewer },
   };
 }
 

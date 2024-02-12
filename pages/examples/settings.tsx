@@ -1,25 +1,20 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import ActionItem from '@system/documents/ActionItem';
 import Cookies from 'js-cookie';
+import DemoSettings from '@system/layouts/demos/DemoSettings';
+import DemoSettingsSidebar from '@system/layouts/demos/DemoSettingsSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
-import ThinAppLayout from '@system/layouts/ThinAppLayout';
-import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
+import TwoColumnLayout from '@system/layouts/TwoColumnLayout';
 
 import { P } from '@system/typography';
 
 function ExampleSettings(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const [key, setKey] = React.useState<string>('');
-
-  React.useEffect(() => {
-    const key = Cookies.get('sitekey', { domain: props.host, secure: true });
-    if (!Utilities.isEmpty(key)) {
-      setKey(key);
-    }
-  }, [props.host]);
+  const [key, setKey] = React.useState<string>(props.sessionKey);
 
   return (
     <Page
@@ -28,23 +23,62 @@ function ExampleSettings(props) {
       url="https://wireframes.internet.dev/examples/settings"
     >
       <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
-      <ThinAppLayout>
-        <ThinAppLayoutHeader
-          token={key}
-          onSignOut={() => {
-            setKey('');
-            Cookies.remove('sitekey');
-          }}
-        />
-      </ThinAppLayout>
+      <TwoColumnLayout
+        sidebar={
+          <DemoSettingsSidebar>
+            <ActionItem icon={`⭠`} href="/">
+              Return home
+            </ActionItem>
+            <ActionItem icon={`⭢`} active>
+              Personal
+            </ActionItem>
+            <ActionItem icon={`⭢`}>Business</ActionItem>
+            <ActionItem icon={`⭢`}>Content</ActionItem>
+            <ActionItem icon={`⭢`}>Purchase services</ActionItem>
+            <ActionItem icon={`⭢`}>End services</ActionItem>
+            <ActionItem icon={`⭢`}>Delete user</ActionItem>
+            <ActionItem
+              icon={`⭠`}
+              onClick={() => {
+                const confirm = window.confirm('Are you sure you want to sign out? You will manually have to enter your API key again.');
+                if (!confirm) {
+                  return;
+                }
+                setKey('');
+                Cookies.remove('sitekey');
+              }}
+            >
+              Sign out
+            </ActionItem>
+          </DemoSettingsSidebar>
+        }
+      >
+        <DemoSettings />
+      </TwoColumnLayout>
       <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
   );
 }
 
 export async function getServerSideProps(context) {
+  let viewer = null;
+  let sessionKey = context.req.cookies['sitekey'];
+
+  try {
+    const response = await fetch('https://api.internet.dev/api/users/viewer', {
+      method: 'PUT',
+      headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
+    });
+    const result = await response.json();
+    if (result && result.viewer) {
+      viewer = result.viewer;
+    }
+  } catch (e) {
+    return null;
+  }
+
   return {
-    props: { host: context.req.headers.host.replace(':10000', '') },
+    props: { sessionKey, viewer },
   };
 }
 
