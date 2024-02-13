@@ -27,6 +27,7 @@ function ExampleEmptyApplicationTemplate(props) {
           onSignOut={() => {
             setKey('');
             Cookies.remove('sitekey');
+            window.location.reload();
           }}
         />
       </ThinAppLayout>

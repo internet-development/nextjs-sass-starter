@@ -136,6 +136,7 @@ function ExampleInvoices(props) {
         onSignOut={() => {
           setKey('');
           Cookies.remove('sitekey');
+          window.location.reload();
         }}
       />
       <FormHeading style={{ marginTop: 64 }}>Invoices</FormHeading>

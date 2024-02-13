@@ -65,6 +65,7 @@ function ExampleSettings(props) {
                   }
                   setKey('');
                   Cookies.remove('sitekey');
+                  window.location.reload();
                 }}
               >
                 Sign out
