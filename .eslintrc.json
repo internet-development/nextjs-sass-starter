@@ -2,8 +2,8 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "off",
     "jsx-a11y/alt-text": "warn",
-    "@next/next/no-img-element": "warn",
     "@next/next/no-html-link-for-pages": "warn"
   }
 }
