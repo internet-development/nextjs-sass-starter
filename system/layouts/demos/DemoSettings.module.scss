@@ -1,3 +1,17 @@
 .root {
-  padding: 24px;
+  padding: 48px 24px 24px 24px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  padding: 0 24px 0 24px;
+  width: 50%;
+
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 }

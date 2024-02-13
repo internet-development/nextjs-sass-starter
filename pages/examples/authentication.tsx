@@ -151,7 +151,7 @@ function ExampleAuthentication(props) {
               provide a better user experience.
             </FormParagraph>
             <FormParagraph>If you verify your e-mail, your user account level should update.</FormParagraph>
-            <MonospacePreview style={{ marginTop: 24 }} title="User Response - /api/users/authenticate">
+            <MonospacePreview style={{ marginTop: 24, opacity: 1 }} title="User Response - /api/users/authenticate">
               {JSON.stringify(currentUser, null, 2)}
             </MonospacePreview>
             <div style={{ marginTop: 16 }}>
@@ -208,6 +208,9 @@ function ExampleAuthentication(props) {
               >
                 Hide user information
               </ActionItem>
+              <ActionItem icon={`⭢`} href="/examples/settings">
+                View settings
+              </ActionItem>
             </div>
           </>
         ) : null}
@@ -219,7 +222,7 @@ function ExampleAuthentication(props) {
 
 export async function getServerSideProps(context) {
   let viewer = null;
-  let sessionKey = context.req.cookies['sitekey'];
+  let sessionKey = context.req.cookies['sitekey'] || null;
 
   try {
     const response = await fetch('https://api.internet.dev/api/users/viewer', {

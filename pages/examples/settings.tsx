@@ -45,29 +45,35 @@ function ExampleSettings(props) {
             <ActionItem icon={`⭢`} active={active === 'PURCHASE'} onClick={() => setActive('PURCHASE')}>
               Purchase services
             </ActionItem>
-            <ActionItem icon={`⭢`} active={active === 'END'} onClick={() => setActive('END')}>
-              End services
-            </ActionItem>
-            <ActionItem icon={`⭢`} active={active === 'DELETE'} onClick={() => setActive('DELETE')}>
-              Delete user
-            </ActionItem>
-            <ActionItem
-              icon={`⭠`}
-              onClick={() => {
-                const confirm = window.confirm('Are you sure you want to sign out? You will manually have to enter your API key again.');
-                if (!confirm) {
-                  return;
-                }
-                setKey('');
-                Cookies.remove('sitekey');
-              }}
-            >
-              Sign out
-            </ActionItem>
+            {props.viewer ? (
+              <ActionItem icon={`⭢`} active={active === 'END'} onClick={() => setActive('END')}>
+                End services
+              </ActionItem>
+            ) : null}
+            {props.viewer ? (
+              <ActionItem icon={`⭢`} active={active === 'DELETE'} onClick={() => setActive('DELETE')}>
+                Delete user
+              </ActionItem>
+            ) : null}
+            {props.viewer ? (
+              <ActionItem
+                icon={`⭠`}
+                onClick={() => {
+                  const confirm = window.confirm('Are you sure you want to sign out? You will manually have to enter your API key again.');
+                  if (!confirm) {
+                    return;
+                  }
+                  setKey('');
+                  Cookies.remove('sitekey');
+                }}
+              >
+                Sign out
+              </ActionItem>
+            ) : null}
           </DemoSettingsSidebar>
         }
       >
-        <DemoSettings active={active} />
+        <DemoSettings active={active} sessionKey={key} viewer={props.viewer} />
       </TwoColumnLayout>
       <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
@@ -76,7 +82,7 @@ function ExampleSettings(props) {
 
 export async function getServerSideProps(context) {
   let viewer = null;
-  let sessionKey = context.req.cookies['sitekey'];
+  let sessionKey = context.req.cookies['sitekey'] || null;
 
   try {
     const response = await fetch('https://api.internet.dev/api/users/viewer', {

@@ -64,6 +64,13 @@
   display: block;
 }
 
+.formSubHeading {
+  font-size: var(--type-scale-5);
+  line-height: 1;
+  font-weight: 600;
+  display: block;
+}
+
 .formCaption {
   line-height: 1.5;
   font-size: var(--type-scale-5);
@@ -71,6 +78,10 @@
   display: block;
   margin-top: 1rem;
   text-align: left;
+
+  &:first-child {
+    margin-top: 0px;
+  }
 }
 
 .inputLabel {

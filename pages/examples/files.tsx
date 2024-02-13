@@ -236,7 +236,7 @@ function ExampleFiles(props) {
 
 export async function getServerSideProps(context) {
   let viewer = null;
-  let sessionKey = context.req.cookies['sitekey'];
+  let sessionKey = context.req.cookies['sitekey'] || null;
 
   try {
     const response = await fetch('https://api.internet.dev/api/users/viewer', {
