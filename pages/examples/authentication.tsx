@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
+import * as Queries from '@common/queries';
 
 import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
@@ -14,54 +15,6 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-
-async function onAuthenticate({ email, password }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/authenticate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.user) {
-    return null;
-  }
-
-  return result;
-}
-
-async function onRefreshAPIKey({ email, password }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/regenerate-key', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.user) {
-    return null;
-  }
-
-  return result;
-}
 
 function ExampleAuthentication(props) {
   const [currentError, setError] = React.useState<string | null>(null);
@@ -126,7 +79,7 @@ function ExampleAuthentication(props) {
             }
 
             setLoading(true);
-            const response = await onAuthenticate({ email, password });
+            const response = await Queries.userAuthenticate({ email, password });
             setLoading(false);
             if (!response) {
               setModal({
@@ -159,7 +112,7 @@ function ExampleAuthentication(props) {
               <ActionItem
                 icon={`✳`}
                 onClick={async () => {
-                  const response = await onAuthenticate({ email, password });
+                  const response = await Queries.userAuthenticate({ email, password });
                   if (!response) {
                     setModal({
                       name: 'ERROR',
@@ -176,7 +129,7 @@ function ExampleAuthentication(props) {
               <ActionItem
                 icon={`✳`}
                 onClick={async () => {
-                  const response = await onRefreshAPIKey({ email, password });
+                  const response = await Queries.userRefreshKey({ email, password });
                   if (!response) {
                     setModal({
                       name: 'ERROR',
@@ -223,7 +176,12 @@ function ExampleAuthentication(props) {
 
 export async function getServerSideProps(context) {
   let viewer = null;
-  let sessionKey = context.req.cookies['sitekey'] || null;
+  let sessionKey = context.req.cookies['sitekey'] || '';
+  if (Utilities.isEmpty(sessionKey)) {
+    return {
+      props: { sessionKey: '', viewer: null },
+    };
+  }
 
   try {
     const response = await fetch('https://api.internet.dev/api/users/viewer', {
@@ -234,9 +192,7 @@ export async function getServerSideProps(context) {
     if (result && result.viewer) {
       viewer = result.viewer;
     }
-  } catch (e) {
-    return null;
-  }
+  } catch (e) {}
 
   return {
     props: { sessionKey, viewer },

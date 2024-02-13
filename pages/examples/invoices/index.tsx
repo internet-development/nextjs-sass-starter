@@ -386,7 +386,12 @@ function ExampleInvoices(props) {
 
 export async function getServerSideProps(context) {
   let viewer = null;
-  let sessionKey = context.req.cookies['sitekey'] || null;
+  let sessionKey = context.req.cookies['sitekey'] || '';
+  if (Utilities.isEmpty(sessionKey)) {
+    return {
+      props: { sessionKey: '', viewer: null },
+    };
+  }
 
   try {
     const response = await fetch('https://api.internet.dev/api/users/viewer', {
@@ -397,9 +402,7 @@ export async function getServerSideProps(context) {
     if (result && result.viewer) {
       viewer = result.viewer;
     }
-  } catch (e) {
-    return null;
-  }
+  } catch (e) {}
 
   return {
     props: { sessionKey, viewer },

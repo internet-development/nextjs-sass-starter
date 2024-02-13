@@ -1,9 +1,10 @@
 import styles from '@system/layouts/demos/DemoSettings.module.scss';
 
+import * as React from 'react';
+import * as Queries from '@common/queries';
+
 import ActionItem from '@system/documents/ActionItem';
 import MonospacePreview from '@system/MonospacePreview';
-
-import * as React from 'react';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
