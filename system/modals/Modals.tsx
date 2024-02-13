@@ -6,7 +6,7 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ children }) => {
-  const modalRoot = document.getElementById('__next') as HTMLElement;
+  const modalRoot = document.body as HTMLElement;
   const modalElement = document.createElement('figure');
 
   useEffect(() => {
