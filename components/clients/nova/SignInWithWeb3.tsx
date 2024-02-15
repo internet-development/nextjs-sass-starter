@@ -18,7 +18,7 @@ import {
     return (
       <ThirdwebProvider
         activeChain="ethereum"
-        clientId="6c008bdcd6760736ab3ffcd4deb713dd"
+        clientId="YOUR_CLIENT_ID"
         locale={en()}
         supportedWallets={[
           metamaskWallet(),
