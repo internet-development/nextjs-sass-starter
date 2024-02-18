@@ -16,7 +16,7 @@ export default function Footer(props) {
             <H3>Footer, Subscribe</H3>
             <H3Sub style={{ marginBottom: 24 }}>You can't actually subscribe to a newsletter yet but this is a nice looking placeholder.</H3Sub>
             <Input style={{ marginBottom: 24 }} placeholder="Provide an e-mail" />
-            <Button>Coming soon</Button>
+            <Button style={{ minHeight: 48 }}>Coming soon</Button>
           </div>
         </div>
         <div className={styles.subColumn}>

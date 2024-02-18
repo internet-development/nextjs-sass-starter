@@ -23,7 +23,9 @@ export default function DemoPricing(props) {
               <div className={styles.bottom}>
                 <H1>Free</H1>
                 <H3Sub style={{ marginBottom: 24 }}>Forever</H3Sub>
-                <Button>Coming soon</Button>
+                <Button style={{ minHeight: 48 }} href="/examples/authentication">
+                  Sign up
+                </Button>
                 <ul className={styles.list}>
                   <li className={styles.listItem}>No access to paid APIs</li>
                   <li className={styles.listItem}>E-mail verification required</li>
@@ -37,13 +39,12 @@ export default function DemoPricing(props) {
                 <SubTitle>Paid</SubTitle>
               </div>
               <div className={styles.bottom}>
-                <H1>$20</H1>
+                <H1>$8.99</H1>
                 <H3Sub style={{ marginBottom: 24 }}>Per month</H3Sub>
-                <Button>Coming soon</Button>
+                <Button style={{ minHeight: 48 }}>Coming soon</Button>
                 <ul className={styles.list}>
-                  <li className={styles.listItem}>2,000 credits renewed monthly</li>
+                  <li className={styles.listItem}>15,000 credits renewed monthly</li>
                   <li className={styles.listItem}>Access to paid APIs</li>
-                  <li className={styles.listItem}>Cancel any time and keep credits</li>
                 </ul>
               </div>
             </div>
@@ -54,13 +55,12 @@ export default function DemoPricing(props) {
                 <SubTitle>Paid (discounted)</SubTitle>
               </div>
               <div className={styles.bottom}>
-                <H1>$200</H1>
+                <H1>$100</H1>
                 <H3Sub style={{ marginBottom: 24 }}>Per year</H3Sub>
-                <Button>Coming soon</Button>
+                <Button style={{ minHeight: 48 }}>Coming soon</Button>
                 <ul className={styles.list}>
-                  <li className={styles.listItem}>25,000 credits renewed annually</li>
+                  <li className={styles.listItem}>180,000 credits renewed annually</li>
                   <li className={styles.listItem}>Access to paid APIs</li>
-                  <li className={styles.listItem}>Cancel any time and keep credits</li>
                 </ul>
               </div>
             </div>

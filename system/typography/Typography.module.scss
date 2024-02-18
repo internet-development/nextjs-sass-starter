@@ -36,9 +36,33 @@
   font-weight: 400;
 }
 
+.h4 {
+  font-size: var(--type-scale-4);
+  font-weight: 400;
+}
+
+.h4fixed {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .p {
   margin-top: 16px;
   font-size: var(--type-scale-5);
+  line-height: 1.5;
+  font-weight: 400;
+  display: block;
+  text-decoration: none;
+  color: var(--color-text);
+
+  &:visited {
+    color: var(--color-text);
+  }
+}
+
+.pfixed {
+  margin-top: 16px;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
   display: block;

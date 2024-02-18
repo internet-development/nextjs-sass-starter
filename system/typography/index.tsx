@@ -21,7 +21,11 @@ export function H3(props) {
 }
 
 export function H4(props) {
-  return <h3 className={styles.h4} {...props} />;
+  return <h4 className={styles.h4} {...props} />;
+}
+
+export function H4Fixed(props) {
+  return <h4 className={styles.h4fixed} {...props} />;
 }
 
 export function H3Sub(props) {
@@ -34,6 +38,14 @@ export function P(props) {
   }
 
   return <p className={styles.p} {...props} />;
+}
+
+export function PFixed(props) {
+  if (props.href) {
+    return <a {...props} className={styles.pfixed} />;
+  }
+
+  return <p className={styles.pfixed} {...props} />;
 }
 
 export function SubTitle(props) {
