@@ -48,6 +48,9 @@ function ExampleSettings(props) {
   );
 }
 
+// NOTE(jimmylee)
+// This page is a little messy because of all the cases that will be covered.
+// In the future it might be better to scope each case to its own static route.
 export async function getServerSideProps(context) {
   let active = SUB_SECTION_ROUTES[context.params.section] || 'PERSONAL';
   let title = SUB_SECTION_LINKS[active];

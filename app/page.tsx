@@ -95,6 +95,7 @@ export default async function Page(props) {
         <ListItem href="/examples/invoices">Invoice management</ListItem>
         <ListItem href="/examples/statement-of-work">Statement of Work management</ListItem>
         <ListItem href="/examples/settings">[WIP] Settings</ListItem>
+        <ListItem href="/examples/services">Services</ListItem>
       </div>
       <div style={{ marginTop: 64 }}>
         Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?
