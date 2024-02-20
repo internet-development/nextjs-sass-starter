@@ -6,7 +6,7 @@ function Checkbox(props) {
   return (
     <div className={styles.section} style={props.style}>
       <div className={styles.relative}>
-        <label className={styles.figure} for={`${props.name}-checkbox`}>
+        <label className={styles.figure} htmlFor={`${props.name}-checkbox`}>
           {props.value ? <Checkmark height="16px" /> : null}
         </label>
         <input checked={props.value} className={styles.input} id={`${props.name}-checkbox`} type="checkbox" name={props.name} onChange={props.onChange} />
