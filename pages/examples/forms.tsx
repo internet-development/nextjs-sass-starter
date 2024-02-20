@@ -28,6 +28,8 @@ const options = [
 function ExampleForms(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentSelectValue, setSelectValue] = React.useState<string | null>(null);
+  const [checked, setChecked] = React.useState(true);
+  const [unchecked, setUnchecked] = React.useState(false);
 
   return (
     <Page
@@ -74,10 +76,12 @@ function ExampleForms(props) {
         <TextArea style={{ marginTop: 8 }} />
         <InputLabel style={{ marginTop: 24 }}>Textarea with placeholder</InputLabel>
         <TextArea style={{ marginTop: 8 }} placeholder={PLACEHOLDER} />
-        <Checkbox defaultChecked style={{ marginTop: 16 }}>
+        <Checkbox name="checked" onChange={(e) => setChecked(e.target.checked)} value={checked} style={{ marginTop: 16 }}>
           This is a description, the box should be checked.
         </Checkbox>
-        <Checkbox style={{ marginTop: 16 }}>This is a description, the box should not be checked. This description is longer to test how that would feel.</Checkbox>
+        <Checkbox name="unchecked" onChange={(e) => setUnchecked(e.target.checked)} value={unchecked} style={{ marginTop: 16 }}>
+          This is a description, the box should not be checked. This description is longer to test how that would feel.
+        </Checkbox>
         <Button href="#" style={{ marginTop: 48, width: '100%' }}>
           Submit
         </Button>
