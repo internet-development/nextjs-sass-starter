@@ -26,7 +26,7 @@ function ExampleNoSections(props) {
         isModalVisible={!!currentModal}
         onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION' })}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
       />
       <Content>
         <H1>nextjs-sass-starter</H1>

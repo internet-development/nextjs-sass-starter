@@ -25,7 +25,12 @@ export default function Navigation(props) {
         </a>
       </section>
       <section className={styles.right}>
-        <span className={styles.item} onClick={props.isModalVisible ? props.onHandleHideSubNavigation : props.onHandleShowSubNavigation} data-detector-ignore-navigation>
+        <span
+          className={styles.item}
+          id="site-navigation-button"
+          onClick={props.isModalVisible ? props.onHandleHideSubNavigation : props.onHandleShowSubNavigation}
+          data-detector-ignore-navigation
+        >
           Navigation
         </span>
       </section>

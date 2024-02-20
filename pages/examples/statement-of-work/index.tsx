@@ -265,7 +265,13 @@ function ExampleStatementOfWorks(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/statement-of-work"
     >
-      <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <KeyHeader
+        isModalVisible={!!currentModal}
+        onInputChange={setKey}
+        onHandleHideSubNavigation={() => setModal(null)}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
+        value={key}
+      />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentSOW ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>

@@ -19,7 +19,13 @@ function ExampleServicesPage(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/services"
     >
-      <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <KeyHeader
+        isModalVisible={!!currentModal}
+        onInputChange={setKey}
+        onHandleHideSubNavigation={() => setModal(null)}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
+        value={key}
+      />
       <DemoServicesAndPaymentsWithLayout />
       <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>

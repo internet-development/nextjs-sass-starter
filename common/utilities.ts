@@ -28,6 +28,14 @@ export function formatDollars(value: number): string {
   }).format(value);
 }
 
+export function calculatePositionWithGutter(rect, objectWidth, viewportWidth, gutter = 24) {
+  const right = viewportWidth - rect.right;
+  const top = rect.top + rect.height + gutter;
+  const side = right + objectWidth >= viewportWidth ? 'left' : 'right';
+  const adjustedRight = side === 'left' ? viewportWidth - objectWidth - gutter : right;
+  return { top, right: adjustedRight, side };
+}
+
 export function toDateISOString(data: string) {
   const date = new Date(data);
   const dayOfWeek = date.toLocaleDateString('en-US', {

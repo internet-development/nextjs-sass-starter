@@ -12,8 +12,13 @@ export default function KeyHeader(props) {
   return (
     <nav className={styles.root}>
       <section className={styles.left}>
-        <span className={styles.item} onClick={props.onHandleThemeChange}>
-          Toggle Theme
+        <span
+          className={styles.item}
+          data-detector-ignore-navigation
+          id="site-navigation-button"
+          onClick={props.isModalVisible ? props.onHandleHideSubNavigation : props.onHandleShowSubNavigation}
+        >
+          Menu
         </span>
       </section>
 

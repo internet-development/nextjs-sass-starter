@@ -1,6 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
-const OutsideElementEvent = ({ className, children, onOutsideEvent }) => {
+interface OutsideElementEventProps {
+  className?: string;
+  children: React.ReactNode;
+  onOutsideEvent: (event: MouseEvent | TouchEvent) => void;
+  style?: Record<string, any>;
+}
+
+const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, children, onOutsideEvent, style }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleOutsideEvent = (event) => {
@@ -9,7 +16,7 @@ const OutsideElementEvent = ({ className, children, onOutsideEvent }) => {
     }
 
     if (ref.current && !ref.current.contains(event.target)) {
-      onOutsideEvent();
+      onOutsideEvent(event);
       return;
     }
   };
@@ -25,7 +32,7 @@ const OutsideElementEvent = ({ className, children, onOutsideEvent }) => {
   }, []);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} style={style}>
       {children}
     </div>
   );

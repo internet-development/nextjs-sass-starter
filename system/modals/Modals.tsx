@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 interface ModalProps {
-  children: React.ReactNode; // Define the type for children
+  children: React.ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = ({ children }) => {

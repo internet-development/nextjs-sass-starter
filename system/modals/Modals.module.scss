@@ -4,8 +4,6 @@
   background: var(--color-background);
   border-radius: 4px;
   position: absolute;
-  top: 64px;
-  right: 12px;
   padding: 12px 0 12px 0;
 }
 
@@ -39,13 +37,12 @@
   display: block;
   width: 240px;
   font-size: 12px;
-  text-align: right;
   text-decoration: none;
   text-transform: uppercase;
   color: var(--color-text);
   letter-spacing: 0.2px;
   font-weight: 600;
-  padding: 12px 12px 12px 12px;
+  padding: 12px 24px 12px 24px;
   cursor: pointer;
   user-select: none;
   transition: 200ms ease all;
