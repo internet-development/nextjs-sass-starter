@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as Queries from '@common/queries';
 
 import ActionItem from '@system/documents/ActionItem';
+import Button from '@system/Button';
 import MonospacePreview from '@system/MonospacePreview';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
@@ -97,20 +98,41 @@ export default function DemoSettings(props) {
     );
   }
 
-  if (props.active === 'PURCHASE') {
-    return (
-      <div className={styles.root}>
-        <FormHeading>Purchase</FormHeading>
-        <FormParagraph>All of the services you have purchased.</FormParagraph>
-      </div>
-    );
-  }
-
   if (props.active === 'END') {
+    if (props.viewer && props.viewer.level < 20) {
+      return (
+        <div className={styles.row}>
+          <div className={styles.column}>
+            <FormHeading style={{ marginTop: 48 }}>You do not have any paid services</FormHeading>
+            <FormParagraph>You are not paying for anything on api.internet.dev right now. So there is nothing to cancel.</FormParagraph>
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div className={styles.root}>
-        <FormHeading>End services</FormHeading>
-        <FormParagraph>All of the services you can cancel and end monthly payments to.</FormParagraph>
+      <div className={styles.row}>
+        <div className={styles.column}>
+          <FormHeading style={{ marginTop: 48 }}>End services</FormHeading>
+          <FormParagraph>
+            By clicking the button below, you can end all of your subscriptions to our services. If you have office space with us and you're brave enough to use this template to
+            end your services, you will have to upgrade again to get a desk and you might lose your desk.
+          </FormParagraph>
+          <Button
+            onClick={async () => {
+              const confirm = window.confirm('Are you sure?');
+              if (!confirm) {
+                return;
+              }
+
+              await Queries.userUnsubscribeServices({ key: props.sessionKey });
+              // window.location.reload();
+            }}
+            style={{ marginTop: 24 }}
+          >
+            End services
+          </Button>
+        </div>
       </div>
     );
   }

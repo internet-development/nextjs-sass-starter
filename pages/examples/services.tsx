@@ -26,7 +26,7 @@ function ExampleServicesPage(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
         value={key}
       />
-      <DemoServicesAndPaymentsWithLayout />
+      <DemoServicesAndPaymentsWithLayout viewer={props.viewer} />
       <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
   );

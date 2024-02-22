@@ -44,9 +44,15 @@ export default function DemoBentoLayout(props) {
               <H2 style={{ marginTop: 24 }}>
                 $0 USD<span className={styles.subtle}>/mo</span>
               </H2>
-              <Button style={{ height: 48, marginTop: 24, width: '100%' }} href="/examples/authentication">
-                Sign up
-              </Button>
+              {props.viewer ? (
+                <Button visual style={{ height: 48, marginTop: 24, width: '100%' }}>
+                  Already obtained
+                </Button>
+              ) : (
+                <Button style={{ height: 48, marginTop: 24, width: '100%' }} href="/examples/authentication">
+                  Sign up
+                </Button>
+              )}
               <PFixed style={{ opacity: 0, visibility: 'hidden', minheight: 48 }}>An invisible placeholder. Words that will occupy space.</PFixed>
               <div>
                 <Item>Generate up to 5 documents using our templates.</Item>
@@ -64,9 +70,25 @@ export default function DemoBentoLayout(props) {
               <H2 style={{ marginTop: 24 }}>
                 $8.99 USD<span className={styles.subtle}>/mo</span>
               </H2>
-              <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
-                Get started
-              </Button>
+              {props.viewer ? (
+                props.viewer.level >= 20 ? (
+                  <Button visual style={{ height: 48, marginTop: 24, width: '100%' }}>
+                    Already obtained
+                  </Button>
+                ) : (
+                  <Button
+                    href={`https://buy.stripe.com/28og0B2f9eIj8Io9AA?prefilled_email=${props.viewer.email}`}
+                    style={{ height: 48, marginTop: 24, width: '100%' }}
+                    target="_blank"
+                  >
+                    Get started
+                  </Button>
+                )
+              ) : (
+                <Button style={{ height: 48, marginTop: 24, width: '100%' }} href="/examples/authentication">
+                  Sign up
+                </Button>
+              )}
               <PFixed style={{ minHeight: 48 }}>
                 All the benefits of the <strong>"Free"</strong>, and:
               </PFixed>
@@ -110,7 +132,9 @@ export default function DemoBentoLayout(props) {
               <H2 style={{ opacity: 0, marginTop: 24, visibility: 'hidden' }}>
                 $X USD<span className={styles.subtle}>/mo</span>
               </H2>
-              <Button style={{ height: 48, marginTop: 24, width: '100%' }}>Apply</Button>
+              <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
+                Apply
+              </Button>
               <PFixed style={{ minHeight: 48 }}>
                 All the benefits of <strong>"Collaborator"</strong>, and:
               </PFixed>

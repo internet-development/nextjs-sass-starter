@@ -1,3 +1,5 @@
+import * as Utilities from '@common/utilities';
+
 const REQUEST_HEADERS = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
@@ -38,6 +40,33 @@ export async function userRefreshKey({ email, password }) {
       method: 'POST',
       headers: REQUEST_HEADERS,
       body: JSON.stringify({ email, password }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  if (!result.user) {
+    return null;
+  }
+
+  return result;
+}
+
+export async function userUnsubscribeServices({ key }) {
+  if (Utilities.isEmpty(key)) {
+    return null;
+  }
+
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/users/subscriptions/unsubscribe', {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
     });
     result = await response.json();
   } catch (e) {

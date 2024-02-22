@@ -32,7 +32,7 @@ export default function DemoSettingsSidebar(props) {
       <ActionItem icon={`⭢`} active={props.active === 'CREDITS'} href="/examples/settings/credits">
         {SUB_SECTION_LINKS['CREDITS']}
       </ActionItem>
-      <ActionItem icon={`⭢`} active={props.active === 'PURCHASE'} href="/examples/settings/purchase">
+      <ActionItem icon={`⭢`} active={props.active === 'PURCHASE'} href="/examples/services">
         {SUB_SECTION_LINKS['PURCHASE']}
       </ActionItem>
       {props.viewer ? (
