@@ -22,41 +22,24 @@ export default function GlobalModalManager(props) {
 
   let nextModal;
   if (props.currentModal && props.currentModal.name === 'NAVIGATION') {
-    nextModal = (
-      <ModalNavigation
-        key="NAVIGATION"
-        onHandleThemeChange={() => props.onHandleThemeChange()}
-        onOutsideEvent={() => {
-          props.setModal(null);
-        }}
-        parentRect={parentRect}
-      />
-    );
+    nextModal = <ModalNavigation key="NAVIGATION" parentRect={parentRect} onHandleThemeChange={props.onHandleThemeChange} onOutsideEvent={() => props.onSetModal(null)} />;
   }
 
   if (props.currentModal && props.currentModal.name == 'NAVIGATION_TEMPLATE') {
     nextModal = (
       <ModalNavigationTemplate
         key="NAVIGATION_TEMPLATE"
-        onHandleThemeChange={() => props.onHandleThemeChange()}
-        onOutsideEvent={() => {
-          props.setModal(null);
-        }}
         parentRect={parentRect}
+        onHandleThemeChange={props.onHandleThemeChange}
+        onOutsideEvent={() => props.onSetModal(null)}
+        onSignOut={props.onSignOut}
+        viewer={props.viewer}
       />
     );
   }
 
   if (props.currentModal && props.currentModal.name === 'ERROR') {
-    nextModal = (
-      <ModalError
-        key="ERROR"
-        message={props.currentModal.message}
-        onOutsideEvent={() => {
-          props.setModal(null);
-        }}
-      />
-    );
+    nextModal = <ModalError key="ERROR" onOutsideEvent={() => props.onSetModal(null)} message={props.currentModal.message} />;
   }
 
   return <Modals>{nextModal}</Modals>;

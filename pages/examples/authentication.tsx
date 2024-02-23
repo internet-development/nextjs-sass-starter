@@ -42,6 +42,11 @@ function ExampleAuthentication(props) {
         <ThinAppLayoutHeader
           token={key}
           onSignOut={() => {
+            const confirm = window.confirm('Are you sure you want to sign out?');
+            if (!confirm) {
+              return;
+            }
+
             setKey('');
             Cookies.remove('sitekey');
             window.location.reload();
@@ -175,7 +180,22 @@ function ExampleAuthentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+      <GlobalModalManager
+        currentModal={currentModal}
+        onHandleThemeChange={Utilities.onHandleThemeChange}
+        onSetModal={setModal}
+        onSignOut={() => {
+          const confirm = window.confirm('Are you sure you want to sign out?');
+          if (!confirm) {
+            return;
+          }
+
+          setKey('');
+          Cookies.remove('sitekey');
+          window.location.reload();
+        }}
+        viewer={props.viewer}
+      />
     </Page>
   );
 }

@@ -49,7 +49,7 @@ function ExampleFullLanding(props) {
         <DemoPricing />
       </SectionFullHeight>
       <Footer />
-      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
     </Page>
   );
 }

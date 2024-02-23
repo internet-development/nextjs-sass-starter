@@ -21,11 +21,23 @@ export default function ModalNavigationTemplate(props) {
       }}
     >
       <a href="/" className={styles.item}>
-        Return home
+        Home
       </a>
+      {props.viewer ? (
+        <span className={styles.item} onClick={props.onSignOut}>
+          Sign out
+        </span>
+      ) : (
+        <a href="/examples/authentication" className={styles.item}>
+          Sign in
+        </a>
+      )}
       <span className={styles.item} onClick={props.onHandleThemeChange}>
         Toggle Theme
       </span>
+      <a href="/examples/settings" className={styles.item}>
+        Settings
+      </a>
       <hr className={styles.divider} />
       <a href="https://x.com/internetxstudio" className={styles.item} target="_blank">
         X

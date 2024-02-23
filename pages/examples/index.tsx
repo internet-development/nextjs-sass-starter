@@ -36,7 +36,7 @@ function ExampleBase(props) {
           </H1Sub>
         </Content>
       </SectionFullHeight>
-      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
     </Page>
   );
 }

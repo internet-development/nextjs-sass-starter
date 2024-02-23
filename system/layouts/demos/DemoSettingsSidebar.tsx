@@ -11,17 +11,14 @@ const SUB_SECTION_LINKS = {
   CREDITS: 'Credits',
   PURCHASE: 'Purchase services',
   END: 'End services',
-  DELETE: 'Delete accoount',
+  DELETE: 'Delete account',
 };
 
 export default function DemoSettingsSidebar(props) {
   return (
     <div className={styles.root}>
-      <ActionItem icon={`⭠`} href="/">
-        Return home
-      </ActionItem>
       <ActionItem icon={`⭢`} active={props.active === 'PERSONAL'} href="/examples/settings">
-        Your settings
+        Settings
       </ActionItem>
       <ActionItem icon={`⭢`} active={props.active === 'DOCUMENTS'} href="/examples/settings/documents">
         {SUB_SECTION_LINKS['DOCUMENTS']}
@@ -43,22 +40,6 @@ export default function DemoSettingsSidebar(props) {
       {props.viewer ? (
         <ActionItem icon={`⭢`} active={props.active === 'DELETE'} href="/examples/settings/delete-account">
           {SUB_SECTION_LINKS['DELETE']}
-        </ActionItem>
-      ) : null}
-      {props.viewer ? (
-        <ActionItem
-          icon={`⭠`}
-          onClick={() => {
-            const confirm = window.confirm('Are you sure you want to sign out? You will manually have to enter your API key again.');
-            if (!confirm) {
-              return;
-            }
-            props.onSetKey('');
-            Cookies.remove('sitekey');
-            window.location.reload();
-          }}
-        >
-          Sign out
         </ActionItem>
       ) : null}
     </div>

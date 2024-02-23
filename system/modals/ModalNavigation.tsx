@@ -15,14 +15,14 @@ export default function ModalNavigation(props) {
       <span className={styles.item} onClick={props.onHandleThemeChange}>
         Toggle Theme
       </span>
-      <a href="#" className={styles.item}>
-        Item II
+      <a href="/examples/settings" className={styles.item}>
+        Settings
       </a>
-      <a href="#" className={styles.item}>
-        Item III
+      <a href="/examples/services" className={styles.item}>
+        Services
       </a>
-      <a href="#" className={styles.item}>
-        Item IV
+      <a href="/examples/files" className={styles.item}>
+        Files
       </a>
       <hr className={styles.divider} />
       <a href="https://x.com/internetxstudio" className={styles.item} target="_blank">

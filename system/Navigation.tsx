@@ -14,14 +14,14 @@ export default function Navigation(props) {
         <span className={styles.item} onClick={props.onHandleThemeChange}>
           Toggle Theme
         </span>
-        <a className={styles.item} href="#">
-          Item II
+        <a className={styles.item} href="/examples/settings">
+          Settings
         </a>
-        <a className={styles.item} href="#">
-          Item III
+        <a className={styles.item} href="/examples/services">
+          Services
         </a>
-        <a className={styles.item} href="#">
-          Item IV
+        <a className={styles.item} href="/examples/files">
+          Files
         </a>
       </section>
       <section className={styles.right}>

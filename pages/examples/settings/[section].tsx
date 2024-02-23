@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import Cookies from 'js-cookie';
 import DemoSettings from '@system/layouts/demos/DemoSettings';
 import DemoSettingsSidebar from '@system/layouts/demos/DemoSettingsSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
@@ -49,7 +50,22 @@ function ExampleSettings(props) {
       <TwoColumnLayout sidebar={<DemoSettingsSidebar active={active} onSetKey={setKey} viewer={props.viewer} />}>
         <DemoSettings active={active} sessionKey={key} viewer={props.viewer} />
       </TwoColumnLayout>
-      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+      <GlobalModalManager
+        currentModal={currentModal}
+        onHandleThemeChange={Utilities.onHandleThemeChange}
+        onSetModal={setModal}
+        onSignOut={() => {
+          const confirm = window.confirm('Are you sure you want to sign out?');
+          if (!confirm) {
+            return;
+          }
+
+          setKey('');
+          Cookies.remove('sitekey');
+          window.location.reload();
+        }}
+        viewer={props.viewer}
+      />
     </Page>
   );
 }
