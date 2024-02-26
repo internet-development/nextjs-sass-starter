@@ -12,10 +12,9 @@ import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
+import SignInWithWeb3 from '@root/components/clients/nova/SignInWithWeb3';
 import { ThirdwebSDKProvider } from '@thirdweb-dev/react';
-import { ethers } from 'ethers';
 
-import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
 function ExampleAuthentication(props) {
@@ -27,16 +26,6 @@ function ExampleAuthentication(props) {
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
   const [address, setAddress] = React.useState<string>('');
-
-  const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
-
-  const signLoginMessage = async () => {
-    const message = 'Please sign this message to log in.';
-    const signature = await signer.signMessage(message);
-    setPassword(signature);
-    setAddress(await signer.getAddress());
-    return signature;
-  };
 
   return (
     <Page
@@ -55,7 +44,7 @@ function ExampleAuthentication(props) {
           }}
         />
         <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
-        <FormParagraph>Enhance your experience by signing in or creating an account. Simply enter your e-mail and password to get started.</FormParagraph>
+        <FormParagraph>Allow your users to sign in if they have a Web3 wallet! Simply connect your user's wallet to get started.</FormParagraph>
         <FormParagraph>
           Using a Cookie to maintain your session is entirely optional. Once you've successfully signed in, you'll have the option to use one to persist your session.
         </FormParagraph>
@@ -64,14 +53,8 @@ function ExampleAuthentication(props) {
         <Input onChange={(e) => setEmail(e.target.value)} name="email" style={{ marginTop: 8 }} type="text" placeholder="Your e-mail" value={email} />
         <InputLabel style={{ marginTop: 24 }}>Password</InputLabel>
         <Input onChange={(e) => setPassword(e.target.value)} placeholder="Your password" name="password" style={{ marginTop: 8 }} type="password" value={password} />
-        <ThirdwebSDKProvider activeChain={'ethereum'} signer={signer} clientId="your-client-id">
-            {!address && (
-            <FormParagraph>
-                Registered Using Web3? <br></br>Fill out your password here!
-            </FormParagraph>
-            )}
-            <Button onClick={signLoginMessage}> Web3 Sign-in </Button>
-            <FormParagraph></FormParagraph>
+        <ThirdwebSDKProvider activeChain={'ethereum'} clientId="your-client-id">
+            <SignInWithWeb3 />
         </ThirdwebSDKProvider>
         <Button
           loading={loading}
