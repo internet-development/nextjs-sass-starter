@@ -1,2 +1,29 @@
-.root {
+.table {
+  display: grid;
+}
+
+.header {
+  display: contents;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cell {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  border-bottom: 1px solid var(--color-border);
+  padding: 8px 16px 12px 0px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.row {
+  display: contents;
+}
+
+.column {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  border-bottom: 1px solid var(--color-border);
+  padding: 8px 16px 16px 0px;
+  font-size: 14px;
 }

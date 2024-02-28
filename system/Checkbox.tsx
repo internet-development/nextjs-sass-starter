@@ -5,7 +5,7 @@ import Checkmark from '@system/svg/Checkmark';
 function Checkbox(props) {
   return (
     <div className={styles.section} style={props.style}>
-      <div className={styles.relative}>
+      <div className={styles.relative} style={props.checkboxStyle}>
         <label className={styles.figure} htmlFor={`${props.name}-checkbox`}>
           {props.value ? <Checkmark height="16px" /> : null}
         </label>

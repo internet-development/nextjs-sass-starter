@@ -20,6 +20,7 @@
   box-shadow: 0 0 0 1px var(--color-border);
   border-radius: 2px;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     box-shadow:
@@ -40,6 +41,7 @@
   box-shadow: none;
   visibility: hidden;
   opacity: 0;
+  user-select: none;
 }
 
 .right {
