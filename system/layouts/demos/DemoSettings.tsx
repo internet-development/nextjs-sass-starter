@@ -66,7 +66,7 @@ export default function DemoSettings(props) {
             <MonospacePreview style={{ opacity: 1, marginTop: 24 }} title="Viewer">
               {JSON.stringify(props.viewer, null, 2)}
             </MonospacePreview>
-            <div style={{ marginTop: 24 }}>
+            <div style={{ marginTop: 24, paddingBottom: 88 }}>
               <ActionItem icon={`✳`} href={`/examples/settings`} style={{ marginTop: 16 }}>
                 Refresh this page
               </ActionItem>
@@ -109,7 +109,7 @@ export default function DemoSettings(props) {
         <div className={styles.root}>
           <Table data={structuredData} headings={['Type', 'Updated date', 'URL']} />
         </div>
-        <div className={styles.row}>
+        <div className={styles.row} style={{ paddingBottom: 88 }}>
           <div className={styles.column}>
             <ActionItem icon={`⭢`} href={`/examples/invoices`}>
               Manage and edit your invoices
@@ -166,7 +166,7 @@ export default function DemoSettings(props) {
             value={selected}
           />
         </div>
-        <div className={styles.row}>
+        <div className={styles.row} style={{ paddingBottom: 88 }}>
           <div className={styles.column}>
             <FormUpload
               isActionItem

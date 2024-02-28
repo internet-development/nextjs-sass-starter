@@ -1,11 +1,23 @@
 import styles from '@system/Table.module.scss';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 import Checkbox from '@system/Checkbox';
 
+function generateAutoString(count: number): string {
+  const autoArray = new Array(count).fill('auto');
+  return autoArray.join(' ');
+}
+
 export default function Table(props) {
-  let gridTemplateColumns = props.isInteractive ? `40px repeat(${props.headings.length}, 1fr)` : `repeat(${props.headings.length}, 1fr)`;
+  let gridTemplateColumns = props.isInteractive
+    ? `40px ${generateAutoString(props.headings.length - 1)} repeat(1, 1fr)`
+    : `${generateAutoString(props.headings.length - 1)} repeat(1, 1fr)`;
+
+  if (!Utilities.isEmpty(props.customWidth)) {
+    gridTemplateColumns = props.customWidth;
+  }
 
   return (
     <div className={styles.table} role="grid" style={{ gridTemplateColumns, ...props.style }}>
