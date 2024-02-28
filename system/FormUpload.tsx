@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import * as Utilities from '@common/utilities';
 
+import ActionItem from '@system/documents/ActionItem';
 import Loader from '@system/Loader';
 
 function FormUpload(props) {
@@ -39,6 +40,15 @@ function FormUpload(props) {
       props.onSetFile(e.target.files[0]);
     }
   };
+
+  if (props.isActionItem) {
+    return (
+      <ActionItem icon={props.loading ? <Loader style={{ height: 16, width: 16, borderRadius: 16 }} /> : `✳`} htmlFor="template-form-upload-input">
+        <input className={styles.input} id="template-form-upload-input" type="file" onChange={handleChange} />
+        {props.children}
+      </ActionItem>
+    );
+  }
 
   return (
     <div className={styles.root} onDragOver={handleDragOver} onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDrop={handleDrop} style={props.style}>

@@ -1,3 +1,4 @@
+import * as Constants from '@common/constants';
 import * as Utilities from '@common/utilities';
 
 const REQUEST_HEADERS = {
@@ -78,6 +79,106 @@ export async function userUnsubscribeServices({ key }) {
   }
 
   if (!result.user) {
+    return null;
+  }
+
+  return result;
+}
+
+export async function userUploadData({ file, key }) {
+  if (Utilities.isEmpty(key)) {
+    return null;
+  }
+
+  let signedResult;
+  const name = file.name;
+  const type = file.type;
+  const size = file.size;
+
+  if (size > Constants.MAX_SIZE_BYTES) {
+    return { error: 'File size exceeds 15mb limit' };
+  }
+
+  try {
+    const signedResponse = await fetch(`https://api.internet.dev/api/data/generate-presigned-url`, {
+      method: 'POST',
+      headers: {
+        'X-API-KEY': key,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type, file: name, size }),
+    });
+    signedResult = await signedResponse.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!signedResult) {
+    return null;
+  }
+
+  if (signedResult.error) {
+    return signedResult;
+  }
+
+  if (!signedResult.uploadURL) {
+    return null;
+  }
+
+  try {
+    fetch(signedResult.uploadURL, {
+      method: 'PUT',
+      body: file,
+    });
+  } catch (e) {
+    return null;
+  }
+
+  return signedResult;
+}
+
+export async function userCreatePost({ id, key, src, type }) {
+  if (Utilities.isEmpty(key)) {
+    return null;
+  }
+
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/posts/create', {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type, fields: { fileId: id, public: true }, src }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  return result;
+}
+
+export async function userDeletePost({ id, key }) {
+  if (Utilities.isEmpty(key)) {
+    return null;
+  }
+
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/posts/delete', {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
     return null;
   }
 

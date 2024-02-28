@@ -21,6 +21,15 @@ export default function ActionItem(props) {
     );
   }
 
+  if (props.htmlFor) {
+    return (
+      <label className={styles.item} htmlFor={props.htmlFor} onClick={props.onClick} style={props.style}>
+        <figure className={styles.icon}>{props.icon}</figure>
+        <span className={styles.text}>{props.children}</span>
+      </label>
+    );
+  }
+
   return (
     <div className={styles.item} onClick={props.onClick} style={props.style}>
       <figure className={styles.icon}>{props.icon}</figure>

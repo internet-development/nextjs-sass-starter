@@ -48,7 +48,7 @@ function ExampleSettings(props) {
         value={key}
       />
       <TwoColumnLayout sidebar={<DemoSettingsSidebar active={active} onSetKey={setKey} viewer={props.viewer} />}>
-        <DemoSettings active={active} data={props.data} sessionKey={key} viewer={props.viewer} />
+        <DemoSettings active={active} data={props.data} onSetModal={setModal} sessionKey={key} viewer={props.viewer} />
       </TwoColumnLayout>
       <GlobalModalManager
         currentModal={currentModal}
@@ -77,7 +77,7 @@ export async function getServerSideProps(context) {
   let active = SUB_SECTION_ROUTES[context.params.section] || 'PERSONAL';
   let title = SUB_SECTION_LINKS[active];
 
-  let viewer = null;
+  let viewer: { error?: string; id?: string } | null = null;
   let sessionKey = context.req.cookies['sitekey'] || '';
   if (Utilities.isEmpty(sessionKey)) {
     return {
@@ -103,6 +103,20 @@ export async function getServerSideProps(context) {
         method: 'POST',
         headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'ALL' }),
+      });
+      const result = await response.json();
+      if (result && result.data) {
+        data = result.data;
+      }
+    } catch (e) {}
+  }
+
+  if (active === 'CONTENT' && viewer) {
+    try {
+      const response = await fetch('https://api.internet.dev/api/posts', {
+        method: 'POST',
+        headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'MOOD', user_id: viewer.id }),
       });
       const result = await response.json();
       if (result && result.data) {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as Constants from '@common/constants';
 import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
@@ -14,8 +15,6 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-
-const MAX_SIZE_BYTES = 15728640;
 
 async function onListData({ key }) {
   let result;
@@ -70,7 +69,7 @@ async function onUploadData({ file, domain, key, setModal }) {
   const type = file.type;
   const size = file.size;
 
-  if (size > MAX_SIZE_BYTES) {
+  if (size > Constants.MAX_SIZE_BYTES) {
     setModal({ name: 'ERROR', message: 'File size exceeds 15mb limit' });
     return;
   }

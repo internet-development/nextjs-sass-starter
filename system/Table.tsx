@@ -51,6 +51,7 @@ export default function Table(props) {
         })
       ) : (
         <div className={styles.row} role="row">
+          {props.isInteractive ? <div className={styles.empty}></div> : null}
           <div className={styles.empty}>This table is empty</div>
         </div>
       )}

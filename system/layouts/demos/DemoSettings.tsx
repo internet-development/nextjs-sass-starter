@@ -2,9 +2,11 @@ import styles from '@system/layouts/demos/DemoSettings.module.scss';
 
 import * as React from 'react';
 import * as Queries from '@common/queries';
+import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
+import FormUpload from '@system/FormUpload';
 import MonospacePreview from '@system/MonospacePreview';
 import Table from '@system/Table';
 
@@ -12,6 +14,7 @@ import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/
 
 export default function DemoSettings(props) {
   const [selected, setSelected] = React.useState<any[]>([]);
+  const [uploading, setUploading] = React.useState<boolean>(false);
 
   if (!props.viewer) {
     return (
@@ -75,29 +78,36 @@ export default function DemoSettings(props) {
   }
 
   if (props.active === 'DOCUMENTS') {
-    const structuredData = props.data.map((each) => {
-      let link = '#';
-      if (each.data.type === 'INVOICE') link = `/examples/invoices/${each.id}`;
-      if (each.data.type === 'STATEMENT_OF_WORK') link = `/examples/statement-of-work/${each.id}`;
+    const structuredData =
+      props.data && props.data.length
+        ? props.data.map((each) => {
+            let link = '#';
+            if (each.data.type === 'INVOICE') link = `/examples/invoices/${each.id}`;
+            if (each.data.type === 'STATEMENT_OF_WORK') link = `/examples/statement-of-work/${each.id}`;
 
-      return {
-        id: each.id,
-        data: [
-          each.data.type,
-          each.id,
-          each.updated_at,
-          <a href={link} target="_blank">
-            {link}
-          </a>,
-        ],
-      };
-    });
+            return {
+              id: each.id,
+              data: [
+                each.data.type,
+                Utilities.toDateISOString(each.updated_at),
+                <a href={link} target="_blank">
+                  {link}
+                </a>,
+              ],
+            };
+          })
+        : [];
+
     return (
       <>
+        <div className={styles.row}>
+          <div className={styles.column}>
+            <FormHeading style={{ marginTop: 48 }}>Documents</FormHeading>
+            <FormParagraph>All of the documents that have been created from your account.</FormParagraph>
+          </div>
+        </div>
         <div className={styles.root}>
-          <FormHeading>Documents</FormHeading>
-          <FormParagraph>All of the documents that have been created from your account.</FormParagraph>
-          <Table data={structuredData} headings={['Type', 'Id', 'Updated date', 'URL']} style={{ marginTop: 48 }} />
+          <Table data={structuredData} headings={['Type', 'Updated date', 'URL']} />
         </div>
         <div className={styles.row}>
           <div className={styles.column}>
@@ -114,11 +124,118 @@ export default function DemoSettings(props) {
   }
 
   if (props.active === 'CONTENT') {
+    const structuredData =
+      props.data && props.data.length
+        ? props.data.map((each) => {
+            return {
+              id: each.id,
+              data: [
+                each.type,
+                Utilities.toDateISOString(each.created_at),
+                <a href={each.src} target="_blank">
+                  {each.src}
+                </a>,
+              ],
+            };
+          })
+        : [];
+
     return (
-      <div className={styles.root}>
-        <FormHeading>Content</FormHeading>
-        <FormParagraph>All of the content that has been created from your account.</FormParagraph>
-      </div>
+      <>
+        <div className={styles.row}>
+          <div className={styles.column}>
+            <FormHeading style={{ marginTop: 48 }}>Mood content</FormHeading>
+            <FormParagraph>Upload mood board content for your organization The data is available public and can be queried for by organization Id.</FormParagraph>
+          </div>
+        </div>
+        <div className={styles.root}>
+          <Table
+            data={structuredData}
+            headings={['Type', 'Created date', 'Source']}
+            isInteractive
+            onChange={(each) => {
+              Object.keys(each).forEach((id) => {
+                if (!selected.includes(id)) {
+                  setSelected([...selected, id]);
+                  return;
+                }
+
+                setSelected(selected.filter((each) => each !== id));
+              });
+            }}
+            value={selected}
+          />
+        </div>
+        <div className={styles.row}>
+          <div className={styles.column}>
+            <FormUpload
+              isActionItem
+              loading={uploading}
+              onSetFile={async (file) => {
+                setUploading(true);
+                const response = await Queries.userUploadData({ file, key: props.sessionKey });
+                if (!response) {
+                  setUploading(false);
+                  props.onSetModal({ name: 'ERROR', message: 'failed to upload file' });
+                  return;
+                }
+
+                if (response.error) {
+                  props.onSetModal({ name: 'ERROR', message: response.error });
+                  setUploading(false);
+                  return;
+                }
+
+                const save = await Queries.userCreatePost({ id: response.id, src: response.fileURL, key: props.sessionKey, type: 'MOOD' });
+                if (!save) {
+                  props.onSetModal({ name: 'ERROR', message: 'failed to save post' });
+                  setUploading(false);
+                  return;
+                }
+
+                if (save.error) {
+                  props.onSetModal({ name: 'ERROR', message: save.error });
+                  setUploading(false);
+                  return;
+                }
+
+                window.location.reload();
+              }}
+            >
+              Upload mood board for your organization
+            </FormUpload>
+            {selected && selected.length ? (
+              <ActionItem
+                icon={`✳`}
+                onClick={async () => {
+                  for (const targetId of selected) {
+                    const response = await Queries.userDeletePost({ id: targetId, key: props.sessionKey });
+                    if (!response) {
+                      props.onSetModal({ name: 'ERROR', message: 'failed to delete post' });
+                      // TODO(jimmylee):
+                      // Very lazy.
+                      window.location.reload();
+                      return;
+                    }
+
+                    if (response.error) {
+                      props.onSetModal({ name: 'ERROR', message: response.error });
+                      // TODO(jimmylee):
+                      // Very lazy.
+                      window.location.reload();
+                      return;
+                    }
+                  }
+
+                  window.location.reload();
+                }}
+              >
+                Delete selected posts
+              </ActionItem>
+            ) : null}
+          </div>
+        </div>
+      </>
     );
   }
 
