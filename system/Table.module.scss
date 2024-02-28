@@ -26,4 +26,21 @@
   border-bottom: 1px solid var(--color-border);
   padding: 8px 16px 16px 0px;
   font-size: 14px;
+
+  a {
+    color: var(--color-text);
+
+    &:visited {
+      color: var(--color-text);
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.empty {
+  padding: 8px 16px 16px 0px;
+  font-size: 14px;
 }

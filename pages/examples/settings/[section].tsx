@@ -48,7 +48,7 @@ function ExampleSettings(props) {
         value={key}
       />
       <TwoColumnLayout sidebar={<DemoSettingsSidebar active={active} onSetKey={setKey} viewer={props.viewer} />}>
-        <DemoSettings active={active} sessionKey={key} viewer={props.viewer} />
+        <DemoSettings active={active} data={props.data} sessionKey={key} viewer={props.viewer} />
       </TwoColumnLayout>
       <GlobalModalManager
         currentModal={currentModal}
@@ -96,8 +96,23 @@ export async function getServerSideProps(context) {
     }
   } catch (e) {}
 
+  let data = null;
+  if (active === 'DOCUMENTS') {
+    try {
+      const response = await fetch('https://api.internet.dev/api/documents', {
+        method: 'POST',
+        headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'ALL' }),
+      });
+      const result = await response.json();
+      if (result && result.data) {
+        data = result.data;
+      }
+    } catch (e) {}
+  }
+
   return {
-    props: { active, title, route: context.params.section, sessionKey, viewer },
+    props: { active, data, title, route: context.params.section, sessionKey, viewer },
   };
 }
 

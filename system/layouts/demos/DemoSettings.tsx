@@ -6,10 +6,13 @@ import * as Queries from '@common/queries';
 import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
 import MonospacePreview from '@system/MonospacePreview';
+import Table from '@system/Table';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
 export default function DemoSettings(props) {
+  const [selected, setSelected] = React.useState<any[]>([]);
+
   if (!props.viewer) {
     return (
       <div className={styles.row}>
@@ -72,11 +75,41 @@ export default function DemoSettings(props) {
   }
 
   if (props.active === 'DOCUMENTS') {
+    const structuredData = props.data.map((each) => {
+      let link = '#';
+      if (each.data.type === 'INVOICE') link = `/examples/invoices/${each.id}`;
+      if (each.data.type === 'STATEMENT_OF_WORK') link = `/examples/statement-of-work/${each.id}`;
+
+      return {
+        id: each.id,
+        data: [
+          each.data.type,
+          each.id,
+          each.updated_at,
+          <a href={link} target="_blank">
+            {link}
+          </a>,
+        ],
+      };
+    });
     return (
-      <div className={styles.root}>
-        <FormHeading>Documents</FormHeading>
-        <FormParagraph>All of the documents that have been created from your account.</FormParagraph>
-      </div>
+      <>
+        <div className={styles.root}>
+          <FormHeading>Documents</FormHeading>
+          <FormParagraph>All of the documents that have been created from your account.</FormParagraph>
+          <Table data={structuredData} headings={['Type', 'Id', 'Updated date', 'URL']} style={{ marginTop: 48 }} />
+        </div>
+        <div className={styles.row}>
+          <div className={styles.column}>
+            <ActionItem icon={`⭢`} href={`/examples/invoices`}>
+              Manage and edit your invoices
+            </ActionItem>
+            <ActionItem icon={`⭢`} href={`/examples/statement-of-work`}>
+              Manage and edit your Statement of Works
+            </ActionItem>
+          </div>
+        </div>
+      </>
     );
   }
 
@@ -126,7 +159,7 @@ export default function DemoSettings(props) {
               }
 
               await Queries.userUnsubscribeServices({ key: props.sessionKey });
-              // window.location.reload();
+              window.location.reload();
             }}
             style={{ marginTop: 24 }}
           >

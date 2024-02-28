@@ -95,7 +95,6 @@ function ExampleTable(props) {
           data={TABLE_DATA}
           headings={TABLE_HEADINGS}
           isInteractive
-          value={selected}
           onChange={(each) => {
             Object.keys(each).forEach((id) => {
               if (!selected.includes(id)) {
@@ -107,6 +106,7 @@ function ExampleTable(props) {
             });
           }}
           style={{ marginTop: 48 }}
+          value={selected}
         />
         <MonospacePreview style={{ marginTop: 24, opacity: 1, maxWidth: 568 }} title="Selected Ids">
           {JSON.stringify(selected, null, 2)}

@@ -19,33 +19,41 @@ export default function Table(props) {
           );
         })}
       </header>
-      {props.data.map((each, index) => {
-        const value = props.value ? !!props.value.includes(`${each.id}`) : false;
-        const backgroundColor = value ? `var(--color-background-2)` : undefined;
-        return (
-          <div className={styles.row} key={`index-${each.id}`} role="row">
-            {props.isInteractive ? (
-              <div className={styles.column} style={{ backgroundColor }}>
-                <Checkbox
-                  checkboxStyle={{ marginLeft: 8, height: 16, width: 16 }}
-                  name={each.id}
-                  onChange={(e) => {
-                    props.onChange({ [e.target.name]: e.target.value });
-                  }}
-                  value={value}
-                />
-              </div>
-            ) : null}
-            {each.data.map((col, index) => {
-              return (
-                <div className={styles.column} key={`${col}-data-${index}`} style={{ backgroundColor }}>
-                  {col}
+      {props.data && props.data.length ? (
+        props.data.map((each, index) => {
+          const value = props.value ? !!props.value.includes(`${each.id}`) : false;
+          const backgroundColor = value ? `var(--color-background-2)` : undefined;
+          return (
+            <div className={styles.row} key={`index-${each.id}`} role="row">
+              {props.isInteractive ? (
+                <div className={styles.column} style={{ backgroundColor }}>
+                  <Checkbox
+                    checkboxStyle={{ marginLeft: 8, height: 16, width: 16 }}
+                    name={each.id}
+                    onChange={(e) => {
+                      if (props.onChange) {
+                        props.onChange({ [e.target.name]: e.target.value });
+                      }
+                    }}
+                    value={value}
+                  />
                 </div>
-              );
-            })}
-          </div>
-        );
-      })}
+              ) : null}
+              {each.data.map((col, index) => {
+                return (
+                  <div className={styles.column} key={`${col}-data-${index}`} style={{ backgroundColor }}>
+                    {col}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })
+      ) : (
+        <div className={styles.row} role="row">
+          <div className={styles.empty}>This table is empty</div>
+        </div>
+      )}
     </div>
   );
 }
