@@ -6,6 +6,7 @@ import '@root/global.scss';
 
 import DefaultLayout from '@components/DefaultLayout';
 import ListItem from '@components/ListItem';
+import Showcase from '@components/Showcase';
 
 export async function generateMetadata({ params, searchParams }) {
   const title = Package.name;
@@ -74,6 +75,9 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script>
+      <div>Showcase — stay posted, we're sharing our best client work and template usage soon!</div>
+      <Showcase />
+
       <div>
         Explore the array of templates offered by{' '}
         <a href="https://github.com/internet-development/nextjs-sass-starter" target="_blank">
@@ -98,7 +102,7 @@ export default async function Page(props) {
         <ListItem href="/examples/settings">[WIP] Settings</ListItem>
         <ListItem href="/examples/services">Services</ListItem>
       </div>
-      <div style={{ marginTop: 64 }}>
+      <div style={{ marginTop: 88 }}>
         Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?
       </div>
       <div>
