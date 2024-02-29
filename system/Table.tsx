@@ -6,6 +6,10 @@ import * as Utilities from '@common/utilities';
 import Checkbox from '@system/Checkbox';
 
 function generateAutoString(count: number): string {
+  if (count <= 0) {
+    return '';
+  }
+
   const autoArray = new Array(count).fill('auto');
   return autoArray.join(' ');
 }
@@ -19,11 +23,13 @@ export default function Table(props) {
     gridTemplateColumns = props.customWidth;
   }
 
+  let headings = props.headings && props.headings.length ? props.headings : ['Empty'];
+
   return (
     <div className={styles.table} role="grid" style={{ gridTemplateColumns, ...props.style }}>
       <header className={styles.header} role="row">
         {props.isInteractive ? <div className={styles.cell} /> : null}
-        {props.headings.map((each, index) => {
+        {headings.map((each, index) => {
           return (
             <div className={styles.cell} key={`${each}-heading-${index}`}>
               {each}
