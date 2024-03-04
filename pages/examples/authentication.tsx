@@ -19,11 +19,58 @@ import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms
 function ExampleAuthentication(props) {
   const [currentError, setError] = React.useState<string | null>(null);
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
+  const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
+
+  if (props.viewer) {
+    return (
+      <Page
+        title="api.internet.dev: Authentication"
+        description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
+        url="https://wireframes.internet.dev/examples/authentication"
+      >
+        <KeyHeader
+          isModalVisible={!!currentModal}
+          onInputChange={setKey}
+          onHandleHideSubNavigation={() => setModal(null)}
+          onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
+          value={key}
+        />
+        <ThinAppLayout>
+          <FormHeading style={{ marginTop: 64 }}>You have a session</FormHeading>
+          <FormParagraph>
+            Would you like to sign out? This example demonstrates detecting whether you have a cookie and signing you in if you are the authenticated user.
+          </FormParagraph>
+          <FormParagraph>
+            By signing out, your cookie and session key will be deleted, and you will have to reauthenticate. After clicking "Sign out," you will see the sign-in form again.
+          </FormParagraph>
+          <Button
+            loading={loading}
+            onClick={async () => {
+              const confirm = window.confirm('Are you sure?');
+              if (!confirm) {
+                return;
+              }
+
+              Cookies.remove('sitekey');
+              window.location.reload();
+            }}
+            style={{ marginTop: 24, width: '100%' }}
+          >
+            Sign out
+          </Button>
+          <div style={{ marginTop: 16 }}>
+            <ActionItem icon={`⭢`} href="/examples/settings">
+              View settings
+            </ActionItem>
+          </div>
+        </ThinAppLayout>
+      </Page>
+    );
+  }
 
   return (
     <Page
@@ -39,23 +86,10 @@ function ExampleAuthentication(props) {
         value={key}
       />
       <ThinAppLayout>
-        <ThinAppLayoutHeader
-          token={key}
-          onSignOut={() => {
-            const confirm = window.confirm('Are you sure you want to sign out?');
-            if (!confirm) {
-              return;
-            }
-
-            setKey('');
-            Cookies.remove('sitekey');
-            window.location.reload();
-          }}
-        />
         <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
         <FormParagraph>Enhance your experience by signing in or creating an account. Simply enter your e-mail and password to get started.</FormParagraph>
         <FormParagraph>
-          Using a Cookie to maintain your session is entirely optional. Once you've successfully signed in, you'll have the option to use one to persist your session.
+          Using a Cookie to maintain your session is entirely optional. Once you've successfully signed in, you'll have the option to use a Cookie to persist your session.
         </FormParagraph>
         <FormParagraph>Remember to handle your API key with care for security purposes. This is just an example template.</FormParagraph>
         <InputLabel style={{ marginTop: 48 }}>E-mail</InputLabel>
@@ -101,6 +135,13 @@ function ExampleAuthentication(props) {
             }
             Cookies.remove('sitekey');
             setKey('');
+
+            const confirm = window.confirm('Would you like to save your Cookie to maintain a session?');
+            if (confirm) {
+              setKey(response.user.key);
+              Cookies.set('sitekey', response.user.key, { domain: props.host, secure: true });
+            }
+
             setUser(response.user);
           }}
           style={{ marginTop: 24, width: '100%' }}

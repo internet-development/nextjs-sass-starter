@@ -14,7 +14,11 @@ export default function ThinAppLayoutHeader(props) {
         <ActionItem icon={`✳`} onClick={props.onSignOut}>
           Reset key and delete Cookie
         </ActionItem>
-      ) : null}
+      ) : (
+        <ActionItem icon={`⭢`} href="/examples/authentication">
+          Sign in to retain your session
+        </ActionItem>
+      )}
     </div>
   );
 }
