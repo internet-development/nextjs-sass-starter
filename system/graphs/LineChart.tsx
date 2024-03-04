@@ -2,11 +2,15 @@ import * as d3 from 'd3';
 import React, { useEffect, useRef, useState } from 'react';
 
 const LineChart = (props) => {
-  const d3Container = useRef(null);
+  const d3Container = useRef<HTMLDivElement | null | any>(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
   const drawChart = (width) => {
-    if (props.data && d3Container.current && width > 0) {
+    if (!d3Container) {
+      return;
+    }
+
+    if (props.data && d3Container && d3Container.current && width > 0) {
       const svg = d3.select(d3Container.current);
       svg.selectAll('*').remove();
 
@@ -64,21 +68,23 @@ const LineChart = (props) => {
   };
 
   useEffect(() => {
-    // Initial draw
-    setContainerWidth(d3Container.current.clientWidth);
+    if (!d3Container || !d3Container.current) {
+      return;
+    }
 
-    // Resize event listener
+    setContainerWidth(d3Container.current.clientWidth);
     const handleResize = () => {
+      if (!d3Container || !d3Container.current) {
+        return;
+      }
       setContainerWidth(d3Container.current.clientWidth);
     };
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup
     return () => window.removeEventListener('resize', handleResize);
   }, [props.data]);
 
-  // Redraw chart when container width changes
   useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth]);

@@ -10,6 +10,7 @@ import Table from '@system/Table';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
+import { FormHeading, FormParagraph } from '@system/typography/forms';
 
 function ExampleFixedStockWatchlist(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
@@ -22,7 +23,7 @@ function ExampleFixedStockWatchlist(props) {
         return {
           id: each,
           data: [
-            <a href={`/examples/stocks/${stock.symbol}`} target="_blank">
+            <a key={stock.symbol} href={`/examples/stocks/${stock.symbol}`} target="_blank">
               {stock.companyName} ({stock.symbol})
             </a>,
             `${Utilities.formatDollars(stock.iexRealtimePrice)}`,
@@ -61,7 +62,12 @@ function ExampleFixedStockWatchlist(props) {
             window.location.reload();
           }}
         />
-        <Table data={data} headings={headings} style={{ marginTop: 48 }} />
+        <FormHeading style={{ marginTop: 48 }}>Example watchlist</FormHeading>
+        <FormParagraph>
+          Here is a sample list of stocks accessible through a hardcoded endpoint. If you are authenticated, you can use our API to view this stock watchlist and monitor the stock
+          prices in real time. All prices are sourced from IEX Cloud and are updated live.
+        </FormParagraph>
+        {data && data.length ? <Table data={data} headings={headings} style={{ marginTop: 24 }} /> : null}
       </AppLayout>
       <GlobalModalManager
         currentModal={currentModal}
