@@ -18,7 +18,7 @@ function ExampleStock(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
 
-  const stock = props.stock[props.symbol.toUpperCase()].quote;
+  const stock = props.stock[props.symbol.toUpperCase()] ? props.stock[props.symbol.toUpperCase()].quote : {};
 
   const parsedData =
     props.data && props.data.length
@@ -112,7 +112,7 @@ export async function getServerSideProps(context) {
   let sessionKey = context.req.cookies['sitekey'] || '';
   if (Utilities.isEmpty(sessionKey)) {
     return {
-      props: { sessionKey: '', viewer: null, symbol: context.params.ticker },
+      props: { sessionKey: '', viewer: null, symbol: context.params.ticker, stock: {} },
     };
   }
 

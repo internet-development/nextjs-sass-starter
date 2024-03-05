@@ -16,7 +16,7 @@ export default function ThinAppLayoutHeader(props) {
         </ActionItem>
       ) : (
         <ActionItem icon={`⭢`} href="/examples/authentication">
-          Sign in to retain your session
+          Sign in
         </ActionItem>
       )}
     </div>
