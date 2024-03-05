@@ -51,3 +51,11 @@ export function PFixed(props) {
 export function SubTitle(props) {
   return <p className={styles.subtitle} {...props} />;
 }
+
+export function SubText(props) {
+  return <p className={styles.subText} {...props} />;
+}
+
+export function UnitLabel(props) {
+  return <span className={styles.unitLabel} {...props} />;
+}

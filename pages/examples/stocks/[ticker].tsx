@@ -11,12 +11,14 @@ import Table from '@system/Table';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
-import { P } from '@system/typography';
+import { H2, P, SubText, UnitLabel } from '@system/typography';
 import { FormHeading, FormParagraph } from '@system/typography/forms';
 
 function ExampleStock(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
+
+  const stock = props.stock[props.symbol.toUpperCase()].quote;
 
   const parsedData =
     props.data && props.data.length
@@ -26,6 +28,16 @@ function ExampleStock(props) {
           close: +item.close,
         }))
       : null;
+
+  const isDataHydrated = stock && parsedData;
+
+  const tableHeadings = ['Object key', 'Object value'];
+  const tableData = Object.keys(stock).map((each) => {
+    return {
+      id: each,
+      data: [each, String(stock[each])],
+    };
+  });
 
   return (
     <Page
@@ -54,8 +66,24 @@ function ExampleStock(props) {
             window.location.reload();
           }}
         />
-        {parsedData ? <FormHeading style={{ marginTop: 24 }}>{props.symbol}</FormHeading> : <FormHeading style={{ marginTop: 48 }}>Access denied</FormHeading>}
-        {parsedData ? <LineChart data={parsedData} style={{ marginTop: 8 }} /> : <FormParagraph>You must be signed in to view stock quotes</FormParagraph>}
+        {isDataHydrated ? (
+          <>
+            <P style={{ marginTop: 24 }}>
+              {stock.companyName} ({props.symbol})
+            </P>
+            <H2 style={{ marginTop: 16 }}>
+              {stock.iexRealtimePrice} <UnitLabel>USD</UnitLabel>
+            </H2>
+            <SubText style={{ marginTop: 8 }}>Last updated at {stock.latestTime}</SubText>
+            <SubText style={{ marginTop: 4 }}>
+              {props.symbol} is trading at {stock.peRatio} times earnings.
+            </SubText>
+          </>
+        ) : (
+          <FormHeading style={{ marginTop: 48 }}>Access denied</FormHeading>
+        )}
+        {isDataHydrated ? <LineChart data={parsedData} style={{ marginTop: 32 }} /> : <FormParagraph>You must be signed in to view stock quotes</FormParagraph>}
+        {isDataHydrated ? <Table data={tableData} headings={tableHeadings} style={{ marginTop: 24 }} /> : null}
       </ThinAppLayout>
       <GlobalModalManager
         currentModal={currentModal}
@@ -80,6 +108,7 @@ function ExampleStock(props) {
 export async function getServerSideProps(context) {
   let viewer = null;
   let data = null;
+  let stock = null;
   let sessionKey = context.req.cookies['sitekey'] || '';
   if (Utilities.isEmpty(sessionKey)) {
     return {
@@ -99,9 +128,22 @@ export async function getServerSideProps(context) {
   } catch (e) {}
 
   try {
+    const response = await fetch('https://api.internet.dev/api/markets/stocks', {
+      method: 'POST',
+      headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tickers: context.params.ticker }),
+    });
+    const result = await response.json();
+    if (result && result.data) {
+      stock = result.data;
+    }
+  } catch (e) {}
+
+  try {
     const response = await fetch(`https://api.internet.dev/api/markets/stocks/${context.params.ticker}`, {
       method: 'POST',
       headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ range: '12m' }),
     });
     const result = await response.json();
     if (result && result.data) {
@@ -110,7 +152,7 @@ export async function getServerSideProps(context) {
   } catch (e) {}
 
   return {
-    props: { sessionKey, viewer, data, symbol: context.params.ticker },
+    props: { sessionKey, viewer, data, stock, symbol: context.params.ticker },
   };
 }
 

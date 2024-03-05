@@ -108,6 +108,7 @@ body.theme-light {
   --color-border: var(--color-grey);
   --color-accent: rgba(1, 141, 255, 0.1);
   --color-success: rgba(68, 198, 127, 1);
+  --color-subdued-success: rgba(106, 243, 168, 0.3);
   --color-error: rgba(239, 68, 68, 1);
 
   --theme-modal: inset 0 0 0 1px var(--color-border), 0 0 1px 4px rgba(0, 0, 0, 0.02);
@@ -125,6 +126,7 @@ body.theme-dark {
   --color-border: var(--color-dark-grey);
   --color-accent: rgba(1, 141, 255, 0.1);
   --color-success: rgba(68, 198, 127, 1);
+  --color-subdued-success: rgba(106, 243, 168, 0.3);
   --color-error: rgba(239, 68, 68, 1);
 
   --theme-modal: inset 0 0 0 1px var(--color-border);

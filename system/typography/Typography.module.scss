@@ -115,3 +115,13 @@
   display: block;
   letter-spacing: 0.2px;
 }
+
+.unitLabel {
+  font-size: var(--type-scale-5);
+  color: var(--color-border);
+}
+
+.subText {
+  font-size: var(--type-scale-7);
+  display: block;
+}

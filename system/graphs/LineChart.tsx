@@ -36,27 +36,31 @@ const LineChart = (props) => {
         .attr('id', 'line-gradient')
         .attr('gradientUnits', 'userSpaceOnUse')
         .attr('x1', 0)
-        .attr('y1', 0)
-        .attr('x2', drawWidth)
+        .attr('y1', height)
+        .attr('x2', 0)
         .attr('y2', 0);
 
-      gradient.append('stop').attr('offset', '0%').attr('stop-color', 'var(--color-border');
-      gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--color-success)');
+      gradient.append('stop').attr('offset', '60%').attr('stop-color', 'var(--color-background)');
+      gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--color-subdued-success)');
+
+      const xAxisTicks = 3;
+      const yAxisTicks = 6;
 
       g.append('g')
         .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(xScale).ticks(5))
+        .call(d3.axisBottom(xScale).ticks(yAxisTicks))
         .select('.domain')
         .style('stroke', 'var(--color-border)')
         .style('text-transform', 'uppercase');
-      g.append('g').call(d3.axisLeft(yScale).ticks(8)).select('.domain').style('stroke', 'var(--color-border)');
+      g.append('g').call(d3.axisLeft(yScale).ticks(xAxisTicks)).select('.domain').style('stroke', 'var(--color-border)');
       g.selectAll('.tick line').style('stroke', 'var(--color-border)');
       g.selectAll('.tick text').style('fill', 'var(--color-text').style('text-transform', 'uppercase').style('user-select', 'none');
+
       g.append('path')
         .datum(props.data)
         .attr('fill', 'none')
-        .attr('stroke', 'url(#line-gradient)')
-        .attr('stroke-width', 1)
+        .attr('stroke', 'var(--color-success)')
+        .attr('stroke-width', 2)
         .attr(
           'd',
           d3
@@ -64,6 +68,22 @@ const LineChart = (props) => {
             .x((d) => xScale(new Date(d.date)))
             .y((d) => yScale(d.close))
         );
+
+      const area = d3
+        .area()
+        .x((d) => xScale(new Date(d.date)))
+        .y0(height)
+        .y1((d) => yScale(d.close));
+
+      g.append('path').datum(props.data).attr('fill', 'url(#line-gradient)').attr('d', area);
+
+      const yAxis = d3.axisLeft(yScale).ticks(xAxisTicks).tickSize(-drawWidth).tickFormat('');
+
+      g.append('g').call(yAxis).select('.domain').remove();
+
+      g.selectAll('.tick line').style('stroke', 'var(--color-border)').style('stroke-opacity', 0.4).style('shape-rendering', 'crispEdges');
+
+      g.selectAll('.tick text').style('fill', 'var(--color-text)').style('text-transform', 'uppercase').style('user-select', 'none');
     }
   };
 
