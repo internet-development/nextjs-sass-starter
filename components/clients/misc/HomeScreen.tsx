@@ -22,6 +22,40 @@ function HomeScreen(props) {
           <span className={styles.button}>Space Settings</span>
         </div>
       </div>
+      <div className={styles.top}>
+        <div className={styles.topLeft}>
+          <div className={styles.tab}>
+            <span className={styles.block} />
+            <span className={styles.itemRight}>
+              <div className={styles.link}>Tab I</div>
+            </span>
+          </div>
+          <div className={styles.tab}>
+            <span className={styles.block} />
+            <span className={styles.itemRight}>
+              <div className={styles.link}>Tab II</div>
+            </span>
+          </div>
+          <div className={styles.tab}>
+            <span className={styles.block} />
+            <span className={styles.itemRight}>
+              <div className={styles.link}>Tab III</div>
+            </span>
+          </div>
+          <div className={styles.tab}>
+            <span className={styles.block} />
+            <span className={styles.itemRight}>
+              <div className={styles.link}>Tab IV</div>
+            </span>
+          </div>
+          <div className={styles.tab}>
+            <span className={styles.block} />
+            <span className={styles.itemRight}>
+              <div className={styles.link}>Tab V</div>
+            </span>
+          </div>
+        </div>
+      </div>
       <div className={styles.middle}>
         <div className={styles.middleLeft}>
           <div className={styles.heading}>Spaces</div>
@@ -171,10 +205,11 @@ function HomeScreen(props) {
             </span>
           </div>
         </div>
-        <div className={styles.middleSubLeft}>
-          <div className={styles.heading}>"Feel Muddy Team" Threads</div>
+        <div className={styles.middleSubLeft}></div>
+        <div className={styles.middleInnerSubLeft}></div>
+        <div className={styles.remainder}>
+          <div className={styles.input} />
         </div>
-        <div className={styles.remainder}></div>
       </div>
       <div className={styles.bottom}>
         <span className={styles.navigationItem}>
