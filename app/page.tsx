@@ -1,13 +1,12 @@
-import Script from 'next/script';
-import Package from '@root/package.json';
-import { headers } from 'next/headers';
-
 import '@root/global.scss';
-
 
 import DefaultLayout from '@components/DefaultLayout';
 import ListItem from '@components/ListItem';
 import Showcase from '@components/Showcase';
+import Package from '@root/package.json';
+import Script from 'next/script';
+
+import { headers } from 'next/headers';
 
 export async function generateMetadata({ params, searchParams }) {
   const title = Package.name;

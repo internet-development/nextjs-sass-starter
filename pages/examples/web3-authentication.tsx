@@ -12,7 +12,7 @@ import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
-import SignInWithWeb3 from '@root/components/clients/nova/SignInWithWeb3';
+import SignInWithWeb3 from '@root/system/SignInWithWeb3';
 
 import { ThirdwebSDKProvider } from '@thirdweb-dev/react';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
@@ -29,9 +29,9 @@ function ExampleWeb3Authentication(props) {
 
   return (
     <Page
-      title="api.internet.dev: Authentication"
+      title="api.internet.dev: Web3 Wallet Authentication"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/authentication"
+      url="https://wireframes.internet.dev/examples/web3-authentication"
     >
       <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>

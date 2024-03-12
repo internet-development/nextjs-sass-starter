@@ -16,11 +16,9 @@ import {
 
 import React, { useState, useEffect } from 'react';
 import Button from '@system/Button';
-
 import { ethers } from 'ethers';
-import { useAddress } from '@components/clients/nova/AddressContext';
-import { web3Authenticate } from '@common/queries';
 import { generateNonce } from '@common/utilities';
+import { web3Authenticate } from '@common/queries';
 
 let signer: ethers.Signer;
 let provider: ethers.providers.Web3Provider;
@@ -57,7 +55,7 @@ export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
     return result;
   };
 
-  const signLoginMessage = async () => {
+  const onSignMessage = async () => {
     if (typeof window.ethereum !== 'undefined') {
       try {
         // REFERENCE: eips.ethereum.org/EIPS/eip-4361#message-format for secure login message generation
@@ -99,7 +97,7 @@ export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
       ]}
     >
       {wallet && (
-        <Button style={{ marginTop: 24, width: '100%' }} onClick={signLoginMessage}>
+        <Button style={{ marginTop: 24, width: '100%' }} onClick={onSignMessage}>
           {status}
         </Button>
       )}
