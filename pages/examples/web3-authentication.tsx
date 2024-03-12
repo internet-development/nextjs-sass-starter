@@ -13,11 +13,11 @@ import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 import SignInWithWeb3 from '@root/components/clients/nova/SignInWithWeb3';
-import { ThirdwebSDKProvider } from '@thirdweb-dev/react';
 
+import { ThirdwebSDKProvider } from '@thirdweb-dev/react';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
-function ExampleAuthentication(props) {
+function ExampleWeb3Authentication(props) {
   const [currentError, setError] = React.useState<string | null>(null);
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
@@ -25,7 +25,7 @@ function ExampleAuthentication(props) {
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [address, setAddress] = React.useState<string>('');
+  const [wallet, setWallet] = React.useState<string>('');
 
   return (
     <Page
@@ -53,8 +53,9 @@ function ExampleAuthentication(props) {
         <Input onChange={(e) => setEmail(e.target.value)} name="email" style={{ marginTop: 8 }} type="text" placeholder="Your e-mail" value={email} />
         <InputLabel style={{ marginTop: 24 }}>Password</InputLabel>
         <Input onChange={(e) => setPassword(e.target.value)} placeholder="Your password" name="password" style={{ marginTop: 8 }} type="password" value={password} />
-        <ThirdwebSDKProvider activeChain={'ethereum'} clientId="your-client-id">
-            <SignInWithWeb3 />
+        {/* Sample clientID. Replce with your own! */}
+        <ThirdwebSDKProvider activeChain={'ethereum'} clientId="6c008bdcd6760736ab3ffcd4deb713dd">
+          <SignInWithWeb3 setUser={setUser} wallet={wallet} setWallet={setWallet} />
         </ThirdwebSDKProvider>
         <Button
           loading={loading}
@@ -84,7 +85,7 @@ function ExampleAuthentication(props) {
             }
 
             setLoading(true);
-            const response = await Queries.userAuthenticate({ email, password });
+            const response = await Queries.web3Authenticate({ address: wallet, message: null, signature: null, email, password });
             setLoading(false);
             if (!response) {
               setModal({
@@ -204,4 +205,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleAuthentication;
+export default ExampleWeb3Authentication;

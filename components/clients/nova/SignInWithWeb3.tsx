@@ -11,36 +11,77 @@ import {
   frameWallet,
   rainbowWallet,
   phantomWallet,
-  useAddress,
   en,
 } from '@thirdweb-dev/react';
 
-import { ethers } from 'ethers';
-
+import React, { useState, useEffect } from 'react';
 import Button from '@system/Button';
-import { FormParagraph } from '@system/typography/forms';
 
-interface Window {
-  ethereum: any;
-}
+import { ethers } from 'ethers';
+import { useAddress } from '@components/clients/nova/AddressContext';
+import { web3Authenticate } from '@common/queries';
+import { generateNonce } from '@common/utilities';
 
-export default function SignInWithWeb3() {
-  let signer;
-  if (typeof window !== 'undefined') {
-    signer = new ethers.providers.Web3Provider((window as unknown as Window).ethereum).getSigner();
-  }
-  const address = useAddress();
+let signer: ethers.Signer;
+let provider: ethers.providers.Web3Provider;
+
+export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
+  const [status, setStatus] = useState('Authenticate via web3');
+
+  useEffect(() => {
+    const getAddress = async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        signer = provider.getSigner();
+        try {
+          const address = await signer.getAddress();
+          setWallet(address);
+        } catch (error) {
+          console.error('Error obtaining address, failed to autoconnect wallet.');
+        }
+      }
+    };
+
+    getAddress();
+  }, [setWallet]);
+
+  const onAuthenticate = async ({ address, message, signature }) => {
+    const result = await web3Authenticate({ address, message, signature, email: null, password: null });
+
+    if (result === null || !result) {
+      setStatus('Something went wrong. You should register by putting your name and password.');
+    } else {
+      setStatus('Success!');
+    }
+
+    return result;
+  };
 
   const signLoginMessage = async () => {
-    const message = 'Please sign this message to log in using web3 to novaenergy.ai.';
-    const signature = await signer.signMessage(message);
-    return signature;
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        // REFERENCE: eips.ethereum.org/EIPS/eip-4361#message-format for secure login message generation
+        const domain = 'YOUR_DOMAIN_HERE';
+        const address = await signer.getAddress();
+        const nonce = await generateNonce();
+        const issuedAt = new Date().toISOString();
+        const network = await provider.getNetwork();
+        const chainId = network.chainId;
+        const message = `${domain} wants you to sign in with your Ethereum account:\n${address}\nURI: ${domain}\nVersion: 1\nChain ID: ${chainId}\nNonce: ${nonce}\nIssued At: ${issuedAt}`;
+        const signature = await signer.signMessage(message);
+        const result = await onAuthenticate({ address: address, message: message, signature: signature });
+        setUser(result.user);
+      } catch (error) {
+        console.error('Error signing in with Web3', error);
+      }
+    }
   };
 
   return (
     <ThirdwebProvider
       activeChain="ethereum"
-      clientId="your-client-id"
+      // Sample clientID. Replce with your own!
+      clientId="6c008bdcd6760736ab3ffcd4deb713dd"
       locale={en()}
       supportedWallets={[
         metamaskWallet(),
@@ -57,9 +98,20 @@ export default function SignInWithWeb3() {
         phantomWallet(),
       ]}
     >
-      <FormParagraph />
-      {!address && <ConnectWallet theme={'dark'} modalSize={'wide'} style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }} showThirdwebBranding={false} />}
-      {address && <Button onClick={signLoginMessage}>Authenticate via. Web3</Button>}
+      {wallet && (
+        <Button style={{ marginTop: 24, width: '100%' }} onClick={signLoginMessage}>
+          {status}
+        </Button>
+      )}
+      {!wallet && (
+        <ConnectWallet
+          theme={'dark'}
+          modalSize={'wide'}
+          style={{ width: '100%', alignItems: 'center', justifyContent: 'center', marginTop: '1rem', marginBottom: '1rem' }}
+          showThirdwebBranding={false}
+          onConnect={() => window.location.reload()}
+        />
+      )}
     </ThirdwebProvider>
   );
 }

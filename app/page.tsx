@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 
 import '@root/global.scss';
 
+
 import DefaultLayout from '@components/DefaultLayout';
 import ListItem from '@components/ListItem';
 import Showcase from '@components/Showcase';
@@ -96,6 +97,7 @@ export default async function Page(props) {
         <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>
         <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
+        <ListItem href="/examples/web3-authentication">Authentication using Wallet Sign-in</ListItem>
         <ListItem href="/examples/files">File management (with AWS S3 presigned URL)</ListItem>
         <ListItem href="/examples/invoices">Invoice management</ListItem>
         <ListItem href="/examples/statement-of-work">Statement of Work management</ListItem>
