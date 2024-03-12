@@ -19,11 +19,11 @@ import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms
 
 // TODO(jimmylee)
 // When we can fix dependencies. We will delete these in the template.
-function ThirdwebSDKProvider() {
+function ThirdwebSDKProvider({ activeChain, clientId }: Record<string, any>) {
   return null;
 }
 
-function SignInWithWeb3() {
+function SignInWithWeb3({ setUser, setWallet, wallet }: Record<string, any>) {
   return null;
 }
 

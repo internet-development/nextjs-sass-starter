@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Button from '@system/Button';
 
 import React, { useEffect, useState } from 'react';
@@ -105,7 +107,7 @@ export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
         <ConnectWallet
           theme={'dark'}
           modalSize={'wide'}
-          style={{ width: '100%', marginTop: '24px', padding: '24px'}}
+          style={{ width: '100%', marginTop: '24px', padding: '24px' }}
           showThirdwebBranding={false}
           onConnect={() => window.location.reload()}
         />
