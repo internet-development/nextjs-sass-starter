@@ -12,10 +12,20 @@ import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
-import SignInWithWeb3 from '@root/system/SignInWithWeb3';
+// import SignInWithWeb3 from '@system/SignInWithWeb3';
 
-import { ThirdwebSDKProvider } from '@thirdweb-dev/react';
+// import { ThirdwebSDKProvider } from '@thirdweb-dev/react';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+
+// TODO(jimmylee)
+// When we can fix dependencies. We will delete these in the template.
+function ThirdwebSDKProvider() {
+  return null;
+}
+
+function SignInWithWeb3() {
+  return null;
+}
 
 function ExampleWeb3Authentication(props) {
   const [currentError, setError] = React.useState<string | null>(null);
@@ -43,7 +53,7 @@ function ExampleWeb3Authentication(props) {
             window.location.reload();
           }}
         />
-        <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
+        <FormHeading style={{ marginTop: 64 }}>Sign in (WIP)</FormHeading>
         <FormParagraph>Allow your users to sign in if they have a Web3 wallet! Simply connect your user's wallet to get started.</FormParagraph>
         <FormParagraph>
           Using a Cookie to maintain your session is entirely optional. Once you've successfully signed in, you'll have the option to use one to persist your session.
@@ -175,7 +185,7 @@ function ExampleWeb3Authentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager currentModal={currentModal} setModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+      <GlobalModalManager currentModal={currentModal} onSetModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
     </Page>
   );
 }

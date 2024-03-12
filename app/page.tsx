@@ -96,7 +96,6 @@ export default async function Page(props) {
         <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>
         <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
-        <ListItem href="/examples/thirdweb-authentication">Authentication using Thirdweb</ListItem>
         <ListItem href="/examples/files">File management (with AWS S3 presigned URL)</ListItem>
         <ListItem href="/examples/invoices">Invoice management</ListItem>
         <ListItem href="/examples/statement-of-work">Statement of Work management</ListItem>
