@@ -46,7 +46,7 @@ export async function userAuthenticate({ email, password }) {
 }
 
 export async function web3Authenticate({ address, message, signature, email, password }) {
-  const apiUrl = 'http://localhost:10001/api/users/authenticate';
+  const apiUrl = 'https://api.internet.dev/api/users/authenticate';
   const headers = { 'Content-Type': 'application/json' };
 
   // Attempt Web3 Quick-auth
