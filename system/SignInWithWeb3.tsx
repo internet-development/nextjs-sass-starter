@@ -1,20 +1,20 @@
 import Button from '@system/Button';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  ThirdwebProvider,
-  ConnectWallet,
-  metamaskWallet,
-  coinbaseWallet,
-  walletConnect,
-  safeWallet,
-  trustWallet,
-  zerionWallet,
   bloctoWallet,
-  frameWallet,
-  rainbowWallet,
-  phantomWallet,
+  coinbaseWallet,
+  ConnectWallet,
   en,
+  frameWallet,
+  metamaskWallet,
+  phantomWallet,
+  rainbowWallet,
+  safeWallet,
+  ThirdwebProvider,
+  trustWallet,
+  walletConnect,
+  zerionWallet,
 } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 import { generateNonce } from '@common/utilities';
@@ -58,7 +58,7 @@ export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
   const onSignMessage = async () => {
     if (typeof window.ethereum !== 'undefined') {
       try {
-        // REFERENCE: eips.ethereum.org/EIPS/eip-4361#message-format for secure login message generation
+        // NOTE(xBalbinus) REFERENCE: eips.ethereum.org/EIPS/eip-4361#message-format
         const domain = 'YOUR_DOMAIN_HERE';
         const address = await signer.getAddress();
         const nonce = await generateNonce();
@@ -82,18 +82,18 @@ export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
       clientId="6c008bdcd6760736ab3ffcd4deb713dd"
       locale={en()}
       supportedWallets={[
-        metamaskWallet(),
+        bloctoWallet(),
         coinbaseWallet(),
-        walletConnect(),
+        frameWallet(),
+        metamaskWallet(),
+        phantomWallet(),
+        rainbowWallet(),
         safeWallet({
-          personalWallets: [metamaskWallet(), coinbaseWallet(), walletConnect(), trustWallet(), zerionWallet(), bloctoWallet(), frameWallet(), rainbowWallet(), phantomWallet()],
+          personalWallets: [bloctoWallet(), coinbaseWallet(), frameWallet(), metamaskWallet(), phantomWallet(), rainbowWallet(), trustWallet(), walletConnect(), zerionWallet()],
         }),
         trustWallet(),
+        walletConnect(),
         zerionWallet(),
-        bloctoWallet(),
-        frameWallet(),
-        rainbowWallet(),
-        phantomWallet(),
       ]}
     >
       {wallet && (
@@ -105,7 +105,7 @@ export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
         <ConnectWallet
           theme={'dark'}
           modalSize={'wide'}
-          style={{ width: '100%', alignItems: 'center', justifyContent: 'center', marginTop: '1rem', marginBottom: '1rem' }}
+          style={{ width: '100%', marginTop: '24px', padding: '24px'}}
           showThirdwebBranding={false}
           onConnect={() => window.location.reload()}
         />

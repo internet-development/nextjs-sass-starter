@@ -49,14 +49,14 @@ export async function web3Authenticate({ address, message, signature, email, pas
   const apiUrl = 'https://api.internet.dev/api/users/authenticate';
   const headers = { 'Content-Type': 'application/json' };
 
-  // Attempt Web3 Quick-auth
+  // NOTE(xBalbinus): Web3 Quick-auth
   if (message && signature && address) {
     const authBody = JSON.stringify({ wallet_address: address, message, wallet_signature: signature });
     const authResult = await attemptFetch(apiUrl, 'POST', headers, authBody);
     if (authResult) return authResult;
   }
 
-  // Attempt Web3 Register
+  // NOTE(xBalbinus): Web3 Register
   if (email && password && address) {
     const domain = 'YOUR_DOMAIN_HERE';
     const registerBody = JSON.stringify({ email, domain, password, wallet_address: address });

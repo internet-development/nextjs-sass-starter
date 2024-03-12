@@ -29,9 +29,9 @@ function ExampleWeb3Authentication(props) {
 
   return (
     <Page
-      title="api.internet.dev: Web3 Wallet Authentication"
+      title="api.internet.dev: Thirdweb Wallet Authentication"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/web3-authentication"
+      url="https://wireframes.internet.dev/examples/thirdweb-authentication"
     >
       <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>
