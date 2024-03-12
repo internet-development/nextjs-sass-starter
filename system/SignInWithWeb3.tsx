@@ -1,3 +1,6 @@
+import Button from '@system/Button';
+
+import React, { useState, useEffect } from 'react';
 import {
   ThirdwebProvider,
   ConnectWallet,
@@ -13,9 +16,6 @@ import {
   phantomWallet,
   en,
 } from '@thirdweb-dev/react';
-
-import React, { useState, useEffect } from 'react';
-import Button from '@system/Button';
 import { ethers } from 'ethers';
 import { generateNonce } from '@common/utilities';
 import { web3Authenticate } from '@common/queries';
