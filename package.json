@@ -10,16 +10,12 @@
     "dev": "next -p 10000",
     "build": "next build",
     "start": "PORT=10000 next start",
-    "script": "ts-node -O '{\"module\":\"commonjs\"}' scripts/index.js",
     "lint": "next lint"
   },
   "dependencies": {
     "d3": "^7.8.5",
-    "dotenv": "^16.4.5",
     "js-cookie": "^3.0.5",
-    "knex": "^3.1.0",
     "next": "14.0.4",
-    "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "1.69.5"

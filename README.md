@@ -36,19 +36,6 @@ If you need to run node script without running the server, use this example to g
 npm run script example
 ```
 
-### Env Variables (Optional)
-
-If you want to connect to a Postgres database, provide the following `.env` file. `5432` is the default Postgres port and should not be confused with the `PORT=` for [Render.com](https://render.com).
-
-```sh
-PORT=10000
-DATABASE_NAME=xxxx
-DATABASE_USERNAME=xxxx
-DATABASE_HOST=xxxx
-DATABASE_PORT=5432
-DATABASE_PASSWORD=xxxx
-```
-
 ### Contact
 
 If you have questions ping me on Twitter, [@wwwjim](https://www.twitter.com/wwwjim). Or you can ping [@internetxstudio](https://x.com/internetxstudio).

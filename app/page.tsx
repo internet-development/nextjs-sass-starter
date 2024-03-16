@@ -6,8 +6,6 @@ import Showcase from '@components/Showcase';
 import Package from '@root/package.json';
 import Script from 'next/script';
 
-import { headers } from 'next/headers';
-
 export async function generateMetadata({ params, searchParams }) {
   const title = Package.name;
   const description = Package.description;
@@ -55,14 +53,6 @@ export async function generateMetadata({ params, searchParams }) {
 }
 
 export default async function Page(props) {
-  const headersList = headers();
-  const host = headersList.get('host');
-  const protocol = headersList.get('x-forwarded-proto');
-  const absoluteURL = `${protocol}://${host}`;
-
-  const response = await fetch(`${absoluteURL}/api`);
-  const { text } = await response.json();
-
   return (
     <DefaultLayout previewPixelSRC="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png">
       <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
@@ -95,6 +85,7 @@ export default async function Page(props) {
         <ListItem href="/examples/table">[navigation] [table component]</ListItem>
         <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>
         <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
+        <ListItem href="/examples/empty-grid-template-page">Empty grid template page</ListItem>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/files">File management (with AWS S3 presigned URL)</ListItem>
         <ListItem href="/examples/invoices">Invoice management</ListItem>

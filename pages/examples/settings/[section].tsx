@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import Cookies from 'js-cookie';
@@ -77,24 +78,13 @@ export async function getServerSideProps(context) {
   let active = SUB_SECTION_ROUTES[context.params.section] || 'PERSONAL';
   let title = SUB_SECTION_LINKS[active];
 
-  let viewer: { error?: string; id?: string } | null = null;
-  let sessionKey = context.req.cookies['sitekey'] || '';
+  const { sessionKey, viewer } = await Server.setup(context);
+
   if (Utilities.isEmpty(sessionKey)) {
     return {
       props: { active, title, route: context.params.section, sessionKey: '', viewer: null },
     };
   }
-
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/viewer', {
-      method: 'PUT',
-      headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
-    });
-    const result = await response.json();
-    if (result && result.viewer) {
-      viewer = result.viewer;
-    }
-  } catch (e) {}
 
   let data = null;
   if (active === 'DOCUMENTS') {
@@ -116,7 +106,7 @@ export async function getServerSideProps(context) {
       const response = await fetch('https://api.internet.dev/api/posts', {
         method: 'POST',
         headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'MOOD', user_id: viewer.id }),
+        body: JSON.stringify({ type: 'MOOD', user_id: viewer?.id }),
       });
       const result = await response.json();
       if (result && result.data) {

@@ -1,0 +1,30 @@
+.root {
+  min-height: calc(100dvh - 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(-90deg, var(--color-subdued-border) 1px, transparent 1px), linear-gradient(var(--color-subdued-border) 1px, transparent 1px),
+    linear-gradient(-90deg, var(--color-subdued-border) 1px, transparent 1px), linear-gradient(var(--color-subdued-border) 1px, transparent 1px),
+    linear-gradient(transparent 10px, var(--color-background) 10px, var(--color-background) 90px, transparent 90px),
+    linear-gradient(-90deg, var(--color-border) 1px, transparent 1px),
+    linear-gradient(-90deg, transparent 10px, var(--color-background) 10px, var(--color-background) 90px, transparent 90px),
+    linear-gradient(var(--color-border) 1px, transparent 1px), var(--color-background);
+  background-size:
+    20px 20px,
+    20px 20px,
+    100px 100px,
+    100px 100px,
+    100px 100px,
+    100px 100px,
+    100px 100px,
+    100px 100px;
+
+  article {
+    padding: 8px 16px 8px 16px;
+    font-weight: 600;
+    font-size: 1rem;
+    background: var(--color-background);
+    box-shadow: var(--theme-modal);
+    border-radius: 3px;
+  }
+}

@@ -1,6 +1,7 @@
-import * as React from 'react';
-import * as Utilities from '@common/utilities';
 import * as Queries from '@common/queries';
+import * as React from 'react';
+import * as Server from '@common/server';
+import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
@@ -191,24 +192,7 @@ function ExampleWeb3Authentication(props) {
 }
 
 export async function getServerSideProps(context) {
-  let viewer = null;
-  let sessionKey = context.req.cookies['sitekey'] || '';
-  if (Utilities.isEmpty(sessionKey)) {
-    return {
-      props: { sessionKey: '', viewer: null },
-    };
-  }
-
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/viewer', {
-      method: 'PUT',
-      headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
-    });
-    const result = await response.json();
-    if (result && result.viewer) {
-      viewer = result.viewer;
-    }
-  } catch (e) {}
+  const { sessionKey, viewer } = await Server.setup(context);
 
   return {
     props: { sessionKey, viewer },
