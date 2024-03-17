@@ -78,21 +78,22 @@ export default async function Page(props) {
       </div>
       <div>
         <ListItem href="/examples">[navigation] [hero section]</ListItem>
-        <ListItem href="/examples/full-section">[navigation] [full dvh sections]</ListItem>
-        <ListItem href="/examples/half-section">[navigation] [½ dvh sections]</ListItem>
-        <ListItem href="/examples/no-sections">[navigation] [naked components]</ListItem>
-        <ListItem href="/examples/forms">[navigation] [form components]</ListItem>
-        <ListItem href="/examples/table">[navigation] [table component]</ListItem>
         <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>
+        <ListItem href="/examples/forms">[navigation] [form components]</ListItem>
+        <ListItem href="/examples/full-section">[navigation] [full dvh sections]</ListItem>
+        <ListItem href="/examples/no-sections">[navigation] [naked components]</ListItem>
+        <ListItem href="/examples/half-section">[navigation] [½ dvh sections]</ListItem>
+        <ListItem href="/examples/table">[navigation] [table component]</ListItem>
         <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
         <ListItem href="/examples/empty-grid-template-page">Empty grid template page</ListItem>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/files">File management (with AWS S3 presigned URL)</ListItem>
-        <ListItem href="/examples/invoices">Invoice management</ListItem>
-        <ListItem href="/examples/statement-of-work">Statement of Work management</ListItem>
-        <ListItem href="/examples/settings">[WIP] Settings</ListItem>
-        <ListItem href="/examples/services">Services</ListItem>
         <ListItem href="/examples/stocks/fixed-watchlist">Fixed Stock Watchlist</ListItem>
+        <ListItem href="/examples/invoices">Invoice management</ListItem>
+        <ListItem href="/examples/services">Services</ListItem>
+        <ListItem href="/examples/settings">[WIP] Settings</ListItem>
+        <ListItem href="/examples/statement-of-work">Statement of Work management</ListItem>
+        <ListItem href="/examples/windows">Window management</ListItem>
       </div>
       <div style={{ marginTop: 88 }}>
         Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?

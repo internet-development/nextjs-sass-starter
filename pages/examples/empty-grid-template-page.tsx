@@ -18,7 +18,7 @@ function ExampleEmptyGridTemplate(props) {
     <Page
       title="api.internet.dev: Empty Grid Template"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/empty-application-template-page"
+      url="https://wireframes.internet.dev/examples/empty-grid-template-page"
     >
       <KeyHeader
         isModalVisible={!!currentModal}
