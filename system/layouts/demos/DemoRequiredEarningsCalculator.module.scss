@@ -1,0 +1,18 @@
+.list {
+  display: block;
+  margin-top: 16px;
+  padding-left: 16px;
+  font-size: var(--type-scale-6);
+  line-height: 1.5;
+}
+
+.listItem {
+}
+
+.top {
+  margin-bottom: 88px;
+}
+
+.bottom {
+  flex-shrink: 0;
+}
