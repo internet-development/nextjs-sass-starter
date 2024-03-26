@@ -9,7 +9,7 @@ function OAuthPage(props) {
       window.location.replace('/');
     }
 
-    Cookies.set('sitekey', props.code, { domain: props.host, secure: true });
+    Cookies.set('sitekey', props.code, { secure: true });
     window.location.replace('/examples/authentication-google');
   });
 
@@ -17,8 +17,6 @@ function OAuthPage(props) {
 }
 
 export async function getServerSideProps(context) {
-  const host = context.req.headers.host.replace(':10000', '');
-
   if (Utilities.isEmpty(context.query.key)) {
     return {
       redirect: {
@@ -31,7 +29,6 @@ export async function getServerSideProps(context) {
   return {
     props: {
       code: String(context.query.key),
-      host,
     },
   };
 }

@@ -44,7 +44,7 @@ function ExampleWeb3Authentication(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/thirdweb-authentication"
     >
-      <KeyHeader host={props.host} onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
       <ThinAppLayout>
         <ThinAppLayoutHeader
           token={key}
@@ -165,7 +165,7 @@ function ExampleWeb3Authentication(props) {
                 icon={`✳`}
                 onClick={async () => {
                   setKey(currentUser.key);
-                  Cookies.set('sitekey', currentUser.key, { domain: props.host, secure: true });
+                  Cookies.set('sitekey', currentUser.key, { secure: true });
                   alert('Your API key was attached to a cookie with domain and secure options.');
                 }}
               >

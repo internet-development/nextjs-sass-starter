@@ -156,7 +156,7 @@ function ExampleAuthentication(props) {
             const confirm = window.confirm('Would you like to save your Cookie to maintain a session?');
             if (confirm) {
               setKey(response.user.key);
-              Cookies.set('sitekey', response.user.key, { domain: props.host, secure: true });
+              Cookies.set('sitekey', response.user.key, { secure: true });
             }
 
             setUser(response.user);
@@ -217,7 +217,7 @@ function ExampleAuthentication(props) {
                 icon={`✳`}
                 onClick={async () => {
                   setKey(currentUser.key);
-                  Cookies.set('sitekey', currentUser.key, { domain: props.host, secure: true });
+                  Cookies.set('sitekey', currentUser.key, { secure: true });
                   alert('Your API key was attached to a cookie with domain and secure options.');
                 }}
               >
@@ -262,7 +262,7 @@ export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
 
   return {
-    props: { host: context.req.headers.host.replace(':10000', ''), sessionKey, viewer },
+    props: { sessionKey, viewer },
   };
 }
 

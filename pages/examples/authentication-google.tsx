@@ -133,7 +133,7 @@ export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
 
   return {
-    props: { host: context.req.headers.host.replace(':10000', ''), sessionKey, viewer },
+    props: { sessionKey, viewer },
   };
 }
 
