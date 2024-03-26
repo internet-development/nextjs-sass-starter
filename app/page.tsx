@@ -55,8 +55,8 @@ export async function generateMetadata({ params, searchParams }) {
 export default async function Page(props) {
   return (
     <DefaultLayout previewPixelSRC="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png">
-      <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
-      <Script id="google-analytics">
+      {/* <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" /> */}
+      {/* <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -64,7 +64,7 @@ export default async function Page(props) {
  
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
-      </Script>
+      </Script> */}
       <div>Showcase — stay posted, we're sharing our best client work and template usage soon!</div>
       <Showcase />
 
@@ -84,14 +84,15 @@ export default async function Page(props) {
         <ListItem href="/examples/no-sections">[navigation] [naked components]</ListItem>
         <ListItem href="/examples/half-section">[navigation] [½ dvh sections]</ListItem>
         <ListItem href="/examples/table">[navigation] [table component]</ListItem>
+        <ListItem href="/examples/authentication">Authentication to API key</ListItem>
+        <ListItem href="/examples/authentication-google">Authentication with Google to API key</ListItem>
         <ListItem href="/examples/earnings-requirement-calculator">Earnings requirement calculator</ListItem>
         <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
         <ListItem href="/examples/empty-grid-template-page">Empty grid template page</ListItem>
-        <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/files">File management (with AWS S3 presigned URL)</ListItem>
         <ListItem href="/examples/stocks/fixed-watchlist">Fixed Stock Watchlist</ListItem>
         <ListItem href="/examples/invoices">Invoice management</ListItem>
-        <ListItem href="/examples/services">Services</ListItem>
+        <ListItem href="/examples/services">Purchase services</ListItem>
         <ListItem href="/examples/settings">[WIP] Settings</ListItem>
         <ListItem href="/examples/statement-of-work">Statement of Work management</ListItem>
         <ListItem href="/examples/windows">Window management</ListItem>
@@ -106,6 +107,9 @@ export default async function Page(props) {
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/4">[WIP] Part III ➝ The anatomy of a nextjs-sass-starter</ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/5">Part IV ➝ Accounts, grants, organizations, and data upload</ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/6">[WIP] Part V ➝ Additional endpoints</ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/13">
+          [WIP] Part VI ➝ Integrating custom API endpoints, command line scripts, and using a Postgres database
+        </ListItem>
       </div>
     </DefaultLayout>
   );
