@@ -28,9 +28,14 @@ export default function ModalNavigationTemplate(props) {
           Sign out
         </span>
       ) : (
-        <a href="/examples/authentication" className={styles.item}>
-          Sign in
-        </a>
+        <>
+          <a href="/examples/authentication-google" className={styles.item}>
+            Sign in with Google
+          </a>
+          <a href="/examples/authentication" className={styles.item}>
+            Sign in
+          </a>
+        </>
       )}
       <span className={styles.item} onClick={props.onHandleThemeChange}>
         Toggle Theme

@@ -21,7 +21,7 @@ function ExampleFullLanding(props) {
     <Page
       title="nextjs-sass-starter: Components: Full section"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/full-section"
+      url="https://wireframes.internet.dev/examples/components-full-section"
     >
       <Navigation
         isModalVisible={!!currentModal}

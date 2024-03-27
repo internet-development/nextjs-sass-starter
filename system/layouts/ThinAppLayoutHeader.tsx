@@ -15,9 +15,14 @@ export default function ThinAppLayoutHeader(props) {
           Sign out
         </ActionItem>
       ) : (
-        <ActionItem icon={`⭢`} href="/examples/authentication">
-          Sign in
-        </ActionItem>
+        <>
+          <ActionItem icon={`⭢`} href="/examples/authentication-google">
+            Sign in with Google
+          </ActionItem>
+          <ActionItem icon={`⭢`} href="/examples/authentication">
+            Sign in
+          </ActionItem>
+        </>
       )}
     </div>
   );

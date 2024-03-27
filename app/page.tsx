@@ -107,6 +107,9 @@ export default async function Page(props) {
         <ListItem href="/examples/statement-of-work" isAuth>
           Statement of Work management
         </ListItem>
+        <ListItem href="/examples/threads" isAuth isWIP>
+          Threads
+        </ListItem>
         <ListItem href="/examples/windows">Window management</ListItem>
         <ListItem href="/examples/windows-connected" isWIP>
           Windows connected, diagram
@@ -119,7 +122,7 @@ export default async function Page(props) {
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/2">Part I ➝ Setting up SSH keys locally (MacOS)</ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/3">Part II ➝ The software we recommend for web development (MacOS)</ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/4" isWIP>
-          Part III ➝ The anatomy of a nextjs-sass-starter
+          Part III ➝ The anatomy of nextjs-sass-starter
         </ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/5">Part IV ➝ Accounts, grants, organizations, and data upload</ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/6" isWIP>

@@ -20,7 +20,7 @@ function ExampleNoSections(props) {
     <Page
       title="nextjs-sass-starter: Components: No sections"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/no-sections"
+      url="https://wireframes.internet.dev/examples/components-no-sections"
     >
       <Navigation
         isModalVisible={!!currentModal}

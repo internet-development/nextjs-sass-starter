@@ -27,7 +27,10 @@ export default function DemoSettings(props) {
           </FormParagraph>
 
           <div style={{ marginTop: 48 }}>
-            <ActionItem icon={`⭢`} href={`/examples/authentication`} style={{ marginTop: 16 }}>
+            <ActionItem icon={`⭢`} href={`/examples/authentication-google`} style={{ marginTop: 16 }}>
+              Authenticate with Google
+            </ActionItem>
+            <ActionItem icon={`⭢`} href={`/examples/authentication`}>
               Authenticate
             </ActionItem>
           </div>
