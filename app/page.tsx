@@ -65,7 +65,7 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script> */}
-      <div>Showcase — stay posted, we're sharing our best client work and template usage soon!</div>
+      <div>Showcase — coming soon!</div>
       <Showcase />
 
       <div>
@@ -77,38 +77,56 @@ export default async function Page(props) {
         meet your project's needs.
       </div>
       <div>
-        <ListItem href="/examples">[navigation] [hero section]</ListItem>
-        <ListItem href="/examples/post">[navigation] [blog post] [footer]</ListItem>
-        <ListItem href="/examples/forms">[navigation] [form components]</ListItem>
-        <ListItem href="/examples/full-section">[navigation] [full dvh sections]</ListItem>
-        <ListItem href="/examples/no-sections">[navigation] [naked components]</ListItem>
-        <ListItem href="/examples/half-section">[navigation] [½ dvh sections]</ListItem>
-        <ListItem href="/examples/table">[navigation] [table component]</ListItem>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/authentication-google">Authentication with Google to API key</ListItem>
+        <ListItem href="/examples">Components ➝ navigation, hero section</ListItem>
+        <ListItem href="/examples/components-post">Components ➝ navigation, blog post, footer</ListItem>
+        <ListItem href="/examples/components-forms">Components ➝ navigation, form components</ListItem>
+        <ListItem href="/examples/components-full-section">Components ➝ navigation, full dvh sections</ListItem>
+        <ListItem href="/examples/components-no-sections">Components ➝ navigation, naked components</ListItem>
+        <ListItem href="/examples/components-half-section">Components ➝ navigation, ½ dvh sections</ListItem>
+        <ListItem href="/examples/components-table">Components ➝ navigation, table</ListItem>
         <ListItem href="/examples/earnings-requirement-calculator">Earnings requirement calculator</ListItem>
         <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
         <ListItem href="/examples/empty-grid-template-page">Empty grid template page</ListItem>
-        <ListItem href="/examples/files">File management (with AWS S3 presigned URL)</ListItem>
-        <ListItem href="/examples/stocks/fixed-watchlist">Fixed Stock Watchlist</ListItem>
-        <ListItem href="/examples/invoices">Invoice management</ListItem>
-        <ListItem href="/examples/services">Purchase services</ListItem>
-        <ListItem href="/examples/settings">[WIP] Settings</ListItem>
-        <ListItem href="/examples/statement-of-work">Statement of Work management</ListItem>
+        <ListItem href="/examples/files" isAuth>
+          File management (with AWS S3 presigned URL)
+        </ListItem>
+        <ListItem href="/examples/stocks/fixed-watchlist" isAuth>
+          Fixed Stock Watchlist
+        </ListItem>
+        <ListItem href="/examples/invoices" isAuth>
+          Invoice management
+        </ListItem>
+        <ListItem href="/examples/services" isAuth>
+          Purchase services
+        </ListItem>
+        <ListItem href="/examples/settings" isAuth isWIP>
+          Settings
+        </ListItem>
+        <ListItem href="/examples/statement-of-work" isAuth>
+          Statement of Work management
+        </ListItem>
         <ListItem href="/examples/windows">Window management</ListItem>
-        <ListItem href="/examples/windows-connected">[WIP] Windows connected, diagram</ListItem>
+        <ListItem href="/examples/windows-connected" isWIP>
+          Windows connected, diagram
+        </ListItem>
       </div>
       <div style={{ marginTop: 88 }}>
         Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?
       </div>
-      <div>
+      <div style={{ paddingBottom: 128 }}>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/2">Part I ➝ Setting up SSH keys locally (MacOS)</ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/3">Part II ➝ The software we recommend for web development (MacOS)</ListItem>
-        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/4">[WIP] Part III ➝ The anatomy of a nextjs-sass-starter</ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/4" isWIP>
+          Part III ➝ The anatomy of a nextjs-sass-starter
+        </ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/5">Part IV ➝ Accounts, grants, organizations, and data upload</ListItem>
-        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/6">[WIP] Part V ➝ Additional endpoints</ListItem>
-        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/13">
-          [WIP] Part VI ➝ Integrating custom API endpoints, command line scripts, and using a Postgres database
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/6" isWIP>
+          Part V ➝ Additional endpoints
+        </ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/13" isWIP>
+          Part VI ➝ Integrating custom API endpoints, command line scripts, and using a Postgres database
         </ListItem>
       </div>
     </DefaultLayout>

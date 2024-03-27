@@ -13,19 +13,19 @@ export default function Table(props) {
       <div className={styles.row} role="row">
         <div className={styles.cell}>
           <div className={styles.image} />
-          <div className={styles.subtext}>Coming soon</div>
+          <div className={styles.subtext}>[TBA]</div>
         </div>
         <div className={styles.cell}>
           <div className={styles.image} />
-          <div className={styles.subtext}>Coming soon</div>
+          <div className={styles.subtext}>[TBA]</div>
         </div>
         <div className={styles.cell}>
           <div className={styles.image} />
-          <div className={styles.subtext}>Coming soon</div>
+          <div className={styles.subtext}>[TBA]</div>
         </div>
         <div className={styles.cell}>
           <div className={styles.image} />
-          <div className={styles.subtext}>Coming soon</div>
+          <div className={styles.subtext}>[TBA]</div>
         </div>
       </div>
     </div>

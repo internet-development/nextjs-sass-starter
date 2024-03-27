@@ -76,7 +76,7 @@ function ExampleTable(props) {
 
   return (
     <Page
-      title="nextjs-sass-starter: Table"
+      title="nextjs-sass-starter: Components: Table"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/table"
     >

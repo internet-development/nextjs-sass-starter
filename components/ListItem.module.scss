@@ -2,11 +2,23 @@
   padding: 16px 0 16px 0;
   border-bottom: 1px solid #dcdddd;
   list-style-type: none;
+  display: grid;
+  grid-template-columns: 108px 140px 1fr;
 
   &:first-child {
     border-top: 1px solid #dcdddd;
     margin-top: 48px;
   }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 72px 96px 1fr;
+  }
+}
+
+.column {
+}
+
+.contentColumn {
 }
 
 .link {
