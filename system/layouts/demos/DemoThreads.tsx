@@ -9,7 +9,7 @@ import SmallButton from '@system/documents/SmallButton';
 const ThreadItem = (props) => {
   const [list, setList] = React.useState<Array<any>>([]);
 
-  const onList = async () => {
+  const onList = async (options?: Record<string, any>) => {
     const listing = await Queries.userListThreadReplies({ id: props.threadId, orderBy: { column: 'created_at', value: 'desc' } });
     if (!listing || listing.error) {
       props.setModal({
@@ -19,12 +19,14 @@ const ThreadItem = (props) => {
       return;
     }
 
-    if (!listing.data.length) {
-      props.setModal({
-        name: 'ERROR',
-        message: 'There are no replies to this thread, make one!',
-      });
-      return;
+    if (options && options.checkEmptyArrayError) {
+      if (!listing.data.length) {
+        props.setModal({
+          name: 'ERROR',
+          message: 'There are no replies to this thread, make one!',
+        });
+        return;
+      }
     }
 
     setList(listing.data);
@@ -79,11 +81,21 @@ const ThreadItem = (props) => {
     setList(listing.data);
   };
 
+  React.useEffect(() => {
+    onList();
+  }, []);
+
   return (
     <div className={styles.item}>
       <div className={styles.left}>
         <div className={styles.top} />
-        <div className={styles.symbol} style={list.length ? { backgroundColor: `var(--color-text)`, color: `var(--color-background)` } : undefined} onClick={onList}>
+        <div
+          className={styles.symbol}
+          style={list.length ? { backgroundColor: `var(--color-text)`, color: `var(--color-background)` } : undefined}
+          onClick={() => {
+            onList({ checkEmptyArrayError: true });
+          }}
+        >
           {list.length ? `𒆳` : `◈`}
         </div>
         {props.isLast ? null : <figure className={styles.bottom} />}
@@ -92,8 +104,13 @@ const ThreadItem = (props) => {
         <div className={styles.children}>{props.children}</div>
         <div className={styles.actions}>
           <SmallButton onClick={onReply}>Reply</SmallButton>
-          <SmallButton onClick={onList} style={{ marginLeft: 16 }}>
-            List Responses
+          <SmallButton
+            onClick={() => {
+              onList({ checkEmptyArrayError: true });
+            }}
+            style={{ marginLeft: 16 }}
+          >
+            Get Responses
           </SmallButton>
         </div>
         {list.length ? (
