@@ -76,6 +76,9 @@ export default function Footer(props) {
           <span className={styles.copy}>No copyright. This is a template.</span>
         </div>
         <div className={styles.right}>
+          <a href="https://bsky.app/profile/internetstudio.bsky.social" className={styles.subItem} target="_blank">
+            Bluesky
+          </a>
           <a href="https://x.com/internetxstudio" className={styles.subItem} target="_blank">
             X
           </a>
@@ -86,7 +89,7 @@ export default function Footer(props) {
             ReadCV
           </a>
           <a href="https://internet.dev" className={styles.subItem} target="_blank">
-            Website
+            INTDEV
           </a>
         </div>
       </div>

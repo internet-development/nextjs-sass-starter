@@ -25,6 +25,9 @@ export default function ModalNavigation(props) {
         Files
       </a>
       <hr className={styles.divider} />
+      <a href="https://bsky.app/profile/internetstudio.bsky.social" className={styles.item} target="_blank">
+        Bluesky
+      </a>
       <a href="https://x.com/internetxstudio" className={styles.item} target="_blank">
         X
       </a>
@@ -35,7 +38,7 @@ export default function ModalNavigation(props) {
         ReadCV
       </a>
       <a href="https://internet.dev" className={styles.item} target="_blank">
-        Website
+        INTDEV
       </a>
     </OutsideElementEvent>
   );
