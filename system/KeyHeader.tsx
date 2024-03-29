@@ -28,7 +28,7 @@ export default function KeyHeader(props) {
           className={styles.input}
           type="password"
           name="key"
-          placeholder="Copy and paste your API key here!"
+          placeholder="« Use an API key to instantly authenticate »"
           value={props.value}
           onChange={(e) => {
             Cookies.remove('sitekey');

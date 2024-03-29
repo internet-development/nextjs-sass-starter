@@ -166,6 +166,41 @@ export function debounce<Args extends unknown[]>(fn: (...args: Args) => void, de
   return debounced;
 }
 
+export function timeAgo(dateInput: Date | string | number): string {
+  const date = new Date(dateInput);
+  const now = new Date();
+  const secondsPast = (now.getTime() - date.getTime()) / 1000;
+
+  if (secondsPast < 0 || isNaN(secondsPast)) {
+    return '[INVALID]';
+  }
+
+  if (secondsPast < 60) {
+    // Less than a minute
+    return 'Just now';
+  } else if (secondsPast < 3600) {
+    // Less than an hour
+    const minutes = Math.floor(secondsPast / 60);
+    return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+  } else if (secondsPast < 86400) {
+    // Less than a day
+    const hours = Math.floor(secondsPast / 3600);
+    return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+  } else if (secondsPast < 604800) {
+    // Less than a week
+    const days = Math.floor(secondsPast / 86400);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+  }
+
+  const formattedDate = date.toLocaleDateString('en-US', {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric',
+  });
+
+  return formattedDate;
+}
+
 export function classNames(...args: any[]): string {
   let classes: string[] = [];
 

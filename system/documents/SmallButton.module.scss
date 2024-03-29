@@ -3,13 +3,14 @@
   color: var(--color-text);
   box-sizing: border-box;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 4px;
+  line-height: 1;
   outline: 0;
   padding: 2px 8px 2px 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: 0.2px;
   font-weight: 600;
   overflow-wrap: break-word;
@@ -19,6 +20,7 @@
   transition: 200ms ease all;
   transform: scale(1);
   text-decoration: none;
+  text-transform: uppercase;
 
   &:visited {
     color: var(--color-text);

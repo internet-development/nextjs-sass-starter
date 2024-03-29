@@ -217,3 +217,66 @@ export async function userDeletePost({ id, key }) {
 
   return result;
 }
+
+export async function userCreatePlainThread({ key, fields, src, type }) {
+  if (Utilities.isEmpty(key)) {
+    return null;
+  }
+
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/posts/create', {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fields, src, type }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  return result;
+}
+
+export async function userListThreadReplies({ id, orderBy }) {
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/posts/all-thread-replies', {
+      method: 'POST',
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, orderBy }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  return result;
+}
+
+export async function userListThreads({ orderBy }) {
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/posts/all-threads', {
+      method: 'POST',
+      body: JSON.stringify({ orderBy }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  return result;
+}
