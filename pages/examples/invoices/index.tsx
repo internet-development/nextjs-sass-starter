@@ -168,7 +168,7 @@ function ExampleInvoices(props) {
       </Button>
 
       <ActionItem
-        icon={`✳`}
+        icon={`⊹`}
         onClick={async () => {
           const results = await onRefreshInvoices({ key, setModal });
           if (!results) {

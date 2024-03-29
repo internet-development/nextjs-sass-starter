@@ -43,7 +43,7 @@ function FormUpload(props) {
 
   if (props.isActionItem) {
     return (
-      <ActionItem icon={props.loading ? <Loader style={{ height: 16, width: 16, borderRadius: 16 }} /> : `✳`} htmlFor="template-form-upload-input">
+      <ActionItem icon={props.loading ? <Loader style={{ height: 16, width: 16, borderRadius: 16 }} /> : `⊹`} htmlFor="template-form-upload-input">
         <input className={styles.input} id="template-form-upload-input" type="file" onChange={handleChange} />
         {props.children}
       </ActionItem>

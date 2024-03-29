@@ -11,7 +11,7 @@ export default function ThinAppLayoutHeader(props) {
         Return home
       </ActionItem>
       {props.token ? (
-        <ActionItem icon={`✳`} onClick={props.onSignOut}>
+        <ActionItem icon={`⊹`} onClick={props.onSignOut}>
           Sign out
         </ActionItem>
       ) : (

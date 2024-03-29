@@ -179,7 +179,7 @@ function ExampleAuthentication(props) {
             </MonospacePreview>
             <div style={{ marginTop: 16 }}>
               <ActionItem
-                icon={`✳`}
+                icon={`⊹`}
                 onClick={async () => {
                   const response = await Queries.userAuthenticate({ email, password });
                   if (!response) {
@@ -196,7 +196,7 @@ function ExampleAuthentication(props) {
                 Refresh
               </ActionItem>
               <ActionItem
-                icon={`✳`}
+                icon={`⊹`}
                 onClick={async () => {
                   const response = await Queries.userRefreshKey({ email, password });
                   if (!response) {
@@ -214,7 +214,7 @@ function ExampleAuthentication(props) {
                 Generate new API key
               </ActionItem>
               <ActionItem
-                icon={`✳`}
+                icon={`⊹`}
                 onClick={async () => {
                   setKey(currentUser.key);
                   Cookies.set('sitekey', currentUser.key, { secure: true });

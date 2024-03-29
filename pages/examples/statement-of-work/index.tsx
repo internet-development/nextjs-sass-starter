@@ -171,7 +171,7 @@ function ExampleStatementOfWorks(props) {
         Create
       </Button>
       <ActionItem
-        icon={`✳`}
+        icon={`⊹`}
         onClick={async () => {
           const results = await onRefreshSOW({ key, setModal });
           if (!results) {

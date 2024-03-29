@@ -51,7 +51,7 @@ function ExampleEmptyApplicationTemplate(props) {
           </ActionItem>
           {props.viewer ? (
             <ActionItem
-              icon={`✳`}
+              icon={`⊹`}
               onClick={async () => {
                 const plainText = window.prompt('The easiest way to do this without building the modal. Type what words you want to share.');
 
@@ -98,7 +98,7 @@ function ExampleEmptyApplicationTemplate(props) {
             </ActionItem>
           ) : null}
           <ActionItem
-            icon={`✳`}
+            icon={`⊹`}
             onClick={async () => {
               const listing = await Queries.userListThreads({ orderBy: { column: 'created_at', value: 'desc' } });
 
@@ -121,7 +121,7 @@ function ExampleEmptyApplicationTemplate(props) {
               setList(listing.data);
             }}
           >
-            Refresh threads
+            Refresh
           </ActionItem>
         </div>
 

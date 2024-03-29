@@ -56,7 +56,7 @@ function ExampleForms(props) {
           <ActionItem icon={`⭠`} href="/">
             Return item example
           </ActionItem>
-          <ActionItem icon={`✳`}>Action item example</ActionItem>
+          <ActionItem icon={`⊹`}>Action item example</ActionItem>
         </div>
 
         <InputLabel style={{ marginTop: 24 }}>Input</InputLabel>
