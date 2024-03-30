@@ -55,7 +55,7 @@ export default function DemoBentoLayout(props) {
                   Sign up
                 </Button>
               )}
-              <Text style={{ opacity: 0, visibility: 'hidden', marginTop: 16, minheight: 48 }}>An invisible placeholder. Words that will occupy space.</Text>
+              <Text style={{ opacity: 0, visibility: 'hidden', marginTop: 16, minheight: 52 }}>An invisible placeholder. Words that will occupy space.</Text>
               <div>
                 <Item>Generate up to 5 documents using our templates.</Item>
                 <Item>Create up to 3 surveys.</Item>
@@ -91,7 +91,7 @@ export default function DemoBentoLayout(props) {
                   Sign up
                 </Button>
               )}
-              <Text style={{ marginTop: 16, minHeight: 48 }}>
+              <Text style={{ marginTop: 16, minHeight: 52 }}>
                 All the benefits of the <strong>"Free"</strong>, and:
               </Text>
               <div>
@@ -101,7 +101,7 @@ export default function DemoBentoLayout(props) {
                 <Item>No limits.</Item>
                 <Item>Create any additional document for 100 credits each.</Item>
                 <Item>Create any additional survey for 100 credits each.</Item>
-                <Item>Upload any file* for 1000 credits each.</Item>
+                <Item>Upload any file٭ for 1000 credits each.</Item>
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function DemoBentoLayout(props) {
             <div className={styles.content}>
               <Title>Collaborator</Title>
               <Text style={{ marginTop: 16, minHeight: 156 }}>
-                Requires an invitation from our community. Get a reserved desk** and access to new products as they are released.
+                Requires an invitation from our community. Get a reserved desk٭٭ and access to new products as they are released.
               </Text>
               <H3 style={{ marginTop: 24 }}>
                 $399 USD<span className={styles.subtle}>/mo</span>
@@ -117,13 +117,13 @@ export default function DemoBentoLayout(props) {
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
               </Button>
-              <Text style={{ marginTop: 16, minHeight: 48 }}>
+              <Text style={{ marginTop: 16, minHeight: 52 }}>
                 All the benefits of the <strong>"Professional"</strong>, and:
               </Text>
               <div>
                 <Item>30,000 additional credits deposited every month (45,000 in total).</Item>
                 <Item>Send credits to other users.</Item>
-                <Item>A reserved desk** at the collaborative space in Seattle, WA.</Item>
+                <Item>A reserved desk٭٭ at the collaborative space in Seattle, WA.</Item>
               </div>
             </div>
           </div>
@@ -139,11 +139,11 @@ export default function DemoBentoLayout(props) {
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
               </Button>
-              <Text style={{ marginTop: 16, minHeight: 48 }}>
+              <Text style={{ marginTop: 16, minHeight: 52 }}>
                 All the benefits of <strong>"Collaborator"</strong>, and:
               </Text>
               <div>
-                <Item>Desks and collaborative team space***.</Item>
+                <Item>Desks and collaborative team space٭٭٭.</Item>
                 <Item>Reservable event space (2,800 sqft) in Seattle, WA.</Item>
               </div>
             </div>
@@ -155,7 +155,7 @@ export default function DemoBentoLayout(props) {
           <div className={styles.subRowContent}>
             <Text style={{ marginTop: 16 }}>
               <i>
-                <strong>* Files</strong> — By uploading data through our service, you consent to our{' '}
+                <strong>٭ Files</strong> — By uploading data through our service, you consent to our{' '}
                 <a href="#" className={styles.link}>
                   Terms of Service
                 </a>
@@ -173,14 +173,14 @@ export default function DemoBentoLayout(props) {
             </Text>
             <Text style={{ marginTop: 16 }}>
               <i>
-                <strong>** Reserved desks</strong> — Our office space offers a mix of reserved and open desks. The reserved desks are allocated on a first-come, first-served basis.
+                <strong>٭٭ Reserved desks</strong> — Our office space offers a mix of reserved and open desks. The reserved desks are allocated on a first-come, first-served basis.
                 Should we be unable to assign you a desk immediately, you will be placed on a waitlist and informed as soon as one becomes available. Please note that all desk
                 assignments are subject to availability, regardless of application status.
               </i>
             </Text>
             <Text style={{ marginTop: 16 }}>
               <i>
-                <strong>*** Collaborative team space </strong> — Availability for reserved team and startup space is limited. Please note that all spaces are subject to
+                <strong>٭٭٭ Collaborative team space </strong> — Availability for reserved team and startup space is limited. Please note that all spaces are subject to
                 availability, even upon application.
               </i>
             </Text>
