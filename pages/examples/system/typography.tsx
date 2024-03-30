@@ -18,22 +18,22 @@ function ExampleSystemTypography(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
 
   const TABLE_DATA = [
-    { id: 1, data: [``, `H1`, `3.815rem`, <H1>{COPY}</H1>] },
-    { id: 3, data: [``, `H2`, `3.052rem`, <H2>{COPY}</H2>] },
-    { id: 5, data: [``, `H3`, `2.441rem`, <H3>{COPY}</H3>] },
-    { id: 7, data: [``, `H4`, `1.953rem`, <H4>{COPY}</H4>] },
-    { id: 2, data: [``, `Lead`, `1.563rem`, <Lead>{COPY}</Lead>] },
-    { id: 22, data: [``, `FormHeading`, `1.563rem`, <FormHeading>{COPY}</FormHeading>] },
-    { id: 6, data: [``, `SubLead`, `1.25rem`, <SubLead>{COPY}</SubLead>] },
-    { id: 21, data: [``, `FormSubHeading`, `1.25rem`, <FormSubHeading>{COPY}</FormSubHeading>] },
-    { id: 9, data: [``, `P`, `1rem`, <P>{COPY}</P>] },
-    { id: 20, data: [``, `FormParagraph`, `1rem`, <FormParagraph>{COPY}</FormParagraph>] },
-    { id: 8, data: [``, `Title`, `20px`, <Title>{COPY}</Title>] },
-    { id: 10, data: [``, `Text`, `16px`, <Text>{COPY}</Text>] },
-    { id: 13, data: [``, `UnitLabel`, `14px`, <UnitLabel>{COPY}</UnitLabel>] },
-    { id: 11, data: [``, `SubTitle`, `12px`, <SubTitle>{COPY}</SubTitle>] },
-    { id: 12, data: [``, `SubText`, `12px`, <SubText>{COPY}</SubText>] },
-    { id: 31, data: [``, `InputLabel`, `12px`, <InputLabel>{COPY}</InputLabel>] },
+    { id: 1, data: [``, `H1`, `3.815rem`, <H1 key="1">{COPY}</H1>] },
+    { id: 2, data: [``, `H2`, `3.052rem`, <H2 key="2">{COPY}</H2>] },
+    { id: 3, data: [``, `H3`, `2.441rem`, <H3 key="3">{COPY}</H3>] },
+    { id: 4, data: [``, `H4`, `1.953rem`, <H4 key="4">{COPY}</H4>] },
+    { id: 5, data: [``, `Lead`, `1.563rem`, <Lead key="5">{COPY}</Lead>] },
+    { id: 6, data: [``, `FormHeading`, `1.563rem`, <FormHeading key="6">{COPY}</FormHeading>] },
+    { id: 7, data: [``, `SubLead`, `1.25rem`, <SubLead key="7">{COPY}</SubLead>] },
+    { id: 8, data: [``, `FormSubHeading`, `1.25rem`, <FormSubHeading key="8">{COPY}</FormSubHeading>] },
+    { id: 9, data: [``, `P`, `1rem`, <P key="9">{COPY}</P>] },
+    { id: 10, data: [``, `FormParagraph`, `1rem`, <FormParagraph key="10">{COPY}</FormParagraph>] },
+    { id: 11, data: [``, `Title`, `20px`, <Title key="11">{COPY}</Title>] },
+    { id: 12, data: [``, `Text`, `16px`, <Text key="12">{COPY}</Text>] },
+    { id: 13, data: [``, `UnitLabel`, `14px`, <UnitLabel key="13">{COPY}</UnitLabel>] },
+    { id: 14, data: [``, `SubTitle`, `12px`, <SubTitle key="14">{COPY}</SubTitle>] },
+    { id: 15, data: [``, `SubText`, `12px`, <SubText key="15">{COPY}</SubText>] },
+    { id: 16, data: [``, `InputLabel`, `12px`, <InputLabel key="16">{COPY}</InputLabel>] },
   ];
 
   return (
