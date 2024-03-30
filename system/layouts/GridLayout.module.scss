@@ -1,5 +1,6 @@
 .root {
   min-height: calc(100dvh - 48px);
+  height: 100%;
   position: relative;
   background: linear-gradient(-90deg, var(--color-subdued-border) 1px, transparent 1px), linear-gradient(var(--color-subdued-border) 1px, transparent 1px),
     linear-gradient(-90deg, var(--color-subdued-border) 1px, transparent 1px), linear-gradient(var(--color-subdued-border) 1px, transparent 1px),
