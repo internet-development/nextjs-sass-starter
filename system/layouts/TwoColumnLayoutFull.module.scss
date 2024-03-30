@@ -16,7 +16,9 @@
   align-self: stretch;
 
   @media (max-width: 1024px) {
+    display: none;
     max-width: auto;
+    box-shadow: none;
   }
 }
 
