@@ -5,7 +5,7 @@ import * as Utilities from '@common/utilities';
 
 import Input from '@system/Input';
 
-import { H1, H1Sub, H3, H3Sub, P, SubTitle } from '@system/typography';
+import { H1, H3, P, SubTitle, Text } from '@system/typography';
 import { InputLabel } from '@system/typography/forms';
 
 export default function DemoRequiredEarningsCalculator(props) {
@@ -19,11 +19,11 @@ export default function DemoRequiredEarningsCalculator(props) {
   return (
     <>
       <div className={styles.top}>
-        <SubTitle>REQUIRED MONTHLY EARNINGS</SubTitle>
+        <Text>Required Monthly Earnings</Text>
       </div>
       <div className={styles.bottom}>
         <H1>{Utilities.formatDollars(amount)}</H1>
-        <SubTitle style={{ marginTop: 16, marginBottom: 24 }}>Per month</SubTitle>
+        <SubTitle style={{ marginTop: `1rem`, marginBottom: `4rem` }}>Per month</SubTitle>
         <ul className={styles.list}>
           <li>
             This company is raising <strong>{Utilities.formatDollars(raised)}</strong> and giving <strong>{equity}%</strong> equity in return.

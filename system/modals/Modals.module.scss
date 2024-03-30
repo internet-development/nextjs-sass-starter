@@ -36,7 +36,7 @@
 .item {
   display: block;
   width: 240px;
-  font-size: 12px;
+  font-size: var(--type-scale-fixed-tiny);
   text-decoration: none;
   text-transform: uppercase;
   color: var(--color-text);
@@ -76,7 +76,7 @@
 .errorModalRight {
   min-width: 10%;
   width: 100%;
-  padding: 1px 0px 0px 8px;
+  padding: 1px 0px 0px 16px;
   line-height: 1.5;
-  font-size: var(--type-scale-5);
+  font-size: var(--type-scale-fixed-small);
 }

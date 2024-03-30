@@ -4,16 +4,8 @@ export function H1(props) {
   return <h1 className={styles.h1} {...props} />;
 }
 
-export function H1Sub(props) {
-  return <aside className={styles.h1sub} {...props} />;
-}
-
 export function H2(props) {
   return <h1 className={styles.h2} {...props} />;
-}
-
-export function H2Sub(props) {
-  return <aside className={styles.h2sub} {...props} />;
 }
 
 export function H3(props) {
@@ -24,12 +16,16 @@ export function H4(props) {
   return <h4 className={styles.h4} {...props} />;
 }
 
-export function H4Fixed(props) {
-  return <h4 className={styles.h4fixed} {...props} />;
+export function Lead(props) {
+  return <p className={styles.lead} {...props} />;
 }
 
-export function H3Sub(props) {
-  return <aside className={styles.h3sub} {...props} />;
+export function SubLead(props) {
+  return <p className={styles.subLead} {...props} />;
+}
+
+export function Title(props) {
+  return <h4 className={styles.title} {...props} />;
 }
 
 export function P(props) {
@@ -40,19 +36,23 @@ export function P(props) {
   return <p className={styles.p} {...props} />;
 }
 
-export function PFixed(props) {
+export function Text(props) {
   if (props.href) {
-    return <a {...props} className={styles.pfixed} />;
+    return <a {...props} className={styles.text} />;
   }
 
-  return <p className={styles.pfixed} {...props} />;
+  return <p className={styles.text} {...props} />;
 }
 
 export function SubTitle(props) {
-  return <p className={styles.subtitle} {...props} />;
+  return <p className={styles.subTitle} {...props} />;
 }
 
 export function SubText(props) {
+  if (props.href) {
+    return <a {...props} className={styles.subText} />;
+  }
+
   return <p className={styles.subText} {...props} />;
 }
 

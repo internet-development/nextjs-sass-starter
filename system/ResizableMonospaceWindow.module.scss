@@ -14,7 +14,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: var(--type-scale-fixed-label);
   font-family: var(--font-family-mono);
   border-bottom: 1px solid var(--color-border);
   user-select: none;

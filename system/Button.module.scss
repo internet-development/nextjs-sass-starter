@@ -11,7 +11,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: var(--type-scale-fixed-small);
   letter-spacing: 0.2px;
   font-weight: 600;
   overflow-wrap: break-word;
@@ -58,7 +58,7 @@
   outline: 0;
   border: 0;
   min-height: 64px;
-  font-size: 16px;
+  font-size: var(--type-scale-fixed-small);
   letter-spacing: 0.2px;
   font-weight: 600;
   padding: 4px 24px 4px 24px;

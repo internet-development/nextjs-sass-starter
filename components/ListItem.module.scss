@@ -3,7 +3,7 @@
   border-bottom: 1px solid #dcdddd;
   list-style-type: none;
   display: grid;
-  grid-template-columns: 108px 140px 1fr;
+  grid-template-columns: auto auto 1fr;
 
   &:first-child {
     border-top: 1px solid #dcdddd;
@@ -16,6 +16,7 @@
 }
 
 .column {
+  padding-right: 16px;
 }
 
 .contentColumn {

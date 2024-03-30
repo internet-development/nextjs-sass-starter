@@ -12,8 +12,6 @@
   max-width: 648px;
   margin: 128px auto 0 auto;
   padding: 0 24px 0 24px;
-  text-transform: uppercase;
-  font-size: var(--type-scale-7);
   margin-bottom: 16px;
 }
 
@@ -56,9 +54,9 @@
 }
 
 .avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 64px;
+  width: 52px;
+  height: 52px;
+  border-radius: 52px;
 }
 
 .left {
@@ -69,12 +67,4 @@
   min-width: 10%;
   width: 100%;
   padding-left: 16px;
-}
-
-.name {
-  margin-top: 11px;
-}
-
-.title {
-  margin-top: 4px;
 }

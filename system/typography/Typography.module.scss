@@ -1,55 +1,42 @@
 .h1 {
   font-size: var(--type-scale-1);
-  line-height: 1;
-  font-weight: 400;
-}
-
-.h1sub {
-  margin-top: 1rem;
-  font-size: var(--type-scale-3);
-  line-height: 1.5;
+  line-height: 1.15;
   font-weight: 400;
 }
 
 .h2 {
   font-size: var(--type-scale-2);
-  line-height: 1;
-  font-weight: 400;
-}
-
-.h2sub {
-  margin-top: 1rem;
-  font-size: var(--type-scale-3);
-  line-height: 1.5;
+  line-height: 1.15;
   font-weight: 400;
 }
 
 .h3 {
   font-size: var(--type-scale-3);
-  font-weight: 400;
-}
-
-.h3sub {
-  margin-top: 1rem;
-  font-size: var(--type-scale-4);
-  line-height: 1.5;
+  line-height: 1.15;
   font-weight: 400;
 }
 
 .h4 {
   font-size: var(--type-scale-4);
+  line-height: 1.15;
   font-weight: 400;
 }
 
-.h4fixed {
-  font-size: 20px;
-  font-weight: 600;
+.lead {
+  font-size: var(--type-scale-5);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.subLead {
+  font-size: var(--type-scale-6);
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .p {
-  margin-top: 16px;
-  font-size: var(--type-scale-5);
-  line-height: 1.5;
+  font-size: var(--type-scale-7);
+  line-height: 1.6;
   font-weight: 400;
   display: block;
   text-decoration: none;
@@ -60,10 +47,15 @@
   }
 }
 
-.pfixed {
-  margin-top: 16px;
-  font-size: 16px;
-  line-height: 1.5;
+.title {
+  font-size: var(--type-scale-fixed-large);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+.text {
+  font-size: var(--type-scale-fixed-medium);
+  line-height: 1.6;
   font-weight: 400;
   display: block;
   text-decoration: none;
@@ -74,54 +66,27 @@
   }
 }
 
-.subtitle {
-  font-size: var(--type-scale-6);
-  line-height: var(--type-scale-6);
-  text-weight: 600;
-  letter-spacing: 0.2px;
-}
-
-.formHeading {
-  font-size: var(--type-scale-4);
-  line-height: 1;
+.subTitle {
+  font-size: var(--type-scale-fixed-tiny);
+  line-height: var(--type-scale-fixed-tiny);
   font-weight: 600;
-  display: block;
-}
-
-.formSubHeading {
-  font-size: var(--type-scale-5);
-  line-height: 1;
-  font-weight: 600;
-  display: block;
-}
-
-.formCaption {
-  line-height: 1.5;
-  font-size: var(--type-scale-5);
-  font-weight: 400;
-  display: block;
-  margin-top: 1rem;
-  text-align: left;
-
-  &:first-child {
-    margin-top: 0px;
-  }
-}
-
-.inputLabel {
-  font-size: var(--type-scale-6);
-  line-height: var(--type-scale-6);
-  text-weight: 600;
-  display: block;
   letter-spacing: 0.2px;
-}
-
-.unitLabel {
-  font-size: var(--type-scale-5);
-  color: var(--color-border);
 }
 
 .subText {
-  font-size: var(--type-scale-7);
   display: block;
+  font-size: var(--type-scale-fixed-tiny);
+  line-height: var(--type-scale-fixed-small);
+  text-decoration: none;
+  color: var(--color-text);
+
+  &:visited {
+    color: var(--color-text);
+  }
+}
+
+.unitLabel {
+  font-size: var(--type-scale-fixed-small);
+  line-height: var(--type-scale-fixed-small);
+  color: var(--color-border);
 }

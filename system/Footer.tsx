@@ -5,7 +5,7 @@ import * as React from 'react';
 import Button from '@system/Button';
 import Input from '@system/Input';
 
-import { H3, H3Sub } from '@system/typography';
+import { H4, P } from '@system/typography';
 
 export default function Footer(props) {
   return (
@@ -13,14 +13,14 @@ export default function Footer(props) {
       <div className={styles.row}>
         <div className={styles.column}>
           <div className={styles.form}>
-            <H3>Footer, Subscribe</H3>
-            <H3Sub style={{ marginBottom: 24 }}>You can't actually subscribe to a newsletter yet but this is a nice looking placeholder.</H3Sub>
+            <H4 style={{ marginBottom: 24 }}>Footer, Subscribe</H4>
+            <P style={{ marginBottom: 24 }}>You can't actually subscribe to a newsletter yet but this is a nice looking placeholder.</P>
             <Input style={{ marginBottom: 24 }} placeholder="Provide an e-mail" />
             <Button style={{ minHeight: 48 }}>Coming soon</Button>
           </div>
         </div>
         <div className={styles.subColumn}>
-          <div className={styles.subtitle}>Section I</div>
+          <div className={styles.subTitle}>Section I</div>
           <a href="#" className={styles.item}>
             Item I
           </a>
@@ -35,7 +35,7 @@ export default function Footer(props) {
           </a>
         </div>
         <div className={styles.subColumn}>
-          <div className={styles.subtitle}>Section II</div>
+          <div className={styles.subTitle}>Section II</div>
           <a href="#" className={styles.item}>
             Item I
           </a>
@@ -50,7 +50,7 @@ export default function Footer(props) {
           </a>
         </div>
         <div className={styles.subColumn}>
-          <div className={styles.subtitle}>Section III</div>
+          <div className={styles.subTitle}>Section III</div>
           <a href="#" className={styles.item}>
             Item I
           </a>

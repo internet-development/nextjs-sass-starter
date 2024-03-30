@@ -59,7 +59,7 @@
 }
 
 .item {
-  font-size: 12px;
+  font-size: var(--type-scale-fixed-tiny);
   text-transform: uppercase;
   letter-spacing: 0.2px;
   font-weight: 600;

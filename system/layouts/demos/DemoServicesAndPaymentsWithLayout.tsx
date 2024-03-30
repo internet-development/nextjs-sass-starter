@@ -6,7 +6,7 @@ import Button from '@system/Button';
 import Checkmark from '@system/svg/Checkmark';
 import Content from '@system/layouts/Content';
 
-import { H2, H3, H3Sub, H4Fixed, PFixed } from '@system/typography';
+import { H2, H3, H4, SubLead, Title, Text } from '@system/typography';
 
 const Item = (props) => {
   return (
@@ -25,25 +25,27 @@ export default function DemoBentoLayout(props) {
       <header className={styles.header}>
         <section className={styles.top}>
           <H2>Get access to our offering</H2>
-          <H3Sub style={{ maxWidth: '768px' }}>
+          <SubLead style={{ marginTop: `1rem`, maxWidth: '768px' }}>
             The{' '}
             <a className={styles.link} href="https://internet.dev">
               Internet Development Studio Company
             </a>{' '}
             invites you to use all of our services. Those services include API endpoints, developer tooling, reliable file storage, document generation tools, and even physical
             collaboration space.
-          </H3Sub>
+          </SubLead>
         </section>
       </header>
       <div className={styles.row}>
         <div className={styles.container}>
           <div className={styles.column}>
             <div className={styles.content}>
-              <H4Fixed>Free</H4Fixed>
-              <PFixed style={{ minHeight: 156 }}>The quickest and easiest way to use our API service, products and games. All you need is a verified e-mail address.</PFixed>
-              <H2 style={{ marginTop: 24 }}>
+              <Title>Free</Title>
+              <Text style={{ marginTop: 16, minHeight: 156 }}>
+                The quickest and easiest way to use our API service, products and games. All you need is a verified e-mail address.
+              </Text>
+              <H3 style={{ marginTop: 24 }}>
                 $0 USD<span className={styles.subtle}>/mo</span>
-              </H2>
+              </H3>
               {props.viewer ? (
                 <Button visual style={{ height: 48, marginTop: 24, width: '100%' }}>
                   Already obtained
@@ -53,7 +55,7 @@ export default function DemoBentoLayout(props) {
                   Sign up
                 </Button>
               )}
-              <PFixed style={{ opacity: 0, visibility: 'hidden', minheight: 48 }}>An invisible placeholder. Words that will occupy space.</PFixed>
+              <Text style={{ opacity: 0, visibility: 'hidden', marginTop: 16, minheight: 48 }}>An invisible placeholder. Words that will occupy space.</Text>
               <div>
                 <Item>Generate up to 5 documents using our templates.</Item>
                 <Item>Create up to 3 surveys.</Item>
@@ -63,13 +65,13 @@ export default function DemoBentoLayout(props) {
           </div>
           <div className={styles.column}>
             <div className={styles.content}>
-              <H4Fixed>Professional</H4Fixed>
-              <PFixed style={{ minHeight: 156 }}>
+              <Title>Professional</Title>
+              <Text style={{ marginTop: 16, minHeight: 156 }}>
                 More power and utility for anyone who needs it. Access to all of our products including a personal blog and newsletter tool.
-              </PFixed>
-              <H2 style={{ marginTop: 24 }}>
+              </Text>
+              <H3 style={{ marginTop: 24 }}>
                 $8.99 USD<span className={styles.subtle}>/mo</span>
-              </H2>
+              </H3>
               {props.viewer ? (
                 props.viewer.level >= 20 ? (
                   <Button visual style={{ height: 48, marginTop: 24, width: '100%' }}>
@@ -89,9 +91,9 @@ export default function DemoBentoLayout(props) {
                   Sign up
                 </Button>
               )}
-              <PFixed style={{ minHeight: 48 }}>
+              <Text style={{ marginTop: 16, minHeight: 48 }}>
                 All the benefits of the <strong>"Free"</strong>, and:
-              </PFixed>
+              </Text>
               <div>
                 <Item>15,000 credits deposited every month.</Item>
                 <Item>Free personal blog on TXT.DEV.</Item>
@@ -105,17 +107,19 @@ export default function DemoBentoLayout(props) {
           </div>
           <div className={styles.column}>
             <div className={styles.content}>
-              <H4Fixed>Collaborator</H4Fixed>
-              <PFixed style={{ minHeight: 156 }}>Requires an invitation from our community. Get a reserved desk** and access to new products as they are released.</PFixed>
-              <H2 style={{ marginTop: 24 }}>
+              <Title>Collaborator</Title>
+              <Text style={{ marginTop: 16, minHeight: 156 }}>
+                Requires an invitation from our community. Get a reserved desk** and access to new products as they are released.
+              </Text>
+              <H3 style={{ marginTop: 24 }}>
                 $399 USD<span className={styles.subtle}>/mo</span>
-              </H2>
+              </H3>
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
               </Button>
-              <PFixed style={{ minHeight: 48 }}>
+              <Text style={{ marginTop: 16, minHeight: 48 }}>
                 All the benefits of the <strong>"Professional"</strong>, and:
-              </PFixed>
+              </Text>
               <div>
                 <Item>30,000 additional credits deposited every month (45,000 in total).</Item>
                 <Item>Send credits to other users.</Item>
@@ -125,19 +129,19 @@ export default function DemoBentoLayout(props) {
           </div>
           <div className={styles.column}>
             <div className={styles.content}>
-              <H4Fixed>Partner</H4Fixed>
-              <PFixed style={{ minHeight: 156 }}>
+              <Title>Partner</Title>
+              <Text style={{ marginTop: 16, minHeight: 156 }}>
                 Want to work with us in our collaboration space? Apply to get reserved space for your entire team and access to everything we have to offer.
-              </PFixed>
-              <H2 style={{ opacity: 0, marginTop: 24, visibility: 'hidden' }}>
+              </Text>
+              <H3 style={{ opacity: 0, marginTop: 24, visibility: 'hidden' }}>
                 $X USD<span className={styles.subtle}>/mo</span>
-              </H2>
+              </H3>
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
               </Button>
-              <PFixed style={{ minHeight: 48 }}>
+              <Text style={{ marginTop: 16, minHeight: 48 }}>
                 All the benefits of <strong>"Collaborator"</strong>, and:
-              </PFixed>
+              </Text>
               <div>
                 <Item>Desks and collaborative team space***.</Item>
                 <Item>Reservable event space (2,800 sqft) in Seattle, WA.</Item>
@@ -149,7 +153,7 @@ export default function DemoBentoLayout(props) {
       <div className={styles.row}>
         <div className={styles.subRow}>
           <div className={styles.subRowContent}>
-            <PFixed>
+            <Text style={{ marginTop: 16 }}>
               <i>
                 <strong>* Files</strong> — By uploading data through our service, you consent to our{' '}
                 <a href="#" className={styles.link}>
@@ -166,27 +170,27 @@ export default function DemoBentoLayout(props) {
                 . Our API enforces a strict file size limit of 100MB to prevent misuse of our services. However, we may consider increasing this limit once we have a clearer
                 understanding of your use case. Reach out to us if you wish to discuss.
               </i>
-            </PFixed>
-            <PFixed>
+            </Text>
+            <Text style={{ marginTop: 16 }}>
               <i>
                 <strong>** Reserved desks</strong> — Our office space offers a mix of reserved and open desks. The reserved desks are allocated on a first-come, first-served basis.
                 Should we be unable to assign you a desk immediately, you will be placed on a waitlist and informed as soon as one becomes available. Please note that all desk
                 assignments are subject to availability, regardless of application status.
               </i>
-            </PFixed>
-            <PFixed>
+            </Text>
+            <Text style={{ marginTop: 16 }}>
               <i>
                 <strong>*** Collaborative team space </strong> — Availability for reserved team and startup space is limited. Please note that all spaces are subject to
                 availability, even upon application.
               </i>
-            </PFixed>
+            </Text>
           </div>
         </div>
       </div>
       <div className={styles.hero}>
         <div className={styles.heroContent}>
-          <H3 style={{ marginTop: 48 }}>Contracting</H3>
-          <PFixed>
+          <Title style={{ marginTop: `2rem` }}>Contracting</Title>
+          <Text style={{ marginTop: 16 }}>
             Is your team shortstaffed? Do you need engineers and designers to fill roles on your team immediately?
             <br />
             <br />
@@ -196,7 +200,7 @@ export default function DemoBentoLayout(props) {
             </a>{' '}
             will help you develop, launch, and manage the work. Avoid recruiting an expensive in-house design or development team from scratch. Get projects completed case-by-case,
             or have us embed with you, your team, or your company.
-          </PFixed>
+          </Text>
           <Button style={{ height: 48, marginTop: 24 }} href="https://internet.dev/pricing" target="_blank">
             Learn more
           </Button>

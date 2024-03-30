@@ -10,7 +10,7 @@ import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
 import SignatureBox from '@system/documents/SignatureBox';
 
-import { H1, H2, H3, H4, P } from '@system/typography';
+import { H3, H4, P, Title, Text } from '@system/typography';
 
 function ExampleSOW(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
@@ -68,14 +68,14 @@ function ExampleSOW(props) {
     >
       <InvoiceLayout>
         <IntDev height="32px" style={{ marginTop: 88 }} />
-        <H3 style={{ marginTop: 16 }}>
+        <H4 style={{ marginTop: 16 }}>
           {supplier.name}
           <br />
           Statement of Work (SOW) (USA)
-        </H3>
-        <P style={{ marginTop: 88 }}>
+        </H4>
+        <Text style={{ marginTop: 88 }}>
           This Statement of Work (“SOW”) is between {supplier.name} (“{supplier.shorthand}”) and the client listed below (“Client”).
-        </P>
+        </Text>
 
         <section className={styles.row} style={{ marginTop: 24 }}>
           <section className={Utilities.classNames(styles.column, styles.shaded)}>1. Client</section>
@@ -362,8 +362,8 @@ function ExampleSOW(props) {
           </section>
         </section>
 
-        <H4 style={{ marginTop: 48 }}>Notice</H4>
-        <P>
+        <Title style={{ marginTop: 48 }}>Notice</Title>
+        <Text style={{ marginTop: 16 }}>
           If you are signing on behalf of your company, you represent and warrant that you:
           <br />
           <br />1 ➝ You have full legal authority to bind your company (“{client.name}”) to these terms and conditions
@@ -374,22 +374,22 @@ function ExampleSOW(props) {
           <br />
           <br />
           If you do not have legal authority to bind your company (“{client.name}”), do not sign the signature box below.
-        </P>
+        </Text>
 
         <SignatureBox style={{ marginTop: 64 }} signer={`${supplier.name} (“${supplier.shorthand}”)`} name={supplier.signer} title={supplier.title} date="" />
         <SignatureBox style={{ marginTop: 24 }} signer={`Client`} name={client.signer} title={client.title} date="" />
 
-        <P style={{ opacity: 0.4, marginTop: 88 }}>
+        <Text style={{ marginTop: 88, opacity: 0.4 }}>
           We will provide the payment details, including bank information and any additional necessary information, in a separate communication. Please review the invoice at your
           earliest convenience.
-        </P>
-        <P style={{ opacity: 0.4 }}>If you have any questions or require further details regarding the payment, please feel free to contact us.</P>
-        <P style={{ opacity: 0.4 }}>
+        </Text>
+        <Text style={{ marginTop: 16, opacity: 0.4 }}>If you have any questions or require further details regarding the payment, please feel free to contact us.</Text>
+        <Text style={{ marginTop: 16, opacity: 0.4 }}>
           Please be advised that this invoice contains confidential information intended only for the authorized recipient. If you are not the intended recipient, you should not
           disseminate, distribute, or copy this document. We kindly request that you notify the sender immediately by e-mail if you have received this invoice by mistake and delete
           this e-mail from your system. Your cooperation in maintaining the confidentiality of this communication is greatly appreciated.
-        </P>
-        <P style={{ opacity: 0.4 }}>Thank you!</P>
+        </Text>
+        <Text style={{ marginTop: 16, opacity: 0.4 }}>Thank you!</Text>
       </InvoiceLayout>
     </Page>
   );

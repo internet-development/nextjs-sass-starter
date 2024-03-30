@@ -15,7 +15,7 @@ import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
-import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
 function ExampleAuthentication(props) {
   const [currentError, setError] = React.useState<string | null>(null);
@@ -168,7 +168,7 @@ function ExampleAuthentication(props) {
 
         {currentUser ? (
           <>
-            <FormHeading style={{ marginTop: 64 }}>Your user data</FormHeading>
+            <FormSubHeading style={{ marginTop: 64 }}>Your user data</FormSubHeading>
             <FormParagraph>
               You can grab your API key from the API response below. If you're modifying this template, you will need to implement your own session management if you want to
               provide a better user experience.

@@ -74,7 +74,7 @@
 }
 
 .byline {
-  font-size: 10px;
+  font-size: var(--type-scale-fixed-label);
   letter-spacing: 0.1px;
   font-weight: 400;
   text-transform: uppercase;
@@ -83,11 +83,9 @@
 }
 
 .body {
-  font-size: 1.15rem;
-  line-height: 1.5;
-  margin-top: 16px;
-  font-family:
-    Georgia,
-    Times New Roman;
+  font-size: var(--type-scale-6);
+  line-height: 1.6;
+  margin-top: 1rem;
+  font-family: var(--font-family-serif);
   max-width: 768px;
 }

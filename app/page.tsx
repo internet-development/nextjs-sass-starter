@@ -107,6 +107,9 @@ export default async function Page(props) {
         <ListItem href="/examples/statement-of-work" isAuth>
           Statement of Work management
         </ListItem>
+        <ListItem href="/examples/system/typography" isWIP>
+          System ➝ typography
+        </ListItem>
         <ListItem href="/examples/threads">Threads</ListItem>
         <ListItem href="/examples/windows">Window management</ListItem>
         <ListItem href="/examples/windows-connected" isWIP>

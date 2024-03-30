@@ -15,7 +15,7 @@ function ExampleWindowsConnected(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
 
-  const customParagraphStyle = { fontFamily: 'Georgia, Times New Roman', fontSize: '16px', lineHeight: '1.5', margin: 24 };
+  const customParagraphStyle = { fontFamily: 'var(--font-family-serif)', fontSize: '16px', lineHeight: '1.5', margin: 24 };
 
   return (
     <Page

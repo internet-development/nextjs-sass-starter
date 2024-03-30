@@ -4,14 +4,14 @@ import * as React from 'react';
 
 import Content from '@system/layouts/Content';
 
-import { H2, H2Sub } from '@system/typography';
+import { H2, Lead } from '@system/typography';
 
 export default function DemoBentoLayout(props) {
   return (
     <div className={styles.root}>
       <Content>
         <H2>DemoBentoLayout</H2>
-        <H2Sub>2 or 4 row sections that can be resized and viewed in any viewport.</H2Sub>
+        <Lead style={{ marginTop: `1rem` }}>2 or 4 row sections that can be resized and viewed in any viewport.</Lead>
       </Content>
 
       <div className={styles.bento}>

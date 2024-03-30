@@ -12,7 +12,7 @@ import Table from '@system/Table';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
-import { H2, P, SubText, UnitLabel } from '@system/typography';
+import { H1, Text, SubText, UnitLabel } from '@system/typography';
 import { FormHeading, FormParagraph } from '@system/typography/forms';
 
 function ExampleStock(props) {
@@ -69,12 +69,12 @@ function ExampleStock(props) {
         />
         {isDataHydrated ? (
           <>
-            <P style={{ marginTop: 24 }}>
+            <Text style={{ marginTop: `1rem` }}>
               {stock.companyName} ({props.symbol})
-            </P>
-            <H2 style={{ marginTop: 16 }}>
+            </Text>
+            <H1 style={{ marginTop: `1rem` }}>
               {stock.iexRealtimePrice} <UnitLabel>USD</UnitLabel>
-            </H2>
+            </H1>
             <SubText style={{ marginTop: 8 }}>Last updated at {stock.latestTime}</SubText>
             <SubText style={{ marginTop: 4 }}>
               {props.symbol} is trading at {stock.peRatio} times earnings.

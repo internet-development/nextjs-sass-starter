@@ -4,25 +4,27 @@ import * as React from 'react';
 
 import Button from '@system/Button';
 
-import { H1, H1Sub, H3, H3Sub, P, SubTitle } from '@system/typography';
+import { H1, H2, Lead, Text } from '@system/typography';
 
 export default function DemoPricing(props) {
   return (
-    <div className={styles.root}>
+    <div className={styles.root} style={props.style}>
       <div className={styles.container}>
         <div className={styles.hero}>
-          <H1>Pay to use our production APIs</H1>
-          <H1Sub>Even though this is just a template, You can subscribe to the premium service (if it is enabled). You might even get a sneak peak to an API we are testing.</H1Sub>
+          <H2>Pay to use our production APIs</H2>
+          <Lead style={{ marginTop: `var(--type-scale-5)` }}>
+            Even though this is just a template, You can subscribe to the premium service (if it is enabled). You might even get a sneak peak to an API we are testing.
+          </Lead>
         </div>
         <div className={styles.row}>
           <div className={styles.column}>
             <div className={styles.content}>
               <div className={styles.top}>
-                <SubTitle>Basic Usage</SubTitle>
+                <Text>Basic Usage</Text>
               </div>
               <div className={styles.bottom}>
                 <H1>Free</H1>
-                <H3Sub style={{ marginBottom: 24 }}>Forever</H3Sub>
+                <Text style={{ marginBottom: 24 }}>Forever</Text>
                 <Button style={{ minHeight: 48 }} href="/examples/authentication">
                   Sign up
                 </Button>
@@ -36,11 +38,11 @@ export default function DemoPricing(props) {
           <div className={styles.column}>
             <div className={styles.content}>
               <div className={styles.top}>
-                <SubTitle>Paid</SubTitle>
+                <Text>Paid</Text>
               </div>
               <div className={styles.bottom}>
                 <H1>$8.99</H1>
-                <H3Sub style={{ marginBottom: 24 }}>Per month</H3Sub>
+                <Text style={{ marginBottom: 24 }}>Per month</Text>
                 <Button style={{ minHeight: 48 }}>Coming soon</Button>
                 <ul className={styles.list}>
                   <li className={styles.listItem}>15,000 credits renewed monthly</li>
@@ -52,11 +54,11 @@ export default function DemoPricing(props) {
           <div className={styles.column}>
             <div className={styles.content}>
               <div className={styles.top}>
-                <SubTitle>Paid (discounted)</SubTitle>
+                <Text>Paid (discounted)</Text>
               </div>
               <div className={styles.bottom}>
                 <H1>$100</H1>
-                <H3Sub style={{ marginBottom: 24 }}>Per year</H3Sub>
+                <Text style={{ marginBottom: 24 }}>Per year</Text>
                 <Button style={{ minHeight: 48 }}>Coming soon</Button>
                 <ul className={styles.list}>
                   <li className={styles.listItem}>180,000 credits renewed annually</li>

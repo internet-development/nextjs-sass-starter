@@ -1,4 +1,4 @@
-import styles from '@system/typography/Typography.module.scss';
+import styles from '@system/typography/FormTypography.module.scss';
 
 export function FormHeading(props) {
   return <h1 className={styles.formHeading} {...props} />;
@@ -9,7 +9,7 @@ export function FormSubHeading(props) {
 }
 
 export function FormParagraph(props) {
-  return <div className={styles.formCaption} {...props} />;
+  return <div className={styles.formParagraph} {...props} />;
 }
 
 export function InputLabel(props) {
