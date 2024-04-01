@@ -98,6 +98,7 @@ export default async function Page(props) {
         <ListItem href="/examples/invoices" isAuth>
           Invoice management
         </ListItem>
+        <ListItem href="/examples/job-posting">Job posting</ListItem>
         <ListItem href="/examples/services" isAuth>
           Purchase services
         </ListItem>

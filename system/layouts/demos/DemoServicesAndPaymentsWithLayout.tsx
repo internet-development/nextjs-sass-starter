@@ -3,21 +3,10 @@ import styles from '@system/layouts/demos/DemoServicesAndPaymentsWithLayout.modu
 import * as React from 'react';
 
 import Button from '@system/Button';
-import Checkmark from '@system/svg/Checkmark';
 import Content from '@system/layouts/Content';
+import CheckmarkItem from '@system/documents/CheckmarkItem';
 
 import { H2, H3, H4, SubLead, Title, Text } from '@system/typography';
-
-const Item = (props) => {
-  return (
-    <div className={styles.item}>
-      <span className={styles.left}>
-        <Checkmark height="16px" />
-      </span>
-      <span className={styles.right}>{props.children}</span>
-    </div>
-  );
-};
 
 export default function DemoBentoLayout(props) {
   return (
@@ -57,9 +46,9 @@ export default function DemoBentoLayout(props) {
               )}
               <Text style={{ opacity: 0, visibility: 'hidden', marginTop: 16, minheight: 52 }}>An invisible placeholder. Words that will occupy space.</Text>
               <div>
-                <Item>Generate up to 5 documents using our templates.</Item>
-                <Item>Create up to 3 surveys.</Item>
-                <Item>Access to all free APIs, products, and games.</Item>
+                <CheckmarkItem>Generate up to 5 documents using our templates.</CheckmarkItem>
+                <CheckmarkItem>Create up to 3 surveys.</CheckmarkItem>
+                <CheckmarkItem>Access to all free APIs, products, and games.</CheckmarkItem>
               </div>
             </div>
           </div>
@@ -95,13 +84,13 @@ export default function DemoBentoLayout(props) {
                 All the benefits of the <strong>"Free"</strong>, and:
               </Text>
               <div>
-                <Item>15,000 credits deposited every month.</Item>
-                <Item>Free personal blog on TXT.DEV.</Item>
-                <Item>Access to all new products and games.</Item>
-                <Item>No limits.</Item>
-                <Item>Create any additional document for 100 credits each.</Item>
-                <Item>Create any additional survey for 100 credits each.</Item>
-                <Item>Upload any file٭ for 1000 credits each.</Item>
+                <CheckmarkItem>15,000 credits deposited every month.</CheckmarkItem>
+                <CheckmarkItem>Free personal blog on TXT.DEV.</CheckmarkItem>
+                <CheckmarkItem>Access to all new products and games.</CheckmarkItem>
+                <CheckmarkItem>No limits.</CheckmarkItem>
+                <CheckmarkItem>Create any additional document for 100 credits each.</CheckmarkItem>
+                <CheckmarkItem>Create any additional survey for 100 credits each.</CheckmarkItem>
+                <CheckmarkItem>Upload any file٭ for 1000 credits each.</CheckmarkItem>
               </div>
             </div>
           </div>
@@ -121,9 +110,9 @@ export default function DemoBentoLayout(props) {
                 All the benefits of the <strong>"Professional"</strong>, and:
               </Text>
               <div>
-                <Item>30,000 additional credits deposited every month (45,000 in total).</Item>
-                <Item>Send credits to other users.</Item>
-                <Item>A reserved desk٭٭ at the collaborative space in Seattle, WA.</Item>
+                <CheckmarkItem>30,000 additional credits deposited every month (45,000 in total).</CheckmarkItem>
+                <CheckmarkItem>Send credits to other users.</CheckmarkItem>
+                <CheckmarkItem>A reserved desk٭٭ at the collaborative space in Seattle, WA.</CheckmarkItem>
               </div>
             </div>
           </div>
@@ -143,8 +132,8 @@ export default function DemoBentoLayout(props) {
                 All the benefits of <strong>"Collaborator"</strong>, and:
               </Text>
               <div>
-                <Item>Desks and collaborative team space٭٭٭.</Item>
-                <Item>Reservable event space (2,800 sqft) in Seattle, WA.</Item>
+                <CheckmarkItem>Desks and collaborative team space٭٭٭.</CheckmarkItem>
+                <CheckmarkItem>Reservable event space (2,800 sqft) in Seattle, WA.</CheckmarkItem>
               </div>
             </div>
           </div>
