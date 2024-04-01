@@ -5,7 +5,7 @@ import * as Utilities from '@common/utilities';
 import CheckmarkItem from '@system/documents/CheckmarkItem';
 import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import KeyHeader from '@system/KeyHeader';
+import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
@@ -23,12 +23,11 @@ function ExampleJobPosting(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/job-posting"
     >
-      <KeyHeader
+      <Navigation
         isModalVisible={!!currentModal}
-        onInputChange={setKey}
+        onHandleThemeChange={Utilities.onHandleThemeChange}
         onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
+        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
       />
       <ThinAppLayout>
         <Title>Full-time, North America</Title>
