@@ -299,7 +299,7 @@ function ExampleSOW(props) {
         {supplier.amount ? (
           <section className={styles.row} style={{ marginTop: 24 }}>
             <section className={Utilities.classNames(styles.column, styles.shaded)}>5. Payment</section>
-            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees:</section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees</section>
             <section className={styles.remainder}>
               After {supplier.name} (“{supplier.shorthand}”) accepts the completed Services and Deliverables, Client will pay {supplier.shorthand} a flat fee of{' '}
               <strong>
@@ -313,7 +313,7 @@ function ExampleSOW(props) {
         {supplier.amount ? (
           <section className={styles.row}>
             <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
-            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.2. Maximum Total Cost:</section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.2. Maximum Total Cost</section>
             <section className={styles.remainder}>
               Under this SOW, the total aggregate invoiced amount for the Services and Deliverables (including expenses <strong>[but excluding Taxes]</strong>) will not exceed the
               following Maximum Total Cost:{' '}
@@ -328,7 +328,7 @@ function ExampleSOW(props) {
         {supplier.amount ? (
           <section className={styles.row}>
             <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
-            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.3. Invoices: </section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.3. Invoices </section>
             <section className={styles.remainder}>
               <strong>[{supplier.shorthand} will invoice Client for Services and Deliverables after Client’s acceptance.]</strong>
             </section>
@@ -338,7 +338,7 @@ function ExampleSOW(props) {
         {supplier.amount ? (
           <section className={styles.row}>
             <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
-            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Expenses:</section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.4. Expenses</section>
             <section className={styles.remainder}>
               <strong>[{supplier.shorthand}’s expenses are included in the fees in SOW Section 5.1 (Fees). No other expenses will be reimbursed.]</strong>
             </section>
