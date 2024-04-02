@@ -27,8 +27,21 @@ function ExampleEmptyGridTemplate(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
         value={key}
       />
-      <GridLayout>
-        <article>Hello World</article>
+      <GridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <article
+          style={{
+            background: `var(--color-background)`,
+            borderRadius: `3px`,
+            boxShadow: `var(--theme-modal)`,
+            fontSize: `3rem`,
+            fontWeight: 600,
+            maxWidth: 320,
+            padding: `8px 16px 8px 16px`,
+            textAlign: 'center',
+          }}
+        >
+          Hello World
+        </article>
       </GridLayout>
       <GlobalModalManager
         currentModal={currentModal}
