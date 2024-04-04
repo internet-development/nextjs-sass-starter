@@ -65,16 +65,20 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script> */}
-      <div>Showcase — coming soon!</div>
-      <Showcase />
-
+      <div style={{ lineHeight: '1.6', maxWidth: 768 }}>Showcase — Take a look at what we have done with this template</div>
       <div>
-        Explore the array of templates offered by{' '}
+        <ListItem href="https://txt.dev">txt.dev</ListItem>
+        <ListItem href="https://internet.dev/team">internet.dev</ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter">nextjs-sass-starter source code</ListItem>
+      </div>
+
+      <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
+        Explore — We have many many examples, components, and templates for{' '}
         <a href="https://github.com/internet-development/nextjs-sass-starter" target="_blank">
           nextjs-sass-starter
         </a>
-        , designed to kick-start your upcoming projects. These templates serve as an ideal foundation, and some even feature real APIs that you can access and integrate if they
-        meet your project's needs.
+        , they are for kick-starting your upcoming projects. These serve as an ideal foundation, and feature real production APIs that you can integrate if they meet your project's
+        needs.
       </div>
       <div>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
@@ -117,7 +121,7 @@ export default async function Page(props) {
           Windows connected, diagram
         </ListItem>
       </div>
-      <div style={{ marginTop: 88 }}>
+      <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
         Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?
       </div>
       <div style={{ paddingBottom: 128 }}>
