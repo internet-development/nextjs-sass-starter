@@ -83,6 +83,7 @@ export default async function Page(props) {
       <div>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/authentication-google">Authentication with Google to API key</ListItem>
+        <ListItem href="/examples/components-application-site">Components ➝ application overview, footer</ListItem>
         <ListItem href="/examples">Components ➝ navigation, hero section</ListItem>
         <ListItem href="/examples/components-post">Components ➝ navigation, blog post, footer</ListItem>
         <ListItem href="/examples/components-forms">Components ➝ navigation, form elements</ListItem>

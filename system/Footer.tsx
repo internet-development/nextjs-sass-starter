@@ -9,7 +9,7 @@ import { H4, P } from '@system/typography';
 
 export default function Footer(props) {
   return (
-    <footer className={styles.root}>
+    <footer className={styles.root} style={props.style}>
       <div className={styles.row}>
         <div className={styles.column}>
           <div className={styles.form}>
