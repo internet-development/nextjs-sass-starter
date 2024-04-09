@@ -27,6 +27,7 @@ function ExampleStock(props) {
           ...item,
           date: new Date(item.priceDate),
           close: +item.close,
+          value: +item.close,
         }))
       : null;
 

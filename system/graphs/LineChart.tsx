@@ -27,7 +27,7 @@ const LineChart = (props) => {
 
       const yScale = d3
         .scaleLinear()
-        .domain([0, d3.max(props.data, (d) => d.close)])
+        .domain([0, d3.max(props.data, (d) => d.value)])
         .range([height, 0]);
 
       const defs = svg.append('defs');
@@ -66,14 +66,14 @@ const LineChart = (props) => {
           d3
             .line()
             .x((d) => xScale(new Date(d.date)))
-            .y((d) => yScale(d.close))
+            .y((d) => yScale(d.value))
         );
 
       const area = d3
         .area()
         .x((d) => xScale(new Date(d.date)))
         .y0(height)
-        .y1((d) => yScale(d.close));
+        .y1((d) => yScale(d.value));
 
       g.append('path').datum(props.data).attr('fill', 'url(#line-gradient)').attr('d', area);
 

@@ -55,51 +55,51 @@ const TABLE_DATA = [
 
 const EXAMPLE_DUMMY_DATA = [
   {
-    close: 20,
+    value: 20,
     date: '2023-1-1',
   },
   {
-    close: 30,
+    value: 30,
     date: '2023-2-1',
   },
   {
-    close: 45,
+    value: 45,
     date: '2023-3-1',
   },
   {
-    close: 70,
+    value: 70,
     date: '2023-4-1',
   },
   {
-    close: 100,
+    value: 100,
     date: '2023-5-1',
   },
   {
-    close: 135,
+    value: 135,
     date: '2023-6-1',
   },
   {
-    close: 145,
+    value: 145,
     date: '2023-7-1',
   },
   {
-    close: 135,
+    value: 135,
     date: '2023-8-1',
   },
   {
-    close: 100,
+    value: 100,
     date: '2023-9-1',
   },
   {
-    close: 70,
+    value: 70,
     date: '2023-10-1',
   },
   {
-    close: 45,
+    value: 45,
     date: '2023-11-1',
   },
   {
-    close: 30,
+    value: 30,
     date: '2023-12-1',
   },
 ];
