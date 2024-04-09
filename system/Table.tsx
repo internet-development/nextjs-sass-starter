@@ -42,7 +42,7 @@ export default function Table(props) {
           const value = props.value ? !!props.value.includes(`${each.id}`) : false;
           const backgroundColor = value ? `var(--color-background-2)` : undefined;
           return (
-            <div className={styles.row} key={`index-${each.id}`} role="row">
+            <div className={styles.row} key={`index-${each.id ? each.id : index}`} role="row">
               {props.isInteractive ? (
                 <div className={styles.column} style={{ backgroundColor }}>
                   <Checkbox
