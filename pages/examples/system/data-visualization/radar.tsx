@@ -94,9 +94,9 @@ function ExampleSystemDataVisualizationRadar(props) {
   };
   return (
     <Page
-      title="Data Visualization: Radar Chart"
+      title="nextjs-sass-starter: system: data visualization: radar"
       description="Explore the capabilities of radar charts in data visualization through this interactive example."
-      url="https://example.com/system/data-visualization/radar"
+      url="https://wireframes.internet.dev/examples/system/data-visualization/radar"
     >
       <Navigation
         isModalVisible={!!currentModal}

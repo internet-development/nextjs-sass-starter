@@ -53,9 +53,25 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { x: 10, y: 20 },
-  { x: 15, y: 10 },
-  { x: 20, y: 15 },
+  { carat: 0.21, price: 326 },
+  { carat: 0.23, price: 327 },
+  { carat: 0.29, price: 334 },
+  { carat: 0.31, price: 335 },
+  { carat: 0.24, price: 336 },
+  { carat: 0.24, price: 336 },
+  { carat: 0.26, price: 337 },
+  { carat: 0.22, price: 337 },
+  { carat: 0.23, price: 338 },
+  { carat: 0.3, price: 339 },
+  { carat: 0.23, price: 340 },
+  { carat: 0.22, price: 342 },
+  { carat: 0.31, price: 344 },
+  { carat: 0.2, price: 345 },
+  { carat: 0.32, price: 345 },
+  { carat: 0.3, price: 348 },
+  { carat: 0.3, price: 351 },
+  { carat: 0.3, price: 351 },
+  { carat: 0.3, price: 351 },
 ];
 
 function ExampleSystemDataVisualizationHexbin(props) {
@@ -70,7 +86,7 @@ function ExampleSystemDataVisualizationHexbin(props) {
     <Page
       title="nextjs-sass-starter: system: data visualization: hexbin"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/system/data-visualization"
+      url="https://wireframes.internet.dev/examples/system/data-visualization/hexbin"
     >
       <Navigation
         isModalVisible={!!currentModal}
@@ -86,7 +102,7 @@ function ExampleSystemDataVisualizationHexbin(props) {
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <HexbinGraph data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />
+          <HexbinGraph data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 24 }} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>

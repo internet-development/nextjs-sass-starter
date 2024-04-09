@@ -53,10 +53,10 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { date: '2023-01-01', open: 100, high: 110, low: 90, close: 105 },
-  { date: '2023-02-01', open: 105, high: 120, low: 100, close: 115 },
-  { date: '2023-03-01', open: 115, high: 125, low: 105, close: 120 },
-  { date: '2023-04-01', open: 120, high: 130, low: 110, close: 125 },
+  { date: 'January', open: 100, high: 110, low: 90, close: 105 },
+  { date: 'February', open: 105, high: 120, low: 100, close: 115 },
+  { date: 'March', open: 115, high: 125, low: 105, close: 120 },
+  { date: 'April', open: 120, high: 130, low: 110, close: 125 },
 ]; // Example data for the candlestick chart
 
 function ExampleSystemDataVisualizationCandlestick(props) {
@@ -71,7 +71,7 @@ function ExampleSystemDataVisualizationCandlestick(props) {
     <Page
       title="nextjs-sass-starter: system: data visualization: candlestick"
       description="Explore our design system with a candlestick chart example. This template is available on GitHub."
-      url="https://wireframes.internet.dev/examples/system/data-visualization"
+      url="https://wireframes.internet.dev/examples/system/data-visualization/candlestick"
     >
       <Navigation
         isModalVisible={!!currentModal}

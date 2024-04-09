@@ -71,7 +71,7 @@ function ExampleSystemDataVisualizationMatrix(props) {
     <Page
       title="nextjs-sass-starter: system: data visualization: matrix"
       description="Explore the intricacies of matrix data visualization within our design system. This example serves as a guide for implementing matrix charts effectively."
-      url="https://wireframes.internet.dev/examples/system/data-visualization"
+      url="https://wireframes.internet.dev/examples/system/data-visualization/matrix"
     >
       <Navigation
         isModalVisible={!!currentModal}

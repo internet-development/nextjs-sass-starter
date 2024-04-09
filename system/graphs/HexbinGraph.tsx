@@ -6,41 +6,80 @@ const HexbinGraph = (props) => {
   const d3Container = useRef<SVGSVGElement | null>(null);
   const [containerWidth, setContainerWidth] = useState<number>(0);
 
-  const drawChart = (width: number) => {
+  const drawChart = (width) => {
     if (!d3Container.current || width <= 0 || !props.data || props.data.length === 0) return;
 
     if (props.data && d3Container && d3Container.current && width > 0) {
         const svg = d3.select(d3Container.current);
         svg.selectAll('*').remove();
 
-        const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-        const height = +svg.attr('height')! - margin.top - margin.bottom;
-        const drawWidth = width - margin.left - margin.right;
+        const w = width;
+        const h = w;
+        const marginTop = 20;
+        const marginRight = 20;
+        const marginBottom = 30;
+        const marginLeft = 40;
 
-        const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+        const x = d3.scaleLog()
+            .domain(d3.extent(props.data, d => d["carat"]))
+            .range([marginLeft, width - marginRight]);
 
-        const xScale = d3.scaleLinear()
-        .domain(d3.extent(props.data, (d) => d.x) as [number, number])
-        .range([0, drawWidth]);
+        const y = d3.scaleLog()
+            .domain(d3.extent(props.data, d => d["price"]))
+            .rangeRound([h - marginBottom, marginTop]);
 
-        const yScale = d3.scaleLinear()
-        .domain(d3.extent(props.data, (d) => d.y) as [number, number])
-        .range([height, 0]);
-
+        const radius = 20;
         const hexbinGenerator = hexbin()
-        .radius(20)
-        .x((d: any) => xScale(d.x))
-        .y((d: any) => yScale(d.y))
-        .extent([[0, 0], [drawWidth, height]]);
+            .x(d => x(d["carat"]))
+            .y(d => y(d["price"]))
+            .radius(radius * width / 700)
+            .extent([[marginLeft, marginTop], [width - marginRight, h - marginBottom]]);
 
-        g.append('g')
-        .selectAll('.hexagon')
-        .data(hexbinGenerator(props.data))
-        .enter().append('path')
-        .attr('class', 'hexagon')
-        .attr('d', hexbinGenerator.hexagon())
-        .attr('transform', (d) => `translate(${d.x},${d.y})`)
-        .attr('fill', (d) => d3.scaleSequential(d3.interpolateViridis).domain([0, 10])(d.length));
+        const bins = hexbinGenerator(props.data);
+
+        const color = d3.scaleSequential(d3.interpolateBuPu)
+            .domain([0, d3.max(bins, d => d.length) / 2]);
+
+        const extendedXDomain = d3.extent(props.data, d => d["carat"]).map((d, i) => i === 0 ? d * 0.95 : d * 1.05);
+        const extendedYDomain = d3.extent(props.data, d => d["price"]).map((d, i) => i === 0 ? d * 0.95 : d * 1.05);
+
+        x.domain(extendedXDomain);
+        y.domain(extendedYDomain);
+
+        svg.append("g")
+            .attr("transform", `translate(0,${h - marginBottom})`)
+            .call(d3.axisBottom(x).ticks(width / 50, ""))
+            .call(g => g.select(".domain").remove())
+            .call(g => g.append("text")
+                .attr("x", width - marginRight)
+                .attr("y", -4)
+                .attr("fill", "currentColor")
+                .attr("font-weight", "bold")
+                .attr("text-anchor", "end")
+                .text("Carats"));
+
+        svg.append("g")
+            .attr("transform", `translate(${marginLeft},0)`)
+            .call(d3.axisLeft(y).ticks(h / 50, ""))
+            .call(g => g.select(".domain").remove())
+            .call(g => g.append("text")
+                .attr("x", 4)
+                .attr("y", marginTop)
+                .attr("dy", ".71em")
+                .attr("fill", "currentColor")
+                .attr("font-weight", "bold")
+                .attr("text-anchor", "start")
+                .text("$ Price"));
+
+        svg.append("g")
+            .attr("fill", "#ddd")
+            .attr("stroke", "black")
+            .selectAll("path")
+            .data(bins)
+            .enter().append("path")
+            .attr("transform", d => `translate(${d.x},${d.y})`)
+            .attr("d", hexbinGenerator.hexagon())
+            .attr("fill", bin => color(bin.length));
     }
   };
 
@@ -66,7 +105,7 @@ const HexbinGraph = (props) => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return <svg width="100%" height="188" ref={d3Container} style={props.style} />;
+  return <svg width="500" height="500" ref={d3Container} style={props.style} />;
 };
 
 export default HexbinGraph;
