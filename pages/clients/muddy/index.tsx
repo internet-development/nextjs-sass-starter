@@ -50,17 +50,37 @@ const Window = (props) => {
   );
 };
 
+const Checkmark = (props) => {
+  return (
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+};
+
+const Loading = (props) => {
+  return (
+    <div className={styles.loader}>
+      <div className={styles.loaderStatus}>
+        <Checkmark height="16px" />
+      </div>
+      <div className={styles.loaderText}>{props.children}</div>
+    </div>
+  );
+};
+
 function ExampleClientsMuddy(props) {
   return (
     <Page title="nextjs-sass-starter: clients: muddy" description="for Muddy" url="https://wireframes.internet.dev/clients/muddy">
       <AnyTextHeader>Clients / Muddy</AnyTextHeader>
       <Section
         title="Use apps with your messages"
-        description="We want the viewer to know that apps open inline with messages and load instantly. You can scroll through apps just like messages. Way faster than clicking on a link and opening a tab. iFrames have pointer events none so you can not interact."
+        description="We want the viewer to know that apps open inline with messages and load instantly. You can scroll through apps just like messages. Way faster than clicking on a link and opening a tab. iFrames have pointer-events:none so you can not interact."
       >
         <Message name="Lady Jessica Atreides" src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/30f8b390-a0fc-43d3-ad07-6b3efe93e9dc.png">
-          I must not fear. Fear is the mind-killer. Fear is the little death that brings obliteration. I will face my fear and I will permit it to pass over me and through me. And
-          when it has gone past... I will turn the inner eye to see its path. Where the fear has gone there will be nothing. Only I will remain.
+          I must not fear. Fear is the mind-killer. Fear is the little death that brings obliteration.{' '}
+          <strong>I will face my fear and I will permit it to pass over me and through me.</strong> And when it has gone past... I will turn the inner eye to see its path. Where
+          the fear has gone there will be nothing. Only I will remain.
           <Window title="https://cargo.site/">
             <iframe src="https://cargo.site/" width="100%" height="280" frameBorder="0"></iframe>
           </Window>
@@ -87,17 +107,21 @@ function ExampleClientsMuddy(props) {
       </Section>
       <Section
         title="Always available support"
-        description="MuddyAI has all of my team's context and can answer questions with it, it can also browse the web and look up the latest information, and it can send those websites back to me. iFrames have pointer events none so you can not interact."
+        description="MuddyAI has all of my team's context and can answer questions with it, it can also browse the web and look up the latest information, and it can send those websites back to me. iFrames have pointer-events:none so you can not interact."
       >
         <Message name="Glossu Rabban" src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/55d5b7ba-9b4a-4be5-916e-59be60991dba.png">
-          I NEED A BETTER FONT. I NEED IT NOW.
+          I NEED A BETTER FONT. I NEED IT NOW. ARRAKIS IS MINE.
         </Message>
 
         <Message name="Muddy Buddy" src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/74ce6c3f-4cc2-4b7d-9fee-62226e8cb32f.jpg">
-          Okay Glossau Rabban, here is a Font from Kilm Type Foundry named Söhne. Söhne is the memory of Akzidenz-Grotesk framed through the reality of Helvetica. It captures the
-          analogue materiality of “Standard Medium” used in Unimark’s legendary wayfinding system for the NYC Subway.
-          <Window title="https://typographica.org/typeface-reviews/sohne/">
-            <iframe src="https://typographica.org/typeface-reviews/sohne/" width="100%" height="280" frameBorder="0"></iframe>
+          <Loading isFinished>Loading high pressure module ...</Loading>
+          <Loading isFinished>Searching the web ...</Loading>
+          <Loading isFinished>Eliminating remaining House Atreides prisoners ...</Loading>
+          <Loading>Preparing to render font ...</Loading>
+          <Loading>Rendering ...</Loading>
+
+          <Window title="https://www.typewolf.com/sohne">
+            <iframe src="https://www.typewolf.com/sohne" width="100%" height="280" frameBorder="0"></iframe>
           </Window>
         </Message>
       </Section>
