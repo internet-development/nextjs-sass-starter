@@ -37,8 +37,7 @@ const ColumnChart = ({ data, style }) => {
       .attr('y', (d) => yScale(d.value))
       .attr('height', (d) => height - yScale(d.value))
       .attr('width', xScale.bandwidth())
-      .attr('fill', '#4e79a7');
-
+      .attr('fill', 'rgba(68, 198, 127, 1)');
   };
 
   useEffect(() => {

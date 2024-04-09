@@ -19,11 +19,11 @@ const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
 const TABLE_DATA = [
   {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
+    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to succinctly convey the main theme or summary of the chart.</SubText>],
   },
 
   {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
+    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text provides additional information or context to help interpret the data presented in the chart.</SubText>],
   },
 
   {
@@ -31,7 +31,7 @@ const TABLE_DATA = [
       ``,
       <Tag>Marks</Tag>,
       <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
+      <SubText style={{ marginTop: 7 }}>Marks represent individual data points on the chart, making the data visually accessible.</SubText>,
     ],
   },
   {
@@ -40,23 +40,22 @@ const TABLE_DATA = [
       <Tag>Graph Lines</Tag>,
       <Tag>False</Tag>,
       <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
+        Graph lines connect data points, helping to highlight trends, patterns, or relationships within the data.
       </SubText>,
     ],
   },
   {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
+    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis provides a scale that quantifies the data, making it easier to understand the magnitude of the values represented.</SubText>],
   },
   {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
+    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>Axis labels offer a description of the data scale, aiding in the interpretation of the chart's data points.</SubText>],
   },
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { label: "Category A", value: 20 },
-  { label: "Category B", value: 50 },
-  { label: "Category C", value: 30 }
+  { label: "Category A", value: 20, color: '#006400' },
+  { label: "Category B", value: 50, color: '#008000' },
+  { label: "Category C", value: 30, color: '#00FF00' }
 ];
 
 function ExampleSystemDataVisualizationPie(props) {
@@ -64,9 +63,10 @@ function ExampleSystemDataVisualizationPie(props) {
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Pie Chart Visualization',
+    description: 'This pie chart provides a visual representation of data distribution across different categories, highlighting the relative sizes of segments within a whole.',
   };
+
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: pie"
@@ -82,14 +82,12 @@ function ExampleSystemDataVisualizationPie(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="pie" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Pie</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          Explore the dynamics of data distribution across different categories with our interactive pie chart visualization. Gain insights into the relative sizes of segments within a whole, facilitating an intuitive understanding of proportions and relationships.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <PieChart data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />
+          <PieChart data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%', marginTop: 24 }} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>

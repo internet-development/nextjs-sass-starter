@@ -14,7 +14,7 @@ const CandlestickChart = ({ data, style }) => {
         svg.selectAll('*').remove();
 
         const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-        const height = 400 - margin.top - margin.bottom;
+        const height = 350 - margin.top - margin.bottom;
         const chartWidth = width - margin.left - margin.right;
 
         const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
@@ -23,7 +23,7 @@ const CandlestickChart = ({ data, style }) => {
         const yScale = d3.scaleLinear().range([height, 0]);
 
         xScale.domain(data.map((d) => d.date));
-        yScale.domain([d3.min(data, (d) => d.low), d3.max(data, (d) => d.high)]);
+        yScale.domain([d3.min(data, (d) => d.low) - 10, d3.max(data, (d) => d.high) + 10]);
 
         g.append('g')
         .attr('transform', `translate(0,${height})`)
@@ -37,14 +37,14 @@ const CandlestickChart = ({ data, style }) => {
         g.append('g').call(d3.axisLeft(yScale));
 
         g.selectAll('.candle')
-        .data(data)
-        .enter()
-        .append('rect')
-        .attr('x', (d) => xScale(d.date))
-        .attr('y', (d) => yScale(Math.max(d.open, d.close)))
-        .attr('height', (d) => yScale(Math.min(d.open, d.close)) - yScale(Math.max(d.open, d.close)))
-        .attr('width', xScale.bandwidth())
-        .attr('fill', (d) => (d.open > d.close ? 'red' : 'green'));
+          .data(data)
+          .enter()
+          .append('rect')
+          .attr('x', (d) => xScale(d.date))
+          .attr('y', (d) => yScale(Math.max(d.open, d.close)))
+          .attr('height', (d) => yScale(Math.min(d.open, d.close)) - yScale(Math.max(d.open, d.close)))
+          .attr('width', xScale.bandwidth())
+          .attr('fill', (d) => (d.open > d.close ? 'red' : 'rgba(68, 198, 127, 1)'));
 
         g.selectAll('.wick')
         .data(data)

@@ -19,37 +19,36 @@ const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
 const TABLE_DATA = [
   {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
+    data: [``, <Tag>Title</Tag>, <Tag>Yes</Tag>, <SubText style={{ marginTop: 7 }}>Specifies the chart's title, providing a brief description of its content. [20px]</SubText>],
   },
 
   {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
+    data: [``, <Tag>Text</Tag>, <Tag>Yes</Tag>, <SubText style={{ marginTop: 7 }}>Adds contextual information or commentary to the chart. [16px]</SubText>],
   },
 
   {
     data: [
       ``,
       <Tag>Marks</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
+      <Tag>No</Tag>,
+      <SubText style={{ marginTop: 7 }}>Represents data points on the chart, such as bars, lines, or areas, to visualize the dataset.</SubText>,
     ],
   },
   {
     data: [
       ``,
       <Tag>Graph Lines</Tag>,
-      <Tag>False</Tag>,
+      <Tag>No</Tag>,
       <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
+        Provides visual cues to help interpret the chart by connecting data points to the axis, enhancing readability.
       </SubText>,
     ],
   },
   {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
+    data: [``, <Tag>Axis</Tag>, <Tag>No</Tag>, <SubText style={{ marginTop: 7 }}>Defines the perimeter or boundary of the chart area.</SubText>],
   },
   {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
+    data: [``, <Tag>Axis Labels</Tag>, <Tag>No</Tag>, <SubText style={{ marginTop: 7 }}>Displays the measurement units or categories along the chart axes. [12px]</SubText>],
   },
 ];
 
@@ -58,20 +57,20 @@ const EXAMPLE_DUMMY_DATA = [
   { date: '2023-02-01', open: 105, high: 120, low: 100, close: 115 },
   { date: '2023-03-01', open: 115, high: 125, low: 105, close: 120 },
   { date: '2023-04-01', open: 120, high: 130, low: 110, close: 125 },
-]; // Added example data for the candlestick chart
+]; // Example data for the candlestick chart
 
 function ExampleSystemDataVisualizationCandlestick(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Candlestick Chart Example',
+    description: 'This candlestick chart illustrates stock price movements over time, showcasing opening, closing, high, and low prices.',
   };
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: candlestick"
-      description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
+      description="Explore our design system with a candlestick chart example. This template is available on GitHub."
       url="https://wireframes.internet.dev/examples/system/data-visualization"
     >
       <Navigation
@@ -81,16 +80,9 @@ function ExampleSystemDataVisualizationCandlestick(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
       />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="candlestick" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Candlestick</H2>
+        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Candlestick Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-        </P>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Phasellus vitae velit at tortor condimentum vestibulum. Nunc viverra, nisl eget aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod,
-          nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
-          aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          Candlestick charts are a visual tool for analyzing financial data, particularly useful for identifying market trends and price patterns.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>

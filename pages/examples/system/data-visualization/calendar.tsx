@@ -54,7 +54,6 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  // Example data for CalendarChart
   { date: new Date(2022, 1, 1), value: 1 },
   { date: new Date(2022, 2, 1), value: 2 },
   { date: new Date(2022, 3, 1), value: 3 },

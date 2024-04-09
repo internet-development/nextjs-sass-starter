@@ -21,12 +21,12 @@ const BubbleChart = ({ data, style }) => {
         // Set up the scales
         const xScale = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.x)])
+        .domain([0, d3.max(data, (d) => d.x) + 5])
         .range([0, drawWidth]);
 
         const yScale = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.y)])
+        .domain([0, d3.max(data, (d) => d.y) + 10])
         .range([height, 0]);
 
         const sizeScale = d3
@@ -36,7 +36,16 @@ const BubbleChart = ({ data, style }) => {
 
         const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
-        // Draw the bubbles
+        // Shade the upper right quadrant
+        g.append('rect')
+        .attr('x', drawWidth / 2)
+        .attr('y', 0)
+        .attr('width', drawWidth / 2)
+        .attr('height', height / 2)
+        .style('fill', 'lightgreen')
+        .style('opacity', 0.2);
+
+        // Draw the bubbles with conditional shading
         g.selectAll('circle')
         .data(data)
         .enter()
@@ -44,7 +53,7 @@ const BubbleChart = ({ data, style }) => {
         .attr('cx', (d) => xScale(d.x))
         .attr('cy', (d) => yScale(d.y))
         .attr('r', (d) => sizeScale(d.value))
-        .style('fill', 'steelblue')
+        .style('fill', (d) => (xScale(d.x) > drawWidth / 2 && yScale(d.y) < height / 2) ? 'rgba(68, 198, 127, 1)' : 'none')
         .style('fill-opacity', 0.7)
         .style('stroke', 'black');
 

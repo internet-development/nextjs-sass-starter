@@ -9,32 +9,45 @@ const DonutChart = (props) => {
     if (!d3Container.current || width <= 0) return;
 
     const svg = d3.select(d3Container.current);
-    svg.selectAll('*').remove();
+    svg.selectAll('*').remove(); // Clear the SVG content before drawing
 
-    const radius = Math.min(width, 400) / 2;
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
+    const radius = Math.min(width, 400) / 2; // Assuming a fixed height of 400 for simplicity
+    const donutWidth = 75; // Width of the donut ring
 
-    const pie = d3.pie().value((d) => d.value);
-    const data_ready = pie(props.data);
+    const arc = d3.arc()
+        .innerRadius(radius - donutWidth)
+        .outerRadius(radius);
 
-    svg.attr('width', width)
-       .attr('height', 400)
-       .append('g')
-       .attr('transform', `translate(${width / 2}, ${200})`);
+    const pie = d3.pie()
+        .value((d) => d.value)
+        .sort(null);
 
-    svg.selectAll('whatever')
-       .data(data_ready)
-       .enter()
-       .append('path')
-       .attr('d', d3.arc()
-         .innerRadius(100)
-         .outerRadius(radius)
-       )
-       .attr('fill', (d) => color(d.data.label))
-       .attr('stroke', 'white')
-       .style('stroke-width', '2px')
-       .style('opacity', 0.7);
-  };
+    const path = svg.append('g')
+        .attr('transform', `translate(${width / 2}, 200)`) // Center the donut chart
+        .selectAll('path')
+        .data(pie(props.data))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('fill', (d) => d.data.color);
+
+    // Optional: Add labels to the donut slices
+    const label = d3.arc()
+        .outerRadius(radius)
+        .innerRadius(radius - donutWidth);
+
+    svg.append('g')
+        .attr('transform', `translate(${width / 2}, 200)`)
+        .selectAll('text')
+        .data(pie(props.data))
+        .enter()
+        .append('text')
+        .attr('transform', (d) => `translate(${label.centroid(d)})`)
+        .attr('dy', '0.35em')
+        .text((d) => d.data.value)
+        .style('text-anchor', 'middle')
+        .style('font-size', '12px');
+    };
 
   useEffect(() => {
     setContainerWidth(d3Container.current.clientWidth);
@@ -50,7 +63,7 @@ const DonutChart = (props) => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return <svg ref={d3Container} style={props.style} />;
+  return <svg width="100%" height="400" ref={d3Container} style={props.style} />;
 };
 
 export default DonutChart;

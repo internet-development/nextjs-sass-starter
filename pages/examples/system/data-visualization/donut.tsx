@@ -54,15 +54,15 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { label: 'Category A', value: 10 },
-  { label: 'Category B', value: 20 },
-  { label: 'Category C', value: 30 },
-  { label: 'Category D', value: 40 },
+  { color: '#66bb6a', value: 10 },
+  { color: '#81c784', value: 20 },
+  { color: '#4caf50', value: 30 },
+  { color: '#388e3c', value: 40 },
 ];
 
 function ExampleSystemDataVisualizationDonut(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
+  const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 400 };
 
   const chart = {
     title: 'Donut Chart Example',
@@ -88,7 +88,7 @@ function ExampleSystemDataVisualizationDonut(props) {
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <DonutChart data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />
+          <DonutChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
