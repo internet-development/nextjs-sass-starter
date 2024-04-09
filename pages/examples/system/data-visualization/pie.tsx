@@ -53,9 +53,9 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { label: "Category A", value: 20, color: '#006400' },
-  { label: "Category B", value: 50, color: '#008000' },
-  { label: "Category C", value: 30, color: '#00FF00' }
+  { label: "Category A", value: 20, color: 'rgba(68, 198, 127, 0.6)' },
+  { label: "Category B", value: 50, color: 'rgba(68, 198, 127, 0.8)' },
+  { label: "Category C", value: 30, color: 'rgba(68, 198, 127, 1)' }
 ];
 
 function ExampleSystemDataVisualizationPie(props) {

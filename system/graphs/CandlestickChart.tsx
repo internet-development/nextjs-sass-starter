@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-const CandlestickChart = ({ data, style }) => {
+const CandlestickChart = (props) => {
   const d3Container = useRef<HTMLDivElement | null | any>(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
@@ -10,7 +10,7 @@ const CandlestickChart = ({ data, style }) => {
 
     const svg = d3.select(d3Container.current);
 
-    if (data && d3Container && d3Container.current && width > 0) {
+    if (props.data && d3Container && d3Container.current && width > 0) {
         svg.selectAll('*').remove();
 
         const margin = { top: 20, right: 20, bottom: 30, left: 50 };
@@ -22,8 +22,8 @@ const CandlestickChart = ({ data, style }) => {
         const xScale = d3.scaleBand().range([0, chartWidth]).padding(0.3);
         const yScale = d3.scaleLinear().range([height, 0]);
 
-        xScale.domain(data.map((d) => d.date));
-        yScale.domain([d3.min(data, (d) => d.low) - 10, d3.max(data, (d) => d.high) + 10]);
+        xScale.domain(props.data.map((d) => d.date));
+        yScale.domain([d3.min(props.data, (d) => d.low) - 10, d3.max(props.data, (d) => d.high) + 10]);
 
         g.append('g')
         .attr('transform', `translate(0,${height})`)
@@ -37,7 +37,7 @@ const CandlestickChart = ({ data, style }) => {
         g.append('g').call(d3.axisLeft(yScale));
 
         g.selectAll('.candle')
-          .data(data)
+          .data(props.data)
           .enter()
           .append('rect')
           .attr('x', (d) => xScale(d.date))
@@ -47,7 +47,7 @@ const CandlestickChart = ({ data, style }) => {
           .attr('fill', (d) => (d.open > d.close ? 'red' : 'rgba(68, 198, 127, 1)'));
 
         g.selectAll('.wick')
-        .data(data)
+        .data(props.data)
         .enter()
         .append('line')
         .attr('x1', (d) => xScale(d.date) + xScale.bandwidth() / 2)
@@ -70,9 +70,9 @@ const CandlestickChart = ({ data, style }) => {
 
   useEffect(() => {
     drawChart(containerWidth);
-  }, [containerWidth, data]);
+  }, [containerWidth, props.data]);
 
-  return <svg ref={d3Container} width="100%" height="400" style={style} />;
+  return <svg ref={d3Container} width="100%" height="400" style={props.style} />;
 };
 
 export default CandlestickChart;

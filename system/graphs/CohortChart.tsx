@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-const CohortChart = ({ data, style }) => {
+const CohortChart = (props) => {
   const d3Container = useRef<HTMLDivElement | null | any>(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
@@ -22,8 +22,8 @@ const CohortChart = ({ data, style }) => {
     const yScale = d3.scaleLinear().range([height, 0]);
 
     // Example data mapping
-    xScale.domain(data.map((d) => d.group));
-    yScale.domain([0, d3.max(data, (d) => d.value)]);
+    xScale.domain(props.data.map((d) => d.group));
+    yScale.domain([0, d3.max(props.data, (d) => d.value)]);
 
     g.append('g')
       .attr('transform', `translate(0,${height})`)
@@ -32,7 +32,7 @@ const CohortChart = ({ data, style }) => {
     g.append('g').call(d3.axisLeft(yScale));
 
     g.selectAll('.cohort')
-      .data(data)
+      .data(props.data)
       .enter()
       .append('rect')
       .attr('x', (d) => xScale(d.group))
@@ -55,9 +55,9 @@ const CohortChart = ({ data, style }) => {
 
   useEffect(() => {
     drawChart(containerWidth);
-  }, [containerWidth, data]);
+  }, [containerWidth, props.data]);
 
-  return <svg ref={d3Container} width="100%" height="400" style={style} />;
+  return <svg ref={d3Container} width="100%" height="400" style={props.style} />;
 };
 
 export default CohortChart;

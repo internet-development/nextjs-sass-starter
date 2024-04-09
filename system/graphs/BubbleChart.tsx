@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import React, { useEffect, useRef, useState } from 'react';
 
-const BubbleChart = ({ data, style }) => {
+const BubbleChart = (props) => {
   const d3Container = useRef<HTMLDivElement | null | any>(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
@@ -10,7 +10,7 @@ const BubbleChart = ({ data, style }) => {
       return;
     }
 
-    if (data && d3Container && d3Container.current && width > 0) {
+    if (props.data && d3Container && d3Container.current && width > 0) {
         d3.select(d3Container.current).selectAll('*').remove();
 
         const svg = d3.select(d3Container.current);
@@ -21,17 +21,17 @@ const BubbleChart = ({ data, style }) => {
         // Set up the scales
         const xScale = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.x) + 5])
+        .domain([0, d3.max(props.data, (d) => d.x) + 5])
         .range([0, drawWidth]);
 
         const yScale = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.y) + 10])
+        .domain([0, d3.max(props.data, (d) => d.y) + 10])
         .range([height, 0]);
 
         const sizeScale = d3
         .scaleSqrt()
-        .domain([0, d3.max(data, (d) => d.value)])
+        .domain([0, d3.max(props.data, (d) => d.value)])
         .range([0, 20]); // Max bubble size
 
         const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
@@ -47,7 +47,7 @@ const BubbleChart = ({ data, style }) => {
 
         // Draw the bubbles with conditional shading
         g.selectAll('circle')
-        .data(data)
+        .data(props.data)
         .enter()
         .append('circle')
         .attr('cx', (d) => xScale(d.x))
@@ -81,13 +81,13 @@ const BubbleChart = ({ data, style }) => {
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, [data]);
+  }, [props.data]);
 
   useEffect(() => {
     drawChart(containerWidth);
-  }, [containerWidth, data]);
+  }, [containerWidth, props.data]);
 
-  return <svg width="100%" height="400" ref={d3Container} style={style} />;
+  return <svg width="100%" height="400" ref={d3Container} style={props.style} />;
 };
 
 export default BubbleChart;

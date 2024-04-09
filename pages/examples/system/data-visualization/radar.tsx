@@ -88,7 +88,7 @@ function ExampleSystemDataVisualizationRadar(props) {
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <RadarChart data={EXAMPLE_DUMMY_DATA} style={{ height: '100%' }} />
+          <RadarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 24 }} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
