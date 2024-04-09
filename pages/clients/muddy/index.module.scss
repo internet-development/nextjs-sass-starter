@@ -1,0 +1,29 @@
+.card {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+  min-height: 228px;
+  border-radius: 8px;
+}
+
+.header {
+  margin: 88px auto 24px auto;
+  padding: 0 24px 0 24px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: var(--type-scale-fixed-small);
+  line-height: 1;
+}
+
+.description {
+  margin-top: 8px;
+  font-size: var(--type-scale-fixed-small);
+  line-height: 1.6;
+}
+
+.wrapper {
+  margin: 0 auto 0 auto;
+  padding: 0 24px 0 24px;
+  max-width: 816px;
+}
