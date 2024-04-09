@@ -128,4 +128,7 @@
 
 .windowContent {
   border: 1px solid #ececec;
+  iframe {
+    pointer-events: none;
+  }
 }

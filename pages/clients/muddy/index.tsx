@@ -56,7 +56,7 @@ function ExampleClientsMuddy(props) {
       <AnyTextHeader>Clients / Muddy</AnyTextHeader>
       <Section
         title="Use apps with your messages"
-        description="We want the viewer to know that apps open inline with messages and load instantly. You can scroll through apps just like messages. Way faster than clicking on a link and opening a tab."
+        description="We want the viewer to know that apps open inline with messages and load instantly. You can scroll through apps just like messages. Way faster than clicking on a link and opening a tab. iFrames have pointer events none so you can not interact."
       >
         <Message name="Lady Jessica Atreides" src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/30f8b390-a0fc-43d3-ad07-6b3efe93e9dc.png">
           I must not fear. Fear is the mind-killer. Fear is the little death that brings obliteration. I will face my fear and I will permit it to pass over me and through me. And
@@ -87,7 +87,7 @@ function ExampleClientsMuddy(props) {
       </Section>
       <Section
         title="Always available support"
-        description="MuddyAI has all of my team's context and can answer questions with it, it can also browse the web and look up the latest information, and it can send those websites back to me."
+        description="MuddyAI has all of my team's context and can answer questions with it, it can also browse the web and look up the latest information, and it can send those websites back to me. iFrames have pointer events none so you can not interact."
       >
         <Message name="Glossu Rabban" src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/55d5b7ba-9b4a-4be5-916e-59be60991dba.png">
           I NEED A BETTER FONT. I NEED IT NOW.
@@ -104,7 +104,7 @@ function ExampleClientsMuddy(props) {
 
       <Section
         title="Start disucssion everywhere"
-        description="Talking on any website is fast and simple. When you want to, pointing to specific website content is easy. Everything lives in the same feed."
+        description="Talking on any website is fast and simple. When you want to, pointing to specific website content is easy. Everything lives in the same feed. No iframes will be used in this example."
       >
         ...
       </Section>
@@ -112,6 +112,8 @@ function ExampleClientsMuddy(props) {
       <Section title="Invite flow" description="Example invite flow">
         ...
       </Section>
+
+      <div style={{ paddingBottom: 128 }} />
     </Page>
   );
 }
