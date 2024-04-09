@@ -30,7 +30,7 @@ function ExampleWindows(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
         value={key}
       />
-      <GridLayout>
+      <GridLayout style={{ overflow: 'hidden' }}>
         <ResizableMonospaceWindow x={76} y={76} width={248} height={280} title="Window I">
           <div style={customParagraphStyle}>
             The process of growth and development almost never seems to manage to create this subtle balance between the importance of the individual parts, and the coherence of

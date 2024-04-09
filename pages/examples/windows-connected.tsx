@@ -30,7 +30,7 @@ function ExampleWindowsConnected(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
         value={key}
       />
-      <GridLayout>
+      <GridLayout style={{ overflow: 'hidden' }}>
         <ResizableMonospaceWindow disableResize x={88} y={88} width={488} height={280} title="Data: The Ruins Lesson: Meaning and Material">
           <img
             alt=""
@@ -38,7 +38,7 @@ function ExampleWindowsConnected(props) {
             style={{ display: 'block', width: '100%' }}
           />
         </ResizableMonospaceWindow>
-        <ResizableMonospaceWindow disableResize x={442} y={208} width={368} height={544} title="Datas: Ides of March">
+        <ResizableMonospaceWindow disableResize x={442} y={208} width={368} height={544} title="Data: Ides of March">
           <img
             alt=""
             src="https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/ff51d8e3-68fc-4bfd-8bab-b35d939eaed3.jpg"

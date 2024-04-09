@@ -122,6 +122,9 @@ export default async function Page(props) {
         <ListItem href="/examples/windows-connected" isWIP>
           Windows connected, diagram
         </ListItem>
+        <ListItem href="/examples/windows-arrow-connected" isWIP>
+          Windows arrow connected, diagram
+        </ListItem>
       </div>
       <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
         Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?

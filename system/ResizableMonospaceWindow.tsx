@@ -3,7 +3,18 @@ import * as Utilities from '@common/utilities';
 
 import styles from '@system/ResizableMonospaceWindow.module.scss';
 
-export default function ResizableMonospaceWindow(props) {
+interface ResizableMonospaceWindowProps {
+  children?: React.ReactNode;
+  disableResize?: boolean;
+  height: number;
+  ref?: React.Ref<HTMLDivElement>;
+  title?: string;
+  width: number;
+  x: number;
+  y: number;
+}
+
+const ResizableMonospaceWindow = React.forwardRef<HTMLDivElement, ResizableMonospaceWindowProps>((props, ref) => {
   const [isDragging, setIsDragging] = React.useState(false);
   const [initialMouseX, setInitialMouseX] = React.useState(0);
   const [initialMouseY, setInitialMouseY] = React.useState(0);
@@ -78,6 +89,7 @@ export default function ResizableMonospaceWindow(props) {
 
   return (
     <div
+      ref={ref}
       className={styles.box}
       style={{
         width: `${width}px`,
@@ -98,4 +110,6 @@ export default function ResizableMonospaceWindow(props) {
       <div className={Utilities.classNames(styles.handle, styles.top)} data-resizer="top"></div>
     </div>
   );
-}
+});
+
+export default ResizableMonospaceWindow;
