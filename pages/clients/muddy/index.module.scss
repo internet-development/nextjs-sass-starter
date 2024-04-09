@@ -152,3 +152,11 @@
   width: 100%;
   font-size: 14px;
 }
+
+.customWindow {
+  padding: 24px;
+  min-height: 188px;
+  font-family: var(--font-family-serif);
+  background: var(--color-text);
+  color: var(--color-background);
+}
