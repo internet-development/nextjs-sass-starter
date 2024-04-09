@@ -135,22 +135,24 @@ function ExampleClientsMuddy(props) {
           weirding way and you both shall have sanctuary. Your water shall mingle with our water.
           <br />
           <br />
-          You have strength. You shall be known as Muddy AI - which is the strength of the base of a Kubernetes cluster. This is your secret name in our troop. But, you must choose
-          the name of manhood, which we will call you openly.
-          <Window title="https://www.typewolf.com/sohne">
+          You have strength. You shall be known as Muddy AI. Now give Muddy AI a proper name.
+          <Window title="Names for Muddy AI">
             <div className={styles.customWindow}>
-              Paul Atreides, Jessica Atreides, Leto Atreides I, Leto Atreides II, Alia Atreides, Ghanima Atreides, Siona Atreides, Moneo Atreides, Anirul Corrino, Shaddam IV
-              Corrino, Irulan Corrino, Wensicia Corrino, Farad'n Corrino, Hasimir Fenring, Margot Fenring, Feyd-Rautha Harkonnen, Vladimir Harkonnen, Glossu Rabban, Piter De Vries,
-              Iakin Nefud, Staban Tuek, Esmar Tuek, Mapes, Thufir Hawat, Gurney Halleck, Duncan Idaho, Harah, Jamis, Chani, Stilgar, Liet-Kynes, Pardot Kynes, Warrick, Leah, Yueh,
-              Wanna Marcus, Ertun, Geoff, Korba, Otheym, Lichna, Orlop, Rajifiri, Saajid, Farak, Ishmael, Charef, Bannerjee, Kynes, Kaleff, Jongleur, Drisq, Farok, Chatt, Orlop,
-              Rajid, Javid, Assan Tariq, Buer Agarves, Cania Agarves, Drisq, Ommun, Jamis, Geoff, Shishakli, Turok, Ertun, Keke, Trava, Dhuri, Rajesh, Saajid, Farok, Ishmael,
-              Charef, Bannerjee, Kynes, Kaleff, Jongleur, Otheym, Lichna, Chatt, Buer Agarves, Cania Agarves, Rajid, Javid, Assan Tariq, Korba, Ommun, Yekkey, Sardaukar, Boshar,
-              Uli, Czigo, Merk, Aramsham, Tyekanik, Ziarenka, Palimbasha, Nefud, Beyta, Fash, Terbut, Zharal, Nari, Edric, Fash, Aramsham, Takim, Taros, Modibo, Buer, Cania, Geasa,
-              Hobars, Koye, Lingar, Czigo, Uli, Sardaukar, Boshar, Yekkey, Beyta, Terbut, Nari, Edric, Buer, Cania, Geasa, Hobars, Keke, Trava, Dhuri, Rajesh, Otheym, Bannerjee,
-              Kynes, Kaleff, Jongleur, Charef, Ishmael, Farok, Saajid, Chatt, Orlop, Rajid, Javid, Assan Tariq, Korba, Ertun, Ommun, Geoff, Jamis, Otheym, Lichna, Shishakli, Turok,
-              Drisq, Ommun, Jamis, Geoff, Keke, Trava, Dhuri, Rajesh, Saajid, Farok, Ishmael, Charef, Bannerjee, Kynes, Kaleff, Jongleur, Otheym, Lichna, Chatt, Buer Agarves, Cania
-              Agarves, Rajid, Javid, Assan Tariq, Korba, Ertun, Ommun, Yekkey, Sardaukar, Czigo, Uli, Aramsham, Beyta, Terbut, Nari, Edric, Buer, Cania, Geasa, Hobars, Nefud, Harq
-              al-Ada, Bijaz, Javid, Namri.
+              Paul Atreides, Jessica Atreides, Leto Atreides I, Leto Atreides II, Alia Atreides, Ghanima Atreides,{' '}
+              <span className={styles.anchor}>
+                <span className={styles.tooltip}>Start Thread</span>Siona Atreides, Moneo Atreides
+              </span>
+              , Anirul Corrino, Shaddam IV Corrino, Irulan Corrino, Wensicia Corrino, Farad'n Corrino, Hasimir Fenring, Margot Fenring, Feyd-Rautha Harkonnen, Vladimir Harkonnen,
+              Glossu Rabban, Piter De Vries, Iakin Nefud, Staban Tuek, Esmar Tuek, Mapes, Thufir Hawat, Gurney Halleck, Duncan Idaho, Harah, Jamis, Chani, Stilgar, Liet-Kynes,
+              Pardot Kynes, Warrick, Leah, Yueh, Wanna Marcus, Ertun, Geoff, Korba, Otheym, Lichna, Orlop, Rajifiri, Saajid, Farak, Ishmael, Charef, Bannerjee, Kynes, Kaleff,
+              Jongleur, Drisq, Farok, Chatt, Orlop, Rajid, Javid, Assan Tariq, Buer Agarves, Cania Agarves, Drisq, Ommun, Jamis, Geoff, Shishakli, Turok, Ertun, Keke, Trava, Dhuri,
+              Rajesh, Saajid, Farok, Ishmael, Charef, Bannerjee, Kynes, Kaleff, Jongleur, Otheym, Lichna, Chatt, Buer Agarves, Cania Agarves, Rajid, Javid, Assan Tariq, Korba,
+              Ommun, Yekkey, Sardaukar, Boshar, Uli, Czigo, Merk, Aramsham, Tyekanik, Ziarenka, Palimbasha, Nefud, Beyta, Fash, Terbut, Zharal, Nari, Edric, Fash, Aramsham, Takim,
+              Taros, Modibo, Buer, Cania, Geasa, Hobars, Koye, Lingar, Czigo, Uli, Sardaukar, Boshar, Yekkey, Beyta, Terbut, Nari, Edric, Buer, Cania, Geasa, Hobars, Keke, Trava,
+              Dhuri, Rajesh, Otheym, Bannerjee, Kynes, Kaleff, Jongleur, Charef, Ishmael, Farok, Saajid, Chatt, Orlop, Rajid, Javid, Assan Tariq, Korba, Ertun, Ommun, Geoff, Jamis,
+              Otheym, Lichna, Shishakli, Turok, Drisq, Ommun, Jamis, Geoff, Keke, Trava, Dhuri, Rajesh, Saajid, Farok, Ishmael, Charef, Bannerjee, Kynes, Kaleff, Jongleur, Otheym,
+              Lichna, Chatt, Buer Agarves, Cania Agarves, Rajid, Javid, Assan Tariq, Korba, Ertun, Ommun, Yekkey, Sardaukar, Czigo, Uli, Aramsham, Beyta, Terbut, Nari, Edric, Buer,
+              Cania, Geasa, Hobars, Nefud, Harq al-Ada, Bijaz, Javid, Namri.
             </div>
           </Window>
         </Message>

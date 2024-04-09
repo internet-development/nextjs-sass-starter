@@ -160,3 +160,39 @@
   background: var(--color-text);
   color: var(--color-background);
 }
+
+.anchor {
+  position: relative;
+  background: yellow;
+  color: var(--color-text);
+}
+
+.tooltip {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  left: 0;
+  margin: auto;
+  background: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-family);
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  width: 180px;
+  border-radius: 8px;
+  padding: 8px 24px 8px 24px;
+  transition: 200ms ease all;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
