@@ -5,6 +5,7 @@ import * as Utilities from '@common/utilities';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
+import HexbinGraph from '@system/graphs/HexbinGraph';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import Table from '@system/Table';
@@ -18,11 +19,11 @@ const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
 const TABLE_DATA = [
   {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
+    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your hexbin chart. [20px]</SubText>],
   },
 
   {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
+    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context or data points within the hexbin chart. [16px]</SubText>],
   },
 
   {
@@ -30,7 +31,7 @@ const TABLE_DATA = [
       ``,
       <Tag>Marks</Tag>,
       <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
+      <SubText style={{ marginTop: 7 }}>Marks represent individual data points within the hexbin chart, often visualized as hexagonal bins.</SubText>,
     ],
   },
   {
@@ -39,28 +40,31 @@ const TABLE_DATA = [
       <Tag>Graph Lines</Tag>,
       <Tag>False</Tag>,
       <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
+        Graph lines can be used to connect data points or to outline hexbins, providing structure and aiding in data interpretation.
       </SubText>,
     ],
   },
   {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
+    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis provides a reference frame for the hexbin chart, indicating scale and measurement units.</SubText>],
   },
   {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
+    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>Axis labels offer a textual description of the axis scale, enhancing readability and comprehension. [12px]</SubText>],
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [];
+const EXAMPLE_DUMMY_DATA = [
+  { x: 10, y: 20 },
+  { x: 15, y: 10 },
+  { x: 20, y: 15 },
+];
 
 function ExampleSystemDataVisualizationHexbin(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Hexbin Chart Visualization',
+    description: 'This hexbin chart provides a unique way of visualizing density and distribution of data points across two dimensions.',
   };
   return (
     <Page
@@ -75,20 +79,15 @@ function ExampleSystemDataVisualizationHexbin(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
       />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="hexbin" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Hexbin</H2>
+        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Hexbin Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-        </P>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Phasellus vitae velit at tortor condimentum vestibulum. Nunc viverra, nisl eget aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod,
-          nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
-          aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          Explore the intricacies of data distribution and density with our interactive hexbin chart. This visualization tool allows for a comprehensive analysis of complex datasets, highlighting patterns and correlations between data points.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}></div>
+        <div style={chartContainerStyles}>
+          <HexbinGraph data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />
+        </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />

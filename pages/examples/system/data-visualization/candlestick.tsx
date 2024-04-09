@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as Utilities from '@common/utilities';
 
+import CandlestickChart from '@system/graphs/CandlestickChart';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
@@ -52,7 +53,12 @@ const TABLE_DATA = [
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [];
+const EXAMPLE_DUMMY_DATA = [
+  { date: '2023-01-01', open: 100, high: 110, low: 90, close: 105 },
+  { date: '2023-02-01', open: 105, high: 120, low: 100, close: 115 },
+  { date: '2023-03-01', open: 115, high: 125, low: 105, close: 120 },
+  { date: '2023-04-01', open: 120, high: 130, low: 110, close: 125 },
+]; // Added example data for the candlestick chart
 
 function ExampleSystemDataVisualizationCandlestick(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
@@ -88,7 +94,9 @@ function ExampleSystemDataVisualizationCandlestick(props) {
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}></div>
+        <div style={chartContainerStyles}>
+          <CandlestickChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+        </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />

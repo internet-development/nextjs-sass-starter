@@ -5,6 +5,7 @@ import * as Utilities from '@common/utilities';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
+import HistogramChart from '@system/graphs/HistogramChart';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import Table from '@system/Table';
@@ -52,15 +53,20 @@ const TABLE_DATA = [
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [];
+const EXAMPLE_DUMMY_DATA = [
+  { value: 10 },
+  { value: 20 },
+  { value: 30 },
+  { value: 40 },
+];
 
 function ExampleSystemDataVisualizationHistogram(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Histogram Example',
+    description: 'This is an example of a Histogram using D3.js integrated into a React component.',
   };
   return (
     <Page
@@ -77,18 +83,13 @@ function ExampleSystemDataVisualizationHistogram(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="histogram" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Histogram</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-        </P>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Phasellus vitae velit at tortor condimentum vestibulum. Nunc viverra, nisl eget aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod,
-          nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
-          aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          This example demonstrates how to integrate a D3.js Histogram into a React component. The histogram visualizes the distribution of data across different ranges or bins.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}></div>
+        <div style={chartContainerStyles}>
+          <HistogramChart data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />
+        </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />

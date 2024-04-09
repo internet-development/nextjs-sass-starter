@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
+import BubbleChart from '@system/graphs/BubbleChart';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';
@@ -18,55 +19,55 @@ const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
 const TABLE_DATA = [
   {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
+    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your bubble chart. [20px]</SubText>],
   },
 
   {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
+    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context or data labels within the bubble chart. [16px]</SubText>],
   },
 
   {
     data: [
       ``,
-      <Tag>Marks</Tag>,
+      <Tag>Bubbles</Tag>,
       <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
+      <SubText style={{ marginTop: 7 }}>Bubbles represent data points with their size and position on the chart.</SubText>,
     ],
   },
   {
     data: [
       ``,
-      <Tag>Graph Lines</Tag>,
+      <Tag>Axis</Tag>,
       <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
-      </SubText>,
+      <SubText style={{ marginTop: 7 }}>The axis helps in understanding the scale and context of the data represented by the bubbles.</SubText>,
     ],
   },
   {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
-  },
-  {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
+    data: [``, <Tag>Legend</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The legend explains the colors or sizes of the bubbles, providing insight into the data set.</SubText>],
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [];
+const EXAMPLE_DUMMY_DATA = [
+  { x: 10, y: 20, value: 30, category: 'Category 1' },
+  { x: 20, y: 30, value: 40, category: 'Category 2' },
+  { x: 30, y: 40, value: 50, category: 'Category 3' },
+  { x: 40, y: 50, value: 60, category: 'Category 4' },
+  { x: 50, y: 60, value: 70, category: 'Category 5' },
+];
 
 function ExampleSystemDataVisualizationBubble(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Bubble Chart Example',
+    description: 'This bubble chart visualizes data points across two dimensions using the size and position of its bubbles.',
   };
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: bubble"
-      description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/system/data-visualization"
+      description="A lightweight website template to test our design system with a bubble chart example. You can view this template on GitHub and see how we write websites."
+      url="https://wireframes.internet.dev/examples/system/data-visualization/bubble"
     >
       <Navigation
         isModalVisible={!!currentModal}
@@ -75,20 +76,15 @@ function ExampleSystemDataVisualizationBubble(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
       />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="bubble" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Bubble</H2>
+        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Bubble Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-        </P>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Phasellus vitae velit at tortor condimentum vestibulum. Nunc viverra, nisl eget aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod,
-          nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
-          aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          Bubble charts are used to display three dimensions of data on a chart. The position of the bubble on the horizontal and vertical axes indicates the values of two data points, and the size of the bubble represents a third.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}></div>
+        <div style={chartContainerStyles}>
+          <BubbleChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+        </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />

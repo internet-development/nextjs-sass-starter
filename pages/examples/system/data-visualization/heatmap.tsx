@@ -5,6 +5,7 @@ import * as Utilities from '@common/utilities';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
+import Heatmap from '@system/graphs/Heatmap';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import Table from '@system/Table';
@@ -52,15 +53,21 @@ const TABLE_DATA = [
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [];
+const EXAMPLE_DUMMY_DATA = [
+  { group: "A", variable: "v1", value: 10, color: "#f00" },
+  { group: "B", variable: "v2", value: 20, color: "#0f0" },
+  { group: "C", variable: "v3", value: 30, color: "#00f" },
+  { group: "D", variable: "v4", value: 40, color: "#ff0" },
+  // Additional dummy data for heatmap visualization
+];
 
 function ExampleSystemDataVisualizationHeatmap(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Heatmap Example',
+    description: 'This is an example of a Heatmap using D3.js integrated into a React component.',
   };
   return (
     <Page
@@ -77,18 +84,13 @@ function ExampleSystemDataVisualizationHeatmap(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="heatmap" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Heatmap</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-        </P>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Phasellus vitae velit at tortor condimentum vestibulum. Nunc viverra, nisl eget aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod,
-          nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
-          aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          This example demonstrates how to integrate a D3.js Heatmap into a React component. The heatmap visualizes data distribution across different groups and variables.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}></div>
+        <div style={chartContainerStyles}>
+          <Heatmap data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />
+        </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />

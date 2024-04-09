@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as Utilities from '@common/utilities';
 
+import CalendarChart from '@system/graphs/CalendarChart'; 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
@@ -52,21 +53,28 @@ const TABLE_DATA = [
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [];
+const EXAMPLE_DUMMY_DATA = [
+  // Example data for CalendarChart
+  { date: new Date(2022, 1, 1), value: 1 },
+  { date: new Date(2022, 2, 1), value: 2 },
+  { date: new Date(2022, 3, 1), value: 3 },
+  { date: new Date(2022, 4, 1), value: 4 },
+  { date: new Date(2022, 5, 1), value: 5 },
+];
 
 function ExampleSystemDataVisualizationCalendar(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Calendar Visualization',
+    description: 'This calendar visualization represents data points over time, allowing for easy identification of trends and patterns.',
   };
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: calendar"
-      description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/system/data-visualization"
+      description="A lightweight website template to test our design system with a calendar visualization example. You can view this template on GitHub and see how we write websites."
+      url="https://wireframes.internet.dev/examples/system/data-visualization/calendar"
     >
       <Navigation
         isModalVisible={!!currentModal}
@@ -75,20 +83,15 @@ function ExampleSystemDataVisualizationCalendar(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
       />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="calendar" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Calendar</H2>
+        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Calendar Visualization</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-        </P>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Phasellus vitae velit at tortor condimentum vestibulum. Nunc viverra, nisl eget aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod,
-          nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
-          aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          Calendar visualizations are a powerful way to display time series data. They can help to identify trends, patterns, and anomalies over a period.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}></div>
+        <div style={chartContainerStyles}>
+          <CalendarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+        </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />

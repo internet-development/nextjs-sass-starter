@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
+import AreaChart from '@system/graphs/AreaChart';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';
@@ -52,15 +53,64 @@ const TABLE_DATA = [
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [];
+const EXAMPLE_DUMMY_DATA = [
+  {
+    value: 20,
+    date: '2023-1-1',
+  },
+  {
+    value: 30,
+    date: '2023-2-1',
+  },
+  {
+    value: 45,
+    date: '2023-3-1',
+  },
+  {
+    value: 70,
+    date: '2023-4-1',
+  },
+  {
+    value: 100,
+    date: '2023-5-1',
+  },
+  {
+    value: 135,
+    date: '2023-6-1',
+  },
+  {
+    value: 145,
+    date: '2023-7-1',
+  },
+  {
+    value: 135,
+    date: '2023-8-1',
+  },
+  {
+    value: 100,
+    date: '2023-9-1',
+  },
+  {
+    value: 70,
+    date: '2023-10-1',
+  },
+  {
+    value: 45,
+    date: '2023-11-1',
+  },
+  {
+    value: 30,
+    date: '2023-12-1',
+  },
+];
 
 function ExampleSystemDataVisualizationArea(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Area Chart Example',
+    description: 'This area chart represents the monthly data points for an example metric over the course of a year.',
   };
   return (
     <Page
@@ -77,18 +127,15 @@ function ExampleSystemDataVisualizationArea(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="area" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Area</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
-        </P>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Phasellus vitae velit at tortor condimentum vestibulum. Nunc viverra, nisl eget aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod,
-          nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
-          aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          An area chart or area graph combines the line graph and the bar chart to show how one or more groups' numeric values change over the progression of a second variable,
+          typically that of time. Area charts are used to represent cumulated totals using numbers or percentages over time. Use area charts to compare multiple quantities while
+          also displaying the relationship each part has to the whole.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}></div>
+        <div style={chartContainerStyles}>
+          <AreaChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+        </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
