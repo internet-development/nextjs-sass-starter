@@ -54,54 +54,33 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  {
-    label: 'January',
-    value: 50,
-  },
-  {
-    label: 'February',
-    value: 80,
-  },
-  {
-    label: 'March',
-    value: 45,
-  },
-  {
-    label: 'April',
-    value: 30,
-  },
-  {
-    label: 'May',
-    value: 50,
-  },
-  {
-    label: 'June',
-    value: 75,
-  },
-  {
-    label: 'July',
-    value: 60,
-  },
-  {
-    label: 'August',
-    value: 90,
-  },
-  {
-    label: 'September',
-    value: 80,
-  },
-  {
-    label: 'October',
-    value: 50,
-  },
-  {
-    label: 'November',
-    value: 65,
-  },
-  {
-    label: 'December',
-    value: 40,
-  },
+  { category: 'A', positive: 10, neutral: 5, negative: -5, positiveError: 2, negativeError: 1 },
+  { category: 'B', positive: 15, neutral: 10, negative: -10, positiveError: 3, negativeError: 2 },
+  { category: 'C', positive: 18, neutral: 8, negative: -3, positiveError: 4, negativeError: 1.5 },
+  { category: 'D', positive: 20, neutral: 12, negative: -15, positiveError: 5, negativeError: 3 },
+  { category: 'E', positive: 25, neutral: 15, negative: -7, positiveError: 2.5, negativeError: 1.2 },
+  { category: 'F', positive: 30, neutral: 18, negative: -12, positiveError: 3, negativeError: 2 },
+  { category: 'G', positive: 28, neutral: 20, negative: -10, positiveError: 4, negativeError: 2.5 },
+  { category: 'H', positive: 35, neutral: 22, negative: -5, positiveError: 5, negativeError: 2 },
+  { category: 'I', positive: 40, neutral: 25, negative: -20, positiveError: 6, negativeError: 3 },
+  { category: 'J', positive: 45, neutral: 30, negative: -25, positiveError: 7, negativeError: 3.5 },
+  { category: 'K', positive: 22, neutral: 16, negative: -18, positiveError: 3.5, negativeError: 2 },
+  { category: 'L', positive: 50, neutral: 35, negative: -30, positiveError: 8, negativeError: 4 },
+  { category: 'M', positive: 55, neutral: 40, negative: -35, positiveError: 9, negativeError: 4.5 },
+  { category: 'N', positive: 60, neutral: 45, negative: -40, positiveError: 10, negativeError: 5 },
+  { category: 'O', positive: 65, neutral: 50, negative: -45, positiveError: 11, negativeError: 5.5 },
+  { category: 'P', positive: 70, neutral: 55, negative: -50, positiveError: 12, negativeError: 6 },
+  { category: 'Q', positive: 75, neutral: 60, negative: -55, positiveError: 13, negativeError: 6.5 },
+  { category: 'R', positive: 80, neutral: 65, negative: -60, positiveError: 14, negativeError: 7 },
+  { category: 'S', positive: 85, neutral: 70, negative: -65, positiveError: 15, negativeError: 7.5 },
+  { category: 'T', positive: 90, neutral: 75, negative: -70, positiveError: 16, negativeError: 8 },
+];
+
+//EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS
+const EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS = [
+  { color: 'var(--color-subdued-error)', label: 'Negative' },
+  { color: 'var(--color-light-gray)', label: 'Neutral' },
+  { color: 'var(--color-success)', label: 'Positive' },
 ];
 
 function ExampleSystemDataVisualizationColumn(props) {
@@ -132,7 +111,7 @@ function ExampleSystemDataVisualizationColumn(props) {
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <ColumnChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+          <ColumnChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>

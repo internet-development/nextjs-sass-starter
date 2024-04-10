@@ -52,8 +52,8 @@ const HistogramChart = (props) => {
     bars.append('line')
       .attr('x1', (d) => xScale(d.label) + xScale.bandwidth() / 4)
       .attr('x2', (d) => xScale(d.label) + 3 * xScale.bandwidth() / 4)
-      .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci))) // Correctly calculate the y1 position based on the actual lower_ci value
-      .attr('y2', (d) => yScale(d.value - (d.value - d.lower_ci))) // Correctly calculate the y2 position based on the actual lower_ci value
+      .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
+      .attr('y2', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('stroke', 'black')
       .attr('stroke-width', 1.5);
 

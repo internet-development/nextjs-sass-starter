@@ -14,7 +14,6 @@ const HorizontalBarChart = (props) => {
       const svg = d3.select(d3Container.current);
       svg.selectAll('*').remove();
 
-      // Adjusted margins and height for a smaller graph
       const margin = { top: 10, right: 10, bottom: 40, left: 30 };
       const height = +svg.attr('height') - margin.top - margin.bottom;
       const drawWidth = width - margin.left - margin.right;
@@ -30,7 +29,7 @@ const HorizontalBarChart = (props) => {
         .scaleBand()
         .domain(props.data.map((d) => d.label))
         .rangeRound([0, height])
-        .padding(0.2); // Adjusted padding for a smaller graph
+        .padding(0.2);
 
       yScale.domain().forEach((d) => {
         g.append('line').attr('x1', 0).attr('x2', drawWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--color-border)');
