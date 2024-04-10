@@ -21,21 +21,16 @@ const ColumnChart = (props) => {
       .rangeRound([0, drawWidth])
       .padding(0.1);
 
-    const colorScale = d3.scaleOrdinal()
-      .domain(["positive", "neutral", "negative"])
-      .range(["var(--color-success)", "var(--color-light-gray)", "var(--color-subdued-error)"]);
+    const colorScale = d3.scaleOrdinal().domain(['positive', 'neutral', 'negative']).range(['var(--color-success)', 'var(--color-light-gray)', 'var(--color-subdued-error)']);
 
     const yScale = d3
       .scaleLinear()
-      .domain([d3.min(props.data, d => Math.max(d.negative_lower_ci, -400)), d3.max(props.data, d => Math.min(d.positive_upper_ci, 400))])
+      .domain([d3.min(props.data, (d) => Math.max(d.negative_lower_ci, -400)), d3.max(props.data, (d) => Math.min(d.positive_upper_ci, 400))])
       .range([height, 0]);
 
-    svg.append('g')
-        .attr('class', 'y-axis')
-        .attr('transform', `translate(${margin.left},0)`)
-        .call(d3.axisLeft(yScale));
+    svg.append('g').attr('class', 'y-axis').attr('transform', `translate(${margin.left},0)`).call(d3.axisLeft(yScale));
 
-    props.data.forEach(d => {
+    props.data.forEach((d) => {
       const barX = xScale(d.category) + margin.left;
       const positiveBarY = yScale(Math.max(0, d.positive));
       const neutralBarY = yScale(Math.max(0, d.neutral));
@@ -66,13 +61,7 @@ const ColumnChart = (props) => {
         .attr('height', Math.abs(yScale(d.neutral) - yScale(0)))
         .attr('fill', colorScale('neutral'));
 
-      svg
-        .append('rect')
-        .attr('x', barX)
-        .attr('y', yScale(0))
-        .attr('width', xScale.bandwidth())
-        .attr('height', negativeBarHeight)
-        .attr('fill', colorScale('negative'));
+      svg.append('rect').attr('x', barX).attr('y', yScale(0)).attr('width', xScale.bandwidth()).attr('height', negativeBarHeight).attr('fill', colorScale('negative'));
 
       svg
         .append('line')

@@ -12,7 +12,6 @@ import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
 import LineChart from '@root/system/graphs/LineChart';
-import LineChartWithArea from '@root/system/graphs/LineChartWithArea';
 
 const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
@@ -123,9 +122,7 @@ function ExampleSystemDataVisualizationLine(props) {
         <div style={chartContainerStyles}>
           <LineChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} showErrorBars={true} showConfidenceIntervalFill={true} showAreaFill={true} />
         </div>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>Price of Apples</Title>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>Line Chart Variant A: Grocery store Apple prices in 2023 month over month</Text>
-        <div style={chartContainerStyles}>{/* <LineChartWithArea data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} /> */}</div>
+
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
