@@ -27,36 +27,65 @@ const ColumnChart = (props) => {
 
     const yScale = d3
       .scaleLinear()
-      .domain([d3.min(props.data, d => d.negative), d3.max(props.data, d => d.positive)])
+      .domain([d3.min(props.data, d => Math.max(d.negative_lower_ci, -400)), d3.max(props.data, d => Math.min(d.positive_upper_ci, 400))])
       .range([height, 0]);
 
-    const modifiedYScale = yScale.copy().domain([0, d3.max(props.data, d => d.positive)]);
     svg.append('g')
         .attr('class', 'y-axis')
-        .attr('transform', `translate(${margin.left},-153)`)
-        .call(d3.axisLeft(modifiedYScale));
+        .attr('transform', `translate(${margin.left},0)`)
+        .call(d3.axisLeft(yScale));
 
     props.data.forEach(d => {
-      svg.append('rect')
+      svg
+        .append('rect')
         .attr('x', xScale(d.category) + margin.left)
         .attr('y', yScale(Math.max(0, d.positive)))
         .attr('width', xScale.bandwidth())
         .attr('height', Math.abs(yScale(d.positive) - yScale(0)))
-        .attr('fill', colorScale("positive"));
+        .attr('fill', colorScale('positive'));
+      // Positive error bars
+      svg
+        .append('line')
+        .attr('x1', xScale(d.category) + margin.left + xScale.bandwidth() / 2)
+        .attr('x2', xScale(d.category) + margin.left + xScale.bandwidth() / 2)
+        .attr('y1', yScale(d.positive_upper_ci))
+        .attr('y2', yScale(d.positive_lower_ci))
+        .attr('stroke', 'black')
+        .attr('stroke-width', 1);
 
-      svg.append('rect')
+      svg
+        .append('g')
+        .attr('class', 'y-axis')
+        .attr('transform', `translate(${margin.left},0)`)
+        .attr('clip-path', 'url(#clip-above)') // Apply the clip-path to the y-axis
+        .call(d3.axisLeft(yScale));
+
+      // Neutral bars (no error bars for neutral as not provided in data)
+      svg
+        .append('rect')
         .attr('x', xScale(d.category) + margin.left)
         .attr('y', yScale(Math.max(0, d.neutral)))
         .attr('width', xScale.bandwidth())
         .attr('height', Math.abs(yScale(d.neutral) - yScale(0)))
-        .attr('fill', colorScale("neutral"));
+        .attr('fill', colorScale('neutral'));
 
-      svg.append('rect')
+      // Negative bars
+      svg
+        .append('rect')
         .attr('x', xScale(d.category) + margin.left)
         .attr('y', yScale(0))
         .attr('width', xScale.bandwidth())
-        .attr('height', Math.abs(yScale(d.negative) - yScale(0)))
-        .attr('fill', colorScale("negative"));
+        .attr('height', Math.abs(yScale(0) - yScale(d.negative)))
+        .attr('fill', colorScale('negative'));
+      // Negative error bars
+      svg
+        .append('line')
+        .attr('x1', xScale(d.category) + margin.left + xScale.bandwidth() / 2)
+        .attr('x2', xScale(d.category) + margin.left + xScale.bandwidth() / 2)
+        .attr('y1', yScale(d.negative_upper_ci))
+        .attr('y2', yScale(d.negative_lower_ci))
+        .attr('stroke', 'black')
+        .attr('stroke-width', 1);
     });
   };
 
