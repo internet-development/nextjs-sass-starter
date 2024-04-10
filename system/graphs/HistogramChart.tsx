@@ -6,74 +6,82 @@ const HistogramChart = (props) => {
   const [containerWidth, setContainerWidth] = useState(0);
 
   const drawChart = (width) => {
-    if (!d3Container.current || width <= 0 || !props.data) return;
+    if (!d3Container.current || width <= 0) return;
 
-    if (props.data && d3Container && d3Container.current && width > 0) {
-        const svg = d3.select(d3Container.current);
-        svg.selectAll('*').remove();
+    const svg = d3.select(d3Container.current);
+    svg.selectAll('*').remove();
 
-        const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-        const height = +svg.attr('height') - margin.top - margin.bottom;
-        const drawWidth = width - margin.left - margin.right;
+    const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+    const height = 400 - margin.top - margin.bottom;
+    const chartWidth = width - margin.left - margin.right;
 
-        const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
-        const xScale = d3.scaleLinear()
-        .domain([0, d3.max(props.data, (d) => d.value)])
-        .range([0, drawWidth]);
+    const xScale = d3.scaleBand().range([0, chartWidth]).padding(0.3);
+    const yScale = d3.scaleLinear().range([height, 0]);
 
-        const histogram = d3.histogram()
-        .value((d) => d.value)
-        .domain(xScale.domain())
-        .thresholds(xScale.ticks(40));
+    xScale.domain(props.data.map((d) => d.label));
+    yScale.domain([0, d3.max(props.data, (d) => d.upper_ci)]); // Adjust domain to only account for upper_ci
 
-        const bins = histogram(props.data);
+    g.append('g')
+      .attr('transform', `translate(0,${height})`)
+      .call(d3.axisBottom(xScale));
 
-        const yScale = d3.scaleLinear()
-        .domain([0, d3.max(bins, (d) => d.length)])
-        .range([height, 0]);
+    g.append('g').call(d3.axisLeft(yScale));
 
-        g.append('g')
-        .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(xScale));
+    const bars = g.selectAll('.column')
+      .data(props.data)
+      .enter()
+      .append('g');
 
-        g.append('g')
-        .call(d3.axisLeft(yScale));
+    bars.append('rect')
+      .attr('x', (d) => xScale(d.label))
+      .attr('y', (d) => yScale(d.value))
+      .attr('height', (d) => height - yScale(d.value))
+      .attr('width', xScale.bandwidth())
+      .attr('fill', 'rgba(68, 198, 127, 1)');
 
-        g.selectAll("rect")
-        .data(bins)
-        .enter().append("rect")
-        .attr("x", 1)
-        .attr("transform", (d) => `translate(${xScale(d.x0)},${yScale(d.length)})`)
-        .attr("width", (d) => xScale(d.x1) - xScale(d.x0) - 1)
-        .attr("height", (d) => height - yScale(d.length))
-        .style("fill", "#69b3a2");
-    }
+    bars.append('line')
+      .attr('x1', (d) => xScale(d.label) + xScale.bandwidth() / 2)
+      .attr('x2', (d) => xScale(d.label) + xScale.bandwidth() / 2)
+      .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
+      .attr('y2', (d) => yScale(d.upper_ci))
+      .attr('stroke', 'black')
+      .attr('stroke-width', 1.5);
+
+    bars.append('line')
+      .attr('x1', (d) => xScale(d.label) + xScale.bandwidth() / 4)
+      .attr('x2', (d) => xScale(d.label) + 3 * xScale.bandwidth() / 4)
+      .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci))) // Correctly calculate the y1 position based on the actual lower_ci value
+      .attr('y2', (d) => yScale(d.value - (d.value - d.lower_ci))) // Correctly calculate the y2 position based on the actual lower_ci value
+      .attr('stroke', 'black')
+      .attr('stroke-width', 1.5);
+
+    bars
+      .append('line')
+      .attr('x1', (d) => xScale(d.label) + xScale.bandwidth() / 4)
+      .attr('x2', (d) => xScale(d.label) + (3 * xScale.bandwidth()) / 4)
+      .attr('y1', (d) => yScale(d.upper_ci))
+      .attr('y2', (d) => yScale(d.upper_ci))
+      .attr('stroke', 'black')
+      .attr('stroke-width', 1.5);
   };
 
   useEffect(() => {
-    if (!d3Container || !d3Container.current) {
-      return;
-    }
-
     setContainerWidth(d3Container.current.clientWidth);
     const handleResize = () => {
-      if (!d3Container || !d3Container.current) {
-        return;
-      }
       setContainerWidth(d3Container.current.clientWidth);
     };
 
     window.addEventListener('resize', handleResize);
-
     return () => window.removeEventListener('resize', handleResize);
-  }, [props.data]);
+  }, []);
 
   useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return <svg width="100%" height="188" ref={d3Container} style={props.style} />;
+  return <svg ref={d3Container} width="100%" height="400" style={props.style} />;
 };
 
 export default HistogramChart;

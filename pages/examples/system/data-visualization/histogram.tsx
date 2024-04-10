@@ -54,10 +54,78 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { value: 10 },
-  { value: 20 },
-  { value: 30 },
-  { value: 40 },
+  {
+    label: 'January',
+    value: 50,
+    lower_ci: 45,
+    upper_ci: 55,
+  },
+  {
+    label: 'February',
+    value: 80,
+    lower_ci: 75,
+    upper_ci: 85,
+  },
+  {
+    label: 'March',
+    value: 45,
+    lower_ci: 40,
+    upper_ci: 50,
+  },
+  {
+    label: 'April',
+    value: 30,
+    lower_ci: 25,
+    upper_ci: 35,
+  },
+  {
+    label: 'May',
+    value: 50,
+    lower_ci: 45,
+    upper_ci: 55,
+  },
+  {
+    label: 'June',
+    value: 75,
+    lower_ci: 70,
+    upper_ci: 80,
+  },
+  {
+    label: 'July',
+    value: 60,
+    lower_ci: 55,
+    upper_ci: 65,
+  },
+  {
+    label: 'August',
+    value: 90,
+    lower_ci: 85,
+    upper_ci: 95,
+  },
+  {
+    label: 'September',
+    value: 80,
+    lower_ci: 75,
+    upper_ci: 85,
+  },
+  {
+    label: 'October',
+    value: 50,
+    lower_ci: 45,
+    upper_ci: 55,
+  },
+  {
+    label: 'November',
+    value: 65,
+    lower_ci: 60,
+    upper_ci: 70,
+  },
+  {
+    label: 'December',
+    value: 40,
+    lower_ci: 35,
+    upper_ci: 45,
+  },
 ];
 
 function ExampleSystemDataVisualizationHistogram(props) {
