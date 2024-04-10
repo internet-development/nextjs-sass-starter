@@ -81,6 +81,9 @@ function ExampleSystemDataVisualizationLine(props) {
     title: 'Line Chart - Variant B',
   };
 
+  const variantC = {
+    title: 'Line Chart - Variant C',
+  };
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: line"
@@ -109,16 +112,19 @@ function ExampleSystemDataVisualizationLine(props) {
         <div style={chartContainerStyles}>
           <LineChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} showErrorBars={false} showConfidenceIntervalFill={false} />
         </div>
+
+        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{variantA.title}</Text>
+
         <div style={chartContainerStyles}>
           <LineChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} showErrorBars={true} showConfidenceIntervalFill={false} />
         </div>
 
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{variantA.title}</Text>
+        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{variantB.title}</Text>
         <div style={chartContainerStyles}>
           <LineChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} showErrorBars={true} showConfidenceIntervalFill={true} />
         </div>
 
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{variantB.title}</Text>
+        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{variantC.title}</Text>
         <div style={chartContainerStyles}>
           <LineChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} showErrorBars={true} showConfidenceIntervalFill={true} showAreaFill={true} />
         </div>

@@ -72,8 +72,8 @@ const EXAMPLE_DUMMY_DATA = [
   { category: 'P', positive: 70, neutral: 55, negative: -50, positive_lower_ci: 65, positive_upper_ci: 82, negative_lower_ci: -56, negative_upper_ci: -44 },
   { category: 'Q', positive: 75, neutral: 60, negative: -55, positive_lower_ci: 72, positive_upper_ci: 88, negative_lower_ci: -61.5, negative_upper_ci: -48.5 },
   { category: 'R', positive: 80, neutral: 65, negative: -60, positive_lower_ci: 76, positive_upper_ci: 94, negative_lower_ci: -67, negative_upper_ci: -53 },
-  { category: 'S', positive: 85, neutral: 70, negative: -65, positive_lower_ci: 80, positive_upper_ci: 100, negative_lower_ci: -72.5, negative_upper_ci: -57.5 },
-  { category: 'T', positive: 90, neutral: 75, negative: -70, positive_lower_ci: 88, positive_upper_ci: 106, negative_lower_ci: -78, negative_upper_ci: -62 },
+  { category: 'S', positive: 85, neutral: 70, negative: -65, positive_lower_ci: 80, positive_upper_ci: 90, negative_lower_ci: -72.5, negative_upper_ci: -57.5 },
+  { category: 'T', positive: 80, neutral: 72, negative: -70, positive_lower_ci: 70, positive_upper_ci: 90, negative_lower_ci: -78, negative_upper_ci: -62 },
 ];
 
 //EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS
@@ -106,7 +106,8 @@ function ExampleSystemDataVisualizationColumn(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="column" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Column Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Column charts are used to show data changes over a period of time or illustrate comparisons among items. In column charts, categories are typically organized along the horizontal axis and values along the vertical axis.
+          Column charts are used to show data changes over a period of time or illustrate comparisons among items. In column charts, categories are typically organized along the
+          horizontal axis and values along the vertical axis.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
