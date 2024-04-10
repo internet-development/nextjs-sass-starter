@@ -119,7 +119,7 @@ const LineChart = (props) => {
         .attr('x', x + 5)
         .attr('y', yMidpoint)
         .attr('dy', '.35em')
-        .text(`${((d.upper_ci + d.lower_ci) / 2).toFixed(0)}%`)
+        .text(`${((d.upper_ci + d.lower_ci) / 2).toFixed(0)}`)
         .style('font-size', '12px')
         .style('fill', color);
 
