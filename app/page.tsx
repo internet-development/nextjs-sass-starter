@@ -1,5 +1,6 @@
 import '@root/global.scss';
 
+import Bluesky from '@system/svg/social/Bluesky';
 import DefaultLayout from '@components/DefaultLayout';
 import ListItem from '@components/ListItem';
 import Showcase from '@components/Showcase';
@@ -83,6 +84,7 @@ export default async function Page(props) {
       <div>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/authentication-bluesky" isWIP>
+          <Bluesky height="20px" style={{ marginRight: 16 }} />
           Authentication with Bluesky to API key
         </ListItem>
         <ListItem href="/examples/authentication-google">Authentication with Google to API key</ListItem>
