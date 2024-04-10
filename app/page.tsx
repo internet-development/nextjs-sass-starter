@@ -82,6 +82,9 @@ export default async function Page(props) {
       </div>
       <div>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
+        <ListItem href="/examples/authentication-bluesky" isWIP>
+          Authentication with Bluesky to API key
+        </ListItem>
         <ListItem href="/examples/authentication-google">Authentication with Google to API key</ListItem>
         <ListItem href="/examples/components-application-site">Components ➝ application overview, footer</ListItem>
         <ListItem href="/examples">Components ➝ navigation, hero section</ListItem>
