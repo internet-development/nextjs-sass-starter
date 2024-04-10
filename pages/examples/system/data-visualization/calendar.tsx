@@ -53,13 +53,23 @@ const TABLE_DATA = [
   },
 ];
 
-const EXAMPLE_DUMMY_DATA = [
-  { date: new Date(2022, 1, 1), value: 1 },
-  { date: new Date(2022, 2, 1), value: 2 },
-  { date: new Date(2022, 3, 1), value: 3 },
-  { date: new Date(2022, 4, 1), value: 4 },
-  { date: new Date(2022, 5, 1), value: 5 },
-];
+const generateExampleDummyData = () => {
+  type DataPoint = { date: Date; close: number }; // Define the type for the data points
+  const data: DataPoint[] = []; // Initialize the array with the correct type
+  const startDate = new Date('2023-01-01');
+  const endDate = new Date('2023-12-31');
+  let currentValue = 100;
+
+  for (let date = startDate; date <= endDate; date.setDate(date.getDate() + 1)) {
+    const variation = Math.floor(Math.random() * 5) - 2;
+    currentValue += variation;
+    data.push({ date: new Date(date), close: currentValue });
+  }
+
+  return data;
+};
+
+const EXAMPLE_DUMMY_DATA = generateExampleDummyData();
 
 function ExampleSystemDataVisualizationCalendar(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
