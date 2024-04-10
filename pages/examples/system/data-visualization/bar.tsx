@@ -64,6 +64,11 @@ const EXAMPLE_DUMMY_DATA = [
   },
 ];
 
+const EXAMPLE_LEGEND_ITEMS_DATA = [
+  { color: 'var(--color-success)', label: 'A' },
+  { color: 'var(--color-subdued-success)', label: 'B' },
+];
+
 function ExampleSystemDataVisualizationBar(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
@@ -72,6 +77,7 @@ function ExampleSystemDataVisualizationBar(props) {
     title: 'Monthly Sales Data',
     description: 'This bar chart represents the monthly sales data for the year 2023.',
   };
+
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: bar"
@@ -93,7 +99,7 @@ function ExampleSystemDataVisualizationBar(props) {
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <HorizontalBarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+          <HorizontalBarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_LEGEND_ITEMS_DATA} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
