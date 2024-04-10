@@ -55,7 +55,7 @@ const BubbleChart = (props) => {
         .attr('r', (d) => sizeScale(d.value))
         .style('fill', (d) => (xScale(d.x) > drawWidth / 2 && yScale(d.y) < height / 2) ? 'rgba(68, 198, 127, 1)' : 'none')
         .style('fill-opacity', 0.7)
-        .style('stroke', 'black');
+        .style('stroke', 'var(--color-text)');
 
         // Add X axis
         g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
