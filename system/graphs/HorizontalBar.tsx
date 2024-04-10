@@ -82,11 +82,11 @@ const HorizontalBarChart = (props) => {
   return (
     <>
       <svg width={props.width ?? '100%'} height={props.height ?? '400'} ref={d3Container} style={props.style} />
-      <section style={{ display: 'flex', flexDirection: 'row', gap: '1.2rem', paddingLeft: '2rem', paddingBottom: '1rem' }}>
+      <section style={{ display: 'flex', flexDirection: 'row', gap: '1.2rem', paddingLeft: '1.5rem', paddingBottom: '1rem' }}>
         {props?.legend?.map((item, index) => {
           return (
             <div key={index}>
-              <span style={{ width: '2rem', height: '1rem', display: 'inline-block', background: item.color }} />
+              <span style={{ width: '1.2rem', height: '1.2rem', borderRadius: '2rem', display: 'inline-block', background: item.color }} />
               <p>{item.label}</p>
             </div>
           );
@@ -95,5 +95,7 @@ const HorizontalBarChart = (props) => {
     </>
   );
 };
+
+// Function to draw error bars
 
 export default HorizontalBarChart;
