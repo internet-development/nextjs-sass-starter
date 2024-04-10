@@ -105,7 +105,7 @@ const Heatmap = (props) => {
         {props?.legend?.map((item, index) => {
           return (
             <div key={index}>
-              <span style={{ width: '2rem', height: '1rem', display: 'inline-block', background: item.color }} />
+              <span style={{ width: '1.2rem', height: '1.2rem', borderRadius: '2rem', display: 'inline-block', background: item.color }} />
               <p>{item.label}</p>
             </div>
           );
