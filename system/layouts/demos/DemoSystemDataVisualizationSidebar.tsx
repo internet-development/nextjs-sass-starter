@@ -198,6 +198,19 @@ export const VISUALIZATION_OPTIONS = [
       </SubText>,
     ],
   },
+  {
+    href: `/dotplot`,
+    name: 'Dotplot',
+    data: [
+      '',
+      <Tag>Dot plot</Tag>,
+      <SubText style={{ marginTop: 7 }}>
+        A Dot plot is a versatile and straightforward way to visualize data, offering clear insights into the distribution and comparison of values across different groups or
+        categories. Their simplicity and clarity can be particularly valuable in exploratory data analysis, educational settings, and any situation where individual data points and
+        their distribution are of interest.
+      </SubText>,
+    ],
+  },
 ].map((each, index) => {
   return { ...each, id: index + 1 };
 });
