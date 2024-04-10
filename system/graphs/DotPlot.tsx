@@ -34,7 +34,8 @@ const DotPlot = (props) => {
       .call(d3.axisBottom(xScale).tickFormat((d) => `${d}%`))
       .attr('color', 'var(--color-border)')
       .selectAll('text')
-      .style('font-size', '12px');
+      .style('font-size', '12px')
+      .style('color', 'var(--color-text)');
 
     const helperLinesGroup = svg.append('g');
     props.data.forEach((d, i) => {
@@ -74,7 +75,7 @@ const DotPlot = (props) => {
       .attr('dy', '0.35em')
       .text((d) => d.value)
       .style('font-size', '12px')
-      .attr('fill', '#000');
+      .attr('fill', 'var(--color-text)');
   };
 
   useEffect(() => {
