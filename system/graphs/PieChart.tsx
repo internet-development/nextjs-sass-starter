@@ -43,7 +43,7 @@ const PieChart = (props) => {
         .append('text')
         .attr('transform', (d) => `translate(${labelArc.centroid(d)})`)
         .attr('text-anchor', 'middle')
-        .attr('fill', 'black')
+        .style('fill', 'var(--color-text)')
         .style('font-size', '14px')
         .style('font-family', 'Arial, sans-serif')
         .text((d) => d.data.label);

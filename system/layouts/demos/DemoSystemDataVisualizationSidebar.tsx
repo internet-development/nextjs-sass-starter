@@ -117,6 +117,19 @@ export const VISUALIZATION_OPTIONS = [
     ],
   },
   {
+    href: `/dotplot`,
+    name: 'Dotplot',
+    data: [
+      '',
+      <Tag>Dot plot</Tag>,
+      <SubText style={{ marginTop: 7 }}>
+        A Dot plot is a versatile and straightforward way to visualize data, offering clear insights into the distribution and comparison of values across different groups or
+        categories. Their simplicity and clarity can be particularly valuable in exploratory data analysis, educational settings, and any situation where individual data points and
+        their distribution are of interest.
+      </SubText>,
+    ],
+  },
+  {
     href: `/heatmap`,
     name: 'Heatmap',
     data: [
@@ -125,18 +138,6 @@ export const VISUALIZATION_OPTIONS = [
       <SubText style={{ marginTop: 7 }}>
         A heat map, also known as a heatmap, is a graphical representation of data in which individual values contained in a matrix are represented by colors. Heat maps are similar
         to shading matrices, which have been in use for over a century.
-      </SubText>,
-    ],
-  },
-  {
-    href: `/hexbin`,
-    name: 'Hexbin',
-    data: [
-      '',
-      <Tag>Hexbin</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        Binning is a data aggregation technique used to group a dataset of N values into fewer than N discrete groups. The simplest binning method employs hexagonal tiles instead
-        of traditional square tiles. For most purposes, using hexagonal tiles is sufficient, as it offers computational simplicity while effectively representing the data.
       </SubText>,
     ],
   },
@@ -195,19 +196,6 @@ export const VISUALIZATION_OPTIONS = [
       <SubText style={{ marginTop: 7 }}>
         A Radar chart combines a traditional pie chart with a modified polar area chart, allowing for the comparison of two sets of related data. The base pie chart represents the
         first dataset in the usual way, with varying slice sizes corresponding to the proportions of the data.
-      </SubText>,
-    ],
-  },
-  {
-    href: `/dotplot`,
-    name: 'Dotplot',
-    data: [
-      '',
-      <Tag>Dot plot</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        A Dot plot is a versatile and straightforward way to visualize data, offering clear insights into the distribution and comparison of values across different groups or
-        categories. Their simplicity and clarity can be particularly valuable in exploratory data analysis, educational settings, and any situation where individual data points and
-        their distribution are of interest.
       </SubText>,
     ],
   },
