@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import React, { useEffect, useRef, useState } from 'react';
 
-const LineChart = (props) => {
+const LineChartWithArea = (props) => {
   const d3Container = useRef<HTMLDivElement | null | any>(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
@@ -55,15 +55,7 @@ const LineChart = (props) => {
         .y0(height)
         .y1((d) => yScale(d.value));
 
-      if (props.showAreaFill) {
-        const area = d3
-          .area()
-          .x((d) => xScale(new Date(d.date)))
-          .y0(height)
-          .y1((d) => yScale(d.value));
-
-        g.append('path').datum(props.data).attr('fill', 'var(--color-subdued-success)').attr('d', area);
-      }
+      g.append('path').datum(props.data).attr('fill', 'var(--color-subdued-success)').attr('d', area);
 
       g.append('path')
         .datum(props.data)
@@ -78,70 +70,67 @@ const LineChart = (props) => {
             .y((d) => yScale(d.value))
         );
 
-      // Optional error bars
-      if (props.showErrorBars) {
-        drawErrorBars(svg, props.data, xScale, yScale, {
-          color: 'var(--color-text)',
-          strokeWidth: 1,
-          capWidth: 5,
-          showConfidenceIntervalFill: props.showConfidenceIntervalFill,
-        });
-      }
-    }
-  };
+      //error bars
+      props.data.forEach((d) => {
+        const date = new Date(d.date);
+        const x = xScale(date);
+        const y1 = yScale(d.value - d.error);
+        const y2 = yScale(d.value + d.error);
 
-  function drawErrorBars(svg, data, xScale, yScale, { color = 'var(--color-text)', strokeWidth = 1, capWidth = 5, showConfidenceIntervalFill = false } = {}) {
-    const g = svg.select('g');
+        g.append('line').attr('x1', x).attr('x2', x).attr('y1', y1).attr('y2', y2).attr('stroke', 'var(--color-text)').attr('stroke-width', 1);
 
-    if (showConfidenceIntervalFill) {
-      const areaGenerator = d3
+        g.append('line')
+          .attr('x1', x - 5)
+          .attr('x2', x + 5)
+          .attr('y1', y1)
+          .attr('y2', y1)
+          .attr('stroke', 'var(--color-text)')
+          .attr('stroke-width', 1);
+
+        g.append('line')
+          .attr('x1', x - 5)
+          .attr('x2', x + 5)
+          .attr('y1', y2)
+          .attr('y2', y2)
+          .attr('stroke', 'var(--color-text)')
+          .attr('stroke-width', 1);
+      });
+
+      //midpoint of the error bars
+      props.data.forEach((d) => {
+        const date = new Date(d.date);
+        const x = xScale(date);
+        const y = yScale(d.value);
+
+        g.append('circle').attr('cx', x).attr('cy', y).attr('r', 3).attr('fill', 'var(--color-text)');
+
+        g.append('text')
+          .attr('x', x + 5)
+          .attr('y', y)
+          .attr('dy', '.35em')
+          .text(`${d.value}%`)
+          .style('font-size', '12px')
+          .style('fill', 'var(--color-text)');
+      });
+
+      //filling the error bar areas with color
+      const errorAreaTop = d3
         .area()
         .x((d) => xScale(new Date(d.date)))
-        .y0((d) => yScale(d.upper_ci))
-        .y1((d) => yScale(d.lower_ci))
-        .curve(d3.curveMonotoneX);
+        .y0((d) => yScale(d.value + d.error))
+        .y1((d) => yScale(d.value));
 
-      g.append('path').datum(data).attr('fill', 'var(--color-subdued-success)').attr('d', areaGenerator);
+      const errorAreaBottom = d3
+        .area()
+        .x((d) => xScale(new Date(d.date)))
+        .y0((d) => yScale(d.value))
+        .y1((d) => yScale(d.value - d.error));
+
+      g.append('path').datum(props.data).attr('fill', 'var(--color-subdued-success)').attr('d', errorAreaTop);
+
+      g.append('path').datum(props.data).attr('fill', 'var(--color-subdued-success)').attr('d', errorAreaBottom);
     }
-
-    data.forEach((d) => {
-      const date = new Date(d.date);
-      const x = xScale(date);
-      const yLower = yScale(d.lower_ci);
-      const yUpper = yScale(d.upper_ci);
-      const yMidpoint = (yLower + yUpper) / 2;
-
-      // Midpoint
-      g.append('circle').attr('cx', x).attr('cy', yMidpoint).attr('r', 3).attr('fill', color);
-
-      // Midpoint label
-      g.append('text')
-        .attr('x', x + 5)
-        .attr('y', yMidpoint)
-        .attr('dy', '.35em')
-        .text(`${((d.upper_ci + d.lower_ci) / 2).toFixed(0)}%`)
-        .style('font-size', '12px')
-        .style('fill', color);
-
-      g.append('line').attr('x1', x).attr('x2', x).attr('y1', yLower).attr('y2', yUpper).attr('stroke', color).attr('stroke-width', strokeWidth);
-
-      g.append('line')
-        .attr('x1', x - capWidth / 2)
-        .attr('x2', x + capWidth / 2)
-        .attr('y1', yLower)
-        .attr('y2', yLower)
-        .attr('stroke', color)
-        .attr('stroke-width', strokeWidth);
-
-      g.append('line')
-        .attr('x1', x - capWidth / 2)
-        .attr('x2', x + capWidth / 2)
-        .attr('y1', yUpper)
-        .attr('y2', yUpper)
-        .attr('stroke', color)
-        .attr('stroke-width', strokeWidth);
-    });
-  }
+  };
 
   useEffect(() => {
     if (!d3Container || !d3Container.current) {
@@ -163,9 +152,9 @@ const LineChart = (props) => {
 
   useEffect(() => {
     drawChart(containerWidth);
-  }, [containerWidth, props.data, props.showErrorBars]);
+  }, [containerWidth]);
 
   return <svg width="100%" height="188" ref={d3Container} style={props.style} />;
 };
 
-export default LineChart;
+export default LineChartWithArea;
