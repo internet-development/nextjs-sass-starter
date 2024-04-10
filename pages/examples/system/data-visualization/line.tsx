@@ -54,54 +54,18 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  {
-    value: 20,
-    date: '2023-1-1',
-  },
-  {
-    value: 30,
-    date: '2023-2-1',
-  },
-  {
-    value: 45,
-    date: '2023-3-1',
-  },
-  {
-    value: 70,
-    date: '2023-4-1',
-  },
-  {
-    value: 100,
-    date: '2023-5-1',
-  },
-  {
-    value: 135,
-    date: '2023-6-1',
-  },
-  {
-    value: 145,
-    date: '2023-7-1',
-  },
-  {
-    value: 135,
-    date: '2023-8-1',
-  },
-  {
-    value: 100,
-    date: '2023-9-1',
-  },
-  {
-    value: 70,
-    date: '2023-10-1',
-  },
-  {
-    value: 45,
-    date: '2023-11-1',
-  },
-  {
-    value: 30,
-    date: '2023-12-1',
-  },
+  { value: 20, date: '2023-1-1', error: 2 },
+  { value: 30, date: '2023-2-1', error: 3 },
+  { value: 45, date: '2023-3-1', error: 4.5 },
+  { value: 70, date: '2023-4-1', error: 7 },
+  { value: 100, date: '2023-5-1', error: 10 },
+  { value: 135, date: '2023-6-1', error: 13.5 },
+  { value: 145, date: '2023-7-1', error: 14.5 },
+  { value: 135, date: '2023-8-1', error: 13.5 },
+  { value: 100, date: '2023-9-1', error: 10 },
+  { value: 70, date: '2023-10-1', error: 7 },
+  { value: 45, date: '2023-11-1', error: 4.5 },
+  { value: 30, date: '2023-12-1', error: 3 },
 ];
 
 function ExampleSystemDataVisualizationLine(props) {
