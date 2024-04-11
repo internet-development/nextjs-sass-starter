@@ -29,6 +29,7 @@ const DistributionChart = (props) => {
 
     g.append('g').call(d3.axisLeft(yScale));
 
+    // Draw bars
     g.selectAll('.distribution')
       .data(props.data)
       .enter()
@@ -37,7 +38,19 @@ const DistributionChart = (props) => {
       .attr('y', (d) => yScale(d.value))
       .attr('height', (d) => height - yScale(d.value))
       .attr('width', xScale.bandwidth())
-      .attr('fill', '#76b5c5');
+      .attr('fill', 'rgba(106, 243, 168, 0.3)');
+
+    const line = d3.line()
+      .curve(d3.curveMonotoneX)
+      .x((d) => xScale(d.label) + xScale.bandwidth() / 2)
+      .y((d) => yScale(d.value));
+
+    g.append("path")
+      .datum(props.data)
+      .attr("fill", "none")
+      .attr("stroke", "green")
+      .attr("stroke-width", 1.5)
+      .attr("d", line);
 
   };
 

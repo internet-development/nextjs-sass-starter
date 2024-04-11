@@ -57,11 +57,9 @@ const ColumnChart = (props) => {
 
     yAxisG.selectAll('.tick line').attr('stroke-opacity', 0.01).attr('shape-rendering', 'crispEdges');
 
-    // Style the axis path and tick labels
     yAxisG.selectAll('.domain').remove();
     yAxisG.selectAll('.tick text').style('fill', 'var(--color-border)').style('font-size', '14px');
 
-    // Vertical lines for each category
     svg
       .selectAll('.vertical-line')
       .data(props.data)
@@ -132,7 +130,6 @@ const ColumnChart = (props) => {
     data.forEach((d) => {
       const barX = xScale(d.category) + margin.left;
 
-      // Labels for positive values
       if (d.positive > 0) {
         svg
           .append('text')
@@ -157,7 +154,6 @@ const ColumnChart = (props) => {
           .text(d.neutral);
       }
 
-      // Labels for negative values
       if (d.negative_upper_ci < 0) {
         svg
           .append('text')
