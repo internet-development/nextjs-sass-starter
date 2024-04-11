@@ -51,7 +51,7 @@ const HistogramChart = (props) => {
       .attr('x2', (d) => xScale(d.label) + xScale.bandwidth() / 2)
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('y2', (d) => yScale(d.upper_ci))
-      .attr('stroke', 'black')
+      .attr('stroke', 'var(--color-text)')
       .attr('stroke-width', 1.5);
 
     bars
@@ -60,7 +60,7 @@ const HistogramChart = (props) => {
       .attr('x2', (d) => xScale(d.label) + (3 * xScale.bandwidth()) / 4)
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('y2', (d) => yScale(d.value - (d.value - d.lower_ci)))
-      .attr('stroke', 'black')
+      .attr('stroke', 'var(--color-text)')
       .attr('stroke-width', 1.5);
 
     bars
@@ -69,8 +69,32 @@ const HistogramChart = (props) => {
       .attr('x2', (d) => xScale(d.label) + (3 * xScale.bandwidth()) / 4)
       .attr('y1', (d) => yScale(d.upper_ci))
       .attr('y2', (d) => yScale(d.upper_ci))
-      .attr('stroke', 'black')
+      .attr('stroke', 'var(--color-text)')
       .attr('stroke-width', 1.5);
+
+    bars.each(function (d) {
+      const barGroup = d3.select(this);
+
+      barGroup
+        .append('text')
+        .attr('x', xScale(d.label) + xScale.bandwidth() / 2)
+        .attr('y', yScale(d.upper_ci))
+        .attr('dy', '-0.5em')
+        .attr('text-anchor', 'middle')
+        .style('font-size', '12px')
+        .style('fill', 'var(--color-text)')
+        .text(`${d.upper_ci}`);
+
+      barGroup
+        .append('text')
+        .attr('x', xScale(d.label) + xScale.bandwidth() / 2)
+        .attr('y', yScale(d.lower_ci))
+        .attr('dy', '1.2em')
+        .attr('text-anchor', 'middle')
+        .style('font-size', '12px')
+        .style('fill', 'var(--color-text)')
+        .text(` ${d.lower_ci}`);
+    });
   };
 
   useEffect(() => {
