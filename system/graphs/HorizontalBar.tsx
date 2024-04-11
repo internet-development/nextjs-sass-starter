@@ -14,7 +14,7 @@ const HorizontalBarChart = (props) => {
       const svg = d3.select(d3Container.current);
       svg.selectAll('*').remove();
 
-      const margin = { top: 10, right: 10, bottom: 40, left: 30 };
+      const margin = { top: 10, right: 20, bottom: 40, left: 30 };
       const height = +svg.attr('height') - margin.top - margin.bottom;
       const drawWidth = width - margin.left - margin.right;
 
@@ -36,12 +36,12 @@ const HorizontalBarChart = (props) => {
       });
 
       const yAxis = g.append('g').call(d3.axisLeft(yScale));
-      yAxis.selectAll('path,line').style('stroke', 'var(--color-border)');
-      yAxis.selectAll('text').style('fill', 'var(--color-text)');
+      yAxis.selectAll('.tick text').style('fill', 'var(--color-text)').style('font-size', '16px');
+      yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--color-border)');
 
       const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale).ticks(3));
-      xAxis.selectAll('path,line').style('stroke', 'var(--color-border)');
-      xAxis.selectAll('text').style('fill', 'var(--color-text)');
+      xAxis.selectAll('path,line').style('stroke', 'var(--color-text)').style('font-size', '16px');
+      xAxis.selectAll('text').style('fill', 'var(--color-text)').style('font-size', '14px');
 
       g.selectAll('.bar')
         .data(props.data)
