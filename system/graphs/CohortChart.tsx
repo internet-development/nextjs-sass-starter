@@ -1,46 +1,94 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
+function getColorsBasedOnValue(value) {
+  const maxValue = 100;
+  const minValue = 0;
+
+  const minOpacity = 0.3;
+  const opacityRange = 0.7;
+
+  if (value < 25) {
+    const opacity = minOpacity + ((25 - value) / (25 - minValue)) * opacityRange;
+    return `rgba(239, 68, 68, ${opacity})`;
+  } else if (value > 35) {
+    const opacity = minOpacity + ((value - 35) / (maxValue - 35)) * opacityRange;
+    return `rgba(106, 243, 168, ${opacity})`;
+  } else {
+    return 'var(--color-light-gray)';
+  }
+}
+
 const CohortChart = (props) => {
   const d3Container = useRef<HTMLDivElement | null | any>(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
   const drawChart = (width) => {
-    if (!d3Container.current || width <= 0) return;
+    if (!d3Container.current || width <= 0 || !props.data) return;
 
     const svg = d3.select(d3Container.current);
     svg.selectAll('*').remove();
 
-    const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+    const margin = { top: 50, right: 10, bottom: 10, left: 10 };
     const height = 400 - margin.top - margin.bottom;
     const chartWidth = width - margin.left - margin.right;
 
     const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // Assuming data structure for cohort chart
-    const xScale = d3.scaleBand().range([0, chartWidth]).padding(0.3);
-    const yScale = d3.scaleLinear().range([height, 0]);
-
-    // Example data mapping
-    xScale.domain(props.data.map((d) => d.group));
-    yScale.domain([0, d3.max(props.data, (d) => d.value)]);
+    const xScale = d3
+      .scaleBand()
+      .range([0, chartWidth])
+      .padding(0.01)
+      .domain(props.data.map((d) => d.group));
+    const yScale = d3
+      .scaleBand()
+      .range([height, 0])
+      .padding(0.01)
+      .domain(props.data.map((d) => d.variable));
 
     g.append('g')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(xScale));
+      .attr('transform', `translate(0,0)`)
+      .call(d3.axisTop(xScale).tickSize(0))
+      .selectAll('.tick text')
+      .attr('text-anchor', 'end')
+      .attr('dx', '4em')
+      .attr('dy', '-0.5em')
+      .style('fill', 'var(--color-text)')
+      .style('font-size', '12px')
+      .attr('dy', '-0.5em');
+    g.selectAll('.domain').remove();
 
-    g.append('g').call(d3.axisLeft(yScale));
-
-    g.selectAll('.cohort')
-      .data(props.data)
+    g.selectAll('.cell')
+      .data(props.data, (d) => d.group + ':' + d.variable)
       .enter()
       .append('rect')
       .attr('x', (d) => xScale(d.group))
-      .attr('y', (d) => yScale(d.value))
-      .attr('height', (d) => height - yScale(d.value))
+      .attr('y', (d) => yScale(d.variable))
       .attr('width', xScale.bandwidth())
-      .attr('fill', (d) => d.color);
+      .attr('height', yScale.bandwidth())
+      .attr('rx', 4)
+      .attr('ry', 4)
+      .style('fill', (d) => getColorsBasedOnValue(d.value));
 
+    g.selectAll('.label')
+      .data(props.data, (d) => d.group + ':' + d.variable)
+      .enter()
+      .append('text')
+      .text((d) => `${d.value}%`)
+      .attr('x', (d) => xScale(d.group) + xScale.bandwidth() - Math.max(5, xScale.bandwidth() * 0.2))
+      .attr('y', (d) => yScale(d.variable) + yScale.bandwidth() / 2)
+      .attr('dy', '.35em')
+      .attr('text-anchor', 'middle')
+      .style('fill', 'var(--color-text)')
+      .style('font-size', '12px');
+
+    g.append('g')
+      .call(d3.axisLeft(yScale).tickSize(0))
+      .selectAll('.tick text')
+      .attr('text-anchor', 'end')
+      .style('fill', 'var(--color-text)')
+      .style('font-size', '12px');
+    g.selectAll('.domain').remove();
   };
 
   useEffect(() => {
@@ -57,7 +105,22 @@ const CohortChart = (props) => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return <svg ref={d3Container} width="100%" height="400" style={props.style} />;
+  return (
+    <>
+      <svg ref={d3Container} width="100%" height="400" style={props.style} />
+
+      <section style={{ display: 'flex', flexDirection: 'row', gap: '1.2rem', paddingLeft: '1rem', paddingBottom: '1rem' }}>
+        {props?.legend?.map((item, index) => {
+          return (
+            <div key={index}>
+              <span style={{ width: '1.2rem', height: '1.2rem', borderRadius: '2rem', display: 'inline-block', background: item.color }} />
+              <p>{item.label}</p>
+            </div>
+          );
+        })}
+      </section>
+    </>
+  );
 };
 
 export default CohortChart;

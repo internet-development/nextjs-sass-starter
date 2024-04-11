@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 import * as Utilities from '@common/utilities';
 
-import CohortChart from '@system/graphs/CohortChart'; // Updated to import CohortChart
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import GridLayout from '@system/layouts/GridLayout';
+import CohortChart from '@system/graphs/CohortChart';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import Table from '@system/Table';
@@ -13,7 +12,6 @@ import Tag from '@system/documents/Tag';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
-import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
 const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
@@ -54,23 +52,39 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { group: 'Group A', value: 120, color: '#f00' },
-  { group: 'Group B', value: 150, color: '#0f0' },
-  { group: 'Group C', value: 80, color: '#00f' },
-  { group: 'Group D', value: 160, color: '#ff0' },
+  // Group A
+  { group: 'A', variable: 'v1', value: 45 },
+  { group: 'A', variable: 'v2', value: 55 },
+  { group: 'A', variable: 'v3', value: 35 },
+  { group: 'A', variable: 'v4', value: 20 },
+  // Group B
+  { group: 'B', variable: 'v2', value: 15 },
+  { group: 'B', variable: 'v3', value: 20 },
+  { group: 'B', variable: 'v4', value: 25 },
+  // Group C
+  { group: 'C', variable: 'v3', value: 30 },
+  { group: 'C', variable: 'v4', value: 35 },
+  // Group D
+  { group: 'D', variable: 'v4', value: 35 },
 ];
 
-function ExampleSystemDataVisualizationCohort(props) {
+const EXAMPLE_LEGEND_ITEMS_DATA = [
+  { color: 'var(--color-subdued-error)', label: 'under 25%' },
+  { color: 'var(--color-light-gray)', label: 'no significance' },
+  { color: 'var(--color-success)', label: 'over 35%' },
+];
+
+function ExampleSystemDataVisualizationCohortChart(props) {
   const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: '{{TITLE}}',
-    description: '{{DESCRIPTION}}',
+    title: 'Cohort Chart Example',
+    description: 'This is an example of a Cohort Chart using D3.js integrated into a React component.',
   };
   return (
     <Page
-      title="nextjs-sass-starter: system: data visualization: cohort"
+      title="nextjs-sass-starter: system: data visualization: cohort chart"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/data-visualization/cohort"
     >
@@ -81,16 +95,15 @@ function ExampleSystemDataVisualizationCohort(props) {
         onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
       />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="cohort" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Cohort</H2>
+        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Cohort Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed
-          euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl,
-          nec aliquam nisl nisl sit amet nisl. Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+          Cohort Chart visualization is a method of graphically representing numerical data where the value of each data point is indicated using colors. It can help visualize data
+          distribution across different groups and variables.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <CohortChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+          <CohortChart data={EXAMPLE_DUMMY_DATA} legend={EXAMPLE_LEGEND_ITEMS_DATA} style={{ height: '100%', width: '100%' }} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
@@ -105,4 +118,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleSystemDataVisualizationCohort;
+export default ExampleSystemDataVisualizationCohortChart;

@@ -51,7 +51,6 @@ const DistributionChart = (props) => {
       .attr("stroke", "green")
       .attr("stroke-width", 1.5)
       .attr("d", line);
-
   };
 
   useEffect(() => {
