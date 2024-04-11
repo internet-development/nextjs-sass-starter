@@ -17,8 +17,21 @@ export function getOrdinalNumber(n) {
 
 export function onHandleThemeChange() {
   const body = document.body;
-  const isLight = body.classList.contains('theme-light');
-  return isLight ? body.classList.replace('theme-light', 'theme-dark') : body.classList.replace('theme-dark', 'theme-light');
+
+  if (body.classList.contains('theme-light')) {
+    body.classList.replace('theme-light', 'theme-dark');
+    return;
+  }
+
+  if (body.classList.contains('theme-dark')) {
+    body.classList.replace('theme-dark', 'theme-blue');
+    return;
+  }
+
+  if (body.classList.contains('theme-blue')) {
+    body.classList.replace('theme-blue', 'theme-light');
+    return;
+  }
 }
 
 export function formatDollars(value: number): string {

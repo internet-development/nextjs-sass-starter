@@ -13,7 +13,7 @@ export default function ModalNavigation(props) {
   return (
     <OutsideElementEvent className={styles.modal} onOutsideEvent={props.onOutsideEvent} style={{ textAlign: style.side, top: style.top, right: style.right }}>
       <span className={styles.item} onClick={props.onHandleThemeChange}>
-        Toggle Theme
+        Rotate Theme
       </span>
       <a href="/examples/settings" className={styles.item}>
         Settings

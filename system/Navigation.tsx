@@ -12,7 +12,7 @@ export default function Navigation(props) {
       </section>
       <section className={styles.stretch}>
         <span className={styles.item} onClick={props.onHandleThemeChange}>
-          Toggle Theme
+          Rotate Theme
         </span>
         <a className={styles.item} href="/examples/settings">
           Settings

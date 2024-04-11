@@ -44,6 +44,11 @@
     border: 0;
     outline: 0;
   }
+
+  &::placeholder {
+    opacity: 1;
+    color: var(--color-border);
+  }
 }
 
 .item {

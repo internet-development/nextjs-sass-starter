@@ -177,6 +177,44 @@ body.theme-dark {
   }
 }
 
+body.theme-blue {
+  --color-background: #35639e;
+  --color-background-2: #5f96bf;
+  --color-background-3: #b1cce1;
+  --color-text: var(--color-white);
+  --color-border: #5687bc;
+  --color-subdued-border: rgba(86, 135, 188, 0.4);
+  --color-accent: rgba(1, 141, 255, 0.1);
+  --color-success: rgba(68, 198, 127, 1);
+  --color-subdued-success: rgba(106, 243, 168, 0.3);
+  --color-error: rgba(239, 68, 68, 1);
+  --color-subdued-error: rgba(239, 68, 68, 0.677);
+  --color-light-gray: rgba(130, 130, 130, 0.59);
+
+  --theme-modal: inset 0 0 0 1px var(--color-border);
+  --theme-button: var(--color-white);
+  --theme-button-color: var(--color-black);
+  --theme-button-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+  --theme-button-shadow-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--color-border);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-subdued-border);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-subdued-border);
+  }
+}
+
 #__next {
 }
 

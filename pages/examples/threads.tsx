@@ -18,8 +18,6 @@ function ExampleEmptyApplicationTemplate(props) {
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [list, setList] = React.useState<Array<any>>(props.data);
 
-  console.log(list,'list data')
-  
   return (
     <Page
       title="api.internet.dev: Threads"
