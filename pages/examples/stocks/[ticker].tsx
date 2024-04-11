@@ -4,7 +4,7 @@ import * as Utilities from '@common/utilities';
 
 import AppLayout from '@system/layouts/AppLayout';
 import Cookies from 'js-cookie';
-import LineChart from '@root/system/graphs/LineChartWithArea';
+import LineChart from '@root/system/graphs/LineChart';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
