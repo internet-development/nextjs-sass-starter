@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
-import HorizontalBarChart from '@system/graphs/HorizontalBar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import GridLayout from '@system/layouts/GridLayout';
+import HorizontalBarChart from '@system/graphs/HorizontalBar';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import Table from '@system/Table';
 import Tag from '@system/documents/Tag';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
-import { H2, P, Title, Text, SubText } from '@system/typography';
-import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 import DivergingStackedBarChart from '@root/system/graphs/DivergingStackedBarChart';
+import { H2, P, SubText, Text, Title } from '@system/typography';
 
 const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
@@ -106,6 +104,10 @@ function ExampleSystemDataVisualizationBar(props) {
     description: 'This bar chart represents the monthly sales data for the year 2023.',
   };
 
+  const chartVariantA = {
+    title: 'Bar Chart - Variant A',
+  };
+
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: bar"
@@ -129,6 +131,8 @@ function ExampleSystemDataVisualizationBar(props) {
         <div style={chartContainerStyles}>
           <HorizontalBarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_LEGEND_ITEMS_DATA} />
         </div>
+        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantA.title}</Text>
+
         <div style={chartContainerStyles}>
           <DivergingStackedBarChart data={EXAMPLE_DIVERGING_STACKED_BAR_CHART} style={{ marginTop: 32 }} legend={EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS} />
         </div>
