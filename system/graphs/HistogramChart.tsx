@@ -11,7 +11,7 @@ const HistogramChart = (props) => {
     const svg = d3.select(d3Container.current);
     svg.selectAll('*').remove();
 
-    const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
     const height = 400 - margin.top - margin.bottom;
     const chartWidth = width - margin.left - margin.right;
 
@@ -21,27 +21,32 @@ const HistogramChart = (props) => {
     const yScale = d3.scaleLinear().range([height, 0]);
 
     xScale.domain(props.data.map((d) => d.label));
-    yScale.domain([0, d3.max(props.data, (d) => d.upper_ci)]); // Adjust domain to only account for upper_ci
+    yScale.domain([0, d3.max(props.data, (d) => d.upper_ci)]);
 
-    g.append('g')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(xScale));
+    const tickValues = yScale.ticks();
 
-    g.append('g').call(d3.axisLeft(yScale));
+    tickValues.forEach((d) => {
+      g.append('line').attr('x1', 0).attr('x2', chartWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--color-border)').attr('opacity', 0.7); // Adjust opacity as needed
+    });
+    const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+    xAxis.selectAll('text').style('font-size', '14px');
 
-    const bars = g.selectAll('.column')
-      .data(props.data)
-      .enter()
-      .append('g');
+    const yAxis = g.append('g').call(d3.axisLeft(yScale));
+    yAxis.selectAll('.tick text').style('fill', 'var(--color-border)').style('font-size', '16px');
+    yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--color-border)');
 
-    bars.append('rect')
+    const bars = g.selectAll('.column').data(props.data).enter().append('g');
+
+    bars
+      .append('rect')
       .attr('x', (d) => xScale(d.label))
       .attr('y', (d) => yScale(d.value))
       .attr('height', (d) => height - yScale(d.value))
       .attr('width', xScale.bandwidth())
       .attr('fill', 'rgba(68, 198, 127, 1)');
 
-    bars.append('line')
+    bars
+      .append('line')
       .attr('x1', (d) => xScale(d.label) + xScale.bandwidth() / 2)
       .attr('x2', (d) => xScale(d.label) + xScale.bandwidth() / 2)
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
@@ -49,9 +54,10 @@ const HistogramChart = (props) => {
       .attr('stroke', 'black')
       .attr('stroke-width', 1.5);
 
-    bars.append('line')
+    bars
+      .append('line')
       .attr('x1', (d) => xScale(d.label) + xScale.bandwidth() / 4)
-      .attr('x2', (d) => xScale(d.label) + 3 * xScale.bandwidth() / 4)
+      .attr('x2', (d) => xScale(d.label) + (3 * xScale.bandwidth()) / 4)
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('y2', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('stroke', 'black')
