@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import AnyTextHeader from '@components/AnyTextHeader';
+import DemoInviteFlow from '@system/layouts/demos/DemoInviteFlow';
 import Page from '@components/Page';
 
 const Section = (props) => {
@@ -159,7 +160,7 @@ function ExampleClientsMuddy(props) {
       </Section>
 
       <Section title="Invite flow" description="Example invite flow">
-        ...
+        <DemoInviteFlow />
       </Section>
 
       <div style={{ paddingBottom: 128 }} />
