@@ -28,7 +28,12 @@ const HistogramChart = (props) => {
     tickValues.forEach((d) => {
       g.append('line').attr('x1', 0).attr('x2', chartWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--color-border)').attr('opacity', 0.7); // Adjust opacity as needed
     });
-    const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+
+    const xAxisOffset = 0.5;
+    const xAxis = g
+      .append('g')
+      .attr('transform', `translate(0,${height + xAxisOffset})`)
+      .call(d3.axisBottom(xScale));
     xAxis.selectAll('text').style('font-size', '14px');
 
     const yAxis = g.append('g').call(d3.axisLeft(yScale));
