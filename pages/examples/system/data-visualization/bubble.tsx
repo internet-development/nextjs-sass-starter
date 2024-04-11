@@ -23,16 +23,16 @@ const TABLE_DATA = [
   },
 
   {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context or data labels within the bubble chart. [16px]</SubText>],
+    data: [
+      ``,
+      <Tag>Text</Tag>,
+      <Tag>True</Tag>,
+      <SubText style={{ marginTop: 7 }}>Text is used to provide additional context or data labels within the bubble chart. [16px]</SubText>,
+    ],
   },
 
   {
-    data: [
-      ``,
-      <Tag>Bubbles</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>Bubbles represent data points with their size and position on the chart.</SubText>,
-    ],
+    data: [``, <Tag>Bubbles</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>Bubbles represent data points with their size and position on the chart.</SubText>],
   },
   {
     data: [
@@ -43,7 +43,12 @@ const TABLE_DATA = [
     ],
   },
   {
-    data: [``, <Tag>Legend</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The legend explains the colors or sizes of the bubbles, providing insight into the data set.</SubText>],
+    data: [
+      ``,
+      <Tag>Legend</Tag>,
+      <Tag>False</Tag>,
+      <SubText style={{ marginTop: 7 }}>The legend explains the colors or sizes of the bubbles, providing insight into the data set.</SubText>,
+    ],
   },
 ];
 
@@ -53,6 +58,11 @@ const EXAMPLE_DUMMY_DATA = [
   { x: 30, y: 40, value: 50, category: 'Category 3' },
   { x: 40, y: 50, value: 60, category: 'Category 4' },
   { x: 50, y: 60, value: 70, category: 'Category 5' },
+];
+
+const EXAMPLE_LEGEND_ITEMS_DATA = [
+  { color: 'var(--color-success)', label: 'significant' },
+  { color: 'var(--color-border)', label: 'no significance' },
 ];
 
 function ExampleSystemDataVisualizationBubble(props) {
@@ -78,12 +88,13 @@ function ExampleSystemDataVisualizationBubble(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="bubble" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Bubble Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Bubble charts are used to display three dimensions of data on a chart. The position of the bubble on the horizontal and vertical axes indicates the values of two data points, and the size of the bubble represents a third.
+          Bubble charts are used to display three dimensions of data on a chart. The position of the bubble on the horizontal and vertical axes indicates the values of two data
+          points, and the size of the bubble represents a third.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <BubbleChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+          <BubbleChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_LEGEND_ITEMS_DATA} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
