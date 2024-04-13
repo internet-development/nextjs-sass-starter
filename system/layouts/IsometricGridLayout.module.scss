@@ -5,4 +5,5 @@
   background: repeating-linear-gradient(150deg, var(--color-border), var(--color-border) 1px, transparent 1px, transparent 20px),
     repeating-linear-gradient(30deg, var(--color-border), var(--color-border) 1px, transparent 1px, transparent 20px);
   background-size: 40px 46px;
+  overflow: hidden;
 }
