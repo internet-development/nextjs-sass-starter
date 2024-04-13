@@ -99,6 +99,7 @@ export default async function Page(props) {
         <ListItem href="/examples/earnings-requirement-calculator">Earnings requirement calculator</ListItem>
         <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
         <ListItem href="/examples/empty-grid-template-page">Empty grid template page</ListItem>
+        <ListItem href="/examples/empty-isometric-grid-template-page">Empty isometricgrid template page</ListItem>
         <ListItem href="/examples/files" isAuth>
           File management (with AWS S3 presigned URL)
         </ListItem>

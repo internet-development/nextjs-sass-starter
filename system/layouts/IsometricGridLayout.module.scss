@@ -1,0 +1,8 @@
+.root {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 48px);
+  background: repeating-linear-gradient(150deg, var(--color-border), var(--color-border) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(30deg, var(--color-border), var(--color-border) 1px, transparent 1px, transparent 20px);
+  background-size: 40px 46px;
+}

@@ -1,0 +1,50 @@
+.box {
+  position: absolute;
+  box-shadow: 0 0 0 1px transparent;
+  transition: 200ms ease box-shadow;
+
+  &:hover {
+    box-shadow: 0 0 0 1px var(--color-border);
+  }
+}
+
+.anchor {
+  position: relative;
+  pointer-events: none;
+}
+
+.cube {
+  pointer-events: none;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-35deg) rotateY(45deg);
+  transition: transform 1s;
+}
+
+.face {
+  position: absolute;
+  font-size: 40px;
+  color: var(--color-background);
+  text-align: center;
+  border: 1px solid var(--color-border);
+}
+
+.front {
+  background: var(--color-text);
+}
+
+.left {
+  background: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top {
+  background: var(--color-text);
+}
+
+.iframe {
+  height: 100%;
+  width: 100%;
+}
