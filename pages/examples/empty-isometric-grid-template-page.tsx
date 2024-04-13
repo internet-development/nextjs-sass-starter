@@ -29,8 +29,8 @@ function ExampleEmptyIsometricGridTemplate(props) {
         value={key}
       />
       <IsometricGridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <IsometricRect x={-124} y={-102} size={800} src="https://wireframes.internet.dev/examples/components-table" />
         <IsometricRect x={572} y={-102} size={800} src="https://wireframes.internet.dev/examples/components-post" />
+        <IsometricRect x={-124} y={-102} size={800} src="https://wireframes.internet.dev/examples/components-table" />
       </IsometricGridLayout>
       <GlobalModalManager
         currentModal={currentModal}
