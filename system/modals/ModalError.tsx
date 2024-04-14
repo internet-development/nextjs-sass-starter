@@ -5,10 +5,14 @@ import * as React from 'react';
 import Error from '@system/svg/Error';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
+import { useModal } from '@system/providers/ModalContextProvider';
+
 export default function ModalError(props) {
+  const { showModal } = useModal();
+
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent className={styles.errorModal} onOutsideEvent={props.onOutsideEvent}>
+      <OutsideElementEvent className={styles.errorModal} onOutsideEvent={() => showModal(null)}>
         <span className={styles.errorModalLeft}>
           <Error height="16px" />
         </span>

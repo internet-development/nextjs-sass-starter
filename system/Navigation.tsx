@@ -1,8 +1,13 @@
 import styles from '@system/Navigation.module.scss';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
-export default function Navigation(props) {
+import { useModal } from '@system/providers/ModalContextProvider';
+
+export default function Navigation() {
+  const { showModal } = useModal();
+
   return (
     <nav className={styles.root}>
       <section className={styles.left}>
@@ -11,7 +16,7 @@ export default function Navigation(props) {
         </a>
       </section>
       <section className={styles.stretch}>
-        <span className={styles.item} onClick={props.onHandleThemeChange}>
+        <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
           Rotate Theme
         </span>
         <a className={styles.item} href="/examples/settings">
@@ -28,7 +33,7 @@ export default function Navigation(props) {
         <span
           className={styles.item}
           id="site-navigation-button"
-          onClick={props.isModalVisible ? props.onHandleHideSubNavigation : props.onHandleShowSubNavigation}
+          onClick={() => showModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
           data-detector-ignore-navigation
         >
           Navigation

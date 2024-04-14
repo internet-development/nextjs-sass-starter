@@ -27,7 +27,6 @@ const options = [
 ];
 
 function ExampleForms(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentSelectValue, setSelectValue] = React.useState<string | null>(null);
   const [checked, setChecked] = React.useState(true);
   const [unchecked, setUnchecked] = React.useState(false);
@@ -38,12 +37,7 @@ function ExampleForms(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/components-forms"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <GridLayout>
         <ThinAppLayout style={{ background: `var(--color-background)`, borderTop: `1px solid var(--color-border)` }}>
           <FormHeading>Example Form</FormHeading>
@@ -92,7 +86,7 @@ function ExampleForms(props) {
           </Button>
         </ThinAppLayout>
       </GridLayout>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

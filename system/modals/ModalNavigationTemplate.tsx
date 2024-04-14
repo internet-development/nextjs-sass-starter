@@ -2,7 +2,10 @@ import styles from '@system/modals/Modals.module.scss';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
+
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
+
+import { useModal } from '@system/providers/ModalContextProvider';
 
 const MODAL_WIDTH = 240;
 const MODAL_GUTTER_OFFSET = 24;
@@ -13,7 +16,7 @@ export default function ModalNavigationTemplate(props) {
   return (
     <OutsideElementEvent
       className={styles.modal}
-      onOutsideEvent={props.onOutsideEvent}
+      onOutsideEvent={() => showModal(null)}
       style={{
         textAlign: style.side,
         top: style.top,
@@ -37,7 +40,7 @@ export default function ModalNavigationTemplate(props) {
           </a>
         </>
       )}
-      <span className={styles.item} onClick={props.onHandleThemeChange}>
+      <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
         Rotate Theme
       </span>
       <a href="/examples/settings" className={styles.item}>
