@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 interface ModalContent {
+  data?: any;
   name?: string;
   message?: string;
   parentId?: string;

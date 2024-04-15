@@ -93,7 +93,7 @@ export default async function Page(props) {
         <ListItem href="/examples/components-post">Components ➝ navigation, blog post, footer</ListItem>
         <ListItem href="/examples/components-forms">Components ➝ navigation, form elements</ListItem>
         <ListItem href="/examples/components-full-section">Components ➝ navigation, full dvh sections</ListItem>
-        <ListItem href="/examples/components-modals">Components ➝ navigation, modal components</ListItem>
+        <ListItem href="/examples/components-modals">Components ➝ navigation, index modal trigger</ListItem>
         <ListItem href="/examples/components-no-sections">Components ➝ navigation, naked components</ListItem>
         <ListItem href="/examples/components-half-section">Components ➝ navigation, ½ dvh sections</ListItem>
         <ListItem href="/examples/components-table">Components ➝ navigation, table</ListItem>

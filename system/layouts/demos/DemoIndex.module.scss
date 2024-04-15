@@ -1,0 +1,39 @@
+.root {
+  font-family: var(--font-family-serif);
+  padding: 24px;
+}
+
+.themeParent {
+  margin-top: 1rem;
+}
+
+.subjectParent {
+  margin: 24px 0 48px 0;
+}
+
+.theme {
+  text-transform: uppercase;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.subject {
+  padding-left: 24px;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.left {
+  min-width: 10%;
+  width: 100%;
+  padding-right: 24px;
+}
+
+.right {
+  font-feature-settings: 'lnum', 'tnum';
+  flex-shrink: 0;
+}

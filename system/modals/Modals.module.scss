@@ -7,8 +7,15 @@
   padding: 12px 0 12px 0;
 }
 
+.childModal {
+  -webkit-appearance: none;
+  box-shadow: var(--theme-modal);
+  background: var(--color-background);
+  border-radius: 4px;
+}
+
 .wrapper {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   width: 100%;
   left: 0;

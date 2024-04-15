@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import ModalError from '@system/modals/ModalError';
+import ModalIndex from '@system/modals/ModalIndex';
 import ModalNavigation from '@system/modals/ModalNavigation';
 import ModalNavigationTemplate from '@system/modals/ModalNavigationTemplate';
 
@@ -28,6 +29,10 @@ export default function GlobalModalManager(props) {
 
   if (modalContent && modalContent.name === 'ERROR') {
     nextModal = <ModalError content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
+  }
+
+  if (modalContent && modalContent.name === 'INDEX') {
+    nextModal = <ModalIndex content={modalContent} onShowModal={showModal} />;
   }
 
   return nextModal;
