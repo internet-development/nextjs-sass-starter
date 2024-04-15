@@ -4,7 +4,11 @@ import * as React from 'react';
 
 import Cookies from 'js-cookie';
 
+import { useModal } from '@system/providers/ModalContextProvider';
+
 export default function KeyHeader(props) {
+  const { showModal } = useModal();
+
   if (props.isHidden) {
     return <nav className={styles.root} />;
   }
@@ -16,7 +20,7 @@ export default function KeyHeader(props) {
           className={styles.item}
           data-detector-ignore-navigation
           id="site-navigation-button"
-          onClick={props.isModalVisible ? props.onHandleHideSubNavigation : props.onHandleShowSubNavigation}
+          onClick={() => showModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
         >
           Menu
         </span>

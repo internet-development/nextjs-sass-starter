@@ -16,7 +16,6 @@ import { H1, Text, SubText, UnitLabel } from '@system/typography';
 import { FormHeading, FormParagraph } from '@system/typography/forms';
 
 function ExampleStock(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
 
   const stock = props.stock[props.symbol.toUpperCase()] ? props.stock[props.symbol.toUpperCase()].quote : {};
@@ -47,13 +46,7 @@ function ExampleStock(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url={`https://wireframes.internet.dev/examples/stocks/${props.symbol}`}
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
         <ThinAppLayoutHeader
           token={key}
@@ -87,22 +80,7 @@ function ExampleStock(props) {
         {isDataHydrated ? <LineChart data={parsedData} style={{ marginTop: 32 }} /> : <FormParagraph>You must be signed in to view stock quotes</FormParagraph>}
         {isDataHydrated ? <Table data={tableData} headings={tableHeadings} style={{ marginTop: 24 }} /> : null}
       </ThinAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

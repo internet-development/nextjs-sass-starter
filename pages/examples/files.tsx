@@ -14,8 +14,8 @@ import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
-import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import { useModal } from '@system/providers/ModalContextProvider';
 
 async function onListData({ key }) {
   let result;
@@ -64,14 +64,14 @@ async function onDeleteData({ id, key }) {
   return result;
 }
 
-async function onUploadData({ file, domain, key, setModal }) {
+async function onUploadData({ file, domain, key, showModal }) {
   let signedResult;
   const name = file.name;
   const type = file.type;
   const size = file.size;
 
   if (size > Constants.MAX_SIZE_BYTES) {
-    setModal({ name: 'ERROR', message: 'File size exceeds 15mb limit' });
+    showModal({ name: 'ERROR', message: 'File size exceeds 15mb limit' });
     return;
   }
 
@@ -90,17 +90,17 @@ async function onUploadData({ file, domain, key, setModal }) {
   }
 
   if (!signedResult) {
-    setModal({ name: 'ERROR', message: 'Failed to upload.' });
+    showModal({ name: 'ERROR', message: 'Failed to upload.' });
     return null;
   }
 
   if (signedResult.error) {
-    setModal({ name: 'ERROR', message: signedResult.message });
+    showModal({ name: 'ERROR', message: signedResult.message });
     return null;
   }
 
   if (!signedResult.uploadURL) {
-    setModal({ name: 'ERROR', message: 'Failed to upload your data.' });
+    showModal({ name: 'ERROR', message: 'Failed to upload your data.' });
     return null;
   }
 
@@ -117,8 +117,8 @@ async function onUploadData({ file, domain, key, setModal }) {
 }
 
 function ExampleFiles(props) {
-  const [currentError, setError] = React.useState<string | null>(null);
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const { showModal } = useModal();
+
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [domain, setDomain] = React.useState<string>('internet.dev');
@@ -132,13 +132,7 @@ function ExampleFiles(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/files"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
 
       <ThinAppLayout>
         <ThinAppLayoutHeader
@@ -164,7 +158,7 @@ function ExampleFiles(props) {
             setLoading(false);
 
             if (!response) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'Something went wrong but we are too lazy to tell you.',
               });
@@ -217,7 +211,7 @@ function ExampleFiles(props) {
           loading={uploading}
           onSetFile={async (file) => {
             setUploading(true);
-            const response = await onUploadData({ file, domain, key, setModal });
+            const response = await onUploadData({ file, domain, key, showModal });
             if (!response) {
               setUploading(false);
               return;
@@ -225,7 +219,7 @@ function ExampleFiles(props) {
 
             if (response.error) {
               setUploading(false);
-              setModal({ name: 'ERROR', message: response.message });
+              showModal({ name: 'ERROR', message: response.message });
               return;
             }
 
@@ -241,22 +235,7 @@ function ExampleFiles(props) {
           style={{ marginTop: 24 }}
         />
       </ThinAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={currentUser} />
     </Page>
   );
 }

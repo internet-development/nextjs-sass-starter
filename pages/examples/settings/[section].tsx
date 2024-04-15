@@ -11,6 +11,7 @@ import Page from '@components/Page';
 import TwoColumnLayout from '@system/layouts/TwoColumnLayout';
 
 import { P } from '@system/typography';
+import { useModal } from '@system/providers/ModalContextProvider';
 
 const SUB_SECTION_ROUTES = {
   documents: 'DOCUMENTS',
@@ -31,7 +32,8 @@ const SUB_SECTION_LINKS = {
 };
 
 function ExampleSettings(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const { showModal } = useModal();
+
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [active, setActive] = React.useState<string>(props.active);
 
@@ -41,32 +43,11 @@ function ExampleSettings(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url={`https://wireframes.internet.dev/examples/settings/${props.route}`}
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <TwoColumnLayout sidebar={<DemoSettingsSidebar active={active} onSetKey={setKey} viewer={props.viewer} />}>
-        <DemoSettings active={active} data={props.data} onSetModal={setModal} sessionKey={key} viewer={props.viewer} />
+        <DemoSettings active={active} data={props.data} onSetModal={showModal} sessionKey={key} viewer={props.viewer} />
       </TwoColumnLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

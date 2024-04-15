@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';

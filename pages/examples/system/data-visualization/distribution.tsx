@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
@@ -77,7 +76,6 @@ const EXAMPLE_DUMMY_DATA = [
 ];
 
 function ExampleSystemDataVisualizationDistribution(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
@@ -90,16 +88,12 @@ function ExampleSystemDataVisualizationDistribution(props) {
       description="A lightweight website template to test our design system with a distribution chart example. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/data-visualization/distribution"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="distribution" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Distribution Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Distribution charts are used to show the variation of data over a period, or to compare multiple data sets. They are particularly useful for identifying patterns, outliers, and the distribution of data points across different categories.
+          Distribution charts are used to show the variation of data over a period, or to compare multiple data sets. They are particularly useful for identifying patterns,
+          outliers, and the distribution of data points across different categories.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
@@ -108,7 +102,7 @@ function ExampleSystemDataVisualizationDistribution(props) {
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

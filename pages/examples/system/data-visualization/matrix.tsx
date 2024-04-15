@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
@@ -39,9 +38,7 @@ const TABLE_DATA = [
       ``,
       <Tag>Grid</Tag>,
       <Tag>Yes</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        Offers a reference framework for the chart by highlighting major and minor axes. Grids can be horizontal, vertical, or both.
-      </SubText>,
+      <SubText style={{ marginTop: 7 }}>Offers a reference framework for the chart by highlighting major and minor axes. Grids can be horizontal, vertical, or both.</SubText>,
     ],
   },
   {
@@ -56,11 +53,10 @@ const EXAMPLE_DUMMY_DATA = [
   [0, 2, 4, 6],
   [8, 10, 12, 14],
   [16, 18, 20, 22],
-  [24, 26, 28, 30]
+  [24, 26, 28, 30],
 ];
 
 function ExampleSystemDataVisualizationMatrix(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
@@ -73,16 +69,12 @@ function ExampleSystemDataVisualizationMatrix(props) {
       description="Explore the intricacies of matrix data visualization within our design system. This example serves as a guide for implementing matrix charts effectively."
       url="https://wireframes.internet.dev/examples/system/data-visualization/matrix"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="matrix" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Matrix Visualization</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Matrix charts are powerful tools for visualizing complex data sets, allowing for the comparison of data across two dimensions. They are particularly useful for spotting patterns, correlations, and anomalies within the data.
+          Matrix charts are powerful tools for visualizing complex data sets, allowing for the comparison of data across two dimensions. They are particularly useful for spotting
+          patterns, correlations, and anomalies within the data.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
@@ -91,7 +83,7 @@ function ExampleSystemDataVisualizationMatrix(props) {
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

@@ -4,20 +4,7 @@ import * as React from 'react';
 
 import Head from 'next/head';
 
-import { ModalContext } from '@system/providers/ModalContextProvider';
-
 export default function Page(props) {
-  const [modalContent, setContent] = React.useState(null);
-
-  const showModal = (nextContent) => {
-    if (nextContent && modalContent && nextContent.name === modalContent.name) {
-      setContent(null);
-      return;
-    }
-
-    setContent(nextContent);
-  };
-
   return (
     <>
       <Head>
@@ -44,7 +31,7 @@ export default function Page(props) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <img className={styles.pixel} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png" alt="" />
-      <ModalContext.Provider value={{ modalContent, showModal }}>{props.children}</ModalContext.Provider>
+      {props.children}
     </>
   );
 }

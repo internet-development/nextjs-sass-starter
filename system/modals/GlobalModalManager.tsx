@@ -19,15 +19,15 @@ export default function GlobalModalManager(props) {
 
   let nextModal;
   if (modalContent && modalContent.name === 'NAVIGATION') {
-    nextModal = <ModalNavigation key="NAVIGATION" parentRect={parentRect} />;
+    nextModal = <ModalNavigation parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   if (modalContent && modalContent.name == 'NAVIGATION_TEMPLATE') {
-    nextModal = <ModalNavigationTemplate key="NAVIGATION_TEMPLATE" parentRect={parentRect} />;
+    nextModal = <ModalNavigationTemplate parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   if (modalContent && modalContent.name === 'ERROR') {
-    nextModal = <ModalError key="ERROR" />;
+    nextModal = <ModalError content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   return nextModal;

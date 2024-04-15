@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-
-import * as Utilities from '@common/utilities';
+import * as React from 'react';
 
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
-import GlobalModalManager, { ModalActions } from '@system/modals/GlobalModalManager';
+import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
 import { H1, Lead } from '@system/typography';
+import { useModal } from '@system/providers/ModalContextProvider';
 
 function ExampleModals(props) {
+  const { showModal } = useModal();
+
   return (
     <Page
       title="nextjs-sass-starter: Modals"
@@ -21,7 +22,13 @@ function ExampleModals(props) {
       <Navigation />
       <SectionFullHeight>
         <Content>
-          <H1>[WIP]</H1>
+          <H1
+            onClick={() => {
+              showModal({ name: 'ERROR', message: 'Test' });
+            }}
+          >
+            Click me
+          </H1>
         </Content>
       </SectionFullHeight>
       <GlobalModalManager />

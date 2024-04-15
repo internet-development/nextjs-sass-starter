@@ -16,10 +16,11 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import { useModal } from '@system/providers/ModalContextProvider';
 
 function ExampleAuthentication(props) {
-  const [currentError, setError] = React.useState<string | null>(null);
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const { showModal } = useModal();
+
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [email, setEmail] = React.useState<string>('');
@@ -33,13 +34,7 @@ function ExampleAuthentication(props) {
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/authentication"
       >
-        <KeyHeader
-          isModalVisible={!!currentModal}
-          onInputChange={setKey}
-          onHandleHideSubNavigation={() => setModal(null)}
-          onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-          value={key}
-        />
+        <KeyHeader onInputChange={setKey} value={key} />
         <ThinAppLayout>
           <FormHeading style={{ marginTop: 64 }}>You have a session</FormHeading>
           <FormParagraph>
@@ -69,22 +64,7 @@ function ExampleAuthentication(props) {
             </ActionItem>
           </div>
         </ThinAppLayout>
-        <GlobalModalManager
-          currentModal={currentModal}
-          onHandleThemeChange={Utilities.onHandleThemeChange}
-          onSetModal={setModal}
-          onSignOut={() => {
-            const confirm = window.confirm('Are you sure you want to sign out?');
-            if (!confirm) {
-              return;
-            }
-
-            setKey('');
-            Cookies.remove('sitekey');
-            window.location.reload();
-          }}
-          viewer={props.viewer}
-        />
+        <GlobalModalManager viewer={currentUser} />
       </Page>
     );
   }
@@ -95,13 +75,7 @@ function ExampleAuthentication(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/authentication"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
         <FormParagraph>Enhance your experience by signing in or creating an account. Simply enter your e-mail and password to get started.</FormParagraph>
@@ -117,7 +91,7 @@ function ExampleAuthentication(props) {
           loading={loading}
           onClick={async () => {
             if (Utilities.isEmpty(email)) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'You must provide an e-mail.',
               });
@@ -125,7 +99,7 @@ function ExampleAuthentication(props) {
             }
 
             if (Utilities.isEmpty(password)) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'You must provide a password.',
               });
@@ -133,7 +107,7 @@ function ExampleAuthentication(props) {
             }
 
             if (password.length < 4) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'You must use at least 4 characters for your password.',
               });
@@ -144,7 +118,7 @@ function ExampleAuthentication(props) {
             const response = await Queries.userAuthenticate({ email, password });
             setLoading(false);
             if (!response) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
               });
@@ -183,7 +157,7 @@ function ExampleAuthentication(props) {
                 onClick={async () => {
                   const response = await Queries.userAuthenticate({ email, password });
                   if (!response) {
-                    setModal({
+                    showModal({
                       name: 'ERROR',
                       message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
                     });
@@ -200,7 +174,7 @@ function ExampleAuthentication(props) {
                 onClick={async () => {
                   const response = await Queries.userRefreshKey({ email, password });
                   if (!response) {
-                    setModal({
+                    showModal({
                       name: 'ERROR',
                       message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
                     });
@@ -238,22 +212,7 @@ function ExampleAuthentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={currentUser} />
     </Page>
   );
 }

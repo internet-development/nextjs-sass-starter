@@ -17,10 +17,11 @@ import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import { useModal } from '@system/providers/ModalContextProvider';
 
-async function onRefreshInvoices({ key, setModal }) {
+async function onRefreshInvoices({ key, showModal }) {
   if (Utilities.isEmpty(key)) {
-    return setModal({ name: 'ERROR', message: 'You must provide an API key' });
+    return showModal({ name: 'ERROR', message: 'You must provide an API key' });
   }
 
   let result;
@@ -46,9 +47,9 @@ async function onRefreshInvoices({ key, setModal }) {
   return result;
 }
 
-async function onCreateInvoice({ key, setModal }) {
+async function onCreateInvoice({ key, showModal }) {
   if (Utilities.isEmpty(key)) {
-    return setModal({ name: 'ERROR', message: 'You must provide an API key' });
+    return showModal({ name: 'ERROR', message: 'You must provide an API key' });
   }
 
   let result;
@@ -98,7 +99,7 @@ async function onDeleteInvoice({ id, key }) {
   return result;
 }
 
-async function onUpdateInvoice({ id, key, setModal, updates }) {
+async function onUpdateInvoice({ id, key, showModal, updates }) {
   let result;
   try {
     const response = await fetch('https://api.internet.dev/api/documents/update', {
@@ -123,7 +124,8 @@ async function onUpdateInvoice({ id, key, setModal, updates }) {
 }
 
 function ExampleInvoices(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const { showModal } = useModal();
+
   const [currentInvoice, setCurrentInvoice] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [invoices, setInvoices] = React.useState<Array<any>>([]);
@@ -150,12 +152,12 @@ function ExampleInvoices(props) {
       <FormParagraph>Each invoice gets a unique page with a unique ID that is only discoverable if you share it.</FormParagraph>
       <Button
         onClick={async () => {
-          const invoiceResult = await onCreateInvoice({ key, setModal });
+          const invoiceResult = await onCreateInvoice({ key, showModal });
           if (!invoiceResult) {
             return;
           }
 
-          const results = await onRefreshInvoices({ key, setModal });
+          const results = await onRefreshInvoices({ key, showModal });
           if (!results) {
             return;
           }
@@ -170,7 +172,7 @@ function ExampleInvoices(props) {
       <ActionItem
         icon={`⊹`}
         onClick={async () => {
-          const results = await onRefreshInvoices({ key, setModal });
+          const results = await onRefreshInvoices({ key, showModal });
           if (!results) {
             return;
           }
@@ -218,7 +220,7 @@ function ExampleInvoices(props) {
 
               const response = await onDeleteInvoice({ id: each.id, key });
 
-              const results = await onRefreshInvoices({ key, setModal });
+              const results = await onRefreshInvoices({ key, showModal });
               if (!results) {
                 return;
               }
@@ -245,13 +247,7 @@ function ExampleInvoices(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/invoices"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentInvoice ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
@@ -367,13 +363,13 @@ function ExampleInvoices(props) {
             <Button
               onClick={async () => {
                 setLoading(true);
-                const invoiceResult = await onUpdateInvoice({ id: currentInvoice.id, key, setModal, updates });
+                const invoiceResult = await onUpdateInvoice({ id: currentInvoice.id, key, showModal, updates });
                 if (!invoiceResult) {
                   setLoading(false);
                   return;
                 }
 
-                const results = await onRefreshInvoices({ key, setModal });
+                const results = await onRefreshInvoices({ key, showModal });
                 setLoading(false);
                 if (!results) {
                   return;
@@ -391,22 +387,7 @@ function ExampleInvoices(props) {
           </div>
         ) : null}
       </ThreeColumnAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

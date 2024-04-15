@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS, VISUALIZATION_OPTIONS_HEADINGS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
@@ -12,20 +11,13 @@ import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 import { H2, H4, P, Title, Text, SubText } from '@system/typography';
 
 function ExampleSystemDataVisualization(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/data-visualization"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Data Visualization</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
@@ -45,7 +37,7 @@ function ExampleSystemDataVisualization(props) {
         </P>
         <Table style={{ marginTop: 64 }} data={VISUALIZATION_OPTIONS} headings={VISUALIZATION_OPTIONS_HEADINGS} />
       </TwoColumnLayoutFull>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

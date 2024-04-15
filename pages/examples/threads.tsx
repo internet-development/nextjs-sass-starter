@@ -12,9 +12,11 @@ import Page from '@components/Page';
 import WideAppLayout from '@system/layouts/WideAppLayout';
 
 import { FormHeading, FormParagraph } from '@system/typography/forms';
+import { useModal } from '@system/providers/ModalContextProvider';
 
 function ExampleEmptyApplicationTemplate(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const { showModal } = useModal();
+
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [list, setList] = React.useState<Array<any>>(props.data);
 
@@ -24,13 +26,7 @@ function ExampleEmptyApplicationTemplate(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/threads"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <WideAppLayout>
         <FormHeading>Example Threads</FormHeading>
         <FormParagraph style={{ maxWidth: 568 }}>Here is an example of a thread based interface where anyone can reply to a thread.</FormParagraph>
@@ -56,7 +52,7 @@ function ExampleEmptyApplicationTemplate(props) {
                 const plainText = window.prompt('The easiest way to do this without building the modal. Type what words you want to share.');
 
                 if (Utilities.isEmpty(plainText)) {
-                  setModal({
+                  showModal({
                     name: 'ERROR',
                     message: 'You must provide words.',
                   });
@@ -74,7 +70,7 @@ function ExampleEmptyApplicationTemplate(props) {
                   type: 'GENERAL',
                 });
                 if (!response) {
-                  setModal({
+                  showModal({
                     name: 'ERROR',
                     message: 'Something went wrong with creating creating a thread',
                   });
@@ -84,7 +80,7 @@ function ExampleEmptyApplicationTemplate(props) {
                 const listing = await Queries.userListThreads({ orderBy: { column: 'created_at', value: 'desc' } });
 
                 if (!listing || !listing.data) {
-                  setModal({
+                  showModal({
                     name: 'ERROR',
                     message: 'Something went wrong with listing threads',
                   });
@@ -103,7 +99,7 @@ function ExampleEmptyApplicationTemplate(props) {
               const listing = await Queries.userListThreads({ orderBy: { column: 'created_at', value: 'desc' } });
 
               if (!listing || !listing.data) {
-                setModal({
+                showModal({
                   name: 'ERROR',
                   message: 'Something went wrong with listing threads',
                 });
@@ -111,7 +107,7 @@ function ExampleEmptyApplicationTemplate(props) {
               }
 
               if (!listing.data.length) {
-                setModal({
+                showModal({
                   name: 'ERROR',
                   message: 'There are no threads! Create one.',
                 });
@@ -125,24 +121,9 @@ function ExampleEmptyApplicationTemplate(props) {
           </ActionItem>
         </div>
 
-        <DemoThreads data={list} sessionKey={key} setModal={setModal} style={{ marginTop: 32 }} viewer={props.viewer} />
+        <DemoThreads data={list} sessionKey={key} setModal={showModal} style={{ marginTop: 32 }} viewer={props.viewer} />
       </WideAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

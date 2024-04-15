@@ -17,6 +17,7 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 // import { ThirdwebSDKProvider } from '@thirdweb-dev/react';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import { useModal } from '@system/providers/ModalContextProvider';
 
 // TODO(jimmylee)
 // When we can fix dependencies. We will delete these in the template.
@@ -29,9 +30,9 @@ function SignInWithWeb3({ setUser, setWallet, wallet }: Record<string, any>) {
 }
 
 function ExampleWeb3Authentication(props) {
-  const [currentError, setError] = React.useState<string | null>(null);
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
+  const { showModal } = useModal();
+
+  const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
@@ -44,7 +45,7 @@ function ExampleWeb3Authentication(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/thirdweb-authentication"
     >
-      <KeyHeader onInputChange={setKey} onHandleThemeChange={Utilities.onHandleThemeChange} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
         <ThinAppLayoutHeader
           token={key}
@@ -72,7 +73,7 @@ function ExampleWeb3Authentication(props) {
           loading={loading}
           onClick={async () => {
             if (Utilities.isEmpty(email)) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'You must provide an e-mail.',
               });
@@ -80,7 +81,7 @@ function ExampleWeb3Authentication(props) {
             }
 
             if (Utilities.isEmpty(password)) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'You must provide a password.',
               });
@@ -88,7 +89,7 @@ function ExampleWeb3Authentication(props) {
             }
 
             if (password.length < 4) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'You must use at least 4 characters for your password.',
               });
@@ -99,7 +100,7 @@ function ExampleWeb3Authentication(props) {
             const response = await Queries.web3Authenticate({ address: wallet, message: null, signature: null, email, password });
             setLoading(false);
             if (!response) {
-              setModal({
+              showModal({
                 name: 'ERROR',
                 message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
               });
@@ -131,7 +132,7 @@ function ExampleWeb3Authentication(props) {
                 onClick={async () => {
                   const response = await Queries.userAuthenticate({ email, password });
                   if (!response) {
-                    setModal({
+                    showModal({
                       name: 'ERROR',
                       message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
                     });
@@ -148,7 +149,7 @@ function ExampleWeb3Authentication(props) {
                 onClick={async () => {
                   const response = await Queries.userRefreshKey({ email, password });
                   if (!response) {
-                    setModal({
+                    showModal({
                       name: 'ERROR',
                       message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
                     });
@@ -186,7 +187,7 @@ function ExampleWeb3Authentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager currentModal={currentModal} onSetModal={setModal} onHandleThemeChange={Utilities.onHandleThemeChange} />
+      <GlobalModalManager viewer={currentUser} />
     </Page>
   );
 }
