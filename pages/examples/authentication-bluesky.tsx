@@ -18,8 +18,6 @@ import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
 function ExampleAuthentication(props) {
-  const [currentError, setError] = React.useState<string | null>(null);
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [email, setEmail] = React.useState<string>('');
@@ -33,13 +31,7 @@ function ExampleAuthentication(props) {
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/authentication"
       >
-        <KeyHeader
-          isModalVisible={!!currentModal}
-          onInputChange={setKey}
-          onHandleHideSubNavigation={() => setModal(null)}
-          onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-          value={key}
-        />
+        <KeyHeader onInputChange={setKey} value={key} />
         <ThinAppLayout>
           <FormHeading style={{ marginTop: 64 }}>You have a session</FormHeading>
           <FormParagraph>
@@ -69,22 +61,7 @@ function ExampleAuthentication(props) {
             </ActionItem>
           </div>
         </ThinAppLayout>
-        <GlobalModalManager
-          currentModal={currentModal}
-          onHandleThemeChange={Utilities.onHandleThemeChange}
-          onSetModal={setModal}
-          onSignOut={() => {
-            const confirm = window.confirm('Are you sure you want to sign out?');
-            if (!confirm) {
-              return;
-            }
-
-            setKey('');
-            Cookies.remove('sitekey');
-            window.location.reload();
-          }}
-          viewer={props.viewer}
-        />
+        <GlobalModalManager viewer={currentUser} />
       </Page>
     );
   }
@@ -95,13 +72,7 @@ function ExampleAuthentication(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/authentication"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in with Bluesky [WIP]</FormHeading>
         <FormParagraph>
@@ -109,22 +80,7 @@ function ExampleAuthentication(props) {
           Bluesky.
         </FormParagraph>
       </ThinAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={currentUser} />
     </Page>
   );
 }

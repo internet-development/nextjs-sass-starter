@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
@@ -39,9 +38,7 @@ const TABLE_DATA = [
       ``,
       <Tag>Graph Lines</Tag>,
       <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        Graph lines connect data points to help visualize trends or relationships within the data set.
-      </SubText>,
+      <SubText style={{ marginTop: 7 }}>Graph lines connect data points to help visualize trends or relationships within the data set.</SubText>,
     ],
   },
   {
@@ -53,39 +50,41 @@ const TABLE_DATA = [
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  [ // iPhone
-    { axis: "Battery Life", value: 0.22 },
-    { axis: "Brand", value: 0.28 },
-    { axis: "Contract Cost", value: 0.29 },
-    { axis: "Design And Quality", value: 0.17 },
-    { axis: "Have Internet Connectivity", value: 0.22 },
-    { axis: "Large Screen", value: 0.02 },
-    { axis: "Price Of Device", value: 0.21 },
-    { axis: "To Be A Smartphone", value: 0.50 }
+  [
+    // iPhone
+    { axis: 'Battery Life', value: 0.22 },
+    { axis: 'Brand', value: 0.28 },
+    { axis: 'Contract Cost', value: 0.29 },
+    { axis: 'Design And Quality', value: 0.17 },
+    { axis: 'Have Internet Connectivity', value: 0.22 },
+    { axis: 'Large Screen', value: 0.02 },
+    { axis: 'Price Of Device', value: 0.21 },
+    { axis: 'To Be A Smartphone', value: 0.5 },
   ],
-  [ // Samsung
-    { axis: "Battery Life", value: 0.27 },
-    { axis: "Brand", value: 0.16 },
-    { axis: "Contract Cost", value: 0.35 },
-    { axis: "Design And Quality", value: 0.13 },
-    { axis: "Have Internet Connectivity", value: 0.20 },
-    { axis: "Large Screen", value: 0.13 },
-    { axis: "Price Of Device", value: 0.35 },
-    { axis: "To Be A Smartphone", value: 0.38 }
+  [
+    // Samsung
+    { axis: 'Battery Life', value: 0.27 },
+    { axis: 'Brand', value: 0.16 },
+    { axis: 'Contract Cost', value: 0.35 },
+    { axis: 'Design And Quality', value: 0.13 },
+    { axis: 'Have Internet Connectivity', value: 0.2 },
+    { axis: 'Large Screen', value: 0.13 },
+    { axis: 'Price Of Device', value: 0.35 },
+    { axis: 'To Be A Smartphone', value: 0.38 },
   ],
-  [ // Nokia Smartphone
-    { axis: "Battery Life", value: 0.26 },
-    { axis: "Brand", value: 0.10 },
-    { axis: "Contract Cost", value: 0.30 },
-    { axis: "Design And Quality", value: 0.14 },
-    { axis: "Have Internet Connectivity", value: 0.22 },
-    { axis: "Large Screen", value: 0.04 },
-    { axis: "Price Of Device", value: 0.41 },
-    { axis: "To Be A Smartphone", value: 0.30 }
-  ]
+  [
+    // Nokia Smartphone
+    { axis: 'Battery Life', value: 0.26 },
+    { axis: 'Brand', value: 0.1 },
+    { axis: 'Contract Cost', value: 0.3 },
+    { axis: 'Design And Quality', value: 0.14 },
+    { axis: 'Have Internet Connectivity', value: 0.22 },
+    { axis: 'Large Screen', value: 0.04 },
+    { axis: 'Price Of Device', value: 0.41 },
+    { axis: 'To Be A Smartphone', value: 0.3 },
+  ],
 ];
 function ExampleSystemDataVisualizationRadar(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
@@ -98,16 +97,12 @@ function ExampleSystemDataVisualizationRadar(props) {
       description="Explore the capabilities of radar charts in data visualization through this interactive example."
       url="https://wireframes.internet.dev/examples/system/data-visualization/radar"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="radar" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Radar Chart Overview</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Radar charts, also known as spider charts or web charts, offer a way to display multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point.
+          Radar charts, also known as spider charts or web charts, offer a way to display multivariate data in the form of a two-dimensional chart of three or more quantitative
+          variables represented on axes starting from the same point.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
@@ -116,7 +111,7 @@ function ExampleSystemDataVisualizationRadar(props) {
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

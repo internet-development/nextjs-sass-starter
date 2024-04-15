@@ -18,10 +18,11 @@ import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import { useModal } from '@system/providers/ModalContextProvider';
 
-async function onRefreshSOW({ key, setModal }) {
+async function onRefreshSOW({ key, showModal }) {
   if (Utilities.isEmpty(key)) {
-    return setModal({ name: 'ERROR', message: 'You must provide an API key' });
+    return showModal({ name: 'ERROR', message: 'You must provide an API key' });
   }
 
   let result;
@@ -47,9 +48,9 @@ async function onRefreshSOW({ key, setModal }) {
   return result;
 }
 
-async function onCreateSOW({ key, setModal }) {
+async function onCreateSOW({ key, showModal }) {
   if (Utilities.isEmpty(key)) {
-    return setModal({ name: 'ERROR', message: 'You must provide an API key' });
+    return showModal({ name: 'ERROR', message: 'You must provide an API key' });
   }
 
   let result;
@@ -99,7 +100,7 @@ async function onDeleteSOW({ id, key }) {
   return result;
 }
 
-async function onUpdateSOW({ id, key, setModal, updates }) {
+async function onUpdateSOW({ id, key, showModal, updates }) {
   let result;
   try {
     const response = await fetch('https://api.internet.dev/api/documents/update', {
@@ -124,7 +125,8 @@ async function onUpdateSOW({ id, key, setModal, updates }) {
 }
 
 function ExampleStatementOfWorks(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
+  const { showModal } = useModal();
+
   const [currentSOW, setCurrentSOW] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [SOWs, setSOWs] = React.useState<Array<any>>([]);
@@ -154,12 +156,12 @@ function ExampleStatementOfWorks(props) {
       <FormParagraph>Each SOW gets a unique page with a unique ID that is only discoverable if you share it.</FormParagraph>
       <Button
         onClick={async () => {
-          const result = await onCreateSOW({ key, setModal });
+          const result = await onCreateSOW({ key, showModal });
           if (!result) {
             return;
           }
 
-          const results = await onRefreshSOW({ key, setModal });
+          const results = await onRefreshSOW({ key, showModal });
           if (!results) {
             return;
           }
@@ -173,7 +175,7 @@ function ExampleStatementOfWorks(props) {
       <ActionItem
         icon={`⊹`}
         onClick={async () => {
-          const results = await onRefreshSOW({ key, setModal });
+          const results = await onRefreshSOW({ key, showModal });
           if (!results) {
             return;
           }
@@ -244,7 +246,7 @@ function ExampleStatementOfWorks(props) {
 
               const response = await onDeleteSOW({ id: each.id, key });
 
-              const results = await onRefreshSOW({ key, setModal });
+              const results = await onRefreshSOW({ key, showModal });
               if (!results) {
                 return;
               }
@@ -271,13 +273,7 @@ function ExampleStatementOfWorks(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/statement-of-work"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentSOW ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
@@ -650,13 +646,13 @@ function ExampleStatementOfWorks(props) {
             <Button
               onClick={async () => {
                 setLoading(true);
-                const result = await onUpdateSOW({ id: currentSOW.id, key, setModal, updates });
+                const result = await onUpdateSOW({ id: currentSOW.id, key, showModal, updates });
                 if (!result) {
                   setLoading(false);
                   return;
                 }
 
-                const results = await onRefreshSOW({ key, setModal });
+                const results = await onRefreshSOW({ key, showModal });
                 setLoading(false);
                 if (!results) {
                   return;
@@ -674,22 +670,7 @@ function ExampleStatementOfWorks(props) {
           </div>
         ) : null}
       </ThreeColumnAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

@@ -9,10 +9,7 @@ import IsometricRect from '@system/IsometricRect';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
 
-import { P } from '@system/typography';
-
 function ExampleEmptyIsometricGridTemplate(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
 
   return (
@@ -21,33 +18,12 @@ function ExampleEmptyIsometricGridTemplate(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/empty-grid-template-page"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <IsometricGridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <IsometricRect x={572} y={-102} size={800} src="https://wireframes.internet.dev/examples/components-post" />
         <IsometricRect x={-124} y={-102} size={800} src="https://wireframes.internet.dev/examples/components-table" />
       </IsometricGridLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

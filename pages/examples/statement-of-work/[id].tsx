@@ -13,8 +13,6 @@ import SignatureBox from '@system/documents/SignatureBox';
 import { H3, H4, P, Title, Text } from '@system/typography';
 
 function ExampleSOW(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-
   // NOTE(jimmylee):
   // props.id
   // props.team

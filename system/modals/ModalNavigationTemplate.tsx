@@ -2,6 +2,8 @@ import styles from '@system/modals/Modals.module.scss';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
+
+import Cookies from 'js-cookie';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 const MODAL_WIDTH = 240;
@@ -13,7 +15,7 @@ export default function ModalNavigationTemplate(props) {
   return (
     <OutsideElementEvent
       className={styles.modal}
-      onOutsideEvent={props.onOutsideEvent}
+      onOutsideEvent={() => props.onShowModal(null)}
       style={{
         textAlign: style.side,
         top: style.top,
@@ -24,7 +26,18 @@ export default function ModalNavigationTemplate(props) {
         Home
       </a>
       {props.viewer ? (
-        <span className={styles.item} onClick={props.onSignOut}>
+        <span
+          className={styles.item}
+          onClick={() => {
+            const confirm = window.confirm('Are you sure you want to sign out?');
+            if (!confirm) {
+              return;
+            }
+
+            Cookies.remove('sitekey');
+            window.location.reload();
+          }}
+        >
           Sign out
         </span>
       ) : (
@@ -37,7 +50,7 @@ export default function ModalNavigationTemplate(props) {
           </a>
         </>
       )}
-      <span className={styles.item} onClick={props.onHandleThemeChange}>
+      <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
         Rotate Theme
       </span>
       <a href="/examples/settings" className={styles.item}>

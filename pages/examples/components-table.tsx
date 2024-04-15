@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-
-import * as Server from '@common/server';
-import * as Utilities from '@common/utilities';
+import * as React from 'react';
 
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import MonospacePreview from '@system/MonospacePreview';
@@ -71,7 +68,6 @@ const TABLE_DATA = [
 ];
 
 function ExampleTable(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [selected, setSelected] = React.useState<any[]>([]);
 
   return (
@@ -80,12 +76,7 @@ function ExampleTable(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/components-table"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <WideAppLayout>
         <FormHeading>Example Table (Interactive)</FormHeading>
         <FormParagraph style={{ maxWidth: 568 }}>
@@ -117,7 +108,7 @@ function ExampleTable(props) {
         <FormParagraph style={{ maxWidth: 568 }}>This table is for presentation only. However interaction can be enabled through changing a prop.</FormParagraph>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} style={{ marginTop: 48 }} />
       </WideAppLayout>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

@@ -14,21 +14,13 @@ import { H1, H2, H3, H4, Lead, SubLead, P, Title, Text, SubTitle, SubText, UnitL
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
 function ExampleJobPosting(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const [key, setKey] = React.useState<string>(props.sessionKey);
-
   return (
     <Page
       title="api.internet.dev: Job posting"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/job-posting"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <ThinAppLayout>
         <Title>Full-time, North America</Title>
         <H1>Webmaster IV</H1>
@@ -80,22 +72,7 @@ function ExampleJobPosting(props) {
         <CheckmarkItem isMinimal>You must be passionate about building websites.</CheckmarkItem>
         <CheckmarkItem isMinimal>You must have at least one website you are proud of sharing.</CheckmarkItem>
       </ThinAppLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

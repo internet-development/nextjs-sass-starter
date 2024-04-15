@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import CandlestickChart from '@system/graphs/CandlestickChart';
@@ -39,9 +38,7 @@ const TABLE_DATA = [
       ``,
       <Tag>Graph Lines</Tag>,
       <Tag>No</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        Provides visual cues to help interpret the chart by connecting data points to the axis, enhancing readability.
-      </SubText>,
+      <SubText style={{ marginTop: 7 }}>Provides visual cues to help interpret the chart by connecting data points to the axis, enhancing readability.</SubText>,
     ],
   },
   {
@@ -60,7 +57,6 @@ const EXAMPLE_DUMMY_DATA = [
 ]; // Example data for the candlestick chart
 
 function ExampleSystemDataVisualizationCandlestick(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
@@ -73,12 +69,7 @@ function ExampleSystemDataVisualizationCandlestick(props) {
       description="Explore our design system with a candlestick chart example. This template is available on GitHub."
       url="https://wireframes.internet.dev/examples/system/data-visualization/candlestick"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="candlestick" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Candlestick Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
@@ -91,7 +82,7 @@ function ExampleSystemDataVisualizationCandlestick(props) {
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

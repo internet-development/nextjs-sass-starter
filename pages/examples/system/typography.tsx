@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import GlobalModalManager from '@system/modals/GlobalModalManager';
@@ -17,8 +16,6 @@ const TABLE_HEADINGS = [``, `Component`, `Size`, `Preview`];
 const COPY = `My heart had great experience of wisdom and knowledge, [1:17] and I gave my heart to know wisdom, and to know madness and folly: I perceived that this also is vexation of spirit. For in much wisdom is much grief: and he that increaseth knowledge increaseth sorrow.`;
 
 function ExampleSystemTypography(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-
   const TABLE_DATA = [
     { id: 1, data: [``, <Tag key="label-1">H1</Tag>, <Tag key="size-1">3.815rem</Tag>, <H1 key="copy-1">{COPY}</H1>] },
     { id: 2, data: [``, <Tag key="label-2">H2</Tag>, <Tag key="size-2">3.052rem</Tag>, <H2 key="copy-2">{COPY}</H2>] },
@@ -44,16 +41,11 @@ function ExampleSystemTypography(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/typography"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <TwoColumnLayoutFull sidebar={<GridLayout />}>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} style={{ marginTop: 64 }} />
       </TwoColumnLayoutFull>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

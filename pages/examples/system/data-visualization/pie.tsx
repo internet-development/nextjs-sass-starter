@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
@@ -23,7 +22,12 @@ const TABLE_DATA = [
   },
 
   {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text provides additional information or context to help interpret the data presented in the chart.</SubText>],
+    data: [
+      ``,
+      <Tag>Text</Tag>,
+      <Tag>True</Tag>,
+      <SubText style={{ marginTop: 7 }}>Text provides additional information or context to help interpret the data presented in the chart.</SubText>,
+    ],
   },
 
   {
@@ -39,27 +43,34 @@ const TABLE_DATA = [
       ``,
       <Tag>Graph Lines</Tag>,
       <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        Graph lines connect data points, helping to highlight trends, patterns, or relationships within the data.
-      </SubText>,
+      <SubText style={{ marginTop: 7 }}>Graph lines connect data points, helping to highlight trends, patterns, or relationships within the data.</SubText>,
     ],
   },
   {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis provides a scale that quantifies the data, making it easier to understand the magnitude of the values represented.</SubText>],
+    data: [
+      ``,
+      <Tag>Axis</Tag>,
+      <Tag>False</Tag>,
+      <SubText style={{ marginTop: 7 }}>The axis provides a scale that quantifies the data, making it easier to understand the magnitude of the values represented.</SubText>,
+    ],
   },
   {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>Axis labels offer a description of the data scale, aiding in the interpretation of the chart's data points.</SubText>],
+    data: [
+      ``,
+      <Tag>Axis Labels</Tag>,
+      <Tag>False</Tag>,
+      <SubText style={{ marginTop: 7 }}>Axis labels offer a description of the data scale, aiding in the interpretation of the chart's data points.</SubText>,
+    ],
   },
 ];
 
 const EXAMPLE_DUMMY_DATA = [
-  { label: "Category A", value: 20, color: 'rgba(68, 198, 127, 0.6)' },
-  { label: "Category B", value: 50, color: 'rgba(68, 198, 127, 0.8)' },
-  { label: "Category C", value: 30, color: 'rgba(68, 198, 127, 1)' }
+  { label: 'Category A', value: 20, color: 'rgba(68, 198, 127, 0.6)' },
+  { label: 'Category B', value: 50, color: 'rgba(68, 198, 127, 0.8)' },
+  { label: 'Category C', value: 30, color: 'rgba(68, 198, 127, 1)' },
 ];
 
 function ExampleSystemDataVisualizationPie(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
@@ -73,16 +84,12 @@ function ExampleSystemDataVisualizationPie(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/data-visualization/pie"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="pie" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Pie</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Explore the dynamics of data distribution across different categories with our interactive pie chart visualization. Gain insights into the relative sizes of segments within a whole, facilitating an intuitive understanding of proportions and relationships.
+          Explore the dynamics of data distribution across different categories with our interactive pie chart visualization. Gain insights into the relative sizes of segments
+          within a whole, facilitating an intuitive understanding of proportions and relationships.
         </P>
         <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
@@ -91,7 +98,7 @@ function ExampleSystemDataVisualizationPie(props) {
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }

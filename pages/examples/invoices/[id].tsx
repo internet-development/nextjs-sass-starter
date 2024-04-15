@@ -10,8 +10,6 @@ import Page from '@components/Page';
 import { Title, Text } from '@system/typography';
 
 function ExampleInvoice(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-
   return (
     <Page title={`nextjs-sass-starter: invoice ${props.id}`} description={`${props.data.payment_date}`} url={`https://wireframes.internet.dev/examples/invoices/${props.id}`}>
       <InvoiceLayout>

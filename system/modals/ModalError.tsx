@@ -8,11 +8,11 @@ import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 export default function ModalError(props) {
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent className={styles.errorModal} onOutsideEvent={props.onOutsideEvent}>
+      <OutsideElementEvent className={styles.errorModal} onOutsideEvent={() => props.onShowModal(null)}>
         <span className={styles.errorModalLeft}>
           <Error height="16px" />
         </span>
-        <span className={styles.errorModalRight}>{props.message}</span>
+        <span className={styles.errorModalRight}>{props.content.message}</span>
       </OutsideElementEvent>
     </div>
   );

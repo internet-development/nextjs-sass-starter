@@ -5,16 +5,13 @@ import * as Utilities from '@common/utilities';
 import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
-import KeyHeader from '@system/KeyHeader';
+import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import ResizableMonospaceWindow from '@system/ResizableMonospaceWindow';
 
 import { P } from '@system/typography';
 
 function ExampleWindows(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-  const [key, setKey] = React.useState<string>(props.sessionKey);
-
   const customParagraphStyle = { fontFamily: 'var(--font-family-serif)', fontSize: '16px', lineHeight: '1.5', margin: 24 };
 
   return (
@@ -23,13 +20,7 @@ function ExampleWindows(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/windows"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <Navigation />
       <GridLayout style={{ overflow: 'hidden' }}>
         <ResizableMonospaceWindow x={76} y={76} width={248} height={280} title="Window I">
           <div style={customParagraphStyle}>
@@ -66,22 +57,7 @@ function ExampleWindows(props) {
           </div>
         </ResizableMonospaceWindow>
       </GridLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

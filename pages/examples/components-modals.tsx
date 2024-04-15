@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Utilities from '@common/utilities';
 
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
@@ -9,23 +8,27 @@ import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
 import { H1, Lead } from '@system/typography';
+import { useModal } from '@system/providers/ModalContextProvider';
 
-function ExampleBase(props) {
+function ExampleModals(props) {
+  const { showModal } = useModal();
+
   return (
     <Page
-      title="nextjs-sass-starter: Example"
+      title="nextjs-sass-starter: Modals"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples"
+      url="https://wireframes.internet.dev/examples/components-modals"
     >
       <Navigation />
       <SectionFullHeight>
         <Content>
-          <H1>nextjs-sass-starter</H1>
-          <Lead style={{ marginTop: `var(--type-scale-5)` }}>
-            A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites. <br />
-            <br />
-            This example tests a navigation, theming, SEO pixel, and if scrollbars accidently render since we don't use overflow hacks.
-          </Lead>
+          <H1
+            onClick={() => {
+              showModal({ name: 'ERROR', message: 'Test' });
+            }}
+          >
+            Click me
+          </H1>
         </Content>
       </SectionFullHeight>
       <GlobalModalManager />
@@ -39,4 +42,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleBase;
+export default ExampleModals;

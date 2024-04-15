@@ -8,10 +8,7 @@ import GridLayout from '@system/layouts/GridLayout';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
 
-import { P } from '@system/typography';
-
 function ExampleEmptyGridTemplate(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
 
   return (
@@ -20,13 +17,7 @@ function ExampleEmptyGridTemplate(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/empty-grid-template-page"
     >
-      <KeyHeader
-        isModalVisible={!!currentModal}
-        onInputChange={setKey}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION_TEMPLATE', parentId: 'site-navigation-button' })}
-        value={key}
-      />
+      <KeyHeader onInputChange={setKey} value={key} />
       <GridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <article
           style={{
@@ -43,22 +34,7 @@ function ExampleEmptyGridTemplate(props) {
           Hello World
         </article>
       </GridLayout>
-      <GlobalModalManager
-        currentModal={currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onSetModal={setModal}
-        onSignOut={() => {
-          const confirm = window.confirm('Are you sure you want to sign out?');
-          if (!confirm) {
-            return;
-          }
-
-          setKey('');
-          Cookies.remove('sitekey');
-          window.location.reload();
-        }}
-        viewer={props.viewer}
-      />
+      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }

@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-
-import * as Utilities from '@common/utilities';
+import * as React from 'react';
 
 import Content from '@system/layouts/Content';
 import DemoBentoLayout from 'system/layouts/demos/DemoBentoLayout';
@@ -14,20 +12,13 @@ import Page from '@components/Page';
 import { H1, Lead } from '@system/typography';
 
 function ExampleNoSections(props) {
-  const [currentModal, setModal] = React.useState<Record<string, any> | null>(null);
-
   return (
     <Page
       title="nextjs-sass-starter: Components: No sections"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/components-no-sections"
     >
-      <Navigation
-        isModalVisible={!!currentModal}
-        onHandleThemeChange={Utilities.onHandleThemeChange}
-        onHandleHideSubNavigation={() => setModal(null)}
-        onHandleShowSubNavigation={() => setModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
-      />
+      <Navigation />
       <Content>
         <H1>nextjs-sass-starter</H1>
         <Lead style={{ marginTop: `var(--type-scale-5)` }}>
@@ -40,7 +31,7 @@ function ExampleNoSections(props) {
       <DemoSimpleGrid />
       <DemoPricing style={{ marginTop: `var(--type-scale-5)` }} />
       <Footer />
-      <GlobalModalManager currentModal={currentModal} onHandleThemeChange={Utilities.onHandleThemeChange} onSetModal={setModal} />
+      <GlobalModalManager />
     </Page>
   );
 }
