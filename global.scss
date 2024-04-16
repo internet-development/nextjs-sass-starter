@@ -111,6 +111,10 @@ body.theme-light {
   --color-success: rgba(68, 198, 127, 1);
   --color-subdued-success: rgba(106, 243, 168, 0.3);
 
+  --color-box-background-1: rgba(245, 245, 245, 1);
+  --color-box-background-2: rgba(235, 235, 235, 1);
+  --color-box-background-3: rgba(215, 215, 215, 1);
+
   --color-error: rgba(239, 68, 68, 1);
   --color-subdued-error: rgba(239, 68, 68, 0.677);
   --color-light-gray: rgb(219, 219, 219);
@@ -159,6 +163,10 @@ body.theme-dark {
   --theme-button-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
   --theme-button-shadow-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
 
+  --color-box-background-1: rgba(239, 239, 239, 1);
+  --color-box-background-2: rgba(235, 235, 235, 1);
+  --color-box-background-3: rgba(215, 215, 215, 1);
+
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -196,6 +204,10 @@ body.theme-blue {
   --theme-button-color: var(--color-black);
   --theme-button-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
   --theme-button-shadow-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
+
+  --color-box-background-1: rgba(245, 245, 245, 1);
+  --color-box-background-2: rgba(235, 235, 235, 1);
+  --color-box-background-3: rgba(215, 215, 215, 1);
 
   &::-webkit-scrollbar {
     width: 8px;
