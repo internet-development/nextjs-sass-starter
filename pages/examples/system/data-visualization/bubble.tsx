@@ -60,8 +60,8 @@ const EXAMPLE_DUMMY_DATA = [
 ];
 
 const EXAMPLE_LEGEND_ITEMS_DATA = [
-  { color: 'var(--color-success)', label: 'significant' },
-  { color: 'var(--color-border)', label: 'no significance' },
+  { color: 'var(--theme-success)', label: 'significant' },
+  { color: 'var(--theme-border)', label: 'no significance' },
 ];
 
 function ExampleSystemDataVisualizationBubble(props) {
@@ -84,7 +84,7 @@ function ExampleSystemDataVisualizationBubble(props) {
           Bubble charts are used to display three dimensions of data on a chart. The position of the bubble on the horizontal and vertical axes indicates the values of two data
           points, and the size of the bubble represents a third.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <BubbleChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_LEGEND_ITEMS_DATA} />

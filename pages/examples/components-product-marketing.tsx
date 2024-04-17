@@ -6,19 +6,17 @@ import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import IsometricGridLayout from '@system/layouts/IsometricGridLayout';
 import IsometricProductBox from '@system/IsometricProductBox';
-import KeyHeader from '@system/KeyHeader';
+import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 
 function ExampleComponentsProductMarketing(props) {
-  const [key, setKey] = React.useState<string>(props.sessionKey);
-
   return (
     <Page
       title="Wireframes: Components: Product marketing"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/components-product-marketing"
     >
-      <KeyHeader onInputChange={setKey} value={key} isHidden />
+      <Navigation />
       <IsometricGridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <IsometricProductBox x={-124} y={222} />
       </IsometricGridLayout>

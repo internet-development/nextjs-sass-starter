@@ -21,9 +21,9 @@ function ExampleEmptyGridTemplate(props) {
       <GridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <article
           style={{
-            background: `var(--color-background)`,
+            background: `var(--theme-background)`,
             borderRadius: `3px`,
-            boxShadow: `var(--theme-modal)`,
+            boxShadow: `var(--theme-box-shadow-modal)`,
             fontSize: `3rem`,
             fontWeight: 600,
             maxWidth: 320,

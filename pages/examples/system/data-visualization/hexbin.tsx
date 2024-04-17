@@ -103,7 +103,7 @@ function ExampleSystemDataVisualizationHexbin(props) {
           Explore the intricacies of data distribution and density with our interactive hexbin chart. This visualization tool allows for a comprehensive analysis of complex
           datasets, highlighting patterns and correlations between data points.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         {/* <div style={chartContainerStyles}>
           <HexbinGraph data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 24 }} />

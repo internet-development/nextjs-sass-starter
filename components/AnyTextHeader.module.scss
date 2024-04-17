@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 0 0 var(--color-border);
+  box-shadow: 0 1px 0 0 var(--theme-border);
   min-height: 48px;
 }
 
@@ -27,10 +27,10 @@
   user-select: none;
   transition: 200ms ease all;
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--theme-text);
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {

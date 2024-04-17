@@ -76,7 +76,7 @@
 }
 
 .subtitle {
-  color: var(--color-text);
+  color: var(--theme-text);
   font-size: var(--type-scale-7);
   font-weight: 600;
   margin-top: 10px;
@@ -85,7 +85,7 @@
   transition: 200ms ease all;
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {
@@ -94,7 +94,7 @@
 }
 
 .item {
-  color: var(--color-text);
+  color: var(--theme-text);
   margin-top: 16px;
   font-size: var(--type-scale-7);
   opacity: 0.6;
@@ -103,7 +103,7 @@
   transition: 200ms ease all;
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {
@@ -112,7 +112,7 @@
 }
 
 .subItem {
-  color: var(--color-text);
+  color: var(--theme-text);
   font-size: var(--type-scale-7);
   opacity: 0.6;
   display: inline-block;
@@ -121,7 +121,7 @@
   transition: 200ms ease all;
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {

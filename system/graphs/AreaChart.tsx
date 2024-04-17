@@ -40,8 +40,8 @@ const AreaChart = (props) => {
         .attr('x2', 0)
         .attr('y2', 0);
 
-      gradient.append('stop').attr('offset', '60%').attr('stop-color', 'var(--color-background)');
-      gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--color-subdued-success)');
+      gradient.append('stop').attr('offset', '60%').attr('stop-color', 'var(--theme-background)');
+      gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--theme-success-subdued)');
 
       const xAxisTicks = 3;
       const yAxisTicks = 6;
@@ -50,16 +50,16 @@ const AreaChart = (props) => {
         .attr('transform', `translate(0,${height})`)
         .call(d3.axisBottom(xScale).ticks(yAxisTicks))
         .select('.domain')
-        .style('stroke', 'var(--color-border)')
+        .style('stroke', 'var(--theme-border)')
         .style('text-transform', 'uppercase');
-      g.append('g').call(d3.axisLeft(yScale).ticks(xAxisTicks)).select('.domain').style('stroke', 'var(--color-border)');
-      g.selectAll('.tick line').style('stroke', 'var(--color-border)');
-      g.selectAll('.tick text').style('fill', 'var(--color-text').style('text-transform', 'uppercase').style('user-select', 'none');
+      g.append('g').call(d3.axisLeft(yScale).ticks(xAxisTicks)).select('.domain').style('stroke', 'var(--theme-border)');
+      g.selectAll('.tick line').style('stroke', 'var(--theme-border)');
+      g.selectAll('.tick text').style('fill', 'var(--theme-text').style('text-transform', 'uppercase').style('user-select', 'none');
 
       g.append('path')
         .datum(props.data)
         .attr('fill', 'none')
-        .attr('stroke', 'var(--color-success)')
+        .attr('stroke', 'var(--theme-success)')
         .attr('stroke-width', 2)
         .attr(
           'd',
@@ -81,9 +81,9 @@ const AreaChart = (props) => {
 
       g.append('g').call(yAxis).select('.domain').remove();
 
-      g.selectAll('.tick line').style('stroke', 'var(--color-border)').style('stroke-opacity', 0.4).style('shape-rendering', 'crispEdges');
+      g.selectAll('.tick line').style('stroke', 'var(--theme-border)').style('stroke-opacity', 0.4).style('shape-rendering', 'crispEdges');
 
-      g.selectAll('.tick text').style('fill', 'var(--color-text)').style('text-transform', 'uppercase').style('user-select', 'none');
+      g.selectAll('.tick text').style('fill', 'var(--theme-text)').style('text-transform', 'uppercase').style('user-select', 'none');
     }
   };
 

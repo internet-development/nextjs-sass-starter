@@ -41,7 +41,7 @@ function ExampleJobPosting(props) {
           growth. We know that some of the most rewarding experiences come from building software together and improving our skills with each project.
         </P>
 
-        <SubTitle style={{ marginTop: `2rem`, borderBottom: `1px solid var(--color-border)`, paddingBottom: 16, textTransform: 'uppercase', letterSpacing: '0.4px' }}>
+        <SubTitle style={{ marginTop: `2rem`, borderBottom: `1px solid var(--theme-border)`, paddingBottom: 16, textTransform: 'uppercase', letterSpacing: '0.4px' }}>
           The Job
         </SubTitle>
         <CheckmarkItem isMinimal>You will use Figma.</CheckmarkItem>
@@ -51,7 +51,7 @@ function ExampleJobPosting(props) {
         <CheckmarkItem isMinimal>You will attend client meetings and help service customers.</CheckmarkItem>
         <CheckmarkItem isMinimal>You will help the team launch our own bespoke products and games.</CheckmarkItem>
         <CheckmarkItem isMinimal>You will share your work online as frequently as possible.</CheckmarkItem>
-        <SubTitle style={{ marginTop: `2rem`, borderBottom: `1px solid var(--color-border)`, paddingBottom: 16, textTransform: 'uppercase', letterSpacing: '0.4px' }}>
+        <SubTitle style={{ marginTop: `2rem`, borderBottom: `1px solid var(--theme-border)`, paddingBottom: 16, textTransform: 'uppercase', letterSpacing: '0.4px' }}>
           What we offer
         </SubTitle>
 
@@ -64,7 +64,7 @@ function ExampleJobPosting(props) {
         <CheckmarkItem isMinimal>A flexible vacation and time off policy.</CheckmarkItem>
         <CheckmarkItem isMinimal>We will pay for your office supplies and hardware.</CheckmarkItem>
 
-        <SubTitle style={{ marginTop: `2rem`, borderBottom: `1px solid var(--color-border)`, paddingBottom: 16, textTransform: 'uppercase', letterSpacing: '0.4px' }}>
+        <SubTitle style={{ marginTop: `2rem`, borderBottom: `1px solid var(--theme-border)`, paddingBottom: 16, textTransform: 'uppercase', letterSpacing: '0.4px' }}>
           Requirements
         </SubTitle>
         <CheckmarkItem isMinimal>You must be willing to relocate or travel to Seattle, WA for work.</CheckmarkItem>

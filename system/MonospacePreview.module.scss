@@ -7,15 +7,15 @@
 
 .active {
   box-shadow:
-    0 0 0 1px var(--color-border),
-    0 0 0 4px var(--color-accent);
+    0 0 0 1px var(--theme-border),
+    0 0 0 4px var(--theme-input-active);
   opacity: 1;
 }
 
 .title {
-  background: var(--color-background-2);
+  background: var(--theme-foreground);
   padding: 2px 4px 2px 4px;
-  color: var(--color-text);
+  color: var(--theme-text);
   text-transform: uppercase;
   display: flex;
   align-items: flex-start;
@@ -32,9 +32,9 @@
 }
 
 .children {
-  background: var(--color-background-3);
+  background: var(--theme-foreground-secondary);
   padding: 2px 4px 2px 4px;
-  color: var(--color-text);
+  color: var(--theme-text);
   overflow-wrap: break-word;
   white-space: pre-wrap;
 }

@@ -32,10 +32,10 @@ const DotPlot = (props) => {
       .append('g')
       .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(xScale).tickFormat((d) => `${d}%`))
-      .attr('color', 'var(--color-border)')
+      .attr('color', 'var(--theme-border)')
       .selectAll('text')
       .style('font-size', '12px')
-      .style('color', 'var(--color-text)');
+      .style('color', 'var(--theme-text)');
 
     const helperLinesGroup = svg.append('g');
     props.data.forEach((d, i) => {
@@ -44,13 +44,13 @@ const DotPlot = (props) => {
       const xEnd = width - margin.right;
 
       // helper line
-      helperLinesGroup.append('line').attr('x1', xStart).attr('x2', xEnd).attr('y1', yCoordinate).attr('y2', yCoordinate).attr('stroke', 'var(--color-border)');
+      helperLinesGroup.append('line').attr('x1', xStart).attr('x2', xEnd).attr('y1', yCoordinate).attr('y2', yCoordinate).attr('stroke', 'var(--theme-border)');
 
       // circle at the start of the line
-      helperLinesGroup.append('circle').attr('cx', xStart).attr('cy', yCoordinate).attr('r', 3).attr('fill', 'var(--color-border)');
+      helperLinesGroup.append('circle').attr('cx', xStart).attr('cy', yCoordinate).attr('r', 3).attr('fill', 'var(--theme-border)');
 
       // circle at the end of the line
-      helperLinesGroup.append('circle').attr('cx', xEnd).attr('cy', yCoordinate).attr('r', 3).attr('fill', 'var(--color-border)');
+      helperLinesGroup.append('circle').attr('cx', xEnd).attr('cy', yCoordinate).attr('r', 3).attr('fill', 'var(--theme-border)');
     });
 
     svg
@@ -62,7 +62,7 @@ const DotPlot = (props) => {
       .attr('cx', (d) => xScale(d.value))
       .attr('cy', (d) => yScale(d.label) + yScale.bandwidth() / 2)
       .attr('r', (d) => (d.value > greatestValues ? 8 : 5))
-      .attr('fill', (d) => (d.value > greatestValues ? 'var(--color-success)' : 'var(--color-subdued-error)')); // Color based on value
+      .attr('fill', (d) => (d.value > greatestValues ? 'var(--theme-success)' : 'var(--theme-error-subdued)')); // Color based on value
 
     svg
       .append('g')
@@ -75,7 +75,7 @@ const DotPlot = (props) => {
       .attr('dy', '0.35em')
       .text((d) => d.value)
       .style('font-size', '12px')
-      .attr('fill', 'var(--color-text)');
+      .attr('fill', 'var(--theme-text)');
   };
 
   useEffect(() => {

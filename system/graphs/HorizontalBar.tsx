@@ -32,16 +32,16 @@ const HorizontalBarChart = (props) => {
         .padding(0.2);
 
       yScale.domain().forEach((d) => {
-        g.append('line').attr('x1', 0).attr('x2', drawWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--color-border)');
+        g.append('line').attr('x1', 0).attr('x2', drawWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--theme-border)');
       });
 
       const yAxis = g.append('g').call(d3.axisLeft(yScale));
-      yAxis.selectAll('.tick text').style('fill', 'var(--color-text)').style('font-size', '16px');
-      yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--color-border)');
+      yAxis.selectAll('.tick text').style('fill', 'var(--theme-text)').style('font-size', '16px');
+      yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
 
       const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale).ticks(3));
-      xAxis.selectAll('path,line').style('stroke', 'var(--color-text)').style('font-size', '16px');
-      xAxis.selectAll('text').style('fill', 'var(--color-text)').style('font-size', '14px');
+      xAxis.selectAll('path,line').style('stroke', 'var(--theme-text)').style('font-size', '16px');
+      xAxis.selectAll('text').style('fill', 'var(--theme-text)').style('font-size', '14px');
 
       g.selectAll('.bar')
         .data(props.data)
@@ -52,7 +52,7 @@ const HorizontalBarChart = (props) => {
         .attr('y', (d) => yScale(d.label))
         .attr('width', (d) => xScale(d.value))
         .attr('height', yScale.bandwidth())
-        .attr('fill', (d, i) => (i % 2 === 0 ? 'var(--color-success)' : 'var(--color-subdued-success)'));
+        .attr('fill', (d, i) => (i % 2 === 0 ? 'var(--theme-success)' : 'var(--theme-success-subdued)'));
     }
   };
 

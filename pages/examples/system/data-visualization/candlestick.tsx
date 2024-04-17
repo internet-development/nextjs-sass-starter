@@ -75,7 +75,7 @@ function ExampleSystemDataVisualizationCandlestick(props) {
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
           Candlestick charts are a visual tool for analyzing financial data, particularly useful for identifying market trends and price patterns.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <CandlestickChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />

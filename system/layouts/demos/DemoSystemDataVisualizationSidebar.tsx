@@ -223,7 +223,7 @@ export default function DemoSystemDataVisualizationSidebar(props) {
               key={each.name}
               href={`/examples/system/data-visualization${each.href}`}
               className={styles.link}
-              style={props.active === each.name ? { color: `var(--color-primary)` } : undefined}
+              style={props.active === each.name ? { color: `var(--theme-primary)` } : undefined}
             >
               {each.name}
             </a>

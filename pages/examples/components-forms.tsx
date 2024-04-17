@@ -38,7 +38,7 @@ function ExampleForms(props) {
     >
       <Navigation />
       <GridLayout>
-        <ThinAppLayout style={{ background: `var(--color-background)`, borderTop: `1px solid var(--color-border)` }}>
+        <ThinAppLayout style={{ background: `var(--theme-background)`, borderTop: `1px solid var(--theme-border)` }}>
           <FormHeading>Example Form</FormHeading>
           <FormParagraph>
             Developing a web form requires meticulous attention to several key elements to ensure it is both user-friendly and effective. Firstly, simplicity and clarity are

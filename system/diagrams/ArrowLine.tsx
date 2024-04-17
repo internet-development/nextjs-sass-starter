@@ -67,9 +67,9 @@ const ArrowLine = ({ start, end }) => {
     <svg ref={svgRef} className={styles.arrow}>
       <defs>
         <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="var(--color-text)" />
-          <stop offset="40%" stopColor="var(--color-border)" />
-          <stop offset="100%" stopColor="var(--color-background)" />
+          <stop offset="0%" stopColor="var(--theme-text)" />
+          <stop offset="40%" stopColor="var(--theme-border)" />
+          <stop offset="100%" stopColor="var(--theme-background)" />
         </linearGradient>
       </defs>
       <path />

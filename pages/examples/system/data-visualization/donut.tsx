@@ -78,7 +78,7 @@ function ExampleSystemDataVisualizationDonut(props) {
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
           This example demonstrates how to integrate a D3.js Donut Chart into a React component. The chart visualizes data distribution across different categories.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <DonutChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />

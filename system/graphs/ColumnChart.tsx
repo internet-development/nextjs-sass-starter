@@ -22,7 +22,7 @@ const ColumnChart = (props) => {
       .rangeRound([0, drawWidth])
       .padding(0.1);
 
-    const colorScale = d3.scaleOrdinal().domain(['positive', 'neutral', 'negative']).range(['var(--color-success)', 'var(--color-light-gray)', 'var(--color-subdued-error)']);
+    const colorScale = d3.scaleOrdinal().domain(['positive', 'neutral', 'negative']).range(['var(--theme-success)', 'var(--theme-border)', 'var(--theme-error-subdued)']);
 
     const maxUpperCI = d3.max(props.data, (d) => d.positive_upper_ci);
     const extraSpaceForLabels = 10;
@@ -46,10 +46,10 @@ const ColumnChart = (props) => {
       .attr('transform', `translate(${margin.left},0)`)
       .call(yAxis)
       .selectAll('text')
-      .style('fill', 'var(--color-border)')
+      .style('fill', 'var(--theme-border)')
       .style('font-size', '14px');
 
-    svg.selectAll('.y-axis path, .y-axis line').style('stroke', 'var(--color-border)');
+    svg.selectAll('.y-axis path, .y-axis line').style('stroke', 'var(--theme-border)');
 
     const yAxisG = svg.append('g').attr('class', 'y-axis').attr('transform', `translate(${margin.left},0)`).call(yAxis);
 
@@ -58,7 +58,7 @@ const ColumnChart = (props) => {
     yAxisG.selectAll('.tick line').attr('stroke-opacity', 0.01).attr('shape-rendering', 'crispEdges');
 
     yAxisG.selectAll('.domain').remove();
-    yAxisG.selectAll('.tick text').style('fill', 'var(--color-border)').style('font-size', '14px');
+    yAxisG.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', '14px');
 
     svg
       .selectAll('.vertical-line')
@@ -70,7 +70,7 @@ const ColumnChart = (props) => {
       .attr('x2', (d) => xScale(d.category) + xScale.bandwidth() / 2 + margin.left)
       .attr('y1', margin.top)
       .attr('y2', height + margin.top)
-      .attr('stroke', 'var(--color-light-gray)')
+      .attr('stroke', 'var(--theme-border)')
       .style('opacity', 0.3);
 
     props.data.forEach((d) => {
@@ -137,7 +137,7 @@ const ColumnChart = (props) => {
           .attr('y', yScale(d.positive_upper_ci))
           .attr('dy', '-0.5em')
           .attr('text-anchor', 'middle')
-          .attr('fill', 'var(--color-text)')
+          .attr('fill', 'var(--theme-text)')
           .style('font-size', '10px')
           .text(d.positive);
       }
@@ -149,7 +149,7 @@ const ColumnChart = (props) => {
           .attr('y', yScale(d.neutral))
           .attr('dy', '1.2em')
           .attr('text-anchor', 'middle')
-          .attr('fill', 'var(--color-text)')
+          .attr('fill', 'var(--theme-text)')
           .style('font-size', '10px')
           .text(d.neutral);
       }
@@ -161,7 +161,7 @@ const ColumnChart = (props) => {
           .attr('y', yScale(d.negative_lower_ci))
           .attr('dy', '0.7rem')
           .attr('text-anchor', 'middle')
-          .attr('fill', 'var(--color-text)')
+          .attr('fill', 'var(--theme-text)')
           .style('font-size', '10px')
           .text(d.negative);
       }

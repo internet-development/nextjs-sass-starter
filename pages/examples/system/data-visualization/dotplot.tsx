@@ -90,14 +90,14 @@ function ExampleSystemDataVisualizationDotPlot(props) {
       url="https://wireframes.internet.dev/examples/system/data-visualization/donut"
     >
       <Navigation />
-      <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="donut" data={VISUALIZATION_OPTIONS} />}>
+      <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="dotplot" data={VISUALIZATION_OPTIONS} />}>
         <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Dot plot</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
           A Dot plot is a versatile and straightforward way to visualize data, offering clear insights into the distribution and comparison of values across different groups or
           categories. Their simplicity and clarity can be particularly valuable in exploratory data analysis, educational settings, and any situation where individual data points
           and their distribution are of interest.{' '}
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <DotPlot data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />

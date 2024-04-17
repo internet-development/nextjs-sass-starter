@@ -90,9 +90,9 @@ const EXAMPLE_DUMMY_DATA = [
 ];
 
 const EXAMPLE_LEGEND_ITEMS_DATA = [
-  { color: 'var(--color-subdued-error)', label: 'under 25%' },
-  { color: 'var(--color-light-gray)', label: 'no significance' },
-  { color: 'var(--color-success)', label: 'over 35%' },
+  { color: 'var(--theme-error-subdued)', label: 'under 25%' },
+  { color: 'var(--theme-border)', label: 'no significance' },
+  { color: 'var(--theme-success)', label: 'over 35%' },
 ];
 
 function ExampleSystemDataVisualizationHeatmap(props) {
@@ -115,7 +115,7 @@ function ExampleSystemDataVisualizationHeatmap(props) {
           Heatmap visualization is a method of graphically representing numerical data where the value of each data point is indicated using colors. It can help visualize data
           distribution across different groups and variables.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <Heatmap data={EXAMPLE_DUMMY_DATA} legend={EXAMPLE_LEGEND_ITEMS_DATA} style={{ height: '100%', width: '100%' }} />

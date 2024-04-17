@@ -4,25 +4,25 @@
   justify-content: space-between;
   text-decoration: none;
   cursor: pointer;
-  color: var(--color-text);
+  color: var(--theme-text);
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {
-    color: var(--color-primary);
+    color: var(--theme-primary);
   }
 
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--theme-border);
 
   &:last-child {
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--theme-border);
   }
 }
 
 .icon {
-  border-right: 1px solid var(--color-border);
+  border-right: 1px solid var(--theme-border);
   height: 32px;
   width: 32px;
   display: inline-flex;

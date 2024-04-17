@@ -95,7 +95,7 @@ function ExampleSystemDataVisualizationDistribution(props) {
           Distribution charts are used to show the variation of data over a period, or to compare multiple data sets. They are particularly useful for identifying patterns,
           outliers, and the distribution of data points across different categories.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <DistributionChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />

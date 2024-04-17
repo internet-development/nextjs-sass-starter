@@ -101,7 +101,7 @@ function ExampleSystemDataVisualizationLine(props) {
           identify the slopes of the lines moving up or down.
         </P>
 
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <div style={chartContainerStyles}>
           <LineChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} showErrorBars={false} showConfidenceIntervalFill={false} />
         </div>

@@ -26,7 +26,7 @@ const HistogramChart = (props) => {
     const tickValues = yScale.ticks();
 
     tickValues.forEach((d) => {
-      g.append('line').attr('x1', 0).attr('x2', chartWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--color-border)').attr('opacity', 0.7); // Adjust opacity as needed
+      g.append('line').attr('x1', 0).attr('x2', chartWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--theme-border)').attr('opacity', 0.7); // Adjust opacity as needed
     });
 
     const xAxisOffset = 0.5;
@@ -37,8 +37,8 @@ const HistogramChart = (props) => {
     xAxis.selectAll('text').style('font-size', '14px');
 
     const yAxis = g.append('g').call(d3.axisLeft(yScale));
-    yAxis.selectAll('.tick text').style('fill', 'var(--color-border)').style('font-size', '16px');
-    yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--color-border)');
+    yAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', '16px');
+    yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
 
     const bars = g.selectAll('.column').data(props.data).enter().append('g');
 
@@ -56,7 +56,7 @@ const HistogramChart = (props) => {
       .attr('x2', (d) => xScale(d.label) + xScale.bandwidth() / 2)
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('y2', (d) => yScale(d.upper_ci))
-      .attr('stroke', 'var(--color-text)')
+      .attr('stroke', 'var(--theme-text)')
       .attr('stroke-width', 1.5);
 
     bars
@@ -65,7 +65,7 @@ const HistogramChart = (props) => {
       .attr('x2', (d) => xScale(d.label) + (3 * xScale.bandwidth()) / 4)
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('y2', (d) => yScale(d.value - (d.value - d.lower_ci)))
-      .attr('stroke', 'var(--color-text)')
+      .attr('stroke', 'var(--theme-text)')
       .attr('stroke-width', 1.5);
 
     bars
@@ -74,7 +74,7 @@ const HistogramChart = (props) => {
       .attr('x2', (d) => xScale(d.label) + (3 * xScale.bandwidth()) / 4)
       .attr('y1', (d) => yScale(d.upper_ci))
       .attr('y2', (d) => yScale(d.upper_ci))
-      .attr('stroke', 'var(--color-text)')
+      .attr('stroke', 'var(--theme-text)')
       .attr('stroke-width', 1.5);
 
     bars.each(function (d) {
@@ -87,7 +87,7 @@ const HistogramChart = (props) => {
         .attr('dy', '-0.5em')
         .attr('text-anchor', 'middle')
         .style('font-size', '12px')
-        .style('fill', 'var(--color-text)')
+        .style('fill', 'var(--theme-text)')
         .text(`${d.upper_ci}`);
 
       barGroup
@@ -97,7 +97,7 @@ const HistogramChart = (props) => {
         .attr('dy', '1.2em')
         .attr('text-anchor', 'middle')
         .style('font-size', '12px')
-        .style('fill', 'var(--color-text)')
+        .style('fill', 'var(--theme-text)')
         .text(` ${d.lower_ci}`);
     });
   };

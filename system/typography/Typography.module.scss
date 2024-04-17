@@ -40,10 +40,10 @@
   font-weight: 400;
   display: block;
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--theme-text);
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 }
 
@@ -59,10 +59,10 @@
   font-weight: 400;
   display: block;
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--theme-text);
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 }
 
@@ -78,15 +78,15 @@
   font-size: var(--type-scale-fixed-tiny);
   line-height: var(--type-scale-fixed-small);
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--theme-text);
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 }
 
 .unitLabel {
   font-size: var(--type-scale-fixed-small);
   line-height: var(--type-scale-fixed-small);
-  color: var(--color-border);
+  color: var(--theme-border);
 }

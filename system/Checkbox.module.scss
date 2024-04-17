@@ -17,15 +17,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 1px var(--color-border);
+  box-shadow: 0 0 0 1px var(--theme-border);
   border-radius: 2px;
   cursor: pointer;
   user-select: none;
 
   &:hover {
     box-shadow:
-      0 0 0 1px var(--color-border),
-      0 0 0 4px var(--color-accent);
+      0 0 0 1px var(--theme-border),
+      0 0 0 4px var(--theme-input-active);
   }
 }
 
