@@ -3,7 +3,7 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import Cookies from 'js-cookie';
-import DemoServicesAndPaymentsWithLayout from '@system/layouts/demos/DemoServicesAndPaymentsWithLayout';
+import DemoServicesAndPaymentsWithLayout from '@demos/DemoServicesAndPaymentsWithLayout';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';

@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoRequiredEarningsCalculator.module.scss';
+import styles from '@demos/DemoRequiredEarningsCalculator.module.scss';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

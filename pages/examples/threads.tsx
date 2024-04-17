@@ -5,7 +5,7 @@ import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
 import Cookies from 'js-cookie';
-import DemoThreads from '@system/layouts/demos/DemoThreads';
+import DemoThreads from '@demos/DemoThreads';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';

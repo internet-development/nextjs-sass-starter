@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoSettingsSidebar.module.scss';
+import styles from '@demos/DemoSettingsSidebar.module.scss';
 
 import * as React from 'react';
 

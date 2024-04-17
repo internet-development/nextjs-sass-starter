@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoPricing.module.scss';
+import styles from '@demos/DemoPricing.module.scss';
 
 import * as React from 'react';
 

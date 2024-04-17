@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS, VISUALIZATION_OPTIONS_HEADINGS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
+import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS, VISUALIZATION_OPTIONS_HEADINGS } from '@demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';

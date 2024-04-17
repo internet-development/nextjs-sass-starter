@@ -1,6 +1,6 @@
 .root {
   background-color: var(--theme-button);
-  color: var(--theme-button-color);
+  color: var(--theme-button-text);
   box-sizing: border-box;
   flex-shrink: 0;
   border-radius: 8px;
@@ -23,7 +23,7 @@
   text-decoration: none;
 
   &:visited {
-    color: var(--theme-button-color);
+    color: var(--theme-button-text);
   }
 
   &:hover {

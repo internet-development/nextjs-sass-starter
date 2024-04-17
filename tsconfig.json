@@ -4,6 +4,7 @@
     "paths": {
       "@root/*": ["./*"],
       "@system/*": ["./system/*"],
+      "@demos/*": ["./demos/*"],
       "@common/*": ["./common/*"],
       "@data/*": ["./data/*"],
       "@components/*": ["./components/*"],

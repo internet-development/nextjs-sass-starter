@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoBentoLayout.module.scss';
+import styles from '@demos/DemoBentoLayout.module.scss';
 
 import * as React from 'react';
 

@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoSimpleGrid.module.scss';
+import styles from '@demos/DemoSimpleGrid.module.scss';
 
 import * as React from 'react';
 

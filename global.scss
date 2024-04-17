@@ -113,7 +113,7 @@ body.theme-light {
   --theme-border-box: var(--color-gray-20);
   --theme-border-subdued: var(--color-gray-20-4);
   --theme-button: var(--color-black-100);
-  --theme-button-color: var(--color-white);
+  --theme-button-text: var(--color-white);
   --theme-primary: var(--color-blue-60);
   --theme-input-active: var(--color-blue-20-5);
   --theme-success: var(--color-green-60);
@@ -156,7 +156,7 @@ body.theme-dark {
   --theme-border-box: var(--color-gray-80);
   --theme-border-subdued: var(--color-gray-90-6);
   --theme-button: var(--color-white);
-  --theme-button-color: var(--color-black-100);
+  --theme-button-text: var(--color-black-100);
   --theme-primary: var(--color-blue-60);
   --theme-input-active: var(--color-blue-20-5);
   --theme-success: var(--color-green-60);
@@ -199,7 +199,7 @@ body.theme-blue {
   --theme-border-box: #795548;
   --theme-border-subdued: var(--color-blue-70-3);
   --theme-button: var(--color-blue-30);
-  --theme-button-color: var(--color-black-100);
+  --theme-button-text: var(--color-black-100);
   --theme-primary: var(--color-blue-60);
   --theme-input-active: var(--color-blue-20-5);
   --theme-success: var(--color-green-60);

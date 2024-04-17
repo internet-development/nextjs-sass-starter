@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoIndex.module.scss';
+import styles from '@demos/DemoIndex.module.scss';
 
 import * as React from 'react';
 

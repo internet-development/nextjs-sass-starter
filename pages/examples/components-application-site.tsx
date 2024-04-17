@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Content from '@system/layouts/Content';
-import DemoApplicationSite from '@system/layouts/demos/DemoApplicationSite';
+import DemoApplicationSite from '@demos/DemoApplicationSite';
 import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';

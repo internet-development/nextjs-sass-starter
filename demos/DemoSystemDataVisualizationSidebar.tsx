@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoSystemDataVisualizationSidebar.module.scss';
+import styles from '@demos/DemoSystemDataVisualizationSidebar.module.scss';
 
 import * as React from 'react';
 

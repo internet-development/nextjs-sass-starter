@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import Content from '@system/layouts/Content';
-import DemoBentoLayout from 'system/layouts/demos/DemoBentoLayout';
-import DemoPricing from 'system/layouts/demos/DemoPricing';
-import DemoSimpleGrid from 'system/layouts/demos/DemoSimpleGrid';
+import DemoBentoLayout from '@demos/DemoBentoLayout';
+import DemoPricing from '@demos/DemoPricing';
+import DemoSimpleGrid from '@demos/DemoSimpleGrid';
 import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';

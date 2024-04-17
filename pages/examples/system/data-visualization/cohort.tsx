@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@system/layouts/demos/DemoSystemDataVisualizationSidebar';
+import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import CohortChart from '@system/graphs/CohortChart';
 import Navigation from '@system/Navigation';

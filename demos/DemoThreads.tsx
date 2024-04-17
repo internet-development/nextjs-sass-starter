@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoThreads.module.scss';
+import styles from '@demos/DemoThreads.module.scss';
 
 import * as Queries from '@common/queries';
 import * as React from 'react';

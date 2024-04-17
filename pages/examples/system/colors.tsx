@@ -26,7 +26,7 @@ const TABLE_DATA = [
   'var(--theme-foreground)',
   'var(--theme-foreground-secondary)',
   'var(--theme-button)',
-  'var(--theme-button-color)',
+  'var(--theme-button-text)',
   'var(--theme-text)',
   'var(--theme-border)',
   'var(--theme-border-subdued)',

@@ -1,4 +1,4 @@
-import styles from '@system/layouts/demos/DemoPost.module.scss';
+import styles from '@demos/DemoPost.module.scss';
 
 import * as React from 'react';
 

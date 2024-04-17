@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import DemoPost from '@system/layouts/demos/DemoPost';
+import DemoPost from '@demos/DemoPost';
 import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';

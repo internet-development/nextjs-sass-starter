@@ -3,7 +3,7 @@ import styles from '@system/modals/Modals.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import DemoIndex from '@system/layouts/demos/DemoIndex';
+import DemoIndex from '@demos/DemoIndex';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 export default function ModalIndex(props) {

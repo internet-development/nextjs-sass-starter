@@ -3,7 +3,7 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import Cookies from 'js-cookie';
-import DemoRequiredEarningsCalculator from '@system/layouts/demos/DemoRequiredEarningsCalculator';
+import DemoRequiredEarningsCalculator from '@demos/DemoRequiredEarningsCalculator';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';

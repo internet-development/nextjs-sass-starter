@@ -4,8 +4,8 @@ import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
 import Cookies from 'js-cookie';
-import DemoSettings from '@system/layouts/demos/DemoSettings';
-import DemoSettingsSidebar from '@system/layouts/demos/DemoSettingsSidebar';
+import DemoSettings from '@demos/DemoSettings';
+import DemoSettingsSidebar from '@demos/DemoSettingsSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
