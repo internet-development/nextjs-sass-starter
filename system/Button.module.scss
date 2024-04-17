@@ -32,8 +32,8 @@
 }
 
 .loader {
-  color: var(--color-text);
-  box-shadow: 0 0 0 1px var(--color-border);
+  color: var(--theme-text);
+  box-shadow: 0 0 0 1px var(--theme-border);
   flex-shrink: 0;
   border-radius: 8px;
   outline: 0;
@@ -51,8 +51,8 @@
 }
 
 .visual {
-  color: var(--color-text);
-  box-shadow: 0 0 0 1px var(--color-border);
+  color: var(--theme-text);
+  box-shadow: 0 0 0 1px var(--theme-border);
   flex-shrink: 0;
   border-radius: 8px;
   outline: 0;

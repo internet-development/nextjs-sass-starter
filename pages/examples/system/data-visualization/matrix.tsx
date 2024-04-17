@@ -76,7 +76,7 @@ function ExampleSystemDataVisualizationMatrix(props) {
           Matrix charts are powerful tools for visualizing complex data sets, allowing for the comparison of data across two dimensions. They are particularly useful for spotting
           patterns, correlations, and anomalies within the data.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <MatrixGraph data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />

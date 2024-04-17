@@ -39,12 +39,12 @@ const BubbleChart = (props) => {
       const tickValues = yScale.ticks();
 
       tickValues.forEach((d) => {
-        g.append('line').attr('x1', 0).attr('x2', drawWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--color-border)').attr('opacity', 0.7); // Adjust opacity as needed
+        g.append('line').attr('x1', 0).attr('x2', drawWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--theme-border)').attr('opacity', 0.7); // Adjust opacity as needed
       });
 
       const yAxis = g.append('g').call(d3.axisLeft(yScale));
-      yAxis.selectAll('.tick text').style('fill', 'var(--color-border)').style('font-size', '16px');
-      yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--color-border)');
+      yAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', '16px');
+      yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
 
       const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
       xAxis.selectAll('text').style('font-size', '14px');
@@ -65,9 +65,9 @@ const BubbleChart = (props) => {
         .attr('cx', (d) => xScale(d.x))
         .attr('cy', (d) => yScale(d.y))
         .attr('r', (d) => sizeScale(d.value))
-        .style('fill', (d) => (xScale(d.x) > drawWidth / 2 && yScale(d.y) < height / 2 ? 'rgba(68, 198, 127, 1)' : 'var(--color-border)'))
+        .style('fill', (d) => (xScale(d.x) > drawWidth / 2 && yScale(d.y) < height / 2 ? 'rgba(68, 198, 127, 1)' : 'var(--theme-border)'))
         .style('fill-opacity', 0.7)
-        .style('stroke', 'var(--color-text)');
+        .style('stroke', 'var(--theme-text)');
 
       bubbles
         .append('text')

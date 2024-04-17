@@ -4,13 +4,13 @@
 
 .header {
   display: contents;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--theme-border);
 }
 
 .cell {
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--theme-border);
   padding: 8px 24px 12px 0px;
   font-weight: 600;
   font-size: var(--type-scale-fixed-small);
@@ -23,19 +23,19 @@
 .column {
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--theme-border);
   padding: 8px 24px 16px 0px;
   font-size: var(--type-scale-fixed-small);
 
   a {
-    color: var(--color-text);
+    color: var(--theme-text);
 
     &:visited {
-      color: var(--color-text);
+      color: var(--theme-text);
     }
 
     &:hover {
-      color: var(--color-primary);
+      color: var(--theme-primary);
     }
   }
 }

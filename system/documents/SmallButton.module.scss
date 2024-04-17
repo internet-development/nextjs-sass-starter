@@ -1,6 +1,6 @@
 .root {
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--theme-background);
+  color: var(--theme-text);
   box-sizing: border-box;
   flex-shrink: 0;
   border-radius: 4px;
@@ -16,17 +16,17 @@
   overflow-wrap: break-word;
   user-select: none;
   cursor: pointer;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--theme-border);
   transition: 200ms ease all;
   transform: scale(1);
   text-decoration: none;
   text-transform: uppercase;
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {
-    box-shadow: var(--theme-button-shadow-hover);
+    box-shadow: var(--theme-box-shadow-button-hover);
   }
 }

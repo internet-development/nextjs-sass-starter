@@ -4,7 +4,7 @@
   transition: 200ms ease box-shadow;
 
   &:hover {
-    box-shadow: 0 0 0 1px var(--color-border);
+    box-shadow: 0 0 0 1px var(--theme-border);
   }
 }
 
@@ -24,24 +24,24 @@
 .face {
   position: absolute;
   font-size: 40px;
-  color: var(--color-background);
+  color: var(--theme-background);
   text-align: center;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--theme-border);
 }
 
 .front {
-  background: var(--color-text);
+  background: var(--theme-text);
 }
 
 .left {
-  background: var(--color-text);
+  background: var(--theme-text);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .top {
-  background: var(--color-text);
+  background: var(--theme-text);
 }
 
 .iframe {

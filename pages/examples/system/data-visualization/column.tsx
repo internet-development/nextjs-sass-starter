@@ -77,9 +77,9 @@ const EXAMPLE_DUMMY_DATA = [
 
 //EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS
 const EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS = [
-  { color: 'var(--color-subdued-error)', label: 'Negative' },
-  { color: 'var(--color-light-gray)', label: 'Neutral' },
-  { color: 'var(--color-success)', label: 'Positive' },
+  { color: 'var(--theme-error-subdued)', label: 'Negative' },
+  { color: 'var(--theme-border)', label: 'Neutral' },
+  { color: 'var(--theme-success)', label: 'Positive' },
 ];
 
 function ExampleSystemDataVisualizationColumn(props) {
@@ -102,7 +102,7 @@ function ExampleSystemDataVisualizationColumn(props) {
           Column charts are used to show data changes over a period of time or illustrate comparisons among items. In column charts, categories are typically organized along the
           horizontal axis and values along the vertical axis.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <ColumnChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS} />

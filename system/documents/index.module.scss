@@ -3,7 +3,7 @@
   align-items: flex-start;
   justify-content: space-between;
   font-size: var(--type-scale-7);
-  border-top: 1px solid var(--color-background-3);
+  border-top: 1px solid var(--theme-foreground-secondary);
 }
 
 .column {
@@ -19,11 +19,11 @@
 }
 
 .shaded {
-  background: var(--color-background-3);
+  background: var(--theme-foreground-secondary);
 }
 
 .subshaded {
-  background: var(--color-background-2);
+  background: var(--theme-foreground);
   text-align: right;
 }
 

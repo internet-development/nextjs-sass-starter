@@ -101,29 +101,29 @@ section {
 }
 
 body.theme-light {
-  --color-background: var(--color-white);
-  --color-background-2: var(--color-black-faded-2);
-  --color-background-3: var(--color-black-faded-3);
-  --color-text: var(--color-black);
-  --color-border: var(--color-grey);
-  --color-subdued-border: rgba(0, 0, 0, 0.07);
-  --color-accent: rgba(1, 141, 255, 0.1);
-  --color-success: rgba(68, 198, 127, 1);
-  --color-subdued-success: rgba(106, 243, 168, 0.3);
-
-  --color-box-background-1: rgba(245, 245, 245, 1);
-  --color-box-background-2: rgba(235, 235, 235, 1);
-  --color-box-background-3: rgba(215, 215, 215, 1);
-
-  --color-error: rgba(239, 68, 68, 1);
-  --color-subdued-error: rgba(239, 68, 68, 0.677);
-  --color-light-gray: rgb(219, 219, 219);
-
-  --theme-modal: inset 0 0 0 1px var(--color-border), 0 0 1px 4px rgba(0, 0, 0, 0.02);
-  --theme-button: var(--color-black);
+  --theme-background: var(--color-white);
+  --theme-background-overlay: var(--color-white-4);
+  --theme-background-box-top: rgba(245, 245, 245, 1);
+  --theme-background-box-front: rgba(215, 215, 215, 1);
+  --theme-background-box-side: rgba(235, 235, 235, 1);
+  --theme-foreground: var(--color-black-100-1);
+  --theme-foreground-secondary: var(--color-black-100-2);
+  --theme-text: var(--color-black-100);
+  --theme-border: var(--color-gray-20);
+  --theme-border-box: var(--color-gray-20);
+  --theme-border-subdued: var(--color-gray-20-4);
+  --theme-button: var(--color-black-100);
   --theme-button-color: var(--color-white);
-  --theme-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  --theme-button-shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.3);
+  --theme-primary: var(--color-blue-60);
+  --theme-input-active: var(--color-blue-20-5);
+  --theme-success: var(--color-green-60);
+  --theme-success-subdued: var(--color-green-60-3);
+  --theme-error: var(--color-red-60);
+  --theme-error-subdued: var(--color-red-60-3);
+
+  --theme-box-shadow-modal: inset 0 0 0 1px var(--theme-border), 0 0 1px 4px rgba(0, 0, 0, 0.02);
+  --theme-box-shadow-button: 0 1px 2px rgba(0, 0, 0, 0.15);
+  --theme-box-shadow-button-hover: 0 5px 15px rgba(0, 0, 0, 0.3);
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -133,39 +133,40 @@ body.theme-light {
     background: transparent;
   }
   &::-webkit-scrollbar-track {
-    background: var(--color-border);
+    background: var(--theme-foreground);
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--color-subdued-border);
+    background: var(--theme-foreground-secondary);
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--color-subdued-border);
+    background: var(--theme-foreground-secondary);
   }
 }
 
 body.theme-dark {
-  --color-background: var(--color-black);
-  --color-background-2: var(--color-white-faded-2);
-  --color-background-3: var(--color-white-faded-3);
-  --color-text: var(--color-white);
-  --color-border: var(--color-dark-grey);
-  --color-subdued-border: rgba(255, 255, 255, 0.07);
-  --color-accent: rgba(1, 141, 255, 0.1);
-  --color-success: rgba(68, 198, 127, 1);
-  --color-subdued-success: rgba(106, 243, 168, 0.3);
-  --color-error: rgba(239, 68, 68, 1);
-  --color-subdued-error: rgba(239, 68, 68, 0.677);
-  --color-light-gray: rgba(130, 130, 130, 0.59);
-
-  --theme-modal: inset 0 0 0 1px var(--color-border);
+  --theme-background: var(--color-black-100);
+  --theme-background-overlay: var(--color-black-100-4);
+  --theme-background-box-top: var(--color-gray-70);
+  --theme-background-box-front: var(--color-gray-100);
+  --theme-background-box-side: var(--color-gray-90);
+  --theme-foreground: var(--color-white-1);
+  --theme-foreground-secondary: var(--color-white-2);
+  --theme-text: var(--color-white);
+  --theme-border: var(--color-gray-90);
+  --theme-border-box: var(--color-gray-80);
+  --theme-border-subdued: var(--color-gray-90-6);
   --theme-button: var(--color-white);
-  --theme-button-color: var(--color-black);
-  --theme-button-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
-  --theme-button-shadow-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
+  --theme-button-color: var(--color-black-100);
+  --theme-primary: var(--color-blue-60);
+  --theme-input-active: var(--color-blue-20-5);
+  --theme-success: var(--color-green-60);
+  --theme-success-subdued: var(--color-green-60-3);
+  --theme-error: var(--color-red-60);
+  --theme-error-subdued: var(--color-red-60-3);
 
-  --color-box-background-1: rgba(239, 239, 239, 1);
-  --color-box-background-2: rgba(235, 235, 235, 1);
-  --color-box-background-3: rgba(215, 215, 215, 1);
+  --theme-box-shadow-modal: inset 0 0 0 1px var(--color-gray-90);
+  --theme-box-shadow-button: 0 0 0 rgba(0, 0, 0, 0.15);
+  --theme-box-shadow-button-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -175,39 +176,40 @@ body.theme-dark {
     background: transparent;
   }
   &::-webkit-scrollbar-track {
-    background: var(--color-border);
+    background: var(--theme-foreground);
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--color-subdued-border);
+    background: var(--theme-foreground-secondary);
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--color-subdued-border);
+    background: var(--theme-foreground-secondary);
   }
 }
 
 body.theme-blue {
-  --color-background: #35639e;
-  --color-background-2: #5f96bf;
-  --color-background-3: #b1cce1;
-  --color-text: var(--color-white);
-  --color-border: #5687bc;
-  --color-subdued-border: rgba(86, 135, 188, 0.4);
-  --color-accent: rgba(1, 141, 255, 0.1);
-  --color-success: rgba(68, 198, 127, 1);
-  --color-subdued-success: rgba(106, 243, 168, 0.3);
-  --color-error: rgba(239, 68, 68, 1);
-  --color-subdued-error: rgba(239, 68, 68, 0.677);
-  --color-light-gray: rgba(130, 130, 130, 0.59);
+  --theme-background: var(--color-blue-80);
+  --theme-background-overlay: var(--color-blue-80-4);
+  --theme-background-box-top: #6d4c41;
+  --theme-background-box-front: #3e2723;
+  --theme-background-box-side: #4e342e;
+  --theme-foreground: var(--color-blue-20-1);
+  --theme-foreground-secondary: var(--color-blue-20-2);
+  --theme-text: var(--color-blue-10);
+  --theme-border: var(--color-blue-70);
+  --theme-border-box: #795548;
+  --theme-border-subdued: var(--color-blue-70-3);
+  --theme-button: var(--color-blue-30);
+  --theme-button-color: var(--color-black-100);
+  --theme-primary: var(--color-blue-60);
+  --theme-input-active: var(--color-blue-20-5);
+  --theme-success: var(--color-green-60);
+  --theme-success-subdued: var(--color-green-60-3);
+  --theme-error: var(--color-red-60);
+  --theme-error-subdued: var(--color-red-60-3);
 
-  --theme-modal: inset 0 0 0 1px var(--color-border);
-  --theme-button: var(--color-white);
-  --theme-button-color: var(--color-black);
-  --theme-button-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
-  --theme-button-shadow-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
-
-  --color-box-background-1: rgba(245, 245, 245, 1);
-  --color-box-background-2: rgba(235, 235, 235, 1);
-  --color-box-background-3: rgba(215, 215, 215, 1);
+  --theme-box-shadow-modal: inset 0 0 0 1px var(--theme-border);
+  --theme-box-shadow-button: 0 0 0 rgba(0, 0, 0, 0.15);
+  --theme-box-shadow-button-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -217,13 +219,13 @@ body.theme-blue {
     background: transparent;
   }
   &::-webkit-scrollbar-track {
-    background: var(--color-border);
+    background: var(--theme-foreground);
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--color-subdued-border);
+    background: var(--theme-foreground-secondary);
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--color-subdued-border);
+    background: var(--theme-foreground-secondary);
   }
 }
 
@@ -232,15 +234,47 @@ body.theme-blue {
 
 html,
 body {
-  --color-black: #000b00;
-  --color-black-faded-2: rgba(0, 11, 0, 0.075);
-  --color-black-faded-3: rgba(0, 11, 0, 0.125);
-  --color-white: #ffffff;
-  --color-white-faded-2: rgba(251, 250, 245, 0.075);
-  --color-white-faded-3: rgba(251, 250, 245, 0.125);
-  --color-grey: #dcdddd;
-  --color-dark-grey: #2b2b2b;
-  --color-primary: #156ff7;
+  --color-black-100: rgba(0, 0, 0, 1);
+  --color-black-100-4: rgba(0, 0, 0, 0.4);
+  --color-black-100-2: rgba(0, 0, 0, 0.2);
+  --color-black-100-1: rgba(0, 0, 0, 0.1);
+  --color-gray-100: rgba(22, 22, 22, 1);
+  --color-gray-90: rgba(38, 38, 38, 1);
+  --color-gray-90-6: rgba(38, 38, 38, 0.6);
+  --color-gray-80: rgba(57, 57, 57, 1);
+  --color-gray-70: rgba(82, 82, 82, 1);
+  --color-gray-60: rgba(111, 111, 111, 1);
+  --color-gray-50: rgba(141, 141, 141, 1);
+  --color-gray-40: rgba(168, 168, 168, 1);
+  --color-gray-30: rgba(198, 198, 198, 1);
+  --color-gray-20: rgba(224, 224, 224, 1);
+  --color-gray-20-4: rgba(224, 224, 224, 0.4);
+  --color-gray-10: rgba(244, 244, 244, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-white-4: rgba(255, 255, 255, 0.4);
+  --color-white-2: rgba(255, 255, 255, 0.2);
+  --color-white-1: rgba(255, 255, 255, 0.1);
+
+  --color-red-60: rgba(218, 30, 40, 1);
+  --color-red-60-3: rgba(218, 30, 40, 0.3);
+  --color-green-60: rgba(25, 128, 56, 1);
+  --color-green-60-3: rgba(25, 128, 56, 0.3);
+
+  --color-blue-100: rgba(0, 17, 65, 1);
+  --color-blue-90: rgba(0, 29, 108, 1);
+  --color-blue-80: rgba(0, 45, 156, 1);
+  --color-blue-80-4: rgba(0, 45, 156, 0.4);
+  --color-blue-70: rgba(0, 67, 206, 1);
+  --color-blue-70-3: rgba(0, 67, 206, 0.3);
+  --color-blue-60: rgba(15, 98, 254, 1);
+  --color-blue-50: rgba(69, 137, 255, 1);
+  --color-blue-40: rgba(120, 169, 255, 1);
+  --color-blue-30: rgba(166, 200, 255, 1);
+  --color-blue-20: rgba(208, 226, 255, 1);
+  --color-blue-20-1: rgba(208, 226, 255, 0.1);
+  --color-blue-20-2: rgba(208, 226, 255, 0.2);
+  --color-blue-20-5: rgba(208, 226, 255, 0.5);
+  --color-blue-10: rgba(237, 245, 255, 1);
 
   --type-scale-1: 3.815rem;
   --type-scale-2: 3.052rem;
@@ -260,15 +294,16 @@ body {
   --font-family-mono: Consolas, monaco, monospace;
   --font-family-serif: Georgia, Times New Roman, serif;
 
-  --color-border: var(--color-black);
-
-  background: var(--color-background);
-  color: var(--color-text);
+  font-family: var(--font-family);
+  background: var(--theme-background);
+  color: var(--theme-text);
 
   font-size: 16px;
   @media (max-width: 768px) {
     font-size: 12px;
   }
 
-  font-family: var(--font-family);
+  --theme-border: var(--color-gray-20);
+  --theme-primary: var(--color-blue-60);
+  --theme-text: var(--color-black-100);
 }

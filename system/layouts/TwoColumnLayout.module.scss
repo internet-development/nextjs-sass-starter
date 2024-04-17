@@ -3,8 +3,8 @@
   max-width: 1248px;
   margin: 0 auto 0 auto;
 
-  border-left: 1px solid var(--color-border);
-  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--theme-border);
+  border-right: 1px solid var(--theme-border);
 
   display: flex;
   align-items: flex-start;
@@ -19,7 +19,7 @@
 .left {
   max-width: 188px;
   width: 100%;
-  box-shadow: 1px 0 0 0 var(--color-border);
+  box-shadow: 1px 0 0 0 var(--theme-border);
   align-self: stretch;
 }
 

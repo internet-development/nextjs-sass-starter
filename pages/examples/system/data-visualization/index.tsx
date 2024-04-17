@@ -29,7 +29,7 @@ function ExampleSystemDataVisualization(props) {
           pages. By adhering to the guidelines outlined in this resource, designers can ensure that their charts and graphs align with industry best practices and proven design
           principles.
         </P>
-        <H4 style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>Appendix</H4>
+        <H4 style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>Appendix</H4>
         <P style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>
           This system (template) is designed to help visual designers create consistent, aesthetically pleasing, and effective data visualizations for dashboards and insights
           pages. By adhering to the guidelines outlined in this resource, designers can ensure that their charts and graphs align with industry best practices and proven design

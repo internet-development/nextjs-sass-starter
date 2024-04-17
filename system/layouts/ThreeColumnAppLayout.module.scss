@@ -5,8 +5,8 @@
   justify-content: space-between;
   margin: 0 auto 0 auto;
   max-width: 1248px;
-  border-left: 1px solid var(--color-border);
-  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--theme-border);
+  border-right: 1px solid var(--theme-border);
 
   @media (max-width: 960px) {
     display: block;
@@ -23,7 +23,7 @@
   width: 328px;
   align-self: stretch;
   flex-shrink: 0;
-  border-right: 1px solid var(--color-border);
+  border-right: 1px solid var(--theme-border);
 
   @media (max-width: 960px) {
     width: 100%;

@@ -91,7 +91,7 @@ const ThreadItem = (props) => {
         <div className={styles.top} />
         <div
           className={styles.symbol}
-          style={list.length ? { backgroundColor: `var(--color-text)`, color: `var(--color-background)` } : undefined}
+          style={list.length ? { backgroundColor: `var(--theme-text)`, color: `var(--theme-background)` } : undefined}
           onClick={() => {
             onList({ checkEmptyArrayError: true });
           }}

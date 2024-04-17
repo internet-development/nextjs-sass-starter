@@ -40,9 +40,9 @@ const LineChart = (props) => {
         .attr('shape-rendering', 'crispEdges')
         .selectAll('.tick text')
         .style('font-size', '16px')
-        .style('fill', 'var(--color-border)');
+        .style('fill', 'var(--theme-border)');
 
-      g.selectAll('.domain, .tick line').attr('stroke', 'var(--color-light-gray)');
+      g.selectAll('.domain, .tick line').attr('stroke', 'var(--theme-border)');
 
       g.selectAll('.domain').remove();
 
@@ -62,13 +62,13 @@ const LineChart = (props) => {
           .y0(height)
           .y1((d) => yScale(d.value));
 
-        g.append('path').datum(props.data).attr('fill', 'var(--color-subdued-success)').attr('d', area);
+        g.append('path').datum(props.data).attr('fill', 'var(--theme-success-subdued)').attr('d', area);
       }
 
       g.append('path')
         .datum(props.data)
         .attr('fill', 'none')
-        .attr('stroke', 'var(--color-success)')
+        .attr('stroke', 'var(--theme-success)')
         .attr('stroke-width', 3)
         .attr(
           'd',
@@ -81,7 +81,7 @@ const LineChart = (props) => {
       // Optional error bars
       if (props.showErrorBars) {
         drawErrorBars(svg, props.data, xScale, yScale, {
-          color: 'var(--color-text)',
+          color: 'var(--theme-text)',
           strokeWidth: 1,
           capWidth: 5,
           showConfidenceIntervalFill: props.showConfidenceIntervalFill,
@@ -90,7 +90,7 @@ const LineChart = (props) => {
     }
   };
 
-  function drawErrorBars(svg, data, xScale, yScale, { color = 'var(--color-text)', strokeWidth = 1, capWidth = 5, showConfidenceIntervalFill = false } = {}) {
+  function drawErrorBars(svg, data, xScale, yScale, { color = 'var(--theme-text)', strokeWidth = 1, capWidth = 5, showConfidenceIntervalFill = false } = {}) {
     const g = svg.select('g');
 
     if (showConfidenceIntervalFill) {
@@ -101,7 +101,7 @@ const LineChart = (props) => {
         .y1((d) => yScale(d.lower_ci))
         .curve(d3.curveMonotoneX);
 
-      g.append('path').datum(data).attr('fill', 'var(--color-subdued-success)').attr('d', areaGenerator);
+      g.append('path').datum(data).attr('fill', 'var(--theme-success-subdued)').attr('d', areaGenerator);
     }
 
     data.forEach((d) => {

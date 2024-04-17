@@ -1,12 +1,12 @@
 .item {
   padding: 16px 0 16px 0;
-  border-bottom: 1px solid #dcdddd;
+  border-bottom: 1px solid var(--theme-border);
   list-style-type: none;
   display: grid;
   grid-template-columns: auto auto 1fr;
 
   &:first-child {
-    border-top: 1px solid #dcdddd;
+    border-top: 1px solid var(--theme-border);
     margin-top: 48px;
   }
 
@@ -19,18 +19,15 @@
   padding-right: 16px;
 }
 
-.contentColumn {
-}
-
 .link {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--theme-text);
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {
-    color: #0047ff;
+    color: var(--theme-primary);
   }
 }

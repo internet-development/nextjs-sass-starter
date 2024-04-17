@@ -124,7 +124,7 @@ function ExampleSystemDataVisualizationArea(props) {
           typically that of time. Area charts are used to represent cumulated totals using numbers or percentages over time. Use area charts to compare multiple quantities while
           also displaying the relationship each part has to the whole.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <AreaChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />

@@ -4,7 +4,7 @@
   transition: 200ms ease box-shadow;
 
   &:hover {
-    box-shadow: 0 0 0 1px var(--color-border);
+    box-shadow: 0 0 0 1px var(--theme-border-box);
   }
 }
 
@@ -24,29 +24,29 @@
 .face {
   position: absolute;
   font-size: 40px;
-  color: var(--color-text);
+  color: var(--theme-text);
   height: 100%;
 }
 
 .front {
-  background: var(--color-box-background-3);
+  background: var(--theme-background-box-front);
   display: flex;
   align-items: flex-start;
 }
 
 .left {
-  background: var(--color-box-background-2);
+  background: var(--theme-background-box-side);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .top {
-  background: var(--color-box-background-1);
+  background: var(--theme-background-box-top);
 }
 
 .topTwo {
-  background: var(--color-box-background-3);
+  background: var(--theme-background-box-side);
 }
 
 .brand {
@@ -68,7 +68,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--theme-border-box);
 }
 
 .column {
@@ -87,7 +87,7 @@
 }
 
 .panel {
-  border-right: 1px solid var(--color-border);
+  border-right: 1px solid var(--theme-border-box);
   height: 100%;
   width: 20%;
   opacity: 1;

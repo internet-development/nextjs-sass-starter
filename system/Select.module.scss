@@ -1,20 +1,20 @@
 .root {
   position: relative;
   font-family: var(--font-family);
-  background: var(--color-background);
+  background: var(--theme-background);
   border-radius: 4px;
-  box-shadow: 0 0 0 1px var(--color-border);
+  box-shadow: 0 0 0 1px var(--theme-border);
   &:hover {
     box-shadow:
-      0 0 0 1px var(--color-border),
-      0 0 0 4px var(--color-accent);
+      0 0 0 1px var(--theme-border),
+      0 0 0 4px var(--theme-input-active);
   }
 }
 
 .disabled {
   position: relative;
   font-family: var(--font-family);
-  background: var(--color-background);
+  background: var(--theme-background);
 }
 
 .select {
@@ -35,11 +35,11 @@
   margin: auto;
   transform: rotate(180deg);
   transition: 200ms ease all;
-  color: var(--color-text);
+  color: var(--theme-text);
 }
 
 .activeText {
-  color: var(--color-text);
+  color: var(--theme-text);
   display: block;
   padding: 12px 16px 12px 16px;
   border-radius: 4px;
@@ -49,13 +49,13 @@
 }
 
 .passiveText {
-  color: var(--color-border);
+  color: var(--theme-border);
   display: block;
   padding: 12px 16px 12px 16px;
   border-radius: 4px;
   line-height: 1.6;
   font-size: var(--type-scale-fixed-medium);
   white-space: pre-wrap;
-  box-shadow: 0 0 0 1px var(--color-border);
+  box-shadow: 0 0 0 1px var(--theme-border);
   cursor: not-allowed;
 }

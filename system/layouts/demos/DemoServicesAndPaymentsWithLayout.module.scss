@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--theme-border);
 }
 
 .top {
@@ -13,7 +13,7 @@
 }
 
 .row {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--theme-border);
 }
 
 .container {
@@ -36,34 +36,34 @@
 .column {
   padding: 0 12px 0 12px;
   width: 25%;
-  border-left: 1px solid var(--color-border);
+  border-left: 1px solid var(--theme-border);
   align-self: stretch;
   &:last-child {
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid var(--theme-border);
   }
 
   @media (max-width: 960px) {
     width: 50%;
     &:nth-child(even) {
-      border-right: 1px solid var(--color-border);
+      border-right: 1px solid var(--theme-border);
     }
     &:nth-child(1) {
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--theme-border);
     }
     &:nth-child(2) {
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--theme-border);
     }
   }
 
   @media (max-width: 768px) {
     width: 100%;
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid var(--theme-border);
     &:nth-child(3) {
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--theme-border);
     }
 
     &:last-child {
-      border-bottom: 0px solid var(--color-border);
+      border-bottom: 0px solid var(--theme-border);
     }
   }
 }
@@ -73,19 +73,19 @@
 }
 
 .subtle {
-  color: var(--color-border);
+  color: var(--theme-border);
 }
 
 .link {
-  color: var(--color-text);
+  color: var(--theme-text);
   transition: 200ms ease all;
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {
-    color: var(--color-text);
+    color: var(--theme-text);
     opacity: 0.8;
   }
 }
@@ -106,10 +106,10 @@
 
 .heroContent {
   padding: 24px 24px 192px 24px;
-  border-left: 1px solid var(--color-border);
+  border-left: 1px solid var(--theme-border);
 
   &:last-child {
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid var(--theme-border);
   }
 }
 
@@ -125,10 +125,10 @@
 
 .subRowContent {
   padding: 24px 24px 48px 24px;
-  border-left: 1px solid var(--color-border);
+  border-left: 1px solid var(--theme-border);
 
   &:last-child {
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid var(--theme-border);
   }
 
   p {

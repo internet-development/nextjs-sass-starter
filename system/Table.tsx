@@ -40,7 +40,7 @@ export default function Table(props) {
       {props.data && props.data.length ? (
         props.data.map((each, index) => {
           const value = props.value ? !!props.value.includes(`${each.id}`) : false;
-          const backgroundColor = value ? `var(--color-background-2)` : undefined;
+          const backgroundColor = value ? `var(--theme-foreground)` : undefined;
           return (
             <div className={styles.row} key={`index-${each.id ? each.id : index}`} role="row">
               {props.isInteractive ? (

@@ -91,7 +91,7 @@ function ExampleSystemDataVisualizationPie(props) {
           Explore the dynamics of data distribution across different categories with our interactive pie chart visualization. Gain insights into the relative sizes of segments
           within a whole, facilitating an intuitive understanding of proportions and relationships.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <PieChart data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%', marginTop: 24 }} />

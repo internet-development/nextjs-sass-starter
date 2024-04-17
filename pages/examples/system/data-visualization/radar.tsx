@@ -104,7 +104,7 @@ function ExampleSystemDataVisualizationRadar(props) {
           Radar charts, also known as spider charts or web charts, offer a way to display multivariate data in the form of a two-dimensional chart of three or more quantitative
           variables represented on axes starting from the same point.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--color-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
           <RadarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 24 }} />

@@ -2,12 +2,12 @@
   min-height: calc(100dvh - 48px);
   height: 100%;
   position: relative;
-  background: linear-gradient(-90deg, var(--color-subdued-border) 1px, transparent 1px), linear-gradient(var(--color-subdued-border) 1px, transparent 1px),
-    linear-gradient(-90deg, var(--color-subdued-border) 1px, transparent 1px), linear-gradient(var(--color-subdued-border) 1px, transparent 1px),
-    linear-gradient(transparent 10px, var(--color-background) 10px, var(--color-background) 90px, transparent 90px),
-    linear-gradient(-90deg, var(--color-border) 1px, transparent 1px),
-    linear-gradient(-90deg, transparent 10px, var(--color-background) 10px, var(--color-background) 90px, transparent 90px),
-    linear-gradient(var(--color-border) 1px, transparent 1px), var(--color-background);
+  background: linear-gradient(-90deg, var(--theme-border-subdued) 1px, transparent 1px), linear-gradient(var(--theme-border-subdued) 1px, transparent 1px),
+    linear-gradient(-90deg, var(--theme-border-subdued) 1px, transparent 1px), linear-gradient(var(--theme-border-subdued) 1px, transparent 1px),
+    linear-gradient(transparent 10px, var(--theme-background) 10px, var(--theme-background) 90px, transparent 90px),
+    linear-gradient(-90deg, var(--theme-border) 1px, transparent 1px),
+    linear-gradient(-90deg, transparent 10px, var(--theme-background) 10px, var(--theme-background) 90px, transparent 90px),
+    linear-gradient(var(--theme-border) 1px, transparent 1px), var(--theme-background);
   background-size:
     20px 20px,
     20px 20px,

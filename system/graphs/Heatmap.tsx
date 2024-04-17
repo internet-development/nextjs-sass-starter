@@ -15,7 +15,7 @@ function getColorsBasedOnValue(value) {
     const opacity = minOpacity + ((value - 35) / (maxValue - 35)) * opacityRange;
     return `rgba(106, 243, 168, ${opacity})`;
   } else {
-    return 'var(--color-light-gray)';
+    return 'var(--theme-border)';
   }
 }
 
@@ -53,7 +53,7 @@ const Heatmap = (props) => {
       .attr('text-anchor', 'end')
       .attr('dx', '4em')
       .attr('dy', '-0.5em')
-      .style('fill', 'var(--color-text)')
+      .style('fill', 'var(--theme-text)')
       .style('font-size', '12px')
       .attr('dy', '-0.5em');
     g.selectAll('.domain').remove();
@@ -79,7 +79,7 @@ const Heatmap = (props) => {
       .attr('y', (d) => yScale(d.variable) + yScale.bandwidth() / 2)
       .attr('dy', '.35em')
       .attr('text-anchor', 'middle')
-      .style('fill', 'var(--color-text)')
+      .style('fill', 'var(--theme-text)')
       .style('font-size', '12px');
   };
 

@@ -1,7 +1,7 @@
 .modal {
   -webkit-appearance: none;
-  box-shadow: var(--theme-modal);
-  background: var(--color-background);
+  box-shadow: var(--theme-box-shadow-modal);
+  background: var(--theme-background);
   border-radius: 4px;
   position: absolute;
   padding: 12px 0 12px 0;
@@ -9,8 +9,8 @@
 
 .childModal {
   -webkit-appearance: none;
-  box-shadow: var(--theme-modal);
-  background: var(--color-background);
+  box-shadow: var(--theme-box-shadow-modal);
+  background: var(--theme-background);
   border-radius: 4px;
 }
 
@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--theme-background-overlay);
 }
 
 .divider {
@@ -35,7 +35,7 @@
   width: 80%;
   display: block;
   height: 1px;
-  background: var(--color-border);
+  background: var(--theme-border);
   opacity: 0.8;
   border: 0px;
 }
@@ -46,7 +46,7 @@
   font-size: var(--type-scale-fixed-tiny);
   text-decoration: none;
   text-transform: uppercase;
-  color: var(--color-text);
+  color: var(--theme-text);
   letter-spacing: 0.2px;
   font-weight: 600;
   padding: 12px 24px 12px 24px;
@@ -55,7 +55,7 @@
   transition: 200ms ease all;
 
   &:visited {
-    color: var(--color-text);
+    color: var(--theme-text);
   }
 
   &:hover {
@@ -65,8 +65,8 @@
 
 .errorModal {
   -webkit-appearance: none;
-  box-shadow: var(--theme-modal);
-  background: var(--color-background);
+  box-shadow: var(--theme-box-shadow-modal);
+  background: var(--theme-background);
   border-radius: 4px;
   display: flex;
   padding: 16px 20px 16px 16px;
@@ -76,14 +76,14 @@
 }
 
 .errorModalLeft {
-  color: var(--color-error);
+  color: var(--theme-error);
   flex-shrink: 0;
 }
 
 .errorModalRight {
   min-width: 10%;
   width: 100%;
-  padding: 1px 0px 0px 16px;
+  padding: 2px 0px 0px 16px;
   line-height: 1.5;
   font-size: var(--type-scale-fixed-small);
 }
