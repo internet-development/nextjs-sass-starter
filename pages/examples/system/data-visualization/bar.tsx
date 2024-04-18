@@ -99,98 +99,98 @@ const EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS = [
 ];
 
 const GROUPED_BUBBLES_CHART = [
-  { name: 'Negative', count: 60, color: 'var(--color-primary)' }, // Example red
-  { name: 'Positive', count: 30, color: 'var(--color-success)' }, // Example green
-  { name: 'Neutral', count: 10, color: 'var(--color-border)' }, // Example gray
+  { name: 'Negative', count: 60, color: 'var(--theme-primary)' }, // Example red
+  { name: 'Positive', count: 30, color: 'var(--theme-success)' }, // Example green
+  { name: 'Neutral', count: 10, color: 'var(--theme-border)' }, // Example gray
 ];
 
 const LINE_BAR_CHART = [
   {
     year: '2005',
     years: [
-      { name: 'electronics', value: 120, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 150, color: 'var(--color-success)' },
-      { name: 'accessories', value: 30, color: 'var(--color-border)' },
+      { name: 'electronics', value: 120, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 150, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 30, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2006',
     years: [
-      { name: 'electronics', value: 115, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 165, color: 'var(--color-success)' },
-      { name: 'accessories', value: 45, color: 'var(--color-border)' },
+      { name: 'electronics', value: 115, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 165, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 45, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2007',
     years: [
-      { name: 'electronics', value: 130, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 175, color: 'var(--color-success)' },
-      { name: 'accessories', value: 55, color: 'var(--color-border)' },
+      { name: 'electronics', value: 130, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 175, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 55, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2008',
     years: [
-      { name: 'electronics', value: 125, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 190, color: 'var(--color-success)' },
-      { name: 'accessories', value: 60, color: 'var(--color-border)' },
+      { name: 'electronics', value: 125, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 190, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 60, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2009',
     years: [
-      { name: 'electronics', value: 140, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 185, color: 'var(--color-success)' },
-      { name: 'accessories', value: 65, color: 'var(--color-border)' },
+      { name: 'electronics', value: 140, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 185, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 65, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2010',
     years: [
-      { name: 'electronics', value: 150, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 210, color: 'var(--color-success)' },
-      { name: 'accessories', value: 70, color: 'var(--color-border)' },
+      { name: 'electronics', value: 150, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 210, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 70, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2011',
     years: [
-      { name: 'electronics', value: 155, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 220, color: 'var(--color-success)' },
-      { name: 'accessories', value: 75, color: 'var(--color-border)' },
+      { name: 'electronics', value: 155, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 220, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 75, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2012',
     years: [
-      { name: 'electronics', value: 160, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 230, color: 'var(--color-success)' },
-      { name: 'accessories', value: 85, color: 'var(--color-border)' },
+      { name: 'electronics', value: 160, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 230, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 85, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2013',
     years: [
-      { name: 'electronics', value: 165, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 240, color: 'var(--color-success)' },
-      { name: 'accessories', value: 90, color: 'var(--color-border)' },
+      { name: 'electronics', value: 165, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 240, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 90, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2014',
     years: [
-      { name: 'electronics', value: 170, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 250, color: 'var(--color-success)' },
-      { name: 'accessories', value: 95, color: 'var(--color-border)' },
+      { name: 'electronics', value: 170, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 250, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 95, color: 'var(--theme-border)' },
     ],
   },
   {
     year: '2015',
     years: [
-      { name: 'electronics', value: 180, color: 'var(--color-primary)' },
-      { name: 'clothing', value: 260, color: 'var(--color-success)' },
-      { name: 'accessories', value: 100, color: 'var(--color-border)' },
+      { name: 'electronics', value: 180, color: 'var(--theme-primary)' },
+      { name: 'clothing', value: 260, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 100, color: 'var(--theme-border)' },
     ],
   },
 ];

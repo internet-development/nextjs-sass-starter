@@ -66,9 +66,9 @@ const EXAMPLE_LEGEND_ITEMS_DATA = [
 ];
 
 const GROUPED_BUBBLES_CHART = [
-  { name: 'High Significe', count: 60, color: 'var(--color-primary)' },
-  { name: 'Significant', count: 30, color: 'var(--color-success)' },
-  { name: 'No Significance', count: 10, color: 'var(--color-error)' },
+  { name: 'High Significe', count: 60, color: 'var(--theme-primary)' },
+  { name: 'Significant', count: 30, color: 'var(--theme-success)' },
+  { name: 'No Significance', count: 10, color: 'var(--theme-error)' },
 ];
 
 function ExampleSystemDataVisualizationBubble(props) {

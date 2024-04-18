@@ -83,7 +83,7 @@ const AreaChart = (props) => {
 
       g.selectAll('.tick line').style('stroke', 'var(--theme-border)').style('stroke-opacity', 0.4).style('shape-rendering', 'crispEdges');
 
-      g.selectAll('.tick text').style('fill', 'var(--color-text)').style('text-transform', 'uppercase').style('user-select', 'none').style('font-size', '14px');
+      g.selectAll('.tick text').style('fill', 'var(--theme-text)').style('text-transform', 'uppercase').style('user-select', 'none').style('font-size', '14px');
     }
   };
 

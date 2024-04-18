@@ -65,9 +65,9 @@ const TreeChart = ({ data, style }) => {
 
     node
       .append('circle')
-      .attr('r', (d) => (d.children ? 10 : 20)) // Bigger circles for leaf nodes
-      .style('fill', (d) => (d.children ? 'var(--color-success)' : 'var(--color-background)'))
-      .attr('stroke', 'var(--color-success)')
+      .attr('r', (d) => (d.children ? 10 : 14)) // Bigger circles for leaf nodes
+      .style('fill', (d) => (d.children ? 'var(--theme-success)' : 'var(--theme-background)'))
+      .attr('stroke', 'var(--theme-success)')
       .style('stroke-width', 1);
 
     // Style the text
@@ -78,15 +78,15 @@ const TreeChart = ({ data, style }) => {
       .attr('y', (d) => (d.children ? 30 : 0))
       .attr('x', (d) => (d.children ? -32 : 30))
 
-      .style('fill', 'var(--color-text)')
+      .style('fill', 'var(--theme-text)')
       .style('font-size', '12px');
 
     node
       .append('text')
       .attr('dy', '.35em')
       .attr('text-anchor', 'middle')
-      .style('fill', 'var(--color-text)')
-      .style('font-size', '0.8em')
+      .style('fill', 'var(--theme-text)')
+      .style('font-size', '0.6em')
       .text((d) => d.data.percentage || '');
   };
 
