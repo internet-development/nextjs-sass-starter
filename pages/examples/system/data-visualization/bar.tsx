@@ -12,6 +12,10 @@ import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import DivergingStackedBarChart from '@root/system/graphs/DivergingStackedBarChart';
 import { H2, P, SubText, Text, Title } from '@system/typography';
+import GroupedBubblesChart from '@root/system/graphs/GroupedBubblesChart';
+import BarGraphWithCirclesChart from '@root/system/graphs/BarGraphWithCircles';
+import StackedCirclesBarChart from '@root/system/graphs/BarGraphWithCircles';
+import LineBarChart from '@root/system/graphs/BarGraphWithLines';
 
 const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
@@ -94,6 +98,103 @@ const EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS = [
   { color: 'var(--theme-success)', label: 'Positive' },
 ];
 
+const GROUPED_BUBBLES_CHART = [
+  { name: 'Negative', count: 60, color: 'var(--color-primary)' }, // Example red
+  { name: 'Positive', count: 30, color: 'var(--color-success)' }, // Example green
+  { name: 'Neutral', count: 10, color: 'var(--color-border)' }, // Example gray
+];
+
+const LINE_BAR_CHART = [
+  {
+    year: '2005',
+    years: [
+      { name: 'electronics', value: 120, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 150, color: 'var(--color-success)' },
+      { name: 'accessories', value: 30, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2006',
+    years: [
+      { name: 'electronics', value: 115, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 165, color: 'var(--color-success)' },
+      { name: 'accessories', value: 45, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2007',
+    years: [
+      { name: 'electronics', value: 130, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 175, color: 'var(--color-success)' },
+      { name: 'accessories', value: 55, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2008',
+    years: [
+      { name: 'electronics', value: 125, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 190, color: 'var(--color-success)' },
+      { name: 'accessories', value: 60, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2009',
+    years: [
+      { name: 'electronics', value: 140, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 185, color: 'var(--color-success)' },
+      { name: 'accessories', value: 65, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2010',
+    years: [
+      { name: 'electronics', value: 150, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 210, color: 'var(--color-success)' },
+      { name: 'accessories', value: 70, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2011',
+    years: [
+      { name: 'electronics', value: 155, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 220, color: 'var(--color-success)' },
+      { name: 'accessories', value: 75, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2012',
+    years: [
+      { name: 'electronics', value: 160, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 230, color: 'var(--color-success)' },
+      { name: 'accessories', value: 85, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2013',
+    years: [
+      { name: 'electronics', value: 165, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 240, color: 'var(--color-success)' },
+      { name: 'accessories', value: 90, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2014',
+    years: [
+      { name: 'electronics', value: 170, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 250, color: 'var(--color-success)' },
+      { name: 'accessories', value: 95, color: 'var(--color-border)' },
+    ],
+  },
+  {
+    year: '2015',
+    years: [
+      { name: 'electronics', value: 180, color: 'var(--color-primary)' },
+      { name: 'clothing', value: 260, color: 'var(--color-success)' },
+      { name: 'accessories', value: 100, color: 'var(--color-border)' },
+    ],
+  },
+];
+
 function ExampleSystemDataVisualizationBar(props) {
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
@@ -104,6 +205,16 @@ function ExampleSystemDataVisualizationBar(props) {
 
   const chartVariantA = {
     title: 'Bar Chart - Variant A',
+  };
+
+  const chartVariantB = {
+    title: 'Bar Chart - Variant B',
+    layout: 'square',
+  };
+
+  const chartVariantC = {
+    title: 'Bar Chart - Variant C',
+    layout: 'circle',
   };
 
   return (
@@ -128,6 +239,12 @@ function ExampleSystemDataVisualizationBar(props) {
 
         <div style={chartContainerStyles}>
           <DivergingStackedBarChart data={EXAMPLE_DIVERGING_STACKED_BAR_CHART} style={{ marginTop: 32 }} legend={EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS} />
+        </div>
+
+        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantC.title}</Text>
+
+        <div style={chartContainerStyles}>
+          <LineBarChart data={LINE_BAR_CHART} style={{ marginTop: 32 }} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
