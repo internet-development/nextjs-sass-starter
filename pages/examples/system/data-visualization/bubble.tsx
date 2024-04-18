@@ -13,6 +13,7 @@ import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import GroupedBubblesChart from '@root/system/graphs/GroupedBubblesChart';
 
 const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
 
@@ -64,6 +65,12 @@ const EXAMPLE_LEGEND_ITEMS_DATA = [
   { color: 'var(--theme-border)', label: 'no significance' },
 ];
 
+const GROUPED_BUBBLES_CHART = [
+  { name: 'High Significe', count: 60, color: 'var(--color-primary)' },
+  { name: 'Significant', count: 30, color: 'var(--color-success)' },
+  { name: 'No Significance', count: 10, color: 'var(--color-error)' },
+];
+
 function ExampleSystemDataVisualizationBubble(props) {
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
@@ -71,6 +78,17 @@ function ExampleSystemDataVisualizationBubble(props) {
     title: 'Bubble Chart Example',
     description: 'This bubble chart visualizes data points across two dimensions using the size and position of its bubbles.',
   };
+
+  const chartVariantB = {
+    title: 'Bubble Chart - Variant B',
+    layout: 'square',
+  };
+
+  const chartVariantC = {
+    title: 'Bubble Chart - Variant C',
+    layout: 'circle',
+  };
+
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: bubble"
@@ -89,6 +107,14 @@ function ExampleSystemDataVisualizationBubble(props) {
         <div style={chartContainerStyles}>
           <BubbleChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_LEGEND_ITEMS_DATA} />
         </div>
+        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantB.title}</Text>
+
+        <GroupedBubblesChart data={GROUPED_BUBBLES_CHART} style={{ marginTop: 32 }} layout={chartVariantB.layout} />
+
+        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantC.title}</Text>
+
+        <GroupedBubblesChart data={GROUPED_BUBBLES_CHART} style={{ marginTop: 32 }} layout={chartVariantC.layout} />
+
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager />
