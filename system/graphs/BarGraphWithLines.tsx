@@ -40,14 +40,14 @@ const LineBarChart = (props) => {
     // Y Axis
     const yAxisGroup = g.append('g').call(d3.axisLeft(yScale));
 
-    yAxisGroup.selectAll('text').style('fill', 'var(--color-border)').style('font-size', '16px');
+    yAxisGroup.selectAll('text').style('fill', 'var(--theme-border)').style('font-size', '16px');
 
-    yAxisGroup.selectAll('path, line').style('stroke', 'var(--color-border)');
+    yAxisGroup.selectAll('path, line').style('stroke', 'var(--theme-border)');
 
     // Helper grid lines across the chart
     const gridGroup = g.append('g').attr('class', 'grid').call(d3.axisLeft(yScale).tickSize(-width).tickFormat(''));
 
-    gridGroup.selectAll('line').style('stroke', 'var(--color-border)').style('opacity', '0.5');
+    gridGroup.selectAll('line').style('stroke', 'var(--theme-border)').style('opacity', '0.5');
 
     // Set up the x-axis
     const xAxis = g
@@ -55,7 +55,7 @@ const LineBarChart = (props) => {
       .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(xScale))
       .selectAll('text')
-      .style('fill', 'var(--color-text)')
+      .style('fill', 'var(--theme-text)')
       .style('font-size', '16px');
 
     gridGroup.select('.domain').remove();
@@ -90,8 +90,6 @@ const LineBarChart = (props) => {
           .attr('text-anchor', 'middle');
       });
     });
-
-    // Add legend if necessary
   };
   useEffect(() => {
     function handleResize() {
