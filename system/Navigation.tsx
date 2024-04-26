@@ -12,7 +12,7 @@ export default function Navigation() {
     <nav className={styles.root}>
       <section className={styles.left}>
         <a href="/" className={styles.item}>
-          Logo
+          Template
         </a>
       </section>
       <section className={styles.stretch}>

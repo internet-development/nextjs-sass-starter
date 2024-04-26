@@ -5,7 +5,7 @@ import * as React from 'react';
 import Button from '@system/Button';
 import Input from '@system/Input';
 
-import { H4, P } from '@system/typography';
+import { H2, P } from '@system/typography';
 
 export default function Footer(props) {
   return (
@@ -13,55 +13,64 @@ export default function Footer(props) {
       <div className={styles.row}>
         <div className={styles.column}>
           <div className={styles.form}>
-            <H4 style={{ marginBottom: 24 }}>Footer, Subscribe</H4>
-            <P style={{ marginBottom: 24 }}>You can't actually subscribe to a newsletter yet but this is a nice looking placeholder.</P>
-            <Input style={{ marginBottom: 24 }} placeholder="Provide an e-mail" />
-            <Button style={{ minHeight: 48 }}>Coming soon</Button>
+            <H2>Template</H2>
+            <P style={{ marginTop: `1rem` }}>
+              This Template provides you with a starting point for your website, allowing you to focus on making the design you love instead. Join our mailing list!
+            </P>
+            <Input style={{ marginTop: `2rem` }} placeholder="someone@msn.com" />
+            <Button
+              style={{ marginTop: `1rem` }}
+              onClick={() => {
+                alert('TODO: implement onSubmit');
+              }}
+            >
+              Submit
+            </Button>
           </div>
         </div>
         <div className={styles.subColumn}>
-          <div className={styles.subTitle}>Section I</div>
-          <a href="#" className={styles.item}>
-            Item I
+          <div className={styles.subTitle}>System</div>
+          <a href="/examples/system/colors" className={styles.item}>
+            Colors
+          </a>
+          <a href="/examples/system/typography" className={styles.item}>
+            Typography
+          </a>
+          <a href="/examples/system/data-visualization" className={styles.item}>
+            Data visualization
           </a>
           <a href="#" className={styles.item}>
-            Item II
-          </a>
-          <a href="#" className={styles.item}>
-            Item III
-          </a>
-          <a href="#" className={styles.item}>
-            Item IV
-          </a>
-        </div>
-        <div className={styles.subColumn}>
-          <div className={styles.subTitle}>Section II</div>
-          <a href="#" className={styles.item}>
-            Item I
-          </a>
-          <a href="#" className={styles.item}>
-            Item II
-          </a>
-          <a href="#" className={styles.item}>
-            Item III
-          </a>
-          <a href="#" className={styles.item}>
-            Item IV
+            [WIP] Brand guidelines
           </a>
         </div>
         <div className={styles.subColumn}>
-          <div className={styles.subTitle}>Section III</div>
-          <a href="#" className={styles.item}>
-            Item I
+          <div className={styles.subTitle}>Components</div>
+          <a href="/examples/components-forms" className={styles.item}>
+            Forms
           </a>
-          <a href="#" className={styles.item}>
-            Item II
+          <a href="/examples/components-table" className={styles.item}>
+            Tables
           </a>
-          <a href="#" className={styles.item}>
-            Item III
+          <a href="/examples/components-full-section" className={styles.item}>
+            Marketing
           </a>
-          <a href="#" className={styles.item}>
-            Item IV
+          <a href="/examples/components-product-marketing" className={styles.item}>
+            Simple marketing
+          </a>
+        </div>
+        <div className={styles.subColumn}>
+          <div className={styles.subTitle}>API Demos</div>
+          <a href="/examples/services" className={styles.item}>
+            Services
+          </a>
+          <a href="/examples/threads" className={styles.item}>
+            Threads
+          </a>
+          <a href="/examples/stocks/fixed-watchlist" className={styles.item}>
+            Stock portfolio
+          </a>
+          <a href="/examples/settings" className={styles.item}>
+            User settings
           </a>
         </div>
       </div>
@@ -73,14 +82,10 @@ export default function Footer(props) {
           <a href="#" className={styles.subItem} target="_blank">
             Terms of Use
           </a>
-          <span className={styles.copy}>No copyright. This is a template.</span>
         </div>
         <div className={styles.right}>
           <a href="https://bsky.app/profile/internetstudio.bsky.social" className={styles.subItem} target="_blank">
             Bluesky
-          </a>
-          <a href="https://x.com/internetxstudio" className={styles.subItem} target="_blank">
-            X
           </a>
           <a href="https://github.com/internet-development/nextjs-sass-starter" className={styles.subItem} target="_blank">
             GitHub
@@ -90,6 +95,9 @@ export default function Footer(props) {
           </a>
           <a href="https://internet.dev" className={styles.subItem} target="_blank">
             INTDEV
+          </a>
+          <a href="https://x.com/internetxstudio" className={styles.subItem} target="_blank">
+            X
           </a>
         </div>
       </div>
