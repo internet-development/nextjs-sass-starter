@@ -15,6 +15,8 @@ export function getOrdinalNumber(n) {
   return n + (n > 0 ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10] : '');
 }
 
+// TODO(jimmylee)
+// Obviously delete this once we implement a theme picker modal.
 export function onHandleThemeChange() {
   const body = document.body;
 
@@ -29,7 +31,12 @@ export function onHandleThemeChange() {
   }
 
   if (body.classList.contains('theme-blue')) {
-    body.classList.replace('theme-blue', 'theme-light');
+    body.classList.replace('theme-blue', 'theme-neon-green');
+    return;
+  }
+
+  if (body.classList.contains('theme-neon-green')) {
+    body.classList.replace('theme-neon-green', 'theme-light');
     return;
   }
 }
