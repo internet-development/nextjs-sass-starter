@@ -83,6 +83,7 @@ export default async function Page(props) {
         needs.
       </div>
       <div>
+        <ListItem href="/examples/animations/text-swapping">Animations ➝ text swapping</ListItem>
         <ListItem href="/examples/authentication">Authentication to API key</ListItem>
         <ListItem href="/examples/authentication-bluesky" isWIP>
           <Bluesky height="20px" style={{ marginRight: 16 }} />

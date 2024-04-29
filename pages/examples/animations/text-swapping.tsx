@@ -43,7 +43,7 @@ function ExampleAnimationsTypeSwapping(props) {
       data: [
         ``,
         <Tag>H3</Tag>,
-        <Tag>Blur with style container</Tag>,
+        <Tag>Blur with container styles</Tag>,
         <H3>
           If I push on a wall, physics tells me that the wall pushes{' '}
           <TextSwapper
