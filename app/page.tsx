@@ -1,4 +1,5 @@
 import '@root/global.scss';
+import '@root/animations.scss';
 
 import Bluesky from '@system/svg/social/Bluesky';
 import DefaultLayout from '@components/DefaultLayout';

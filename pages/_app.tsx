@@ -1,4 +1,5 @@
 import '@root/global.scss';
+import '@root/animations.scss';
 
 import * as React from 'react';
 
