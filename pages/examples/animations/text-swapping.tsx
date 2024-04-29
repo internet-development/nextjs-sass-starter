@@ -15,6 +15,8 @@ import { H3 } from '@system/typography';
 const TABLE_HEADINGS = [``, `Component`, `Animation`, `Preview`];
 
 function ExampleAnimationsTypeSwapping(props) {
+  const containerStyles = { background: `var(--theme-text)`, borderRadius: 8, color: `var(--theme-background)`, minWidth: 228, padding: `8px 24px 8px 24px` };
+
   const TABLE_DATA = [
     {
       id: 1,
@@ -32,9 +34,9 @@ function ExampleAnimationsTypeSwapping(props) {
       data: [
         ``,
         <Tag>H3</Tag>,
-        <Tag>Blur</Tag>,
+        <Tag>Fade with container styles</Tag>,
         <H3>
-          Almost everyone can anticipate the immediate <TextSwapper animationType="blur" strings={['impact', 'results', 'outcomes', 'changes']} /> of their actions
+          My lord, the great houses have <TextSwapper strings={['answered', 'returned', 'fought back']} style={containerStyles} />
         </H3>,
       ],
     },
@@ -43,19 +45,25 @@ function ExampleAnimationsTypeSwapping(props) {
       data: [
         ``,
         <Tag>H3</Tag>,
-        <Tag>Blur with container styles</Tag>,
+        <Tag>Blur</Tag>,
         <H3>
-          If I push on a wall, physics tells me that the wall pushes{' '}
-          <TextSwapper
-            animationType="blur"
-            strings={['back', 'as well', 'too', 'in unison']}
-            style={{ background: `var(--theme-text)`, color: `var(--theme-background)`, padding: `8px 24px 8px 24px` }}
-          />
+          Almost everyone can anticipate the immediate <TextSwapper animationType="blur" strings={['impact', 'results', 'outcomes', 'changes']} /> of their actions
         </H3>,
       ],
     },
     {
       id: 4,
+      data: [
+        ``,
+        <Tag>H3</Tag>,
+        <Tag>Blur with container styles</Tag>,
+        <H3>
+          If I push on a wall, physics tells me that the wall pushes <TextSwapper animationType="blur" strings={['back', 'as well', 'too', 'in unison']} style={containerStyles} />
+        </H3>,
+      ],
+    },
+    {
+      id: 5,
       data: [
         ``,
         <Tag>H3</Tag>,
@@ -67,7 +75,19 @@ function ExampleAnimationsTypeSwapping(props) {
       ],
     },
     {
-      id: 5,
+      id: 6,
+      data: [
+        ``,
+        <Tag>H3</Tag>,
+        <Tag>Slide down with container styles</Tag>,
+        <H3>
+          The Madhi is too&nbsp;
+          <TextSwapper animationType="slideDown" strings={['humble', 'smart', 'naive', 'calculated']} style={containerStyles} /> to say He is the Madhi
+        </H3>,
+      ],
+    },
+    {
+      id: 7,
       data: [
         ``,
         <Tag>H2</Tag>,
@@ -79,7 +99,18 @@ function ExampleAnimationsTypeSwapping(props) {
       ],
     },
     {
-      id: 6,
+      id: 8,
+      data: [
+        ``,
+        <Tag>H2</Tag>,
+        <Tag>Slide up with container styles</Tag>,
+        <H3>
+          You are not <TextSwapper animationType="slideUp" strings={['prepared', 'interested', 'going to enjoy']} style={containerStyles} /> for what is to come
+        </H3>,
+      ],
+    },
+    {
+      id: 9,
       data: [
         ``,
         <Tag>H3</Tag>,
@@ -91,13 +122,35 @@ function ExampleAnimationsTypeSwapping(props) {
       ],
     },
     {
-      id: 7,
+      id: 10,
+      data: [
+        ``,
+        <Tag>H3</Tag>,
+        <Tag>Slide left with container styles</Tag>,
+        <H3>
+          Take my life Usul, it is the <TextSwapper animationType="slideLeft" strings={['only', 'best', 'greatest', 'easiest']} style={containerStyles} /> way
+        </H3>,
+      ],
+    },
+    {
+      id: 11,
       data: [
         ``,
         <Tag>H3</Tag>,
         <Tag>Slide right</Tag>,
         <H3>
           I am pointing the <TextSwapper animationType="slideRight" strings={['way', 'direction', 'to the beginning', 'to the end']} />
+        </H3>,
+      ],
+    },
+    {
+      id: 12,
+      data: [
+        ``,
+        <Tag>H3</Tag>,
+        <Tag>Slide right with container styles</Tag>,
+        <H3>
+          The visions are clear now. I see possible <TextSwapper animationType="slideRight" strings={['futures', 'meals', 'lovers', 'wars']} style={containerStyles} />, all at once
         </H3>,
       ],
     },
