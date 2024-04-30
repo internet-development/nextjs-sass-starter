@@ -1,56 +1,17 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import BubbleChart from '@system/graphs/BubbleChart';
+import ChartLegend from '@system/graphs/ChartLegend';
+import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
+import GroupedBubblesChart from '@root/system/graphs/GroupedBubblesChart';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import Table from '@system/Table';
-import Tag from '@system/documents/Tag';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
-import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import GroupedBubblesChart from '@root/system/graphs/GroupedBubblesChart';
-
-const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
-
-const TABLE_DATA = [
-  {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your bubble chart. [20px]</SubText>],
-  },
-
-  {
-    data: [
-      ``,
-      <Tag>Text</Tag>,
-      <Tag>True</Tag>,
-      <SubText style={{ marginTop: 7 }}>Text is used to provide additional context or data labels within the bubble chart. [16px]</SubText>,
-    ],
-  },
-
-  {
-    data: [``, <Tag>Bubbles</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>Bubbles represent data points with their size and position on the chart.</SubText>],
-  },
-  {
-    data: [
-      ``,
-      <Tag>Axis</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The axis helps in understanding the scale and context of the data represented by the bubbles.</SubText>,
-    ],
-  },
-  {
-    data: [
-      ``,
-      <Tag>Legend</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The legend explains the colors or sizes of the bubbles, providing insight into the data set.</SubText>,
-    ],
-  },
-];
 
 const EXAMPLE_DUMMY_DATA = [
   { x: 10, y: 20, value: 30, category: 'Category 1' },
@@ -60,34 +21,19 @@ const EXAMPLE_DUMMY_DATA = [
   { x: 50, y: 60, value: 70, category: 'Category 5' },
 ];
 
-const EXAMPLE_LEGEND_ITEMS_DATA = [
-  { color: 'var(--theme-success)', label: 'significant' },
-  { color: 'var(--theme-border)', label: 'no significance' },
-];
-
-const GROUPED_BUBBLES_CHART = [
-  { name: 'High Significe', count: 60, color: 'var(--theme-primary)' },
-  { name: 'Significant', count: 30, color: 'var(--theme-success)' },
-  { name: 'No Significance', count: 10, color: 'var(--theme-error)' },
+const EXAMPLE_GROUPED_BUBBLES_CHART = [
+  { name: 'High significance', count: 60, color: 'var(--theme-graph-positive)' },
+  { name: 'Netural significance', count: 30, color: 'var(--theme-graph-netural)' },
+  { name: 'Low Significance', count: 10, color: 'var(--theme-graph-negative)' },
 ];
 
 function ExampleSystemDataVisualizationBubble(props) {
-  const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
-
-  const chart = {
-    title: 'Bubble Chart Example',
-    description: 'This bubble chart visualizes data points across two dimensions using the size and position of its bubbles.',
-  };
-
-  const chartVariantB = {
-    title: 'Bubble Chart - Variant B',
-    layout: 'square',
-  };
-
-  const chartVariantC = {
-    title: 'Bubble Chart - Variant C',
-    layout: 'circle',
-  };
+  // TODO(jimmylee)
+  // Refactor these.
+  const chartContainerStyles = { padding: `0 24px 48px 16px` };
+  const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
+  const pageStyles = { padding: `64px 24px 48px 22px` };
+  const paragraphStyle = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
 
   return (
     <Page
@@ -97,25 +43,31 @@ function ExampleSystemDataVisualizationBubble(props) {
     >
       <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="bubble" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Bubble Chart</H2>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Bubble charts are used to display three dimensions of data on a chart. The position of the bubble on the horizontal and vertical axes indicates the values of two data
-          points, and the size of the bubble represents a third.
-        </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}>
-          <BubbleChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_LEGEND_ITEMS_DATA} />
+        <div style={pageStyles}>
+          <H2>Bubble</H2>
+          <P style={paragraphStyle}>
+            Bubble charts are used to display three dimensions of data on a chart. The position of the bubble on the horizontal and vertical axes indicates the values of two data
+            points, and the size of the bubble represents a third.
+          </P>
         </div>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantB.title}</Text>
 
-        <GroupedBubblesChart data={GROUPED_BUBBLES_CHART} style={{ marginTop: 32 }} layout={chartVariantB.layout} />
+        <div style={infoStyles}>
+          <Title>Example</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 bubble chart component that you can use.</Text>
+        </div>
+        <div style={chartContainerStyles}>
+          <BubbleChart data={EXAMPLE_DUMMY_DATA} />
+          <ChartLegend data={[`var(--theme-graph-positive)`]} />
+        </div>
 
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantC.title}</Text>
-
-        <GroupedBubblesChart data={GROUPED_BUBBLES_CHART} style={{ marginTop: 32 }} layout={chartVariantC.layout} />
-
-        <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
+        <div style={infoStyles}>
+          <Title>Example B</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 grouped bubbles chart component that you can use.</Text>
+        </div>
+        <div style={chartContainerStyles}>
+          <GroupedBubblesChart data={EXAMPLE_GROUPED_BUBBLES_CHART} />
+          <ChartLegend data={[`var(--theme-graph-positive)`, `var(--theme-graph-negative)`]} />
+        </div>
       </TwoColumnLayoutFull>
       <GlobalModalManager />
     </Page>

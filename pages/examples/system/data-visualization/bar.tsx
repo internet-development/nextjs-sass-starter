@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import BarGraphWithCirclesChart from '@root/system/graphs/BarGraphWithCircles';
 import ChartLegend from '@system/graphs/ChartLegend';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import DivergingStackedBarChart from '@root/system/graphs/DivergingStackedBarChart';
@@ -10,7 +9,6 @@ import HorizontalBarChart from '@system/graphs/HorizontalBarChart';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
-import StackedCirclesBarChart from '@root/system/graphs/BarGraphWithCircles';
 
 import { H2, P, SubText, Text, Title } from '@system/typography';
 
@@ -44,97 +42,6 @@ const EXAMPLE_DIVERGING_STACKED_BAR_CHART = [
   { category: 'P', positive: 70, neutral: 55, negative: -50, positive_lower_ci: 58, positive_upper_ci: 75, negative_lower_ci: -56, negative_upper_ci: -44 },
   { category: 'Q', positive: 75, neutral: 60, negative: -55, positive_lower_ci: 62, positive_upper_ci: 78, negative_lower_ci: -61.5, negative_upper_ci: -48.5 },
   { category: 'R', positive: 80, neutral: 65, negative: -60, positive_lower_ci: 66, positive_upper_ci: 82, negative_lower_ci: -67, negative_upper_ci: -53 },
-];
-
-const EXAMPLE_LINE_BAR_CHART = [
-  {
-    year: '2005',
-    years: [
-      { name: 'electronics', value: 120, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 150, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 30, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2006',
-    years: [
-      { name: 'electronics', value: 115, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 165, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 45, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2007',
-    years: [
-      { name: 'electronics', value: 130, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 175, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 55, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2008',
-    years: [
-      { name: 'electronics', value: 125, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 190, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 60, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2009',
-    years: [
-      { name: 'electronics', value: 140, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 185, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 65, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2010',
-    years: [
-      { name: 'electronics', value: 150, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 210, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 70, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2011',
-    years: [
-      { name: 'electronics', value: 155, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 220, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 75, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2012',
-    years: [
-      { name: 'electronics', value: 160, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 230, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 85, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2013',
-    years: [
-      { name: 'electronics', value: 165, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 240, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 90, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2014',
-    years: [
-      { name: 'electronics', value: 170, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 250, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 95, color: 'var(--theme-border)' },
-    ],
-  },
-  {
-    year: '2015',
-    years: [
-      { name: 'electronics', value: 180, color: 'var(--theme-primary)' },
-      { name: 'clothing', value: 260, color: 'var(--theme-success)' },
-      { name: 'accessories', value: 100, color: 'var(--theme-border)' },
-    ],
-  },
 ];
 
 const EXAMPLE_LEGEND_DATA = [`var(--theme-graph-positive)`, `var(--theme-graph-negative)`];

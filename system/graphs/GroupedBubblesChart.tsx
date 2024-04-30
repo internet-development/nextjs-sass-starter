@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
-const GroupedBubblesChart = ({ data, layout = 'circle', style }) => {
-  const d3Container = useRef(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+const GroupedBubblesChart = ({ data, layout = 'circle' }) => {
+  const d3Container = React.useRef(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       if (entries[0].target) {
         setContainerWidth(entries[0].target.clientWidth);
@@ -18,7 +18,7 @@ const GroupedBubblesChart = ({ data, layout = 'circle', style }) => {
     return () => resizeObserver.disconnect();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (containerWidth > 0) {
       drawChart(containerWidth);
     }
@@ -48,7 +48,7 @@ const GroupedBubblesChart = ({ data, layout = 'circle', style }) => {
       const g = svg.append('g').attr('transform', `translate(${xOffset + maxRadius},${yOffset + maxRadius})`);
 
       if (layout === 'square') {
-        const fixedCircleRadius = 10; // Fixed radius for all circles
+        const fixedCircleRadius = 24; // Fixed radius for all circles
         const numCols = Math.ceil(Math.sqrt(group.count));
         const numRows = Math.ceil(group.count / numCols);
         const spacing = 2 * fixedCircleRadius + 2; // Space between circles
@@ -71,7 +71,7 @@ const GroupedBubblesChart = ({ data, layout = 'circle', style }) => {
       } else {
         // Circular layout using force simulation
         const nodes = Array.from({ length: group.count }, () => ({
-          radius: 5,
+          radius: 16,
           color: group.color,
         }));
 
@@ -100,28 +100,29 @@ const GroupedBubblesChart = ({ data, layout = 'circle', style }) => {
       // Labels and percentages
       g.append('text')
         .attr('x', 0)
-        .attr('y', maxRadius + 20)
+        .attr('y', maxRadius + 24)
         .attr('text-anchor', 'middle')
-        .style('fill', '#333')
-        .style('font-size', '16px')
+        .style('fill', 'var(--theme-text)')
+        .style('font-size', 'var(--type-scale-fixed-medium)')
+        .style('font-weight', '600')
         .text(`${group.name} (${group.count})`);
 
       g.append('text')
         .attr('x', 0)
-        .attr('y', maxRadius + 40)
+        .attr('y', maxRadius + 48)
         .attr('text-anchor', 'middle')
-        .style('fill', '#555')
-        .style('font-size', '14px')
+        .style('fill', 'var(--theme-text)')
+        .style('font-size', 'var(--type-scale-fixed-small)')
         .text(`${((group.count / data.reduce((acc, cur) => acc + cur.count, 0)) * 100).toFixed(1)}%`);
 
       xOffset += groupDiameter + margin.right;
       groupsPerRow++;
     });
 
-    svg.attr('height', yOffset + groupDiameter + 100);
+    svg.attr('height', yOffset + groupDiameter + 228);
   };
 
-  return <div ref={d3Container} style={{ width: '100%', height: 'auto', ...style }} />;
+  return <div ref={d3Container} style={{ width: '100%', height: 'auto' }} />;
 };
 
 export default GroupedBubblesChart;

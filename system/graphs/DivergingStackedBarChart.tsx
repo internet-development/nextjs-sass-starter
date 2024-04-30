@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
 const DivergingStackedBarChart = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container.current || width <= 0 || !props.data) return;
@@ -221,7 +221,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('fill', 'var(--theme-text)');
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (d3Container.current) {
       setContainerWidth(d3Container.current.clientWidth);
     }
@@ -234,7 +234,7 @@ const DivergingStackedBarChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
