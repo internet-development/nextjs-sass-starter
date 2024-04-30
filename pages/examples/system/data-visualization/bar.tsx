@@ -1,59 +1,18 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import BarGraphWithCirclesChart from '@root/system/graphs/BarGraphWithCircles';
+import ChartLegend from '@system/graphs/ChartLegend';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
+import DivergingStackedBarChart from '@root/system/graphs/DivergingStackedBarChart';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import HorizontalBarChart from '@system/graphs/HorizontalBar';
+import HorizontalBarChart from '@system/graphs/HorizontalBarChart';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import Table from '@system/Table';
-import Tag from '@system/documents/Tag';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
-
-import DivergingStackedBarChart from '@root/system/graphs/DivergingStackedBarChart';
-import { H2, P, SubText, Text, Title } from '@system/typography';
-import GroupedBubblesChart from '@root/system/graphs/GroupedBubblesChart';
-import BarGraphWithCirclesChart from '@root/system/graphs/BarGraphWithCircles';
 import StackedCirclesBarChart from '@root/system/graphs/BarGraphWithCircles';
-import LineBarChart from '@root/system/graphs/BarGraphWithLines';
 
-const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
-
-const TABLE_DATA = [
-  {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
-  },
-
-  {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
-  },
-
-  {
-    data: [
-      ``,
-      <Tag>Marks</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
-    ],
-  },
-  {
-    data: [
-      ``,
-      <Tag>Graph Lines</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
-      </SubText>,
-    ],
-  },
-  {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
-  },
-  {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
-  },
-];
+import { H2, P, SubText, Text, Title } from '@system/typography';
 
 const EXAMPLE_DUMMY_DATA = [
   {
@@ -87,24 +46,7 @@ const EXAMPLE_DIVERGING_STACKED_BAR_CHART = [
   { category: 'R', positive: 80, neutral: 65, negative: -60, positive_lower_ci: 66, positive_upper_ci: 82, negative_lower_ci: -67, negative_upper_ci: -53 },
 ];
 
-const EXAMPLE_LEGEND_ITEMS_DATA = [
-  { color: 'var(--theme-success)', label: 'A' },
-  { color: 'var(--theme-success-subdued)', label: 'B' },
-];
-
-const EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS = [
-  { color: 'var(--theme-error-subdued)', label: 'Negative' },
-  { color: 'var(--theme-border)', label: 'Neutral' },
-  { color: 'var(--theme-success)', label: 'Positive' },
-];
-
-const GROUPED_BUBBLES_CHART = [
-  { name: 'Negative', count: 60, color: 'var(--theme-primary)' }, // Example red
-  { name: 'Positive', count: 30, color: 'var(--theme-success)' }, // Example green
-  { name: 'Neutral', count: 10, color: 'var(--theme-border)' }, // Example gray
-];
-
-const LINE_BAR_CHART = [
+const EXAMPLE_LINE_BAR_CHART = [
   {
     year: '2005',
     years: [
@@ -195,27 +137,15 @@ const LINE_BAR_CHART = [
   },
 ];
 
+const EXAMPLE_LEGEND_DATA = [`var(--theme-graph-positive)`, `var(--theme-graph-negative)`];
+
 function ExampleSystemDataVisualizationBar(props) {
-  const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
-
-  const chart = {
-    title: 'Monthly Sales Data',
-    description: 'This bar chart represents the monthly sales data for the year 2023.',
-  };
-
-  const chartVariantA = {
-    title: 'Bar Chart - Variant A',
-  };
-
-  const chartVariantB = {
-    title: 'Bar Chart - Variant B',
-    layout: 'square',
-  };
-
-  const chartVariantC = {
-    title: 'Bar Chart - Variant C',
-    layout: 'circle',
-  };
+  // TODO(jimmylee)
+  // Refactor these.
+  const chartContainerStyles = { padding: `0 24px 48px 16px` };
+  const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
+  const pageStyles = { padding: `64px 24px 48px 22px` };
+  const paragraphStyle = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
 
   return (
     <Page
@@ -225,28 +155,31 @@ function ExampleSystemDataVisualizationBar(props) {
     >
       <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="bar" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Bar</H2>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Bar charts are a type of graph that are used to display and compare the number, frequency, or other measure (e.g., mean) for different discrete categories of data. In the
-          vertical version of a bar chart, the categories are displayed on the vertical axis and the values on the horizontal axis.
-        </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}>
-          <HorizontalBarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_LEGEND_ITEMS_DATA} />
-        </div>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantA.title}</Text>
-
-        <div style={chartContainerStyles}>
-          <DivergingStackedBarChart data={EXAMPLE_DIVERGING_STACKED_BAR_CHART} style={{ marginTop: 32 }} legend={EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS} />
+        <div style={pageStyles}>
+          <H2>Bar</H2>
+          <P style={paragraphStyle}>
+            Bar charts are a type of graph that are used to display and compare the number, frequency, or other measure (e.g., mean) for different discrete categories of data. In
+            the vertical version of a bar chart, the categories are displayed on the vertical axis and the values on the horizontal axis.
+          </P>
         </div>
 
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chartVariantC.title}</Text>
-
-        <div style={chartContainerStyles}>
-          <LineBarChart data={LINE_BAR_CHART} style={{ marginTop: 32 }} />
+        <div style={infoStyles}>
+          <Title>Example</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 horizontal bar chart component that you can use.</Text>
         </div>
-        <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
+        <div style={chartContainerStyles}>
+          <HorizontalBarChart data={EXAMPLE_DUMMY_DATA} />
+          <ChartLegend data={EXAMPLE_LEGEND_DATA} />
+        </div>
+
+        <div style={infoStyles}>
+          <Title>Example B</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 diverging stacked bar chart component that you can use.</Text>
+        </div>
+        <div style={chartContainerStyles}>
+          <DivergingStackedBarChart data={EXAMPLE_DIVERGING_STACKED_BAR_CHART} />
+          <ChartLegend data={EXAMPLE_LEGEND_DATA} />
+        </div>
       </TwoColumnLayoutFull>
       <GlobalModalManager />
     </Page>

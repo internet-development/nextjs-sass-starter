@@ -24,7 +24,6 @@ const DivergingStackedBarChart = (props) => {
     const paddingBottom = 4;
     const xAxisGroup = svg.append('g').attr('transform', `translate(${margin.left}, ${newHeight - margin.bottom - paddingBottom})`);
 
-    // Calculate the maximum absolute value for the x axis
     const maxAbsValue = d3.max(props.data, (d) => {
       const values = [d.positive_upper_ci, Math.abs(d.negative_lower_ci), Math.abs(d.positive), Math.abs(d.negative)];
       return Math.max(...values);
@@ -38,8 +37,7 @@ const DivergingStackedBarChart = (props) => {
       .ticks(10);
     xAxisGroup.call(xAxis);
 
-    // Customize the font size of the labels
-    xAxisGroup.selectAll('text').style('font-size', '16px').style('fill', 'var(--theme-border)').selectAll('line,path').style('stroke', 'red');
+    xAxisGroup.selectAll('text').style('font-size', 'var(--type-scale-fixed-small)').style('fill', 'var(--theme-border)').selectAll('line,path').style('stroke', 'red');
     xAxisGroup.selectAll('line,path').style('stroke', 'var(--theme-border)');
 
     const yScale = d3
@@ -48,7 +46,23 @@ const DivergingStackedBarChart = (props) => {
       .rangeRound([0, newHeight - margin.top - margin.bottom])
       .padding(0.3);
 
-    const gridLineSpacing = 20;
+    const gridLineSpacing = 24;
+
+    const defs = svg.append('defs');
+    const colors = {
+      positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
+      negative: ['var(--theme-graph-negative-subdued)', 'var(--theme-graph-negative)'],
+      reversePositive: ['var(--theme-graph-positive)', 'var(--theme-graph-positive-subdued)'],
+      reverseNegative: ['var(--theme-graph-negative)', 'var(--theme-graph-negative-subdued)'],
+      netural: ['var(--theme-background)', 'var(--theme-border)'],
+    };
+
+    Object.entries(colors).forEach(([key, colorRange]) => {
+      const gradient = defs.append('linearGradient').attr('id', `gradient-${key}`).attr('y1', '0%').attr('y2', '0%').attr('x1', '0%').attr('x2', '100%');
+
+      gradient.append('stop').attr('offset', '0%').attr('stop-color', colorRange[0]);
+      gradient.append('stop').attr('offset', '100%').attr('stop-color', colorRange[1]);
+    });
 
     g.selectAll('.vertical-grid')
       .data(xScale.ticks())
@@ -59,7 +73,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('x2', (d) => xScale(d))
       .attr('y1', 0)
       .attr('y2', newHeight - margin.bottom - gridLineSpacing)
-      .style('stroke', 'var(--theme-border-subdued)');
+      .style('stroke', 'var(--theme-border)');
     g.select('.domain').remove();
 
     g.selectAll('.bar-positive')
@@ -71,7 +85,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('y', (d) => yScale(d.category))
       .attr('width', (d) => Math.abs(xScale(d.positive) - xScale(0)))
       .attr('height', yScale.bandwidth())
-      .attr('fill', 'var(--theme-success)')
+      .attr('fill', 'url(#gradient-reversePositive)')
       .attr('rx', 2)
       .attr('ry', 2);
 
@@ -83,8 +97,8 @@ const DivergingStackedBarChart = (props) => {
       .attr('y', (d) => yScale(d.category) + yScale.bandwidth() / 2)
       .attr('dy', '.35em')
       .text((d) => `${d.positive}%`)
-      .style('font-size', '14px')
-      .attr('fill', 'black');
+      .style('font-size', 'var(--type-scale-fixed-small)')
+      .attr('fill', 'var(--theme-text)');
 
     // Error bars for positive values
     g.selectAll('.error-bar-positive')
@@ -95,7 +109,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('x2', (d) => xScale(d.positive_upper_ci))
       .attr('y1', (d) => yScale(d.category) + yScale.bandwidth() / 2)
       .attr('y2', (d) => yScale(d.category) + yScale.bandwidth() / 2)
-      .attr('stroke', 'black')
+      .attr('stroke', 'var(--theme-text)')
       .attr('stroke-width', 1);
 
     g.selectAll('.cap-positive-upper-ci')
@@ -130,7 +144,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('y', (d) => yScale(d.category))
       .attr('width', (d) => Math.abs(xScale(d.negative) - xScale(0)))
       .attr('height', yScale.bandwidth())
-      .attr('fill', 'var(--theme-error-subdued)')
+      .attr('fill', 'url(#gradient-negative)')
       .attr('rx', 2)
       .attr('ry', 2);
 
@@ -155,7 +169,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('x2', (d) => xScale(d.negative_upper_ci))
       .attr('y1', (d) => yScale(d.category) + yScale.bandwidth() / 2)
       .attr('y2', (d) => yScale(d.category) + yScale.bandwidth() / 2)
-      .attr('stroke', 'black')
+      .attr('stroke', 'var(--theme-text)')
       .attr('stroke-width', 1);
 
     // Caps for negative error bars
@@ -167,7 +181,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('x2', (d) => xScale(d.negative_lower_ci))
       .attr('y1', (d) => yScale(d.category) + yScale.bandwidth() / 2 - 5)
       .attr('y2', (d) => yScale(d.category) + yScale.bandwidth() / 2 + 5)
-      .attr('stroke', 'black')
+      .attr('stroke', 'var(--theme-text)')
       .attr('stroke-width', 1);
 
     g.selectAll('.cap-negative-upper-ci')
@@ -178,7 +192,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('x2', (d) => xScale(d.negative_upper_ci))
       .attr('y1', (d) => yScale(d.category) + yScale.bandwidth() / 2 - 5)
       .attr('y2', (d) => yScale(d.category) + yScale.bandwidth() / 2 + 5)
-      .attr('stroke', 'black')
+      .attr('stroke', 'var(--theme-text)')
       .attr('stroke-width', 1);
 
     g.selectAll('.bar-neutral')
@@ -190,7 +204,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('y', (d) => yScale(d.category))
       .attr('width', (d) => Math.abs(xScale(d.neutral) - xScale(0)))
       .attr('height', yScale.bandwidth())
-      .attr('fill', 'var(--theme-border)');
+      .attr('fill', 'url(#gradient-netural)');
 
     const fixedXPosition = xScale(0) + 10;
 
@@ -203,7 +217,7 @@ const DivergingStackedBarChart = (props) => {
       .attr('dy', '.35em')
       .attr('text-anchor', 'start')
       .text((d) => `${d.neutral}%`)
-      .style('font-size', '14px')
+      .style('font-size', 'var(--type-scale-fixed-small)')
       .attr('fill', 'var(--theme-text)');
   };
 
@@ -224,22 +238,7 @@ const DivergingStackedBarChart = (props) => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return (
-    <>
-      <svg ref={d3Container} style={{ width: '100%', height: '100%', paddingBottom: '1rem' }} />
-
-      <section style={{ display: 'flex', flexDirection: 'row', gap: '1.2rem', paddingLeft: '2rem', paddingBottom: '1rem' }}>
-        {props?.legend?.map((item, index) => {
-          return (
-            <div key={index}>
-              <span style={{ width: '1.2rem', height: '1.2rem', borderRadius: '2rem', display: 'inline-block', background: item.color }} />
-              <p>{item.label}</p>
-            </div>
-          );
-        })}
-      </section>
-    </>
-  );
+  return <svg ref={d3Container} style={{ width: '100%', height: '100%', paddingBottom: '1rem' }} />;
 };
 
 export default DivergingStackedBarChart;

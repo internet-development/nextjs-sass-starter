@@ -11,9 +11,9 @@ const StackedCirclesBarChart = ({ data }) => {
   }, [data]);
 
   const drawChart = () => {
-    const svgWidth = 500; // Adjusted width to accommodate legend
+    const svgWidth = 500;
     const svgHeight = 300;
-    const margin = { top: 10, right: 100, bottom: 30, left: 50 }; // Right margin increased for legend
+    const margin = { top: 10, right: 100, bottom: 30, left: 50 };
     const width = svgWidth - margin.left - margin.right;
     const height = svgHeight - margin.top - margin.bottom;
 
@@ -25,19 +25,16 @@ const StackedCirclesBarChart = ({ data }) => {
 
     const xScale = d3.scaleBand().domain(['Total']).range([0, width]).padding(0.5);
 
-    const yScale = d3
-      .scaleLinear()
-      .domain([0, 100]) // Max value set to 100
-      .range([height, 0]);
+    const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0]);
 
     g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
 
     g.append('g').call(d3.axisLeft(yScale));
 
-    let yOffset = height; // Start yOffset from the bottom of the chart
+    let yOffset = height;
     const circleDiameter = 20;
     const circleRadius = circleDiameter / 2;
-    const circlesPerRow = 10; // Maximum of 10 circles per row
+    const circlesPerRow = 10;
 
     data.forEach((group) => {
       const totalRows = Math.ceil(group.count / circlesPerRow);
@@ -54,10 +51,9 @@ const StackedCirclesBarChart = ({ data }) => {
         }
       }
 
-      yOffset -= totalRows * circleDiameter; // Decrease yOffset for the next group
+      yOffset -= totalRows * circleDiameter;
     });
 
-    // Adding legend
     const legend = svgEnter.append('g').attr('transform', `translate(${width + margin.left + 20}, ${margin.top})`);
 
     data.forEach((group, index) => {

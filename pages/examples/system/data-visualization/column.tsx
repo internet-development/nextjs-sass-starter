@@ -5,53 +5,11 @@ import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demo
 import ChartLegend from '@system/graphs/ChartLegend';
 import ColumnChart from '@system/graphs/ColumnChart';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import Table from '@system/Table';
-import Tag from '@system/documents/Tag';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
-import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-
-const TABLE_HEADINGS = [``, `Element`, `Optional`, `Description`];
-
-const TABLE_DATA = [
-  {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
-  },
-
-  {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
-  },
-
-  {
-    data: [
-      ``,
-      <Tag>Marks</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
-    ],
-  },
-  {
-    data: [
-      ``,
-      <Tag>Graph Lines</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
-      </SubText>,
-    ],
-  },
-  {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
-  },
-  {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
-  },
-];
 
 const EXAMPLE_DUMMY_DATA = [
   { category: 'A', positive: 10, neutral: 5, negative: -5, positive_lower_ci: 8, positive_upper_ci: 12, negative_lower_ci: -6, negative_upper_ci: -4 },
@@ -68,13 +26,16 @@ const EXAMPLE_DUMMY_DATA = [
   { category: 'L', positive: 50, neutral: 35, negative: -30, positive_lower_ci: 42, positive_upper_ci: 58, negative_lower_ci: -34, negative_upper_ci: -26 },
 ];
 
-function ExampleSystemDataVisualizationColumn(props) {
-  const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
+const EXAMPLE_LEGEND_DATA = [`var(--theme-graph-positive)`, `var(--theme-graph-negative)`];
 
-  const chart = {
-    title: 'Example column chart',
-    description: 'This is an example of a React column chart component that you can use on your website or as a modification of this template.',
-  };
+function ExampleSystemDataVisualizationColumn(props) {
+  // TODO(jimmylee)
+  // Refactor these.
+  const chartContainerStyles = { padding: `0 24px 48px 16px` };
+  const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
+  const paragraphStyles = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
+  const pageStyles = { padding: `64px 24px 48px 22px` };
+
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: column"
@@ -83,18 +44,21 @@ function ExampleSystemDataVisualizationColumn(props) {
     >
       <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="column" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: `64px`, padding: '0 24px 0 22px' }}>Column Chart</H2>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Column charts are used to show data changes over a period of time or illustrate comparisons among items. In column charts, categories are typically organized along the
-          horizontal axis and values along the vertical axis.
-        </P>
-        <Title style={{ marginTop: `48px`, padding: '4rem 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
-        <div style={chartContainerStyles}>
-          <ColumnChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
-          <ChartLegend data={[`var(--theme-graph-positive)`, `var(--theme-graph-negative)`]} />
+        <div style={pageStyles}>
+          <H2>Column</H2>
+          <P style={paragraphStyles}>
+            Column charts are used to show data changes over a period of time or illustrate comparisons among items. In column charts, categories are typically organized along the
+            horizontal axis and values along the vertical axis.
+          </P>
         </div>
-        <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
+        <div style={infoStyles}>
+          <Title>Example</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 column chart component that you can use.</Text>
+        </div>
+        <div style={chartContainerStyles}>
+          <ColumnChart data={EXAMPLE_DUMMY_DATA} />
+          <ChartLegend data={EXAMPLE_LEGEND_DATA} />
+        </div>
       </TwoColumnLayoutFull>
       <GlobalModalManager />
     </Page>

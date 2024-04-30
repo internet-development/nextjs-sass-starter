@@ -27,6 +27,7 @@ const ColumnChart = (props) => {
     const colors = {
       positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
       negative: ['var(--theme-graph-negative)', 'var(--theme-graph-negative-subdued)'],
+      netural: ['var(--theme-background)', 'var(--theme-border)'],
     };
 
     Object.entries(colors).forEach(([key, colorRange]) => {
@@ -65,7 +66,7 @@ const ColumnChart = (props) => {
       .call(yAxis)
       .selectAll('text')
       .style('fill', 'var(--theme-border)')
-      .style('font-size', '14px');
+      .style('font-size', 'var(--type-scale-fixed-small)');
 
     svg.selectAll('.y-axis path, .y-axis line').style('stroke', 'var(--theme-border)');
 
@@ -76,7 +77,7 @@ const ColumnChart = (props) => {
     yAxisG.selectAll('.tick line').attr('stroke-opacity', 0.01).attr('shape-rendering', 'crispEdges');
 
     yAxisG.selectAll('.domain').remove();
-    yAxisG.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', '14px');
+    yAxisG.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
 
     svg
       .selectAll('.vertical-line')
@@ -120,7 +121,7 @@ const ColumnChart = (props) => {
         .attr('y', neutralBarY)
         .attr('width', xScale.bandwidth())
         .attr('height', Math.abs(yScale(d.neutral) - yScale(0)))
-        .attr('fill', 'var(--theme-graph-netural)');
+        .attr('fill', 'url(#gradient-netural)');
 
       svg.append('rect').attr('x', barX).attr('y', yScale(0)).attr('width', xScale.bandwidth()).attr('height', negativeBarHeight).attr('fill', 'url(#gradient-negative)');
 
@@ -157,7 +158,7 @@ const ColumnChart = (props) => {
           .attr('dy', '-0.5em')
           .attr('text-anchor', 'middle')
           .attr('fill', 'var(--theme-text)')
-          .style('font-size', '10px')
+          .style('font-size', 'var(--type-scale-fixed-label)')
           .text(d.positive);
       }
 
@@ -169,7 +170,7 @@ const ColumnChart = (props) => {
           .attr('dy', '1.2em')
           .attr('text-anchor', 'middle')
           .attr('fill', 'var(--theme-text)')
-          .style('font-size', '10px')
+          .style('font-size', 'var(--type-scale-fixed-label)')
           .text(d.neutral);
       }
 
@@ -181,7 +182,7 @@ const ColumnChart = (props) => {
           .attr('dy', '0.7rem')
           .attr('text-anchor', 'middle')
           .attr('fill', 'var(--theme-text)')
-          .style('font-size', '10px')
+          .style('font-size', 'var(--type-scale-fixed-label)')
           .text(d.negative);
       }
     });

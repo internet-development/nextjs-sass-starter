@@ -201,10 +201,10 @@ export const VISUALIZATION_OPTIONS = [
   },
   {
     href: `/tree`,
-    name: 'Node Tree',
+    name: 'Tree',
     data: [
       '',
-      <Tag>Node Tree</Tag>,
+      <Tag>Tree</Tag>,
       <SubText style={{ marginTop: 7 }}>
         Node trees represent data in a hierarchical manner, which is intuitive for modeling many real-world scenarios, such as organizational structures, file systems, and more.{' '}
       </SubText>,

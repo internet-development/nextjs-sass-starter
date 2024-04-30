@@ -1,9 +1,9 @@
+import * as React from 'react';
 import * as d3 from 'd3';
-import React, { useEffect, useRef, useState } from 'react';
 
 const AreaChart = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container) {
@@ -40,8 +40,8 @@ const AreaChart = (props) => {
         .attr('x2', 0)
         .attr('y2', 0);
 
-      gradient.append('stop').attr('offset', '60%').attr('stop-color', 'var(--theme-background)');
-      gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--theme-success-subdued)');
+      gradient.append('stop').attr('offset', '60%').attr('stop-color', 'var(--theme-graph-positive-subdued)');
+      gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--theme-graph-positive)');
 
       const xAxisTicks = 3;
       const yAxisTicks = 6;
@@ -59,8 +59,8 @@ const AreaChart = (props) => {
       g.append('path')
         .datum(props.data)
         .attr('fill', 'none')
-        .attr('stroke', 'var(--theme-success)')
-        .attr('stroke-width', 2)
+        .attr('stroke', 'var(--theme-graph-positive)')
+        .attr('stroke-width', 1)
         .attr(
           'd',
           d3
@@ -83,11 +83,15 @@ const AreaChart = (props) => {
 
       g.selectAll('.tick line').style('stroke', 'var(--theme-border)').style('stroke-opacity', 0.4).style('shape-rendering', 'crispEdges');
 
-      g.selectAll('.tick text').style('fill', 'var(--theme-text)').style('text-transform', 'uppercase').style('user-select', 'none').style('font-size', '14px');
+      g.selectAll('.tick text')
+        .style('fill', 'var(--theme-border)')
+        .style('text-transform', 'uppercase')
+        .style('user-select', 'none')
+        .style('font-size', 'var(--type-scale-fixed-small)');
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!d3Container || !d3Container.current) {
       return;
     }
@@ -105,7 +109,7 @@ const AreaChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [props.data]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth]);
 

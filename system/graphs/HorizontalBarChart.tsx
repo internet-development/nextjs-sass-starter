@@ -1,9 +1,9 @@
+import * as React from 'react';
 import * as d3 from 'd3';
-import React, { useEffect, useRef, useState } from 'react';
 
 const HorizontalBarChart = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container.current || !props.data || width <= 0) {
@@ -36,12 +36,25 @@ const HorizontalBarChart = (props) => {
       });
 
       const yAxis = g.append('g').call(d3.axisLeft(yScale));
-      yAxis.selectAll('.tick text').style('fill', 'var(--theme-text)').style('font-size', '16px');
+      yAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
       yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
 
       const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale).ticks(3));
-      xAxis.selectAll('path,line').style('stroke', 'var(--theme-text)').style('font-size', '16px');
-      xAxis.selectAll('text').style('fill', 'var(--theme-text)').style('font-size', '14px');
+      xAxis.selectAll('path,line').style('stroke', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
+      xAxis.selectAll('text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
+
+      const defs = svg.append('defs');
+      const colors = {
+        positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
+        negative: ['var(--theme-graph-negative-subdued)', 'var(--theme-graph-negative)'],
+      };
+
+      Object.entries(colors).forEach(([key, colorRange]) => {
+        const gradient = defs.append('linearGradient').attr('id', `gradient-${key}`).attr('y1', '0%').attr('y2', '0%').attr('x1', '0%').attr('x2', '100%');
+
+        gradient.append('stop').attr('offset', '0%').attr('stop-color', colorRange[0]);
+        gradient.append('stop').attr('offset', '100%').attr('stop-color', colorRange[1]);
+      });
 
       g.selectAll('.bar')
         .data(props.data)
@@ -52,11 +65,11 @@ const HorizontalBarChart = (props) => {
         .attr('y', (d) => yScale(d.label))
         .attr('width', (d) => xScale(d.value))
         .attr('height', yScale.bandwidth())
-        .attr('fill', (d, i) => (i % 2 === 0 ? 'var(--theme-success)' : 'var(--theme-success-subdued)'));
+        .attr('fill', (d, i) => (i % 2 === 0 ? 'url(#gradient-positive)' : 'url(#gradient-negative)'));
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!d3Container || !d3Container.current) {
       return;
     }
@@ -74,7 +87,7 @@ const HorizontalBarChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [props.data]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
