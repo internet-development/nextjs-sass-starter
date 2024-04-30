@@ -90,7 +90,7 @@ function ExampleAnimationsTypeSwapping(props) {
       id: 7,
       data: [
         ``,
-        <Tag>H2</Tag>,
+        <Tag>H3</Tag>,
         <Tag>Slide up</Tag>,
         <H3>
           First-principles thinking is one of the best ways to reverse-engineer <TextSwapper animationType="slideUp" strings={['complicated', 'messy', 'tangled', 'difficult']} />{' '}
@@ -102,10 +102,10 @@ function ExampleAnimationsTypeSwapping(props) {
       id: 8,
       data: [
         ``,
-        <Tag>H2</Tag>,
+        <Tag>H3</Tag>,
         <Tag>Slide up with container styles</Tag>,
         <H3>
-          You are not <TextSwapper animationType="slideUp" strings={['prepared', 'interested', 'going to enjoy']} style={containerStyles} /> for what is to come
+          You are not <TextSwapper animationType="slideUp" strings={['prepared', 'interested', 'tested', 'capable']} style={containerStyles} /> for what is to come
         </H3>,
       ],
     },

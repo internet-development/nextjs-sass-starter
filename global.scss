@@ -111,7 +111,7 @@ body.theme-light {
   --theme-text: var(--color-black-100);
   --theme-border: var(--color-gray-20);
   --theme-border-box: var(--color-gray-20);
-  --theme-border-subdued: var(--color-gray-20-4);
+  --theme-border-subdued: var(--color-gray-40-2);
   --theme-button: var(--color-black-100);
   --theme-button-text: var(--color-white);
   --theme-primary: var(--color-blue-60);
@@ -154,7 +154,7 @@ body.theme-dark {
   --theme-text: var(--color-white);
   --theme-border: var(--color-gray-90);
   --theme-border-box: var(--color-gray-80);
-  --theme-border-subdued: var(--color-gray-90-6);
+  --theme-border-subdued: var(--color-gray-70-3);
   --theme-button: var(--color-white);
   --theme-button-text: var(--color-black-100);
   --theme-primary: var(--color-blue-60);
@@ -197,7 +197,7 @@ body.theme-blue {
   --theme-text: var(--color-blue-10);
   --theme-border: var(--color-blue-70);
   --theme-border-box: var(--color-gray-80);
-  --theme-border-subdued: var(--color-blue-70-3);
+  --theme-border-subdued: var(--color-blue-60-2);
   --theme-button: var(--color-blue-30);
   --theme-button-text: var(--color-black-100);
   --theme-primary: var(--color-blue-60);
@@ -238,7 +238,7 @@ body.theme-neon-green {
   --theme-foreground: var(--color-neon-green-80-1);
   --theme-foreground-secondary: var(--color-neon-green-80-2);
   --theme-text: var(--color-neon-green-70);
-  --theme-border: var(--color-neon-green-70-7);
+  --theme-border: var(--color-neon-green-90);
   --theme-border-box: var(--color-gray-80);
   --theme-border-subdued: var(--color-neon-green-70-3);
   --theme-button: var(--color-white);
@@ -286,12 +286,13 @@ body {
   --color-gray-90-6: rgba(38, 38, 38, 0.6);
   --color-gray-80: rgba(57, 57, 57, 1);
   --color-gray-70: rgba(82, 82, 82, 1);
+  --color-gray-70-3: rgba(82, 82, 82, 0.3);
   --color-gray-60: rgba(111, 111, 111, 1);
   --color-gray-50: rgba(141, 141, 141, 1);
   --color-gray-40: rgba(168, 168, 168, 1);
+  --color-gray-40-2: rgba(168, 168, 168, 0.2);
   --color-gray-30: rgba(198, 198, 198, 1);
   --color-gray-20: rgba(224, 224, 224, 1);
-  --color-gray-20-4: rgba(224, 224, 224, 0.4);
   --color-gray-10: rgba(244, 244, 244, 1);
   --color-white: rgba(255, 255, 255, 1);
   --color-white-4: rgba(255, 255, 255, 0.4);
@@ -327,8 +328,8 @@ body {
   --color-blue-80: rgba(0, 45, 156, 1);
   --color-blue-80-4: rgba(0, 45, 156, 0.4);
   --color-blue-70: rgba(0, 67, 206, 1);
-  --color-blue-70-3: rgba(0, 67, 206, 0.3);
   --color-blue-60: rgba(15, 98, 254, 1);
+  --color-blue-60-2: rgba(15, 98, 254, 0.2);
   --color-blue-50: rgba(69, 137, 255, 1);
   --color-blue-40: rgba(120, 169, 255, 1);
   --color-blue-30: rgba(166, 200, 255, 1);
