@@ -72,8 +72,8 @@ function ExampleSystemDataVisualizationColumn(props) {
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: 'Placeholder example',
-    description: 'A placeholder example for a column chart component.',
+    title: 'Example column chart',
+    description: 'This is an example of a React column chart component that you can use on your website or as a modification of this template.',
   };
   return (
     <Page
