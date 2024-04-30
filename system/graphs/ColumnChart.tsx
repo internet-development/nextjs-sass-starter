@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
 const ColumnChart = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container.current || width <= 0) return;
@@ -22,7 +22,25 @@ const ColumnChart = (props) => {
       .rangeRound([0, drawWidth])
       .padding(0.1);
 
-    const colorScale = d3.scaleOrdinal().domain(['positive', 'neutral', 'negative']).range(['var(--theme-success)', 'var(--theme-border)', 'var(--theme-error-subdued)']);
+    // Define gradients
+    const defs = svg.append('defs');
+    const colors = {
+      positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
+      negative: ['var(--theme-graph-negative)', 'var(--theme-graph-negative-subdued)'],
+    };
+
+    Object.entries(colors).forEach(([key, colorRange]) => {
+      const gradient = defs.append('linearGradient').attr('id', `gradient-${key}`).attr('x1', '0%').attr('x2', '0%').attr('y1', '0%').attr('y2', '100%');
+
+      gradient.append('stop').attr('offset', '0%').attr('stop-color', colorRange[0]);
+
+      gradient.append('stop').attr('offset', '100%').attr('stop-color', colorRange[1]);
+    });
+
+    const colorScale = d3
+      .scaleOrdinal()
+      .domain(['positive', 'neutral', 'negative'])
+      .range(['var(--theme-graph-positive)', 'var(--theme-graph-netural)', 'var(--theme-graph-negative)']);
 
     const maxUpperCI = d3.max(props.data, (d) => d.positive_upper_ci);
     const extraSpaceForLabels = 10;
@@ -85,7 +103,7 @@ const ColumnChart = (props) => {
         .attr('y', positiveBarY)
         .attr('width', xScale.bandwidth())
         .attr('height', Math.abs(yScale(d.positive) - yScale(0)))
-        .attr('fill', colorScale('positive'));
+        .attr('fill', 'url(#gradient-positive)');
 
       svg
         .append('line')
@@ -93,7 +111,7 @@ const ColumnChart = (props) => {
         .attr('x2', barX + xScale.bandwidth() / 2)
         .attr('y1', yScale(d.positive_upper_ci))
         .attr('y2', yScale(d.positive_lower_ci))
-        .attr('stroke', 'black')
+        .attr('stroke', 'var(--theme-text)')
         .attr('stroke-width', 1);
 
       svg
@@ -102,9 +120,9 @@ const ColumnChart = (props) => {
         .attr('y', neutralBarY)
         .attr('width', xScale.bandwidth())
         .attr('height', Math.abs(yScale(d.neutral) - yScale(0)))
-        .attr('fill', colorScale('neutral'));
+        .attr('fill', 'var(--theme-graph-netural)');
 
-      svg.append('rect').attr('x', barX).attr('y', yScale(0)).attr('width', xScale.bandwidth()).attr('height', negativeBarHeight).attr('fill', colorScale('negative'));
+      svg.append('rect').attr('x', barX).attr('y', yScale(0)).attr('width', xScale.bandwidth()).attr('height', negativeBarHeight).attr('fill', 'url(#gradient-negative)');
 
       svg
         .append('line')
@@ -112,7 +130,7 @@ const ColumnChart = (props) => {
         .attr('x2', barX + xScale.bandwidth() / 2)
         .attr('y1', yScale(d.negative_upper_ci))
         .attr('y2', yScale(d.negative_lower_ci))
-        .attr('stroke', 'black')
+        .attr('stroke', 'var(--theme-text)')
         .attr('stroke-width', 1);
 
       svg
@@ -120,6 +138,7 @@ const ColumnChart = (props) => {
         .attr('x', barX + xScale.bandwidth() / 2)
         .attr('y', height + margin.bottom - 5)
         .attr('text-anchor', 'middle')
+        .attr('fill', 'var(--theme-border)')
         .text(d.category);
     });
 
@@ -168,7 +187,7 @@ const ColumnChart = (props) => {
     });
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     setContainerWidth(d3Container.current.clientWidth);
     const handleResize = () => {
       setContainerWidth(d3Container.current.clientWidth);
@@ -178,25 +197,11 @@ const ColumnChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return (
-    <>
-      <svg width={props.width ?? '100%'} height={props.height ?? '400'} ref={d3Container} style={props.style} />
-      <section style={{ display: 'flex', flexDirection: 'row', gap: '1.2rem', paddingLeft: '1rem', paddingBottom: '1rem' }}>
-        {props?.legend?.map((item, index) => {
-          return (
-            <div key={index}>
-              <span style={{ width: '1.2rem', height: '1.2rem', borderRadius: '2rem', display: 'inline-block', background: item.color }} />
-              <p>{item.label}</p>
-            </div>
-          );
-        })}
-      </section>
-    </>
-  );
+  return <svg width={props.width ?? '100%'} height={props.height ?? '400'} ref={d3Container} style={props.style} />;
 };
 
 export default ColumnChart;

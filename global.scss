@@ -157,7 +157,7 @@ body.theme-dark {
   --theme-border-subdued: var(--color-gray-70-3);
   --theme-button: var(--color-white);
   --theme-button-text: var(--color-black-100);
-  --theme-primary: var(--color-blue-60);
+  --theme-primary: var(--color-gold-30);
   --theme-input-active: var(--color-blue-20-5);
   --theme-success: var(--color-green-60);
   --theme-success-subdued: var(--color-green-60-3);
@@ -200,7 +200,7 @@ body.theme-blue {
   --theme-border-subdued: var(--color-blue-60-2);
   --theme-button: var(--color-blue-30);
   --theme-button-text: var(--color-black-100);
-  --theme-primary: var(--color-blue-60);
+  --theme-primary: var(--color-gold-30);
   --theme-input-active: var(--color-blue-20-5);
   --theme-success: var(--color-green-60);
   --theme-success-subdued: var(--color-green-60-3);
@@ -277,6 +277,12 @@ body.theme-neon-green {
 
 html,
 body {
+  --theme-graph-positive-subdued: rgba(61, 219, 217, 0.01);
+  --theme-graph-positive: rgba(61, 219, 217, 1);
+  --theme-graph-netural: var(--theme-foreground);
+  --theme-graph-negative: rgba(218, 30, 40, 1);
+  --theme-graph-negative-subdued: rgba(218, 30, 40, 0.01);
+
   --color-black-100: rgba(0, 0, 0, 1);
   --color-black-100-4: rgba(0, 0, 0, 0.4);
   --color-black-100-2: rgba(0, 0, 0, 0.2);
@@ -304,6 +310,8 @@ body {
 
   --color-green-60: rgba(25, 128, 56, 1);
   --color-green-60-3: rgba(25, 128, 56, 0.3);
+
+  --color-gold-30: rgba(241, 194, 27, 1);
 
   --color-neon-green-100: rgba(10, 44, 2, 1);
   --color-neon-green-100-4: rgba(10, 44, 2, 0.4);

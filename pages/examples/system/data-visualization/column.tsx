@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
+import ChartLegend from '@system/graphs/ChartLegend';
 import ColumnChart from '@system/graphs/ColumnChart';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
@@ -14,7 +15,7 @@ import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 import { H2, P, Title, Text, SubText } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
-const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
+const TABLE_HEADINGS = [``, `Element`, `Optional`, `Description`];
 
 const TABLE_DATA = [
   {
@@ -65,29 +66,14 @@ const EXAMPLE_DUMMY_DATA = [
   { category: 'J', positive: 45, neutral: 30, negative: -25, positive_lower_ci: 38, positive_upper_ci: 52, negative_lower_ci: -28.5, negative_upper_ci: -21.5 },
   { category: 'K', positive: 22, neutral: 16, negative: -18, positive_lower_ci: 18.5, positive_upper_ci: 25.5, negative_lower_ci: -20, negative_upper_ci: -16 },
   { category: 'L', positive: 50, neutral: 35, negative: -30, positive_lower_ci: 42, positive_upper_ci: 58, negative_lower_ci: -34, negative_upper_ci: -26 },
-  { category: 'M', positive: 55, neutral: 40, negative: -35, positive_lower_ci: 46, positive_upper_ci: 64, negative_lower_ci: -39.5, negative_upper_ci: -30.5 },
-  { category: 'N', positive: 60, neutral: 45, negative: -40, positive_lower_ci: 50, positive_upper_ci: 70, negative_lower_ci: -45, negative_upper_ci: -35 },
-  { category: 'O', positive: 65, neutral: 50, negative: -45, positive_lower_ci: 54, positive_upper_ci: 76, negative_lower_ci: -50.5, negative_upper_ci: -39.5 },
-  { category: 'P', positive: 70, neutral: 55, negative: -50, positive_lower_ci: 65, positive_upper_ci: 82, negative_lower_ci: -56, negative_upper_ci: -44 },
-  { category: 'Q', positive: 75, neutral: 60, negative: -55, positive_lower_ci: 72, positive_upper_ci: 88, negative_lower_ci: -61.5, negative_upper_ci: -48.5 },
-  { category: 'R', positive: 80, neutral: 65, negative: -60, positive_lower_ci: 76, positive_upper_ci: 94, negative_lower_ci: -67, negative_upper_ci: -53 },
-  { category: 'S', positive: 85, neutral: 70, negative: -65, positive_lower_ci: 80, positive_upper_ci: 90, negative_lower_ci: -72.5, negative_upper_ci: -57.5 },
-  { category: 'T', positive: 80, neutral: 72, negative: -70, positive_lower_ci: 70, positive_upper_ci: 90, negative_lower_ci: -78, negative_upper_ci: -62 },
-];
-
-//EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS
-const EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS = [
-  { color: 'var(--theme-error-subdued)', label: 'Negative' },
-  { color: 'var(--theme-border)', label: 'Neutral' },
-  { color: 'var(--theme-success)', label: 'Positive' },
 ];
 
 function ExampleSystemDataVisualizationColumn(props) {
   const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
 
   const chart = {
-    title: 'Monthly Sales Data',
-    description: 'This column chart represents the monthly sales data for the year 2023.',
+    title: 'Placeholder example',
+    description: 'A placeholder example for a column chart component.',
   };
   return (
     <Page
@@ -97,15 +83,16 @@ function ExampleSystemDataVisualizationColumn(props) {
     >
       <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="column" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Column Chart</H2>
+        <H2 style={{ marginTop: `64px`, padding: '0 24px 0 22px' }}>Column Chart</H2>
         <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
           Column charts are used to show data changes over a period of time or illustrate comparisons among items. In column charts, categories are typically organized along the
           horizontal axis and values along the vertical axis.
         </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
+        <Title style={{ marginTop: `48px`, padding: '4rem 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>{chart.title}</Title>
         <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>{chart.description}</Text>
         <div style={chartContainerStyles}>
-          <ColumnChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} legend={EXAMPLE_DIVERGING_STACKED_BAR_CHART_LABELS} />
+          <ColumnChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
+          <ChartLegend data={[`var(--theme-graph-positive)`, `var(--theme-graph-negative)`]} />
         </div>
         <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
