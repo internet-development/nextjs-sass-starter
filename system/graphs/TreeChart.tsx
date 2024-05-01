@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
 const TreeChart = ({ data }) => {
-  const d3Container = useRef(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   function addPercentages(data) {
     data.children.forEach((parentNode) => {
@@ -86,7 +86,7 @@ const TreeChart = ({ data }) => {
       .text((d) => d.data.percentage || '');
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       if (entries[0].target) {
         setContainerWidth(entries[0].target.clientWidth);
@@ -101,7 +101,7 @@ const TreeChart = ({ data }) => {
     };
   }, [d3Container.current]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart();
   }, [containerWidth, data]);
 

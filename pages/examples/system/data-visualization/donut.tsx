@@ -16,7 +16,7 @@ function ExampleSystemDataVisualizationDonut(props) {
   // Refactor these.
   const chartContainerStyles = { padding: `0 24px 48px 16px` };
   const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
-  const pageStyles = { padding: `64px 24px 48px 22px` };
+  const pageStyles = { padding: `64px 24px 55px 22px` };
   const paragraphStyle = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
 
   return (
@@ -30,7 +30,9 @@ function ExampleSystemDataVisualizationDonut(props) {
         <div style={pageStyles}>
           <H2>Donut</H2>
           <P style={paragraphStyle}>
-            This example demonstrates how to integrate a D3.js Donut Chart into a React component. The chart visualizes data distribution across different categories.
+            Donut charts are best when you need to show how parts fit into a whole. They work well for a few categories but get cluttered if you add too many. They're not great for
+            detailed comparisons but do well to display broad data trends, like a quick glimpse of market share. The center of a donut chart can be used to highlight key
+            information, making it not only functional but also visually appealing. They're best when simplicity and aesthetics need to meet.
           </P>
         </div>
 

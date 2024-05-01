@@ -95,7 +95,7 @@ function ExampleSystemDataVisualizationHistogram(props) {
   const chartContainerStyles = { padding: `0 24px 48px 16px` };
   const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
   const paragraphStyles = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
-  const pageStyles = { padding: `64px 24px 44.5px 22px` };
+  const pageStyles = { padding: `64px 24px 55px 22px` };
 
   return (
     <Page
@@ -107,7 +107,11 @@ function ExampleSystemDataVisualizationHistogram(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="histogram" data={VISUALIZATION_OPTIONS} />}>
         <div style={pageStyles}>
           <H2>Histogram</H2>
-          <P style={paragraphStyles}>The histogram visualizes the distribution of data across different ranges or bins.</P>
+          <P style={paragraphStyles}>
+            Histograms excel in showing the distribution of data across different intervals, revealing underlying patterns like normal distribution or skewness. They are
+            particularly effective when you need to visualize the frequency of data points within certain ranges and are useful for highlighting outliers, gaps, or clusters. This
+            makes them invaluable for statistical analysis, helping to understand the spread and central tendencies within sets of data.
+          </P>
         </div>
 
         <div style={infoStyles}>

@@ -26,7 +26,7 @@ function ExampleSystemDataVisualizationCandlestick(props) {
   // Refactor these.
   const chartContainerStyles = { padding: `0 24px 48px 16px` };
   const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
-  const pageStyles = { padding: `64px 24px 48px 22px` };
+  const pageStyles = { padding: `64px 24px 58.5px 22px` };
   const paragraphStyle = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
 
   return (
@@ -39,7 +39,12 @@ function ExampleSystemDataVisualizationCandlestick(props) {
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="candlestick" data={VISUALIZATION_OPTIONS} />}>
         <div style={pageStyles}>
           <H2>Candlestick</H2>
-          <P style={paragraphStyle}>Candlestick charts are a visual tool for analyzing financial data, particularly useful for identifying market trends and price patterns.</P>
+          <P style={paragraphStyle}>
+            Candlestick charts are primarily used in financial analysis to visualize price movements of securities over time. Each "candle" represents four key pieces of
+            information for a specific time period: the opening price, the closing price, the highest price, and the lowest price. This makes candlestick charts highly effective
+            for traders looking to assess market sentiment and potential price direction. They excel in spotting market trends and price patterns, such as reversals or
+            continuations, making them indispensable tools for technical analysis in trading.
+          </P>
         </div>
         <div style={infoStyles}>
           <Title>Example</Title>

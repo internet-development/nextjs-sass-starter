@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import BarGraphWithLines from '@system/graphs/BarGraphWithLines';
 import ChartLegend from '@system/graphs/ChartLegend';
 import ColumnChart from '@system/graphs/ColumnChart';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
@@ -27,6 +28,99 @@ const EXAMPLE_DUMMY_DATA = [
 ];
 
 const EXAMPLE_LEGEND_DATA = [`var(--theme-graph-positive)`, `var(--theme-graph-negative)`];
+
+const EXAMPLE_BAR_GRAPH_WITH_LINES_DATA = [
+  {
+    year: '2005',
+    years: [
+      { name: 'electronics', value: 120, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 150, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 30, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2006',
+    years: [
+      { name: 'electronics', value: 115, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 165, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 45, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2007',
+    years: [
+      { name: 'electronics', value: 130, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 175, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 55, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2008',
+    years: [
+      { name: 'electronics', value: 125, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 190, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 60, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2009',
+    years: [
+      { name: 'electronics', value: 140, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 185, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 65, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2010',
+    years: [
+      { name: 'electronics', value: 150, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 210, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 70, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2011',
+    years: [
+      { name: 'electronics', value: 155, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 220, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 75, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2012',
+    years: [
+      { name: 'electronics', value: 160, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 230, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 85, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2013',
+    years: [
+      { name: 'electronics', value: 165, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 240, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 90, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2014',
+    years: [
+      { name: 'electronics', value: 170, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 250, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 95, color: 'var(--theme-primary)' },
+    ],
+  },
+  {
+    year: '2015',
+    years: [
+      { name: 'electronics', value: 180, color: 'var(--theme-graph-positive)' },
+      { name: 'clothing', value: 260, color: 'var(--theme-success)' },
+      { name: 'accessories', value: 100, color: 'var(--theme-primary)' },
+    ],
+  },
+];
+
+const EXAMPLE_BAR_GRAPH_WITH_LINES_DATA_LEGEND = [`var(--theme-graph-positive)`, `var(--theme-success)`, `var(--theme-primary)`];
 
 function ExampleSystemDataVisualizationColumn(props) {
   // TODO(jimmylee)
@@ -58,6 +152,15 @@ function ExampleSystemDataVisualizationColumn(props) {
         <div style={chartContainerStyles}>
           <ColumnChart data={EXAMPLE_DUMMY_DATA} />
           <ChartLegend data={EXAMPLE_LEGEND_DATA} />
+        </div>
+
+        <div style={infoStyles}>
+          <Title>Example B</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 circle and line bar chart component that you can use.</Text>
+        </div>
+        <div style={chartContainerStyles}>
+          <BarGraphWithLines data={EXAMPLE_BAR_GRAPH_WITH_LINES_DATA} />
+          <ChartLegend data={EXAMPLE_BAR_GRAPH_WITH_LINES_DATA_LEGEND} />
         </div>
       </TwoColumnLayoutFull>
       <GlobalModalManager />

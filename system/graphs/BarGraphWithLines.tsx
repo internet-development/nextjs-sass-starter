@@ -1,17 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
 const LineBarChart = (props) => {
-  const d3Container = useRef<HTMLDivElement>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
   const data = props.data;
 
   const drawChart = () => {
-    const margin = { top: 30, right: 20, bottom: 30, left: 50 },
+    const margin = { top: 32, right: 24, bottom: 32, left: 48 },
       width = containerWidth - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
     const svg = d3.select(d3Container.current).selectAll('svg').data([null]);
+
     const svgEnter = svg.enter().append('svg');
     svgEnter
       .merge(svg)
@@ -37,26 +38,17 @@ const LineBarChart = (props) => {
       .domain([0, d3.max(data, (d) => d3.max(d.years, (year) => year.value))])
       .range([height, 0]);
 
-    // Y Axis
-    const yAxisGroup = g.append('g').call(d3.axisLeft(yScale));
+    const yAxis = g.append('g').call(d3.axisLeft(yScale));
+    yAxis.selectAll('text').style('fill', 'var(--theme-border)').style('font-size', '16px');
+    yAxis.selectAll('path, line').style('stroke', 'var(--theme-border)');
 
-    yAxisGroup.selectAll('text').style('fill', 'var(--theme-border)').style('font-size', '16px');
-
-    yAxisGroup.selectAll('path, line').style('stroke', 'var(--theme-border)');
-
-    // Helper grid lines across the chart
     const gridGroup = g.append('g').attr('class', 'grid').call(d3.axisLeft(yScale).tickSize(-width).tickFormat(''));
+    gridGroup.selectAll('line').style('stroke', 'var(--theme-border)').style('opacity', '1');
 
-    gridGroup.selectAll('line').style('stroke', 'var(--theme-border)').style('opacity', '0.5');
-
-    // Set up the x-axis
-    const xAxis = g
-      .append('g')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(xScale))
-      .selectAll('text')
-      .style('fill', 'var(--theme-text)')
-      .style('font-size', '16px');
+    const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+    xAxis.selectAll('text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
+    xAxis.selectAll('.tick line').style('stroke', 'var(--theme-border)');
+    xAxis.selectAll('path, line').style('stroke', 'var(--theme-border)');
 
     gridGroup.select('.domain').remove();
 
@@ -73,13 +65,13 @@ const LineBarChart = (props) => {
           .attr('y1', height)
           .attr('y2', yScale(year.value))
           .style('stroke', year.color)
-          .style('stroke-width', 2);
+          .style('stroke-width', 1);
 
         subGroup
           .append('circle')
           .attr('cx', x1.bandwidth() / 2)
           .attr('cy', yScale(year.value))
-          .attr('r', 5)
+          .attr('r', 8)
           .style('fill', year.color);
 
         subGroup
@@ -87,11 +79,13 @@ const LineBarChart = (props) => {
           .attr('x', x1.bandwidth() / 2)
           .attr('y', yScale(year.value) - 10)
           .text(year.value)
-          .attr('text-anchor', 'middle');
+          .attr('text-anchor', 'middle')
+          .style('fill', 'var(--theme-text)');
       });
     });
   };
-  useEffect(() => {
+
+  React.useEffect(() => {
     function handleResize() {
       if (d3Container.current) {
         setContainerWidth(d3Container.current.offsetWidth);
@@ -102,12 +96,13 @@ const LineBarChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (containerWidth > 0) {
       drawChart();
     }
   }, [data, containerWidth]);
-  return <div ref={d3Container} style={{ width: '100%', ...props.style }} />;
+
+  return <div ref={d3Container} style={{ width: '100%' }} />;
 };
 
 export default LineBarChart;

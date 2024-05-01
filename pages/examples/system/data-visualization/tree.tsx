@@ -78,7 +78,7 @@ function ExampleSystemDataVisualizationTree(props) {
   const chartContainerStyles = { padding: `0 24px 48px 16px` };
   const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
   const paragraphStyles = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
-  const pageStyles = { padding: `64px 24px 48px 22px` };
+  const pageStyles = { padding: `64px 24px 55px 22px` };
 
   return (
     <Page
@@ -91,8 +91,9 @@ function ExampleSystemDataVisualizationTree(props) {
         <div style={pageStyles}>
           <H2>Tree</H2>
           <P style={paragraphStyles}>
-            Node trees represent data in a hierarchical manner, which is intuitive for modeling many real-world scenarios, such as organizational structures, file systems, and
-            more.
+            Node tree diagrams are ideal for visualizing hierarchical data and relationships within a structured format, such as organizational charts, family trees, or software
+            architecture. They clearly display the connections between parent and child nodes, making complex relationships easier to understand at a glance. These diagrams are
+            especially useful for tracking pathways and seeing the flow of information or decision-making processes across multiple levels.
           </P>
         </div>
 

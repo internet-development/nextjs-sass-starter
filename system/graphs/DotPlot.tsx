@@ -1,9 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
 const DotPlot = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container.current || width <= 0 || !props.data) return;
@@ -72,7 +72,7 @@ const DotPlot = (props) => {
       .attr('fill', 'var(--theme-text)');
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setContainerWidth(d3Container.current.clientWidth);
     const handleResize = () => {
       setContainerWidth(d3Container.current.clientWidth);
@@ -82,7 +82,7 @@ const DotPlot = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
