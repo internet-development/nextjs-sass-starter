@@ -5,50 +5,11 @@ import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demo
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import Table from '@system/Table';
-import Tag from '@system/documents/Tag';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
 import LineChart from '@root/system/graphs/LineChart';
 
-const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
-
-const TABLE_DATA = [
-  {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
-  },
-
-  {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
-  },
-
-  {
-    data: [
-      ``,
-      <Tag>Marks</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
-    ],
-  },
-  {
-    data: [
-      ``,
-      <Tag>Graph Lines</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
-      </SubText>,
-    ],
-  },
-  {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
-  },
-  {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
-  },
-];
 const EXAMPLE_DUMMY_DATA = [
   { value: 20, date: '2023-1-1', lower_ci: 18, upper_ci: 22 },
   { value: 30, date: '2023-2-1', lower_ci: 27, upper_ci: 33 },
@@ -82,6 +43,7 @@ function ExampleSystemDataVisualizationLine(props) {
   const variantC = {
     title: 'Line Chart - Variant C',
   };
+
   return (
     <Page
       title="nextjs-sass-starter: system: data visualization: line"
@@ -121,8 +83,6 @@ function ExampleSystemDataVisualizationLine(props) {
         <div style={chartContainerStyles}>
           <LineChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} showErrorBars={true} showConfidenceIntervalFill={true} showAreaFill={true} />
         </div>
-
-        <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager />
     </Page>

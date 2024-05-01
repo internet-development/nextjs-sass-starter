@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-const TreeChart = ({ data, style }) => {
+const TreeChart = ({ data }) => {
   const d3Container = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
 
@@ -109,7 +109,7 @@ const TreeChart = ({ data, style }) => {
     drawChart();
   }, [containerWidth, data]);
 
-  return <div ref={d3Container} style={{ width: '100%', height: '100%', ...style }}></div>;
+  return <div ref={d3Container} style={{ width: '100%', height: '100%' }}></div>;
 };
 
 export default TreeChart;

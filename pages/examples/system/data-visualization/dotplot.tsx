@@ -2,56 +2,14 @@ import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
-import DonutChart from '@system/graphs/DonutChart';
+import DotPlot from '@root/system/graphs/DotPlot';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import Table from '@system/Table';
-import Tag from '@system/documents/Tag';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import DotPlot from '@root/system/graphs/DotPlot';
-
-const TABLE_HEADINGS = [``, `Name`, `Optional`, `Description`];
-
-const TABLE_DATA = [
-  {
-    data: [``, <Tag>Title</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>The title is used to describe the contents of your chart. [20px]</SubText>],
-  },
-
-  {
-    data: [``, <Tag>Text</Tag>, <Tag>True</Tag>, <SubText style={{ marginTop: 7 }}>Text is used to provide additional context. [16px]</SubText>],
-  },
-
-  {
-    data: [
-      ``,
-      <Tag>Marks</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>The marks are visual representations of data on a chart. Common types of marks include bars, lines, and areas.</SubText>,
-    ],
-  },
-  {
-    data: [
-      ``,
-      <Tag>Graph Lines</Tag>,
-      <Tag>False</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        The graph lines help users interpret the chart by providing visual context and connecting the marks to the axis labels. Some chart types utilize only horizontal gridlines,
-        while others use only vertical gridlines.
-      </SubText>,
-    ],
-  },
-  {
-    data: [``, <Tag>Axis</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis borders define the boundaries of the chart.</SubText>],
-  },
-  {
-    data: [``, <Tag>Axis Labels</Tag>, <Tag>False</Tag>, <SubText style={{ marginTop: 7 }}>The axis labels show the units of measurement for the chart. [12px]</SubText>],
-  },
-];
 
 const EXAMPLE_DUMMY_DATA = [
   { label: 'Item 1', value: 20 },
@@ -102,7 +60,6 @@ function ExampleSystemDataVisualizationDotPlot(props) {
         <div style={chartContainerStyles}>
           <DotPlot data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 32 }} />
         </div>
-        <Table data={TABLE_DATA} headings={TABLE_HEADINGS} />
       </TwoColumnLayoutFull>
       <GlobalModalManager />
     </Page>

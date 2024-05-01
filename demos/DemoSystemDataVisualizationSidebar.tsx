@@ -130,18 +130,6 @@ export const VISUALIZATION_OPTIONS = [
     ],
   },
   {
-    href: `/heatmap`,
-    name: 'Heatmap',
-    data: [
-      '',
-      <Tag>Heatmap</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        A heat map, also known as a heatmap, is a graphical representation of data in which individual values contained in a matrix are represented by colors. Heat maps are similar
-        to shading matrices, which have been in use for over a century.
-      </SubText>,
-    ],
-  },
-  {
     href: `/histogram`,
     name: 'Histogram',
     data: [
@@ -161,29 +149,6 @@ export const VISUALIZATION_OPTIONS = [
       <Tag>Line</Tag>,
       <SubText style={{ marginTop: 7 }}>
         A line chart, also known as a line graph, is a type of chart that displays information as a series of data points called 'markers' connected by straight line segments.
-      </SubText>,
-    ],
-  },
-  {
-    href: `/matrix`,
-    name: 'Matrix',
-    data: [
-      '',
-      <Tag>Matrix</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        A matrix chart is a visualization tool that displays relationships between two or more variables in a dataset using a grid format.
-      </SubText>,
-    ],
-  },
-  {
-    href: `/pie`,
-    name: 'Pie',
-    data: [
-      '',
-      <Tag>Pie</Tag>,
-      <SubText style={{ marginTop: 7 }}>
-        A pie chart, also known as a circle chart, is a circular statistical graphic divided into slices that illustrate numerical proportions. In a pie chart, the arc length of
-        each slice (and consequently its central angle and area) is proportional to the quantity it represents.
       </SubText>,
     ],
   },
