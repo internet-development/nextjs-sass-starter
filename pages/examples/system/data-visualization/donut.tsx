@@ -26,7 +26,7 @@ function ExampleSystemDataVisualizationDonut(props) {
       url="https://wireframes.internet.dev/examples/system/data-visualization/donut"
     >
       <Navigation />
-      <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="donut" data={VISUALIZATION_OPTIONS} />}>
+      <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="donut [wip]" data={VISUALIZATION_OPTIONS} />}>
         <div style={pageStyles}>
           <H2>Donut</H2>
           <P style={paragraphStyle}>

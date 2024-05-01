@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import ChartLegend from '@system/graphs/ChartLegend';
 import ColumnChart from '@system/graphs/ColumnChart';
+import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';

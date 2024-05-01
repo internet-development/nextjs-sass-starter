@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import ChartLegend from '@system/graphs/ChartLegend';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
@@ -45,8 +46,16 @@ const EXAMPLE_DUMMY_DATA = [
     { axis: 'To Be A Smartphone', value: 0.3 },
   ],
 ];
+
+const EXAMPLE_LEGEND_DATA = [`var(--theme-border)`];
+
 function ExampleSystemDataVisualizationRadar(props) {
-  const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
+  // TODO(jimmylee)
+  // Refactor these.
+  const chartContainerStyles = { padding: `0 24px 48px 16px` };
+  const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
+  const paragraphStyles = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
+  const pageStyles = { padding: `64px 24px 48px 22px` };
 
   return (
     <Page
@@ -56,15 +65,22 @@ function ExampleSystemDataVisualizationRadar(props) {
     >
       <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="radar" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Radar</H2>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Radar charts, also known as spider charts or web charts, offer a way to display multivariate data in the form of a two-dimensional chart of three or more quantitative
-          variables represented on axes starting from the same point.
-        </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>Radar</Title>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>Example radar chart</Text>
+        <div style={pageStyles}>
+          <H2>Radar</H2>
+          <P style={paragraphStyles}>
+            Radar charts, also known as spider charts or web charts, offer a way to display multivariate data in the form of a two-dimensional chart of three or more quantitative
+            variables represented on axes starting from the same point.
+          </P>
+        </div>
+
+        <div style={infoStyles}>
+          <Title>Example</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 radar chart component that you can use.</Text>
+        </div>
+
         <div style={chartContainerStyles}>
           <RadarChart data={EXAMPLE_DUMMY_DATA} style={{ marginTop: 24 }} />
+          <ChartLegend data={EXAMPLE_LEGEND_DATA} />
         </div>
       </TwoColumnLayoutFull>
       <GlobalModalManager />

@@ -14,11 +14,26 @@ const LineChart = (props) => {
       const svg = d3.select(d3Container.current);
       svg.selectAll('*').remove();
 
-      const margin = { top: 20, right: 40, bottom: 30, left: 40 };
+      const margin = { top: 24, right: 48, bottom: 32, left: 48 };
       const height = +svg.attr('height') - margin.top - margin.bottom;
       const drawWidth = width - margin.left - margin.right;
 
       const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+      const defs = svg.append('defs');
+      const colors = {
+        positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
+        negative: ['var(--theme-graph-negative-subdued)', 'var(--theme-graph-negative)'],
+        reversePositive: ['var(--theme-graph-positive)', 'var(--theme-graph-positive-subdued)'],
+        reverseNegative: ['var(--theme-graph-negative)', 'var(--theme-graph-negative-subdued)'],
+      };
+
+      Object.entries(colors).forEach(([key, colorRange]) => {
+        const gradient = defs.append('linearGradient').attr('id', `gradient-${key}`).attr('x1', '0%').attr('x2', '0%').attr('y1', '0%').attr('y2', '100%');
+
+        gradient.append('stop').attr('offset', '0%').attr('stop-color', colorRange[0]);
+        gradient.append('stop').attr('offset', '100%').attr('stop-color', colorRange[1]);
+      });
 
       const xScale = d3
         .scaleTime()
@@ -30,25 +45,16 @@ const LineChart = (props) => {
         .domain([0, d3.max(props.data, (d) => d.value)])
         .range([height, 0]);
 
-      g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+      const yAxis = g.append('g').call(d3.axisLeft(yScale).tickSize(-drawWidth).tickPadding(8));
+      yAxis.attr('shape-rendering', 'crispEdges').selectAll('.tick text').style('font-size', 'var(--type-scale-fixed-small)').style('fill', 'var(--theme-border)');
+      yAxis.selectAll('.domain, .tick line').attr('stroke', 'var(--theme-border)');
+      yAxis.selectAll('.domain').remove();
 
-      g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+      const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+      xAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
+      xAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
+      xAxis.selectAll('.domain').remove();
 
-      g.append('g')
-        .call(d3.axisLeft(yScale).tickSize(-drawWidth).tickPadding(8))
-
-        .attr('shape-rendering', 'crispEdges')
-        .selectAll('.tick text')
-        .style('font-size', '16px')
-        .style('fill', 'var(--theme-border)');
-
-      g.selectAll('.domain, .tick line').attr('stroke', 'var(--theme-border)');
-
-      g.selectAll('.domain').remove();
-
-      g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
-
-      g.selectAll('.domain').remove();
       const area = d3
         .area()
         .x((d) => xScale(new Date(d.date)))
@@ -62,14 +68,14 @@ const LineChart = (props) => {
           .y0(height)
           .y1((d) => yScale(d.value));
 
-        g.append('path').datum(props.data).attr('fill', 'var(--theme-success-subdued)').attr('d', area);
+        g.append('path').datum(props.data).attr('fill', 'url(#gradient-reversePositive)').attr('d', area);
       }
 
       g.append('path')
         .datum(props.data)
         .attr('fill', 'none')
-        .attr('stroke', 'var(--theme-success)')
-        .attr('stroke-width', 3)
+        .attr('stroke', 'var(--theme-graph-positive)')
+        .attr('stroke-width', 1)
         .attr(
           'd',
           d3
@@ -83,7 +89,7 @@ const LineChart = (props) => {
         drawErrorBars(svg, props.data, xScale, yScale, {
           color: 'var(--theme-text)',
           strokeWidth: 1,
-          capWidth: 5,
+          capWidth: 8,
           showConfidenceIntervalFill: props.showConfidenceIntervalFill,
         });
       }
@@ -101,7 +107,7 @@ const LineChart = (props) => {
         .y1((d) => yScale(d.lower_ci))
         .curve(d3.curveMonotoneX);
 
-      g.append('path').datum(data).attr('fill', 'var(--theme-success-subdued)').attr('d', areaGenerator);
+      g.append('path').datum(data).attr('fill', 'var(--theme-border-subdued)').attr('d', areaGenerator);
     }
 
     data.forEach((d) => {
@@ -120,7 +126,7 @@ const LineChart = (props) => {
         .attr('y', yMidpoint)
         .attr('dy', '.35em')
         .text(`${((d.upper_ci + d.lower_ci) / 2).toFixed(0)}`)
-        .style('font-size', '12px')
+        .style('font-size', 'var(--type-scale-fixed-tiny)')
         .style('fill', color);
 
       g.append('line').attr('x1', x).attr('x2', x).attr('y1', yLower).attr('y2', yUpper).attr('stroke', color).attr('stroke-width', strokeWidth);

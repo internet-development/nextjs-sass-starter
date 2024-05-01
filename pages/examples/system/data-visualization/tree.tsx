@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import ChartLegend from '@system/graphs/ChartLegend';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@root/demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
@@ -9,7 +10,6 @@ import TreeChart from '@root/system/graphs/TreeChart';
 import TwoColumnLayoutFull from '@system/layouts/TwoColumnLayoutFull';
 
 import { H2, P, Title, Text, SubText } from '@system/typography';
-import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
 const EXAMPLE_DUMMY_DATA = {
   name: 'Webmaster',
@@ -70,8 +70,15 @@ const EXAMPLE_DUMMY_DATA = {
   ],
 };
 
+const EXAMPLE_LEGEND_DATA = [`var(--theme-primary)`, `var(--theme-border)`];
+
 function ExampleSystemDataVisualizationTree(props) {
-  const chartContainerStyles = { padding: `0px 5rem`, minHeight: 180 };
+  // TODO(jimmylee)
+  // Refactor these.
+  const chartContainerStyles = { padding: `0 24px 48px 16px` };
+  const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
+  const paragraphStyles = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
+  const pageStyles = { padding: `64px 24px 48px 22px` };
 
   return (
     <Page
@@ -81,13 +88,22 @@ function ExampleSystemDataVisualizationTree(props) {
     >
       <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="tree" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Tree</H2>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          Node trees represent data in a hierarchical manner, which is intuitive for modeling many real-world scenarios, such as organizational structures, file systems, and more.{' '}
-        </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>Example</Title>
+        <div style={pageStyles}>
+          <H2>Tree</H2>
+          <P style={paragraphStyles}>
+            Node trees represent data in a hierarchical manner, which is intuitive for modeling many real-world scenarios, such as organizational structures, file systems, and
+            more.
+          </P>
+        </div>
+
+        <div style={infoStyles}>
+          <Title>Example</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 node tree component that you can use.</Text>
+        </div>
+
         <div style={chartContainerStyles}>
           <TreeChart data={EXAMPLE_DUMMY_DATA} />
+          <ChartLegend data={EXAMPLE_LEGEND_DATA} />
         </div>
       </TwoColumnLayoutFull>
       <GlobalModalManager />

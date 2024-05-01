@@ -17,9 +17,11 @@ const TreeChart = ({ data }) => {
   addPercentages(data);
 
   const drawChart = () => {
-    const margin = { top: 20, right: 500, bottom: 30, left: 100 },
+    d3.select(d3Container.current).selectAll('*').remove();
+
+    const margin = { top: 24, right: 568, bottom: 32, left: 104 },
       width = containerWidth - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      height = 568 - margin.top - margin.bottom;
 
     const svg = d3
       .select(d3Container.current)
@@ -39,7 +41,6 @@ const TreeChart = ({ data }) => {
     let nodes = d3.hierarchy(data, (d) => d.children);
     nodes = treemap(nodes);
 
-    // Style the links
     svg
       .selectAll('.link')
       .data(nodes.descendants().slice(1))
@@ -47,14 +48,13 @@ const TreeChart = ({ data }) => {
       .append('path')
       .attr('class', 'link')
       .style('fill', 'none')
-      .attr('stroke', '#ccc')
+      .attr('stroke', 'var(--theme-border)')
       .attr('d', (d) => {
         return `M${d.y},${d.x}
-                C${d.parent.y + 50},${d.x} ${d.parent.y + 150},${d.parent.x}
+                C${d.parent.y + 48},${d.x} ${d.parent.y + 64},${d.parent.x}
                 ${d.parent.y},${d.parent.x}`;
       });
 
-    // Style the nodes
     const node = svg
       .selectAll('.node')
       .data(nodes.descendants())
@@ -65,28 +65,24 @@ const TreeChart = ({ data }) => {
 
     node
       .append('circle')
-      .attr('r', (d) => (d.children ? 10 : 14)) // Bigger circles for leaf nodes
-      .style('fill', (d) => (d.children ? 'var(--theme-success)' : 'var(--theme-background)'))
-      .attr('stroke', 'var(--theme-success)')
-      .style('stroke-width', 1);
+      .attr('r', (d) => (d.children ? 10 : 24))
+      .style('fill', (d) => (d.children ? 'var(--theme-primary)' : 'var(--theme-border)'));
 
-    // Style the text
     node
       .append('text')
       .attr('dy', '.35em')
       .text((d) => d.data.name)
       .attr('y', (d) => (d.children ? 30 : 0))
       .attr('x', (d) => (d.children ? -32 : 30))
-
       .style('fill', 'var(--theme-text)')
-      .style('font-size', '12px');
+      .style('font-size', 'var(--type-scale-fixed-tiny)');
 
     node
       .append('text')
       .attr('dy', '.35em')
       .attr('text-anchor', 'middle')
       .style('fill', 'var(--theme-text)')
-      .style('font-size', '0.6em')
+      .style('font-size', 'var(--type-scale-fixed-tiny)')
       .text((d) => d.data.percentage || '');
   };
 

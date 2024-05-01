@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
 const HistogramChart = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container.current || width <= 0) return;
@@ -11,7 +11,22 @@ const HistogramChart = (props) => {
     const svg = d3.select(d3Container.current);
     svg.selectAll('*').remove();
 
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    const defs = svg.append('defs');
+    const waves = {
+      positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
+      negative: ['var(--theme-graph-negative-subdued)', 'var(--theme-graph-negative)'],
+      reversePositive: ['var(--theme-graph-positive)', 'var(--theme-graph-positive-subdued)'],
+      reverseNegative: ['var(--theme-graph-negative)', 'var(--theme-graph-negative-subdued)'],
+    };
+
+    Object.entries(waves).forEach(([key, colorRange]) => {
+      const gradient = defs.append('linearGradient').attr('id', `gradient-${key}`).attr('x1', '0%').attr('x2', '0%').attr('y1', '0%').attr('y2', '100%');
+
+      gradient.append('stop').attr('offset', '0%').attr('stop-color', colorRange[0]);
+      gradient.append('stop').attr('offset', '100%').attr('stop-color', colorRange[1]);
+    });
+
+    const margin = { top: 24, right: 24, bottom: 32, left: 48 };
     const height = 400 - margin.top - margin.bottom;
     const chartWidth = width - margin.left - margin.right;
 
@@ -26,7 +41,7 @@ const HistogramChart = (props) => {
     const tickValues = yScale.ticks();
 
     tickValues.forEach((d) => {
-      g.append('line').attr('x1', 0).attr('x2', chartWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--theme-border)').attr('opacity', 0.7); // Adjust opacity as needed
+      g.append('line').attr('x1', 0).attr('x2', chartWidth).attr('y1', yScale(d)).attr('y2', yScale(d)).attr('stroke', 'var(--theme-border)').attr('opacity', 1);
     });
 
     const xAxisOffset = 0.5;
@@ -34,10 +49,11 @@ const HistogramChart = (props) => {
       .append('g')
       .attr('transform', `translate(0,${height + xAxisOffset})`)
       .call(d3.axisBottom(xScale));
-    xAxis.selectAll('text').style('font-size', '14px');
+    xAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
+    xAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
 
     const yAxis = g.append('g').call(d3.axisLeft(yScale));
-    yAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', '16px');
+    yAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
     yAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
 
     const bars = g.selectAll('.column').data(props.data).enter().append('g');
@@ -48,7 +64,7 @@ const HistogramChart = (props) => {
       .attr('y', (d) => yScale(d.value))
       .attr('height', (d) => height - yScale(d.value))
       .attr('width', xScale.bandwidth())
-      .attr('fill', 'rgba(68, 198, 127, 1)');
+      .attr('fill', 'url(#gradient-reversePositive)');
 
     bars
       .append('line')
@@ -57,7 +73,7 @@ const HistogramChart = (props) => {
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('y2', (d) => yScale(d.upper_ci))
       .attr('stroke', 'var(--theme-text)')
-      .attr('stroke-width', 1.5);
+      .attr('stroke-width', 1);
 
     bars
       .append('line')
@@ -66,7 +82,7 @@ const HistogramChart = (props) => {
       .attr('y1', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('y2', (d) => yScale(d.value - (d.value - d.lower_ci)))
       .attr('stroke', 'var(--theme-text)')
-      .attr('stroke-width', 1.5);
+      .attr('stroke-width', 1);
 
     bars
       .append('line')
@@ -75,7 +91,7 @@ const HistogramChart = (props) => {
       .attr('y1', (d) => yScale(d.upper_ci))
       .attr('y2', (d) => yScale(d.upper_ci))
       .attr('stroke', 'var(--theme-text)')
-      .attr('stroke-width', 1.5);
+      .attr('stroke-width', 1);
 
     bars.each(function (d) {
       const barGroup = d3.select(this);
@@ -86,7 +102,7 @@ const HistogramChart = (props) => {
         .attr('y', yScale(d.upper_ci))
         .attr('dy', '-0.5em')
         .attr('text-anchor', 'middle')
-        .style('font-size', '12px')
+        .style('font-size', 'var(--type-scale-fixed-label)')
         .style('fill', 'var(--theme-text)')
         .text(`${d.upper_ci}`);
 
@@ -96,13 +112,13 @@ const HistogramChart = (props) => {
         .attr('y', yScale(d.lower_ci))
         .attr('dy', '1.2em')
         .attr('text-anchor', 'middle')
-        .style('font-size', '12px')
+        .style('font-size', 'var(--type-scale-fixed-label)')
         .style('fill', 'var(--theme-text)')
         .text(` ${d.lower_ci}`);
     });
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setContainerWidth(d3Container.current.clientWidth);
     const handleResize = () => {
       setContainerWidth(d3Container.current.clientWidth);
@@ -112,11 +128,11 @@ const HistogramChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return <svg ref={d3Container} width="100%" height="400" style={props.style} />;
+  return <svg ref={d3Container} width="100%" height="400" />;
 };
 
 export default HistogramChart;

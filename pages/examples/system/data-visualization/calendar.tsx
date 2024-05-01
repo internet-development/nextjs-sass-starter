@@ -28,7 +28,7 @@ function ExampleSystemDataVisualizationCalendar(props) {
       url="https://wireframes.internet.dev/examples/system/data-visualization/calendar"
     >
       <Navigation />
-      <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="calendar" data={VISUALIZATION_OPTIONS} />}>
+      <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="calendar [wip]" data={VISUALIZATION_OPTIONS} />}>
         <div style={pageStyles}>
           <H2>Calendar</H2>
           <P style={paragraphStyle}>

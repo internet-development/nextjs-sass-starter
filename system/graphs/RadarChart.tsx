@@ -1,9 +1,9 @@
+import * as React from 'react';
 import * as d3 from 'd3';
-import React, { useEffect, useRef, useState } from 'react';
 
 const RadarChart = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container.current) {
@@ -14,7 +14,7 @@ const RadarChart = (props) => {
       const cfg = {
         w: width, // (xBalbinus) Width of the circle
         h: 600, // (xBalbinus) Height of the circle
-        margin: { top: 20, right: 20, bottom: 20, left: 0 }, // (xBalbinus) The margins of the SVG
+        margin: { top: 24, right: 24, bottom: 24, left: 0 }, // (xBalbinus) The margins of the SVG
         levels: 3, // (xBalbinus) How many levels or inner circles should there be drawn
         maxValue: 0, // (xBalbinus) What is the value that the biggest circle will represent
         labelFactor: 1.25, // (xBalbinus) How much farther than the radius of the outer circle should the labels be placed
@@ -66,10 +66,9 @@ const RadarChart = (props) => {
         .append('circle')
         .attr('class', 'gridCircle')
         .attr('r', (d) => (radius / cfg.levels) * d)
-        .style('fill', '#CDCDCD')
-        .style('stroke', '#CDCDCD')
-        .style('fill-opacity', cfg.opacityCircles)
-        .style('filter', 'url(#glow)');
+        .style('fill', 'var(--theme-border)')
+        .style('stroke', 'var(--theme-border-subdued)')
+        .style('fill-opacity', cfg.opacityCircles);
 
       axisGrid
         .selectAll('.axisLabel')
@@ -80,11 +79,12 @@ const RadarChart = (props) => {
         .attr('x', 4)
         .attr('y', (d) => (-d * radius) / cfg.levels)
         .attr('dy', '0.4em')
-        .style('font-size', '10px')
+        .style('font-size', 'var(--type-scale-fixed-small)')
         .attr('fill', '#737373')
         .text((d) => Format((maxValue * d) / cfg.levels));
 
-      const radarLine = d3.lineRadial()
+      const radarLine = d3
+        .lineRadial()
         .curve(d3.curveLinearClosed)
         .radius((d) => rScale(d.value))
         .angle((d, i) => i * angleSlice);
@@ -102,8 +102,8 @@ const RadarChart = (props) => {
         .style('fill', (d, i) => cfg.color(i))
         .style('fill-opacity', cfg.opacityArea)
         .on('mouseover', function (d, i) {
-          d3.selectAll('.radarArea').transition().duration(200).style('fill-opacity', 0.1);
-          d3.select(this).transition().duration(200).style('fill-opacity', 0.7);
+          d3.selectAll('.radarArea').transition().duration(200).style('fill-opacity', 1);
+          d3.select(this).transition().duration(200).style('fill-opacity', 1);
         })
         .on('mouseout', function () {
           d3.selectAll('.radarArea').transition().duration(200).style('fill-opacity', cfg.opacityArea);
@@ -128,7 +128,7 @@ const RadarChart = (props) => {
         .attr('cx', (d, i) => rScale(d.value) * Math.cos(angleSlice * i - Math.PI / 2))
         .attr('cy', (d, i) => rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2))
         .style('fill', (d, i, j) => cfg.color(j))
-        .style('fill-opacity', 0.8);
+        .style('fill-opacity', 1);
 
       const blobCircleWrapper = g.selectAll('.radarCircleWrapper').data(props.data).enter().append('g').attr('class', 'radarCircleWrapper');
 
@@ -142,11 +142,11 @@ const RadarChart = (props) => {
         .attr('cx', (d, i) => rScale(d.value) * Math.cos(angleSlice * i - Math.PI / 2))
         .attr('cy', (d, i) => rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2))
         .style('fill', 'none')
-        .style('pointer-events', 'all')
+        .style('pointer-events', 'all');
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!d3Container.current) {
       return;
     }
@@ -164,12 +164,11 @@ const RadarChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [props.data]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
-  
-  return <svg width="100%" height="650" ref={d3Container} style={props.style} />;
+
+  return <svg width="100%" height="650" ref={d3Container} />;
 };
 
 export default RadarChart;
-

@@ -47,7 +47,7 @@ export const VISUALIZATION_OPTIONS = [
   },
   {
     href: `/calendar`,
-    name: 'Calendar',
+    name: 'Calendar [WIP]',
     data: [
       '',
       <Tag>Calendar</Tag>,
@@ -106,7 +106,7 @@ export const VISUALIZATION_OPTIONS = [
   },
   {
     href: `/donut`,
-    name: 'Donut',
+    name: 'Donut [WIP]',
     data: [
       '',
       <Tag>Donut</Tag>,
@@ -118,7 +118,7 @@ export const VISUALIZATION_OPTIONS = [
   },
   {
     href: `/dotplot`,
-    name: 'Dotplot',
+    name: 'Dot plot',
     data: [
       '',
       <Tag>Dot plot</Tag>,

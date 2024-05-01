@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import ChartLegend from '@system/graphs/ChartLegend';
 import DemoSystemDataVisualizationSidebar, { VISUALIZATION_OPTIONS } from '@demos/DemoSystemDataVisualizationSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
@@ -86,8 +87,15 @@ const EXAMPLE_DUMMY_DATA = [
   },
 ];
 
+const EXAMPLE_LEGEND_DATA = [`var(--theme-graph-positive)`];
+
 function ExampleSystemDataVisualizationHistogram(props) {
-  const chartContainerStyles = { padding: `0px 24px 16px 16px`, minHeight: 188 };
+  // TODO(jimmylee)
+  // Refactor these.
+  const chartContainerStyles = { padding: `0 24px 48px 16px` };
+  const infoStyles = { padding: '32px 24px 24px 24px', borderTop: `1px solid var(--theme-border)` };
+  const paragraphStyles = { marginTop: `1rem`, paddingRight: '2px', maxWidth: 768 };
+  const pageStyles = { padding: `64px 24px 44.5px 22px` };
 
   return (
     <Page
@@ -97,14 +105,19 @@ function ExampleSystemDataVisualizationHistogram(props) {
     >
       <Navigation />
       <TwoColumnLayoutFull sidebarStyle={{ width: '240px', flexShrink: 0 }} sidebar={<DemoSystemDataVisualizationSidebar active="histogram" data={VISUALIZATION_OPTIONS} />}>
-        <H2 style={{ marginTop: 64, padding: '0 24px 0 22px' }}>Histogram</H2>
-        <P style={{ marginTop: `1rem`, padding: '0 24px 0 24px', maxWidth: 768 }}>
-          This example demonstrates how to integrate a D3.js Histogram into a React component. The histogram visualizes the distribution of data across different ranges or bins.
-        </P>
-        <Title style={{ marginTop: `49px`, padding: '24px 24px 0 24px', borderTop: `1px solid var(--theme-border)` }}>Example</Title>
-        <Text style={{ marginTop: `8px`, padding: '0 24px 0 24px' }}>This is an example of a Histogram using D3.js integrated into a React component.</Text>
+        <div style={pageStyles}>
+          <H2>Histogram</H2>
+          <P style={paragraphStyles}>The histogram visualizes the distribution of data across different ranges or bins.</P>
+        </div>
+
+        <div style={infoStyles}>
+          <Title>Example</Title>
+          <Text style={{ marginTop: `12px` }}>This is an example of a React & D3 histogram component that you can use.</Text>
+        </div>
+
         <div style={chartContainerStyles}>
-          <HistogramChart data={EXAMPLE_DUMMY_DATA} style={{ height: '100%', width: '100%' }} />
+          <HistogramChart data={EXAMPLE_DUMMY_DATA} />
+          <ChartLegend data={EXAMPLE_LEGEND_DATA} />
         </div>
       </TwoColumnLayoutFull>
       <GlobalModalManager />

@@ -9,9 +9,9 @@ const DotPlot = (props) => {
     if (!d3Container.current || width <= 0 || !props.data) return;
 
     const svg = d3.select(d3Container.current);
-    svg.selectAll('*').remove(); // Clear the SVG content before drawing
+    svg.selectAll('*').remove();
 
-    const margin = { top: 20, right: 30, bottom: 5, left: 10 };
+    const margin = { top: 24, right: 32, bottom: 8, left: 16 };
     const height = 400 - margin.top - margin.bottom;
 
     const greatestValues = 15;
@@ -28,14 +28,13 @@ const DotPlot = (props) => {
 
     svg.attr('width', width).attr('height', height + margin.top + margin.bottom);
 
-    svg
+    const xAxis = svg
       .append('g')
       .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(xScale).tickFormat((d) => `${d}%`))
-      .attr('color', 'var(--theme-border)')
-      .selectAll('text')
-      .style('font-size', '12px')
-      .style('color', 'var(--theme-text)');
+      .call(d3.axisBottom(xScale).tickFormat((d) => `${d}%`));
+
+    xAxis.attr('color', 'var(--theme-border)');
+    xAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
 
     const helperLinesGroup = svg.append('g');
     props.data.forEach((d, i) => {
@@ -43,13 +42,8 @@ const DotPlot = (props) => {
       const xStart = margin.left;
       const xEnd = width - margin.right;
 
-      // helper line
       helperLinesGroup.append('line').attr('x1', xStart).attr('x2', xEnd).attr('y1', yCoordinate).attr('y2', yCoordinate).attr('stroke', 'var(--theme-border)');
-
-      // circle at the start of the line
       helperLinesGroup.append('circle').attr('cx', xStart).attr('cy', yCoordinate).attr('r', 3).attr('fill', 'var(--theme-border)');
-
-      // circle at the end of the line
       helperLinesGroup.append('circle').attr('cx', xEnd).attr('cy', yCoordinate).attr('r', 3).attr('fill', 'var(--theme-border)');
     });
 
@@ -61,8 +55,8 @@ const DotPlot = (props) => {
       .append('circle')
       .attr('cx', (d) => xScale(d.value))
       .attr('cy', (d) => yScale(d.label) + yScale.bandwidth() / 2)
-      .attr('r', (d) => (d.value > greatestValues ? 8 : 5))
-      .attr('fill', (d) => (d.value > greatestValues ? 'var(--theme-success)' : 'var(--theme-error-subdued)')); // Color based on value
+      .attr('r', (d) => (d.value > greatestValues ? 8 : 4))
+      .attr('fill', (d) => (d.value > greatestValues ? 'var(--theme-graph-positive)' : 'var(--theme-graph-negative)')); // Color based on value
 
     svg
       .append('g')
@@ -70,11 +64,11 @@ const DotPlot = (props) => {
       .data(props.data)
       .enter()
       .append('text')
-      .attr('x', (d) => xScale(d.value) + 10)
+      .attr('x', (d) => xScale(d.value) + 8)
       .attr('y', (d) => yScale(d.label) + yScale.bandwidth() / 2)
       .attr('dy', '0.35em')
       .text((d) => d.value)
-      .style('font-size', '12px')
+      .style('font-size', 'var(--type-scale-fixed-small)')
       .attr('fill', 'var(--theme-text)');
   };
 
@@ -92,7 +86,7 @@ const DotPlot = (props) => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return <svg ref={d3Container} style={{ width: '100%', height: '400px', ...props.style }} />;
+  return <svg ref={d3Container} style={{ width: '100%' }} />;
 };
 
 export default DotPlot;
