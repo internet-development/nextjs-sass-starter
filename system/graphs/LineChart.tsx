@@ -1,9 +1,9 @@
+import * as React from 'react';
 import * as d3 from 'd3';
-import React, { useEffect, useRef, useState } from 'react';
 
 const LineChart = (props) => {
-  const d3Container = useRef<HTMLDivElement | null | any>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const d3Container = React.useRef<HTMLDivElement | null | any>(null);
+  const [containerWidth, setContainerWidth] = React.useState(0);
 
   const drawChart = (width) => {
     if (!d3Container) {
@@ -14,7 +14,7 @@ const LineChart = (props) => {
       const svg = d3.select(d3Container.current);
       svg.selectAll('*').remove();
 
-      const margin = { top: 24, right: 48, bottom: 32, left: 48 };
+      const margin = { top: 16, right: 0, bottom: 32, left: 32 };
       const height = +svg.attr('height') - margin.top - margin.bottom;
       const drawWidth = width - margin.left - margin.right;
 
@@ -45,12 +45,12 @@ const LineChart = (props) => {
         .domain([0, d3.max(props.data, (d) => d.value)])
         .range([height, 0]);
 
-      const yAxis = g.append('g').call(d3.axisLeft(yScale).tickSize(-drawWidth).tickPadding(8));
+      const yAxis = g.append('g').call(d3.axisLeft(yScale).ticks(6).tickSize(-drawWidth).tickPadding(8));
       yAxis.attr('shape-rendering', 'crispEdges').selectAll('.tick text').style('font-size', 'var(--type-scale-fixed-small)').style('fill', 'var(--theme-border)');
       yAxis.selectAll('.domain, .tick line').attr('stroke', 'var(--theme-border)');
       yAxis.selectAll('.domain').remove();
 
-      const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
+      const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale).ticks(6));
       xAxis.selectAll('.tick text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
       xAxis.selectAll('.tick line, .domain').style('stroke', 'var(--theme-border)');
       xAxis.selectAll('.domain').remove();
@@ -117,10 +117,8 @@ const LineChart = (props) => {
       const yUpper = yScale(d.upper_ci);
       const yMidpoint = (yLower + yUpper) / 2;
 
-      // Midpoint
       g.append('circle').attr('cx', x).attr('cy', yMidpoint).attr('r', 3).attr('fill', color);
 
-      // Midpoint label
       g.append('text')
         .attr('x', x + 5)
         .attr('y', yMidpoint)
@@ -149,7 +147,7 @@ const LineChart = (props) => {
     });
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!d3Container || !d3Container.current) {
       return;
     }
@@ -167,7 +165,7 @@ const LineChart = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [props.data]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     drawChart(containerWidth);
   }, [containerWidth, props.data, props.showErrorBars]);
 

@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
+import AreaChart from '@root/system/graphs/AreaChart';
 import AppLayout from '@system/layouts/AppLayout';
 import Cookies from 'js-cookie';
-import LineChart from '@root/system/graphs/LineChart';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
@@ -32,7 +32,7 @@ function ExampleStock(props) {
 
   const isDataHydrated = stock && parsedData;
 
-  const tableHeadings = ['Object key', 'Object value'];
+  const tableHeadings = ['key', 'value'];
   const tableData = Object.keys(stock).map((each) => {
     return {
       id: each,
@@ -77,7 +77,9 @@ function ExampleStock(props) {
         ) : (
           <FormHeading style={{ marginTop: 48 }}>Access denied</FormHeading>
         )}
-        {isDataHydrated ? <LineChart data={parsedData} style={{ marginTop: 32 }} /> : <FormParagraph>You must be signed in to view stock quotes</FormParagraph>}
+        <br />
+        <br />
+        {isDataHydrated ? <AreaChart data={parsedData} /> : <FormParagraph>You must be signed in to view stock quotes</FormParagraph>}
         {isDataHydrated ? <Table data={tableData} headings={tableHeadings} style={{ marginTop: 24 }} /> : null}
       </ThinAppLayout>
       <GlobalModalManager viewer={props.viewer} />
