@@ -25,7 +25,7 @@ export default function DemoPricing(props) {
               <div className={styles.bottom}>
                 <H1>Free</H1>
                 <Text style={{ marginBottom: 24 }}>Forever</Text>
-                <Button style={{ minHeight: 48 }} href="/examples/authentication">
+                <Button style={{ minHeight: 48 }} href="/examples/features/authentication">
                   Sign up
                 </Button>
                 <ul className={styles.list}>

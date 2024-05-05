@@ -27,10 +27,10 @@ export default function DemoSettings(props) {
           </FormParagraph>
 
           <div style={{ marginTop: 48 }}>
-            <ActionItem icon={`⭢`} href={`/examples/authentication-google`} style={{ marginTop: 16 }}>
+            <ActionItem icon={`⭢`} href={`/examples/features/authentication/google`} style={{ marginTop: 16 }}>
               Authenticate with Google
             </ActionItem>
-            <ActionItem icon={`⭢`} href={`/examples/authentication`}>
+            <ActionItem icon={`⭢`} href={`/examples/features/authentication`}>
               Authenticate
             </ActionItem>
           </div>
@@ -85,8 +85,8 @@ export default function DemoSettings(props) {
       props.data && props.data.length
         ? props.data.map((each) => {
             let link = '#';
-            if (each.data.type === 'INVOICE') link = `/examples/invoices/${each.id}`;
-            if (each.data.type === 'STATEMENT_OF_WORK') link = `/examples/statement-of-work/${each.id}`;
+            if (each.data.type === 'INVOICE') link = `/examples/features/invoices/${each.id}`;
+            if (each.data.type === 'STATEMENT_OF_WORK') link = `/examples/features/statement-of-work/${each.id}`;
 
             return {
               id: each.id,
@@ -114,10 +114,10 @@ export default function DemoSettings(props) {
         </div>
         <div className={styles.row} style={{ paddingBottom: 88 }}>
           <div className={styles.column}>
-            <ActionItem icon={`⭢`} href={`/examples/invoices`}>
+            <ActionItem icon={`⭢`} href={`/examples/features/invoices`}>
               Manage and edit your invoices
             </ActionItem>
-            <ActionItem icon={`⭢`} href={`/examples/statement-of-work`}>
+            <ActionItem icon={`⭢`} href={`/examples/features/statement-of-work`}>
               Manage and edit your Statement of Works
             </ActionItem>
           </div>

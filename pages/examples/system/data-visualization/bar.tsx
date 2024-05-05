@@ -56,7 +56,7 @@ function ExampleSystemDataVisualizationBar(props) {
 
   return (
     <Page
-      title="nextjs-sass-starter: system: data visualization: bar"
+      title="wireframes.internet.dev ➝ system ➝ data visualization ➝ bar"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/data-visualization/bar"
     >

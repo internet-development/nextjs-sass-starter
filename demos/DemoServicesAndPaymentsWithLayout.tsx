@@ -40,7 +40,7 @@ export default function DemoBentoLayout(props) {
                   Already obtained
                 </Button>
               ) : (
-                <Button style={{ height: 48, marginTop: 24, width: '100%' }} href="/examples/authentication">
+                <Button style={{ height: 48, marginTop: 24, width: '100%' }} href="/examples/features/authentication">
                   Sign up
                 </Button>
               )}
@@ -76,7 +76,7 @@ export default function DemoBentoLayout(props) {
                   </Button>
                 )
               ) : (
-                <Button style={{ height: 48, marginTop: 24, width: '100%' }} href="/examples/authentication">
+                <Button style={{ height: 48, marginTop: 24, width: '100%' }} href="/examples/features/authentication">
                   Sign up
                 </Button>
               )}

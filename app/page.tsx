@@ -4,7 +4,6 @@ import '@root/animations.scss';
 import Bluesky from '@system/svg/social/Bluesky';
 import DefaultLayout from '@components/DefaultLayout';
 import ListItem from '@components/ListItem';
-import Showcase from '@components/Showcase';
 import Package from '@root/package.json';
 import Script from 'next/script';
 
@@ -67,7 +66,7 @@ export default async function Page(props) {
           gtag('config', 'GA_MEASUREMENT_ID');
         `}
       </Script> */}
-      <div style={{ lineHeight: '1.6', maxWidth: 768 }}>Showcase — Take a look at what we have done with this template</div>
+      <div style={{ lineHeight: '1.6', maxWidth: 768 }}>Showcase — Take a look at what we have done with this template.</div>
       <div>
         <ListItem href="https://txt.dev">txt.dev</ListItem>
         <ListItem href="https://internet.dev/team">internet.dev</ListItem>
@@ -75,70 +74,73 @@ export default async function Page(props) {
       </div>
 
       <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
-        Explore — We have many many examples, components, and templates for{' '}
+        Explore — We have many many examples, components, and{' '}
         <a href="https://github.com/internet-development/nextjs-sass-starter" target="_blank">
-          nextjs-sass-starter
-        </a>
-        , they are for kick-starting your upcoming projects. These serve as an ideal foundation, and feature real production APIs that you can integrate if they meet your project's
-        needs.
+          source code
+        </a>{' '}
+        for everything listed.
       </div>
       <div>
         <ListItem href="/examples/animations/text-swapping">Animations ➝ text swapping</ListItem>
-        <ListItem href="/examples/authentication">Authentication to API key</ListItem>
-        <ListItem href="/examples/authentication-bluesky" isWIP>
-          <Bluesky height="20px" style={{ marginRight: 16 }} />
-          Authentication with Bluesky to API key
-        </ListItem>
-        <ListItem href="/examples/authentication-google">Authentication with Google to API key</ListItem>
-        <ListItem href="/examples/components-application-site">Components ➝ application overview, footer</ListItem>
+
         <ListItem href="/examples">Components ➝ navigation, hero section</ListItem>
-        <ListItem href="/examples/components-post">Components ➝ navigation, blog post, footer</ListItem>
-        <ListItem href="/examples/components-forms">Components ➝ navigation, form elements</ListItem>
-        <ListItem href="/examples/components-full-section">Components ➝ navigation, full dvh sections</ListItem>
-        <ListItem href="/examples/components-modals">Components ➝ navigation, index modal trigger</ListItem>
-        <ListItem href="/examples/components-no-sections">Components ➝ navigation, naked components</ListItem>
-        <ListItem href="/examples/components-product-marketing">Components ➝ navigation, product marketing</ListItem>
-        <ListItem href="/examples/components-half-section">Components ➝ navigation, ½ dvh sections</ListItem>
-        <ListItem href="/examples/components-table">Components ➝ navigation, table</ListItem>
-        <ListItem href="/examples/earnings-requirement-calculator">Earnings requirement calculator</ListItem>
-        <ListItem href="/examples/empty-application-template-page">Empty application template page</ListItem>
-        <ListItem href="/examples/empty-grid-template-page">Empty grid template page</ListItem>
-        <ListItem href="/examples/empty-isometric-grid-template-page">Empty isometric grid template page</ListItem>
-        <ListItem href="/examples/files" isAuth>
-          File management (with AWS S3 presigned URL)
+        <ListItem href="/examples/components/application-site">Components ➝ application overview, footer</ListItem>
+        <ListItem href="/examples/components/post">Components ➝ navigation, blog post, footer</ListItem>
+        <ListItem href="/examples/components/forms">Components ➝ navigation, form elements</ListItem>
+        <ListItem href="/examples/components/full-section">Components ➝ navigation, full dvh sections</ListItem>
+        <ListItem href="/examples/components/modals">Components ➝ navigation, index modal trigger</ListItem>
+        <ListItem href="/examples/components/no-sections">Components ➝ navigation, naked components</ListItem>
+        <ListItem href="/examples/components/product-marketing">Components ➝ navigation, product marketing</ListItem>
+        <ListItem href="/examples/components/half-section">Components ➝ navigation, ½ dvh sections</ListItem>
+        <ListItem href="/examples/components/table">Components ➝ navigation, table</ListItem>
+        <ListItem href="/examples/components/windows">Components ➝ windows</ListItem>
+        <ListItem href="/examples/components/windows-connected" isWIP>
+          Components ➝ windows connected, diagram
         </ListItem>
-        <ListItem href="/examples/stocks/fixed-watchlist" isAuth>
-          Fixed Stock Watchlist
+        <ListItem href="/examples/components/windows-arrow-connected" isWIP>
+          Components ➝ windows arrow connected, diagram
         </ListItem>
-        <ListItem href="/examples/invoices" isAuth>
-          Invoice management
+
+        <ListItem href="/examples/empty/application-template-page">Empty ➝ application template page</ListItem>
+        <ListItem href="/examples/empty/grid-template-page">Empty ➝ grid template page</ListItem>
+        <ListItem href="/examples/empty/isometric-grid-template-page">Empty ➝ isometric grid template page</ListItem>
+
+        <ListItem href="/examples/features/authentication">Features ➝ authentication ➝ to API key</ListItem>
+        <ListItem href="/examples/features/authentication/bluesky" isWIP>
+          <Bluesky height="20px" style={{ marginRight: 16 }} />
+          Features ➝ authentication ➝ Bluesky to API key
         </ListItem>
-        <ListItem href="/examples/job-posting">Job posting</ListItem>
-        <ListItem href="/examples/services" isAuth>
-          Purchase services
+        <ListItem href="/examples/features/authentication/google">Features ➝ authentication ➝ Google to API key</ListItem>
+        <ListItem href="/examples/features/earnings-requirement-calculator">Features ➝ earnings requirement calculator</ListItem>
+        <ListItem href="/examples/features/files" isAuth>
+          Features ➝ file management (with AWS S3 presigned URL)
         </ListItem>
-        <ListItem href="/examples/settings" isAuth isWIP>
-          Settings
+        <ListItem href="/examples/features/stocks/fixed-watchlist" isAuth>
+          Features ➝ fixed stock watchlist
         </ListItem>
-        <ListItem href="/examples/statement-of-work" isAuth>
-          Statement of Work management
+        <ListItem href="/examples/features/invoices" isAuth>
+          Features ➝ invoice management
         </ListItem>
+        <ListItem href="/examples/features/job-posting">Features ➝ job posting</ListItem>
+        <ListItem href="/examples/features/services" isAuth>
+          Features ➝ purchase services
+        </ListItem>
+        <ListItem href="/examples/features/settings" isAuth isWIP>
+          Features ➝ settings
+        </ListItem>
+        <ListItem href="/examples/features/statement-of-work" isAuth>
+          Features ➝ statement of Work management
+        </ListItem>
+        <ListItem href="/examples/features/threads">Features ➝ threads</ListItem>
+
         <ListItem href="/examples/system/colors">System ➝ colors</ListItem>
         <ListItem href="/examples/system/typography">System ➝ typography</ListItem>
         <ListItem href="/examples/system/data-visualization" isWIP>
           System ➝ data visualization
         </ListItem>
-        <ListItem href="/examples/threads">Threads</ListItem>
-        <ListItem href="/examples/windows">Window management</ListItem>
-        <ListItem href="/examples/windows-connected" isWIP>
-          Windows connected, diagram
-        </ListItem>
-        <ListItem href="/examples/windows-arrow-connected" isWIP>
-          Windows arrow connected, diagram
-        </ListItem>
       </div>
       <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
-        Are you new to web development and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?
+        Learn — Are you new and want to work alongside the <a href="https://internet.dev">Internet Development Studio</a> team?
       </div>
       <div style={{ paddingBottom: 128 }}>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter/issues/2">Part I ➝ Setting up SSH keys locally (MacOS)</ListItem>

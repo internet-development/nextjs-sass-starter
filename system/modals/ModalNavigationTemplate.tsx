@@ -42,10 +42,10 @@ export default function ModalNavigationTemplate(props) {
         </span>
       ) : (
         <>
-          <a href="/examples/authentication-google" className={styles.item}>
+          <a href="/examples/features/authentication/google" className={styles.item}>
             Sign in with Google
           </a>
-          <a href="/examples/authentication" className={styles.item}>
+          <a href="/examples/features/authentication" className={styles.item}>
             Sign in
           </a>
         </>

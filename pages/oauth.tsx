@@ -10,7 +10,7 @@ function OAuthPage(props) {
     }
 
     Cookies.set('sitekey', props.code, { secure: true });
-    window.location.replace('/examples/authentication-google');
+    window.location.replace('/examples/features/authentication/google');
   });
 
   return <div>Redirecting...</div>;

@@ -13,7 +13,6 @@ const getHeaders = (key) => {
 export async function attemptFetch(url, method, headers, body) {
   try {
     const response = await fetch(url, { method, headers, body });
-    console.log(response);
     const result = await response.json();
     return !result.error ? result : null;
   } catch (e) {

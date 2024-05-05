@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Utilities from '@common/utilities';
 
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
@@ -13,7 +12,7 @@ import { H1, Lead } from '@system/typography';
 function ExampleBase(props) {
   return (
     <Page
-      title="nextjs-sass-starter: Example"
+      title="wireframes.internet.dev ➝ example"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples"
     >

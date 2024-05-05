@@ -9,13 +9,6 @@
 'use strict';
 
 /**
- * Module exports.
- */
-
-module.exports = vary;
-module.exports.append = append;
-
-/**
  * RegExp to match field-name in RFC 7230 sec 3.2
  *
  * field-name    = token

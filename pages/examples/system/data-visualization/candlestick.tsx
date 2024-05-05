@@ -31,7 +31,7 @@ function ExampleSystemDataVisualizationCandlestick(props) {
 
   return (
     <Page
-      title="nextjs-sass-starter: system: data visualization: candlestick"
+      title="wireframes.internet.dev ➝ system ➝ data visualization ➝ candlestick"
       description="Explore our design system with a candlestick chart example. This template is available on GitHub."
       url="https://wireframes.internet.dev/examples/system/data-visualization/candlestick"
     >

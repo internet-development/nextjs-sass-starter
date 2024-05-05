@@ -246,7 +246,4 @@ function middlewareWrapper(o) {
   };
 }
 
-// can pass either an options hash, an options delegate, or nothing
-module.exports = middlewareWrapper;
-
 export default middlewareWrapper;

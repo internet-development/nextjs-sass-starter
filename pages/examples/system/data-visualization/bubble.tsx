@@ -37,7 +37,7 @@ function ExampleSystemDataVisualizationBubble(props) {
 
   return (
     <Page
-      title="nextjs-sass-starter: system: data visualization: bubble"
+      title="wireframes.internet.dev ➝ system ➝ data visualization ➝ bubble"
       description="A lightweight website template to test our design system with a bubble chart example. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/data-visualization/bubble"
     >

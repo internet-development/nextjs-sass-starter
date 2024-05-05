@@ -158,7 +158,7 @@ function ExampleAnimationsTypeSwapping(props) {
 
   return (
     <Page
-      title="nextjs-sass-starter: animations: text swapping"
+      title="wireframes.internet.dev ➝ animations ➝ text swapping"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/animations/text-swapping"
     >

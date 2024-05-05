@@ -36,7 +36,7 @@ function ExampleSystemDataVisualizationCohortChart(props) {
 
   return (
     <Page
-      title="nextjs-sass-starter: system: data visualization: cohort chart"
+      title="wireframes.internet.dev ➝ system ➝ data visualization ➝ cohort"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/system/data-visualization/cohort"
     >
@@ -45,7 +45,7 @@ function ExampleSystemDataVisualizationCohortChart(props) {
         <div style={pageStyles}>
           <H2>Cohort</H2>
           <P style={paragraphStyle}>
-            Cohort Chart visualization is a method of graphically representing numerical data where the value of each data point is indicated using colors. It can help visualize
+            Cohort chart visualization is a method of graphically representing numerical data where the value of each data point is indicated using colors. It can help visualize
             data distribution across different groups and variables.
           </P>
         </div>

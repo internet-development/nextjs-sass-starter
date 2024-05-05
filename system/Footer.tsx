@@ -45,31 +45,31 @@ export default function Footer(props) {
         </div>
         <div className={styles.subColumn}>
           <div className={styles.subTitle}>Components</div>
-          <a href="/examples/components-forms" className={styles.item}>
+          <a href="/examples/components/forms" className={styles.item}>
             Forms
           </a>
-          <a href="/examples/components-table" className={styles.item}>
+          <a href="/examples/components/table" className={styles.item}>
             Tables
           </a>
-          <a href="/examples/components-full-section" className={styles.item}>
+          <a href="/examples/components/full-section" className={styles.item}>
             Marketing
           </a>
-          <a href="/examples/components-product-marketing" className={styles.item}>
+          <a href="/examples/components/product-marketing" className={styles.item}>
             Simple marketing
           </a>
         </div>
         <div className={styles.subColumn}>
           <div className={styles.subTitle}>API Demos</div>
-          <a href="/examples/services" className={styles.item}>
+          <a href="/examples/features/services" className={styles.item}>
             Services
           </a>
-          <a href="/examples/threads" className={styles.item}>
+          <a href="/examples/features/threads" className={styles.item}>
             Threads
           </a>
-          <a href="/examples/stocks/fixed-watchlist" className={styles.item}>
+          <a href="/examples/features/stocks/fixed-watchlist" className={styles.item}>
             Stock portfolio
           </a>
-          <a href="/examples/settings" className={styles.item}>
+          <a href="/examples/features/settings" className={styles.item}>
             User settings
           </a>
         </div>

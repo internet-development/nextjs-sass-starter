@@ -82,7 +82,7 @@ function ExampleSystemDataVisualizationTree(props) {
 
   return (
     <Page
-      title="nextjs-sass-starter: system: data visualization: tree"
+      title="wireframes.internet.dev ➝ system ➝ data visualization ➝ tree"
       description="Explore the capabilities of node tree charts in data visualization through this interactive example."
       url="https://wireframes.internet.dev/examples/system/data-visualization/tree"
     >
