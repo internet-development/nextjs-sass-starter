@@ -76,11 +76,11 @@ export default function Footer(props) {
       </div>
       <div className={styles.bottom}>
         <div className={styles.left}>
-          <a href="#" className={styles.subItem} target="_blank">
+          <a href="https://txt.dev/wwwjim/intdev-privacy-policy" className={styles.subItem} target="_blank">
             Privacy Policy
           </a>
-          <a href="#" className={styles.subItem} target="_blank">
-            Terms of Use
+          <a href="https://txt.dev/wwwjim/intdev-terms-of-service" className={styles.subItem} target="_blank">
+            Terms of Service
           </a>
         </div>
         <div className={styles.right}>

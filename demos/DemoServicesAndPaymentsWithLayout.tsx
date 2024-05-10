@@ -144,17 +144,17 @@ export default function DemoBentoLayout(props) {
           <div className={styles.subRowContent}>
             <Text style={{ marginTop: 16 }}>
               <i>
-                <strong>٭ Files</strong> — By uploading data through our service, you consent to our{' '}
-                <a href="#" className={styles.link}>
+                <strong>٭ Data</strong> — By uploading data through our service, you consent to our{' '}
+                <a href="https://txt.dev/wwwjim/intdev-terms-of-service" className={styles.link} target="_blank">
                   Terms of Service
                 </a>
                 ,{' '}
-                <a href="#" className={styles.link}>
+                <a href="https://txt.dev/wwwjim/intdev-privacy-policy" className={styles.link} target="_blank">
                   Privacy Policy
                 </a>
                 , and{' '}
-                <a href="#" className={styles.link}>
-                  Community Guidelines
+                <a href="https://txt.dev/wwwjim/intdev-acceptable-use" className={styles.link} target="_blank">
+                  Acceptable Use Policy
                 </a>
                 . Our API enforces a strict file size limit of 100MB to prevent misuse of our services. However, we may consider increasing this limit once we have a clearer
                 understanding of your use case. Reach out to us if you wish to discuss.

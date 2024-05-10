@@ -79,6 +79,27 @@ function ExampleAuthentication(props) {
           Waiting for Paul Frazee to finish the Bluesky OAuth implementation he promised me with route redirects and all. Once that is complete, you will be able to sign in with
           Bluesky.
         </FormParagraph>
+
+        <Button visual href="https://api.internet.dev/authenticate-google" style={{ marginTop: 24, width: '100%' }}>
+          Coming soon
+        </Button>
+
+        {!currentUser ? (
+          <>
+            <FormParagraph style={{ marginTop: 32 }}>If you our Services through these wireframes you agree to the following: </FormParagraph>
+            <div style={{ marginTop: 16 }}>
+              <ActionItem icon={`⊹`} href="https://txt.dev/wwwjim/intdev-acceptable-use" target="_blank">
+                Acceptable Use Policy
+              </ActionItem>
+              <ActionItem icon={`⊹`} href="https://txt.dev/wwwjim/intdev-terms-of-service" target="_blank">
+                Terms of Service
+              </ActionItem>
+              <ActionItem icon={`⊹`} href="https://txt.dev/wwwjim/intdev-privacy-policy" target="_blank">
+                Privacy Policy
+              </ActionItem>
+            </div>
+          </>
+        ) : null}
       </ThinAppLayout>
       <GlobalModalManager viewer={currentUser} />
     </Page>

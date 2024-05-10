@@ -79,6 +79,23 @@ function ExampleAuthentication(props) {
         <Button href="https://api.internet.dev/authenticate-google" style={{ marginTop: 24, width: '100%' }}>
           Sign in with Google
         </Button>
+
+        {!currentUser ? (
+          <>
+            <FormParagraph style={{ marginTop: 32 }}>If you our Services through these wireframes you agree to the following: </FormParagraph>
+            <div style={{ marginTop: 16 }}>
+              <ActionItem icon={`⊹`} href="https://txt.dev/wwwjim/intdev-acceptable-use" target="_blank">
+                Acceptable Use Policy
+              </ActionItem>
+              <ActionItem icon={`⊹`} href="https://txt.dev/wwwjim/intdev-terms-of-service" target="_blank">
+                Terms of Service
+              </ActionItem>
+              <ActionItem icon={`⊹`} href="https://txt.dev/wwwjim/intdev-privacy-policy" target="_blank">
+                Privacy Policy
+              </ActionItem>
+            </div>
+          </>
+        ) : null}
       </ThinAppLayout>
       <GlobalModalManager viewer={currentUser} />
     </Page>
