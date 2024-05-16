@@ -19,7 +19,7 @@ export default function Navigation() {
         <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
           Rotate Theme
         </span>
-        <a className={styles.item} href="/examples/settings">
+        <a className={styles.item} href="/examples/features/settings">
           Settings
         </a>
         <a className={styles.item} href="/examples/services">

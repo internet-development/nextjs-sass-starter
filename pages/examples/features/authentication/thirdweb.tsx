@@ -180,7 +180,7 @@ function ExampleWeb3Authentication(props) {
               >
                 Hide user information
               </ActionItem>
-              <ActionItem icon={`⭢`} href="/examples/settings">
+              <ActionItem icon={`⭢`} href="/examples/features/settings">
                 View settings
               </ActionItem>
             </div>

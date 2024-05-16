@@ -70,7 +70,7 @@ export default function DemoSettings(props) {
               {JSON.stringify(props.viewer, null, 2)}
             </MonospacePreview>
             <div style={{ marginTop: 24, paddingBottom: 88 }}>
-              <ActionItem icon={`⊹`} href={`/examples/settings`} style={{ marginTop: 16 }}>
+              <ActionItem icon={`⊹`} href={`/examples/features/settings`} style={{ marginTop: 16 }}>
                 Refresh this page
               </ActionItem>
             </div>

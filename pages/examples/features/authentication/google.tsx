@@ -56,7 +56,7 @@ function ExampleAuthentication(props) {
             Sign out
           </Button>
           <div style={{ marginTop: 16 }}>
-            <ActionItem icon={`⭢`} href="/examples/settings">
+            <ActionItem icon={`⭢`} href="/examples/features/settings">
               View settings
             </ActionItem>
           </div>

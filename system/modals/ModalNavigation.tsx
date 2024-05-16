@@ -16,7 +16,7 @@ export default function ModalNavigation(props) {
       <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
         Rotate Theme
       </span>
-      <a href="/examples/settings" className={styles.item}>
+      <a href="/examples/features/settings" className={styles.item}>
         Settings
       </a>
       <a href="/examples/services" className={styles.item}>
