@@ -19,10 +19,10 @@ export default function ModalNavigation(props) {
       <a href="/examples/features/settings" className={styles.item}>
         Settings
       </a>
-      <a href="/examples/services" className={styles.item}>
+      <a href="/examples/features/services" className={styles.item}>
         Services
       </a>
-      <a href="/examples/files" className={styles.item}>
+      <a href="/examples/features/files" className={styles.item}>
         Files
       </a>
       <hr className={styles.divider} />
