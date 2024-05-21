@@ -33,7 +33,7 @@ function ExampleModals(props) {
               });
             }}
           >
-            Join or sign up
+            Join or sign in
           </Button>
         </Content>
       </SectionFullHeight>

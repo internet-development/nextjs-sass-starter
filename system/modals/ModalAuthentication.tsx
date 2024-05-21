@@ -93,7 +93,7 @@ export default function ModalAuthentication(props) {
             }}
             style={{ marginTop: 24, width: '100%' }}
           >
-            Sign in with e-mail
+            Continue with e-mail
           </Button>
           {loading ? null : (
             <Button loading={loading} href="https://api.internet.dev/authenticate-google" style={{ marginTop: 16, width: '100%' }}>
