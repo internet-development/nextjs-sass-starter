@@ -3,10 +3,6 @@ import styles from '@system/Button.module.scss';
 import Loader from '@system/Loader';
 
 export default function Button(props) {
-  if (props.disabled) {
-    return <button children={props.children} style={props.style} className={styles.disabled} />;
-  }
-
   if (props.visual) {
     return <button children={props.children} style={props.style} className={styles.visual} />;
   }

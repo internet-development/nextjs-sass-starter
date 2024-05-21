@@ -3,7 +3,10 @@ import styles from '@system/modals/Modals.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import Bluesky from '@system/svg/social/Bluesky';
 import Button from '@system/Button';
+import Cookies from 'js-cookie';
+import Google from '@system/svg/social/Google';
 import Input from '@system/Input';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
@@ -24,7 +27,13 @@ export default function ModalAuthentication(props) {
             <Button
               loading={loading}
               onClick={async () => {
-                alert('wip');
+                const confirm = window.confirm('Are you sure?');
+                if (!confirm) {
+                  return;
+                }
+
+                Cookies.remove('sitekey');
+                window.location.reload();
               }}
               style={{ marginTop: 24, width: '100%' }}
             >
@@ -38,7 +47,7 @@ export default function ModalAuthentication(props) {
 
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent onOutsideEvent={() => props.onShowModal(null)} style={{ width: '100%', maxWidth: 296, margin: `0 auto 0 auto` }}>
+      <OutsideElementEvent onOutsideEvent={() => props.onShowModal(null)} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
         <div className={styles.childModal} style={{ width: '100%', padding: 24 }}>
           <FormSubHeading>Sign in</FormSubHeading>
           <FormParagraph>Enhance your experience by signing in or creating an account.</FormParagraph>
@@ -53,7 +62,7 @@ export default function ModalAuthentication(props) {
             }}
             style={{ marginTop: 24, width: '100%' }}
           >
-            Continue and sign in
+            Sign in with e-mail
           </Button>
           <Button
             loading={loading}
@@ -62,7 +71,7 @@ export default function ModalAuthentication(props) {
             }}
             style={{ marginTop: 16, width: '100%' }}
           >
-            Sign in with Google
+            <Google height="16px" style={{ marginRight: 16 }} /> Sign in with Google
           </Button>
           <Button
             disabled
@@ -72,7 +81,7 @@ export default function ModalAuthentication(props) {
             }}
             style={{ marginTop: 16, width: '100%' }}
           >
-            Sign in with Bluesky
+            <Bluesky height="16px" style={{ marginRight: 16, color: '#0A7AFF' }} /> Sign in with Bluesky
           </Button>
         </div>
       </OutsideElementEvent>

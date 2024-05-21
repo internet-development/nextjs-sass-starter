@@ -80,6 +80,9 @@ function ExampleForms(props) {
           <Button href="#" style={{ marginTop: 48, width: '100%' }}>
             Submit
           </Button>
+          <Button href="#" style={{ marginTop: 16, width: '100%' }} visual>
+            Just for show
+          </Button>
           <Button loading style={{ marginTop: 16, width: '100%' }}>
             This text should not render
           </Button>
