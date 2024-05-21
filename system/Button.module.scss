@@ -54,7 +54,8 @@
   color: var(--theme-text);
   box-shadow: 0 0 0 1px var(--theme-border);
   background: var(--theme-border-subdued);
-  opacity: 0.7;
+  opacity: 0.5;
+  filter: blur(0.4px);
   flex-shrink: 0;
   border-radius: 8px;
   outline: 0;

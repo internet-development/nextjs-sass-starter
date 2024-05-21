@@ -1,5 +1,6 @@
 import styles from '@system/modals/Modals.module.scss';
 
+import * as Queries from '@common/queries';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
@@ -20,7 +21,7 @@ export default function ModalAuthentication(props) {
   if (props.viewer) {
     return (
       <div className={styles.wrapper}>
-        <OutsideElementEvent onOutsideEvent={() => props.onShowModal(null)} style={{ width: '100%', maxWidth: 296, margin: `0 auto 0 auto` }}>
+        <OutsideElementEvent onOutsideEvent={() => props.onShowModal(null)} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
           <div className={styles.childModal} style={{ width: '100%', padding: 24 }}>
             <FormSubHeading>You are authenticated</FormSubHeading>
             <FormParagraph>To clear your session, click on the button below.</FormParagraph>
@@ -58,31 +59,52 @@ export default function ModalAuthentication(props) {
           <Button
             loading={loading}
             onClick={async () => {
-              alert('wip');
+              if (Utilities.isEmpty(email)) {
+                alert('You must provide an e-mail.');
+                return;
+              }
+
+              if (Utilities.isEmpty(password)) {
+                alert('You must provide a password.');
+                return;
+              }
+
+              if (password.length < 4) {
+                alert('You must use at least 4 characters for your password.');
+                return;
+              }
+
+              setLoading(true);
+              const response = await Queries.userAuthenticate({ email, password });
+              setLoading(false);
+              if (!response) {
+                alert('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');
+                return;
+              }
+              Cookies.remove('sitekey');
+
+              const confirm = window.confirm('Would you like to save your Cookie to maintain a session?');
+              if (confirm) {
+                Cookies.set('sitekey', response.user.key, { secure: true });
+              }
+
+              props.onShowModal(null);
+              window.location.reload();
             }}
             style={{ marginTop: 24, width: '100%' }}
           >
             Sign in with e-mail
           </Button>
-          <Button
-            loading={loading}
-            onClick={async () => {
-              alert('wip');
-            }}
-            style={{ marginTop: 16, width: '100%' }}
-          >
-            <Google height="16px" style={{ marginRight: 16 }} /> Sign in with Google
-          </Button>
-          <Button
-            disabled
-            loading={loading}
-            onClick={async () => {
-              alert('wip');
-            }}
-            style={{ marginTop: 16, width: '100%' }}
-          >
-            <Bluesky height="16px" style={{ marginRight: 16, color: '#0A7AFF' }} /> Sign in with Bluesky
-          </Button>
+          {loading ? null : (
+            <Button loading={loading} href="https://api.internet.dev/authenticate-google" style={{ marginTop: 16, width: '100%' }}>
+              <Google height="16px" style={{ marginRight: 16 }} /> Sign in with Google
+            </Button>
+          )}
+          {loading ? null : (
+            <Button visual loading={loading} style={{ marginTop: 16, width: '100%' }}>
+              <Bluesky height="16px" style={{ marginRight: 16, color: '#0A7AFF' }} /> Sign in with Bluesky
+            </Button>
+          )}
         </div>
       </OutsideElementEvent>
     </div>

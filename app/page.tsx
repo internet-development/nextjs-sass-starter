@@ -112,9 +112,7 @@ export default async function Page(props) {
           Features ➝ authentication ➝ Bluesky to API key and optional session
         </ListItem>
 
-        <ListItem href="/examples/features/authentication/modal" isWIP>
-          Features ➝ authentication ➝ modal to session
-        </ListItem>
+        <ListItem href="/examples/features/authentication/modal">Features ➝ authentication ➝ modal to session</ListItem>
         <ListItem href="/examples/features/authentication/google">Features ➝ authentication ➝ Google to API key and optional session</ListItem>
         <ListItem href="/examples/features/earnings-requirement-calculator">Features ➝ earnings requirement calculator</ListItem>
         <ListItem href="/examples/features/files" isAuth>
