@@ -50,8 +50,8 @@ export default function ModalAuthentication(props) {
     <div className={styles.wrapper}>
       <OutsideElementEvent onOutsideEvent={() => props.onShowModal(null)} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
         <div className={styles.childModal} style={{ width: '100%', padding: 24 }}>
-          <FormSubHeading>Sign in</FormSubHeading>
-          <FormParagraph>Enhance your experience by signing in or creating an account.</FormParagraph>
+          <FormSubHeading>Join or sign in</FormSubHeading>
+          <FormParagraph>Sign in or create an account to enhance your experience. Enter your e-mail and password or use an OAuth provider to get started.</FormParagraph>
           <InputLabel style={{ marginTop: 24 }}>E-mail</InputLabel>
           <Input onChange={(e) => setEmail(e.target.value)} name="email" style={{ marginTop: 8 }} type="text" placeholder="Your e-mail" value={email} />
           <InputLabel style={{ marginTop: 24 }}>Password</InputLabel>
