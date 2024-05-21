@@ -78,7 +78,7 @@ function ExampleAuthentication(props) {
       <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
-        <FormParagraph>Enhance your experience by signing in or creating an account. Simply enter your e-mail and password to get started.</FormParagraph>
+        <FormParagraph>Sign in or create an account to enhance your experience. Simply enter your e-mail and password to get started.</FormParagraph>
         <FormParagraph>
           Using a Cookie to maintain your session is entirely optional. Once you've successfully signed in, you'll have the option to use a Cookie to persist your session.
         </FormParagraph>

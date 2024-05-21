@@ -17,17 +17,20 @@ export default function Navigation() {
       </section>
       <section className={styles.stretch}>
         <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
-          Rotate Theme
+          Theme
         </span>
         <a className={styles.item} href="/examples/features/settings">
           Settings
         </a>
-        <a className={styles.item} href="/examples/services">
+        <a className={styles.item} href="/examples/features/services">
           Services
         </a>
-        <a className={styles.item} href="/examples/files">
+        <a className={styles.item} href="/examples/features/files">
           Files
         </a>
+         <span className={styles.item} onClick={() => showModal({ name: 'AUTHENTICATION' })}>
+          Sign in
+        </span>
       </section>
       <section className={styles.right}>
         <span
