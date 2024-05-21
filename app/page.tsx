@@ -68,6 +68,7 @@ export default async function Page(props) {
       </Script> */}
       <div style={{ lineHeight: '1.6', maxWidth: 768 }}>Showcase — Take a look at what we have done with this template.</div>
       <div>
+        <ListItem href="https://marble.place">marble.place</ListItem>
         <ListItem href="https://txt.dev">txt.dev</ListItem>
         <ListItem href="https://internet.dev/team">internet.dev</ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter">nextjs-sass-starter source code</ListItem>
@@ -105,12 +106,16 @@ export default async function Page(props) {
         <ListItem href="/examples/empty/grid-template-page">Empty ➝ grid template page</ListItem>
         <ListItem href="/examples/empty/isometric-grid-template-page">Empty ➝ isometric grid template page</ListItem>
 
-        <ListItem href="/examples/features/authentication">Features ➝ authentication ➝ to API key</ListItem>
+        <ListItem href="/examples/features/authentication">Features ➝ authentication ➝ to API key and optional session</ListItem>
         <ListItem href="/examples/features/authentication/bluesky" isWIP>
           <Bluesky height="20px" style={{ marginRight: 16 }} />
-          Features ➝ authentication ➝ Bluesky to API key
+          Features ➝ authentication ➝ Bluesky to API key and optional session
         </ListItem>
-        <ListItem href="/examples/features/authentication/google">Features ➝ authentication ➝ Google to API key</ListItem>
+
+        <ListItem href="/examples/features/authentication/modal" isWIP>
+          Features ➝ authentication ➝ modal to session
+        </ListItem>
+        <ListItem href="/examples/features/authentication/google">Features ➝ authentication ➝ Google to API key and optional session</ListItem>
         <ListItem href="/examples/features/earnings-requirement-calculator">Features ➝ earnings requirement calculator</ListItem>
         <ListItem href="/examples/features/files" isAuth>
           Features ➝ file management (with AWS S3 presigned URL)
@@ -129,7 +134,7 @@ export default async function Page(props) {
           Features ➝ settings
         </ListItem>
         <ListItem href="/examples/features/statement-of-work" isAuth>
-          Features ➝ statement of Work management
+          Features ➝ statement of work management
         </ListItem>
         <ListItem href="/examples/features/threads">Features ➝ threads</ListItem>
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import ModalAuthentication from '@system/modals/ModalAuthentication';
 import ModalError from '@system/modals/ModalError';
 import ModalIndex from '@system/modals/ModalIndex';
 import ModalNavigation from '@system/modals/ModalNavigation';
@@ -33,6 +34,10 @@ export default function GlobalModalManager(props) {
 
   if (modalContent && modalContent.name === 'INDEX') {
     nextModal = <ModalIndex content={modalContent} onShowModal={showModal} />;
+  }
+
+  if (modalContent && modalContent.name === 'AUTHENTICATION') {
+    nextModal = <ModalAuthentication content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   return nextModal;
