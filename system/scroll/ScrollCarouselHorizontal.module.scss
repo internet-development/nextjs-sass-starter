@@ -1,31 +1,31 @@
 @keyframes scroll-carousel-horizontal {
   0% {
-    transform: translate3d(16rem, 15rem, 8rem) scale(0.4) rotate3d(8, 2, 2, 75deg);
+    transform: translate3d(16rem, 90rem, 0) scale(0.4) rotate3d(2, -100, 100, 30deg);
     opacity: 0.1;
     filter: blur(2rem);
   }
   30% {
     opacity: 0.8;
-    filter: blur(0rem);
-    transform: translate3d(2rem, 0, 0) rotate3d(2, -100, 100, 10deg) scale(0.8);
+    filter: blur(0.3rem);
+    transform: translate3d(8rem, 0, 0) rotate3d(2, -100, 100, 30deg) scale(0.8);
   }
   50% {
     opacity: 1;
     filter: blur(0);
-    transform: translate3d(0, 0, 0) scale(1.55);
+    z-index: 1;
+    transform: translate3d(0rem, 0rem, 0) scale(1.55);
   }
   70% {
-    filter: blur(0.5rem);
-    opacity: 0.5;
-    transform: rotate3d(16, 32, 16, 340deg) scale(1);
+    filter: blur(0.1rem);
+    opacity: 0.8;
+    transform: translate3d(4rem, 0, 0) rotate3d(2, -100, 100, -30deg) scale(0.8);
   }
   100% {
-    opacity: 0.1;
-    filter: blur(2rem);
-    transform: translate3d(15rem, 15rem, 15rem) scale(0.85) rotate3d(-8, -2, -2, 75deg);
+    opacity: 0.3;
+    filter: blur(0.3rem);
+    transform: translate3d(4rem, 30rem, 0) scale(0.4) rotate3d(2, -100, 100, -30deg);
   }
 }
-
 
 .carousel {
   overflow: hidden;
@@ -50,8 +50,8 @@
   scroll-snap-align: center;
 
   &::-webkit-scrollbar {
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
   }
   &::-webkit-scrollbar {
     background: transparent;
@@ -85,5 +85,4 @@
   border-radius: 16px;
   animation: scroll-carousel-horizontal 200ms ease;
   animation-timeline: --li-in-and-out-of-view;
-
 }

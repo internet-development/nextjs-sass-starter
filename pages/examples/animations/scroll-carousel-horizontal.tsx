@@ -21,7 +21,7 @@ function ExampleScrollCarouselHorizontal(props) {
     'https://images.beta.cosmos.so/2320d609-477d-4025-bfde-4ec45de46ae9?format=jpeg',
     'https://images.beta.cosmos.so/5a1bdea3-5026-4e13-8a91-595a294b1b08?format=jpeg',
     'https://images.beta.cosmos.so/456ee0c7-4d1e-487d-be7a-d21a12486b82?format=jpeg',
-    'https://images.beta.cosmos.so/3c6a6703-09c0-4d42-afcf-9dd20c38f4eb?format=jpeg'
+    'https://images.beta.cosmos.so/3c6a6703-09c0-4d42-afcf-9dd20c38f4eb?format=jpeg',
   ];
 
   return (

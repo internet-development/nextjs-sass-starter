@@ -1,6 +1,6 @@
 import styles from '@system/scroll/ScrollCarouselHorizontal.module.scss';
 
-import * as  React from 'react';
+import * as React from 'react';
 
 const ScrollCarouselHorizontal = (props) => {
   const doubledImages = [...props.images, ...props.images];
