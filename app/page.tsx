@@ -82,6 +82,7 @@ export default async function Page(props) {
         for everything listed.
       </div>
       <div>
+        <ListItem href="/examples/animations/scroll-carousel-horizontal" isWIP>Animations ➝ CSS based scroll carousel horizontal</ListItem>
         <ListItem href="/examples/animations/text-swapping">Animations ➝ text swapping</ListItem>
 
         <ListItem href="/examples">Components ➝ navigation, hero section</ListItem>
