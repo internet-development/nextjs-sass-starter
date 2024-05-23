@@ -1,0 +1,29 @@
+.cards {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  height: 178px;
+  width: 122px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.face {
+  width: 100%;
+  align-self: stretch;
+  transition: 200ms cubic-bezier(0.19, 1, 0.22, 1) transform;
+  background: var(--theme-background);
+  color: var(--theme-text);
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px 8px var(--theme-border);
+
+  &:hover {
+    transform: rotate(0deg) scale(1.8);
+    z-index: 1;
+  }
+}
