@@ -1,6 +1,9 @@
 import styles from '@system/layouts/CardHandLayout.module.scss';
 import * as React from 'react';
 
+// Source: https://commons.wikimedia.org/wiki/File:Card_back_01.svg
+// This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version. This library is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. See version 2.1 and version 3 of the GNU Lesser General Public License for more details.
+
 const CardBack = (props) => {
   return (
     <svg {...props} viewBox="0 0 167.07959 242.66504" xmlns="http://www.w3.org/2000/svg">
@@ -1215,7 +1218,38 @@ const CardBack = (props) => {
   );
 };
 
+const Card = (props) => {
+  let style = {};
+  if (props.selectedIndex === props.index) {
+    style = { transform: `rotateY(180deg) scale(2)`, zIndex: 1 };
+  }
+
+  return (
+    <div
+      className={styles.face}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!props.onClick) {
+          return;
+        }
+
+        props.onClick();
+      }}
+      style={style}
+    >
+      <div className={styles.back}>
+        <CardBack width="100%" />
+      </div>
+      <div className={styles.front} style={{ backgroundImage: `url("${props.src}")` }}></div>
+    </div>
+  );
+};
+
 const CardHandLayout = (props) => {
+  const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
+
   const { cards } = props;
 
   const indexMod = (index) => {
@@ -1226,23 +1260,58 @@ const CardHandLayout = (props) => {
     }
   };
 
+  React.useEffect(() => {
+    if (props.expanded) {
+      return;
+    }
+
+    setSelectedIndex(-1);
+  }, [props.expanded]);
+
+  let rootStyle = {};
+  if (!props.expanded) {
+    rootStyle = { paddingLeft: `${cards.length * 96}px` };
+  } else {
+    rootStyle = { paddingLeft: `0px` };
+  }
+
   return (
-    <div className={styles.cards}>
-      {cards.map((_, index) => {
-        const angle = (index - Math.floor(cards.length / 2)) * 8;
-        const translationY = -Math.sin((angle * Math.PI) / 180) * 90 * indexMod(index);
+    <div className={styles.cards} style={rootStyle}>
+      {cards.map((data, index) => {
+        let style = {};
+
+        if (props.expanded) {
+          const mod = indexMod(index);
+          const angle = (index - Math.floor(cards.length / 2)) * 8;
+          const translationY = -Math.sin((angle * Math.PI) / 180) * 122 * indexMod(index);
+          style = {
+            transform: `rotate(${angle}deg) translateY(${translationY}px)`,
+          };
+
+          if (index === selectedIndex) {
+            style = { transform: ``, zIndex: 1 };
+          }
+        } else {
+          const translationX = -104 * index;
+          style = { transform: `translateX(${translationX}px)` };
+        }
 
         return (
-          <div
-            key={index}
-            className={styles.card}
-            style={{
-              transform: `rotate(${angle}deg) translateY(${translationY}px)`,
-            }}
-          >
-            <div className={styles.face} onClick={() => alert(`The card in position: ${index} was selected`)}>
-              <CardBack width="100%" />
-            </div>
+          <div key={index} className={styles.card} style={style}>
+            <Card
+              index={index}
+              selectedIndex={selectedIndex}
+              expanded={props.expanded}
+              onClick={
+                props.expanded
+                  ? () => setSelectedIndex(index)
+                  : () => {
+                      props.onExpand();
+                      setSelectedIndex(index);
+                    }
+              }
+              src={data}
+            />
           </div>
         );
       })}
