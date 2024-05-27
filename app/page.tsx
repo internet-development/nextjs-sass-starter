@@ -86,7 +86,10 @@ export default async function Page(props) {
           Animations ➝ CSS based scroll carousel horizontal
         </ListItem>
         <ListItem href="/examples/animations/card-hand" isWIP>
-          Animations ➝ CSS card hand
+          Animations ➝ CSS deck spread and flip
+        </ListItem>
+        <ListItem href="/examples/animations/card" isWIP>
+          Animations ➝ CSS flippable card with tilt
         </ListItem>
         <ListItem href="/examples/animations/text-swapping">Animations ➝ text swapping</ListItem>
 
