@@ -107,6 +107,9 @@ export default async function Page(props) {
         <ListItem href="/examples/components/windows-arrow-connected" isWIP>
           Components ➝ windows arrow connected, diagram
         </ListItem>
+        <ListItem href="/examples/components/windows-level-selector" isWIP>
+          Components ➝ windows level selector
+        </ListItem>
 
         <ListItem href="/examples/empty/application-template-page">Empty ➝ application template page</ListItem>
         <ListItem href="/examples/empty/grid-template-page">Empty ➝ grid template page</ListItem>
