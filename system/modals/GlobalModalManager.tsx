@@ -5,6 +5,7 @@ import ModalError from '@system/modals/ModalError';
 import ModalIndex from '@system/modals/ModalIndex';
 import ModalNavigation from '@system/modals/ModalNavigation';
 import ModalNavigationTemplate from '@system/modals/ModalNavigationTemplate';
+import ModalWebsitePrompt from '@system/modals/ModalWebsitePrompt';
 
 import { useModal } from '@system/providers/ModalContextProvider';
 
@@ -38,6 +39,14 @@ export default function GlobalModalManager(props) {
 
   if (modalContent && modalContent.name === 'AUTHENTICATION') {
     nextModal = <ModalAuthentication content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
+  }
+
+  if (modalContent && modalContent.name === 'AUTHENTICATION') {
+    nextModal = <ModalAuthentication content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
+  }
+
+  if (modalContent && modalContent.name === 'WEBSITE_PROMPT') {
+    nextModal = <ModalWebsitePrompt content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   return nextModal;

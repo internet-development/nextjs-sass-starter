@@ -1,0 +1,71 @@
+.root {
+  width: 100%;
+  padding: 2px;
+}
+
+.input {
+  color: var(--theme-text);
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 16px 24px 16px 24px;
+  box-sizing: border-box;
+  font-size: var(--type-scale-fixed-large);
+  background: var(--theme-background);
+  border-bottom: 1px solid var(--theme-border);
+
+  &:focus {
+    background: var(--theme-background);
+    outline: 0;
+    border: 0;
+    margin: 0;
+    padding: 16px 24px 16px 24px;
+    border-bottom: 1px solid var(--theme-border);
+  }
+}
+
+.item {
+  padding: 16px 24px 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left {
+  flex-shrink: 0;
+}
+
+.middle {
+  min-width: 10%;
+  width: 100%;
+  padding-left: 16px;
+}
+
+.right {
+  flex-shrink: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 8px 8px 8px;
+}
+
+.square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: var(--theme-border-subdued);
+}
+
+.largeLabel {
+  padding: 4px 8px 4px 8px;
+  font-size: var(--type-scale-fixed-tiny);
+  background: var(--theme-border-subdued);
+  border-radius: 4px;
+  color: var(--theme-text);
+}
