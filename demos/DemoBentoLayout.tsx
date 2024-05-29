@@ -9,10 +9,12 @@ import { H2, Lead } from '@system/typography';
 export default function DemoBentoLayout(props) {
   return (
     <div className={styles.root}>
-      <Content>
-        <H2>DemoBentoLayout</H2>
-        <Lead style={{ marginTop: `1rem` }}>2 or 4 row sections that can be resized and viewed in any viewport.</Lead>
-      </Content>
+      {props.hideContent ? null : (
+        <Content>
+          <H2>DemoBentoLayout</H2>
+          <Lead style={{ marginTop: `1rem` }}>2 or 4 row sections that can be resized and viewed in any viewport.</Lead>
+        </Content>
+      )}
 
       <div className={styles.bento}>
         <div className={styles.row}>

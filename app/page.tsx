@@ -95,6 +95,7 @@ export default async function Page(props) {
 
         <ListItem href="/examples">Components ➝ navigation, hero section</ListItem>
         <ListItem href="/examples/components/application-site">Components ➝ application overview, footer</ListItem>
+        <ListItem href="/examples/components/dashboard">Components ➝ navigation, dashboard</ListItem>
         <ListItem href="/examples/components/post">Components ➝ navigation, blog post, footer</ListItem>
         <ListItem href="/examples/components/forms">Components ➝ navigation, form elements</ListItem>
         <ListItem href="/examples/components/full-section">Components ➝ navigation, full dvh sections</ListItem>
