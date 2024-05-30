@@ -26,7 +26,12 @@ export function onHandleThemeChange() {
   }
 
   if (body.classList.contains('theme-dark')) {
-    body.classList.replace('theme-dark', 'theme-blue');
+    body.classList.replace('theme-dark', 'theme-daybreak');
+    return;
+  }
+
+  if (body.classList.contains('theme-daybreak')) {
+    body.classList.replace('theme-daybreak', 'theme-blue');
     return;
   }
 

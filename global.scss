@@ -143,6 +143,49 @@ body.theme-light {
   }
 }
 
+body.theme-daybreak {
+  --theme-background: var(--color-black-daybreak-100);
+  --theme-background-overlay: var(--color-daybreak-100-4);
+  --theme-background-box-top: var(--color-gray-70);
+  --theme-background-box-front: var(--color-gray-100);
+  --theme-background-box-side: var(--color-gray-90);
+  --theme-foreground: var(--color-daybreak-70);
+  --theme-foreground-secondary: var(--color-daybreak-60);
+  --theme-text: var(--color-daybreak);
+  --theme-border: var(--color-daybreak-90);
+  --theme-border-box: var(--color-daybreak-80);
+  --theme-border-subdued: var(--color-daybreak-70-3);
+  --theme-button: var(--color-daybreak);
+  --theme-button-text: var(--color-black-daybreak-100);
+  --theme-primary: var(--color-daybreak-20);
+  --theme-input-active: var(--color-daybreak-4);
+  --theme-success: var(--color-green-60);
+  --theme-success-subdued: var(--color-green-60-3);
+  --theme-error: var(--color-red-60);
+  --theme-error-subdued: var(--color-red-60-3);
+
+  --theme-box-shadow-modal: inset 0 0 0 1px var(--color-daybreak-90);
+  --theme-box-shadow-button: 0 0 0 rgba(0, 0, 0, 0.15);
+  --theme-box-shadow-button-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--theme-foreground);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--theme-foreground-secondary);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-foreground-secondary);
+  }
+}
+
 body.theme-dark {
   --theme-background: var(--color-black-100);
   --theme-background-overlay: var(--color-black-100-4);
@@ -283,6 +326,8 @@ body {
   --theme-graph-negative: rgba(218, 30, 40, 1);
   --theme-graph-negative-subdued: rgba(218, 30, 40, 0.01);
 
+  --color-black-daybreak-100: rgba(4, 2, 0, 1);
+  --color-black-daybreak-100-4: rgba(4, 2, 0, 0.4);
   --color-black-100: rgba(0, 0, 0, 1);
   --color-black-100-4: rgba(0, 0, 0, 0.4);
   --color-black-100-2: rgba(0, 0, 0, 0.2);
@@ -312,6 +357,24 @@ body {
   --color-green-60-3: rgba(25, 128, 56, 0.3);
 
   --color-gold-30: rgba(241, 194, 27, 1);
+
+  --color-daybreak-100: rgba(63, 26, 0, 1);
+  --color-daybreak-100-4: rgba(63, 26, 0, 0.4);
+  --color-daybreak-90: rgba(82, 34, 0, 1);
+  --color-daybreak-80: rgba(102, 42, 0, 1);
+  --color-daybreak-70: rgba(121, 50, 0, 1);
+  --color-daybreak-70-3: rgba(121, 50, 0, 0.3);
+  --color-daybreak-60: rgba(141, 59, 0, 1);
+  --color-daybreak-50: rgba(161, 67, 0, 1);
+  --color-daybreak-40: rgba(180, 75, 0, 1);
+  --color-daybreak-40-2: rgba(180, 75, 0, 0.2);
+  --color-daybreak-30: rgba(200, 83, 0, 1);
+  --color-daybreak-20: rgba(220, 91, 0, 1);
+  --color-daybreak-10: rgba(239, 99, 0, 1);
+  --color-daybreak: rgba(255, 108, 4, 1);
+  --color-daybreak-4: rgba(255, 108, 4, 0.4);
+  --color-daybreak-2: rgba(255, 108, 4, 0.2);
+  --color-daybreak-1: rgba(255, 108, 4, 0.1);
 
   --color-neon-green-100: rgba(10, 44, 2, 1);
   --color-neon-green-100-4: rgba(10, 44, 2, 0.4);
