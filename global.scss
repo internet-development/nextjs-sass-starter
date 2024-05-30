@@ -431,6 +431,7 @@ body {
   font-family: var(--font-family);
   background: var(--theme-background);
   color: var(--theme-text);
+  font-variant-numeric: tabular-nums;
 
   font-size: 16px;
   @media (max-width: 768px) {

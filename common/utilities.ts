@@ -61,6 +61,17 @@ export function calculatePositionWithGutter(rect, objectWidth, viewportWidth, gu
   return { top, right: adjustedRight, side };
 }
 
+export function leftPad(input, length) {
+  const zerosNeeded = length - input.length;
+  if (zerosNeeded <= 0) {
+    return input;
+  }
+
+  const zeros = '0'.repeat(zerosNeeded);
+
+  return zeros + input;
+}
+
 export function toDateISOString(data: string) {
   const date = new Date(data);
   const dayOfWeek = date.toLocaleDateString('en-US', {
