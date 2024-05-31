@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import ModalAuthentication from '@system/modals/ModalAuthentication';
+import ModalColorPicker from '@system/modals/ModalColorPicker';
 import ModalError from '@system/modals/ModalError';
 import ModalIndex from '@system/modals/ModalIndex';
 import ModalNavigation from '@system/modals/ModalNavigation';
@@ -41,8 +42,8 @@ export default function GlobalModalManager(props) {
     nextModal = <ModalAuthentication content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
   }
 
-  if (modalContent && modalContent.name === 'AUTHENTICATION') {
-    nextModal = <ModalAuthentication content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
+  if (modalContent && modalContent.name === 'COLOR_PICKER') {
+    nextModal = <ModalColorPicker content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   if (modalContent && modalContent.name === 'WEBSITE_PROMPT') {

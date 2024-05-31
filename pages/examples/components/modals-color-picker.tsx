@@ -15,9 +15,9 @@ function ExampleModalsWebsitePrompt(props) {
 
   return (
     <Page
-      title="wireframes.internet.dev ➝ components ➝ modals website prompt"
+      title="wireframes.internet.dev ➝ components ➝ modals color picker"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/components/modals-website-prompt"
+      url="https://wireframes.internet.dev/examples/components/modals-color-picker"
     >
       <Navigation />
       <SectionFullHeight>
@@ -25,12 +25,12 @@ function ExampleModalsWebsitePrompt(props) {
           <Button
             onClick={() => {
               showModal({
-                name: 'WEBSITE_PROMPT',
+                name: 'COLOR_PICKER',
                 data: [],
               });
             }}
           >
-            Show the website prompt modal
+            Show the color picker
           </Button>
         </Content>
       </SectionFullHeight>

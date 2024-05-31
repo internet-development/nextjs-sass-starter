@@ -54,6 +54,11 @@ export const TEMPLATE_EXAMPLES = [
     href: '/examples/components/modals',
   },
   {
+    name: 'Components ➝ navigation, modal color picker for themes',
+    href: '/examples/components/modals-color-picker',
+    isWIP: true,
+  },
+  {
     name: 'Components ➝ navigation, modal website prompt trigger',
     href: '/examples/components/modals-website-prompt',
   },
