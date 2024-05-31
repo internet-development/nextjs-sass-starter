@@ -25,10 +25,10 @@ export default function Navigation() {
         <a className={styles.item} href="/examples/features/services">
           Services
         </a>
-        <a className={styles.item} href="/examples/features/files">
+        <a className={styles.item} href="/examples/features/files-s3">
           Files
         </a>
-         <span className={styles.item} onClick={() => showModal({ name: 'AUTHENTICATION' })}>
+        <span className={styles.item} onClick={() => showModal({ name: 'AUTHENTICATION' })}>
           Sign in
         </span>
       </section>

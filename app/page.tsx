@@ -71,10 +71,18 @@ export default async function Page(props) {
       </Script> */}
       <div style={{ lineHeight: '1.6', maxWidth: 768 }}>Showcase — Take a look at what we have done with this template.</div>
       <div>
-        <ListItem href="https://marble.place">marble.place</ListItem>
-        <ListItem href="https://txt.dev">txt.dev</ListItem>
-        <ListItem href="https://internet.dev/team">internet.dev</ListItem>
-        <ListItem href="https://github.com/internet-development/nextjs-sass-starter">nextjs-sass-starter source code</ListItem>
+        <ListItem href="https://marble.place" index={Utilities.leftPad(`1`, 4)} isWIP>
+          marble.place
+        </ListItem>
+        <ListItem href="https://txt.dev" index={Utilities.leftPad(`2`, 4)}>
+          txt.dev
+        </ListItem>
+        <ListItem href="https://internet.dev/team" index={Utilities.leftPad(`3`, 4)}>
+          internet.dev
+        </ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter" index={Utilities.leftPad(`4`, 4)} isWIP>
+          nextjs-sass-starter source code
+        </ListItem>
       </div>
 
       <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>

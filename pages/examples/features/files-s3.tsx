@@ -116,7 +116,7 @@ async function onUploadData({ file, domain, key, showModal }) {
   return signedResult;
 }
 
-function ExampleFiles(props) {
+function ExampleFilesS3(props) {
   const { showModal } = useModal();
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
@@ -128,9 +128,9 @@ function ExampleFiles(props) {
 
   return (
     <Page
-      title="wireframes.internet.dev ➝ features ➝ files"
+      title="wireframes.internet.dev ➝ features ➝ files S3"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/features/files"
+      url="https://wireframes.internet.dev/examples/features/files-s3"
     >
       <KeyHeader onInputChange={setKey} value={key} />
 
@@ -198,10 +198,10 @@ function ExampleFiles(props) {
           );
         })}
 
-        <FormHeading style={{ marginTop: 64 }}>Upload</FormHeading>
+        <FormHeading style={{ marginTop: 64 }}>Upload (AWS S3)</FormHeading>
         <FormParagraph>
-          The following steps represent whether or not you have permissions to upload a file. To upload a file you need to be part of an organization and have been granted
-          permissions.
+          Uses Amazon S3 as the destination for your hosted object. The following steps represent whether or not you have permissions to upload a file. To upload a file you need to
+          be part of an organization and have been granted permissions.
         </FormParagraph>
 
         <InputLabel style={{ marginTop: 24 }}>Domain (optional)</InputLabel>
@@ -248,4 +248,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleFiles;
+export default ExampleFilesS3;

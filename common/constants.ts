@@ -134,7 +134,11 @@ export const TEMPLATE_EXAMPLES = [
   },
   {
     name: 'Features ➝ file management (with AWS S3 presigned URL)',
-    href: '/examples/features/files',
+    href: '/examples/features/files-s3',
+  },
+  {
+    name: 'Features ➝ file management (with GCS presigned URL)',
+    href: '/examples/features/files-gcs',
   },
   {
     name: 'Features ➝ fixed stock watchlist',
@@ -165,6 +169,9 @@ export const TEMPLATE_EXAMPLES = [
     name: 'Features ➝ threads',
     href: '/examples/features/threads',
   },
+  //
+  // SYSTEM
+  //
   {
     name: 'System ➝ colors',
     href: '/examples/system/colors',
