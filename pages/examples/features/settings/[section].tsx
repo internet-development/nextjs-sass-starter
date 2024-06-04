@@ -14,6 +14,7 @@ import { P } from '@system/typography';
 import { useModal } from '@system/providers/ModalContextProvider';
 
 const SUB_SECTION_ROUTES = {
+  'change-password': 'CHANGE_PASSWORD',
   documents: 'DOCUMENTS',
   content: 'CONTENT',
   credits: 'CREDITS',
@@ -23,6 +24,7 @@ const SUB_SECTION_ROUTES = {
 };
 
 const SUB_SECTION_LINKS = {
+  CHANGE_PASSWORD: 'Change password',
   DOCUMENTS: 'Documents',
   CONTENT: 'Content',
   CREDITS: 'Credits',

@@ -6,6 +6,7 @@ import ActionItem from '@system/documents/ActionItem';
 
 const SUB_SECTION_LINKS = {
   DOCUMENTS: 'Documents',
+  CHANGE_PASSWORD: 'Change password',
   CONTENT: 'Content',
   CREDITS: 'Credits',
   PURCHASE: 'Purchase services',
@@ -18,6 +19,9 @@ export default function DemoSettingsSidebar(props) {
     <div className={styles.root}>
       <ActionItem icon={`⭢`} active={props.active === 'PERSONAL'} href="/examples/features/settings">
         Settings
+      </ActionItem>
+      <ActionItem icon={`⭢`} active={props.active === 'CHANGE_PASSWORD'} href="/examples/features/settings/change-password">
+        {SUB_SECTION_LINKS['CHANGE_PASSWORD']}
       </ActionItem>
       <ActionItem icon={`⭢`} active={props.active === 'DOCUMENTS'} href="/examples/features/settings/documents">
         {SUB_SECTION_LINKS['DOCUMENTS']}

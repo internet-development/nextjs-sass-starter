@@ -20,6 +20,26 @@ export async function attemptFetch(url, method, headers, body) {
   }
 }
 
+export async function anonymousForgotPassword({ email }) {
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/users/reset-password', {
+      method: 'POST',
+      headers: REQUEST_HEADERS,
+      body: JSON.stringify({ email }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  return result;
+}
+
 export async function userAuthenticate({ email, password }) {
   let result;
   try {
@@ -167,6 +187,26 @@ export async function userUploadData({ file, key }) {
   }
 
   return signedResult;
+}
+
+export async function userChangePassword({ key, password }) {
+  let result;
+  try {
+    const response = await fetch('https://api.internet.dev/api/users/update-viewer-password', {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    });
+    result = await response.json();
+  } catch (e) {
+    return null;
+  }
+
+  if (!result) {
+    return null;
+  }
+
+  return result;
 }
 
 export async function userCreatePost({ id, key, src, type }) {

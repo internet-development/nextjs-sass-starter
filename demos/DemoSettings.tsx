@@ -6,6 +6,7 @@ import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
+import FormChangePassword from '@system/forms/FormChangePassword';
 import FormUpload from '@system/FormUpload';
 import MonospacePreview from '@system/MonospacePreview';
 import Table from '@system/Table';
@@ -239,6 +240,29 @@ export default function DemoSettings(props) {
           </div>
         </div>
       </>
+    );
+  }
+
+  if (props.active === 'CHANGE_PASSWORD') {
+    return (
+      <div className={styles.root}>
+        <div style={{ maxWidth: 568 }}>
+          <FormChangePassword
+            onSubmit={async ({ password }) => {
+              const response = await Queries.userChangePassword({ key: props.sessionKey, password });
+              if (!response) {
+                props.onSetModal({ name: 'ERROR', message: 'failed to change password' });
+              }
+
+              if (response.error) {
+                props.onSetModal({ name: 'ERROR', message: response.error });
+              }
+
+              window.location.href = '/examples/features/settings';
+            }}
+          />
+        </div>
+      </div>
     );
   }
 

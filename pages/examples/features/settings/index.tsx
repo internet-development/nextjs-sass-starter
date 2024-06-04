@@ -18,7 +18,7 @@ function ExampleSettings(props) {
   const { showModal } = useModal();
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
-  const [active, setActive] = React.useState<string>('PERSONAL');
+  const [active, setActive] = React.useState<string>(props.active);
 
   return (
     <Page
@@ -36,10 +36,16 @@ function ExampleSettings(props) {
 }
 
 export async function getServerSideProps(context) {
-  const { sessionKey, viewer } = await Server.setup(context);
+  if (!Utilities.isEmpty(context.query.key)) {
+    const { sessionKey, viewer } = await Server.tryKeyWithoutCookie(context.query.key);
+    return {
+      props: { sessionKey, viewer, active: 'CHANGE_PASSWORD' },
+    };
+  }
 
+  const { sessionKey, viewer } = await Server.setup(context);
   return {
-    props: { sessionKey, viewer },
+    props: { sessionKey, viewer, active: 'PERSONAL' },
   };
 }
 

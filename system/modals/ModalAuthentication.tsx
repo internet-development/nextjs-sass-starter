@@ -4,6 +4,7 @@ import * as Queries from '@common/queries';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
+import ActionItem from '@system/documents/ActionItem';
 import Bluesky from '@system/svg/social/Bluesky';
 import Button from '@system/Button';
 import Cookies from 'js-cookie';
@@ -56,6 +57,13 @@ export default function ModalAuthentication(props) {
           <Input onChange={(e) => setEmail(e.target.value)} name="email" style={{ marginTop: 8 }} type="text" placeholder="Your e-mail" value={email} />
           <InputLabel style={{ marginTop: 24 }}>Password</InputLabel>
           <Input onChange={(e) => setPassword(e.target.value)} placeholder="Your password" name="password" style={{ marginTop: 8 }} type="password" value={password} />
+
+          <div style={{ marginTop: 24 }}>
+            <ActionItem icon={`⭢`} active={props.active === 'PERSONAL'} href="/examples/features/authentication/forgot-password">
+              Forgot password?
+            </ActionItem>
+          </div>
+
           <Button
             loading={loading}
             onClick={async () => {

@@ -134,6 +134,10 @@ export const TEMPLATE_EXAMPLES = [
     href: '/examples/features/authentication/google',
   },
   {
+    name: 'Features ➝ authentication ➝ forgot password',
+    href: '/examples/features/authentication/forgot-password',
+  },
+  {
     name: 'Features ➝ earnings requirement calculator',
     href: '/examples/features/earnings-requirement-calculator',
   },
