@@ -10,14 +10,28 @@ const getHeaders = (key) => {
   return { ...REQUEST_HEADERS, Authorization: `Bearer ${key}` };
 };
 
-export async function attemptFetch(url, method, headers, body) {
+export async function fetchAndExpectData({ route, key, body }) {
+  let result;
   try {
-    const response = await fetch(url, { method, headers, body });
-    const result = await response.json();
-    return !result.error ? result : null;
+    const response = await fetch(route, {
+      method: 'POST',
+      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
+      body,
+    });
+    result = await response.json();
   } catch (e) {
     return null;
   }
+
+  if (!result) {
+    return null;
+  }
+
+  if (!result.data) {
+    return null;
+  }
+
+  return result;
 }
 
 export async function anonymousForgotPassword({ email }) {
@@ -62,28 +76,6 @@ export async function userAuthenticate({ email, password }) {
   }
 
   return result;
-}
-
-export async function web3Authenticate({ address, message, signature, email, password }) {
-  const apiUrl = 'https://api.internet.dev/api/users/authenticate';
-  const headers = { 'Content-Type': 'application/json' };
-
-  // NOTE(xBalbinus): Web3 Quick-auth
-  if (message && signature && address) {
-    const authBody = JSON.stringify({ wallet_address: address, message, wallet_signature: signature });
-    const authResult = await attemptFetch(apiUrl, 'POST', headers, authBody);
-    if (authResult) return authResult;
-  }
-
-  // NOTE(xBalbinus): Web3 Register
-  if (email && password && address) {
-    const domain = 'YOUR_DOMAIN_HERE';
-    const registerBody = JSON.stringify({ email, domain, password, wallet_address: address });
-    const registerResult = await attemptFetch(apiUrl, 'POST', headers, registerBody);
-    if (registerResult && registerResult.user) return registerResult;
-  }
-
-  return null;
 }
 
 export async function userRefreshKey({ email, password }) {
@@ -317,5 +309,25 @@ export async function userListThreads({ orderBy }) {
     return null;
   }
 
+  return result;
+}
+
+export async function onRefreshDocuments({ key, type }) {
+  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents', key, body: JSON.stringify({ type }) });
+  return result;
+}
+
+export async function onCreateDocument({ key, type }) {
+  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents/create', key, body: JSON.stringify({ type }) });
+  return result;
+}
+
+export async function onDeleteDocumentById({ id, key }) {
+  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents/delete', key, body: JSON.stringify({ id }) });
+  return result;
+}
+
+export async function onUpdateDocumentById({ id, key, updates }) {
+  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents/update', key, body: JSON.stringify({ id, updates }) });
   return result;
 }

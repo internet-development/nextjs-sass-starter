@@ -142,6 +142,10 @@ export const TEMPLATE_EXAMPLES = [
     href: '/examples/features/earnings-requirement-calculator',
   },
   {
+    name: 'Features ➝ employment agreements',
+    href: '/examples/features/employment',
+  },
+  {
     name: 'Features ➝ file management (with AWS S3 presigned URL)',
     href: '/examples/features/files-s3',
   },

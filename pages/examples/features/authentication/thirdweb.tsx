@@ -19,6 +19,38 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 import { useModal } from '@system/providers/ModalContextProvider';
 
+export async function attemptFetch(url, method, headers, body) {
+  try {
+    const response = await fetch(url, { method, headers, body });
+    const result = await response.json();
+    return !result.error ? result : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+export async function web3Authenticate({ address, message, signature, email, password }) {
+  const apiUrl = 'https://api.internet.dev/api/users/authenticate';
+  const headers = { 'Content-Type': 'application/json' };
+
+  // NOTE(xBalbinus): Web3 Quick-auth
+  if (message && signature && address) {
+    const authBody = JSON.stringify({ wallet_address: address, message, wallet_signature: signature });
+    const authResult = await attemptFetch(apiUrl, 'POST', headers, authBody);
+    if (authResult) return authResult;
+  }
+
+  // NOTE(xBalbinus): Web3 Register
+  if (email && password && address) {
+    const domain = 'YOUR_DOMAIN_HERE';
+    const registerBody = JSON.stringify({ email, domain, password, wallet_address: address });
+    const registerResult = await attemptFetch(apiUrl, 'POST', headers, registerBody);
+    if (registerResult && registerResult.user) return registerResult;
+  }
+
+  return null;
+}
+
 // TODO(jimmylee)
 // When we can fix dependencies. We will delete these in the template.
 function ThirdwebSDKProvider({ activeChain, clientId }: Record<string, any>) {
@@ -97,7 +129,7 @@ function ExampleWeb3Authentication(props) {
             }
 
             setLoading(true);
-            const response = await Queries.web3Authenticate({ address: wallet, message: null, signature: null, email, password });
+            const response = await web3Authenticate({ address: wallet, message: null, signature: null, email, password });
             setLoading(false);
             if (!response) {
               showModal({

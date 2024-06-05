@@ -20,10 +20,41 @@ import {
 } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 import { generateNonce } from '@common/utilities';
-import { web3Authenticate } from '@common/queries';
 
 let signer: ethers.Signer;
 let provider: ethers.providers.Web3Provider;
+
+export async function attemptFetch(url, method, headers, body) {
+  try {
+    const response = await fetch(url, { method, headers, body });
+    const result = await response.json();
+    return !result.error ? result : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+export async function web3Authenticate({ address, message, signature, email, password }) {
+  const apiUrl = 'https://api.internet.dev/api/users/authenticate';
+  const headers = { 'Content-Type': 'application/json' };
+
+  // NOTE(xBalbinus): Web3 Quick-auth
+  if (message && signature && address) {
+    const authBody = JSON.stringify({ wallet_address: address, message, wallet_signature: signature });
+    const authResult = await attemptFetch(apiUrl, 'POST', headers, authBody);
+    if (authResult) return authResult;
+  }
+
+  // NOTE(xBalbinus): Web3 Register
+  if (email && password && address) {
+    const domain = 'YOUR_DOMAIN_HERE';
+    const registerBody = JSON.stringify({ email, domain, password, wallet_address: address });
+    const registerResult = await attemptFetch(apiUrl, 'POST', headers, registerBody);
+    if (registerResult && registerResult.user) return registerResult;
+  }
+
+  return null;
+}
 
 export default function SignInWithWeb3({ setUser, wallet, setWallet }) {
   const [status, setStatus] = useState('Authenticate via web3');
