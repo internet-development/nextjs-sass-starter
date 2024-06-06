@@ -93,7 +93,7 @@ export default async function Page(props) {
         for everything listed.
       </div>
       <div>
-        {Constants.TEMPLATE_EXAMPLES.map((each, index) => {
+        {Constants.TEMPLATE_EXAMPLES.map((each: Record<string, any>, index) => {
           return (
             <ListItem key={each.href} href={each.href} index={Utilities.leftPad(`${index}`, 4)} isWIP={each.isWIP}>
               {each.isBluesky ? <Bluesky height="20px" style={{ marginRight: 16 }} /> : null}

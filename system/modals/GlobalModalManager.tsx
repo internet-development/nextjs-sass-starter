@@ -5,6 +5,7 @@ import ModalColorPicker from '@system/modals/ModalColorPicker';
 import ModalError from '@system/modals/ModalError';
 import ModalIndex from '@system/modals/ModalIndex';
 import ModalNavigation from '@system/modals/ModalNavigation';
+import ModalNavigationV2 from '@system/modals/ModalNavigationV2';
 import ModalNavigationTemplate from '@system/modals/ModalNavigationTemplate';
 import ModalWebsitePrompt from '@system/modals/ModalWebsitePrompt';
 
@@ -24,6 +25,10 @@ export default function GlobalModalManager(props) {
   let nextModal;
   if (modalContent && modalContent.name === 'NAVIGATION') {
     nextModal = <ModalNavigation parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
+  }
+
+  if (modalContent && modalContent.name === 'NAVIGATION_V2') {
+    nextModal = <ModalNavigationV2 parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   if (modalContent && modalContent.name == 'NAVIGATION_TEMPLATE') {

@@ -32,12 +32,13 @@
 
 .divider {
   margin: 12px auto 12px auto;
-  width: 80%;
+  width: 95%;
   display: block;
   height: 1px;
-  background: var(--theme-border);
-  opacity: 0.8;
-  border: 0px;
+  flex-shrink: 0;
+  border: 0;
+  outline: 0;
+  background: linear-gradient(to right, var(--theme-background), var(--theme-border), var(--theme-background));
 }
 
 .item {
@@ -86,4 +87,39 @@
   padding: 2px 0px 0px 16px;
   line-height: 1.5;
   font-size: var(--type-scale-fixed-small);
+}
+
+.wideFlexibleModal {
+  display: block;
+  max-width: 480px;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+.wideFlexibleModalRow {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.wideFlexibleModalColumn {
+  width: 50%;
+  display: inline-block;
+}
+
+.wideFlexibleModalColumnItem {
+  display: block;
+  font-size: var(--type-scale-fixed-tiny);
+  padding: 4px 16px 4px 16px;
+  color: var(--theme-text);
+  text-decoration: none;
+
+  &:visited {
+    color: var(--theme-text);
+  }
+
+  &:hover {
+    color: var(--theme-text);
+  }
 }

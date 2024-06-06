@@ -44,6 +44,7 @@ export default function DemoSidebarLayout(props) {
   return (
     <div className={styles.root}>
       <div className={styles.top}>
+        <SubTitle style={{ opacity: 0.6, padding: '8px 24px 8px 24px' }}>CATEGORY I</SubTitle>
         <Item>Topic I</Item>
         <SubItem>
           <SubText>Unit I</SubText>
@@ -57,6 +58,7 @@ export default function DemoSidebarLayout(props) {
           <SubText>Unit I</SubText>
         </SubItem>
         <Item>Topic IV</Item>
+        <SubTitle style={{ opacity: 0.6, padding: '32px 24px 8px 24px' }}>CATEGORY II</SubTitle>
         <Item>Topic V</Item>
         <SubItem>
           <SubText>Unit I</SubText>
@@ -78,6 +80,7 @@ export default function DemoSidebarLayout(props) {
         </SubItem>
         <Item>Topic VI</Item>
         <Item>Topic VII</Item>
+        <SubTitle style={{ opacity: 0.6, padding: '32px 24px 8px 24px' }}>CATEGORY III</SubTitle>
         <Item>Topic VIII</Item>
         <SubItem>
           <SubText>Unit I</SubText>
@@ -88,14 +91,16 @@ export default function DemoSidebarLayout(props) {
       </div>
       <div className={styles.bottom}>
         <div className={styles.left}>
-          <figure className={styles.largeSquare} />
+          <figure className={styles.largeSquare}>☺</figure>
         </div>
         <div className={styles.bottomRight}>
           <SubTitle>User or group</SubTitle>
           <SubText style={{ marginTop: 4 }}>Clear description</SubText>
         </div>
         <div className={styles.left}>
-          <figure className={styles.square} style={{ marginRight: 8, marginLeft: 8 }} />
+          <figure className={styles.square} style={{ marginRight: 8, marginLeft: 8 }}>
+            ♲
+          </figure>
         </div>
       </div>
     </div>

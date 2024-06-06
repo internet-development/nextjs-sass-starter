@@ -6,7 +6,7 @@ import Button from '@system/Button';
 import Content from '@system/layouts/Content';
 import CheckmarkItem from '@system/documents/CheckmarkItem';
 
-import { H2, H3, H4, SubLead, Title, Text } from '@system/typography';
+import { H2, H3, H5, SubLead, Title, Text } from '@system/typography';
 
 export default function DemoBentoLayout(props) {
   return (
@@ -32,9 +32,9 @@ export default function DemoBentoLayout(props) {
               <Text style={{ marginTop: 16, minHeight: 156 }}>
                 The quickest and easiest way to use our API service, products and games. All you need is a verified e-mail address.
               </Text>
-              <H3 style={{ marginTop: 24 }}>
+              <H5 style={{ marginTop: 24 }}>
                 $0 USD<span className={styles.subtle}>/mo</span>
-              </H3>
+              </H5>
               {props.viewer ? (
                 <Button visual style={{ height: 48, marginTop: 24, width: '100%' }}>
                   Already obtained
@@ -58,9 +58,9 @@ export default function DemoBentoLayout(props) {
               <Text style={{ marginTop: 16, minHeight: 156 }}>
                 More power and utility for anyone who needs it. Access to all of our products including a personal blog and newsletter tool.
               </Text>
-              <H3 style={{ marginTop: 24 }}>
+              <H5 style={{ marginTop: 24 }}>
                 $8.99 USD<span className={styles.subtle}>/mo</span>
-              </H3>
+              </H5>
               {props.viewer ? (
                 props.viewer.level >= 20 ? (
                   <Button visual style={{ height: 48, marginTop: 24, width: '100%' }}>
@@ -100,9 +100,9 @@ export default function DemoBentoLayout(props) {
               <Text style={{ marginTop: 16, minHeight: 156 }}>
                 Requires an invitation from our community. Get a reserved desk٭٭ and access to new products as they are released.
               </Text>
-              <H3 style={{ marginTop: 24 }}>
+              <H5 style={{ marginTop: 24 }}>
                 $399 USD<span className={styles.subtle}>/mo</span>
-              </H3>
+              </H5>
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
               </Button>
@@ -122,9 +122,9 @@ export default function DemoBentoLayout(props) {
               <Text style={{ marginTop: 16, minHeight: 156 }}>
                 Want to work with us in our collaboration space? Apply to get reserved space for your entire team and access to everything we have to offer.
               </Text>
-              <H3 style={{ opacity: 0, marginTop: 24, visibility: 'hidden' }}>
+              <H5 style={{ opacity: 0, marginTop: 24, visibility: 'hidden' }}>
                 $X USD<span className={styles.subtle}>/mo</span>
-              </H3>
+              </H5>
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
               </Button>

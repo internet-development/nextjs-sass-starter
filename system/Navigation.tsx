@@ -36,7 +36,7 @@ export default function Navigation() {
         <span
           className={styles.item}
           id="site-navigation-button"
-          onClick={() => showModal({ name: 'NAVIGATION', parentId: 'site-navigation-button' })}
+          onClick={() => showModal({ name: 'NAVIGATION_V2', parentId: 'site-navigation-button' })}
           data-detector-ignore-navigation
         >
           Navigation

@@ -16,6 +16,10 @@ export function H4(props) {
   return <h4 className={styles.h4} {...props} />;
 }
 
+export function H5(props) {
+  return <h5 className={styles.h5} {...props} />;
+}
+
 export function Lead(props) {
   return <p className={styles.lead} {...props} />;
 }

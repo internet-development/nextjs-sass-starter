@@ -42,6 +42,10 @@
   margin-right: 16px;
   border: 1px solid var(--theme-border);
   border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--type-scale-fixed-small);
 }
 
 .right {
@@ -77,4 +81,8 @@
   margin-right: 16px;
   border: 1px solid var(--theme-border);
   border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--type-scale-fixed-large);
 }
