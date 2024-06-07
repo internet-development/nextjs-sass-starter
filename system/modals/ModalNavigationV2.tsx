@@ -77,7 +77,7 @@ export default function ModalNavigationV2(props) {
 
           <div className={styles.wideFlexibleModalRow}>
             <div className={styles.wideFlexibleModalColumn}>
-              <SubText style={{ opacity: 0.4, padding: `4px 16px 4px 16px`, letterSpacing: '0.6' }}>ANIMATION</SubText>
+              <SubText style={{ opacity: 0.4, padding: `4px 16px 4px 16px`, letterSpacing: '0.6' }}>POLICIES</SubText>
               {Constants.TEMPLATE_POSTS.map((each, index) => {
                 return (
                   <a className={styles.wideFlexibleModalColumnItem} href={each.href}>
