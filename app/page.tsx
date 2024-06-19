@@ -112,17 +112,11 @@ export default async function Page(props) {
         <ListItem index={Utilities.leftPad(`2`, 4)} href="https://github.com/internet-development/nextjs-sass-starter/issues/3">
           The software we recommend for web development (MacOS)
         </ListItem>
-        <ListItem index={Utilities.leftPad(`3`, 4)} href="https://github.com/internet-development/nextjs-sass-starter/issues/4" isWIP>
+        <ListItem index={Utilities.leftPad(`3`, 4)} href="https://github.com/internet-development/nextjs-sass-starter/issues/4">
           The anatomy of nextjs-sass-starter
         </ListItem>
         <ListItem index={Utilities.leftPad(`4`, 4)} href="https://github.com/internet-development/nextjs-sass-starter/issues/5">
           Accounts, grants, organizations, and data upload
-        </ListItem>
-        <ListItem index={Utilities.leftPad(`5`, 4)} href="https://github.com/internet-development/nextjs-sass-starter/issues/6" isWIP>
-          Additional endpoints
-        </ListItem>
-        <ListItem index={Utilities.leftPad(`6`, 4)} href="https://github.com/internet-development/nextjs-sass-starter/issues/13" isWIP>
-          Integrating custom API endpoints, command line scripts, and using a Postgres database
         </ListItem>
       </div>
     </DefaultLayout>

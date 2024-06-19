@@ -2,10 +2,18 @@ export const MAX_SIZE_BYTES = 15728640;
 
 export const TEMPLATE_EXAMPLES_ANIMATIONS = [
   {
-    name: 'Animations ➝ CSS based scroll carousel horizontal',
+    name: 'Animations ➝ CSS scroll carousel horizontal',
     href: '/examples/animations/scroll-carousel-horizontal',
     label: 'CSS scroll carousel horizontal',
   },
+  /*
+  {
+    name: 'Animations ➝ CSS scroll vertical',
+    href: '/examples/animations/scroll-vertical',
+    isWIP: true,
+    label: 'CSS scroll vertical',
+  },
+  */
   {
     name: 'Animations ➝ CSS deck spread and flip',
     href: '/examples/animations/card-hand',
@@ -39,6 +47,11 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
   {
     name: 'Components ➝ navigation, dashboard',
     href: '/examples/components/dashboard',
+    label: 'Dashboard skeleton',
+  },
+  {
+    name: 'Components ➝ navigation, dashboard for privacy settings',
+    href: '/examples/components/dashboard-settings-privacy',
     label: 'Dashboard skeleton',
   },
   {
