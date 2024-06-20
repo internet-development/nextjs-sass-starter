@@ -20,7 +20,7 @@ function ScrollVertical(props) {
 
       pathData.push(`M ${x} ${y}`);
 
-      for (let i = 10; i < scrollPosition; i += 10) {
+      for (let i = 0; i < scrollPosition; i += 0.05) {
         y = i;
         const amplitude = amplitudeBase + i * amplitudeIncrement;
         const x1 = width / 2 + amplitude * Math.sin(frequency * (i - 5));
@@ -41,6 +41,7 @@ function ScrollVertical(props) {
 
   return (
     <div className={styles.root} style={{ height: props.height }}>
+      <div className={styles.gradient}></div>
       <svg ref={svgRef} width="100%" height={props.height} className={styles.svg}>
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
