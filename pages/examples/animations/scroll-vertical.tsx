@@ -18,7 +18,7 @@ function ExampleScrollCarouselHorizontal(props) {
       url="https://wireframes.internet.dev/examples/animations/scroll-vertical"
     >
       <Navigation />
-      <ScrollVertical />
+      <ScrollVertical colorEnd="var(--theme-text)" colorStart="var(--theme-background)" height="200vh" />
       <GlobalModalManager viewer={props.viewer} />
     </Page>
   );

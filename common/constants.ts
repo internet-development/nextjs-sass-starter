@@ -6,14 +6,12 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
     href: '/examples/animations/scroll-carousel-horizontal',
     label: 'CSS scroll carousel horizontal',
   },
-  /*
   {
     name: 'Animations ➝ CSS scroll vertical',
     href: '/examples/animations/scroll-vertical',
     isWIP: true,
     label: 'CSS scroll vertical',
   },
-  */
   {
     name: 'Animations ➝ CSS deck spread and flip',
     href: '/examples/animations/card-hand',
