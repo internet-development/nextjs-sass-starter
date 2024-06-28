@@ -78,6 +78,11 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Landing with moderate spacing',
   },
   {
+    name: 'Components ➝ navigation, horizontal marketing',
+    href: '/examples/components/horizontal-stack-marketing',
+    label: 'Landing with horizontal stack',
+  },
+  {
     name: 'Components ➝ navigation, modal book index trigger',
     href: '/examples/components/modals',
     label: 'Book modal',
