@@ -43,6 +43,11 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Application marketing',
   },
   {
+    name: 'Components ➝ navigation, application toolbar',
+    href: '/examples/components/application-toolbar',
+    label: 'Application toolbar',
+  },
+  {
     name: 'Components ➝ navigation, dashboard',
     href: '/examples/components/dashboard',
     label: 'Dashboard skeleton',
@@ -56,6 +61,11 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     name: 'Components ➝ navigation, blog post, footer',
     href: '/examples/components/post',
     label: 'Post',
+  },
+  {
+    name: 'Components ➝ navigation, form elements',
+    href: '/examples/components/forms',
+    label: 'Form',
   },
   {
     name: 'Components ➝ navigation, form elements',
