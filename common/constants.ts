@@ -68,11 +68,6 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Form',
   },
   {
-    name: 'Components ➝ navigation, form elements',
-    href: '/examples/components/forms',
-    label: 'Form',
-  },
-  {
     name: 'Components ➝ navigation, full dvh sections',
     href: '/examples/components/full-section',
     label: 'Landing with large spacing',
