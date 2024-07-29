@@ -2,7 +2,7 @@ import styles from '@demos/DemoPricing.module.scss';
 
 import * as React from 'react';
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 
 import { H1, H2, Lead, Text } from '@system/typography';
 

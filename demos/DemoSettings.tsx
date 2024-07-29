@@ -5,7 +5,7 @@ import * as Queries from '@common/queries';
 import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 import FormChangePassword from '@system/forms/FormChangePassword';
 import FormUpload from '@system/FormUpload';
 import MonospacePreview from '@system/MonospacePreview';

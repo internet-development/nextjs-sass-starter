@@ -3,8 +3,8 @@ import styles from '@system/forms/FormSettingsPrivacy.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import Button from '@system/Button';
-import Checkbox from '@system/Checkbox';
+import Button from '@root/system/interactive/Button';
+import Checkbox from '@root/system/interactive/Checkbox';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 

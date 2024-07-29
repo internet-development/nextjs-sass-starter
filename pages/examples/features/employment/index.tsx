@@ -4,16 +4,16 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
-import Button from '@system/Button';
-import Checkbox from '@system/Checkbox';
+import Button from '@root/system/interactive/Button';
+import Checkbox from '@root/system/interactive/Checkbox';
 import Cookies from 'js-cookie';
 import Content from '@system/layouts/Content';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import Input from '@system/Input';
+import Input from '@root/system/interactive/Input';
 import KeyHeader from '@system/KeyHeader';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
-import TextArea from '@system/TextArea';
+import TextArea from '@root/system/interactive/TextArea';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 

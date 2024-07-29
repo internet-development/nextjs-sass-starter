@@ -2,7 +2,7 @@ import styles from '@demos/DemoApplicationSite.module.scss';
 
 import * as React from 'react';
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 
 import { H1, H2, H3, H4, Lead, SubLead, P, Title, Text, SubTitle, SubText, UnitLabel } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';

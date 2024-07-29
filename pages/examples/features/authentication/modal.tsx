@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';

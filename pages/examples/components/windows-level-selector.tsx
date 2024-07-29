@@ -3,17 +3,17 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
-import Button from '@system/Button';
-import Checkbox from '@system/Checkbox';
+import Button from '@root/system/interactive/Button';
+import Checkbox from '@root/system/interactive/Checkbox';
 import Content from '@system/layouts/Content';
 import DemoLevelsExample from '@demos/DemoLevelsExample';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
-import Input from '@system/Input';
+import Input from '@root/system/interactive/Input';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import Select from '@system/Select';
-import TextArea from '@system/TextArea';
+import Select from '@root/system/interactive/Select';
+import TextArea from '@root/system/interactive/TextArea';
 import TwoColumnLayoutSidebar from '@system/layouts/TwoColumnLayoutSidebar';
 
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';

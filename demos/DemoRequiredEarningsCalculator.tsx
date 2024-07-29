@@ -3,7 +3,7 @@ import styles from '@demos/DemoRequiredEarningsCalculator.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import Input from '@system/Input';
+import Input from '@root/system/interactive/Input';
 
 import { H1, H3, P, SubTitle, Text } from '@system/typography';
 import { InputLabel } from '@system/typography/forms';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';

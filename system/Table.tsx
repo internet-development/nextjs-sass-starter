@@ -3,7 +3,7 @@ import styles from '@system/Table.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import Checkbox from '@system/Checkbox';
+import Checkbox from '@root/system/interactive/Checkbox';
 
 function generateAutoString(count: number): string {
   if (count <= 0) {

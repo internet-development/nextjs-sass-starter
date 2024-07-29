@@ -1,4 +1,4 @@
-import styles from '@system/Checkbox.module.scss';
+import styles from './Checkbox.module.scss';
 
 import Checkmark from '@system/svg/Checkmark';
 

@@ -3,8 +3,8 @@ import styles from '@system/forms/FormChangePassword.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import Button from '@system/Button';
-import Input from '@system/Input';
+import Button from '@root/system/interactive/Button';
+import Input from '@root/system/interactive/Input';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 

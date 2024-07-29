@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 
 import React, { useEffect, useState } from 'react';
 import {

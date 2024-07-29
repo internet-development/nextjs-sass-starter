@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next -p 10000",
     "build": "next build",
-    "start": "PORT=10000 next start",
+    "start": "next start -p 10000",
     "lint": "next lint"
   },
   "dependencies": {

@@ -2,7 +2,7 @@ import styles from '@demos/DemoColorPicker.module.scss';
 
 import * as React from 'react';
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 
 const hexToRgba = (hex) => {
   const r = parseInt(hex.slice(1, 3), 16);

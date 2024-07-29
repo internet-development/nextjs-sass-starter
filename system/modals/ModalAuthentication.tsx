@@ -6,10 +6,10 @@ import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
 import Bluesky from '@system/svg/social/Bluesky';
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 import Cookies from 'js-cookie';
 import Google from '@system/svg/social/Google';
-import Input from '@system/Input';
+import Input from '@root/system/interactive/Input';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';

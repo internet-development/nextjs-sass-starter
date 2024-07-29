@@ -2,8 +2,8 @@ import styles from '@system/Footer.module.scss';
 
 import * as React from 'react';
 
-import Button from '@system/Button';
-import Input from '@system/Input';
+import Button from '@root/system/interactive/Button';
+import Input from '@root/system/interactive/Input';
 
 import { H2, P } from '@system/typography';
 

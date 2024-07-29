@@ -2,7 +2,7 @@ import styles from '@demos/DemoServicesAndPaymentsWithLayout.module.scss';
 
 import * as React from 'react';
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 import Content from '@system/layouts/Content';
 import CheckmarkItem from '@system/documents/CheckmarkItem';
 

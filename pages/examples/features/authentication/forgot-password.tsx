@@ -4,10 +4,10 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import Input from '@system/Input';
+import Input from '@root/system/interactive/Input';
 import KeyHeader from '@system/KeyHeader';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';

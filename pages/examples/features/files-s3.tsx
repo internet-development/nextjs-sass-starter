@@ -3,11 +3,11 @@ import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
-import Button from '@system/Button';
+import Button from '@root/system/interactive/Button';
 import Cookies from 'js-cookie';
 import FormUpload from '@system/FormUpload';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import Input from '@system/Input';
+import Input from '@root/system/interactive/Input';
 import KeyHeader from '@system/KeyHeader';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
