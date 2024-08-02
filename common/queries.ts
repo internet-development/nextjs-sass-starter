@@ -60,7 +60,7 @@ export async function userAuthenticate({ email, password }) {
     const response = await fetch('https://api.internet.dev/api/users/authenticate', {
       method: 'POST',
       headers: REQUEST_HEADERS,
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, source: 'wireframes.internet.dev' }),
     });
     result = await response.json();
   } catch (e) {
