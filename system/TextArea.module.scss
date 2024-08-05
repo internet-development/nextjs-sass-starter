@@ -30,4 +30,21 @@
     opacity: 1;
     color: var(--theme-border);
   }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--theme-foreground);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--theme-foreground-secondary);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-foreground-secondary);
+  }
 }
