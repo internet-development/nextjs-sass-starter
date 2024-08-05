@@ -83,6 +83,12 @@ export default async function Page(props) {
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter" index={Utilities.leftPad(`4`, 4)} isWIP>
           nextjs-sass-starter source code
         </ListItem>
+        <ListItem href="https://users.garden" index={Utilities.leftPad(`5`, 4)} isWIP>
+          users.garden
+        </ListItem>
+        <ListItem href="https://beautifulthings.xyz" index={Utilities.leftPad(`6`, 4)}>
+          beautifulthings.xyz
+        </ListItem>
       </div>
 
       <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
