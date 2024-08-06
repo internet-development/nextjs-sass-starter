@@ -122,7 +122,7 @@ export default async function Page(props) {
           The anatomy of nextjs-sass-starter
         </ListItem>
         <ListItem index={Utilities.leftPad(`4`, 4)} href="https://github.com/internet-development/nextjs-sass-starter/issues/5">
-          Accounts, grants, organizations, and data upload
+          Accounts, organizations, and data upload
         </ListItem>
       </div>
     </DefaultLayout>

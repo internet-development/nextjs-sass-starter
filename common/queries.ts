@@ -1,22 +1,13 @@
 import * as Constants from '@common/constants';
 import * as Utilities from '@common/utilities';
 
-const REQUEST_HEADERS = {
-  Accept: 'application/json',
-  'Content-Type': 'application/json',
-};
-
-const getHeaders = (key) => {
-  return { ...REQUEST_HEADERS, Authorization: `Bearer ${key}` };
-};
-
-export async function fetchAndExpectData({ route, key, body }) {
+export async function fetchAndExpectData({ route, key, body }, qualifier = 'data') {
   let result;
   try {
     const response = await fetch(route, {
       method: 'POST',
       headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-      body,
+      body: JSON.stringify(body),
     });
     result = await response.json();
   } catch (e) {
@@ -27,113 +18,102 @@ export async function fetchAndExpectData({ route, key, body }) {
     return null;
   }
 
-  if (!result.data) {
+  if (result.error) {
+    return null;
+  }
+
+  if (!result[qualifier]) {
     return null;
   }
 
   return result;
 }
 
-export async function anonymousForgotPassword({ email }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/reset-password', {
-      method: 'POST',
-      headers: REQUEST_HEADERS,
-      body: JSON.stringify({ email }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  return result;
+export async function onCreateDocument({ key, type }) {
+  const route = `${Constants.API}/documents/create`;
+  const body = { type };
+  return await fetchAndExpectData({ route, key, body });
 }
 
-export async function userAuthenticate({ email, password }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/authenticate', {
-      method: 'POST',
-      headers: REQUEST_HEADERS,
-      body: JSON.stringify({ email, password, source: 'wireframes.internet.dev' }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.user) {
-    return null;
-  }
-
-  return result;
+export async function onDeleteDocumentById({ id, key }) {
+  const route = `${Constants.API}/documents/delete`;
+  const body = { id };
+  return await fetchAndExpectData({ route, key, body });
 }
 
-export async function userRefreshKey({ email, password }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/regenerate-key', {
-      method: 'POST',
-      headers: REQUEST_HEADERS,
-      body: JSON.stringify({ email, password }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.user) {
-    return null;
-  }
-
-  return result;
+export async function onPublicUserAuthenticate({ email, password }) {
+  const route = `${Constants.API}/users/authenticate`;
+  const body = { email, password };
+  return fetchAndExpectData({ route, key: null, body }, 'user');
 }
 
-export async function userUnsubscribeServices({ key }) {
-  if (Utilities.isEmpty(key)) {
-    return null;
-  }
-
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/subscriptions/unsubscribe', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.user) {
-    return null;
-  }
-
-  return result;
+export async function onPublicUserForgotPassword({ email }) {
+  const route = `${Constants.API}/users/reset-password`;
+  const body = { email };
+  return fetchAndExpectData({ route, key: null, body });
 }
 
-export async function userUploadData({ file, key }) {
-  if (Utilities.isEmpty(key)) {
-    return null;
-  }
+export async function onRefreshDocuments({ key, type }) {
+  const route = `${Constants.API}/documents`;
+  const body = { type };
+  return await fetchAndExpectData({ route, key, body });
+}
 
+export async function onUpdateDocumentById({ id, key, updates }) {
+  const route = `${Constants.API}/documents/update`;
+  const body = { id, updates };
+  return await fetchAndExpectData({ route, key, body });
+}
+
+export async function onUserChangePassword({ key, password }) {
+  const route = `${Constants.API}/users/update-viewer-password`;
+  const body = { password };
+  return fetchAndExpectData({ route, key, body });
+}
+
+export async function onUserCreatePost({ id, key, src, type }) {
+  const route = `${Constants.API}/posts/create`;
+  const body = { type, fields: { fileId: id, public: true }, src };
+  return fetchAndExpectData({ route, key, body });
+}
+
+export async function onUserCreateThread({ fields, key, src, type }) {
+  const route = `${Constants.API}/posts/create`;
+  const body = { fields, src, type };
+  return fetchAndExpectData({ route, key, body });
+}
+
+export async function onUserDeletePost({ id, key }) {
+  const route = `${Constants.API}/posts/delete`;
+  const body = { id };
+  return fetchAndExpectData({ route, key, body });
+}
+
+export async function onUserListThreadReplies({ id, key, orderBy }) {
+  const route = `${Constants.API}/posts/all-thread-replies`;
+  const body = { id, orderBy };
+  return fetchAndExpectData({ route, key, body });
+}
+
+export async function onUserListThreads({ key, orderBy }) {
+  const route = `${Constants.API}/posts/all-threads`;
+  const body = { orderBy };
+  return fetchAndExpectData({ route, key, body });
+}
+
+export async function onUserRegenerateAPIKey({ email, password }) {
+  const route = `${Constants.API}/users/regenerate-key`;
+  const body = { email, password };
+  return fetchAndExpectData({ route, key: null, body }, 'user');
+}
+
+export async function onUserUnsubscribeServices({ key }) {
+  const route = `${Constants.API}/users/subscriptions/unsubscribe`;
+  const body = null;
+  return fetchAndExpectData({ route, key, body }, 'user');
+}
+
+export async function onUserUploadDataS3({ file, key }) {
   let signedResult;
   const name = file.name;
   const type = file.type;
@@ -144,28 +124,10 @@ export async function userUploadData({ file, key }) {
   }
 
   try {
-    const signedResponse = await fetch(`https://api.internet.dev/api/data/generate-presigned-url`, {
-      method: 'POST',
-      headers: {
-        'X-API-KEY': key,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ type, file: name, size }),
-    });
-    signedResult = await signedResponse.json();
+    const route = `${Constants.API}/data/generate-presigned-url`;
+    const body = { type, file: name, size };
+    signedResult = await fetchAndExpectData({ route, key, body }, 'uploadURL');
   } catch (e) {
-    return null;
-  }
-
-  if (!signedResult) {
-    return null;
-  }
-
-  if (signedResult.error) {
-    return signedResult;
-  }
-
-  if (!signedResult.uploadURL) {
     return null;
   }
 
@@ -179,155 +141,4 @@ export async function userUploadData({ file, key }) {
   }
 
   return signedResult;
-}
-
-export async function userChangePassword({ key, password }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/users/update-viewer-password', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  return result;
-}
-
-export async function userCreatePost({ id, key, src, type }) {
-  if (Utilities.isEmpty(key)) {
-    return null;
-  }
-
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/posts/create', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type, fields: { fileId: id, public: true }, src }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  return result;
-}
-
-export async function userDeletePost({ id, key }) {
-  if (Utilities.isEmpty(key)) {
-    return null;
-  }
-
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/posts/delete', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  return result;
-}
-
-export async function userCreatePlainThread({ key, fields, src, type }) {
-  if (Utilities.isEmpty(key)) {
-    return null;
-  }
-
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/posts/create', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, Accept: 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fields, src, type }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  return result;
-}
-
-export async function userListThreadReplies({ id, orderBy }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/posts/all-thread-replies', {
-      method: 'POST',
-      headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, orderBy }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  return result;
-}
-
-export async function userListThreads({ orderBy }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/posts/all-threads', {
-      method: 'POST',
-      body: JSON.stringify({ orderBy }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  return result;
-}
-
-export async function onRefreshDocuments({ key, type }) {
-  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents', key, body: JSON.stringify({ type }) });
-  return result;
-}
-
-export async function onCreateDocument({ key, type }) {
-  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents/create', key, body: JSON.stringify({ type }) });
-  return result;
-}
-
-export async function onDeleteDocumentById({ id, key }) {
-  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents/delete', key, body: JSON.stringify({ id }) });
-  return result;
-}
-
-export async function onUpdateDocumentById({ id, key, updates }) {
-  const result = await fetchAndExpectData({ route: 'https://api.internet.dev/api/documents/update', key, body: JSON.stringify({ id, updates }) });
-  return result;
 }

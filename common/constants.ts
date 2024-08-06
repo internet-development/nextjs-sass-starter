@@ -1,5 +1,7 @@
 export const MAX_SIZE_BYTES = 15728640;
 
+export const API = `https://api.internet.dev/api`;
+
 export const TEMPLATE_EXAMPLES_ANIMATIONS = [
   {
     name: 'Animations ➝ CSS scroll carousel horizontal',

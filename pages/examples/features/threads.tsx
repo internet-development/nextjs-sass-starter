@@ -59,7 +59,7 @@ function ExampleEmptyApplicationTemplate(props) {
                   return;
                 }
 
-                const response = await Queries.userCreatePlainThread({
+                const response = await Queries.onUserCreateThread({
                   key,
                   fields: {
                     thread: true,
@@ -77,9 +77,9 @@ function ExampleEmptyApplicationTemplate(props) {
                   return;
                 }
 
-                const listing = await Queries.userListThreads({ orderBy: { column: 'created_at', value: 'desc' } });
+                const listing = await Queries.onUserListThreads({ key: null, orderBy: { column: 'created_at', value: 'desc' } });
 
-                if (!listing || !listing.data) {
+                if (!listing) {
                   showModal({
                     name: 'ERROR',
                     message: 'Something went wrong with listing threads',
@@ -96,9 +96,9 @@ function ExampleEmptyApplicationTemplate(props) {
           <ActionItem
             icon={`⊹`}
             onClick={async () => {
-              const listing = await Queries.userListThreads({ orderBy: { column: 'created_at', value: 'desc' } });
+              const listing = await Queries.onUserListThreads({ key: null, orderBy: { column: 'created_at', value: 'desc' } });
 
-              if (!listing || !listing.data) {
+              if (!listing) {
                 showModal({
                   name: 'ERROR',
                   message: 'Something went wrong with listing threads',

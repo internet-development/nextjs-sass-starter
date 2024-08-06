@@ -113,7 +113,8 @@ export function bytesToSize(bytes: number, decimals: number = 2) {
 }
 
 export function isEmpty(text: any) {
-  // NOTE(jim): If a number gets passed in, it isn't considered empty for zero.
+  // NOTE(jimmylee):
+  // If a number gets passed in, it isn't considered empty for zero.
   if (text === 0) {
     return false;
   }
@@ -212,18 +213,14 @@ export function timeAgo(dateInput: Date | string | number): string {
   }
 
   if (secondsPast < 60) {
-    // Less than a minute
     return 'Just now';
   } else if (secondsPast < 3600) {
-    // Less than an hour
     const minutes = Math.floor(secondsPast / 60);
     return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
   } else if (secondsPast < 86400) {
-    // Less than a day
     const hours = Math.floor(secondsPast / 3600);
     return `${hours} hour${hours > 1 ? 's' : ''} ago`;
   } else if (secondsPast < 604800) {
-    // Less than a week
     const days = Math.floor(secondsPast / 86400);
     return `${days} day${days > 1 ? 's' : ''} ago`;
   }

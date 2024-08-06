@@ -1,4 +1,4 @@
-import styles from '@system/modals/Modals.module.scss';
+import styles from '@demos/modals/Modals.module.scss';
 
 import * as Queries from '@common/queries';
 import * as React from 'react';
@@ -83,7 +83,7 @@ export default function ModalAuthentication(props) {
               }
 
               setLoading(true);
-              const response = await Queries.userAuthenticate({ email, password });
+              const response = await Queries.onPublicUserAuthenticate({ email, password });
               setLoading(false);
               if (!response) {
                 alert('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');

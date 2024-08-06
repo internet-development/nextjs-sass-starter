@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import ModalAuthentication from '@system/modals/ModalAuthentication';
-import ModalColorPicker from '@system/modals/ModalColorPicker';
-import ModalError from '@system/modals/ModalError';
-import ModalIndex from '@system/modals/ModalIndex';
-import ModalNavigation from '@system/modals/ModalNavigation';
-import ModalNavigationV2 from '@system/modals/ModalNavigationV2';
-import ModalNavigationTemplate from '@system/modals/ModalNavigationTemplate';
-import ModalWebsitePrompt from '@system/modals/ModalWebsitePrompt';
+import ModalAuthentication from '@demos/modals/ModalAuthentication';
+import ModalColorPicker from '@demos/modals/ModalColorPicker';
+import ModalError from '@demos/modals/ModalError';
+import ModalIndex from '@demos/modals/ModalIndex';
+import ModalNavigation from '@demos/modals/ModalNavigation';
+import ModalNavigationV2 from '@demos/modals/ModalNavigationV2';
+import ModalNavigationTemplate from '@demos/modals/ModalNavigationTemplate';
+import ModalWebsitePrompt from '@demos/modals/ModalWebsitePrompt';
 
 import { useModal } from '@system/providers/ModalContextProvider';
 

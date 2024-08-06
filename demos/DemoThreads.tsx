@@ -10,7 +10,7 @@ const ThreadItem = (props) => {
   const [list, setList] = React.useState<Array<any>>([]);
 
   const onList = async (options?: Record<string, any>) => {
-    const listing = await Queries.userListThreadReplies({ id: props.threadId, orderBy: { column: 'created_at', value: 'desc' } });
+    const listing = await Queries.onUserListThreadReplies({ id: props.threadId, key: null, orderBy: { column: 'created_at', value: 'desc' } });
     if (!listing || listing.error) {
       props.setModal({
         name: 'ERROR',
@@ -51,7 +51,7 @@ const ThreadItem = (props) => {
       return;
     }
 
-    const response = await Queries.userCreatePlainThread({
+    const response = await Queries.onUserCreateThread({
       key: props.sessionKey,
       fields: {
         thread: true,
@@ -69,8 +69,8 @@ const ThreadItem = (props) => {
       return;
     }
 
-    const listing = await Queries.userListThreadReplies({ id: props.threadId, orderBy: { column: 'created_at', value: 'desc' } });
-    if (!listing || listing.error) {
+    const listing = await Queries.onUserListThreadReplies({ id: props.threadId, key: null, orderBy: { column: 'created_at', value: 'desc' } });
+    if (!listing) {
       props.setModal({
         name: 'ERROR',
         message: 'Something went wrong with listing threads',

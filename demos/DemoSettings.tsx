@@ -177,20 +177,19 @@ export default function DemoSettings(props) {
               loading={uploading}
               onSetFile={async (file) => {
                 setUploading(true);
-                const response = await Queries.userUploadData({ file, key: props.sessionKey });
+                if (Utilities.isEmpty(props.sessionKey)) {
+                  props.onSetModal({ name: 'ERROR', message: 'not authenticated' });
+                  setUploading(false);
+                }
+
+                const response = await Queries.onUserUploadDataS3({ file, key: props.sessionKey });
                 if (!response) {
-                  setUploading(false);
                   props.onSetModal({ name: 'ERROR', message: 'failed to upload file' });
-                  return;
-                }
-
-                if (response.error) {
-                  props.onSetModal({ name: 'ERROR', message: response.error });
                   setUploading(false);
                   return;
                 }
 
-                const save = await Queries.userCreatePost({ id: response.id, src: response.fileURL, key: props.sessionKey, type: 'MOOD' });
+                const save = await Queries.onUserCreatePost({ id: response.id, src: response.fileURL, key: props.sessionKey, type: 'MOOD' });
                 if (!save) {
                   props.onSetModal({ name: 'ERROR', message: 'failed to save post' });
                   setUploading(false);
@@ -212,18 +211,15 @@ export default function DemoSettings(props) {
               <ActionItem
                 icon={`⊹`}
                 onClick={async () => {
+                  if (Utilities.isEmpty(props.sessionKey)) {
+                    props.onSetModal({ name: 'ERROR', message: 'You must be authenticated' });
+                    return null;
+                  }
+
                   for (const targetId of selected) {
-                    const response = await Queries.userDeletePost({ id: targetId, key: props.sessionKey });
+                    const response = await Queries.onUserDeletePost({ id: targetId, key: props.sessionKey });
                     if (!response) {
                       props.onSetModal({ name: 'ERROR', message: 'failed to delete post' });
-                      // TODO(jimmylee):
-                      // Very lazy.
-                      window.location.reload();
-                      return;
-                    }
-
-                    if (response.error) {
-                      props.onSetModal({ name: 'ERROR', message: response.error });
                       // TODO(jimmylee):
                       // Very lazy.
                       window.location.reload();
@@ -249,13 +245,9 @@ export default function DemoSettings(props) {
         <div style={{ maxWidth: 568 }}>
           <FormChangePassword
             onSubmit={async ({ password }) => {
-              const response = await Queries.userChangePassword({ key: props.sessionKey, password });
+              const response = await Queries.onUserChangePassword({ key: props.sessionKey, password });
               if (!response) {
                 props.onSetModal({ name: 'ERROR', message: 'failed to change password' });
-              }
-
-              if (response.error) {
-                props.onSetModal({ name: 'ERROR', message: response.error });
               }
 
               window.location.href = '/examples/features/settings';
@@ -302,7 +294,9 @@ export default function DemoSettings(props) {
                 return;
               }
 
-              await Queries.userUnsubscribeServices({ key: props.sessionKey });
+              // TODO(jimmylee)
+              // Error handling should exist on this.
+              await Queries.onUserUnsubscribeServices({ key: props.sessionKey });
               window.location.reload();
             }}
             style={{ marginTop: 24 }}

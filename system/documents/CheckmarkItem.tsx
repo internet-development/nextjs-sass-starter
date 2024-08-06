@@ -1,6 +1,6 @@
 import styles from '@system/documents/CheckmarkItem.module.scss';
 
-import React, { useState } from 'react';
+import * as React from 'react';
 
 import Checkmark from '@system/svg/Checkmark';
 

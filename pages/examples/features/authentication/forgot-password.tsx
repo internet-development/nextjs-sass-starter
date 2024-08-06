@@ -86,17 +86,8 @@ function ExampleResetPassword(props) {
           loading={loading}
           onClick={async () => {
             setLoading(true);
-            const response = await Queries.anonymousForgotPassword({ email });
+            const response = await Queries.onPublicUserForgotPassword({ email });
             if (!response) {
-              setLoading(false);
-              showModal({
-                name: 'ERROR',
-                message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-              });
-              return;
-            }
-
-            if (response.error) {
               setLoading(false);
               showModal({
                 name: 'ERROR',

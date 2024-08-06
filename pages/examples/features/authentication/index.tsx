@@ -122,7 +122,7 @@ function ExampleAuthentication(props) {
             }
 
             setLoading(true);
-            const response = await Queries.userAuthenticate({ email, password });
+            const response = await Queries.onPublicUserAuthenticate({ email, password });
             setLoading(false);
             if (!response) {
               showModal({
@@ -179,7 +179,7 @@ function ExampleAuthentication(props) {
               <ActionItem
                 icon={`⊹`}
                 onClick={async () => {
-                  const response = await Queries.userAuthenticate({ email, password });
+                  const response = await Queries.onPublicUserAuthenticate({ email, password });
                   if (!response) {
                     showModal({
                       name: 'ERROR',
@@ -196,7 +196,7 @@ function ExampleAuthentication(props) {
               <ActionItem
                 icon={`⊹`}
                 onClick={async () => {
-                  const response = await Queries.userRefreshKey({ email, password });
+                  const response = await Queries.onUserRegenerateAPIKey({ email, password });
                   if (!response) {
                     showModal({
                       name: 'ERROR',

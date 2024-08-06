@@ -23,25 +23,25 @@ function FormSettingsPrivacy(props) {
 
       <FormSubHeading style={{ paddingTop: 8 }}>E-mail</FormSubHeading>
       <FormParagraph>Configure your e-mail privacy settings</FormParagraph>
-      <Checkbox name="checked" value={true} style={{ marginTop: 16 }}>
+      <Checkbox name="checked" style={{ marginTop: 16 }}>
         Your e-mail address is <strong>public</strong>. To toggle e-mail privacy, uncheck this box, otherwise others will be able to see your e-mail "team@internet.dev".
       </Checkbox>
       <div className={styles.divider} />
       <FormSubHeading style={{ paddingTop: 8 }}>Personal</FormSubHeading>
       <FormParagraph>Configure how much personal information you wish to share</FormParagraph>
-      <Checkbox name="checked" value={true} style={{ marginTop: 16 }}>
+      <Checkbox name="checked" style={{ marginTop: 16 }}>
         Your location is <strong>public</strong>. To toggle location privacy, uncheck this box.
       </Checkbox>
-      <Checkbox name="checked" value={true} style={{ marginTop: 16 }}>
+      <Checkbox name="checked" style={{ marginTop: 16 }}>
         Your age is <strong>public</strong>. To toggle age privacy, uncheck this box.
       </Checkbox>
-      <Checkbox name="checked" value={true} style={{ marginTop: 16 }}>
+      <Checkbox name="checked" style={{ marginTop: 16 }}>
         Your birthdate is <strong>public</strong>. To toggle birthdate privacy, uncheck this box.
       </Checkbox>
       <div className={styles.divider} />
       <FormSubHeading style={{ paddingTop: 8 }}>Activity</FormSubHeading>
       <FormParagraph>Configure how much activity you wish to share</FormParagraph>
-      <Checkbox name="checked" value={true} style={{ marginTop: 16 }}>
+      <Checkbox name="checked" style={{ marginTop: 16 }}>
         Your profile activity is <strong>public</strong>. To toggle the visibility of your activity, uncheck this box.
       </Checkbox>
       <Button href="#" style={{ marginTop: 24 }}>
@@ -50,11 +50,11 @@ function FormSettingsPrivacy(props) {
       <div className={styles.divider} />
       <FormSubHeading style={{ paddingTop: 8 }}>Content</FormSubHeading>
       <FormParagraph>Configure your content settings here</FormParagraph>
-      <Checkbox name="checked" value={true} style={{ marginTop: 16 }}>
+      <Checkbox name="checked" style={{ marginTop: 16 }}>
         Your content is <strong>public</strong> and accessible to everyone by default. To make your content private by default, uncheck this box. This will prevent others from
         viewing your content unless you choose to make it public.
       </Checkbox>
-      <Checkbox name="checked" value={true} style={{ marginTop: 16 }}>
+      <Checkbox name="checked" style={{ marginTop: 16 }}>
         Allow your content to be used to train our models, which makes our API better for you and everyone who uses it.
       </Checkbox>
       <Button href="#" style={{ marginTop: 24 }}>

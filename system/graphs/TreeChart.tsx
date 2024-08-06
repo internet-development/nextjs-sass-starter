@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as d3 from 'd3';
+import * as React from 'react';
 
 const TreeChart = ({ data }) => {
   const d3Container = React.useRef(null);

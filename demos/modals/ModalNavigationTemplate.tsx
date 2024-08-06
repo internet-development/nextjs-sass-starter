@@ -1,4 +1,4 @@
-import styles from '@system/modals/Modals.module.scss';
+import styles from '@demos/modals/Modals.module.scss';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';

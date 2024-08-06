@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Mono';
+  src: url('https://storage.googleapis.com/internet-dev-public/public/internet-dev/5cc369e9-933f-4ec5-b30e-bb0b63f5ff12.woff') format('woff');
+}
+
 html,
 body,
 div,
@@ -425,7 +430,7 @@ body {
   --type-scale-fixed-label: 10px;
 
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
-  --font-family-mono: Consolas, monaco, monospace;
+  --font-family-mono: 'Mono', Consolas, monaco, monospace;
   --font-family-serif: Georgia, Times New Roman, serif;
 
   font-family: var(--font-family);
