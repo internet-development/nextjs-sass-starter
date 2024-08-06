@@ -80,7 +80,7 @@ function ExampleAuthentication(props) {
           Bluesky.
         </FormParagraph>
 
-        <Button visual href="https://api.internet.dev/authenticate-google" style={{ marginTop: 24, width: '100%' }}>
+        <Button visual href="#" style={{ marginTop: 24, width: '100%' }}>
           Coming soon
         </Button>
 

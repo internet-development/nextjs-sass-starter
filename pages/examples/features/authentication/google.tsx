@@ -76,7 +76,7 @@ function ExampleAuthentication(props) {
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in with Google</FormHeading>
         <FormParagraph>Enhance your experience by signing in with Google. Simply click the button below.</FormParagraph>
-        <Button href="https://api.internet.dev/authenticate-google" style={{ marginTop: 24, width: '100%' }}>
+        <Button href="https://api.internet.dev/authenticate-google?domain=REDIRECT_WIREFRAMES_INTERNET_DEV" style={{ marginTop: 24, width: '100%' }}>
           Sign in with Google
         </Button>
 
