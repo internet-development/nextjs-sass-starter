@@ -86,7 +86,7 @@ export default async function Page(props) {
         <ListItem href="https://users.garden" index={Utilities.leftPad(`5`, 4)} isWIP>
           users.garden
         </ListItem>
-        <ListItem href="https://beautifulthings.xyz" index={Utilities.leftPad(`6`, 4)}>
+        <ListItem href="https://beautifulthings.xyz" index={Utilities.leftPad(`6`, 4)} isWIP>
           beautifulthings.xyz
         </ListItem>
       </div>
