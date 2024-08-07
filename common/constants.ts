@@ -1,6 +1,9 @@
 export const MAX_SIZE_BYTES = 15728640;
 
 export const API = `https://api.internet.dev/api`;
+// NOTE(jimmylee):
+// https://github.com/internet-development/apis
+// export const API = `http://localhost:10001`;
 
 export const TEMPLATE_EXAMPLES_ANIMATIONS = [
   {
@@ -34,6 +37,11 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
 ];
 
 export const TEMPLATE_EXAMPLES_COMPONENTS = [
+  {
+    name: 'Fonts ➝ Server Mono',
+    href: '/examples/fonts/server-mono',
+    label: 'Server Mono preview',
+  },
   {
     name: 'Components ➝ navigation, hero section',
     href: '/examples',
@@ -192,9 +200,19 @@ export const TEMPLATE_EXAMPLES_FEATURES = [
     label: 'Earnings requirement calculator',
   },
   {
-    name: 'Features ➝ employment agreements',
+    name: 'Features ➝ documents ➝ employment',
     href: '/examples/features/employment',
     label: 'Employment agreements',
+  },
+  {
+    name: 'Features ➝ documents ➝ invoices',
+    href: '/examples/features/invoices',
+    label: 'Invoices',
+  },
+  {
+    name: 'Features ➝ documents ➝ statement of work',
+    href: '/examples/features/statement-of-work',
+    label: 'Statement of Work',
   },
   {
     name: 'Features ➝ file management (with AWS S3 presigned URL)',
@@ -212,11 +230,6 @@ export const TEMPLATE_EXAMPLES_FEATURES = [
     label: 'Fixed stock watchlist',
   },
   {
-    name: 'Features ➝ invoice management',
-    href: '/examples/features/invoices',
-    label: 'Invoices',
-  },
-  {
     name: 'Features ➝ job posting',
     href: '/examples/features/job-posting',
     label: 'Job posting',
@@ -231,11 +244,6 @@ export const TEMPLATE_EXAMPLES_FEATURES = [
     href: '/examples/features/settings',
     isWIP: true,
     label: 'Settings',
-  },
-  {
-    name: 'Features ➝ statement of work management',
-    href: '/examples/features/statement-of-work',
-    label: 'Statement of Work',
   },
   {
     name: 'Features ➝ threads',

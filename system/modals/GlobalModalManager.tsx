@@ -28,7 +28,7 @@ export default function GlobalModalManager(props) {
   }
 
   if (modalContent && modalContent.name === 'NAVIGATION_V2') {
-    nextModal = <ModalNavigationV2 parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
+    nextModal = <ModalNavigation parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   if (modalContent && modalContent.name == 'NAVIGATION_TEMPLATE') {
