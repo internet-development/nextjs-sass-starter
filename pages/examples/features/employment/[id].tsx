@@ -1,3 +1,4 @@
+import * as Queries from '@common/queries';
 import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
@@ -150,19 +151,9 @@ function ExampleEmploymentDocument(props) {
 }
 
 export async function getServerSideProps(context) {
-  const response = await fetch(`https://api.internet.dev/api/documents/${context.params.id}`);
-  const results = await response.json();
+  const results = await Queries.onGetDocumentById({ id: context.params.id });
 
   if (!results) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-
-  if (results.error) {
     return {
       redirect: {
         destination: '/',

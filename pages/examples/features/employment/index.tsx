@@ -57,7 +57,7 @@ function ExampleEmploymentDocuments(props) {
       </FormParagraph>
       <Button
         onClick={async () => {
-          const result = await Queries.onCreateDocument({ key, type: DOCUMENT_TYPE });
+          const result = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE });
           if (!result) {
             return;
           }

@@ -1,3 +1,4 @@
+import * as Queries from '@common/queries';
 import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
@@ -72,12 +73,7 @@ export async function getServerSideProps(context) {
   let data = null;
   if (active === 'DOCUMENTS') {
     try {
-      const response = await fetch('https://api.internet.dev/api/documents', {
-        method: 'POST',
-        headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'ALL' }),
-      });
-      const result = await response.json();
+      const result = await Queries.onRefreshDocuments({ key: sessionKey, type: 'ALL' });
       if (result && result.data) {
         data = result.data;
       }
@@ -86,12 +82,7 @@ export async function getServerSideProps(context) {
 
   if (active === 'CONTENT' && viewer) {
     try {
-      const response = await fetch('https://api.internet.dev/api/posts', {
-        method: 'POST',
-        headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'MOOD', user_id: viewer?.id }),
-      });
-      const result = await response.json();
+      const result = await Queries.onRefreshPosts({ key: sessionKey, type: 'MOOD', user_id: viewer?.id });
       if (result && result.data) {
         data = result.data;
       }

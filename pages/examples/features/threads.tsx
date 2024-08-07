@@ -133,14 +133,7 @@ export async function getServerSideProps(context) {
 
   let data = null;
   try {
-    const response = await fetch('https://api.internet.dev/api/posts/all-threads', {
-      method: 'POST',
-      headers: { 'X-API-KEY': sessionKey, 'Content-Type': 'application/json' },
-    });
-    const result = await response.json();
-    if (result && result.data) {
-      data = result.data;
-    }
+    data = await Queries.onUserListThreads({ key: sessionKey, orderBy: { column: 'created_at', value: 'desc' } });
   } catch (e) {}
 
   return {

@@ -182,7 +182,7 @@ export default function DemoSettings(props) {
                   setUploading(false);
                 }
 
-                const response = await Queries.onUserUploadDataS3({ file, key: props.sessionKey });
+                const response = await Queries.onUserUploadDataS3({ domain: null, file, key: props.sessionKey });
                 if (!response) {
                   props.onSetModal({ name: 'ERROR', message: 'failed to upload file' });
                   setUploading(false);
@@ -192,12 +192,6 @@ export default function DemoSettings(props) {
                 const save = await Queries.onUserCreatePost({ id: response.id, src: response.fileURL, key: props.sessionKey, type: 'MOOD' });
                 if (!save) {
                   props.onSetModal({ name: 'ERROR', message: 'failed to save post' });
-                  setUploading(false);
-                  return;
-                }
-
-                if (save.error) {
-                  props.onSetModal({ name: 'ERROR', message: save.error });
                   setUploading(false);
                   return;
                 }

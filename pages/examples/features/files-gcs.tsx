@@ -1,4 +1,5 @@
 import * as Constants from '@common/constants';
+import * as Queries from '@common/queries';
 import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
@@ -16,108 +17,6 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 import { useModal } from '@system/providers/ModalContextProvider';
-
-async function onListData({ key }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/data', {
-      method: 'GET',
-      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.data) {
-    return null;
-  }
-
-  return result;
-}
-
-async function onDeleteData({ id, key }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/data/delete', {
-      method: 'DELETE',
-      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (result.error) {
-    return null;
-  }
-
-  return result;
-}
-
-async function onUploadData({ file, domain, key, showModal }) {
-  let signedResult;
-  const name = file.name;
-  const type = file.type;
-  const size = file.size;
-
-  if (size > Constants.MAX_SIZE_BYTES) {
-    showModal({ name: 'ERROR', message: 'File size exceeds 15mb limit' });
-    return;
-  }
-
-  try {
-    const signedResponse = await fetch(`https://api.internet.dev/api/data/generate-presigned-url-gcs`, {
-      method: 'POST',
-      headers: {
-        'X-API-KEY': key,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ type, domain: domain, file: name, size }),
-    });
-    signedResult = await signedResponse.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!signedResult) {
-    showModal({ name: 'ERROR', message: 'Failed to upload.' });
-    return null;
-  }
-
-  if (signedResult.error) {
-    showModal({ name: 'ERROR', message: signedResult.message });
-    return null;
-  }
-
-  if (!signedResult.uploadURL) {
-    showModal({ name: 'ERROR', message: 'Failed to upload your data.' });
-    return null;
-  }
-
-  try {
-    fetch(signedResult.uploadURL, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/octet-stream',
-      },
-      body: file,
-    });
-  } catch (e) {
-    return null;
-  }
-
-  return signedResult;
-}
 
 function ExampleFilesGCS(props) {
   const { showModal } = useModal();
@@ -157,7 +56,7 @@ function ExampleFilesGCS(props) {
           style={{ margin: `24px 0 0 0`, width: '100%' }}
           onClick={async () => {
             setLoading(true);
-            const response = await onListData({ key });
+            const response = await Queries.onUserListData({ key });
             setLoading(false);
 
             if (!response) {
@@ -183,8 +82,8 @@ function ExampleFilesGCS(props) {
                   return;
                 }
 
-                const response = await onDeleteData({ id: each.id, key });
-                const list = await onListData({ key });
+                const response = await Queries.onUserDeleteData({ id: each.id, key });
+                const list = await Queries.onUserListData({ key });
                 setUploading(false);
 
                 if (!list) {
@@ -214,7 +113,7 @@ function ExampleFilesGCS(props) {
           loading={uploading}
           onSetFile={async (file) => {
             setUploading(true);
-            const response = await onUploadData({ file, domain, key, showModal });
+            const response = await Queries.onUserUploadDataGCS({ domain, file, key });
             if (!response) {
               setUploading(false);
               return;
@@ -226,7 +125,7 @@ function ExampleFilesGCS(props) {
               return;
             }
 
-            const list = await onListData({ key });
+            const list = await Queries.onUserListData({ key });
             setUploading(false);
 
             if (!list) {

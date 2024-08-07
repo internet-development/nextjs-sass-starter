@@ -1,3 +1,4 @@
+import * as Queries from '@common/queries';
 import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
@@ -19,109 +20,7 @@ import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 import { useModal } from '@system/providers/ModalContextProvider';
 
-async function onRefreshInvoices({ key, showModal }) {
-  if (Utilities.isEmpty(key)) {
-    return showModal({ name: 'ERROR', message: 'You must provide an API key' });
-  }
-
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/documents', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type: 'INVOICE' }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.data) {
-    return null;
-  }
-
-  return result;
-}
-
-async function onCreateInvoice({ key, showModal }) {
-  if (Utilities.isEmpty(key)) {
-    return showModal({ name: 'ERROR', message: 'You must provide an API key' });
-  }
-
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/documents/create', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type: 'INVOICE' }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (!result.data) {
-    return null;
-  }
-
-  return result;
-}
-
-async function onDeleteInvoice({ id, key }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/documents/delete', {
-      method: 'DELETE',
-      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (result.error) {
-    return null;
-  }
-
-  return result;
-}
-
-async function onUpdateInvoice({ id, key, showModal, updates }) {
-  let result;
-  try {
-    const response = await fetch('https://api.internet.dev/api/documents/update', {
-      method: 'POST',
-      headers: { 'X-API-KEY': key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, updates }),
-    });
-    result = await response.json();
-  } catch (e) {
-    return null;
-  }
-
-  if (!result) {
-    return null;
-  }
-
-  if (result.error) {
-    return null;
-  }
-
-  return result;
-}
+const DOCUMENT_TYPE = 'INVOICE';
 
 function ExampleInvoices(props) {
   const { showModal } = useModal();
@@ -152,12 +51,16 @@ function ExampleInvoices(props) {
       <FormParagraph>Each invoice gets a unique page with a unique ID that is only discoverable if you share it.</FormParagraph>
       <Button
         onClick={async () => {
-          const invoiceResult = await onCreateInvoice({ key, showModal });
+          if (Utilities.isEmpty(key)) {
+            return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+          }
+
+          const invoiceResult = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE });
           if (!invoiceResult) {
             return;
           }
 
-          const results = await onRefreshInvoices({ key, showModal });
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
           if (!results) {
             return;
           }
@@ -172,7 +75,11 @@ function ExampleInvoices(props) {
       <ActionItem
         icon={`⊹`}
         onClick={async () => {
-          const results = await onRefreshInvoices({ key, showModal });
+          if (Utilities.isEmpty(key)) {
+            return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+          }
+
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
           if (!results) {
             return;
           }
@@ -213,14 +120,17 @@ function ExampleInvoices(props) {
               });
             }}
             onDelete={async () => {
+              if (Utilities.isEmpty(key)) {
+                return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+              }
+
               const confirm = window.confirm(`Are you sure you want to delete ${each.id}? This action is irreversible.`);
               if (!confirm) {
                 return;
               }
 
-              const response = await onDeleteInvoice({ id: each.id, key });
-
-              const results = await onRefreshInvoices({ key, showModal });
+              const response = await Queries.onDeleteDocumentById({ id: each.id, key });
+              const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
               if (!results) {
                 return;
               }
@@ -362,14 +272,18 @@ function ExampleInvoices(props) {
             />
             <Button
               onClick={async () => {
+                if (Utilities.isEmpty(key)) {
+                  return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+                }
+
                 setLoading(true);
-                const invoiceResult = await onUpdateInvoice({ id: currentInvoice.id, key, showModal, updates });
+                const invoiceResult = await Queries.onUpdateDocumentById({ id: currentInvoice.id, key, updates });
                 if (!invoiceResult) {
                   setLoading(false);
                   return;
                 }
 
-                const results = await onRefreshInvoices({ key, showModal });
+                const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
                 setLoading(false);
                 if (!results) {
                   return;
