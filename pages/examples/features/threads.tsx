@@ -133,7 +133,10 @@ export async function getServerSideProps(context) {
 
   let data = null;
   try {
-    data = await Queries.onUserListThreads({ key: sessionKey, orderBy: { column: 'created_at', value: 'desc' } });
+    const results = await Queries.onUserListThreads({ key: sessionKey, orderBy: { column: 'created_at', value: 'desc' } });
+    if (results) {
+      data = results.data;
+    }
   } catch (e) {}
 
   return {
