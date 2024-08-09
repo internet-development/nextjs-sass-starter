@@ -1,0 +1,619 @@
+.body {
+  padding: 44px 0;
+  color: inherit;
+  color: var(--theme-foreground-text);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 24px 0;
+  }
+}
+
+.elCapLogo {
+  display: none;
+
+  @media (max-width: 768px) {
+    background: none;
+    display: block;
+    position: absolute;
+    bottom: 16px;
+    background: var(--theme-background);
+    width: calc(100% + 50px);
+    height: auto;
+    border: none;
+    margin-left: -10vw;
+    background: none;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+
+  .elCap {
+    color: inherit;
+    position: relative;
+    width: 82px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.mobileLogoContainer {
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 88px;
+    position: relative;
+  }
+}
+
+.hamburger {
+  @media (max-width: 768px) {
+    display: block;
+    cursor: pointer;
+    z-index: var(--z-index-large);
+  }
+
+  &.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  &.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  &.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+.bar {
+  @media (max-width: 768px) {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: inherit;
+    background-color: currentColor;
+  }
+}
+
+.gutterWrapper {
+  padding: 2rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 48px;
+  min-width: 10%;
+  width: 100%;
+  position: relative;
+  margin-left: -1.2rem;
+
+  @media (max-width: 768px) {
+    padding: var(--page-gutters-mobile);
+    margin: var(--page-margins-mobile);
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    // (xBalbinus) this hides the navmenu when it's not active
+    left: -100%;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    text-align: flex-start;
+    transition: left 0.3s ease-in-out;
+    align-items: flex-start;
+    min-height: calc(100vh - 77px);
+    gap: 20px;
+    padding-top: 56px;
+    height: 95vh;
+    margin-top: 0px;
+
+    @media (max-width: 768px) {
+      gap: 40px;
+    }
+
+    @media (max-width: 400px) {
+      gap: 32px;
+    }
+
+    &.active {
+      left: 0;
+      gap: 20px;
+      background: var(--theme-background);
+
+      @media (max-width: 768px) {
+        gap: 40px;
+      }
+
+      @media (max-width: 400px) {
+        gap: 32px;
+      }
+    }
+
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .navItem {
+    padding: 0 24px;
+    min-width: 64px;
+    white-space: nowrap;
+    position: relative;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    @media (max-width: 768px) {
+      margin: var(--page-gutters-mobile);
+      padding: 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .navItemSquiggle {
+      display: block;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+
+      overflow: hidden;
+      transition: width 0.5s ease-in-out;
+      position: absolute;
+    }
+
+    &:hover .navItemSquiggle {
+      width: 100%;
+
+      @media (max-width: 768px) {
+        width: 0%;
+      }
+    }
+
+    .navItemText {
+      font-size: 20px;
+      color: inherit;
+      -webkit-font-smoothing: antialiased;
+      text-decoration: none;
+      list-style: none;
+      width: auto;
+
+      @media (max-width: 1800px) {
+        font-size: 16px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 48px;
+        margin-left: -0.5rem;
+      }
+
+      @media (max-width: 400px) {
+        font-size: 40px;
+      }
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 80px;
+    }
+
+    .navItem:last-child .navItemText {
+      margin-right: 0;
+    }
+
+    .svgAbout,
+    .svgReadingList,
+    .svgBlog,
+    .svgContributors,
+    .svgPortfolio {
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      transition: stroke-dashoffset 0.5s ease-in-out;
+    }
+
+    &:hover .svgAbout,
+    &:hover .svgReadingList,
+    &:hover .svgBlog,
+    &:hover .svgContributors,
+    &:hover .svgPortfolio {
+      stroke-dashoffset: 0;
+    }
+
+    &:hover {
+      top: 0;
+    }
+
+    .svgAbout {
+      left: 0.4rem;
+      position: absolute;
+      width: 80px;
+
+      .svgAboutItem {
+        width: 70px;
+        left: 6rem;
+      }
+
+      @media (max-width: 768px) {
+        .svgAboutItem {
+          width: 126px;
+          width: 106px;
+          height: auto;
+          top: 1.5rem;
+          left: -0.9rem;
+          position: absolute;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgAboutItem {
+          width: 106px;
+          height: auto;
+          top: 1.2rem;
+          left: -0.9rem;
+          position: absolute;
+        }
+      }
+    }
+
+    .svgBlog {
+      padding-left: 2rem;
+
+      @media (max-width: 768px) {
+        .svgBlogItem {
+          width: 112px;
+          height: auto;
+          top: 1.3rem;
+          left: -2rem;
+          position: absolute;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgBlogItem {
+          width: 112px;
+          height: auto;
+          top: 1rem;
+          left: -2rem;
+          position: absolute;
+        }
+      }
+    }
+
+    .svgPortfolio {
+      left: 1.5rem;
+      position: absolute;
+
+      @media (max-width: 1920px) {
+        left: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .svgPortfolioItem {
+          width: 152px;
+          height: auto;
+          top: 1rem;
+          left: -2.2rem;
+          position: absolute;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgPortfolioItem {
+          width: 132px;
+          height: auto;
+          top: 1rem;
+          left: -3rem;
+          position: absolute;
+        }
+      }
+    }
+
+    .svgContributors {
+      top: 0.1rem;
+      left: 0.5rem;
+      position: absolute;
+
+      @media (max-width: 1920px) {
+        left: 0rem;
+      }
+
+      @media (max-width: 768px) {
+        .svgContributorsItem {
+          width: 310px;
+          height: auto;
+          left: -2.6rem;
+          position: absolute;
+          top: 0.5rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgContributorsItem {
+          width: 280px;
+          height: auto;
+          left: -2.6rem;
+          position: absolute;
+          top: 0.5rem;
+        }
+      }
+    }
+
+    .svgReadingList {
+      left: 1.5rem;
+      position: absolute;
+      top: 0rem;
+
+      @media (max-width: 1920px) {
+        left: 0.7rem;
+      }
+
+      @media (max-width: 768px) {
+        .svgReadingListItem {
+          width: 250px;
+          height: auto;
+          left: -1.6rem;
+          position: absolute;
+          top: 0.5rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgReadingListItem {
+          width: 210px;
+          height: auto;
+          left: -1.6rem;
+          position: absolute;
+          top: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .activeNavItemSquiggle {
+    overflow: visible;
+    width: auto;
+  }
+
+  .elCapLogo {
+    display: none;
+
+    @media (max-width: 768px) {
+      background: none;
+      display: block;
+      position: absolute;
+      bottom: 16px;
+      background: var(--theme-background);
+      width: calc(100% + 50px);
+      height: auto;
+      border: none;
+      margin-left: -10vw;
+      background: none;
+      overflow: hidden;
+      display: none;
+    }
+  }
+
+  .activeNavItemSquiggle {
+    height: 100%;
+    position: relative;
+    top: 0;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+
+    overflow: visible;
+    width: auto;
+
+    .svgAbout {
+      left: -3.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -0.5rem;
+      width: 80px;
+
+      @media (max-width: 768px) {
+        width: 126px;
+        height: auto;
+        top: -1.7rem;
+        left: -6rem;
+        position: absolute;
+      }
+
+      @media (max-width: 400px) {
+        width: 146px;
+        height: auto;
+        top: -1.7rem;
+        left: -6rem;
+        position: absolute;
+      }
+
+      @media (max-width: 768px) {
+        .svgAboutItem {
+          width: 180px;
+          height: auto;
+          top: 0.9rem;
+          left: -3rem;
+          position: absolute;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgAboutItem {
+          width: 160px;
+          height: auto;
+          top: 1rem;
+          left: -1.8rem;
+          position: absolute;
+        }
+      }
+    }
+
+    .svgReadingList {
+      padding-right: 0rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -0.5rem;
+      position: absolute;
+      left: -6.6rem;
+
+      @media (max-width: 1920px) {
+        left: -5.2rem;
+      }
+
+      @media (max-width: 768px) {
+        width: 350px;
+        height: auto;
+        top: -2rem;
+        left: -200px;
+        position: absolute;
+      }
+
+      @media (max-width: 768px) {
+        .svgReadingListItem {
+          width: 280px;
+          height: auto;
+          top: 0.8rem;
+          left: -4rem;
+          position: absolute;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgReadingListItem {
+          width: 240px;
+          height: auto;
+          top: 1rem;
+          left: -1rem;
+          position: absolute;
+        }
+      }
+    }
+
+    .svgBlog {
+      left: -5.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -0.5rem;
+      position: absolute;
+
+      @media (max-width: 768px) {
+        .svgBlogItem {
+          width: 148px;
+          height: auto;
+          top: -0.1rem;
+          left: -1.7rem;
+          position: absolute;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgBlogItem {
+          width: 128px;
+          height: auto;
+          top: -0rem;
+          left: -0.8rem;
+          position: absolute;
+        }
+      }
+    }
+
+    .svgContributors {
+      left: -6.7rem;
+      display: flex;
+      top: -0.5rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: absolute;
+
+      @media (max-width: 768px) {
+        width: 300px;
+        height: auto;
+        top: -0.5rem;
+        left: -8rem;
+        position: absolute;
+      }
+
+      @media (max-width: 768px) {
+        .svgContributorsItem {
+          width: 380px;
+          height: auto;
+          left: -11.6rem;
+          position: absolute;
+          top: -0.5rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgContributorsItem {
+          width: 320px;
+          height: auto;
+          left: -8.6rem;
+          position: absolute;
+          top: -0.5rem;
+        }
+      }
+    }
+
+    .svgPortfolio {
+      top: -0.5rem;
+      left: -5rem;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: currentColor;
+      position: absolute;
+
+      @media (max-width: 1920px) {
+        left: -4.5rem;
+      }
+
+      @media (max-width: 768px) {
+        width: 350px;
+        height: auto;
+        top: -2rem;
+        left: -8rem;
+        position: absolute;
+      }
+
+      @media (max-width: 768px) {
+        .svgPortfolioItem {
+          width: 220px;
+          height: auto;
+          top: 1rem;
+          left: -3rem;
+          position: absolute;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .svgPortfolioItem {
+          width: 188px;
+          height: auto;
+          top: 1rem;
+          left: -1.5rem;
+          position: absolute;
+        }
+      }
+    }
+  }
+}
