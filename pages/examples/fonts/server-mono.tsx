@@ -146,7 +146,7 @@ function ExampleSystemTypography(props) {
 
       <div style={{ padding: `88px 24px 24px 24px`, maxWidth: 768 }}>
         <Lead style={{ fontFamily: `var(--font-family-mono)`, lineHeight: 1, fontWeight: 400, letterSpacing: 0 }}>
-          <span style={{ background: `var(--theme-text` }}>SERVER MONO</span>
+          SERVER MONO
           <br />
           REGULAR WEIGHT
           <br />
