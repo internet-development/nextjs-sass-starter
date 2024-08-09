@@ -144,65 +144,70 @@ function ExampleSystemTypography(props) {
     >
       <Navigation />
 
-      <div style={{ fontFamily: `var(--font-family-mono)`, padding: `88px 24px 24px 24px`, maxWidth: 768 }}>
-        <Lead style={{ lineHeight: 1, fontWeight: 400, letterSpacing: 0 }}>
-          <span style={{background: `var(--theme-text`}}>SERVER MONO</span>
+      <div style={{ padding: `88px 24px 24px 24px`, maxWidth: 768 }}>
+        <Lead style={{ fontFamily: `var(--font-family-mono)`, lineHeight: 1, fontWeight: 400, letterSpacing: 0 }}>
+          <span style={{ background: `var(--theme-text` }}>SERVER MONO</span>
           <br />
           REGULAR WEIGHT
           <br />
           SIL OPEN FONT LICENSE 1.1
           <br />
           <br />
-          <span style={{background: `var(--theme-text`}}>Server Mono</span> is a typeface inspired by San Francisco Mono, ASCII Artwork, command-line interfaces, IBM Plex® Mono, and JetBrains Mono. Monospace fonts are famously known
-          for their versatility in command-line interfaces due to their clear readability and uniform character width, making them ideal for coding and technical environments.
-           <span style={{background: `var(--theme-text`}}>Server Mono</span> was designed for websites, game UIs, and custom desktop application interfaces.
+          Server Mono is a typeface inspired by typewriters, Apple's San Francisco Mono, ASCII art, command-line interfaces, and programming tools.
+          <br />
+          <br />
+          Server Mono continues the long tradition of monospace fonts, renowned for their versatility in command-line interfaces due to their clear readability and uniform
+          character width. You'll notice our own preferences reflected in the design, as we value how it performs across various viewing contexts. Server Mono offers excellent
+          readability and pairs well with its uniform, predictable, and orderly appearance.
           <br /> <br />
           This single-weight font was released in 2024 by the Internet Development Studio Company. Created by designers Tim Vanhille and Matthieu Salvaggio, with supplemental
           direction from Jimmy Lee and the Internet Development Studio Company community.
         </Lead>
 
-        <Button visual onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24 }}>
-          Coming Soon
+        <Button href="https://servermono.com" style={{ height: 48, marginTop: 24 }}>
+          Download
         </Button>
 
-        <Label style={{ marginTop: 48 }}>Basic Latin</Label>
-        <P>
-          {`
+        <div style={{ fontFamily: `var(--font-family-mono)` }}>
+          <Label style={{ marginTop: 48 }}>Basic Latin</Label>
+          <P>
+            {`
 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z`}
-        </P>
+          </P>
 
-        <Label>Diacritics</Label>
-        <P>
-{`Á Ă Â Ä À Ā Ą Å Ã Æ Ć Č Ç Ċ Ď Đ É Ě Ê Ë Ė È Ē Ə Ğ Ģ Ġ Ħ Í Î Ï İ Ì Ī Į Ķ Ĺ Ľ Ļ Ł Ń Ň Ņ Ñ Ó Ô Ö Ò Ő Ō Ø Õ Œ Þ Ŕ Ř Ŗ Ś Š Ş Ș ẞ Ť Ţ Ț Ú Û Ü Ù Ű Ū Ų Ů Ẃ Ŵ Ẅ Ẁ Ý Ŷ Ÿ Ỳ Ź Ž Ż
+          <Label>Diacritics</Label>
+          <P>
+            {`Á Ă Â Ä À Ā Ą Å Ã Æ Ć Č Ç Ċ Ď Đ É Ě Ê Ë Ė È Ē Ə Ğ Ģ Ġ Ħ Í Î Ï İ Ì Ī Į Ķ Ĺ Ľ Ļ Ł Ń Ň Ņ Ñ Ó Ô Ö Ò Ő Ō Ø Õ Œ Þ Ŕ Ř Ŗ Ś Š Ş Ș ẞ Ť Ţ Ț Ú Û Ü Ù Ű Ū Ų Ů Ẃ Ŵ Ẅ Ẁ Ý Ŷ Ÿ Ỳ Ź Ž Ż
 á ă â ä à ā ą å ã á ă â ä à ā ą å ã æ ć č ç ċ ď đ ð é ě ê ë ė è ē ę ğ ģ ġ ğ ģ ġ ħ ı í î ï ì ī į ȷ ķ ĺ ľ ļ ł ń ň ņ ñ ó ô ö ò ő ō ø õ œ þ ŕ ř ŗ ś š ş ș ß ť ţ ț ú û ü ù ű ū ų ẃ ŵ ẅ ẁ ý ÿ ỳ ŷ ź ž ż`}
-        </P>
+          </P>
 
-        <Label>Numbers</Label>
-        <P>
-          {`
-0 1 2 3 4 5 6 7 8 9 ₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ½ ¼ ¾ ↋ ↊ ૪`}
-        </P>
+          <Label>Numbers</Label>
+          <P>
+            {`
+0 1 2 3 4 5 6 7 8 9`}
+          </P>
 
-        <Label>Symbols</Label>
-        <P>
-          {`
+          <Label>Symbols</Label>
+          <P>
+            {`
 . , : ; … ! ? * # / - – — _ ( ) { } [ ] ‚ „ “ ” ‘ ’ « » ‹ › @ &
 `}
-        </P>
+          </P>
 
-        <Label>Blocks</Label>
-        <P>
-          {`
+          <Label>Blocks</Label>
+          <P>
+            {`
 ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ▀ ▔ ▏ ▎ ▍ ▌ ▋ ▊ ▉ ▐ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▜ ▝ ▞ ▟ ░ ▒ ▓
 `}
-        </P>
+          </P>
 
-        <Label>Lines</Label>
-        <P>
-          {`
+          <Label>Lines</Label>
+          <P>
+            {`
 ┌ └ ┐ ┘ ┼ ┬ ┴ ├ ┤ ─ │ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧ ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ━ ┃ ┄ ┅ ┆ ┇ ┈ ┉ ┊ ┋ ┍ ┎ ┏ ┑ ┒ ┓ ┕ ┖ ┗ ┙ ┚ ┛ ┝ ┞ ┟ ┠ ┡ ┢ ┣ ┥ ┦ ┧ ┨ ┩ ┪ ┫ ┭ ┮ ┯ ┰ ┱ ┲ ┳ ┵ ┶ ┷ ┸ ┹ ┺ ┻ ┽ ┾ ┿ ╀ ╁ ╂ ╃ ╄ ╅ ╆ ╇ ╈ ╉ ╊ ╋ ╌ ╍ ╎ ╏ ╭ ╮ ╯ ╰ ╱ ╲ ╳ ╴ ╵ ╶ ╷ ╸ ╹ ╺ ╻ ╼ ╽ ╾ ╿
 `}
-        </P>
+          </P>
+        </div>
       </div>
 
       <Table data={TABLE_DATA} headings={TABLE_HEADINGS} style={{ marginTop: 64, fontFamily: `var(--font-family-mono)` }} />
