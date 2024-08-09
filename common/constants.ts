@@ -34,6 +34,12 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
     href: '/examples/animations/text-swapping',
     label: 'CSS text swapping',
   },
+  {
+    name: 'Animations ➝ fade',
+    href: '/examples/animations/fade',
+    label: 'Fade',
+    isWIP: true,
+  },
 ];
 
 export const TEMPLATE_EXAMPLES_COMPONENTS = [
