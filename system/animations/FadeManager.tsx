@@ -4,7 +4,7 @@ import * as React from 'react';
 import { FadeConfig } from './Fade';
 
 export type FadeParamFn = (index: number) => number;
-export type FadeParamInterval = { offset?: number, interval?: number };
+export type FadeParamInterval = { initial?: number, interval?: number };
 export type FadeParam = FadeParamFn | FadeParamInterval | number;
 
 interface FadeManagerConfig {
@@ -42,14 +42,14 @@ class FadeManagerObject {
 
   evalParam(id, param: FadeParam): number {
     const index = this.entries.indexOf(id);
-    
+
     switch (typeof param) {
       case 'number':
         return param;
       case 'function':
         return param(index);
       case 'object':
-        const { offset = 0, interval = 0 } = param;
+        const { initial: offset = 0, interval = 0 } = param;
         return offset + interval * index;
       default:
         return 0;
