@@ -1,7 +1,7 @@
 .root {
   @keyframes fade {
     from {
-      transform: translate(0, 50px);
+      transform: translate(var(--fade-initial-x), var(--fade-initial-y));
       opacity: 0;
     }
 

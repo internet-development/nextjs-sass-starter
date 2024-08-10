@@ -277,3 +277,9 @@ export async function generateNonce() {
   }
   return result;
 }
+
+export function filterUndefined(obj) {
+  const res = {};
+  Object.keys(obj).filter(k => obj[k]  !== undefined).forEach(k => res[k] = obj[k]);
+  return res;
+}

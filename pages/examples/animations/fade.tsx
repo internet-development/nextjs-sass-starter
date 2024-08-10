@@ -17,7 +17,7 @@ function ExampleFade(props) {
     >
       <Navigation />
       <AppLayout>
-        <FadeManager initialDelay={0.25} duration={1.5} interval={0.1}>
+        <FadeManager delay={(n) => 0.25 + n * 0.2} duration={1.0} angle={Math.PI * 0.5} distance={100}>
           <Fade>
             <H1>Placeholder Title</H1>
           </Fade>

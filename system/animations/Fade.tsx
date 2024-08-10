@@ -1,31 +1,44 @@
 'use client';
 
+import * as Utilities from '@common/utilities';
 import React from 'react';
 import styles from './Fade.module.scss';
 import { FadeManagerContext } from './FadeManager';
 
-function Fade(props: { xVel?: number, yVel?: number, duration?: number, delay?: number, children?: React.ReactNode }) {
+export type FadeConfig = {
+  delay?: number;
+  duration?: number;
+  angle?: number;
+  distance?: number;
+};
+
+function Fade(props: FadeConfig & { children?: React.ReactNode }) {
   const id = React.useId();
 
-  let duration = props.duration;
-  let delay = props.delay;
-  
+  const { children } = props;
+
+  const config: FadeConfig = { ...props };
+
   const fadeManager = React.useContext(FadeManagerContext);
   if (fadeManager) {
     fadeManager.register(id);
-    
-    if (duration === undefined) {
-      duration = fadeManager.getDuration(id);
-    }
 
-    if (delay === undefined) {
-      delay = fadeManager.getDelay(id);
-    }
+    const overrides = fadeManager.getConfig(id);
+    Object.assign(config, Utilities.filterUndefined(overrides));
   }
 
-  const vars = {'--fade-delay': `${delay}s`, '--fade-duration': `${duration}s`};
+  const { delay = 0, duration = 0, angle = 0, distance = 0 } = config;
 
-  return <div id={id} className={styles.root} style={vars as React.CSSProperties}>{props.children}</div>;
+  const initialX = Math.cos(angle) * distance;
+  const initialY = Math.sin(angle) * distance;
+
+  const vars = { '--fade-delay': `${delay}s`, '--fade-duration': `${duration}s`, '--fade-initial-x': `${initialX}px`, '--fade-initial-y': `${initialY}px` };
+
+  return (
+    <div id={id} className={styles.root} style={vars as React.CSSProperties}>
+      {children}
+    </div>
+  );
 }
 
 export default Fade;

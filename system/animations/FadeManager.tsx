@@ -1,11 +1,16 @@
 'use client';
 
 import * as React from 'react';
+import { FadeConfig } from './Fade';
+
+export type FadeParamFn = (index: number) => number;
+export type FadeParam = FadeParamFn | number;
 
 interface FadeManagerConfig {
-  initialDelay: number;
-  interval: number;
-  duration: number;
+  delay: FadeParam;
+  duration: FadeParam;
+  angle: FadeParam;
+  distance: FadeParam;
 }
 
 class FadeManagerObject {
@@ -17,9 +22,10 @@ class FadeManagerObject {
 
   entries: string[] = [];
   config: FadeManagerConfig = {
+    delay: 0,
     duration: 0,
-    initialDelay: 0,
-    interval: 0,
+    angle: 0,
+    distance: 0,
   };
 
   register(id) {
@@ -33,15 +39,26 @@ class FadeManagerObject {
     this.entries.splice(index, 1);
   }
 
-  getDelay(id): number {
-    const { initialDelay, interval } = this.config;
-
-    const index = this.entries.indexOf(id);
-    return initialDelay + interval * index;
+  evalParam(id, param: FadeParam): number {
+    switch (typeof param) {
+      case 'number':
+        return param;
+      case 'function':
+        const index = this.entries.indexOf(id);
+        return param(index);
+      default:
+        return 0;
+    }
   }
 
-  getDuration(id): number {
-    return this.config.duration;
+  getConfig(id): FadeConfig {
+    const { delay, duration, angle, distance } = this.config;
+    return {
+      delay: this.evalParam(id, delay),
+      duration: this.evalParam(id, duration),
+      angle: this.evalParam(id, angle),
+      distance: this.evalParam(id, distance),
+    };
   }
 }
 
@@ -50,13 +67,14 @@ export const FadeManagerContext = React.createContext(new FadeManagerObject());
 export type FadeManagerProps = Partial<FadeManagerConfig> & { children?: React.ReactNode };
 
 export default function FadeManager(props: FadeManagerProps) {
-  const { interval = 0, duration = 0, initialDelay = 0 } = props;
+  const { duration = 0, delay = 0, angle = 0, distance = 0 } = props;
 
   const manager = React.useRef(
     new FadeManagerObject({
-      interval,
+      delay,
       duration,
-      initialDelay,
+      angle,
+      distance,
     })
   );
 
