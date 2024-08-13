@@ -7,11 +7,11 @@ export type FadeParamFn = (index: number) => number;
 export type FadeParamInterval = { initial?: number, interval?: number };
 export type FadeParam = FadeParamFn | FadeParamInterval | number;
 
-interface FadeManagerConfig {
-  delay: FadeParam;
-  duration: FadeParam;
-  angle: FadeParam;
-  distance: FadeParam;
+export interface FadeManagerConfig {
+  delay?: FadeParam;
+  duration?: FadeParam;
+  angle?: FadeParam;
+  distance?: FadeParam;
 }
 
 class FadeManagerObject {
@@ -40,7 +40,7 @@ class FadeManagerObject {
     this.entries.splice(index, 1);
   }
 
-  evalParam(id, param: FadeParam): number {
+  evalParam(id, param: FadeParam | undefined): number {
     const index = this.entries.indexOf(id);
 
     switch (typeof param) {
@@ -69,7 +69,7 @@ class FadeManagerObject {
 
 export const FadeManagerContext = React.createContext(new FadeManagerObject());
 
-export type FadeManagerProps = Partial<FadeManagerConfig> & { children?: React.ReactNode };
+export type FadeManagerProps = FadeManagerConfig & { children?: React.ReactNode };
 
 export default function FadeManager(props: FadeManagerProps) {
   const { duration = 0, delay = 0, angle = 0, distance = 0 } = props;

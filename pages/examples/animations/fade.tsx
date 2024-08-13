@@ -3,12 +3,38 @@ import * as React from 'react';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import FadeManager from '@root/system/animations/FadeManager';
+import FadeManager, { FadeManagerConfig } from '@root/system/animations/FadeManager';
 import BlockFade from '@root/system/animations/BlockFade';
-import { H1, H2, H3, H4, P } from '@root/system/typography';
+import { H1, H2, H3, H4, P, SubTitle } from '@root/system/typography';
 import AppLayout from '@root/system/layouts/AppLayout';
+import Button from '@root/system/Button';
+import Input from '@root/system/Input';
 
 function ExampleFade(props) {
+  const [nonce, setNonce] = React.useState(0);
+  const [disabled, setDisabled] = React.useState(false);
+
+  const replay = () => {
+    setDisabled(false);
+    setNonce((prev) => prev + 1);
+  };
+
+  const cancel = () => {
+    setDisabled(true);
+    setNonce((prev) => prev + 1);
+  };
+
+  let fadeConfig: FadeManagerConfig = {};
+  if (!disabled)
+    fadeConfig = {
+      delay: { initial: 0.25, interval: 0.2 },
+      duration: 1.0,
+      angle: Math.PI * 0.5,
+      distance: 100,
+    };
+
+  console.log(fadeConfig);
+
   return (
     <Page
       title="wireframes.internet.dev ➝ animations ➝ fade"
@@ -17,7 +43,7 @@ function ExampleFade(props) {
     >
       <Navigation />
       <AppLayout>
-        <FadeManager delay={{ initial: 0.25, interval: 0.2 }} duration={1.0} angle={Math.PI * 0.5} distance={100}>
+        <FadeManager key={nonce} {...fadeConfig}>
           <BlockFade>
             <H1>Placeholder Title</H1>
           </BlockFade>
@@ -60,6 +86,13 @@ function ExampleFade(props) {
           <BlockFade>
             <P>Quisque at sapien ut justo facilisis pharetra. Integer euismod nunc vel orci fermentum, id tincidunt neque condimentum. Suspendisse potenti.</P>
           </BlockFade>
+          <P>
+            <br />
+          </P>
+          <Button onClick={replay} style={{ marginRight: 8 }}>
+            Replay Animation
+          </Button>
+          <Button onClick={cancel}>Cancel Animation</Button>
         </FadeManager>
       </AppLayout>
       <GlobalModalManager viewer={props.viewer} />
