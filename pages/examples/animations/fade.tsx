@@ -33,8 +33,6 @@ function ExampleFade(props) {
       distance: 100,
     };
 
-  console.log(fadeConfig);
-
   return (
     <Page
       title="wireframes.internet.dev ➝ animations ➝ fade"
