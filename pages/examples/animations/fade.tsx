@@ -4,7 +4,7 @@ import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import FadeManager from '@root/system/animations/FadeManager';
-import Fade from '@root/system/animations/Fade';
+import BlockFade from '@root/system/animations/BlockFade';
 import { H1, H2, H3, H4, P } from '@root/system/typography';
 import AppLayout from '@root/system/layouts/AppLayout';
 
@@ -18,48 +18,48 @@ function ExampleFade(props) {
       <Navigation />
       <AppLayout>
         <FadeManager delay={{ initial: 0.25, interval: 0.2 }} duration={1.0} angle={Math.PI * 0.5} distance={100}>
-          <Fade>
+          <BlockFade>
             <H1>Placeholder Title</H1>
-          </Fade>
-          <Fade>
+          </BlockFade>
+          <BlockFade>
             <P>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula
               venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.
             </P>
-          </Fade>
+          </BlockFade>
           <P>
             <br />
           </P>
-          <Fade>
+          <BlockFade>
             <H2>Subheading Example</H2>
-          </Fade>
-          <Fade>
+          </BlockFade>
+          <BlockFade>
             <P>
               Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Phasellus consectetur, orci sit amet ullamcorper imperdiet, turpis ligula facilisis urna,
               vel fringilla libero mauris in urna.
             </P>
-          </Fade>
+          </BlockFade>
           <P>
             <br />
           </P>
-          <Fade>
+          <BlockFade>
             <H3>Another Subheading</H3>
-          </Fade>
-          <Fade>
+          </BlockFade>
+          <BlockFade>
             <P>
               Integer in volutpat libero. Vivamus vehicula aliquet ligula, non aliquet justo maximus non. Phasellus nec mi id eros suscipit auctor. In ut purus et lectus faucibus
               ultricies sit amet non ex.
             </P>
-          </Fade>
+          </BlockFade>
           <P>
             <br />
           </P>
-          <Fade>
+          <BlockFade>
             <H4>Minor Heading</H4>
-          </Fade>
-          <Fade>
+          </BlockFade>
+          <BlockFade>
             <P>Quisque at sapien ut justo facilisis pharetra. Integer euismod nunc vel orci fermentum, id tincidunt neque condimentum. Suspendisse potenti.</P>
-          </Fade>
+          </BlockFade>
         </FadeManager>
       </AppLayout>
       <GlobalModalManager viewer={props.viewer} />

@@ -2,7 +2,7 @@
 
 import * as Utilities from '@common/utilities';
 import React from 'react';
-import styles from './Fade.module.scss';
+import styles from './BlockFade.module.scss';
 import { FadeManagerContext } from './FadeManager';
 
 export type FadeConfig = {
@@ -12,7 +12,7 @@ export type FadeConfig = {
   distance?: number;
 };
 
-function Fade(props: FadeConfig & { children?: React.ReactNode }) {
+function BlockFade(props: FadeConfig & { children?: React.ReactNode }) {
   const id = React.useId();
 
   const { children } = props;
@@ -41,4 +41,4 @@ function Fade(props: FadeConfig & { children?: React.ReactNode }) {
   );
 }
 
-export default Fade;
+export default BlockFade;
