@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Mono';
-  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/e26fcfbf-0bf5-44dc-bee1-d6ccb07c2a9e.woff') format('woff');
+  font-family: 'ServerMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/688a6d23-53d6-4bd8-8325-40a0593ab179.woff') format('woff');
 }
 
 html,
@@ -430,7 +430,7 @@ body {
   --type-scale-fixed-label: 10px;
 
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
-  --font-family-mono: 'Mono', Consolas, monaco, monospace;
+  --font-family-mono: 'ServerMono-Regular', Consolas, monaco, monospace;
   --font-family-serif: Georgia, Times New Roman, serif;
 
   font-family: var(--font-family);
