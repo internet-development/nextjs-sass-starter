@@ -73,7 +73,8 @@ export async function getServerSideProps(context) {
   let data = null;
   if (active === 'DOCUMENTS') {
     try {
-      const result = await Queries.onRefreshDocuments({ key: sessionKey, type: 'ALL' });
+      const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(viewer.email);
+      const result = await Queries.onRefreshDocuments({ key: sessionKey, type: 'ALL', domain });
       if (result && result.data) {
         data = result.data;
       }

@@ -57,12 +57,13 @@ function ExampleEmploymentDocuments(props) {
       </FormParagraph>
       <Button
         onClick={async () => {
-          const result = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE });
+          const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+          const result = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE, domain });
           if (!result) {
             return;
           }
 
-          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
           if (!results) {
             return;
           }
@@ -76,7 +77,8 @@ function ExampleEmploymentDocuments(props) {
       <ActionItem
         icon={`⊹`}
         onClick={async () => {
-          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+          const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
           if (!results) {
             return;
           }
@@ -128,8 +130,8 @@ function ExampleEmploymentDocuments(props) {
               }
 
               const response = await Queries.onDeleteDocumentById({ id: each.id, key });
-
-              const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+              const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+              const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
               if (!results) {
                 return;
               }
@@ -336,7 +338,8 @@ function ExampleEmploymentDocuments(props) {
                   return;
                 }
 
-                const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+                const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+                const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
                 setLoading(false);
                 if (!results) {
                   return;

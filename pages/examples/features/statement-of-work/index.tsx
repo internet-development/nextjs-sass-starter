@@ -59,12 +59,13 @@ function ExampleStatementOfWorks(props) {
             return showModal({ name: 'ERROR', message: 'You must provide an API key' });
           }
 
-          const result = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE });
+          const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+          const result = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE, domain });
           if (!result) {
             return;
           }
 
-          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
           if (!results) {
             return;
           }
@@ -78,7 +79,8 @@ function ExampleStatementOfWorks(props) {
       <ActionItem
         icon={`⊹`}
         onClick={async () => {
-          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+          const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
           if (!results) {
             return;
           }
@@ -148,8 +150,8 @@ function ExampleStatementOfWorks(props) {
               }
 
               const response = await Queries.onDeleteDocumentById({ id: each.id, key });
-
-              const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+              const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+              const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
               if (!results) {
                 return;
               }
@@ -555,7 +557,8 @@ function ExampleStatementOfWorks(props) {
                   return;
                 }
 
-                const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+                const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+                const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
                 setLoading(false);
                 if (!results) {
                   return;

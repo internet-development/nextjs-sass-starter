@@ -15,6 +15,23 @@ export function getOrdinalNumber(n) {
   return n + (n > 0 ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10] : '');
 }
 
+export function getDomainFromEmailWithoutAnySubdomain(email: string): string {
+  const atIndex = email.lastIndexOf('@');
+  if (atIndex === -1) {
+    return '';
+  }
+
+  const domain = email.slice(atIndex + 1);
+  const domainParts = domain.split('.');
+
+  if (domainParts.length < 2) {
+    return '';
+  }
+
+  const mainDomain = domainParts.slice(-2).join('.');
+  return mainDomain;
+}
+
 // TODO(jimmylee)
 // Obviously delete this once we implement a theme picker modal.
 export function onHandleThemeChange() {

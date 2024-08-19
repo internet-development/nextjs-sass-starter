@@ -55,12 +55,13 @@ function ExampleInvoices(props) {
             return showModal({ name: 'ERROR', message: 'You must provide an API key' });
           }
 
-          const invoiceResult = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE });
+          const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+          const invoiceResult = await Queries.onUserCreateDocument({ key, type: DOCUMENT_TYPE, domain });
           if (!invoiceResult) {
             return;
           }
 
-          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
           if (!results) {
             return;
           }
@@ -79,7 +80,8 @@ function ExampleInvoices(props) {
             return showModal({ name: 'ERROR', message: 'You must provide an API key' });
           }
 
-          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+          const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+          const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
           if (!results) {
             return;
           }
@@ -130,7 +132,8 @@ function ExampleInvoices(props) {
               }
 
               const response = await Queries.onDeleteDocumentById({ id: each.id, key });
-              const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+              const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+              const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
               if (!results) {
                 return;
               }
@@ -283,7 +286,8 @@ function ExampleInvoices(props) {
                   return;
                 }
 
-                const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE });
+                const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
+                const results = await Queries.onRefreshDocuments({ key, type: DOCUMENT_TYPE, domain });
                 setLoading(false);
                 if (!results) {
                   return;
