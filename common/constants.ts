@@ -30,6 +30,12 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
     label: 'CSS card',
   },
   {
+    name: 'Animations ➝ CSS hamburger menu',
+    href: '/examples/animations/hamburger-menu',
+    isWIP: true,
+    label: 'CSS hamburger menu',
+  },
+  {
     name: 'Animations ➝ text swapping',
     href: '/examples/animations/text-swapping',
     label: 'CSS text swapping',
