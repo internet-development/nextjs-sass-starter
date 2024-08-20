@@ -67,7 +67,8 @@ export function determineTheme(context, themePathMap, desiredTheme) {
     // (@xBalbinus): Otherwise, determine the theme based on the referer
     const pathSegments = currentUrl.pathname.split('/');
     let lastSegment = pathSegments[pathSegments.length - 1];
-    // (@xBalbinus) Nextjs
+    // (@xBalbinus): NextJS sometimes appends .json to the URL for page routes.
+    // This check ensures that we correctly identify the last segment of the path without the .json extension.
     if (lastSegment.endsWith('.json')) {
       lastSegment = lastSegment.replace('.json', '');
     }
