@@ -9,17 +9,16 @@ import HamburgerMenu from '@system/HamburgerMenu';
 import Page from '@components/Page';
 
 function ExampleHamburgerMenu(props) {
-  const [key, setKey] = React.useState<string>(props.sessionKey);
-
   const NAV_CONTENT = [
-    { name: 'About', link: '/about' },
+    { name: 'Home', link: '/examples/animations/hamburger-demo' },
+    { name: 'About', link: '/examples/animations/hamburger-demo/about' },
   ];
 
   return (
     <Page
       title="wireframes.internet.dev ➝ animations ➝ hamburger menu"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/animations/hamburger-menu"
+      url="https://wireframes.internet.dev/examples/animations/hamburger-demo"
     >
       <Navigation />
       <GridLayout style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>

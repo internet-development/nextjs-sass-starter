@@ -45,24 +45,7 @@ export default function HamburgerMenu(props) {
   const navbarStyle = {
     backgroundColor: menuActive || delayedBackground ? 'var(--theme-background)' : '',
   };
-
-  const getSVGComponent = (path) => {
-    switch (path) {
-      case '/about':
-        return (
-          <div className={classNames(styles.svgAbout, styles.svgItem)}>
-            <AboutSquiggleSVG color="currentColor" className={styles.svgAboutItem} />
-          </div>
-        );
-      default:
-        return (
-          <div className={styles.svgAbout}>
-            <AboutSquiggleSVG color="currentColor" />
-          </div>
-        );
-    }
-  }
-
+  
   return (
     <div className={styles.body}>
       <div className={styles.logoContainer}>
@@ -79,7 +62,7 @@ export default function HamburgerMenu(props) {
             <Link href={item.link} style={{ textDecoration: 'none', color: 'currentColor' }}>
               <li className={styles.navItemText}>
                 {item.name}
-                {/* <div className={pathname === item.link ? styles.activeNavItemSquiggle : styles.navItemSquiggle}>{getSVGComponent(item.link)}</div> */}
+                {/* TODO (@xBalbinus): Add animation on selecting a page */}
               </li>
             </Link>
           </ul>

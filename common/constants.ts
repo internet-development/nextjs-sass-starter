@@ -31,7 +31,7 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
   },
   {
     name: 'Animations ➝ CSS hamburger menu',
-    href: '/examples/animations/hamburger-menu',
+    href: '/examples/animations/hamburger-demo',
     isWIP: true,
     label: 'CSS hamburger menu',
   },
