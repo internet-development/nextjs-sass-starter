@@ -8,7 +8,15 @@ import Navigation from '@system/Navigation';
 import HamburgerMenu from '@system/HamburgerMenu';
 import Page from '@components/Page';
 
-function ExampleHamburgerMenu(props) {
+import { determineTheme, THEME_TYPES, useTheme } from '@system/animations/ThemeManager';
+
+export const THEME_PATH_MAP = {
+  about: THEME_TYPES.THEME_DARK,
+  'examples/animations/hamburger-demo': THEME_TYPES.THEME_LIGHT,
+};
+
+function ExampleHamburgerMenu({initialTheme, newTheme}) {
+  useTheme(initialTheme, newTheme);
   const NAV_CONTENT = [
     { name: 'Home', link: '/examples/animations/hamburger-demo' },
     { name: 'About', link: '/examples/animations/hamburger-demo/about' },
@@ -24,7 +32,6 @@ function ExampleHamburgerMenu(props) {
       <GridLayout style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <HamburgerMenu navContent={NAV_CONTENT} />
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }
@@ -32,8 +39,14 @@ function ExampleHamburgerMenu(props) {
 export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
 
+  const currentUrl = new URL(context.req.url, `http://${context.req.headers.host}`);
+  const refererUrl = context.req.headers.referer ? new URL(context.req.headers.referer, `http://${context.req.headers.host}`) : null;
+
+  let storedTheme;
+  storedTheme = determineTheme(currentUrl, refererUrl, THEME_PATH_MAP, THEME_TYPES.THEME_LIGHT);
+
   return {
-    props: { sessionKey, viewer },
+    props: { sessionKey, viewer, initialTheme: storedTheme, newTheme: THEME_TYPES.THEME_LIGHT },
   };
 }
 

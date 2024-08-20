@@ -8,7 +8,11 @@ import Navigation from '@system/Navigation';
 import HamburgerMenu from '@system/HamburgerMenu';
 import Page from '@components/Page';
 
-function ExampleAboutPageWithMenu(props) {
+import { determineTheme, THEME_TYPES, useTheme } from '@system/animations/ThemeManager';
+import { THEME_PATH_MAP } from '@pages/examples/animations/hamburger-demo/index';
+
+function ExampleAboutPageWithMenu({initialTheme, newTheme}) {
+  useTheme(initialTheme, newTheme);
   const NAV_CONTENT = [
     { name: 'Home', link: '/examples/animations/hamburger-demo' },
     { name: 'About', link: '/examples/animations/hamburger-demo/about' },
@@ -26,7 +30,6 @@ function ExampleAboutPageWithMenu(props) {
         {/* TODO (@xBalbinus): Add content here */}
         {/* TODO (@xBalbinus): Add color shifting per page */}
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
 }
@@ -34,8 +37,14 @@ function ExampleAboutPageWithMenu(props) {
 export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
 
+  const currentUrl = new URL(`http://${context.req.headers.host}${context.req.url}`);
+  const refererUrl = context.req.headers.referer ? new URL(context.req.headers.referer) : null;
+
+  let storedTheme;
+  storedTheme = determineTheme(currentUrl, refererUrl, THEME_PATH_MAP, THEME_TYPES.THEME_DARK);
+
   return {
-    props: { sessionKey, viewer },
+    props: { sessionKey, viewer, initialTheme: storedTheme, newTheme: THEME_TYPES.THEME_DARK },
   };
 }
 
