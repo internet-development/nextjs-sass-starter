@@ -1,14 +1,10 @@
 .body {
   padding: 40px;
   color: inherit;
-  max-width: 25%;
 }
 
-.logoContainer {
+.hamburgerContainer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
 }
 
 .hamburger {
@@ -38,6 +34,7 @@
   transition: all 0.3s ease-in-out;
   background: inherit;
   background-color: currentColor;
+  color: inherit;
 }
 
 .activeNavItemSquiggle {
@@ -57,54 +54,40 @@
   // This 49px is a hacky accounting for the Navigation component's height
   top: 49px;
   left: -100%;
-  width: 25%;
-  border-radius: 10px;
+  width: 20%;
   transition: left 0.3s ease-in-out;
-  min-height: calc(100vh - 77px);
   gap: 40px;
-  height: 95vh;
-  margin-top: 0px;
+  height: 100vh;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   &.active {
     left: 0;
-    gap: 20px;
-
-    @media (max-width: 768px) {
-      gap: 40px;
-    }
-
-    @media (max-width: 400px) {
-      gap: 32px;
-    }
+    border-right: 2px solid var(--theme-border);
   }
+
   overflow: hidden;
   
   .navItem {
     // (xBalbinus) A hacky adjustment to make the menu items start below the hamburger icon
     top: 104px;
-    min-width: 64px;
-    white-space: nowrap;
+    min-width: 80px;
     position: relative;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     margin-left: 40px;
 
-    &:first-child {
-      padding-left: 0;
-    }
-
     .navItemText {
       font-family: 'Mono';
       font-size: 24px;
       color: inherit;
-      -webkit-font-smoothing: antialiased;
-      text-decoration: none;
       list-style: none;
-      width: auto;
-      text-align: left;
-      min-width: 80px;
       margin-bottom: 40px;
+
+      -webkit-font-smoothing: antialiased;
     }
 
     .navItem:last-child .navItemText {

@@ -27,8 +27,7 @@ function ExampleAboutPageWithMenu({initialTheme, newTheme}) {
       <Navigation />
       <GridLayout style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <HamburgerMenu navContent={NAV_CONTENT} />
-        {/* TODO (@xBalbinus): Add content here */}
-        {/* TODO (@xBalbinus): Add color shifting per page */}
+        {/* TODO (@xBalbinus): Add content here to differentiate from main page */}
       </GridLayout>
     </Page>
   );
@@ -37,11 +36,8 @@ function ExampleAboutPageWithMenu({initialTheme, newTheme}) {
 export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
 
-  const currentUrl = new URL(`http://${context.req.headers.host}${context.req.url}`);
-  const refererUrl = context.req.headers.referer ? new URL(context.req.headers.referer) : null;
-
   let storedTheme;
-  storedTheme = determineTheme(currentUrl, refererUrl, THEME_PATH_MAP, THEME_TYPES.THEME_DARK);
+  storedTheme = determineTheme(context, THEME_PATH_MAP, THEME_TYPES.THEME_DARK);
 
   return {
     props: { sessionKey, viewer, initialTheme: storedTheme, newTheme: THEME_TYPES.THEME_DARK },

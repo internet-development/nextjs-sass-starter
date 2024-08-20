@@ -56,7 +56,10 @@ export const getThemeColor = (theme: THEME_TYPES) => {
 
 export type ThemeType = keyof typeof THEME_TYPES;
 
-export function determineTheme(currentUrl, refererUrl, themePathMap, desiredTheme) {
+export function determineTheme(context, themePathMap, desiredTheme) {
+  const currentUrl = new URL(`http://${context.req.headers.host}${context.req.url}`);
+  const refererUrl = context.req.headers.referer ? new URL(context.req.headers.referer) : null;
+
   if (refererUrl && refererUrl.pathname === currentUrl.pathname) {
     // (@xBalbinus): If the referer URL is the same as the current URL, use the newTheme directly
     return desiredTheme;

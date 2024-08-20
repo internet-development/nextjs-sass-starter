@@ -48,7 +48,7 @@ export default function HamburgerMenu(props) {
   
   return (
     <div className={styles.body}>
-      <div className={styles.logoContainer}>
+      <div className={styles.hamburgerContainer}>
         <div ref={hamburgerRef} className={styles.hamburger} onClick={mobileMenuOnClickHandler}>
           <span className={styles.bar}></span>
           <span className={styles.bar}></span>
