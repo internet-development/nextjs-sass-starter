@@ -40,7 +40,7 @@ function ExampleFade(props) {
       url="https://wireframes.internet.dev/examples/animations/fade"
     >
       <Navigation />
-      <AppLayout>
+      <div style={{ width: 648, margin: '64px auto' }}>
         <FadeManager key={nonce} {...fadeConfig}>
           <BlockFade>
             <H1>Placeholder Title</H1>
@@ -92,7 +92,7 @@ function ExampleFade(props) {
           </Button>
           <Button onClick={cancel}>Cancel Animation</Button>
         </FadeManager>
-      </AppLayout>
+      </div>
       <GlobalModalManager viewer={props.viewer} />
     </Page>
   );
