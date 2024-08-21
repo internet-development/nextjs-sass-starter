@@ -429,6 +429,14 @@ body {
   --type-scale-fixed-tiny: 12px;
   --type-scale-fixed-label: 10px;
 
+  --z-index-lowest: 1;
+  --z-index-lower: 2;
+  --z-index-low: 3;
+  --z-index-medium: 4;
+  --z-index-high: 5;
+  --z-index-higher: 6;
+  --z-index-highest: 7;
+
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
   --font-family-mono: 'Mono', Consolas, monaco, monospace;
   --font-family-serif: Georgia, Times New Roman, serif;
