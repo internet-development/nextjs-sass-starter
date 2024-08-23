@@ -45,7 +45,7 @@ export default function DemoPricing(props) {
                 <Text style={{ marginBottom: 24 }}>Per month</Text>
                 <Button style={{ minHeight: 48 }}>Coming soon</Button>
                 <ul className={styles.list}>
-                  <li className={styles.listItem}>15,000 credits renewed monthly</li>
+                  <li className={styles.listItem}>1,500 credits renewed monthly</li>
                   <li className={styles.listItem}>Access to paid APIs</li>
                 </ul>
               </div>
@@ -57,11 +57,11 @@ export default function DemoPricing(props) {
                 <Text>Paid (discounted)</Text>
               </div>
               <div className={styles.bottom}>
-                <H1>$100</H1>
+                <H1>$X</H1>
                 <Text style={{ marginBottom: 24 }}>Per year</Text>
                 <Button style={{ minHeight: 48 }}>Coming soon</Button>
                 <ul className={styles.list}>
-                  <li className={styles.listItem}>180,000 credits renewed annually</li>
+                  <li className={styles.listItem}>18,000 credits renewed annually</li>
                   <li className={styles.listItem}>Access to paid APIs</li>
                 </ul>
               </div>

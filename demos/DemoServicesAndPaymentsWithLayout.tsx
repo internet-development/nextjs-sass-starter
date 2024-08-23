@@ -84,7 +84,7 @@ export default function DemoBentoLayout(props) {
                 All the benefits of the <strong>"Free"</strong>, and:
               </Text>
               <div>
-                <CheckmarkItem>15,000 credits deposited every month.</CheckmarkItem>
+                <CheckmarkItem>1,500 credits deposited every month.</CheckmarkItem>
                 <CheckmarkItem>Free personal blog on TXT.DEV.</CheckmarkItem>
                 <CheckmarkItem>Access to all new products and games.</CheckmarkItem>
                 <CheckmarkItem>No limits.</CheckmarkItem>
@@ -101,7 +101,7 @@ export default function DemoBentoLayout(props) {
                 Requires an invitation from our community. Get a reserved desk٭٭ and access to new products as they are released.
               </Text>
               <H5 style={{ marginTop: 24 }}>
-                $399 USD<span className={styles.subtle}>/mo</span>
+                $329 USD<span className={styles.subtle}>/mo</span>
               </H5>
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
@@ -110,7 +110,7 @@ export default function DemoBentoLayout(props) {
                 All the benefits of the <strong>"Professional"</strong>, and:
               </Text>
               <div>
-                <CheckmarkItem>30,000 additional credits deposited every month (45,000 in total).</CheckmarkItem>
+                <CheckmarkItem>45,000 credits deposited every month.</CheckmarkItem>
                 <CheckmarkItem>Send credits to other users.</CheckmarkItem>
                 <CheckmarkItem>A reserved desk٭٭ at the collaborative space in Seattle, WA.</CheckmarkItem>
               </div>
