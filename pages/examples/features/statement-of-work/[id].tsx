@@ -299,7 +299,7 @@ function ExampleSOW(props) {
             <section className={Utilities.classNames(styles.column, styles.shaded)}>5. Payment</section>
             <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees</section>
             <section className={styles.remainder}>
-              After {supplier.name} (“{supplier.shorthand}”) accepts the completed Services and Deliverables, Client will pay {supplier.shorthand} a flat fee of{' '}
+              After {supplier.name} (“{supplier.shorthand}”) accepts the completed signed Statement of Work, Client will pay {supplier.shorthand} a flat fee of{' '}
               <strong>
                 [{Utilities.formatDollars(supplier.amount)}] [{supplier.currency}]
               </strong>
