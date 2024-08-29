@@ -332,7 +332,7 @@ function ExampleEmploymentDocuments(props) {
             <Button
               onClick={async () => {
                 setLoading(true);
-                const result = await Queries.onUpdateDocumentById({ id: currentDocument.id, key, updates });
+                const result = await Queries.onUpdateDocumentById({ id: currentDocument.id, key, data: updates });
                 if (!result) {
                   setLoading(false);
                   return;

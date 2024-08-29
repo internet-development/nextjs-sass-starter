@@ -280,7 +280,7 @@ function ExampleInvoices(props) {
                 }
 
                 setLoading(true);
-                const invoiceResult = await Queries.onUpdateDocumentById({ id: currentInvoice.id, key, updates });
+                const invoiceResult = await Queries.onUpdateDocumentById({ id: currentInvoice.id, key, data: updates });
                 if (!invoiceResult) {
                   setLoading(false);
                   return;

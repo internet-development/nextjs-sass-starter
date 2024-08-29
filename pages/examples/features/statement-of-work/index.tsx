@@ -551,7 +551,7 @@ function ExampleStatementOfWorks(props) {
             <Button
               onClick={async () => {
                 setLoading(true);
-                const result = await Queries.onUpdateDocumentById({ id: currentSOW.id, key, updates });
+                const result = await Queries.onUpdateDocumentById({ id: currentSOW.id, key, data: updates });
                 if (!result) {
                   setLoading(false);
                   return;

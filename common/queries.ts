@@ -65,9 +65,9 @@ export async function onDeleteDocumentById({ id, key }) {
   return await getData({ route, key, body });
 }
 
-export async function onUpdateDocumentById({ id, key, updates }) {
+export async function onUpdateDocumentById({ id, key, data }) {
   const route = `${Constants.API}/documents/update`;
-  const body = { id, updates };
+  const body = { id, data };
   return await getData({ route, key, body });
 }
 
