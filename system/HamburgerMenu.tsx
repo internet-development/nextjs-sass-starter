@@ -61,7 +61,7 @@ export default function HamburgerMenu(props) {
           <ul key={index} className={styles.navItem}>
             <Link href={item.link} style={{ textDecoration: 'none', color: 'currentColor' }}>
               <li className={styles.navItemText}>
-                {item.name}
+                <H4>{item.name}</H4>
                 {/* TODO (@xBalbinus): Add animation on selecting a page */}
               </li>
             </Link>
