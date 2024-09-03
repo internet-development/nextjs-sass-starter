@@ -17,26 +17,26 @@
   }
 
   &.active .bar:nth-child(1) {
-    transform: translateY(18px) rotate(45deg);
+    transform: translateY(16px) rotate(45deg);
   }
 
   &.active .bar:nth-child(3) {
-    transform: translateY(-18px) rotate(-45deg);
+    transform: translateY(-16px) rotate(-45deg);
   }
 }
 
 .bar {
   display: block;
-  width: 36px;
-  height: 6px;
-  margin: 12px auto;
+  width: 32px;
+  height: 8px;
+  margin: 8px auto;
   background: inherit;
   background-color: currentColor;
   color: inherit;
 
   // (@xBalbinus) These timings should line up with the color transitioning speed in ThemeManager.tsx
-  -webkit-transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .activeNavItemSquiggle {

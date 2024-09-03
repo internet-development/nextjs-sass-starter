@@ -4,17 +4,14 @@ import styles from '@system/HamburgerMenu.module.scss';
 
 import * as React from 'react';
 
-import { H1, H2, H3, H4, Lead, SubLead, P, Title, Text, SubTitle, SubText, UnitLabel } from '@system/typography';
+import { H4 } from '@system/typography';
 import { usePathname } from 'next/navigation';
 
-import AboutSquiggleSVG from '@system/svg/AboutSquiggleSVG';
 import Link from 'next/link';
 
 export default function HamburgerMenu(props) {
   const [menuActive, setMenuActive] = React.useState(false);
   const [delayedBackground, setDelayedBackground] = React.useState(false);
-
-  const pathname = usePathname();
 
   const hamburgerRef = React.useRef<HTMLDivElement>(null);
   const navMenuRef = React.useRef<HTMLDivElement>(null);

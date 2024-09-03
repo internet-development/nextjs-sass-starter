@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as Server from '@common/server';
-import * as Utilities from '@common/utilities';
 
-import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';
 import HamburgerMenu from '@system/HamburgerMenu';
@@ -15,7 +13,7 @@ export const THEME_PATH_MAP = {
   'examples/animations/hamburger-demo': THEME_TYPES.THEME_LIGHT,
 };
 
-function ExampleHamburgerMenu({initialTheme, newTheme}) {
+function ExampleHamburgerMenu({ initialTheme, newTheme }) {
   useTheme(initialTheme, newTheme);
   const NAV_CONTENT = [
     { name: 'Home', link: '/examples/animations/hamburger-demo' },
