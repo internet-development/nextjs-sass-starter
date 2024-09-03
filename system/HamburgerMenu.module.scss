@@ -10,26 +10,26 @@
 .hamburger {
   display: block;
   cursor: pointer;
-  z-index: 10;
+  z-index: var(--z-index-high);
 
   &.active .bar:nth-child(2) {
     opacity: 0;
   }
 
   &.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(18px) rotate(45deg);
   }
 
   &.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-18px) rotate(-45deg);
   }
 }
 
 .bar {
   display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
+  width: 36px;
+  height: 6px;
+  margin: 12px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   background: inherit;
@@ -43,8 +43,6 @@
   top: 0;
   width: 0;
   transition: width 0.5s ease-in-out;
-
-  overflow: visible;
   width: auto;
 }
 
@@ -72,7 +70,7 @@
   
   .navItem {
     // (xBalbinus) A hacky adjustment to make the menu items start below the hamburger icon
-    top: 104px;
+    top: 126px;
     min-width: 80px;
     position: relative;
     display: flex;
