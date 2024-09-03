@@ -24,7 +24,7 @@ export const getThemeColor = (theme: THEME_TYPES) => {
         background: 'var(--color-white)',
         text: 'var(--color-black-100)',
       };
-    
+
     case THEME_TYPES.THEME_DARK:
       return {
         background: 'var(--color-black-100)',
@@ -81,10 +81,11 @@ export function useTheme(initialTheme?: any, newTheme?: any) {
 
   useEffect(() => {
     const setThemeClass = (theme) => {
-      document.body.classList.remove(...Object.values(THEME_TYPES));
-      document.body.classList.add(theme);
-      // (@xBalbinus): Adjust the transition time to your liking
-      document.body.style.transition = 'background-color 600ms ease-out, color 600ms ease-out';
+      Object.values(THEME_TYPES).forEach((themeType) => {
+        if (document.body.classList.contains(themeType)) {
+          document.body.classList.replace(themeType, theme);
+        }
+      });
     };
 
     if (theme) {
@@ -100,9 +101,10 @@ export function useTheme(initialTheme?: any, newTheme?: any) {
   const updateTheme = (newTheme) => {
     if (newTheme === theme) return;
     setTheme(newTheme);
-    document.body.classList.remove(...Object.values(THEME_TYPES));
+    Object.values(THEME_TYPES).forEach((themeType) => {
+      document.body.classList.remove(themeType);
+    });
     document.body.classList.add(newTheme);
-    document.body.style.transition = 'background-color 600ms ease-out, color 600ms ease-out';
   };
 
   return { theme, updateTheme };

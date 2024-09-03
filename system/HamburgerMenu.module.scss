@@ -30,11 +30,12 @@
   width: 36px;
   height: 6px;
   margin: 12px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
   background: inherit;
   background-color: currentColor;
   color: inherit;
+
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .activeNavItemSquiggle {
@@ -71,7 +72,7 @@
   
   .navItem {
     // (xBalbinus) A hacky adjustment to make the menu items start below the hamburger icon
-    top: 126px;
+    top: 144px;
     min-width: 80px;
     position: relative;
     display: flex;
@@ -82,7 +83,7 @@
     .navItemText {
       color: inherit;
       list-style: none;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
 
       -webkit-font-smoothing: antialiased;
     }
