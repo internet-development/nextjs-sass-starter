@@ -48,22 +48,23 @@
 
 .navbar {
   position: fixed;
-  // (xBalbinus) In production, you would probably change this to 0 to have it at the top of the page
+  // (@xBalbinus) In production, you would probably change this to 0 to have it at the top of the page
   // This 49px is a hacky accounting for the Navigation component's height
   top: 49px;
   left: -100%;
-  width: 20%;
   transition: left 0.3s ease-in-out;
   gap: 40px;
   height: 100vh;
+  // (@xBalbinus) Change the min-width in production. This min-width adjustment is made to align with the Navbar component's width of this wireframe.
+  min-width: 240px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     width: 100%;
   }
 
   &.active {
     left: 0;
-    border-right: 1px solid var(--theme-border);
+    box-shadow: 1px 0 0 0 var(--theme-border);
   }
 
   overflow: hidden;
