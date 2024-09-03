@@ -28,7 +28,7 @@
   transform-style: preserve-3d;
 
   &:hover {
-    z-index: 1;
+    z-index: var(--z-index-medium);
   }
 
   img {

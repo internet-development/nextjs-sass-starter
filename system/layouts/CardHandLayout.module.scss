@@ -28,7 +28,7 @@
 
   &:hover {
     transform: rotate(-45deg) scale(1.8);
-    z-index: 1;
+    z-index: var(--z-index-medium);
   }
 }
 

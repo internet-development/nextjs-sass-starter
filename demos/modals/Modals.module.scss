@@ -16,7 +16,7 @@
 
 .wrapper {
   position: fixed;
-  z-index: 1;
+  z-index: var(--z-index-medium);
   width: 100%;
   left: 0;
   right: 0;

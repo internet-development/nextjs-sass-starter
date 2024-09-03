@@ -27,7 +27,7 @@
   box-shadow: 0 0 0 4px var(--theme-border-subdued);
   background-color: var(--theme-background);
   border-radius: 50%;
-  z-index: 10;
+  z-index: var(--z-index-high);
   transform: translate(-50%, -50%);
   pointer-events: none;
 }

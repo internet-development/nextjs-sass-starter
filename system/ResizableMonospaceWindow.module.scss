@@ -22,7 +22,7 @@
 
 .handle {
   position: absolute;
-  z-index: 200;
+  z-index: var(--z-index-highest);
 }
 
 .top {
