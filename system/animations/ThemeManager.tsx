@@ -83,6 +83,7 @@ export function useTheme(initialTheme?: any, newTheme?: any) {
     const setThemeClass = (theme) => {
       Object.values(THEME_TYPES).forEach((themeType) => {
         if (document.body.classList.contains(themeType)) {
+          document.body.style.transition = 'background-color 300ms ease-out';
           document.body.classList.replace(themeType, theme);
         }
       });
@@ -102,6 +103,7 @@ export function useTheme(initialTheme?: any, newTheme?: any) {
     if (newTheme === theme) return;
     setTheme(newTheme);
     Object.values(THEME_TYPES).forEach((themeType) => {
+      document.body.style.transition = 'background-color 300ms ease-out';
       document.body.classList.remove(themeType);
     });
     document.body.classList.add(newTheme);
