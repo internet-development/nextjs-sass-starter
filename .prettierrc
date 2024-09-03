@@ -11,12 +11,12 @@
   "requirePragma": false,
   "insertPragma": false,
   "proseWrap": "preserve",
-  "parser": "babel",
+  "parser": "typescript",
   "overrides": [
     {
       "files": "*.js",
       "options": {
-        "parser": "babel"
+        "parser": "typescript"
       }
     }
   ]

@@ -4,7 +4,7 @@ import styles from '@system/HamburgerMenu.module.scss';
 
 import * as React from 'react';
 
-import { classNames } from '@root/common/utilities';
+import { H1, H2, H3, H4, Lead, SubLead, P, Title, Text, SubTitle, SubText, UnitLabel } from '@system/typography';
 import { usePathname } from 'next/navigation';
 
 import AboutSquiggleSVG from '@system/svg/AboutSquiggleSVG';
@@ -45,7 +45,7 @@ export default function HamburgerMenu(props) {
   const navbarStyle = {
     backgroundColor: menuActive || delayedBackground ? 'var(--theme-background)' : '',
   };
-  
+
   return (
     <div className={styles.body}>
       <div className={styles.hamburgerContainer}>
