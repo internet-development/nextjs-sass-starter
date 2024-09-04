@@ -8,6 +8,7 @@ import ModalNavigation from '@demos/modals/ModalNavigation';
 import ModalNavigationV2 from '@demos/modals/ModalNavigationV2';
 import ModalNavigationTemplate from '@demos/modals/ModalNavigationTemplate';
 import ModalWebsitePrompt from '@demos/modals/ModalWebsitePrompt';
+import ModalHamburgerMenu from '@demos/modals/ModalHamburgerMenu';
 
 import { useModal } from '@system/providers/ModalContextProvider';
 
@@ -37,6 +38,10 @@ export default function GlobalModalManager(props) {
 
   if (modalContent && modalContent.name === 'ERROR') {
     nextModal = <ModalError content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
+  }
+
+  if (modalContent && modalContent.name === 'HAMBURGER_MENU') {
+    nextModal = <ModalHamburgerMenu parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
   }
 
   if (modalContent && modalContent.name === 'INDEX') {
