@@ -1,0 +1,93 @@
+.body {
+  display: inline-block;
+  padding: 40px;
+  color: inherit;
+}
+
+.hamburger {
+  display: block;
+  cursor: pointer;
+  z-index: var(--z-index-high);
+
+  &.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  &.active .bar:nth-child(1) {
+    transform: translateY(16px) rotate(45deg);
+  }
+
+  &.active .bar:nth-child(3) {
+    transform: translateY(-16px) rotate(-45deg);
+  }
+}
+
+.bar {
+  display: block;
+  width: 32px;
+  height: 8px;
+  margin: 8px auto;
+  background: inherit;
+  background-color: currentColor;
+  color: inherit;
+
+  // (@xBalbinus) These timings should line up with the color transitioning speed in ThemeManager.tsx
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.activeNavItemSquiggle {
+  height: 100%;
+  position: relative;
+  top: 0;
+  width: 0;
+  transition: width 0.5s ease-in-out;
+  width: auto;
+}
+
+.navbar {
+  position: fixed;
+  // (@xBalbinus) In production, you would probably change this to 0 to have it at the top of the page
+  // This 49px is a hacky accounting for the Navigation component's height
+  top: 49px;
+  left: -100%;
+  transition: left 0.3s ease-in-out;
+  gap: 40px;
+  height: 100vh;
+  // (@xBalbinus) Change the min-width in production. This min-width adjustment is made to align with the Navbar component's width of this wireframe.
+  min-width: 240px;
+
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+
+  &.active {
+    left: 0;
+    box-shadow: 1px 0 0 0 var(--theme-border);
+  }
+
+  overflow: hidden;
+  
+  .navItem {
+    // (xBalbinus) A hacky adjustment to make the menu items start below the hamburger icon
+    top: 144px;
+    min-width: 80px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 40px;
+
+    .navItemText {
+      color: inherit;
+      list-style: none;
+      margin-bottom: 48px;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .navItem:last-child .navItemText {
+      margin-right: 0;
+    }
+  }
+}

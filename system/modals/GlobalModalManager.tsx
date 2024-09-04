@@ -41,7 +41,7 @@ export default function GlobalModalManager(props) {
   }
 
   if (modalContent && modalContent.name === 'HAMBURGER_MENU') {
-    nextModal = <ModalHamburgerMenu parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
+    nextModal = <ModalHamburgerMenu parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} navItems={props.navItems} />;
   }
 
   if (modalContent && modalContent.name === 'INDEX') {

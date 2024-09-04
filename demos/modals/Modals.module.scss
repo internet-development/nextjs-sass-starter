@@ -1,10 +1,30 @@
 .modal {
-  -webkit-appearance: none;
   box-shadow: var(--theme-box-shadow-modal);
   background: var(--theme-background);
-  border-radius: 4px;
   position: absolute;
-  padding: 12px 0 12px 0;
+  padding: 128px 0px;
+  text-align: left;
+  top: 49px;
+  height: calc(-49px + 100dvh);
+  // (@xBalbinus): A hacky way to align with the navbar on wireframes. Should adjust this in production.
+  width: 241px;
+  box-shadow: none;
+  border-right: 1px solid var(--theme-border);
+  transition: left 0.3s;
+  animation: slideIn 0.3s forwards;
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 960px) {
+    width: 100%
+  }
 }
 
 .childModal {
@@ -125,5 +145,5 @@
 }
 
 .menuContent {
-  padding: 12px 24px 12px 24px;
+  padding: 16px 40px 16px 40px;
 }

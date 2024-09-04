@@ -1,17 +1,17 @@
 import * as React from 'react';
 
-import Button from '@system/Button';
-import Content from '@system/layouts/Content';
-import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import SectionFullHeight from '@system/sections/SectionFullHeight';
 
+import MenuButton from '@system/MenuButton';
 import { useModal } from '@system/providers/ModalContextProvider';
 
 function ExampleModalsWebsitePrompt(props) {
-  const { showModal } = useModal();
+  const NAV_CONTENT = [
+    { name: 'Home', link: '/examples/components/modals-hamburger-menu' },
+    { name: 'About', link: '/examples/components/modals-hamburger-menu' },
+  ];
 
   return (
     <Page
@@ -20,21 +20,8 @@ function ExampleModalsWebsitePrompt(props) {
       url="https://wireframes.internet.dev/examples/components/modals-hamburger-menu"
     >
       <Navigation />
-      <SectionFullHeight>
-        <Content>
-          <Button
-            onClick={() => {
-              showModal({
-                name: 'HAMBURGER_MENU',
-                data: [],
-              });
-            }}
-          >
-            Show hamburger
-          </Button>
-        </Content>
-      </SectionFullHeight>
-      <GlobalModalManager />
+      <GlobalModalManager navItems={NAV_CONTENT} />
+      <MenuButton />
     </Page>
   );
 }
