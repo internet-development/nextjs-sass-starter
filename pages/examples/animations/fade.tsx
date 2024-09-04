@@ -4,9 +4,10 @@ import BlockFade from '@root/system/animations/BlockFade';
 import Button from '@root/system/Button';
 import FadeManager, { FadeManagerConfig } from '@root/system/animations/FadeManager';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import { H1, H2, H3, H4, P } from '@root/system/typography';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
+
+import { H1, H2, H3, H4, P } from '@root/system/typography';
 
 function ExampleFade(props) {
   const [nonce, setNonce] = React.useState(0);
@@ -44,6 +45,7 @@ function ExampleFade(props) {
             <H1>Heading 1</H1>
           </BlockFade>
           <BlockFade>
+            <br />
             <P>
               The solar system is situated in a region of the universe, every point of which has a common and constant temperature, determined by the rays of light and heat which
               proceed from the surrounding stars. This low temperature is a little below that of the polar regions of the earth.
@@ -56,6 +58,7 @@ function ExampleFade(props) {
             <H2>Heading 2</H2>
           </BlockFade>
           <BlockFade>
+            <br />
             <P>
               The earth would have only the same temperature as the heavens, were it not for two causes... One is the internal heat... possessed at its formation... only dissipated
               through the surface; the other is the continued action of the solar rays... which produce at the surface, the diversities of climate.
@@ -68,6 +71,7 @@ function ExampleFade(props) {
             <H3>Heading 3</H3>
           </BlockFade>
           <BlockFade>
+            <br />
             <P>
               Liquids are very poor conductors of heat; but they have, like aeriform media, the property of carrying it rapidly in certain directions. This is the same property
               which, combining with, combining with the centrifugal force, displaces and mingles all parts of the atmosphere... [and] ocean, and maintains in them, regular and
@@ -81,6 +85,7 @@ function ExampleFade(props) {
             <H4>Heading 4</H4>
           </BlockFade>
           <BlockFade>
+            <br />
             <P>
               The interposition of the air very much modifies the effects of the heat upon the surface of the globe. The solar rays traversing the atmospheric strata, which are
               condensed by their own weight [at decreasing altitudes], heat them very unequally; those which are rarest are likewise coldest, because they... absorb a smaller part
@@ -89,6 +94,7 @@ function ExampleFade(props) {
             </P>
           </BlockFade>
           <P>
+            <br />
             <br />
           </P>
           <Button onClick={replay} style={{ marginRight: 8 }}>
