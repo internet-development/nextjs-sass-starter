@@ -1,8 +1,10 @@
 'use client';
 
-import * as Utilities from '@common/utilities';
-import React from 'react';
 import styles from './BlockFade.module.scss';
+
+import * as React from 'react';
+import * as Utilities from '@common/utilities';
+
 import { FadeManagerContext } from './FadeManager';
 
 export type FadeConfig = {

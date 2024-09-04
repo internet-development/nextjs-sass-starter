@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+
 import { FadeConfig } from './BlockFade';
 
 export type FadeParamFn = (index: number) => number;

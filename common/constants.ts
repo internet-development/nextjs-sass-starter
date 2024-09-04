@@ -30,15 +30,15 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
     label: 'CSS card',
   },
   {
-    name: 'Animations ➝ text swapping',
-    href: '/examples/animations/text-swapping',
-    label: 'CSS text swapping',
-  },
-  {
     name: 'Animations ➝ fade',
     href: '/examples/animations/fade',
     label: 'Fade',
     isWIP: true,
+  },
+  {
+    name: 'Animations ➝ text swapping',
+    href: '/examples/animations/text-swapping',
+    label: 'CSS text swapping',
   },
 ];
 

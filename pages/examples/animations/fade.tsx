@@ -1,14 +1,12 @@
 import * as React from 'react';
 
+import BlockFade from '@root/system/animations/BlockFade';
+import Button from '@root/system/Button';
+import FadeManager, { FadeManagerConfig } from '@root/system/animations/FadeManager';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
+import { H1, H2, H3, H4, P } from '@root/system/typography';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import FadeManager, { FadeManagerConfig } from '@root/system/animations/FadeManager';
-import BlockFade from '@root/system/animations/BlockFade';
-import { H1, H2, H3, H4, P, SubTitle } from '@root/system/typography';
-import AppLayout from '@root/system/layouts/AppLayout';
-import Button from '@root/system/Button';
-import Input from '@root/system/Input';
 
 function ExampleFade(props) {
   const [nonce, setNonce] = React.useState(0);
