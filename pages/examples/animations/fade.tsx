@@ -39,7 +39,7 @@ function ExampleFade(props) {
       url="https://wireframes.internet.dev/examples/animations/fade"
     >
       <Navigation />
-      <div style={{ width: 648, margin: '64px auto' }}>
+      <div style={{ width: '100%', maxWidth: '576px', margin: '64px auto' }}>
         <FadeManager key={nonce} {...fadeConfig}>
           <BlockFade>
             <H1>Heading 1</H1>
