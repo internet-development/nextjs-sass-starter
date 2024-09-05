@@ -7,11 +7,12 @@ interface ModalContent {
   name?: string;
   message?: string;
   parentId?: string;
+  unmountDelay?: number;
 }
 
 interface ModalContextType {
   modalContent: ModalContent | null;
-  showModal: (nextContent: ModalContent | null, delay?: number) => void;
+  showModal: (nextContent: ModalContent | null) => void;
 }
 
 const initialModalContext: ModalContextType = {

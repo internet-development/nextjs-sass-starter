@@ -8,41 +8,20 @@ import Link from 'next/link';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 export default function ModalHamburgerMenu(props) {
-  const { navItems, onClose } = props;
-  const [isVisible, setIsVisible] = React.useState(true);
+  const { navItems } = props;
   const [isUnmounting, setIsUnmounting] = React.useState(false);
-
-  React.useEffect(() => {
-    if (isUnmounting) {
-      const modal = document.querySelector(`.${styles.modal}`);
-      const handleAnimationEnd = () => {
-        setIsVisible(false); 
-        if (onClose) {
-          onClose();
-        }
-      };
-      
-      modal?.addEventListener('animationend', handleAnimationEnd);
-      return () => {
-        modal?.removeEventListener('animationend', handleAnimationEnd);
-      };
-    }
-  }, [isUnmounting, onClose]);
 
   function handleClose() {
     setIsUnmounting(true);
   }
 
-  if (!isVisible) return null; // Unmount after animation finishes
+  const animationClass = isUnmounting ? styles.slideOut : styles.slideIn;
 
   return (
-    <OutsideElementEvent
-      className={`${styles.modal} ${isUnmounting ? styles.slideOut : styles.slideIn}`}
-      onOutsideEvent={handleClose}
-    >
+    <OutsideElementEvent className={`${styles.hamburgerModal} ${animationClass}`} onOutsideEvent={handleClose}>
       {navItems.map((item) => (
         <div key={item.name} className={styles.menuContent}>
-          <Link href={item.link} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link href={item.link} className={styles.linkStyle}>
             <H4>{item.name}</H4>
           </Link>
         </div>

@@ -1,6 +1,13 @@
 .modal {
+  -webkit-appearance: none;
   box-shadow: var(--theme-box-shadow-modal);
   background: var(--theme-background);
+  border-radius: 4px;
+  position: absolute;
+  padding: 12px 0 12px 0;
+}
+
+.hamburgerModal {
   position: absolute;
   padding: 128px 0px;
   text-align: left;
@@ -158,4 +165,9 @@
 
 .menuContent {
   padding: 16px 40px 16px 40px;
+}
+
+.linkStyle {
+  text-decoration: none;
+  color: inherit;
 }

@@ -15,7 +15,8 @@ export default function MenuButton(props) {
     showModal({
       name: 'HAMBURGER_MENU',
       data: [],
-    }, 300);
+      unmountDelay: 300,
+    });
   }
 
   const mobileMenuOnClickHandler = () => {
