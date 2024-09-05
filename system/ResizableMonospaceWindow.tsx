@@ -3,7 +3,7 @@ import * as Utilities from '@common/utilities';
 
 import styles from '@system/ResizableMonospaceWindow.module.scss';
 
-interface ResizableMonospaceWindowProps {
+export interface ResizableMonospaceWindowProps {
   children?: React.ReactNode;
   disableResize?: boolean;
   height: number;
@@ -12,6 +12,7 @@ interface ResizableMonospaceWindowProps {
   width: number;
   x: number;
   y: number;
+  onDelete?: () => void;
 }
 
 const ResizableMonospaceWindow = React.forwardRef<HTMLDivElement, ResizableMonospaceWindowProps>((props, ref) => {
@@ -63,6 +64,12 @@ const ResizableMonospaceWindow = React.forwardRef<HTMLDivElement, ResizableMonos
     setResizeEdge('');
   }, []);
 
+  const handleDelete = () => {
+    if (props.onDelete) {
+      props.onDelete();
+    }
+  };
+
   React.useEffect(() => {
     if (isDragging || resizeEdge) {
       document.addEventListener('mousemove', handleMouseMove);
@@ -77,6 +84,8 @@ const ResizableMonospaceWindow = React.forwardRef<HTMLDivElement, ResizableMonos
   const handleMouseDown = (e) => {
     if (e.target.dataset.resizer) {
       setResizeEdge(e.target.dataset.resizer);
+    } else if (e.target.dataset.close) {
+      handleDelete();
     } else if (e.target.dataset.header) {
       setIsDragging(true);
     } else {
@@ -100,7 +109,8 @@ const ResizableMonospaceWindow = React.forwardRef<HTMLDivElement, ResizableMonos
     >
       {props.title ? (
         <div className={styles.header} data-header="true">
-          {props.title}
+          <div>{props.title}</div>
+          <div className={styles.close} data-close="true">X</div>
         </div>
       ) : null}
       {props.children}
