@@ -236,6 +236,11 @@ export const TEMPLATE_EXAMPLES_FEATURES = [
     label: 'Fixed stock watchlist',
   },
   {
+    name: 'Features ➝ hooks ➝ debounced callback',
+    href: '/examples/features/hooks/debounced-callback',
+    label: 'Debounced callback',
+  },
+  {
     name: 'Features ➝ job posting',
     href: '/examples/features/job-posting',
     label: 'Job posting',
