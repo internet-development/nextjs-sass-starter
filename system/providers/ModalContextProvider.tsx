@@ -11,7 +11,7 @@ interface ModalContent {
 
 interface ModalContextType {
   modalContent: ModalContent | null;
-  showModal: (nextContent: ModalContent | null) => void;
+  showModal: (nextContent: ModalContent | null, delay?: number) => void;
 }
 
 const initialModalContext: ModalContextType = {

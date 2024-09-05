@@ -13,20 +13,15 @@ interface ModalContent {
 
 interface ModalContextType {
   modalContent: ModalContent | null;
-  showModal: (nextContent: ModalContent | null) => void;
+  showModal: (nextContent: ModalContent | null, delay?: number) => void;
 }
-
-const initialModalContext: ModalContextType = {
-  modalContent: null,
-  showModal: () => {},
-};
 
 export default function Providers({ children }) {
   const [modalContent, setContent] = React.useState<ModalContent | null>(null);
 
-  const showModal = (nextContent) => {
+  const showModal = (nextContent, delay) => {
     if (nextContent && modalContent && nextContent.name === modalContent.name) {
-      setContent(null);
+      setTimeout(() => setContent(null), delay || 0);
       return;
     }
 

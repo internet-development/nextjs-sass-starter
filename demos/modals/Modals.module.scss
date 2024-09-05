@@ -11,19 +11,31 @@
   box-shadow: none;
   border-right: 1px solid var(--theme-border);
   transition: left 0.3s;
-  animation: slideIn 0.3s forwards;
+}
 
-  @keyframes slideIn {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(0);
-    }
+.slideIn {
+  animation: slideInAnimation 0.3s forwards;
+}
+
+.slideOut {
+  animation: slideOutAnimation 0.3s forwards;
+}
+
+@keyframes slideInAnimation {
+  from {
+    transform: translateX(-100%);
   }
+  to {
+    transform: translateX(0);
+  }
+}
 
-  @media (max-width: 960px) {
-    width: 100%
+@keyframes slideOutAnimation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
 
