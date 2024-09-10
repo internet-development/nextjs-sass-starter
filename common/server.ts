@@ -1,5 +1,25 @@
 import * as Utilities from '@common/utilities';
 
+import Cors from '@modules/cors';
+
+export function initMiddleware(middleware) {
+  return (req, res) =>
+    new Promise((resolve, reject) => {
+      middleware(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result);
+        }
+        return resolve(result);
+      });
+    });
+}
+
+export const cors = initMiddleware(
+  Cors({
+    methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  })
+);
+
 export async function setup(context): Promise<{ sessionKey?: any; viewer?: Record<string, any> | null }> {
   let viewer = null;
   let sessionKey = context.req.cookies['sitekey'] || '';

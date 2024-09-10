@@ -28,6 +28,7 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
     href: '/examples/animations/card',
     isWIP: true,
     label: 'CSS card',
+    internal: true,
   },
   {
     name: 'Animations ➝ fade',
@@ -62,6 +63,7 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     name: 'Components ➝ navigation, application toolbar',
     href: '/examples/components/application-toolbar',
     label: 'Application toolbar',
+    internal: true,
   },
   {
     name: 'Components ➝ navigation, dashboard',
@@ -71,7 +73,7 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
   {
     name: 'Components ➝ navigation, dashboard for privacy settings',
     href: '/examples/components/dashboard-settings-privacy',
-    label: 'Dashboard skeleton',
+    label: 'Dashboard privacy settings',
   },
   {
     name: 'Components ➝ navigation, blog post, footer',
@@ -92,11 +94,13 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     name: 'Components ➝ navigation, naked components',
     href: '/examples/components/no-sections',
     label: 'Landing with no spacing',
+    internal: true,
   },
   {
     name: 'Components ➝ navigation, ½ dvh sections',
     href: '/examples/components/half-section',
     label: 'Landing with moderate spacing',
+    internal: true,
   },
   {
     name: 'Components ➝ navigation, horizontal marketing',
@@ -113,6 +117,7 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     href: '/examples/components/modals-color-picker',
     label: 'Color picker modal',
     isWIP: true,
+    internal: true,
   },
   {
     name: 'Components ➝ navigation, modal website prompt trigger',
@@ -151,6 +156,7 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     href: '/examples/components/windows-level-selector',
     isWIP: true,
     label: 'Windows for game levels',
+    internal: true,
   },
 ];
 
