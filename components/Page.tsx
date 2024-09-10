@@ -2,9 +2,12 @@ import styles from '@components/DefaultLayout.module.scss';
 
 import * as React from 'react';
 
+import SmallButton from '@system/documents/SmallButton';
 import Head from 'next/head';
 
 export default function Page(props) {
+  const source = `https://github.com/internet-development/nextjs-sass-starter/blob/main/pages/${props.url.replace('https://wireframes.internet.dev', '')}.tsx`;
+
   return (
     <>
       <Head>
@@ -32,6 +35,13 @@ export default function Page(props) {
       </Head>
       <img className={styles.pixel} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png" alt="" />
       {props.children}
+      <div className={styles.prompt}>
+        This is an open source example. Take the code and remix it! <br />
+        <br />
+        <SmallButton href={source} target="_blank">
+          View source
+        </SmallButton>
+      </div>
     </>
   );
 }

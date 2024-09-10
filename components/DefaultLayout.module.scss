@@ -10,3 +10,30 @@
   width: 1px;
   height: 1px;
 }
+
+.prompt {
+  font-size: var(--type-scale-fixed-tiny);
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  max-width: 156px;
+  padding: 16px 16px 16px 16px;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-background);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px var(--theme-box-shadow-modal);
+}
+
+.link {
+  color: var(--theme-text);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:visited {
+    color: var(--theme-text);
+  }
+
+  &:hover {
+    color: var(--theme-primary);
+  }
+}
