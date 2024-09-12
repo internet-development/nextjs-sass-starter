@@ -28,7 +28,7 @@ function ExampleDebouncedCallback(props) {
     <Page
       title="wireframes.internet.dev ➝ features ➝ debounced callback"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/features/debounced-callback"
+      url="https://wireframes.internet.dev/examples/features/hooks/debounced-callback"
     >
       <div
         style={{

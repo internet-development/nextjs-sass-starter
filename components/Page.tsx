@@ -6,7 +6,7 @@ import SmallButton from '@system/documents/SmallButton';
 import Head from 'next/head';
 
 export default function Page(props) {
-  const source = `https://github.com/internet-development/nextjs-sass-starter/blob/main/pages/${props.url.replace('https://wireframes.internet.dev', '')}.tsx`;
+  const source = `https://github.com/internet-development/nextjs-sass-starter/blob/main/pages${props.url.replace('https://wireframes.internet.dev', '')}.tsx`;
 
   return (
     <>

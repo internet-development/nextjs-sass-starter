@@ -3,7 +3,7 @@ export const MAX_SIZE_BYTES = 15728640;
 export const API = `https://api.internet.dev/api`;
 // NOTE(jimmylee):
 // https://github.com/internet-development/apis
-// export const API = `http://localhost:10001`;
+// export const API = `http://localhost:10001/api`;
 
 export const TEMPLATE_EXAMPLES_ANIMATIONS = [
   {
@@ -33,7 +33,7 @@ export const TEMPLATE_EXAMPLES_ANIMATIONS = [
   {
     name: 'Animations ➝ fade',
     href: '/examples/animations/fade',
-    label: 'Fade',
+    label: 'CSS Fade',
     isWIP: true,
   },
   {
@@ -52,7 +52,7 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
   {
     name: 'Components ➝ navigation, hero section',
     href: '/examples',
-    label: 'Simple hero marketing',
+    label: 'Hero marketing',
   },
   {
     name: 'Components ➝ application overview, footer',
@@ -88,24 +88,24 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
   {
     name: 'Components ➝ navigation, full dvh sections',
     href: '/examples/components/full-section',
-    label: 'Landing with large spacing',
+    label: 'Landing page',
   },
   {
     name: 'Components ➝ navigation, naked components',
     href: '/examples/components/no-sections',
-    label: 'Landing with no spacing',
+    label: 'Landing page with no spacing',
     internal: true,
   },
   {
     name: 'Components ➝ navigation, ½ dvh sections',
     href: '/examples/components/half-section',
-    label: 'Landing with moderate spacing',
+    label: 'Landing page with moderate spacing',
     internal: true,
   },
   {
     name: 'Components ➝ navigation, horizontal marketing',
     href: '/examples/components/horizontal-stack-marketing',
-    label: 'Landing with horizontal stack',
+    label: 'Horizontal landing page',
   },
   {
     name: 'Components ➝ navigation, modal book index trigger',
@@ -127,7 +127,7 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
   {
     name: 'Components ➝ navigation, product marketing',
     href: '/examples/components/product-marketing',
-    label: 'Website prompt product box',
+    label: 'NextJS full product box',
   },
   {
     name: 'Components ➝ navigation, table',
