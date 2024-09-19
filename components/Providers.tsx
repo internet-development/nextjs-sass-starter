@@ -9,6 +9,7 @@ interface ModalContent {
   name?: string;
   message?: string;
   parentId?: string;
+  unmountDelay?: number;
 }
 
 interface ModalContextType {
@@ -19,9 +20,9 @@ interface ModalContextType {
 export default function Providers({ children }) {
   const [modalContent, setContent] = React.useState<ModalContent | null>(null);
 
-  const showModal = (nextContent, delay) => {
-    if (nextContent && modalContent && nextContent.name === modalContent.name) {
-      setTimeout(() => setContent(null), delay || 0);
+  const showModal = (nextContent) => {
+    if (nextContent && modalContent) {
+      setTimeout(() => setContent(null), nextContent.unmountDelay || 0);
       return;
     }
 

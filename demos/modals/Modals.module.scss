@@ -11,13 +11,17 @@
   position: absolute;
   padding: 128px 0px;
   text-align: left;
-  top: 49px;
   height: calc(-49px + 100dvh);
   // (@xBalbinus): A hacky way to align with the navbar on wireframes. Should adjust this in production.
+  top: 49px;
   width: 241px;
   box-shadow: none;
   border-right: 1px solid var(--theme-border);
   transition: left 0.3s;
+
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 }
 
 .slideIn {

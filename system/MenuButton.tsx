@@ -11,38 +11,23 @@ export default function MenuButton(props) {
 
   const hamburgerRef = React.useRef<HTMLDivElement>(null);
 
+  // (@xBalbinus): The hamburger menu gets closed on click to any outside HTML element if we only use
+  // onOutsideEvent, we need to check if the click is coming from the hamburger button specifically.
   function toggleModal() {
-    showModal({
-      name: 'HAMBURGER_MENU',
-      data: [],
-      unmountDelay: 300,
-    });
-  }
-
-  const mobileMenuOnClickHandler = () => {
     if (hamburgerRef.current) {
       hamburgerRef.current.classList.toggle(styles.active);
     }
-    if (!menuActive) {
-      toggleModal();
-      setMenuActive(true);
-    } else {
-      toggleModal();
-      setMenuActive(false);
-    }
-  };
-
-  React.useEffect(() => {
-    if (menuActive) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [menuActive]);
+    showModal({
+      name: 'HAMBURGER_MENU',
+      data: { navItems: props.navItems, triggerElement: hamburgerRef.current },
+      unmountDelay: 300,
+    });
+    setMenuActive(!menuActive);
+  }
 
   return (
     <div className={styles.body}>
-      <div ref={hamburgerRef} className={styles.hamburger} onClick={mobileMenuOnClickHandler}>
+      <div ref={hamburgerRef} className={styles.hamburger} onClick={toggleModal}>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>

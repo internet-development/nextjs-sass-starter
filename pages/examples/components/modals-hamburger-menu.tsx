@@ -1,13 +1,14 @@
 import * as React from 'react';
 
 import GlobalModalManager from '@system/modals/GlobalModalManager';
+import MenuButton from '@system/MenuButton';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
+import SectionFullHeight from "@root/system/sections/SectionFullHeight";
 
-import MenuButton from '@system/MenuButton';
-import { useModal } from '@system/providers/ModalContextProvider';
-
-function ExampleModalsWebsitePrompt(props) {
+function ExampleModalsHamburgerMenu(props) {
+  // (@xBalbinus): This populates the navigation in the hamburger menu.
+  // You should change this to your own content in production.
   const NAV_CONTENT = [
     { name: 'Home', link: '/examples/components/modals-hamburger-menu' },
     { name: 'About', link: '/examples/components/modals-hamburger-menu' },
@@ -20,8 +21,8 @@ function ExampleModalsWebsitePrompt(props) {
       url="https://wireframes.internet.dev/examples/components/modals-hamburger-menu"
     >
       <Navigation />
-      <GlobalModalManager navItems={NAV_CONTENT} />
-      <MenuButton />
+      <GlobalModalManager />
+      <MenuButton navItems={NAV_CONTENT} />
     </Page>
   );
 }
@@ -32,4 +33,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleModalsWebsitePrompt;
+export default ExampleModalsHamburgerMenu;
