@@ -14,9 +14,6 @@ export default function MenuButton(props) {
   // (@xBalbinus): The hamburger menu gets closed on click to any outside HTML element if we only use
   // onOutsideEvent, we need to check if the click is coming from the hamburger button specifically.
   function toggleModal() {
-    if (hamburgerRef.current) {
-      hamburgerRef.current.classList.toggle(styles.active);
-    }
     showModal({
       name: 'HAMBURGER_MENU',
       data: { navItems: props.navItems, triggerElement: hamburgerRef.current },
@@ -27,7 +24,11 @@ export default function MenuButton(props) {
 
   return (
     <div className={styles.body}>
-      <div ref={hamburgerRef} className={styles.hamburger} onClick={toggleModal}>
+      <div
+        ref={hamburgerRef}
+        className={`${styles.hamburger} ${menuActive ? styles.active : ''}`}
+        onClick={toggleModal}
+      >
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>

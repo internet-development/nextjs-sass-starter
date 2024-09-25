@@ -32,6 +32,7 @@
   color: inherit;
 
   // (@xBalbinus) These timings should line up with the color transitioning speed in ThemeManager.tsx
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
-  -webkit-transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+  $transition-timing: 0.3s ease-in-out;
+  transition: transform $transition-timing, opacity $transition-timing, color $transition-timing;
+  -webkit-transition: transform $transition-timing, opacity $transition-timing, color $transition-timing;
 }
