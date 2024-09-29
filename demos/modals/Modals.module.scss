@@ -7,6 +7,49 @@
   padding: 12px 0 12px 0;
 }
 
+.hamburgerModal {
+  position: absolute;
+  padding: 128px 0px;
+  text-align: left;
+  height: calc(-49px + 100dvh);
+  // (@xBalbinus): A hacky way to align with the navbar on wireframes. Should adjust this in production.
+  top: 49px;
+  width: 241px;
+  box-shadow: none;
+  border-right: 1px solid var(--theme-border);
+  transition: left 0.3s;
+
+  @media (max-width: 960px) {
+    width: 100%;
+  }
+}
+
+.slideIn {
+  animation: slideInAnimation 0.3s forwards;
+}
+
+.slideOut {
+  animation: slideOutAnimation 0.3s forwards;
+}
+
+@keyframes slideInAnimation {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutAnimation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 .childModal {
   -webkit-appearance: none;
   box-shadow: var(--theme-box-shadow-modal);
@@ -122,4 +165,13 @@
   &:hover {
     color: var(--theme-text);
   }
+}
+
+.menuContent {
+  padding: 16px 40px 16px 40px;
+}
+
+.linkStyle {
+  text-decoration: none;
+  color: inherit;
 }

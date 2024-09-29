@@ -1,0 +1,38 @@
+.body {
+  display: inline-block;
+  padding: 40px;
+  color: inherit;
+}
+
+.hamburger {
+  display: block;
+  cursor: pointer;
+  z-index: var(--z-index-high);
+
+  &.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  &.active .bar:nth-child(1) {
+    transform: translateY(16px) rotate(45deg);
+  }
+
+  &.active .bar:nth-child(3) {
+    transform: translateY(-16px) rotate(-45deg);
+  }
+}
+
+.bar {
+  display: block;
+  width: 32px;
+  height: 8px;
+  margin: 8px auto;
+  background: inherit;
+  background-color: currentColor;
+  color: inherit;
+
+  // (@xBalbinus) These timings should line up with the color transitioning speed in ThemeManager.tsx
+  $transition-timing: 0.3s ease-in-out;
+  $transition: transform $transition-timing, opacity $transition-timing, color $transition-timing;
+  transition: $transition;
+}

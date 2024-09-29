@@ -9,24 +9,20 @@ interface ModalContent {
   name?: string;
   message?: string;
   parentId?: string;
+  unmountDelay?: number;
 }
 
 interface ModalContextType {
   modalContent: ModalContent | null;
-  showModal: (nextContent: ModalContent | null) => void;
+  showModal: (nextContent: ModalContent | null, delay?: number) => void;
 }
-
-const initialModalContext: ModalContextType = {
-  modalContent: null,
-  showModal: () => {},
-};
 
 export default function Providers({ children }) {
   const [modalContent, setContent] = React.useState<ModalContent | null>(null);
 
   const showModal = (nextContent) => {
-    if (nextContent && modalContent && nextContent.name === modalContent.name) {
-      setContent(null);
+    if (nextContent && modalContent) {
+      setTimeout(() => setContent(null), nextContent.unmountDelay || 0);
       return;
     }
 

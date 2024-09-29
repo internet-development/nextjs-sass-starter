@@ -5,9 +5,10 @@ interface OutsideElementEventProps {
   children: React.ReactNode;
   onOutsideEvent: (event: MouseEvent | TouchEvent) => void;
   style?: Record<string, any>;
+  triggerElement?: HTMLElement | null;
 }
 
-const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, children, onOutsideEvent, style }) => {
+const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, children, onOutsideEvent, style, triggerElement }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleOutsideEvent = (event) => {
@@ -16,7 +17,9 @@ const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, ch
     }
 
     if (ref.current && !ref.current.contains(event.target)) {
-      onOutsideEvent(event);
+      if (!triggerElement || (triggerElement && triggerElement.contains(event.target))) {
+        onOutsideEvent(event);
+      }
       return;
     }
   };

@@ -120,6 +120,11 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     internal: true,
   },
   {
+    name: 'Components ➝ navigation, modal hamburger menu',
+    href: '/examples/components/modals-hamburger-menu',
+    label: 'Hamburger menu modal',
+  },
+  {
     name: 'Components ➝ navigation, modal website prompt trigger',
     href: '/examples/components/modals-website-prompt',
     label: 'Website prompt modal',

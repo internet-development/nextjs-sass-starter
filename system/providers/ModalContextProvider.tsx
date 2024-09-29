@@ -7,6 +7,7 @@ interface ModalContent {
   name?: string;
   message?: string;
   parentId?: string;
+  unmountDelay?: number;
 }
 
 interface ModalContextType {
