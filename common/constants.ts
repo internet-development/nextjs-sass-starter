@@ -141,6 +141,12 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Tables',
   },
   {
+    name: 'Components ➝ report edit',
+    href: '/examples/components/report-edit',
+    label: 'Windows',
+    isWIP: true,
+  },
+  {
     name: 'Components ➝ windows',
     href: '/examples/components/windows',
     label: 'Windows',
