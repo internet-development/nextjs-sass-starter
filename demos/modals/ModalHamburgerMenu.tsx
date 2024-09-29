@@ -11,16 +11,12 @@ export default function ModalHamburgerMenu(props) {
   const navItems = props.content.data.navItems;
   const triggerElement = props.content.data.triggerElement;
 
-  const [isUnmounting, setIsUnmounting] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(true);
 
-  function handleClose() {
-    setIsUnmounting(true);
-  }
-
-  const animationClass = isUnmounting ? styles.slideOut : styles.slideIn;
+  const animationClass = isVisible ? styles.slideIn : styles.slideOut;
 
   return (
-    <OutsideElementEvent className={`${styles.hamburgerModal} ${animationClass}`} onOutsideEvent={handleClose} triggerElement={triggerElement}>
+    <OutsideElementEvent className={`${styles.hamburgerModal} ${animationClass}`} onOutsideEvent={() => setIsVisible(false)} triggerElement={triggerElement}>
       {navItems?.map((item) => (
         <div key={item.name} className={styles.menuContent}>
           <Link href={item.link} className={styles.linkStyle}>

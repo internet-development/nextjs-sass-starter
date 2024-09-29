@@ -1,11 +1,11 @@
-import styles from '@system/MenuButton.module.scss';
+import styles from '@system/HamburgerMenuButton.module.scss';
 
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
 import { useModal } from '@system/providers/ModalContextProvider';
 
-export default function MenuButton(props) {
+export default function HamburgerMenuButton(props) {
   const { showModal } = useModal();
 
   const [menuActive, setMenuActive] = React.useState(false);
@@ -17,10 +17,9 @@ export default function MenuButton(props) {
   function toggleModal() {
     showModal({
       name: 'HAMBURGER_MENU',
-      data: { navItems: props.navItems, triggerElement: hamburgerRef.current },
-      unmountDelay: 300,
+      data: { navItems: props.navItems, menuActive, triggerElement: hamburgerRef.current },
     });
-    setMenuActive(!menuActive);
+    setMenuActive((prev) => !prev);
   }
 
   return (
