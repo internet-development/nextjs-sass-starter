@@ -15,10 +15,10 @@
   &::before {
     content: '';
     position: absolute;
-    top: -8px;
-    bottom: -8px;
-    left: -8px;
-    right: -8px;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
     background: transparent;
   }
 
@@ -27,11 +27,11 @@
   }
 
   &.active .bar:nth-child(1) {
-    transform: translateY(16px) rotate(45deg);
+    transform: translateY(18px) rotate(45deg) translateX(-2px);
   }
 
   &.active .bar:nth-child(3) {
-    transform: translateY(-16px) rotate(-45deg);
+    transform: translateY(-18px) rotate(-45deg) translateX(-3px);
   }
 }
 

@@ -19,9 +19,13 @@ export default function ModalHamburgerMenu(props) {
     <OutsideElementEvent className={`${styles.hamburgerModal} ${animationClass}`} onOutsideEvent={() => setIsVisible(false)} triggerElement={triggerElement}>
       {navItems?.map((item) => (
         <div key={item.name} className={styles.menuContent}>
-          <Link href={item.link} className={styles.linkStyle}>
+          {item.link ? (
+            <Link href={item.link} className={styles.linkStyle}>
+              <H4>{item.name}</H4>
+            </Link>
+          ) : (
             <H4>{item.name}</H4>
-          </Link>
+          )}
         </div>
       ))}
     </OutsideElementEvent>
