@@ -123,6 +123,7 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     name: 'Components ➝ navigation, modal hamburger menu',
     href: '/examples/components/modals-hamburger-menu',
     label: 'Hamburger menu modal',
+    isWIP: true,
   },
   {
     name: 'Components ➝ navigation, modal website prompt trigger',
