@@ -1,6 +1,7 @@
 import styles from '@system/MenuButton.module.scss';
 
 import * as React from 'react';
+import * as Utilities from '@common/utilities';
 
 import { useModal } from '@system/providers/ModalContextProvider';
 
@@ -26,7 +27,7 @@ export default function MenuButton(props) {
     <div className={styles.body}>
       <div
         ref={hamburgerRef}
-        className={`${styles.hamburger} ${menuActive ? styles.active : ''}`}
+        className={Utilities.classNames(styles.hamburger, { [styles.active]: menuActive })}
         onClick={toggleModal}
       >
         <span className={styles.bar}></span>
