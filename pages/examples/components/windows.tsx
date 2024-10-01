@@ -81,7 +81,7 @@ const initialWindows: WindowProps[] = [
 
 function ExampleWindows(props) {
   const [windows, setWindows] = React.useState<WindowProps[]>(initialWindows.map(window => ({...window, onDelete: () => closeWindow(window.key)})));
-  const [id, setId] = React.useState<number>(6);
+  const [id, setId] = React.useState<number>(windows.length);
 
   const closeWindow = (key: number) => {
     setWindows(prevWindows => 
@@ -90,8 +90,16 @@ function ExampleWindows(props) {
     );
   }
 
+  function newWindowId(existingWindows: WindowProps[]): number {
+    let newId;
+    do {
+      newId = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+    } while (existingWindows.some(window => window.key === newId));
+    return newId;
+  }  
+
   function createWindow(x: number, y: number, width: number, height: number, title: string, children: React.ReactNode) {
-    const newId = id + 1;
+    const newId = newWindowId(windows);
     setId(newId);
 
     let newWindow: WindowProps = ({ x: x, y: y, width: width, height: height, title: title, children: children, key: newId, onDelete: () => closeWindow(newId) });
@@ -104,9 +112,13 @@ function ExampleWindows(props) {
   }
 
   function createWindows(windowProps: WindowProps[]) {
-    let newWindows = windows.concat(windowProps.map(window => ({...window, onDelete: () => closeWindow(window.key)})));
+    // let newWindows = windows.concat(windowProps.map(window => ({...window, onDelete: () => closeWindow(window.key)})));
+    const newWindows = windowProps.map(window => {
+      const newId = newWindowId(windows);
+      return ({...window, key: newId, onDelete: () => closeWindow(newId)});
+    })
 
-    setWindows(newWindows);
+    setWindows([...windows, ...newWindows]);
     setId(windows.length + windowProps.length);
   }
 
