@@ -5,7 +5,6 @@ interface OutsideElementEventProps {
   children: React.ReactNode;
   onOutsideEvent: (event: MouseEvent | TouchEvent) => void;
   style?: Record<string, any>;
-  triggerElement?: HTMLElement | null;
 }
 
 const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, children, onOutsideEvent, style }) => {
