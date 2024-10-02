@@ -64,3 +64,8 @@
   cursor: ew-resize;
   border-left: 1px solid var(--theme-border);
 }
+
+.close {
+  cursor: pointer;
+  padding: 0 6px 0 6px;
+}
