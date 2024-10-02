@@ -8,7 +8,7 @@ interface OutsideElementEventProps {
   triggerElement?: HTMLElement | null;
 }
 
-const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, children, onOutsideEvent, style, triggerElement }) => {
+const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, children, onOutsideEvent, style }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleOutsideEvent = (event) => {
@@ -17,9 +17,7 @@ const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, ch
     }
 
     if (ref.current && !ref.current.contains(event.target)) {
-      if (!triggerElement || (triggerElement && triggerElement.contains(event.target))) {
-        onOutsideEvent(event);
-      }
+      onOutsideEvent(event);
       return;
     }
   };
