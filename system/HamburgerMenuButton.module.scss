@@ -1,6 +1,6 @@
 .body {
   display: inline-block;
-  padding: 40px;
+  padding: 40px 24px;
   color: inherit;
 }
 
@@ -8,17 +8,30 @@
   display: block;
   cursor: pointer;
   z-index: var(--z-index-high);
+  position: relative;
+
+  // (@xBalbinus) Before pseudo-element to make the hamburger button
+  // have a larger hitbox.
+  &::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    background: transparent;
+  }
 
   &.active .bar:nth-child(2) {
     opacity: 0;
   }
 
   &.active .bar:nth-child(1) {
-    transform: translateY(16px) rotate(45deg);
+    transform: translateY(18px) rotate(45deg) translateX(-2px);
   }
 
   &.active .bar:nth-child(3) {
-    transform: translateY(-16px) rotate(-45deg);
+    transform: translateY(-18px) rotate(-45deg) translateX(-3px);
   }
 }
 

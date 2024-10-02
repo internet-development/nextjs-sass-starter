@@ -1,17 +1,16 @@
 import * as React from 'react';
 
 import GlobalModalManager from '@system/modals/GlobalModalManager';
-import MenuButton from '@system/MenuButton';
+import HamburgerMenuButton from '@system/HamburgerMenuButton';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import SectionFullHeight from "@root/system/sections/SectionFullHeight";
 
 function ExampleModalsHamburgerMenu(props) {
   // (@xBalbinus): This populates the navigation in the hamburger menu.
   // You should change this to your own content in production.
   const NAV_CONTENT = [
-    { name: 'Home', link: '/examples/components/modals-hamburger-menu' },
-    { name: 'About', link: '/examples/components/modals-hamburger-menu' },
+    { name: 'Home' },
+    { name: 'About' },
   ];
 
   return (
@@ -22,7 +21,7 @@ function ExampleModalsHamburgerMenu(props) {
     >
       <Navigation />
       <GlobalModalManager />
-      <MenuButton navItems={NAV_CONTENT} />
+      <HamburgerMenuButton navItems={NAV_CONTENT} />
     </Page>
   );
 }
