@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { ModalContext } from '@system/providers/ModalContextProvider';
+import { ModalProvider } from '@root/system/modals/GlobalModalManagerV2';
 
 interface ModalContent {
   data?: any;
@@ -33,5 +34,9 @@ export default function Providers({ children }) {
     showModal,
   };
 
-  return <ModalContext.Provider value={modalContextValue}>{children}</ModalContext.Provider>;
+  return <ModalContext.Provider value={modalContextValue}>
+    <ModalProvider>
+      {children}
+    </ModalProvider>
+  </ModalContext.Provider>;
 }

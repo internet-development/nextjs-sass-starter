@@ -5,12 +5,23 @@ import * as React from 'react';
 import { H4 } from '@system/typography';
 
 import Link from 'next/link';
+import OutsideElementEvent from '@root/system/detectors/OutsideElementEvent';
+import { useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
 
-export default function ModalHamburgerMenu(props) {
+export interface ModalHamburgerMenuProps {
+  content: {
+    data: {
+      navItems: { name: string, link: string }[],
+    },
+  };
+}
+
+export default function ModalHamburgerMenu(props: ModalHamburgerMenuProps) {
   const navItems = props.content.data.navItems;
-  
+  const modal = useModalV2(ModalHamburgerMenu);
+
   return (
-    <div className={`${styles.hamburgerModal} ${styles.slideIn}`}>
+    <OutsideElementEvent className={`${styles.hamburgerModal} ${styles.slideIn}`} onOutsideEvent={() => modal.close()}>
       {navItems?.map((item) => (
         <div key={item.name} className={styles.menuContent}>
           {item.link ? (
@@ -22,6 +33,6 @@ export default function ModalHamburgerMenu(props) {
           )}
         </div>
       ))}
-    </div>
+    </OutsideElementEvent>
   );
 }

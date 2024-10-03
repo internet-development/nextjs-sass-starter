@@ -40,10 +40,6 @@ export default function GlobalModalManager(props) {
     nextModal = <ModalError content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
   }
 
-  if (modalContent && modalContent.name === 'HAMBURGER_MENU') {
-    nextModal = <ModalHamburgerMenu content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
   if (modalContent && modalContent.name === 'INDEX') {
     nextModal = <ModalIndex content={modalContent} onShowModal={showModal} />;
   }
