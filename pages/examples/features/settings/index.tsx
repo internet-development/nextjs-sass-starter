@@ -37,7 +37,8 @@ function ExampleSettings(props) {
 
 export async function getServerSideProps(context) {
   if (!Utilities.isEmpty(context.query.key)) {
-    const { sessionKey, viewer } = await Server.tryKeyWithoutCookie(context.query.key);
+    const decryptedKey = Server.decrypt(String(context.query.key));
+    const { sessionKey, viewer } = await Server.tryKeyWithoutCookie(decryptedKey);
     return {
       props: { sessionKey, viewer, active: 'CHANGE_PASSWORD' },
     };

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
+import * as Server from '@common/server';
 
 import Cookies from 'js-cookie';
 
@@ -26,9 +27,11 @@ export async function getServerSideProps(context) {
     };
   }
 
+  const code = Server.decrypt(String(context.query.key));
+
   return {
     props: {
-      code: String(context.query.key),
+      code,
     },
   };
 }
