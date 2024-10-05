@@ -80,7 +80,7 @@ export async function onPublicUserAuthenticate({ email, password }) {
 export async function onPublicUserForgotPassword({ email }) {
   const route = `${Constants.API}/users/reset-password`;
   const body = { email, source: 'wireframes.internet.dev' };
-  return getData({ route, key: null, body });
+  return getData({ route, key: null, body }, 'success');
 }
 
 export async function onUserChangePassword({ key, password }) {
