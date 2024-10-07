@@ -8,7 +8,7 @@ import OutsideElementEvent from '@root/system/detectors/OutsideElementEvent';
 import { H4 } from '@system/typography';
 import { CommonModalProps, ModalComponentV2, useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
 
-export interface ModalHamburgerMenuProps extends CommonModalProps {
+export interface ModalHamburgerMenuProps {
   content: {
     data: {
       navItems: { name: string; link: string }[];
@@ -18,10 +18,9 @@ export interface ModalHamburgerMenuProps extends CommonModalProps {
 
 const ModalHamburgerMenu: ModalComponentV2<ModalHamburgerMenuProps> = (props) => {
   const navItems = props.content.data.navItems;
-  const modal = useModalV2(ModalHamburgerMenu);
 
   return (
-    <OutsideElementEvent className={styles.hamburgerModal} onOutsideEvent={() => modal.close()} style={{ animationDirection: modal.isActive ? 'normal' : 'reverse' }}>
+    <OutsideElementEvent className={styles.hamburgerModal} onOutsideEvent={() => props.close()} style={{ animationDirection: !props.isClosing ? 'normal' : 'reverse' }}>
       {navItems?.map((item) => (
         <div key={item.name} className={styles.menuContent}>
           {item.link ? (

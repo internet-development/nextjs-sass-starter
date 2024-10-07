@@ -6,7 +6,7 @@ export interface ModalProviderProps {
   children?: React.ReactNode;
 }
 
-export interface ModalComponentV2<P extends CommonModalProps = CommonModalProps> extends React.FC<P> {
+export interface ModalComponentV2<P = {}> extends React.FC<P & CommonModalProps> {
   unmountDelayMS?: number;
 }
 
@@ -17,13 +17,14 @@ export interface ModalState {
 }
 
 export interface CommonModalProps {
-  isClosing?: boolean;
+  isClosing: boolean;
+  close: () => void;
 }
 
 export interface ModalContextTypeV2 {
   activeModal: ModalState | null;
   closingModals: { [key: string]: ModalState };
-  showModal: <P extends CommonModalProps>(key: string, component: ModalComponentV2<P> | null, props?: P) => void;
+  showModal: <P>(key: string, component: ModalComponentV2<P> | null, props?: P) => void;
   hideCurrentModal: () => void;
   hideModal: (key: string) => void;
 }
@@ -97,13 +98,13 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
 /** Displays the active modal. Without this component, the modal context does
  * nothing. */
 export function ModalsV2() {
-  const { activeModal, closingModals } = React.useContext(ModalContextV2);
+  const { activeModal, closingModals, hideModal } = React.useContext(ModalContextV2);
 
   const renderModal = (state: ModalState, isClosing: boolean) => {
-    const Component: React.FC<CommonModalProps> = state?.component;
+    const Component = state?.component;
     const props = state?.props || {};
 
-    return <Component key={state.key} isClosing={isClosing} {...props} />;
+    return <Component key={state.key} isClosing={isClosing} close={() => activeModal && hideModal(activeModal.key)} {...props} />;
   };
 
   return (
@@ -120,7 +121,7 @@ export interface ModalHandleV2<T> {
   close: () => void;
 }
 
-export function useModalV2<T extends CommonModalProps>(component: React.FC<T>): ModalHandleV2<T> {
+export function useModalV2<P>(component: ModalComponentV2<P>): ModalHandleV2<P> {
   const { showModal, hideModal, hideCurrentModal, activeModal } = React.useContext(ModalContextV2);
 
   const key = React.useMemo(() => uniqueModalKey(), []);
