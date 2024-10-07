@@ -4,7 +4,7 @@ interface OutsideElementEventProps {
   className?: string;
   children: React.ReactNode;
   onOutsideEvent: (event: MouseEvent | TouchEvent) => void;
-  style?: Record<string, any>;
+  style?: React.CSSProperties;
 }
 
 const OutsideElementEvent: React.FC<OutsideElementEventProps> = ({ className, children, onOutsideEvent, style }) => {

@@ -25,8 +25,10 @@ export default function HamburgerMenuButton(props) {
       modal.open({
         content: { data: { navItems: props.navItems } },
       });
+      console.log('opening');
     } else {
       modal.close();
+      console.log('closing');
     }
     setTimeout(() => {
       setIsAnimating(false);

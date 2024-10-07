@@ -2,26 +2,26 @@ import styles from '@demos/modals/Modals.module.scss';
 
 import * as React from 'react';
 
-import { H4 } from '@system/typography';
-
 import Link from 'next/link';
 import OutsideElementEvent from '@root/system/detectors/OutsideElementEvent';
-import { useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
 
-export interface ModalHamburgerMenuProps {
+import { H4 } from '@system/typography';
+import { CommonModalProps, ModalComponentV2, useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
+
+export interface ModalHamburgerMenuProps extends CommonModalProps {
   content: {
     data: {
-      navItems: { name: string, link: string }[],
-    },
+      navItems: { name: string; link: string }[];
+    };
   };
 }
 
-export default function ModalHamburgerMenu(props: ModalHamburgerMenuProps) {
+const ModalHamburgerMenu: ModalComponentV2<ModalHamburgerMenuProps> = (props) => {
   const navItems = props.content.data.navItems;
   const modal = useModalV2(ModalHamburgerMenu);
 
   return (
-    <OutsideElementEvent className={`${styles.hamburgerModal} ${styles.slideIn}`} onOutsideEvent={() => modal.close()}>
+    <OutsideElementEvent className={styles.hamburgerModal} onOutsideEvent={() => modal.close()} style={{ animationDirection: modal.isActive ? 'normal' : 'reverse' }}>
       {navItems?.map((item) => (
         <div key={item.name} className={styles.menuContent}>
           {item.link ? (
@@ -35,4 +35,8 @@ export default function ModalHamburgerMenu(props: ModalHamburgerMenuProps) {
       ))}
     </OutsideElementEvent>
   );
-}
+};
+
+ModalHamburgerMenu.unmountDelayMS = 300;
+
+export default ModalHamburgerMenu;
