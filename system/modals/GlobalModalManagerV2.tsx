@@ -50,8 +50,6 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
   const [closingModals, setClosingModals] = React.useState<{ [key: string]: ModalState }>({});
 
   const showModal = (key, component, props) => {
-    // If a modal was previously active, remove it now, or set a timeout for it
-    // if there is an unmount delay.
     hideCurrentModal();
 
     if (component) {
@@ -60,8 +58,6 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
         component,
         props: props || {},
       });
-    } else {
-      setActiveModal(null);
     }
   };
 
