@@ -43,9 +43,18 @@ function newModalState(): ModalState | null {
 }
 
 /** 
- * NOTE(@elijaharita): Provides a context that allows any of its descendants to
- * control modals via `useModalV2()`. Must be paired with `<ModalsV2 />` in
- * order for modals to show up. 
+ * NOTE(@elijaharita): 
+ *
+ * Provides a context that allows any of its descendants to control modals via
+ * `useModalV2()`. Must be paired with `<ModalsV2 />` in order for modals to
+ * show up. 
+ *
+ * A modal is a popup component that must be dismissed / completed before the
+ * user is able to interact with the rest of the application again. Examples of
+ * modals include toggleable sidebars, error popups, or dropdown menus.
+ *
+ * Modals are mutually exclusive. Opening a new modal will cause the previous
+ * one to be closed.
  * */
 export function ModalProviderV2({ children }: ModalProviderProps) {
   const [activeModal, setActiveModal] = React.useState(newModalState);
