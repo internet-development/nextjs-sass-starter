@@ -42,9 +42,11 @@ function newModalState(): ModalState | null {
   return null;
 }
 
-/** Provides a context that allows any of its descendants to control modals via
- * `useModalV2()`. Must be paired with `<ModalsV2 />` in order for modals to
- * show up. */
+/** 
+ * NOTE(@elijaharita): Provides a context that allows any of its descendants to
+ * control modals via `useModalV2()`. Must be paired with `<ModalsV2 />` in
+ * order for modals to show up. 
+ * */
 export function ModalProviderV2({ children }: ModalProviderProps) {
   const [activeModal, setActiveModal] = React.useState(newModalState);
   const [closingModals, setClosingModals] = React.useState<{ [key: string]: ModalState }>({});
@@ -91,8 +93,10 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
   return <ModalContextV2.Provider value={{ activeModal, closingModals, showModal, hideCurrentModal, hideModal }}>{children}</ModalContextV2.Provider>;
 }
 
-/** Displays the active modal. Without this component, the modal context does
- * nothing. */
+/** 
+ * NOTE(@elijaharita): Displays the active modal. Without this component, the
+ * modal context does nothing. 
+ * */
 export function ModalsV2() {
   const { activeModal, closingModals, hideModal } = React.useContext(ModalContextV2);
 
