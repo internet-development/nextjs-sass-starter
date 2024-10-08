@@ -12,10 +12,10 @@ import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleModals(props) {
-  const modalAuthentication = useModalV2(ModalAuthentication);
+  const modalAuthentication = useModal(ModalAuthentication);
 
   return (
     <Page

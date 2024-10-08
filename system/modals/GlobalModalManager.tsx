@@ -2,7 +2,7 @@ import styles from './GlobalModalManager.module.scss';
 
 import * as React from 'react';
 
-import { ModalContextV2, ModalState } from './GlobalModalManagerV2';
+import { ModalContext, ModalState } from './ModalContext';
 
 /**
  * NOTE(@elijaharita): Displays the active modal for a modal context. Without
@@ -10,7 +10,7 @@ import { ModalContextV2, ModalState } from './GlobalModalManagerV2';
  * context.
  * */
 export default function GlobalModalManager() {
-    const context = React.useContext(ModalContextV2);
+    const context = React.useContext(ModalContext);
     if (!context) return null;
   
     const { modalRefs, activeModal, closingModals, hideModal } = context;

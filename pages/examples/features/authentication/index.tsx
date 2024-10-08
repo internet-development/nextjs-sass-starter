@@ -17,10 +17,10 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleAuthentication(props) {
-  const modalError = useModalV2(ModalError);
+  const modalError = useModal(ModalError);
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);

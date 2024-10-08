@@ -6,9 +6,9 @@ import * as Utilities from '@common/utilities';
 import DemoColorPicker from '@demos/DemoColorPicker';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
-import { ModalComponentV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { ModalComponent } from '@root/system/modals/ModalContext';
 
-const ModalColorPicker: ModalComponentV2 = (props) => {
+const ModalColorPicker: ModalComponent = (props) => {
   return (
     <div className={styles.wrapper}>
       <OutsideElementEvent onOutsideEvent={() => props.close()} style={{ width: '100%', maxWidth: 288, margin: `0 auto 0 auto` }}>

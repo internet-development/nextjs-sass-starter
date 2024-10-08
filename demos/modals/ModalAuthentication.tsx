@@ -13,14 +13,14 @@ import Input from '@system/Input';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { ModalComponentV2 } from '@system/modals/GlobalModalManagerV2';
+import { ModalComponent } from '@root/system/modals/ModalContext';
 import { ViewerContext } from '@components/Page';
 
 export interface ModalAuthenticationProps {
   active?: string;
 }
 
-const ModalAuthentication: ModalComponentV2<ModalAuthenticationProps> = (props) => {
+const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) => {
   const viewer = React.useContext(ViewerContext);
   
   const [email, setEmail] = React.useState<string>('');

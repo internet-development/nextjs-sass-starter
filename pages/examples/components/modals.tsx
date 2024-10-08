@@ -10,10 +10,10 @@ import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
 import { H1, Lead } from '@system/typography';
-import { useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleModals(props) {
-  const modalIndex = useModalV2(ModalIndex);
+  const modalIndex = useModal(ModalIndex);
 
   return (
     <Page

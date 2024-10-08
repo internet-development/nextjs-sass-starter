@@ -6,7 +6,7 @@ import Link from 'next/link';
 import OutsideElementEvent from '@root/system/detectors/OutsideElementEvent';
 
 import { H4 } from '@system/typography';
-import { CommonModalProps, ModalComponentV2, useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { CommonModalProps, ModalComponent, useModal } from '@root/system/modals/ModalContext';
 
 export interface ModalHamburgerMenuProps {
   content: {
@@ -16,7 +16,7 @@ export interface ModalHamburgerMenuProps {
   };
 }
 
-const ModalHamburgerMenu: ModalComponentV2<ModalHamburgerMenuProps> = React.forwardRef((props, ref) => {
+const ModalHamburgerMenu: ModalComponent<ModalHamburgerMenuProps> = React.forwardRef((props, ref) => {
   const navItems = props.content.data.navItems;
 
   React.useImperativeHandle(ref, () => ({

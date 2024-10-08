@@ -9,10 +9,10 @@ import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 import ModalColorPicker from '@demos/modals/ModalColorPicker';
 
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleModalsWebsitePrompt(props) {
-  const modalColorPicker = useModalV2(ModalColorPicker);
+  const modalColorPicker = useModal(ModalColorPicker);
 
   return (
     <Page

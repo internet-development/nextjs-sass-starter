@@ -5,7 +5,7 @@ import * as Utilities from '@common/utilities';
 
 import ModalNavigation from '@root/demos/modals/ModalNavigation';
 
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
 
 export interface NavigationProps {
@@ -13,8 +13,8 @@ export interface NavigationProps {
 }
 
 export default function Navigation(props: NavigationProps) {
-  const modalNavigation = useModalV2(ModalNavigation);
-  const modalNavigationV2 = useModalV2(ModalNavigationV2);
+  const modalNavigation = useModal(ModalNavigation);
+  const modalNavigationV2 = useModal(ModalNavigationV2);
 
   return (
     <nav className={styles.root}>

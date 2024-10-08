@@ -20,12 +20,12 @@ import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 const DOCUMENT_TYPE = 'STATEMENT_OF_WORK';
 
 function ExampleStatementOfWorks(props) {
-  const modalError = useModalV2(ModalError);
+  const modalError = useModal(ModalError);
 
   const [currentSOW, setCurrentSOW] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);

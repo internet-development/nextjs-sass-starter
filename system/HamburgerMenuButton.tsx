@@ -5,10 +5,10 @@ import * as Utilities from '@common/utilities';
 
 import ModalHamburgerMenu from '@root/demos/modals/ModalHamburgerMenu';
 
-import { useModalV2 } from './modals/GlobalModalManagerV2';
+import { useModal } from './modals/ModalContext';
 
 export default function HamburgerMenuButton(props) {
-  const modal = useModalV2(ModalHamburgerMenu);
+  const modal = useModal(ModalHamburgerMenu);
 
   const [isAnimating, setIsAnimating] = React.useState(false);
 

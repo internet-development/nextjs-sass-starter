@@ -5,13 +5,13 @@ import * as React from 'react';
 import Error from '@system/svg/Error';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
-import { ModalComponentV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { ModalComponent } from '@root/system/modals/ModalContext';
 
 export interface ModalErrorProps {
   message: any
 }
 
-const ModalError: ModalComponentV2<ModalErrorProps> = (props) => {
+const ModalError: ModalComponent<ModalErrorProps> = (props) => {
   return (
     <div className={styles.wrapper}>
       <OutsideElementEvent className={styles.errorModal} onOutsideEvent={() => props.close()}>

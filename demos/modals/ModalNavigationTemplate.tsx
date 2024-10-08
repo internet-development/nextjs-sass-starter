@@ -6,7 +6,7 @@ import * as Utilities from '@common/utilities';
 import Cookies from 'js-cookie';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
-import { ModalComponentV2 } from '@system/modals/GlobalModalManagerV2';
+import { ModalComponent } from '@root/system/modals/ModalContext';
 import { ViewerContext } from '@components/Page';
 
 const MODAL_WIDTH = 240;
@@ -16,7 +16,7 @@ export interface ModalNavigationTemplateProps {
   parentId?: string;
 }
 
-const ModalNavigationTemplate: ModalComponentV2<ModalNavigationTemplateProps> = (props) => {
+const ModalNavigationTemplate: ModalComponent<ModalNavigationTemplateProps> = (props) => {
   const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
   const viewer = React.useContext(ViewerContext);
 

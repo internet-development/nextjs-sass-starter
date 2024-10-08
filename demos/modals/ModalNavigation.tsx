@@ -5,7 +5,7 @@ import * as Utilities from '@common/utilities';
 
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
-import { ModalComponentV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { ModalComponent } from '@root/system/modals/ModalContext';
 
 const MODAL_WIDTH = 240;
 const MODAL_GUTTER_OFFSET = 24;
@@ -14,7 +14,7 @@ export interface ModalNavigationProps {
   parentId?: string;
 }
 
-const ModalNavigation: ModalComponentV2<ModalNavigationProps> = (props) => {
+const ModalNavigation: ModalComponent<ModalNavigationProps> = (props) => {
   const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
 
   return (

@@ -13,7 +13,7 @@ import Page from '@components/Page';
 import TwoColumnLayout from '@system/layouts/TwoColumnLayout';
 
 import { P } from '@system/typography';
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 const SUB_SECTION_ROUTES = {
   'change-password': 'CHANGE_PASSWORD',
@@ -36,7 +36,7 @@ const SUB_SECTION_LINKS = {
 };
 
 function ExampleSettings(props) {
-  const modalError = useModalV2(ModalError);
+  const modalError = useModal(ModalError);
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [active, setActive] = React.useState<string>(props.active);

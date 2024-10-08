@@ -5,7 +5,7 @@ import * as React from 'react';
 import Cookies from 'js-cookie';
 import ModalNavigationTemplate from '@demos/modals/ModalNavigationTemplate';
 
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 import { ViewerContext } from '@components/Page';
 
 export interface KeyHeaderProps {
@@ -15,7 +15,7 @@ export interface KeyHeaderProps {
 }
 
 export default function KeyHeader(props: KeyHeaderProps) {
-  const modalNavigationTemplate = useModalV2(ModalNavigationTemplate);
+  const modalNavigationTemplate = useModal(ModalNavigationTemplate);
   const viewer = React.useContext(ViewerContext);
 
   if (props.isHidden) {

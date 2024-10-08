@@ -13,10 +13,10 @@ import Page from '@components/Page';
 import WideAppLayout from '@system/layouts/WideAppLayout';
 
 import { FormHeading, FormParagraph } from '@system/typography/forms';
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleEmptyApplicationTemplate(props) {
-  const modalError = useModalV2(ModalError);
+  const modalError = useModal(ModalError);
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [list, setList] = React.useState<Array<any>>(props.data);

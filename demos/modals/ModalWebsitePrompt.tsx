@@ -5,9 +5,9 @@ import * as Utilities from '@common/utilities';
 
 import DemoWebsitePrompt from '@demos/DemoWebsitePrompt';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
-import { ModalComponentV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { ModalComponent } from '@root/system/modals/ModalContext';
 
-const ModalWebsitePrompt: ModalComponentV2 = (props) => {
+const ModalWebsitePrompt: ModalComponent = (props) => {
   return (
     <div className={styles.wrapper}>
       <OutsideElementEvent onOutsideEvent={() => props.close()} style={{ width: '100%', maxWidth: 568, margin: `0 auto 0 auto` }}>

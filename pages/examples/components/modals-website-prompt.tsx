@@ -9,10 +9,10 @@ import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 import ModalWebsitePrompt from '@demos/modals/ModalWebsitePrompt';
 
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleModalsWebsitePrompt(props) {
-  const modalWebsitePrompt = useModalV2(ModalWebsitePrompt);
+  const modalWebsitePrompt = useModal(ModalWebsitePrompt);
 
   return (
     <Page

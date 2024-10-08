@@ -7,7 +7,7 @@ import * as Utilities from '@common/utilities';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { SubTitle, SubText, UnitLabel } from '@system/typography';
-import { ModalComponentV2 } from '@root/system/modals/GlobalModalManagerV2';
+import { ModalComponent } from '@root/system/modals/ModalContext';
 
 const MODAL_WIDTH = 480;
 const MODAL_GUTTER_OFFSET = 24;
@@ -16,7 +16,7 @@ export interface ModalNavigationV2Props {
   parentId?: string;
 }
 
-const ModalNavigationV2: ModalComponentV2<ModalNavigationV2Props> = (props) => {
+const ModalNavigationV2: ModalComponent<ModalNavigationV2Props> = (props) => {
   const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
 
   return (

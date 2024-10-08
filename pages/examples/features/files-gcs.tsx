@@ -17,10 +17,10 @@ import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleFilesGCS(props) {
-  const modalError = useModalV2(ModalError);
+  const modalError = useModal(ModalError);
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
