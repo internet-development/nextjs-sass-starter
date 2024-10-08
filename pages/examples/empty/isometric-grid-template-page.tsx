@@ -17,13 +17,14 @@ function ExampleEmptyIsometricGridTemplate(props) {
       title="wireframes.internet.dev ➝ empty ➝ isometric grid template page"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/empty/isometric-grid-template-page"
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <IsometricGridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <IsometricRect x={572} y={-102} size={800} src="https://wireframes.internet.dev/examples/components/post" />
         <IsometricRect x={-124} y={-102} size={800} src="https://wireframes.internet.dev/examples/components/table" />
       </IsometricGridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

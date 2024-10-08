@@ -5,7 +5,17 @@ import * as React from 'react';
 import SmallButton from '@system/documents/SmallButton';
 import Head from 'next/head';
 
-export default function Page(props) {
+export const ViewerContext = React.createContext<any | undefined>(undefined);
+
+export interface PageProps {
+  title: string;
+  description: string;
+  url: string;
+  children?: React.ReactNode;
+  viewer?: any;
+}
+
+export default function Page(props: PageProps) {
   const source = `https://github.com/internet-development/nextjs-sass-starter/blob/main/pages${props.url.replace('https://wireframes.internet.dev', '')}.tsx`;
 
   return (
@@ -34,7 +44,7 @@ export default function Page(props) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <img className={styles.pixel} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png" alt="" />
-      {props.children}
+      <ViewerContext.Provider value={props.viewer}>{props.children}</ViewerContext.Provider>
       <div className={styles.prompt}>
         This is an open source example. Take the code and remix it! <br />
         <br />

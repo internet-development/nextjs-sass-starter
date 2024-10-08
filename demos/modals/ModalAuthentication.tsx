@@ -13,16 +13,24 @@ import Input from '@system/Input';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
+import { ModalComponentV2 } from '@system/modals/GlobalModalManagerV2';
+import { ViewerContext } from '@components/Page';
 
-export default function ModalAuthentication(props) {
+export interface ModalAuthenticationProps {
+  active?: string;
+}
+
+const ModalAuthentication: ModalComponentV2<ModalAuthenticationProps> = (props) => {
+  const viewer = React.useContext(ViewerContext);
+  
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  if (props.viewer) {
+  if (viewer) {
     return (
       <div className={styles.wrapper}>
-        <OutsideElementEvent onOutsideEvent={() => props.onShowModal(null)} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
+        <OutsideElementEvent onOutsideEvent={() => props.close()} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
           <div className={styles.childModal} style={{ width: '100%', padding: 24 }}>
             <FormSubHeading>You are authenticated</FormSubHeading>
             <FormParagraph>To clear your session, click on the button below.</FormParagraph>
@@ -49,7 +57,7 @@ export default function ModalAuthentication(props) {
 
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent onOutsideEvent={() => props.onShowModal(null)} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
+      <OutsideElementEvent onOutsideEvent={() => props.close()} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
         <div className={styles.childModal} style={{ width: '100%', padding: 24 }}>
           <FormSubHeading>Join or sign in</FormSubHeading>
           <FormParagraph>Sign in or create an account to enhance your experience. Enter your e-mail and password or use an OAuth provider to get started.</FormParagraph>
@@ -96,7 +104,7 @@ export default function ModalAuthentication(props) {
                 Cookies.set('sitekey', response.user.key, { secure: true });
               }
 
-              props.onShowModal(null);
+              props.close();
               window.location.reload();
             }}
             style={{ marginTop: 24, width: '100%' }}
@@ -117,4 +125,6 @@ export default function ModalAuthentication(props) {
       </OutsideElementEvent>
     </div>
   );
-}
+};
+
+export default ModalAuthentication;

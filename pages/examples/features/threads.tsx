@@ -8,23 +8,29 @@ import Cookies from 'js-cookie';
 import DemoThreads from '@demos/DemoThreads';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import Page from '@components/Page';
 import WideAppLayout from '@system/layouts/WideAppLayout';
 
 import { FormHeading, FormParagraph } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
 
 function ExampleEmptyApplicationTemplate(props) {
-  const { showModal } = useModal();
+  const modalError = useModalV2(ModalError);
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [list, setList] = React.useState<Array<any>>(props.data);
+
+  const onError = (message: string) => {
+    modalError.open({ message: message });
+  };
 
   return (
     <Page
       title="wireframes.internet.dev ➝ features ➝ threads"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/threads"
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <WideAppLayout>
@@ -52,10 +58,7 @@ function ExampleEmptyApplicationTemplate(props) {
                 const plainText = window.prompt('The easiest way to do this without building the modal. Type what words you want to share.');
 
                 if (Utilities.isEmpty(plainText)) {
-                  showModal({
-                    name: 'ERROR',
-                    message: 'You must provide words.',
-                  });
+                  onError('You must provide words.');
                   return;
                 }
 
@@ -70,20 +73,14 @@ function ExampleEmptyApplicationTemplate(props) {
                   type: 'GENERAL',
                 });
                 if (!response) {
-                  showModal({
-                    name: 'ERROR',
-                    message: 'Something went wrong with creating creating a thread',
-                  });
+                  onError('Something went wrong with creating creating a thread');
                   return;
                 }
 
                 const listing = await Queries.onUserListThreads({ key: null, orderBy: { column: 'created_at', value: 'desc' } });
 
                 if (!listing) {
-                  showModal({
-                    name: 'ERROR',
-                    message: 'Something went wrong with listing threads',
-                  });
+                  onError('Something went wrong with listing threads');
                   return;
                 }
 
@@ -99,18 +96,12 @@ function ExampleEmptyApplicationTemplate(props) {
               const listing = await Queries.onUserListThreads({ key: null, orderBy: { column: 'created_at', value: 'desc' } });
 
               if (!listing) {
-                showModal({
-                  name: 'ERROR',
-                  message: 'Something went wrong with listing threads',
-                });
+                onError('Something went wrong with listing threads');
                 return;
               }
 
               if (!listing.data.length) {
-                showModal({
-                  name: 'ERROR',
-                  message: 'There are no threads! Create one.',
-                });
+                onError('There are no threads! Create one.');
                 return;
               }
 
@@ -121,9 +112,9 @@ function ExampleEmptyApplicationTemplate(props) {
           </ActionItem>
         </div>
 
-        <DemoThreads data={list} sessionKey={key} setModal={showModal} style={{ marginTop: 32 }} viewer={props.viewer} />
+        <DemoThreads data={list} sessionKey={key} onError={onError} style={{ marginTop: 32 }} viewer={props.viewer} />
       </WideAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

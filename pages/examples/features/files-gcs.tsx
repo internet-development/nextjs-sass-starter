@@ -10,16 +10,17 @@ import FormUpload from '@system/FormUpload';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
 
 function ExampleFilesGCS(props) {
-  const { showModal } = useModal();
+  const modalError = useModalV2(ModalError);
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -28,11 +29,16 @@ function ExampleFilesGCS(props) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [uploading, setUploading] = React.useState<boolean>(false);
 
+  const onError = (message: string) => {
+    modalError.open({ message: message });
+  };
+
   return (
     <Page
       title="wireframes.internet.dev ➝ features ➝ files GCS"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/files-gcs"
+      viewer={currentUser}
     >
       <KeyHeader onInputChange={setKey} value={key} />
 
@@ -60,10 +66,7 @@ function ExampleFilesGCS(props) {
             setLoading(false);
 
             if (!response) {
-              showModal({
-                name: 'ERROR',
-                message: 'Something went wrong but we are too lazy to tell you.',
-              });
+              onError('Something went wrong but we are too lazy to tell you.');
               return;
             }
 
@@ -121,7 +124,7 @@ function ExampleFilesGCS(props) {
 
             if (response.error) {
               setUploading(false);
-              showModal({ name: 'ERROR', message: response.message });
+              onError(response.message);
               return;
             }
 
@@ -137,7 +140,7 @@ function ExampleFilesGCS(props) {
           style={{ marginTop: 24 }}
         />
       </ThinAppLayout>
-      <GlobalModalManager viewer={currentUser} />
+      <GlobalModalManager />
     </Page>
   );
 }

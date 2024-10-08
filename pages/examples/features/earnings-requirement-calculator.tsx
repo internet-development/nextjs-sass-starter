@@ -18,12 +18,13 @@ function ExampleEarningsRequirementCalculator(props) {
       title="wireframes.internet.dev ➝ features ➝ earnings requirement calculator"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/earnings-requirement-calculator"
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
         <DemoRequiredEarningsCalculator />
       </ThinAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

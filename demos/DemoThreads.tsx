@@ -12,19 +12,13 @@ const ThreadItem = (props) => {
   const onList = async (options?: Record<string, any>) => {
     const listing = await Queries.onUserListThreadReplies({ id: props.threadId, key: null, orderBy: { column: 'created_at', value: 'desc' } });
     if (!listing || listing.error) {
-      props.setModal({
-        name: 'ERROR',
-        message: 'Something went wrong with listing replies to this post.',
-      });
+      props.onError('Something went wrong with listing replies to this post.');
       return;
     }
 
     if (options && options.checkEmptyArrayError) {
       if (!listing.data.length) {
-        props.setModal({
-          name: 'ERROR',
-          message: 'There are no replies to this thread, make one!',
-        });
+        props.onError('There are no replies to this thread, make one!');
         return;
       }
     }
@@ -34,20 +28,14 @@ const ThreadItem = (props) => {
 
   const onReply = async () => {
     if (!props.viewer) {
-      props.setModal({
-        name: 'ERROR',
-        message: 'You need to sign in first.',
-      });
+      props.onError('You need to sign in first.');
       return;
     }
 
     const plainText = window.prompt('The easiest way to do this without building the modal. Type what words you want to share.');
 
     if (Utilities.isEmpty(plainText)) {
-      props.setModal({
-        name: 'ERROR',
-        message: 'You must provide words.',
-      });
+      props.onError('You must provide words.');
       return;
     }
 
@@ -62,19 +50,13 @@ const ThreadItem = (props) => {
       type: 'GENERAL',
     });
     if (!response) {
-      props.setModal({
-        name: 'ERROR',
-        message: 'Something went wrong with creating creating a thread',
-      });
+      props.onError('Something went wrong with creating creating a thread');
       return;
     }
 
     const listing = await Queries.onUserListThreadReplies({ id: props.threadId, key: null, orderBy: { column: 'created_at', value: 'desc' } });
     if (!listing) {
-      props.setModal({
-        name: 'ERROR',
-        message: 'Something went wrong with listing threads',
-      });
+      props.onError('Something went wrong with listing threads');
       return;
     }
 
@@ -124,7 +106,7 @@ const ThreadItem = (props) => {
                   isLast={index === list.length - 1}
                   key={each.id}
                   sessionKey={props.sessionKey}
-                  setModal={props.setModal}
+                  onError={props.onError}
                   threadId={each.id}
                   viewer={props.viewer}
                 >
@@ -152,7 +134,7 @@ export default function DemoThreads(props) {
       {props.data.map((each, index) => {
         const author = props.viewer && props.viewer.id === each.user_id ? `You` : `Anonymous`;
         return (
-          <ThreadItem isLast={index === props.data.length - 1} key={each.id} sessionKey={props.sessionKey} setModal={props.setModal} threadId={each.id} viewer={props.viewer}>
+          <ThreadItem isLast={index === props.data.length - 1} key={each.id} sessionKey={props.sessionKey} onError={props.onError} threadId={each.id} viewer={props.viewer}>
             <div className={styles.byline}>
               {author} ⎯ {Utilities.timeAgo(each.created_at)}
             </div>

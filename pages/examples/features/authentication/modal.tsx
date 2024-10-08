@@ -7,37 +7,36 @@ import Button from '@system/Button';
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
+import ModalAuthentication from '@demos/modals/ModalAuthentication';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
 
 function ExampleModals(props) {
-  const { showModal } = useModal();
+  const modalAuthentication = useModalV2(ModalAuthentication);
 
   return (
     <Page
       title="wireframes.internet.dev ➝ features ➝ authentication ➝ modal"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/authentication/modal"
+      viewer={props.viewer}
     >
       <Navigation />
       <SectionFullHeight>
         <Content>
           <Button
             onClick={() => {
-              showModal({
-                name: 'AUTHENTICATION',
-                data: props.viewer,
-              });
+              modalAuthentication.open();
             }}
           >
             Join or sign in
           </Button>
         </Content>
       </SectionFullHeight>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
@@ -16,10 +17,10 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
 
 function ExampleResetPassword(props) {
-  const { showModal } = useModal();
+  const modalError = useModalV2(ModalError);
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -32,6 +33,7 @@ function ExampleResetPassword(props) {
         title="wireframes.internet.dev ➝ features ➝ you have a session"
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/features/authentication/forgot-password"
+        viewer={currentUser}
       >
         <KeyHeader onInputChange={setKey} value={key} />
         <ThinAppLayout>
@@ -63,7 +65,7 @@ function ExampleResetPassword(props) {
             </ActionItem>
           </div>
         </ThinAppLayout>
-        <GlobalModalManager viewer={currentUser} />
+        <GlobalModalManager />
       </Page>
     );
   }
@@ -73,6 +75,7 @@ function ExampleResetPassword(props) {
       title="wireframes.internet.dev ➝ features ➝ forgot password"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/authentication/forgot-password"
+      viewer={currentUser}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
@@ -89,8 +92,7 @@ function ExampleResetPassword(props) {
             const response = await Queries.onPublicUserForgotPassword({ email });
             if (!response) {
               setLoading(false);
-              showModal({
-                name: 'ERROR',
+              modalError.open({
                 message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
               });
               return;
@@ -103,7 +105,7 @@ function ExampleResetPassword(props) {
           Confirm
         </Button>
       </ThinAppLayout>
-      <GlobalModalManager viewer={currentUser} />
+      <GlobalModalManager />
     </Page>
   );
 }

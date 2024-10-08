@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
@@ -16,10 +17,10 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@root/system/modals/GlobalModalManagerV2';
 
 function ExampleAuthentication(props) {
-  const { showModal } = useModal();
+  const modalError = useModalV2(ModalError);
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -27,12 +28,17 @@ function ExampleAuthentication(props) {
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
 
+  const onError = (message: string) => {
+    modalError.open({ message: message });
+  };
+
   if (props.viewer) {
     return (
       <Page
         title="wireframes.internet.dev ➝ features ➝ you have a session"
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/features/authentication"
+        viewer={currentUser}
       >
         <KeyHeader onInputChange={setKey} value={key} />
         <ThinAppLayout>
@@ -64,7 +70,7 @@ function ExampleAuthentication(props) {
             </ActionItem>
           </div>
         </ThinAppLayout>
-        <GlobalModalManager viewer={currentUser} />
+        <GlobalModalManager />
       </Page>
     );
   }
@@ -74,6 +80,7 @@ function ExampleAuthentication(props) {
       title="wireframes.internet.dev ➝ features ➝ authentication"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/authentication"
+      viewer={currentUser}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <ThinAppLayout>
@@ -98,26 +105,17 @@ function ExampleAuthentication(props) {
           loading={loading}
           onClick={async () => {
             if (Utilities.isEmpty(email)) {
-              showModal({
-                name: 'ERROR',
-                message: 'You must provide an e-mail.',
-              });
+              onError('You must provide an e-mail.');
               return;
             }
 
             if (Utilities.isEmpty(password)) {
-              showModal({
-                name: 'ERROR',
-                message: 'You must provide a password.',
-              });
+              onError('You must provide a password.');
               return;
             }
 
             if (password.length < 4) {
-              showModal({
-                name: 'ERROR',
-                message: 'You must use at least 4 characters for your password.',
-              });
+              onError('You must use at least 4 characters for your password.');
               return;
             }
 
@@ -125,10 +123,7 @@ function ExampleAuthentication(props) {
             const response = await Queries.onPublicUserAuthenticate({ email, password });
             setLoading(false);
             if (!response) {
-              showModal({
-                name: 'ERROR',
-                message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-              });
+              onError('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');
               return;
             }
             Cookies.remove('sitekey');
@@ -181,10 +176,7 @@ function ExampleAuthentication(props) {
                 onClick={async () => {
                   const response = await Queries.onPublicUserAuthenticate({ email, password });
                   if (!response) {
-                    showModal({
-                      name: 'ERROR',
-                      message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-                    });
+                    onError('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');
                     return;
                   }
                   setUser(response.user);
@@ -198,10 +190,7 @@ function ExampleAuthentication(props) {
                 onClick={async () => {
                   const response = await Queries.onUserRegenerateAPIKey({ email, password });
                   if (!response) {
-                    showModal({
-                      name: 'ERROR',
-                      message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-                    });
+                    onError('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');
                     return;
                   }
                   Cookies.remove('sitekey');
@@ -236,7 +225,7 @@ function ExampleAuthentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager viewer={currentUser} />
+      <GlobalModalManager />
     </Page>
   );
 }

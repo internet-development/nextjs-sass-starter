@@ -15,12 +15,13 @@ function ExampleComponentsProductMarketing(props) {
       title="wireframes.internet.dev ➝ components ➝ product marketing"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/components/product-marketing"
+      viewer={props.viewer}
     >
       <Navigation />
       <IsometricGridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <IsometricProductBox x={-124} y={222} />
       </IsometricGridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

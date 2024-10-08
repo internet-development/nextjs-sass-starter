@@ -30,6 +30,7 @@ function ExampleAuthentication(props) {
         title="wireframes.internet.dev ➝ features ➝ authentication ➝ you have a session"
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/features/authentication/google"
+        viewer={currentUser}
       >
         <KeyHeader onInputChange={setKey} value={key} />
         <ThinAppLayout>
@@ -61,7 +62,7 @@ function ExampleAuthentication(props) {
             </ActionItem>
           </div>
         </ThinAppLayout>
-        <GlobalModalManager viewer={currentUser} />
+        <GlobalModalManager />
       </Page>
     );
   }
@@ -97,7 +98,7 @@ function ExampleAuthentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager viewer={currentUser} />
+      <GlobalModalManager />
     </Page>
   );
 }

@@ -8,11 +8,12 @@ import DemoSettings from '@demos/DemoSettings';
 import DemoSettingsSidebar from '@demos/DemoSettingsSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import Page from '@components/Page';
 import TwoColumnLayout from '@system/layouts/TwoColumnLayout';
 
 import { P } from '@system/typography';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
 
 const SUB_SECTION_ROUTES = {
   'change-password': 'CHANGE_PASSWORD',
@@ -35,22 +36,27 @@ const SUB_SECTION_LINKS = {
 };
 
 function ExampleSettings(props) {
-  const { showModal } = useModal();
+  const modalError = useModalV2(ModalError);
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [active, setActive] = React.useState<string>(props.active);
+  
+  const onError = (message: string) => {
+    modalError.open({ message: message });
+  };
 
   return (
     <Page
       title={`wireframes.internet.dev ➝ features ➝ settings ➝ ${props.title.toLowerCase()}`}
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url={`https://wireframes.internet.dev/examples/features/settings/${props.route}`}
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <TwoColumnLayout sidebar={<DemoSettingsSidebar active={active} onSetKey={setKey} viewer={props.viewer} />}>
-        <DemoSettings active={active} data={props.data} onSetModal={showModal} sessionKey={key} viewer={props.viewer} />
+        <DemoSettings active={active} data={props.data} onError={onError} sessionKey={key} viewer={props.viewer} />
       </TwoColumnLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

@@ -6,18 +6,26 @@ import * as Utilities from '@common/utilities';
 import Cookies from 'js-cookie';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
+import { ModalComponentV2 } from '@system/modals/GlobalModalManagerV2';
+import { ViewerContext } from '@components/Page';
+
 const MODAL_WIDTH = 240;
 const MODAL_GUTTER_OFFSET = 24;
 
-export default function ModalNavigationTemplate(props) {
-  const style = Utilities.calculatePositionWithGutter(props.parentRect, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
+export interface ModalNavigationTemplateProps {
+  parentId?: string;
+}
+
+const ModalNavigationTemplate: ModalComponentV2<ModalNavigationTemplateProps> = (props) => {
+  const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
+  const viewer = React.useContext(ViewerContext);
 
   return (
     <OutsideElementEvent
       className={styles.modal}
-      onOutsideEvent={() => props.onShowModal(null)}
+      onOutsideEvent={() => props.close()}
       style={{
-        textAlign: style.side,
+        textAlign: style.side as any,
         top: style.top,
         right: style.right,
       }}
@@ -25,7 +33,7 @@ export default function ModalNavigationTemplate(props) {
       <a href="/" className={styles.item}>
         Home
       </a>
-      {props.viewer ? (
+      {viewer ? (
         <span
           className={styles.item}
           onClick={() => {
@@ -74,4 +82,6 @@ export default function ModalNavigationTemplate(props) {
       </a>
     </OutsideElementEvent>
   );
-}
+};
+
+export default ModalNavigationTemplate;

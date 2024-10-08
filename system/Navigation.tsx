@@ -3,10 +3,18 @@ import styles from '@system/Navigation.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import { useModal } from '@system/providers/ModalContextProvider';
+import ModalNavigation from '@root/demos/modals/ModalNavigation';
 
-export default function Navigation() {
-  const { showModal } = useModal();
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
+import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
+
+export interface NavigationProps {
+  
+}
+
+export default function Navigation(props: NavigationProps) {
+  const modalNavigation = useModalV2(ModalNavigation);
+  const modalNavigationV2 = useModalV2(ModalNavigationV2);
 
   return (
     <nav className={styles.root}>
@@ -28,7 +36,7 @@ export default function Navigation() {
         <a className={styles.item} href="/examples/features/files-s3">
           Files
         </a>
-        <span className={styles.item} onClick={() => showModal({ name: 'AUTHENTICATION' })}>
+        <span className={styles.item} onClick={() => modalNavigation.open({})}>
           Sign in
         </span>
       </section>
@@ -36,7 +44,7 @@ export default function Navigation() {
         <span
           className={styles.item}
           id="site-navigation-button"
-          onClick={() => showModal({ name: 'NAVIGATION_V2', parentId: 'site-navigation-button' })}
+          onClick={() => modalNavigationV2.open({parentId: 'site-navigation-button'})}
           data-detector-ignore-navigation
         >
           Navigation

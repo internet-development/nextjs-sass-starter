@@ -19,13 +19,10 @@ import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
 
 const DOCUMENT_TYPE = `EMPLOYEE_AGREEMENT`;
 
 function ExampleEmploymentDocuments(props) {
-  const { showModal } = useModal();
-
   const [documents, setDocuments] = React.useState<Array<any>>([]);
   const [currentDocument, setCurrentDocument] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -159,6 +156,7 @@ function ExampleEmploymentDocuments(props) {
       title="wireframes.internet.dev ➝ features ➝ employment agreements"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/employment"
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
@@ -357,7 +355,7 @@ function ExampleEmploymentDocuments(props) {
           </div>
         ) : null}
       </ThreeColumnAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

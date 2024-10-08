@@ -6,17 +6,22 @@ import * as Utilities from '@common/utilities';
 
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
+import { SubTitle, SubText, UnitLabel } from '@system/typography';
+import { ModalComponentV2 } from '@root/system/modals/GlobalModalManagerV2';
+
 const MODAL_WIDTH = 480;
 const MODAL_GUTTER_OFFSET = 24;
 
-import { SubTitle, SubText, UnitLabel } from '@system/typography';
+export interface ModalNavigationV2Props {
+  parentId?: string;
+}
 
-export default function ModalNavigationV2(props) {
-  const style = Utilities.calculatePositionWithGutter(props.parentRect, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
+const ModalNavigationV2: ModalComponentV2<ModalNavigationV2Props> = (props) => {
+  const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
 
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.onShowModal(null)} style={{ top: style.top, right: style.right }}>
+      <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.close()} style={{ top: style.top, right: style.right }}>
         <div className={styles.wideFlexibleModal}>
           <div className={styles.wideFlexibleModalRow}>
             <div className={styles.wideFlexibleModalColumn}>
@@ -102,3 +107,5 @@ export default function ModalNavigationV2(props) {
     </div>
   );
 }
+
+export default ModalNavigationV2;

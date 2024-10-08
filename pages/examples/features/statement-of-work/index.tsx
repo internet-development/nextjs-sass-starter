@@ -11,6 +11,7 @@ import Content from '@system/layouts/Content';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import TextArea from '@system/TextArea';
@@ -19,18 +20,22 @@ import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
 
 const DOCUMENT_TYPE = 'STATEMENT_OF_WORK';
 
 function ExampleStatementOfWorks(props) {
-  const { showModal } = useModal();
+  const modalError = useModalV2(ModalError);
 
   const [currentSOW, setCurrentSOW] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [SOWs, setSOWs] = React.useState<Array<any>>([]);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
+
+  const onError = (message: string) => {
+    modalError.open({ message: message });
+  };
 
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>
@@ -56,7 +61,7 @@ function ExampleStatementOfWorks(props) {
       <Button
         onClick={async () => {
           if (Utilities.isEmpty(key)) {
-            return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+            return onError('You must provide an API key');
           }
 
           const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
@@ -177,6 +182,7 @@ function ExampleStatementOfWorks(props) {
       title="wireframes.internet.dev ➝ features ➝ statement of work"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/statement-of-work"
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
@@ -576,7 +582,7 @@ function ExampleStatementOfWorks(props) {
           </div>
         ) : null}
       </ThreeColumnAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

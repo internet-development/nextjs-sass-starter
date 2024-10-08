@@ -19,6 +19,7 @@ function ExampleJobPosting(props) {
       title="wireframes.internet.dev ➝ features ➝ job posting"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/job-posting"
+      viewer={props.viewer}
     >
       <Navigation />
       <ThinAppLayout>
@@ -72,7 +73,7 @@ function ExampleJobPosting(props) {
         <CheckmarkItem isMinimal>You must be passionate about building websites.</CheckmarkItem>
         <CheckmarkItem isMinimal>You must have at least one website you are proud of sharing.</CheckmarkItem>
       </ThinAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

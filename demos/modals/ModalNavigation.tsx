@@ -5,14 +5,20 @@ import * as Utilities from '@common/utilities';
 
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
+import { ModalComponentV2 } from '@root/system/modals/GlobalModalManagerV2';
+
 const MODAL_WIDTH = 240;
 const MODAL_GUTTER_OFFSET = 24;
 
-export default function ModalNavigation(props) {
-  const style = Utilities.calculatePositionWithGutter(props.parentRect, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
+export interface ModalNavigationProps {
+  parentId?: string;
+}
+
+const ModalNavigation: ModalComponentV2<ModalNavigationProps> = (props) => {
+  const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
 
   return (
-    <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.onShowModal(null)} style={{ textAlign: style.side, top: style.top, right: style.right }}>
+    <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.close()} style={{ textAlign: style.side as any, top: style.top, right: style.right }}>
       <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
         Rotate Theme
       </span>
@@ -43,4 +49,6 @@ export default function ModalNavigation(props) {
       </a>
     </OutsideElementEvent>
   );
-}
+};
+
+export default ModalNavigation;

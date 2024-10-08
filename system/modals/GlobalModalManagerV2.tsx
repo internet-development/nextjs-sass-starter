@@ -1,5 +1,3 @@
-import styles from './GlobalModalManagerV2.module.scss';
-
 import * as React from 'react';
 
 export interface ModalProviderProps {
@@ -11,9 +9,7 @@ export interface ModalProviderProps {
  * `React.useImperativeHandle()` to customize properties of the modal that will
  * be used by the modal manager (see `ModalRefV2`).
  */
-export type ModalComponentV2<P = {}> =
-  | React.FC<P & CommonModalProps>
-  | React.ForwardRefExoticComponent<React.PropsWithoutRef<P & CommonModalProps> & React.RefAttributes<ModalRefV2>>;
+export type ModalComponentV2<P = {}> = React.ComponentType<React.PropsWithoutRef<P & CommonModalProps> & React.RefAttributes<ModalRefV2>>;
 
 export interface ModalState {
   key: string;
@@ -49,7 +45,7 @@ function newModalState(): ModalState | null {
  * NOTE(@elijaharita):
  *
  * Provides a context that allows any of its descendants to control modals via
- * `useModalV2()`. Must be paired with `<ModalsV2 />` in order for modals to
+ * `useModalV2()`. Must be paired with `<GlobalModalManager />` in order for modals to
  * show up.
  *
  * A modal is a popup component that must be dismissed / completed before the
@@ -105,46 +101,6 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
   };
 
   return <ModalContextV2.Provider value={{ activeModal, closingModals, modalRefs, showModal, hideCurrentModal, hideModal }}>{children}</ModalContextV2.Provider>;
-}
-
-/**
- * NOTE(@elijaharita): Displays the active modal for a modal context. Without
- * this component, the modal context does nothing. Must be within a modal
- * context.
- * */
-export function ModalsV2() {
-  const context = React.useContext(ModalContextV2);
-  if (!context) return null;
-
-  const { modalRefs, activeModal, closingModals, hideModal } = context;
-
-  const renderModal = (state: ModalState, isClosing: boolean) => {
-    const Component = state?.component;
-    const props = state?.props || {};
-
-    return (
-      <Component
-        ref={(ref) => {
-          if (ref) {
-            modalRefs.current[state.key] = ref;
-          } else {
-            delete modalRefs.current[state.key];
-          }
-        }}
-        key={state.key}
-        isClosing={isClosing}
-        close={() => activeModal && hideModal(activeModal.key)}
-        {...props}
-      />
-    );
-  };
-
-  return (
-    <div className={styles.modalBackground}>
-      {activeModal && renderModal(activeModal, false)}
-      {Object.values(closingModals).map((closingModal) => renderModal(closingModal, true))}
-    </div>
-  );
 }
 
 export interface ModalHandleV2<T> {

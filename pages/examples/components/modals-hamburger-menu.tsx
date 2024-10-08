@@ -4,7 +4,6 @@ import GlobalModalManager from '@system/modals/GlobalModalManager';
 import HamburgerMenuButton from '@system/HamburgerMenuButton';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import { ModalsV2 } from '@root/system/modals/GlobalModalManagerV2';
 
 function ExampleModalsHamburgerMenu(props) {
   // (@xBalbinus): This populates the navigation in the hamburger menu.
@@ -21,7 +20,7 @@ function ExampleModalsHamburgerMenu(props) {
       url="https://wireframes.internet.dev/examples/components/modals-hamburger-menu"
     >
       <Navigation />
-      <ModalsV2 />
+      <GlobalModalManager />
       <HamburgerMenuButton navItems={NAV_CONTENT} />
     </Page>
   );

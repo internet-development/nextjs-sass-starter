@@ -15,6 +15,7 @@ function ExampleEmptyGridTemplate(props) {
       title="wireframes.internet.dev ➝ empty ➝ grid template page"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/empty/grid-template-page"
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <GridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -33,7 +34,7 @@ function ExampleEmptyGridTemplate(props) {
           Hello World
         </article>
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

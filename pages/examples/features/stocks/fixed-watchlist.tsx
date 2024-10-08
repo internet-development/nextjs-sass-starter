@@ -40,6 +40,7 @@ function ExampleFixedStockWatchlist(props) {
       title="wireframes.internet.dev ➝ features ➝ stocks ➝ fixed watchlist"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/stocks/fixed-watchlist"
+      viewer={props.viewer}
     >
       <KeyHeader onInputChange={setKey} value={key} />
       <AppLayout>
@@ -63,7 +64,7 @@ function ExampleFixedStockWatchlist(props) {
         </FormParagraph>
         {data && data.length ? <Table data={data} headings={headings} style={{ marginTop: 24 }} /> : null}
       </AppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

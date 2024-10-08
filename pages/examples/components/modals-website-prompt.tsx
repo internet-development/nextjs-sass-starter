@@ -7,11 +7,12 @@ import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
+import ModalWebsitePrompt from '@demos/modals/ModalWebsitePrompt';
 
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModalV2 } from '@system/modals/GlobalModalManagerV2';
 
 function ExampleModalsWebsitePrompt(props) {
-  const { showModal } = useModal();
+  const modalWebsitePrompt = useModalV2(ModalWebsitePrompt);
 
   return (
     <Page
@@ -22,16 +23,7 @@ function ExampleModalsWebsitePrompt(props) {
       <Navigation />
       <SectionFullHeight>
         <Content>
-          <Button
-            onClick={() => {
-              showModal({
-                name: 'WEBSITE_PROMPT',
-                data: [],
-              });
-            }}
-          >
-            Show the website prompt modal
-          </Button>
+          <Button onClick={() => modalWebsitePrompt.open()}>Show the website prompt modal</Button>
         </Content>
       </SectionFullHeight>
       <GlobalModalManager />

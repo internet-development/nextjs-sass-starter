@@ -19,6 +19,7 @@ function ExampleWindowsConnected(props) {
       title="wireframes.internet.dev ➝ components ➝ windows connected"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/components/windows-connected"
+      viewer={props.viewer}
     >
       <Navigation />
       <GridLayout style={{ overflow: 'hidden' }}>
@@ -51,7 +52,7 @@ function ExampleWindowsConnected(props) {
           />
         </ResizableMonospaceWindow>
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }
