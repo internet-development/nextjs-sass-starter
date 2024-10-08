@@ -6,14 +6,23 @@ export interface ModalProviderProps {
   children?: React.ReactNode;
 }
 
-export interface ModalComponentV2<P = {}> extends React.FC<P & CommonModalProps> {
-  unmountDelayMS?: number;
-}
+/** NOTE(@elijaharita): a modal component can either be a regular functional
+ * component, or one with a forwarded ref that can be supplied to
+ * `React.useImperativeHandle()` to customize properties of the modal that will
+ * be used by the modal manager (see `ModalRefV2`).
+ */
+export type ModalComponentV2<P = {}> =
+  | React.FC<P & CommonModalProps>
+  | React.ForwardRefExoticComponent<React.PropsWithoutRef<P & CommonModalProps> & React.RefAttributes<ModalRefV2>>;
 
 export interface ModalState {
   key: string;
-  component: ModalComponentV2;
+  component: ModalComponentV2<any>;
   props: object;
+}
+
+export interface ModalRefV2 {
+  getUnmountDelayMS?: () => number;
 }
 
 export interface CommonModalProps {
@@ -22,6 +31,7 @@ export interface CommonModalProps {
 }
 
 export interface ModalContextTypeV2 {
+  modalRefs: React.MutableRefObject<{ [key: string]: ModalRefV2 | undefined }>;
   activeModal: ModalState | null;
   closingModals: { [key: string]: ModalState };
   showModal: <P>(key: string, component: ModalComponentV2<P> | null, props?: P) => void;
@@ -29,25 +39,18 @@ export interface ModalContextTypeV2 {
   hideModal: (key: string) => void;
 }
 
-const defaultModalContext: ModalContextTypeV2 = {
-  activeModal: null,
-  closingModals: {},
-  showModal: () => {},
-  hideCurrentModal: () => {},
-  hideModal: () => {},
-};
-export const ModalContextV2 = React.createContext(defaultModalContext);
+export const ModalContextV2 = React.createContext<ModalContextTypeV2 | null>(null);
 
 function newModalState(): ModalState | null {
   return null;
 }
 
-/** 
- * NOTE(@elijaharita): 
+/**
+ * NOTE(@elijaharita):
  *
  * Provides a context that allows any of its descendants to control modals via
  * `useModalV2()`. Must be paired with `<ModalsV2 />` in order for modals to
- * show up. 
+ * show up.
  *
  * A modal is a popup component that must be dismissed / completed before the
  * user is able to interact with the rest of the application again. Examples of
@@ -59,6 +62,8 @@ function newModalState(): ModalState | null {
 export function ModalProviderV2({ children }: ModalProviderProps) {
   const [activeModal, setActiveModal] = React.useState(newModalState);
   const [closingModals, setClosingModals] = React.useState<{ [key: string]: ModalState }>({});
+
+  const modalRefs = React.useRef<{ [key: string]: ModalRefV2 | undefined }>({});
 
   const showModal = (key, component, props) => {
     hideCurrentModal();
@@ -77,7 +82,7 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
       setActiveModal(null);
       setClosingModals((prev) => ({ ...prev, [activeModal.key]: activeModal }));
 
-      const timeout = activeModal.component.unmountDelayMS || 0;
+      const ms = modalRefs.current[activeModal.key]?.getUnmountDelayMS?.() ?? 0;
       const callback = () => {
         setClosingModals((prev) => {
           const { [activeModal.key]: _, ...filtered } = prev;
@@ -85,8 +90,8 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
         });
       };
 
-      if (timeout) {
-        setTimeout(callback, timeout);
+      if (ms) {
+        setTimeout(callback, ms);
       } else {
         callback();
       }
@@ -99,21 +104,39 @@ export function ModalProviderV2({ children }: ModalProviderProps) {
     }
   };
 
-  return <ModalContextV2.Provider value={{ activeModal, closingModals, showModal, hideCurrentModal, hideModal }}>{children}</ModalContextV2.Provider>;
+  return <ModalContextV2.Provider value={{ activeModal, closingModals, modalRefs, showModal, hideCurrentModal, hideModal }}>{children}</ModalContextV2.Provider>;
 }
 
-/** 
- * NOTE(@elijaharita): Displays the active modal. Without this component, the
- * modal context does nothing. 
+/**
+ * NOTE(@elijaharita): Displays the active modal for a modal context. Without
+ * this component, the modal context does nothing. Must be within a modal
+ * context.
  * */
 export function ModalsV2() {
-  const { activeModal, closingModals, hideModal } = React.useContext(ModalContextV2);
+  const context = React.useContext(ModalContextV2);
+  if (!context) return null;
+
+  const { modalRefs, activeModal, closingModals, hideModal } = context;
 
   const renderModal = (state: ModalState, isClosing: boolean) => {
     const Component = state?.component;
     const props = state?.props || {};
 
-    return <Component key={state.key} isClosing={isClosing} close={() => activeModal && hideModal(activeModal.key)} {...props} />;
+    return (
+      <Component
+        ref={(ref) => {
+          if (ref) {
+            modalRefs.current[state.key] = ref;
+          } else {
+            delete modalRefs.current[state.key];
+          }
+        }}
+        key={state.key}
+        isClosing={isClosing}
+        close={() => activeModal && hideModal(activeModal.key)}
+        {...props}
+      />
+    );
   };
 
   return (
@@ -131,7 +154,9 @@ export interface ModalHandleV2<T> {
 }
 
 export function useModalV2<P>(component: ModalComponentV2<P>): ModalHandleV2<P> {
-  const { showModal, hideModal, hideCurrentModal, activeModal } = React.useContext(ModalContextV2);
+  const context = React.useContext(ModalContextV2);
+  if (!context) throw new Error('No modal context');
+  const { showModal, hideModal, hideCurrentModal, activeModal } = context;
 
   const key = React.useMemo(() => uniqueModalKey(), []);
 

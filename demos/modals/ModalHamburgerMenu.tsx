@@ -16,8 +16,12 @@ export interface ModalHamburgerMenuProps {
   };
 }
 
-const ModalHamburgerMenu: ModalComponentV2<ModalHamburgerMenuProps> = (props) => {
+const ModalHamburgerMenu: ModalComponentV2<ModalHamburgerMenuProps> = React.forwardRef((props, ref) => {
   const navItems = props.content.data.navItems;
+
+  React.useImperativeHandle(ref, () => ({
+    getUnmountDelayMS: () => 300,
+  }));
 
   return (
     <OutsideElementEvent className={styles.hamburgerModal} onOutsideEvent={() => props.close()} style={{ animationDirection: !props.isClosing ? 'normal' : 'reverse' }}>
@@ -34,8 +38,6 @@ const ModalHamburgerMenu: ModalComponentV2<ModalHamburgerMenuProps> = (props) =>
       ))}
     </OutsideElementEvent>
   );
-};
-
-ModalHamburgerMenu.unmountDelayMS = 300;
+});
 
 export default ModalHamburgerMenu;
