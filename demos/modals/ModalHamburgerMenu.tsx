@@ -20,7 +20,7 @@ const ModalHamburgerMenu: ModalComponent<ModalHamburgerMenuProps> = React.forwar
   const navItems = props.content.data.navItems;
 
   React.useImperativeHandle(ref, () => ({
-    getUnmountDelayMS: () => 300,
+    getUnmountDelayMS: () => 200,
   }));
 
   return (

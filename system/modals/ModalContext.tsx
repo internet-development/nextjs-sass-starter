@@ -13,7 +13,7 @@ export type ModalComponent<P = {}> = React.ComponentType<React.PropsWithoutRef<P
 
 export interface ModalState {
   key: string;
-  component: ModalComponent<any>;
+  component: ModalComponent<CommonModalProps>;
   props: object;
 }
 

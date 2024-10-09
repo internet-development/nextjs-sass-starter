@@ -17,8 +17,7 @@
   box-shadow: none;
   border-right: 1px solid var(--theme-border);
   box-sizing: content-box;
-  transition: left 0.3s;
-  animation: slideInAnimation 0.3s;
+  animation: slideInAnimation 200ms;
   animation-fill-mode: forwards;
 
   @media (max-width: 960px) {
