@@ -18,7 +18,7 @@ const ModalNavigation: ModalComponent<ModalNavigationProps> = (props) => {
   const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
 
   return (
-    <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.close()} style={{ textAlign: style.side as any, top: style.top, right: style.right }}>
+    <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.onClose()} style={{ textAlign: style.side as any, top: style.top, right: style.right }}>
       <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
         Rotate Theme
       </span>

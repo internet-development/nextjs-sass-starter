@@ -14,7 +14,7 @@ export interface ModalErrorProps {
 const ModalError: ModalComponent<ModalErrorProps> = (props) => {
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent className={styles.errorModal} onOutsideEvent={() => props.close()}>
+      <OutsideElementEvent className={styles.errorModal} onOutsideEvent={() => props.onClose()}>
         <span className={styles.errorModalLeft}>
           <Error height="16px" />
         </span>

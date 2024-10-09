@@ -23,7 +23,7 @@ const ModalNavigationTemplate: ModalComponent<ModalNavigationTemplateProps> = (p
   return (
     <OutsideElementEvent
       className={styles.modal}
-      onOutsideEvent={() => props.close()}
+      onOutsideEvent={() => props.onClose()}
       style={{
         textAlign: style.side as any,
         top: style.top,

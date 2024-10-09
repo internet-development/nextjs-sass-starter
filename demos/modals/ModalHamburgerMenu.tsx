@@ -24,7 +24,7 @@ const ModalHamburgerMenu: ModalComponent<ModalHamburgerMenuProps> = React.forwar
   }));
 
   return (
-    <OutsideElementEvent className={styles.hamburgerModal} onOutsideEvent={() => props.close()} style={{ animationDirection: !props.isClosing ? 'normal' : 'reverse' }}>
+    <OutsideElementEvent className={styles.hamburgerModal} onOutsideEvent={() => props.onClose()} style={{ animationDirection: !props.isClosing ? 'normal' : 'reverse' }}>
       {navItems?.map((item) => (
         <div key={item.name} className={styles.menuContent}>
           {item.link ? (

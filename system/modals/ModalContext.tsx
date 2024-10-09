@@ -23,7 +23,7 @@ export interface ModalRef {
 
 export interface CommonModalProps {
   isClosing: boolean;
-  close: () => void;
+  onClose: () => void;
 }
 
 export interface ModalContextType {

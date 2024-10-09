@@ -21,7 +21,7 @@ const ModalNavigationV2: ModalComponent<ModalNavigationV2Props> = (props) => {
 
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.close()} style={{ top: style.top, right: style.right }}>
+      <OutsideElementEvent className={styles.modal} onOutsideEvent={() => props.onClose()} style={{ top: style.top, right: style.right }}>
         <div className={styles.wideFlexibleModal}>
           <div className={styles.wideFlexibleModalRow}>
             <div className={styles.wideFlexibleModalColumn}>

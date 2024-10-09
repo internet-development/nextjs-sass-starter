@@ -30,7 +30,7 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
   if (viewer) {
     return (
       <div className={styles.wrapper}>
-        <OutsideElementEvent onOutsideEvent={() => props.close()} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
+        <OutsideElementEvent onOutsideEvent={() => props.onClose()} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
           <div className={styles.childModal} style={{ width: '100%', padding: 24 }}>
             <FormSubHeading>You are authenticated</FormSubHeading>
             <FormParagraph>To clear your session, click on the button below.</FormParagraph>
@@ -57,7 +57,7 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
 
   return (
     <div className={styles.wrapper}>
-      <OutsideElementEvent onOutsideEvent={() => props.close()} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
+      <OutsideElementEvent onOutsideEvent={() => props.onClose()} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>
         <div className={styles.childModal} style={{ width: '100%', padding: 24 }}>
           <FormSubHeading>Join or sign in</FormSubHeading>
           <FormParagraph>Sign in or create an account to enhance your experience. Enter your e-mail and password or use an OAuth provider to get started.</FormParagraph>
@@ -104,7 +104,7 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
                 Cookies.set('sitekey', response.user.key, { secure: true });
               }
 
-              props.close();
+              props.onClose();
               window.location.reload();
             }}
             style={{ marginTop: 24, width: '100%' }}
