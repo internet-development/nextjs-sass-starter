@@ -22,7 +22,7 @@ export default function HamburgerMenuButton(props) {
 
     setIsAnimating(true);
 
-    if (isActive) {
+    if (!isActive) {
       modal.open(ModalHamburgerMenu, {
         content: { data: { navItems: props.navItems } },
       });
