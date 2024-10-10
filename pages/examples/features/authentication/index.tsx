@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
@@ -16,16 +17,20 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleAuthentication(props) {
-  const { showModal } = useModal();
+  const modals = useModals();
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
+
+  const onError = (message: string) => {
+    modals.open(ModalError, { message: message });
+  };
 
   if (props.viewer) {
     return (
@@ -34,7 +39,7 @@ function ExampleAuthentication(props) {
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/features/authentication"
       >
-        <KeyHeader onInputChange={setKey} value={key} />
+        <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
         <ThinAppLayout>
           <FormHeading style={{ marginTop: 64 }}>You have a session</FormHeading>
           <FormParagraph>
@@ -64,7 +69,7 @@ function ExampleAuthentication(props) {
             </ActionItem>
           </div>
         </ThinAppLayout>
-        <GlobalModalManager viewer={currentUser} />
+        <GlobalModalManager />
       </Page>
     );
   }
@@ -75,7 +80,7 @@ function ExampleAuthentication(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/authentication"
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in</FormHeading>
         <FormParagraph>Sign in or create an account to enhance your experience. Simply enter your e-mail and password to get started.</FormParagraph>
@@ -98,26 +103,17 @@ function ExampleAuthentication(props) {
           loading={loading}
           onClick={async () => {
             if (Utilities.isEmpty(email)) {
-              showModal({
-                name: 'ERROR',
-                message: 'You must provide an e-mail.',
-              });
+              onError('You must provide an e-mail.');
               return;
             }
 
             if (Utilities.isEmpty(password)) {
-              showModal({
-                name: 'ERROR',
-                message: 'You must provide a password.',
-              });
+              onError('You must provide a password.');
               return;
             }
 
             if (password.length < 4) {
-              showModal({
-                name: 'ERROR',
-                message: 'You must use at least 4 characters for your password.',
-              });
+              onError('You must use at least 4 characters for your password.');
               return;
             }
 
@@ -125,10 +121,7 @@ function ExampleAuthentication(props) {
             const response = await Queries.onPublicUserAuthenticate({ email, password });
             setLoading(false);
             if (!response) {
-              showModal({
-                name: 'ERROR',
-                message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-              });
+              onError('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');
               return;
             }
             Cookies.remove('sitekey');
@@ -181,10 +174,7 @@ function ExampleAuthentication(props) {
                 onClick={async () => {
                   const response = await Queries.onPublicUserAuthenticate({ email, password });
                   if (!response) {
-                    showModal({
-                      name: 'ERROR',
-                      message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-                    });
+                    onError('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');
                     return;
                   }
                   setUser(response.user);
@@ -198,10 +188,7 @@ function ExampleAuthentication(props) {
                 onClick={async () => {
                   const response = await Queries.onUserRegenerateAPIKey({ email, password });
                   if (!response) {
-                    showModal({
-                      name: 'ERROR',
-                      message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
-                    });
+                    onError('Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.');
                     return;
                   }
                   Cookies.remove('sitekey');
@@ -236,7 +223,7 @@ function ExampleAuthentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager viewer={currentUser} />
+      <GlobalModalManager />
     </Page>
   );
 }

@@ -103,7 +103,7 @@ function ExampleFade(props) {
           <Button onClick={cancel}>Cancel Animation</Button>
         </FadeManager>
       </div>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

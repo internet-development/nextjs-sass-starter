@@ -75,7 +75,7 @@ function ExampleWindowsLevelSelector(props) {
           </Button>
         </Content>
       </TwoColumnLayoutSidebar>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

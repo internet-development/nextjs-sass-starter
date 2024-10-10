@@ -78,6 +78,17 @@ export function calculatePositionWithGutter(rect, objectWidth, viewportWidth, gu
   return { top, right: adjustedRight, side };
 }
 
+export function calculatePositionWithGutterById(id, objectWidth, viewportWidth, gutter?) {
+  let rect;
+  if (id) {
+    const el = document.getElementById(id);
+    if (el) {
+      rect = el.getBoundingClientRect();
+    }
+  }
+  return calculatePositionWithGutter(rect, objectWidth, viewportWidth, gutter);
+}
+
 export function leftPad(input, length) {
   const zerosNeeded = length - input.length;
   if (zerosNeeded <= 0) {
@@ -297,6 +308,8 @@ export async function generateNonce() {
 
 export function filterUndefined(obj) {
   const res = {};
-  Object.keys(obj).filter(k => obj[k]  !== undefined).forEach(k => res[k] = obj[k]);
+  Object.keys(obj)
+    .filter((k) => obj[k] !== undefined)
+    .forEach((k) => (res[k] = obj[k]));
   return res;
 }

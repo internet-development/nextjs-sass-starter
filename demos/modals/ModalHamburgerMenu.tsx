@@ -2,15 +2,29 @@ import styles from '@demos/modals/Modals.module.scss';
 
 import * as React from 'react';
 
-import { H4 } from '@system/typography';
-
 import Link from 'next/link';
+import OutsideElementEvent from '@root/system/detectors/OutsideElementEvent';
 
-export default function ModalHamburgerMenu(props) {
+import { H4 } from '@system/typography';
+import { CommonModalProps, ModalComponent, useModals } from '@root/system/modals/ModalContext';
+
+export interface ModalHamburgerMenuProps {
+  content: {
+    data: {
+      navItems: { name: string; link: string }[];
+    };
+  };
+}
+
+const ModalHamburgerMenu: ModalComponent<ModalHamburgerMenuProps> = React.forwardRef((props, ref) => {
   const navItems = props.content.data.navItems;
-  
+
+  React.useImperativeHandle(ref, () => ({
+    getUnmountDelayMS: () => 200,
+  }));
+
   return (
-    <div className={`${styles.hamburgerModal} ${styles.slideIn}`}>
+    <OutsideElementEvent className={styles.hamburgerModal} onOutsideEvent={() => props.onClose()} style={{ animationDirection: !props.isClosing ? 'normal' : 'reverse' }}>
       {navItems?.map((item) => (
         <div key={item.name} className={styles.menuContent}>
           {item.link ? (
@@ -22,6 +36,8 @@ export default function ModalHamburgerMenu(props) {
           )}
         </div>
       ))}
-    </div>
+    </OutsideElementEvent>
   );
-}
+});
+
+export default ModalHamburgerMenu;

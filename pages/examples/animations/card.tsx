@@ -33,7 +33,7 @@ function ExampleFlippableTiltCard(props) {
           />
         </FlippableTiltCard>
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

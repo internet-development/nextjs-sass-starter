@@ -34,7 +34,7 @@ function ExampleScrollCarouselHorizontal(props) {
       <GridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <ScrollCarouselHorizontal images={images} />
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

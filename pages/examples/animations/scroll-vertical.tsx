@@ -19,7 +19,7 @@ function ExampleScrollCarouselHorizontal(props) {
     >
       <Navigation />
       <ScrollVertical colorEnd="var(--theme-text)" colorStart="var(--theme-background)" height="200vh" />
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

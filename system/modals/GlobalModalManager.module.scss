@@ -1,0 +1,14 @@
+.modalBackground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: visible;
+  background: 1px solid var(--theme-background);
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}

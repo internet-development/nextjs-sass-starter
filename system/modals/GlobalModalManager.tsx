@@ -1,64 +1,45 @@
+import styles from './GlobalModalManager.module.scss';
+
 import * as React from 'react';
 
-import ModalAuthentication from '@demos/modals/ModalAuthentication';
-import ModalColorPicker from '@demos/modals/ModalColorPicker';
-import ModalError from '@demos/modals/ModalError';
-import ModalIndex from '@demos/modals/ModalIndex';
-import ModalNavigation from '@demos/modals/ModalNavigation';
-import ModalNavigationV2 from '@demos/modals/ModalNavigationV2';
-import ModalNavigationTemplate from '@demos/modals/ModalNavigationTemplate';
-import ModalWebsitePrompt from '@demos/modals/ModalWebsitePrompt';
-import ModalHamburgerMenu from '@demos/modals/ModalHamburgerMenu';
+import { ModalContext, ModalState } from './ModalContext';
 
-import { useModal } from '@system/providers/ModalContextProvider';
+/**
+ * NOTE(@elijaharita): Displays the active modal for a modal context. Without
+ * this component, the modal context does nothing. Must be within a modal
+ * context.
+ * */
+export default function GlobalModalManager() {
+  const context = React.useContext(ModalContext);
+  if (!context) return null;
 
-export default function GlobalModalManager(props) {
-  const { modalContent, showModal } = useModal();
+  const { modalRefs, active: activeModal, closing: closingModals, close: hideModal } = context;
 
-  let parentRect;
-  if (modalContent && modalContent.parentId) {
-    const parentElement = document.getElementById(modalContent.parentId);
-    if (parentElement) {
-      parentRect = parentElement.getBoundingClientRect();
-    }
-  }
+  const renderModal = (state: ModalState, isClosing: boolean) => {
+    const Component = state?.component;
+    const props = state?.props || {};
 
-  let nextModal;
-  if (modalContent && modalContent.name === 'NAVIGATION') {
-    nextModal = <ModalNavigation parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
-  }
+    return (
+      <Component
+        ref={(ref) => {
+          if (ref) {
+            modalRefs.current[state.key] = ref;
+          } else {
+            delete modalRefs.current[state.key];
+          }
+        }}
+        key={state.key}
+        isClosing={isClosing}
+        onClose={() => hideModal(state.key)}
+        {...props}
+      />
+    );
+  };
 
-  if (modalContent && modalContent.name === 'NAVIGATION_V2') {
-    nextModal = <ModalNavigation parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
-  if (modalContent && modalContent.name == 'NAVIGATION_TEMPLATE') {
-    nextModal = <ModalNavigationTemplate parentRect={parentRect} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
-  if (modalContent && modalContent.name === 'ERROR') {
-    nextModal = <ModalError content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
-  if (modalContent && modalContent.name === 'HAMBURGER_MENU') {
-    nextModal = <ModalHamburgerMenu content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
-  if (modalContent && modalContent.name === 'INDEX') {
-    nextModal = <ModalIndex content={modalContent} onShowModal={showModal} />;
-  }
-
-  if (modalContent && modalContent.name === 'AUTHENTICATION') {
-    nextModal = <ModalAuthentication content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
-  if (modalContent && modalContent.name === 'COLOR_PICKER') {
-    nextModal = <ModalColorPicker content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
-  if (modalContent && modalContent.name === 'WEBSITE_PROMPT') {
-    nextModal = <ModalWebsitePrompt content={modalContent} onShowModal={showModal} viewer={props.viewer} />;
-  }
-
-  return nextModal;
+  return (
+    <div className={styles.modalBackground}>
+      {activeModal && renderModal(activeModal, false)}
+      {Object.values(closingModals).map((closingModal) => renderModal(closingModal, true))}
+    </div>
+  );
 }

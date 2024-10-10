@@ -51,7 +51,7 @@ function ExampleWindowsConnected(props) {
           />
         </ResizableMonospaceWindow>
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

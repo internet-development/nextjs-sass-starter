@@ -17,36 +17,25 @@
   box-shadow: none;
   border-right: 1px solid var(--theme-border);
   box-sizing: content-box;
-  transition: left 0.3s;
+  animation: slideInAnimation 200ms;
+  animation-fill-mode: forwards;
 
   @media (max-width: 960px) {
     width: 100%;
   }
 }
 
-.slideIn {
-  animation: slideInAnimation 0.3s forwards;
-}
-
-.slideOut {
-  animation: slideOutAnimation 0.3s forwards;
+.hamburgerModalClosing {
+  animation-direction: alternate;
 }
 
 @keyframes slideInAnimation {
   from {
     transform: translateX(-100%);
   }
-  to {
-    transform: translateX(0);
-  }
-}
 
-@keyframes slideOutAnimation {
-  from {
-    transform: translateX(0);
-  }
   to {
-    transform: translateX(-100%);
+    transform: translateX(0);
   }
 }
 

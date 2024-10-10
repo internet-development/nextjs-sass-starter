@@ -10,6 +10,7 @@ import Cookies from 'js-cookie';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';
 import KeyHeader from '@system/KeyHeader';
+import ModalError from '@demos/modals/ModalError';
 import MonospacePreview from '@system/MonospacePreview';
 import Page from '@components/Page';
 import TextArea from '@system/TextArea';
@@ -18,18 +19,22 @@ import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModals } from '@root/system/modals/ModalContext';
 
 const DOCUMENT_TYPE = 'INVOICE';
 
 function ExampleInvoices(props) {
-  const { showModal } = useModal();
+  const modals = useModals();
 
   const [currentInvoice, setCurrentInvoice] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [invoices, setInvoices] = React.useState<Array<any>>([]);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
+
+  const onError = (message: string) => {
+    modals.open(ModalError, { message: message });
+  };
 
   const sidebar = (
     <div style={{ padding: `48px 24px 24px 24px` }}>
@@ -52,7 +57,7 @@ function ExampleInvoices(props) {
       <Button
         onClick={async () => {
           if (Utilities.isEmpty(key)) {
-            return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+            return onError('You must provide an API key');
           }
 
           const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
@@ -77,7 +82,7 @@ function ExampleInvoices(props) {
         icon={`⊹`}
         onClick={async () => {
           if (Utilities.isEmpty(key)) {
-            return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+            return onError('You must provide an API key');
           }
 
           const domain = Utilities.getDomainFromEmailWithoutAnySubdomain(props.viewer.email);
@@ -123,7 +128,7 @@ function ExampleInvoices(props) {
             }}
             onDelete={async () => {
               if (Utilities.isEmpty(key)) {
-                return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+                return onError('You must provide an API key');
               }
 
               const confirm = window.confirm(`Are you sure you want to delete ${each.id}? This action is irreversible.`);
@@ -160,7 +165,7 @@ function ExampleInvoices(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/invoices"
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={props.viewer} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentInvoice ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
@@ -276,7 +281,7 @@ function ExampleInvoices(props) {
             <Button
               onClick={async () => {
                 if (Utilities.isEmpty(key)) {
-                  return showModal({ name: 'ERROR', message: 'You must provide an API key' });
+                  return onError('You must provide an API key');
                 }
 
                 setLoading(true);
@@ -305,7 +310,7 @@ function ExampleInvoices(props) {
           </div>
         ) : null}
       </ThreeColumnAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }
