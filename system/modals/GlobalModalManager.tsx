@@ -30,7 +30,7 @@ export default function GlobalModalManager() {
         }}
         key={state.key}
         isClosing={isClosing}
-        onClose={() => activeModal && hideModal(activeModal.key)}
+        onClose={() => hideModal(state.key)}
         {...props}
       />
     );
