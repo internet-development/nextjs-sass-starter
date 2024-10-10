@@ -8,9 +8,7 @@ import ModalNavigation from '@root/demos/modals/ModalNavigation';
 import { useModals } from '@root/system/modals/ModalContext';
 import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
 
-export interface NavigationProps {}
-
-export default function Navigation(props: NavigationProps) {
+export default function Navigation() {
   const modals = useModals();
 
   return (
