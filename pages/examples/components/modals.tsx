@@ -10,10 +10,10 @@ import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
 import { H1, Lead } from '@system/typography';
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleModals(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   return (
     <Page
@@ -26,7 +26,7 @@ function ExampleModals(props) {
         <Content>
           <Button
             onClick={() => {
-              modal.open(ModalIndex, {
+              modals.open(ModalIndex, {
                 content: {
                   name: 'INDEX',
                   data: [

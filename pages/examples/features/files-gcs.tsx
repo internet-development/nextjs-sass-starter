@@ -17,10 +17,10 @@ import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleFilesGCS(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -30,7 +30,7 @@ function ExampleFilesGCS(props) {
   const [uploading, setUploading] = React.useState<boolean>(false);
 
   const onError = (message: string) => {
-    modal.open(ModalError, { message: message });
+    modals.open(ModalError, { message: message });
   };
 
   return (

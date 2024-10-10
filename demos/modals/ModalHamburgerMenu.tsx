@@ -6,7 +6,7 @@ import Link from 'next/link';
 import OutsideElementEvent from '@root/system/detectors/OutsideElementEvent';
 
 import { H4 } from '@system/typography';
-import { CommonModalProps, ModalComponent, useModal } from '@root/system/modals/ModalContext';
+import { CommonModalProps, ModalComponent, useModals } from '@root/system/modals/ModalContext';
 
 export interface ModalHamburgerMenuProps {
   content: {

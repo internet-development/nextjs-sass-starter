@@ -9,10 +9,10 @@ import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 import ModalColorPicker from '@demos/modals/ModalColorPicker';
 
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleModalsWebsitePrompt(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   return (
     <Page
@@ -23,7 +23,7 @@ function ExampleModalsWebsitePrompt(props) {
       <Navigation />
       <SectionFullHeight>
         <Content>
-          <Button onClick={() => modal.open(ModalColorPicker)}>Show the color picker</Button>
+          <Button onClick={() => modals.open(ModalColorPicker)}>Show the color picker</Button>
         </Content>
       </SectionFullHeight>
       <GlobalModalManager />

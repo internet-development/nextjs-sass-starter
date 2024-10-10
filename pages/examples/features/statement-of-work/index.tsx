@@ -20,12 +20,12 @@ import ThreeColumnAppLayout from '@system/layouts/ThreeColumnAppLayout';
 
 import { P } from '@system/typography';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 
 const DOCUMENT_TYPE = 'STATEMENT_OF_WORK';
 
 function ExampleStatementOfWorks(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   const [currentSOW, setCurrentSOW] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -34,7 +34,7 @@ function ExampleStatementOfWorks(props) {
   const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
 
   const onError = (message: string) => {
-    modal.open(ModalError, { message: message });
+    modals.open(ModalError, { message: message });
   };
 
   const sidebar = (

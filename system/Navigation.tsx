@@ -5,13 +5,13 @@ import * as Utilities from '@common/utilities';
 
 import ModalNavigation from '@root/demos/modals/ModalNavigation';
 
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
 
 export interface NavigationProps {}
 
 export default function Navigation(props: NavigationProps) {
-  const modal = useModal();
+  const modals = useModals();
 
   return (
     <nav className={styles.root}>
@@ -33,7 +33,7 @@ export default function Navigation(props: NavigationProps) {
         <a className={styles.item} href="/examples/features/files-s3">
           Files
         </a>
-        <span className={styles.item} onClick={() => modal.open(ModalNavigation, {})}>
+        <span className={styles.item} onClick={() => modals.open(ModalNavigation, {})}>
           Sign in
         </span>
       </section>
@@ -41,7 +41,7 @@ export default function Navigation(props: NavigationProps) {
         <span
           className={styles.item}
           id="site-navigation-button"
-          onClick={() => modal.open(ModalNavigationV2, { parentId: 'site-navigation-button' })}
+          onClick={() => modals.open(ModalNavigationV2, { parentId: 'site-navigation-button' })}
           data-detector-ignore-navigation
         >
           Navigation

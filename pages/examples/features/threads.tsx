@@ -13,16 +13,16 @@ import Page from '@components/Page';
 import WideAppLayout from '@system/layouts/WideAppLayout';
 
 import { FormHeading, FormParagraph } from '@system/typography/forms';
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleEmptyApplicationTemplate(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [list, setList] = React.useState<Array<any>>(props.data);
 
   const onError = (message: string) => {
-    modal.open(ModalError, { message: message });
+    modals.open(ModalError, { message: message });
   };
 
   return (

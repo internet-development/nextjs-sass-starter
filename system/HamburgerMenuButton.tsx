@@ -5,15 +5,15 @@ import * as Utilities from '@common/utilities';
 
 import ModalHamburgerMenu from '@root/demos/modals/ModalHamburgerMenu';
 
-import { useModal } from './modals/ModalContext';
+import { useModals } from './modals/ModalContext';
 
 export default function HamburgerMenuButton(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   const [isAnimating, setIsAnimating] = React.useState(false);
 
   const hamburgerRef = React.useRef<HTMLDivElement>(null);
-  const isActive = modal.active?.component === ModalHamburgerMenu;
+  const isActive = modals.active?.component === ModalHamburgerMenu;
 
   // (@xBalbinus): The hamburger menu gets closed on click to any outside HTML element if we only use
   // onOutsideEvent, we need to check if the click is coming from the hamburger button specifically.
@@ -23,11 +23,11 @@ export default function HamburgerMenuButton(props) {
     setIsAnimating(true);
 
     if (!isActive) {
-      modal.open(ModalHamburgerMenu, {
+      modals.open(ModalHamburgerMenu, {
         content: { data: { navItems: props.navItems } },
       });
     } else {
-      modal.close();
+      modals.close();
     }
     setTimeout(() => {
       setIsAnimating(false);

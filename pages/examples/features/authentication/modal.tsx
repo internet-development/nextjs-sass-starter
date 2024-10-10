@@ -12,10 +12,10 @@ import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleModals(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   return (
     <Page
@@ -29,7 +29,7 @@ function ExampleModals(props) {
         <Content>
           <Button
             onClick={() => {
-              modal.open(ModalAuthentication);
+              modals.open(ModalAuthentication);
             }}
           >
             Join or sign in

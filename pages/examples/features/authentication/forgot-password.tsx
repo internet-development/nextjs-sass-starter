@@ -17,10 +17,10 @@ import ThinAppLayoutHeader from '@system/layouts/ThinAppLayoutHeader';
 
 import { P } from '@system/typography';
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
-import { useModal } from '@root/system/modals/ModalContext';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleResetPassword(props) {
-  const modal = useModal();
+  const modals = useModals();
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -92,7 +92,7 @@ function ExampleResetPassword(props) {
             const response = await Queries.onPublicUserForgotPassword({ email });
             if (!response) {
               setLoading(false);
-              modal.open(ModalError, {
+              modals.open(ModalError, {
                 message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
               });
               return;

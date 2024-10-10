@@ -111,7 +111,7 @@ function uniqueModalKey(): string {
   return `modal-${Math.floor(Math.random() * 999999999)}`;
 }
 
-export function useModal(): ModalHandle {
+export function useModals(): ModalHandle {
   const context = React.useContext(ModalContext);
 
   if (!context) {
