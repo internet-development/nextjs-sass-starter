@@ -20,7 +20,7 @@ function ExampleComponentsProductMarketing(props) {
       <IsometricGridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <IsometricProductBox x={-124} y={222} />
       </IsometricGridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

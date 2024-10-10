@@ -178,20 +178,20 @@ export default function DemoSettings(props) {
               onSetFile={async (file) => {
                 setUploading(true);
                 if (Utilities.isEmpty(props.sessionKey)) {
-                  props.onSetModal({ name: 'ERROR', message: 'not authenticated' });
+                  props.onError('not authenticated');
                   setUploading(false);
                 }
 
                 const response = await Queries.onUserUploadDataS3({ domain: null, file, key: props.sessionKey });
                 if (!response) {
-                  props.onSetModal({ name: 'ERROR', message: 'failed to upload file' });
+                  props.onError('failed to upload file');
                   setUploading(false);
                   return;
                 }
 
                 const save = await Queries.onUserCreatePost({ id: response.id, src: response.fileURL, key: props.sessionKey, type: 'MOOD' });
                 if (!save) {
-                  props.onSetModal({ name: 'ERROR', message: 'failed to save post' });
+                  props.onError('failed to save post');
                   setUploading(false);
                   return;
                 }
@@ -206,14 +206,14 @@ export default function DemoSettings(props) {
                 icon={`⊹`}
                 onClick={async () => {
                   if (Utilities.isEmpty(props.sessionKey)) {
-                    props.onSetModal({ name: 'ERROR', message: 'You must be authenticated' });
+                    props.onError('You must be authenticated');
                     return null;
                   }
 
                   for (const targetId of selected) {
                     const response = await Queries.onUserDeletePost({ id: targetId, key: props.sessionKey });
                     if (!response) {
-                      props.onSetModal({ name: 'ERROR', message: 'failed to delete post' });
+                      props.onError('failed to delete post');
                       // TODO(jimmylee):
                       // Very lazy.
                       window.location.reload();
@@ -241,7 +241,7 @@ export default function DemoSettings(props) {
             onSubmit={async ({ password }) => {
               const response = await Queries.onUserChangePassword({ key: props.sessionKey, password });
               if (!response) {
-                props.onSetModal({ name: 'ERROR', message: 'failed to change password' });
+                props.onError('failed to change password');
               }
 
               window.location.href = '/examples/features/settings';

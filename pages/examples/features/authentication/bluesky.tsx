@@ -31,7 +31,7 @@ function ExampleAuthentication(props) {
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/features/authentication/bluesky"
       >
-        <KeyHeader onInputChange={setKey} value={key} />
+        <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
         <ThinAppLayout>
           <FormHeading style={{ marginTop: 64 }}>You have a session</FormHeading>
           <FormParagraph>
@@ -61,7 +61,7 @@ function ExampleAuthentication(props) {
             </ActionItem>
           </div>
         </ThinAppLayout>
-        <GlobalModalManager viewer={currentUser} />
+        <GlobalModalManager />
       </Page>
     );
   }
@@ -72,7 +72,7 @@ function ExampleAuthentication(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/authentication/bluesky"
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in with Bluesky [WIP]</FormHeading>
         <FormParagraph>
@@ -101,7 +101,7 @@ function ExampleAuthentication(props) {
           </>
         ) : null}
       </ThinAppLayout>
-      <GlobalModalManager viewer={currentUser} />
+      <GlobalModalManager />
     </Page>
   );
 }

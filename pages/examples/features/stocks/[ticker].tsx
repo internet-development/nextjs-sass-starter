@@ -46,7 +46,7 @@ function ExampleStock(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url={`https://wireframes.internet.dev/examples/features/stocks/${props.symbol}`}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={props.viewer} />
       <ThinAppLayout>
         <ThinAppLayoutHeader
           token={key}
@@ -82,7 +82,7 @@ function ExampleStock(props) {
         {isDataHydrated ? <AreaChart data={parsedData} /> : <FormParagraph>You must be signed in to view stock quotes</FormParagraph>}
         {isDataHydrated ? <Table data={tableData} headings={tableHeadings} style={{ marginTop: 24 }} /> : null}
       </ThinAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

@@ -3,10 +3,13 @@ import styles from '@system/Navigation.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import { useModal } from '@system/providers/ModalContextProvider';
+import ModalNavigation from '@root/demos/modals/ModalNavigation';
+
+import { useModals } from '@root/system/modals/ModalContext';
+import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
 
 export default function Navigation() {
-  const { showModal } = useModal();
+  const modals = useModals();
 
   return (
     <nav className={styles.root}>
@@ -28,7 +31,7 @@ export default function Navigation() {
         <a className={styles.item} href="/examples/features/files-s3">
           Files
         </a>
-        <span className={styles.item} onClick={() => showModal({ name: 'AUTHENTICATION' })}>
+        <span className={styles.item} onClick={() => modals.open(ModalNavigation, {})}>
           Sign in
         </span>
       </section>
@@ -36,7 +39,7 @@ export default function Navigation() {
         <span
           className={styles.item}
           id="site-navigation-button"
-          onClick={() => showModal({ name: 'NAVIGATION_V2', parentId: 'site-navigation-button' })}
+          onClick={() => modals.open(ModalNavigationV2, { parentId: 'site-navigation-button' })}
           data-detector-ignore-navigation
         >
           Navigation

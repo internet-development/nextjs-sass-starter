@@ -5,7 +5,14 @@ import * as React from 'react';
 import SmallButton from '@system/documents/SmallButton';
 import Head from 'next/head';
 
-export default function Page(props) {
+export interface PageProps {
+  title: string;
+  description: string;
+  url: string;
+  children?: React.ReactNode;
+}
+
+export default function Page(props: PageProps) {
   const source = `https://github.com/internet-development/nextjs-sass-starter/blob/main/pages${props.url.replace('https://wireframes.internet.dev', '')}.tsx`;
 
   return (

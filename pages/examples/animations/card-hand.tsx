@@ -43,7 +43,7 @@ function ExampleCardHand(props) {
       >
         <CardHandLayout cards={cards} expanded={expanded} onExpand={() => setExpanded(true)} />
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

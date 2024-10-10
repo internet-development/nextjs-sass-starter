@@ -6,18 +6,25 @@ import * as Utilities from '@common/utilities';
 import Cookies from 'js-cookie';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
+import { ModalComponent } from '@root/system/modals/ModalContext';
+
 const MODAL_WIDTH = 240;
 const MODAL_GUTTER_OFFSET = 24;
 
-export default function ModalNavigationTemplate(props) {
-  const style = Utilities.calculatePositionWithGutter(props.parentRect, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
+export interface ModalNavigationTemplateProps {
+  parentId?: string;
+  viewer: any | null;
+}
+
+const ModalNavigationTemplate: ModalComponent<ModalNavigationTemplateProps> = (props) => {
+  const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
 
   return (
     <OutsideElementEvent
       className={styles.modal}
-      onOutsideEvent={() => props.onShowModal(null)}
+      onOutsideEvent={() => props.onClose()}
       style={{
-        textAlign: style.side,
+        textAlign: style.side as any,
         top: style.top,
         right: style.right,
       }}
@@ -74,4 +81,6 @@ export default function ModalNavigationTemplate(props) {
       </a>
     </OutsideElementEvent>
   );
-}
+};
+
+export default ModalNavigationTemplate;

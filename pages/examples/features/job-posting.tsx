@@ -72,7 +72,7 @@ function ExampleJobPosting(props) {
         <CheckmarkItem isMinimal>You must be passionate about building websites.</CheckmarkItem>
         <CheckmarkItem isMinimal>You must have at least one website you are proud of sharing.</CheckmarkItem>
       </ThinAppLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

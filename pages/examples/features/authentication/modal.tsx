@@ -7,14 +7,15 @@ import Button from '@system/Button';
 import Content from '@system/layouts/Content';
 import Footer from '@system/Footer';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
+import ModalAuthentication from '@demos/modals/ModalAuthentication';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 import SectionFullHeight from '@system/sections/SectionFullHeight';
 
-import { useModal } from '@system/providers/ModalContextProvider';
+import { useModals } from '@root/system/modals/ModalContext';
 
 function ExampleModals(props) {
-  const { showModal } = useModal();
+  const modals = useModals();
 
   return (
     <Page
@@ -27,17 +28,14 @@ function ExampleModals(props) {
         <Content>
           <Button
             onClick={() => {
-              showModal({
-                name: 'AUTHENTICATION',
-                data: props.viewer,
-              });
+              modals.open(ModalAuthentication);
             }}
           >
             Join or sign in
           </Button>
         </Content>
       </SectionFullHeight>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }

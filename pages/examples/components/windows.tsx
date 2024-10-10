@@ -141,7 +141,7 @@ function ExampleWindows(props) {
           <Button style={customButtonStyle} onClick={() => clearWindows()}>Clear Windows</Button>
         </div>
       </GridLayout>
-      <GlobalModalManager viewer={props.viewer} />
+      <GlobalModalManager />
     </Page>
   );
 }
