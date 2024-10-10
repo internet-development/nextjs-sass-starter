@@ -25,7 +25,7 @@ import { useModal } from '@root/system/modals/ModalContext';
 const DOCUMENT_TYPE = 'STATEMENT_OF_WORK';
 
 function ExampleStatementOfWorks(props) {
-  const modalError = useModal(ModalError);
+  const modal = useModal();
 
   const [currentSOW, setCurrentSOW] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -34,7 +34,7 @@ function ExampleStatementOfWorks(props) {
   const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
 
   const onError = (message: string) => {
-    modalError.open({ message: message });
+    modal.open(ModalError, { message: message });
   };
 
   const sidebar = (

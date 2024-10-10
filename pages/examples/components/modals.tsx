@@ -13,7 +13,7 @@ import { H1, Lead } from '@system/typography';
 import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleModals(props) {
-  const modalIndex = useModal(ModalIndex);
+  const modal = useModal();
 
   return (
     <Page
@@ -26,7 +26,7 @@ function ExampleModals(props) {
         <Content>
           <Button
             onClick={() => {
-              modalIndex.open({
+              modal.open(ModalIndex, {
                 content: {
                   name: 'INDEX',
                   data: [

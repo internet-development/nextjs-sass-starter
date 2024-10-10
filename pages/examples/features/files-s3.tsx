@@ -20,7 +20,7 @@ import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms
 import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleFilesS3(props) {
-  const modalError = useModal(ModalError);
+  const modal = useModal();
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(null);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -30,7 +30,7 @@ function ExampleFilesS3(props) {
   const [uploading, setUploading] = React.useState<boolean>(false);
 
   const onError = (message: string) => {
-    modalError.open({ message: message });
+    modal.open(ModalError, { message: message });
   };
 
   return (

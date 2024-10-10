@@ -15,7 +15,7 @@ import SectionFullHeight from '@system/sections/SectionFullHeight';
 import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleModals(props) {
-  const modalAuthentication = useModal(ModalAuthentication);
+  const modal = useModal();
 
   return (
     <Page
@@ -29,7 +29,7 @@ function ExampleModals(props) {
         <Content>
           <Button
             onClick={() => {
-              modalAuthentication.open();
+              modal.open(ModalAuthentication);
             }}
           >
             Join or sign in

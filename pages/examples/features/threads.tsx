@@ -16,13 +16,13 @@ import { FormHeading, FormParagraph } from '@system/typography/forms';
 import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleEmptyApplicationTemplate(props) {
-  const modalError = useModal(ModalError);
+  const modal = useModal();
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [list, setList] = React.useState<Array<any>>(props.data);
 
   const onError = (message: string) => {
-    modalError.open({ message: message });
+    modal.open(ModalError, { message: message });
   };
 
   return (

@@ -12,7 +12,7 @@ import ModalWebsitePrompt from '@demos/modals/ModalWebsitePrompt';
 import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleModalsWebsitePrompt(props) {
-  const modalWebsitePrompt = useModal(ModalWebsitePrompt);
+  const modal = useModal();
 
   return (
     <Page
@@ -23,7 +23,7 @@ function ExampleModalsWebsitePrompt(props) {
       <Navigation />
       <SectionFullHeight>
         <Content>
-          <Button onClick={() => modalWebsitePrompt.open()}>Show the website prompt modal</Button>
+          <Button onClick={() => modal.open(ModalWebsitePrompt)}>Show the website prompt modal</Button>
         </Content>
       </SectionFullHeight>
       <GlobalModalManager />

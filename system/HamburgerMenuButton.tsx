@@ -8,11 +8,12 @@ import ModalHamburgerMenu from '@root/demos/modals/ModalHamburgerMenu';
 import { useModal } from './modals/ModalContext';
 
 export default function HamburgerMenuButton(props) {
-  const modal = useModal(ModalHamburgerMenu);
+  const modal = useModal();
 
   const [isAnimating, setIsAnimating] = React.useState(false);
 
   const hamburgerRef = React.useRef<HTMLDivElement>(null);
+  const isActive = modal.active?.component === ModalHamburgerMenu;
 
   // (@xBalbinus): The hamburger menu gets closed on click to any outside HTML element if we only use
   // onOutsideEvent, we need to check if the click is coming from the hamburger button specifically.
@@ -21,8 +22,8 @@ export default function HamburgerMenuButton(props) {
 
     setIsAnimating(true);
 
-    if (!modal.isActive) {
-      modal.open({
+    if (isActive) {
+      modal.open(ModalHamburgerMenu, {
         content: { data: { navItems: props.navItems } },
       });
     } else {
@@ -35,11 +36,7 @@ export default function HamburgerMenuButton(props) {
 
   return (
     <div className={styles.body}>
-      <div
-        ref={hamburgerRef}
-        className={Utilities.classNames(styles.hamburger, { [styles.active]: modal.isActive })}
-        onMouseDown={toggleModal}
-      >
+      <div ref={hamburgerRef} className={Utilities.classNames(styles.hamburger, { [styles.active]: isActive })} onMouseDown={toggleModal}>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>

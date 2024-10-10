@@ -20,7 +20,7 @@ import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/
 import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleAuthentication(props) {
-  const modalError = useModal(ModalError);
+  const modal = useModal();
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -29,7 +29,7 @@ function ExampleAuthentication(props) {
   const [loading, setLoading] = React.useState<boolean>(false);
 
   const onError = (message: string) => {
-    modalError.open({ message: message });
+    modal.open(ModalError, { message: message });
   };
 
   if (props.viewer) {

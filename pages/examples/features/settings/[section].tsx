@@ -36,13 +36,13 @@ const SUB_SECTION_LINKS = {
 };
 
 function ExampleSettings(props) {
-  const modalError = useModal(ModalError);
+  const modal = useModal();
 
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [active, setActive] = React.useState<string>(props.active);
   
   const onError = (message: string) => {
-    modalError.open({ message: message });
+    modal.open(ModalError, { message: message });
   };
 
   return (

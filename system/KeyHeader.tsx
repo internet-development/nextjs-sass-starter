@@ -14,7 +14,7 @@ export interface KeyHeaderProps {
 }
 
 export default function KeyHeader(props: KeyHeaderProps) {
-  const modalNavigationTemplate = useModal(ModalNavigationTemplate);
+  const modal = useModal();
 
   if (props.isHidden) {
     return <nav className={styles.root} />;
@@ -27,7 +27,7 @@ export default function KeyHeader(props: KeyHeaderProps) {
           className={styles.item}
           data-detector-ignore-navigation
           id="site-navigation-button"
-          onClick={() => modalNavigationTemplate.open({ parentId: 'site-navigation-button' })}
+          onClick={() => modal.open(ModalNavigationTemplate, { parentId: 'site-navigation-button' })}
         >
           Menu
         </span>

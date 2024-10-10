@@ -26,13 +26,12 @@ export interface CommonModalProps {
   onClose: () => void;
 }
 
-export interface ModalContextType {
+interface ModalContextType {
   modalRefs: React.MutableRefObject<{ [key: string]: ModalRef | undefined }>;
-  activeModal: ModalState | null;
-  closingModals: { [key: string]: ModalState };
-  showModal: <P>(key: string, component: ModalComponent<P> | null, props?: P) => void;
-  hideCurrentModal: () => void;
-  hideModal: (key: string) => void;
+  active: ModalState | null;
+  closing: { [key: string]: ModalState };
+  open: <P>(component: ModalComponent<P>, props?: P) => string;
+  close: (key?: string) => void;
 }
 
 export const ModalContext = React.createContext<ModalContextType | null>(null);
@@ -61,8 +60,10 @@ export function ModalProvider({ children }: ModalProviderProps) {
 
   const modalRefs = React.useRef<{ [key: string]: ModalRef | undefined }>({});
 
-  const showModal = (key, component, props) => {
-    hideCurrentModal();
+  const open = (component, props) => {
+    close();
+
+    const key = uniqueModalKey();
 
     if (component) {
       setActiveModal({
@@ -71,58 +72,51 @@ export function ModalProvider({ children }: ModalProviderProps) {
         props: props || {},
       });
     }
+
+    return key;
   };
 
-  const hideCurrentModal = () => {
-    if (activeModal) {
-      setActiveModal(null);
-      setClosingModals((prev) => ({ ...prev, [activeModal.key]: activeModal }));
+  const close = (key?: string) => {
+    if (!activeModal) return;
+    if (key && activeModal.key !== key) return;
 
-      const ms = modalRefs.current[activeModal.key]?.getUnmountDelayMS?.() ?? 0;
-      const callback = () => {
-        setClosingModals((prev) => {
-          const { [activeModal.key]: _, ...filtered } = prev;
-          return filtered;
-        });
-      };
+    setActiveModal(null);
+    setClosingModals((prev) => ({ ...prev, [activeModal.key]: activeModal }));
 
-      if (ms) {
-        setTimeout(callback, ms);
-      } else {
-        callback();
-      }
+    const ms = modalRefs.current[activeModal.key]?.getUnmountDelayMS?.() ?? 0;
+    const callback = () => {
+      setClosingModals((prev) => {
+        const { [activeModal.key]: _, ...filtered } = prev;
+        return filtered;
+      });
+    };
+
+    if (ms) {
+      setTimeout(callback, ms);
+    } else {
+      callback();
     }
   };
 
-  const hideModal = (key) => {
-    if (activeModal && activeModal.key === key) {
-      hideCurrentModal();
-    }
-  };
-
-  return <ModalContext.Provider value={{ activeModal, closingModals, modalRefs, showModal, hideCurrentModal, hideModal }}>{children}</ModalContext.Provider>;
+  return <ModalContext.Provider value={{ active: activeModal, closing: closingModals, modalRefs, open, close }}>{children}</ModalContext.Provider>;
 }
 
-export interface ModalHandle<T> {
-  isActive: boolean;
-  open: (props?: T) => void;
-  close: () => void;
-}
-
-export function useModal<P>(component: ModalComponent<P>): ModalHandle<P> {
-  const context = React.useContext(ModalContext);
-  if (!context) throw new Error('No modal context');
-  const { showModal, hideModal, hideCurrentModal, activeModal } = context;
-
-  const key = React.useMemo(() => uniqueModalKey(), []);
-
-  return {
-    isActive: component === activeModal?.component,
-    open: (props) => showModal(key, component, props),
-    close: () => hideModal(key),
-  };
+export interface ModalHandle {
+  open: <P>(component: ModalComponent<P>, props?: P) => string;
+  close: (key?: string) => void;
+  active: ModalState | null;
 }
 
 function uniqueModalKey(): string {
   return `modal-${Math.floor(Math.random() * 999999999)}`;
+}
+
+export function useModal(): ModalHandle {
+  const context = React.useContext(ModalContext);
+
+  if (!context) {
+    throw new Error('Modal context is absent');
+  }
+
+  return { open: context.open, close: context.close, active: context.active };
 }

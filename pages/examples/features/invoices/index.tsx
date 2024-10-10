@@ -24,7 +24,7 @@ import { useModal } from '@root/system/modals/ModalContext';
 const DOCUMENT_TYPE = 'INVOICE';
 
 function ExampleInvoices(props) {
-  const modalError = useModal(ModalError);
+  const modal = useModal();
 
   const [currentInvoice, setCurrentInvoice] = React.useState<Record<string, any> | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -33,7 +33,7 @@ function ExampleInvoices(props) {
   const [updates, setUpdates] = React.useState<Record<string, any> | null>(null);
 
   const onError = (message: string) => {
-    modalError.open({ message: message });
+    modal.open(ModalError, { message: message });
   };
 
   const sidebar = (

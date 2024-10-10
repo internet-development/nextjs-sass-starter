@@ -20,7 +20,7 @@ import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/
 import { useModal } from '@root/system/modals/ModalContext';
 
 function ExampleResetPassword(props) {
-  const modalError = useModal(ModalError);
+  const modal = useModal();
 
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
@@ -92,7 +92,7 @@ function ExampleResetPassword(props) {
             const response = await Queries.onPublicUserForgotPassword({ email });
             if (!response) {
               setLoading(false);
-              modalError.open({
+              modal.open(ModalError, {
                 message: 'Something went wrong. This is also a lazy message. Ideally the error message would have told you that you forgot to put your email or password.',
               });
               return;
