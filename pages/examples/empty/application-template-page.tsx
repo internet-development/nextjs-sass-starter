@@ -17,9 +17,8 @@ function ExampleEmptyApplicationTemplate(props) {
       title="wireframes.internet.dev ➝ empty ➝ application template"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/empty/application-template-page"
-      viewer={props.viewer}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={props.viewer} />
       <ThinAppLayout>
         <ThinAppLayoutHeader
           token={key}

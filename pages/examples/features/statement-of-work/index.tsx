@@ -182,9 +182,8 @@ function ExampleStatementOfWorks(props) {
       title="wireframes.internet.dev ➝ features ➝ statement of work"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/statement-of-work"
-      viewer={props.viewer}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={props.viewer} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentSOW ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>

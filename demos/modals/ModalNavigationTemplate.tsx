@@ -7,18 +7,17 @@ import Cookies from 'js-cookie';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { ModalComponent } from '@root/system/modals/ModalContext';
-import { ViewerContext } from '@components/Page';
 
 const MODAL_WIDTH = 240;
 const MODAL_GUTTER_OFFSET = 24;
 
 export interface ModalNavigationTemplateProps {
   parentId?: string;
+  viewer: any | null;
 }
 
 const ModalNavigationTemplate: ModalComponent<ModalNavigationTemplateProps> = (props) => {
   const style = Utilities.calculatePositionWithGutterById(props.parentId, MODAL_WIDTH, window.innerWidth, MODAL_GUTTER_OFFSET);
-  const viewer = React.useContext(ViewerContext);
 
   return (
     <OutsideElementEvent
@@ -33,7 +32,7 @@ const ModalNavigationTemplate: ModalComponent<ModalNavigationTemplateProps> = (p
       <a href="/" className={styles.item}>
         Home
       </a>
-      {viewer ? (
+      {props.viewer ? (
         <span
           className={styles.item}
           onClick={() => {

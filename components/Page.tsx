@@ -5,14 +5,11 @@ import * as React from 'react';
 import SmallButton from '@system/documents/SmallButton';
 import Head from 'next/head';
 
-export const ViewerContext = React.createContext<any | undefined>(undefined);
-
 export interface PageProps {
   title: string;
   description: string;
   url: string;
   children?: React.ReactNode;
-  viewer?: any;
 }
 
 export default function Page(props: PageProps) {
@@ -44,7 +41,7 @@ export default function Page(props: PageProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <img className={styles.pixel} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png" alt="" />
-      <ViewerContext.Provider value={props.viewer}>{props.children}</ViewerContext.Provider>
+      {props.children}
       <div className={styles.prompt}>
         This is an open source example. Take the code and remix it! <br />
         <br />

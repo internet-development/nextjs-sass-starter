@@ -33,9 +33,8 @@ function ExampleResetPassword(props) {
         title="wireframes.internet.dev ➝ features ➝ you have a session"
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/features/authentication/forgot-password"
-        viewer={currentUser}
       >
-        <KeyHeader onInputChange={setKey} value={key} />
+        <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
         <ThinAppLayout>
           <FormHeading style={{ marginTop: 64 }}>You have a session</FormHeading>
           <FormParagraph>
@@ -75,9 +74,8 @@ function ExampleResetPassword(props) {
       title="wireframes.internet.dev ➝ features ➝ forgot password"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/authentication/forgot-password"
-      viewer={currentUser}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Forgot password</FormHeading>
         <FormParagraph>Enter your e-mail and we'll send you a link to reset your password.</FormParagraph>

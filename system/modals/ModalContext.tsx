@@ -30,7 +30,7 @@ interface ModalContextType {
   modalRefs: React.MutableRefObject<{ [key: string]: ModalRef | undefined }>;
   active: ModalState | null;
   closing: { [key: string]: ModalState };
-  open: <P>(component: ModalComponent<P>, props?: P) => string;
+  open: <P>(component: ModalComponent<P>, props: P) => string;
   close: (key?: string) => void;
 }
 

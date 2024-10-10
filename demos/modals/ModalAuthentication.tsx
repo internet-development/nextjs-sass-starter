@@ -14,20 +14,18 @@ import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 import { ModalComponent } from '@root/system/modals/ModalContext';
-import { ViewerContext } from '@components/Page';
 
 export interface ModalAuthenticationProps {
   active?: string;
+  viewer: any | null;
 }
 
 const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) => {
-  const viewer = React.useContext(ViewerContext);
-  
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  if (viewer) {
+  if (props.viewer) {
     return (
       <div className={styles.wrapper}>
         <OutsideElementEvent onOutsideEvent={() => props.onClose()} style={{ width: '100%', maxWidth: 488, margin: `0 auto 0 auto` }}>

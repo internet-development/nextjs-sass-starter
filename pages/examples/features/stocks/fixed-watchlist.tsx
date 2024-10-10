@@ -40,9 +40,8 @@ function ExampleFixedStockWatchlist(props) {
       title="wireframes.internet.dev ➝ features ➝ stocks ➝ fixed watchlist"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/stocks/fixed-watchlist"
-      viewer={props.viewer}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={props.viewer} />
       <AppLayout>
         <ThinAppLayoutHeader
           token={key}

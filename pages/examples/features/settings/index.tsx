@@ -14,7 +14,6 @@ import TwoColumnLayout from '@system/layouts/TwoColumnLayout';
 import { P } from '@system/typography';
 
 function ExampleSettings(props) {
-
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [active, setActive] = React.useState<string>(props.active);
 
@@ -23,9 +22,8 @@ function ExampleSettings(props) {
       title="wireframes.internet.dev ➝ features ➝ settings"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/settings"
-      viewer={props.viewer}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={props.viewer} />
       <TwoColumnLayout sidebar={<DemoSettingsSidebar active={active} onSetKey={setKey} viewer={props.viewer} />}>
         <DemoSettings active={active} sessionKey={key} viewer={props.viewer} />
       </TwoColumnLayout>

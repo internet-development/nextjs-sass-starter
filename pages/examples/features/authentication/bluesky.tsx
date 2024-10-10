@@ -30,9 +30,8 @@ function ExampleAuthentication(props) {
         title="wireframes.internet.dev ➝ features ➝ authentication ➝ you have a session"
         description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
         url="https://wireframes.internet.dev/examples/features/authentication/bluesky"
-        viewer={currentUser}
       >
-        <KeyHeader onInputChange={setKey} value={key} />
+        <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
         <ThinAppLayout>
           <FormHeading style={{ marginTop: 64 }}>You have a session</FormHeading>
           <FormParagraph>
@@ -72,9 +71,8 @@ function ExampleAuthentication(props) {
       title="wireframes.internet.dev ➝ features ➝ authentication ➝ bluesky"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/authentication/bluesky"
-      viewer={currentUser}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={currentUser} />
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in with Bluesky [WIP]</FormHeading>
         <FormParagraph>

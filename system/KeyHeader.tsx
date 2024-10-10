@@ -11,6 +11,7 @@ export interface KeyHeaderProps {
   isHidden?: boolean;
   value: any;
   onInputChange: (value: string) => void;
+  viewer: any | null;
 }
 
 export default function KeyHeader(props: KeyHeaderProps) {
@@ -27,7 +28,7 @@ export default function KeyHeader(props: KeyHeaderProps) {
           className={styles.item}
           data-detector-ignore-navigation
           id="site-navigation-button"
-          onClick={() => modals.open(ModalNavigationTemplate, { parentId: 'site-navigation-button' })}
+          onClick={() => modals.open(ModalNavigationTemplate, { viewer: props.viewer, parentId: 'site-navigation-button' })}
         >
           Menu
         </span>

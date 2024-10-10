@@ -164,9 +164,8 @@ function ExampleInvoices(props) {
       title="wireframes.internet.dev ➝ features ➝ invoices"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples/features/invoices"
-      viewer={props.viewer}
     >
-      <KeyHeader onInputChange={setKey} value={key} />
+      <KeyHeader onInputChange={setKey} value={key} viewer={props.viewer} />
       <ThreeColumnAppLayout sidebar={sidebar} details={details}>
         {updates && currentInvoice ? (
           <div style={{ padding: `48px 24px 24px 24px` }}>
