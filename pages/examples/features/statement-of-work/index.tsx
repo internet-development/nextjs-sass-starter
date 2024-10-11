@@ -146,6 +146,7 @@ function ExampleStatementOfWorks(props) {
                 service_maintenance: each.data.service_maintenance,
                 service_launch: each.data.service_launch,
                 service_embedding: each.data.service_embedding,
+                service_property_handoff: each.data.service_property_handoff,
               });
             }}
             onDelete={async () => {
@@ -377,6 +378,18 @@ function ExampleStatementOfWorks(props) {
             >
               You team will engage proactively in your preferred communication channels, seamlessly integrating with your team as if we were full-time staff members.
             </Checkbox>
+
+            <Checkbox
+              name="service_property_handoff"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.checked });
+              }}
+              value={updates.service_property_handoff}
+              style={{ marginTop: 8 }}
+            >
+              All IP will be handed off.
+            </Checkbox>
+
             <InputLabel style={{ marginTop: 64 }}>2. Our incorporation state</InputLabel>
             <Input
               autoComplete="off"

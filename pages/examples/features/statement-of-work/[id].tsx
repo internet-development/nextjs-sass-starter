@@ -56,10 +56,12 @@ function ExampleSOW(props) {
     maintenance: props.data.service_maintenance,
     launch: props.data.service_launch,
     embedding: props.data.service_embedding,
+    property_handoff: props.data.service_property_handoff,
   };
 
   return (
     <Page
+      isNotOpenSourceExample
       title={`wireframes.internet.dev ➝ features ➝ SOW ${props.id}`}
       description={`This Statement of Work (“SOW”) is between ${supplier.name} (“${supplier.shorthand}”) and the client listed below (“Client”).`}
       url={`https://wireframes.internet.dev/examples/features/statement-of-work/${props.id}`}
@@ -237,8 +239,8 @@ function ExampleSOW(props) {
           <section className={Utilities.classNames(styles.serviceColumn)}></section>
           <section className={Utilities.classNames(styles.serviceColumn, styles.right)}>4.4.2. Collaborative Sessions</section>
           <section className={styles.serviceRemainder}>
-            {supplier.shorthand} will hold discovery meetings to meet with the Client, understand goals and requirements for the project, and provide recommendations on technical
-            approach, design, and development process while producing deliverables through Figma.
+            {supplier.shorthand} will hold discovery meetings with the Client to understand project goals and requirements, and to provide recommendations on the technical
+            approach, design, and development process. Deliverables will be produced using Figma, GitHub, or other agreed-upon software.
           </section>
         </section>
 
@@ -253,7 +255,7 @@ function ExampleSOW(props) {
 
         <section className={Utilities.classNames(styles.row, !services.development ? styles.inactive : null)}>
           <section className={Utilities.classNames(styles.serviceColumn)}></section>
-          <section className={Utilities.classNames(styles.serviceColumn, styles.right)}>4.4.4. Holistic Web Development</section>
+          <section className={Utilities.classNames(styles.serviceColumn, styles.right)}>4.4.4. Holistic Software Development</section>
           <section className={styles.serviceRemainder}>
             {supplier.shorthand} will use code and services to implement the entire design and provide instructions for Client for how to run and manage the deliverables
             themselves.
@@ -359,6 +361,48 @@ function ExampleSOW(props) {
             Under no circumstances will {supplier.name} (“{supplier.shorthand}”) issue refunds for work performed according to terms of this SOW.
           </section>
         </section>
+
+        {services.property_handoff ? (
+          <>
+            <section className={styles.row} style={{ marginTop: 24 }}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}>7. Intellectual Property</section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.1. Ownership of Work Product</section>
+              <section className={styles.remainder}>
+                Upon delivery of the final work product as described in this SOW (“Work Product”), {supplier.name} (“{supplier.shorthand}”) hereby assigns to {client.name} all
+                rights, title, and interest in and to the specific intellectual property created solely for {client.name} as part of the Work Product. This assignment is limited to
+                the copyrights, patents, and any other intellectual property rights directly arising from the Work Product and does not include any broader rights beyond those
+                necessary for {client.name} to fully use and benefit from the Work Product.
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.2. Scope of Assignment</section>
+              <section className={styles.remainder}>
+                The assignment shall cover the specific code, designs, and assets created by {supplier.name} (“{supplier.shorthand}”) for {client.name} as part of the Work Product
+                under this agreement. {supplier.name} (“{supplier.shorthand}”) agrees to permanently relinquish any claim, ownership, or rights to use, copy, distribute, modify, or
+                otherwise exploit the assigned Work Product.
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.3. Right to Derivative Works</section>
+              <section className={styles.remainder}>
+                {supplier.name} (“{supplier.shorthand}”) retains the right to create derivative works and engage in projects within the same or related domains or technologies,
+                provided that no direct reuse of the specific code, documentation, or materials created and assigned to {client.name} takes place. While the Work Product itself is
+                assigned to {client.name}, it is acknowledged that similarities in architecture, structure, concepts, or methodologies may occur between the Work Product and other
+                works by {supplier.name} (“{supplier.shorthand}”).
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.4. Moral Rights and Waiver</section>
+              <section className={styles.remainder}>
+                {supplier.name} (“{supplier.shorthand}”) agrees to waive any moral rights or equivalent rights under applicable laws, to the fullest extent permissible by law, in
+                the Work Product, and shall not make any claims or take any actions based on moral rights in relation to the assigned Work Product.
+              </section>
+            </section>
+          </>
+        ) : null}
 
         <Title style={{ marginTop: 48 }}>Notice</Title>
         <Text style={{ marginTop: 16 }}>
