@@ -147,6 +147,7 @@ function ExampleStatementOfWorks(props) {
                 service_launch: each.data.service_launch,
                 service_embedding: each.data.service_embedding,
                 service_property_handoff: each.data.service_property_handoff,
+                service_custom_billing: each.data.service_custom_billing || '',
               });
             }}
             onDelete={async () => {
@@ -456,6 +457,16 @@ function ExampleStatementOfWorks(props) {
               style={{ marginTop: 8 }}
               type="number"
               value={updates.supplier_amount_billed}
+            />
+            <InputLabel style={{ marginTop: 16 }}>6. Custom billing</InputLabel>
+            <TextArea
+              autoComplete="off"
+              name="service_custom_billing"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.value });
+              }}
+              style={{ marginTop: 8 }}
+              value={updates.service_custom_billing}
             />
 
             <InputLabel style={{ marginTop: 64 }}>1. Client name</InputLabel>

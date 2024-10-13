@@ -57,6 +57,7 @@ function ExampleSOW(props) {
     launch: props.data.service_launch,
     embedding: props.data.service_embedding,
     property_handoff: props.data.service_property_handoff,
+    custom_billing: props.data.service_custom_billing,
   };
 
   return (
@@ -296,7 +297,13 @@ function ExampleSOW(props) {
           </section>
         </section>
 
-        {supplier.amount ? (
+        {services.custom_billing ? (
+          <section className={styles.row} style={{ marginTop: 24 }}>
+            <section className={Utilities.classNames(styles.column, styles.shaded)}>5. Payment</section>
+            <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees (custom)</section>
+            <section className={styles.remainder}>{services.custom_billing}</section>
+          </section>
+        ) : (
           <section className={styles.row} style={{ marginTop: 24 }}>
             <section className={Utilities.classNames(styles.column, styles.shaded)}>5. Payment</section>
             <section className={Utilities.classNames(styles.column, styles.subshaded)}>5.1. Fees</section>
@@ -308,7 +315,7 @@ function ExampleSOW(props) {
               .
             </section>
           </section>
-        ) : null}
+        )}
 
         {supplier.amount ? (
           <section className={styles.row}>
