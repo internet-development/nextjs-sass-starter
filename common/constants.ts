@@ -147,6 +147,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     isWIP: true,
   },
   {
+    name: 'Components ➝ search concept I',
+    href: '/examples/components/search-1',
+  },
+  {
     name: 'Components ➝ windows',
     href: '/examples/components/windows',
     label: 'Windows',

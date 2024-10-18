@@ -1,0 +1,120 @@
+.root {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout {
+  max-width: 768px;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+}
+
+.absoluteButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 22px;
+}
+
+.roundButton {
+  border-radius: 32px;
+  height: 32px;
+  width: 32px;
+  background: var(--theme-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-background);
+}
+
+.input {
+  border-radius: 8px;
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 24px 0 24px;
+  height: 64px;
+  font-size: var(--type-scale-fixed-large);
+  display: inline-flex;
+  width: 100%;
+  background: transparent;
+
+  &:focus {
+    border: 1px solid var(--theme-primary);
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.actions {
+  padding: 16px 24px 0 24px;
+  flex-shrink: 0;
+  width: 30%;
+}
+
+.history {
+  padding: 16px 24px 0px 24px;
+  min-width: 10%;
+  width: 100%;
+  border-left: 1px solid var(--theme-border);
+}
+
+.record {
+  list-style-type: none;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  font-size: var(--type-scale-fixed-small);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: var(--type-scale-fixed-small);
+  font-weight: 600;
+}
+
+.icon {
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--theme-border);
+  border-radius: 4px;
+}
+
+.words {
+  min-width: 10%;
+  width: 100%;
+  padding-left: 8px;
+}
+
+.link {
+  color: var(--theme-text);
+  opacity: 0.6;
+
+  &:visited {
+    color: var(--theme-text);
+  }
+
+  &:hover {
+    color: var(--theme-text);
+  }
+}
