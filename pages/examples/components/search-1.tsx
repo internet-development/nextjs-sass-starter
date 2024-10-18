@@ -6,7 +6,7 @@ import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 
-function ExampleReportEdit(props) {
+function ExampleSearchVersion1(props) {
   return (
     <Page
       isNotOpenSourceExample
@@ -26,4 +26,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleReportEdit;
+export default ExampleSearchVersion1;

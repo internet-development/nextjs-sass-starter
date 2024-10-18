@@ -6,13 +6,13 @@ import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
 
-function ExampleReportEdit(props) {
+function ExampleSearchVersion2(props) {
   return (
     <Page
       isNotOpenSourceExample
-      title="Components ➝ search concept I"
+      title="Components ➝ search concept II"
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
-      url="https://wireframes.internet.dev/examples/components/search-1"
+      url="https://wireframes.internet.dev/examples/components/search-2"
     >
       <DemoSearchComponentTwo />
       <GlobalModalManager />
@@ -26,4 +26,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default ExampleReportEdit;
+export default ExampleSearchVersion2;
