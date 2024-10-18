@@ -48,9 +48,30 @@
   display: inline-flex;
   width: 100%;
   background: transparent;
+  transition: 200ms ease all;
 
   &:focus {
     border: 1px solid var(--theme-primary);
+    outline: 1px solid var(--theme-primary);
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus-within {
+    border: 1px solid var(--theme-primary);
+    outline: 1px solid var(--theme-primary);
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus-visible {
+    border: 1px solid var(--theme-primary);
+    outline: 1px solid var(--theme-primary);
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    border: 1px solid var(--theme-primary);
+    outline: 1px solid var(--theme-primary);
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -96,7 +117,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--theme-border);
+  background: var(--theme-primary);
+  color: var(--theme-background);
   border-radius: 4px;
 }
 
