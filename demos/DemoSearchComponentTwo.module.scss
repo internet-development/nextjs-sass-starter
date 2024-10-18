@@ -51,7 +51,7 @@
   border-radius: 32px;
   height: 32px;
   width: 32px;
-  background: var(--theme-primary);
+  background: var(--theme-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +83,7 @@
   font-weight: 400;
 
   &::placeholder {
-    color: var(--theme-primary);
+    color: var(--theme-text);
   }
 
   &:focus {
@@ -138,7 +138,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--theme-primary);
+  background: var(--theme-text);
   color: var(--theme-background);
   border-radius: 4px;
   user-select: none;
