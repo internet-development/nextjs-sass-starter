@@ -1,0 +1,187 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+.top {
+  width: 228px;
+  align-self: stretch;
+  flex-shrink: 0;
+  border-right: 1px solid var(--theme-border);
+  padding: 24px 0px 24px 0px;
+}
+
+.item {
+  list-style-type: none;
+  padding: 0 8px 0 22px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: var(--type-scale-fixed-small);
+}
+
+.children {
+  min-width: 10%;
+  width: 100%;
+  padding: 24px;
+}
+
+.left {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.right {
+  padding-top: 4px;
+  padding-left: 8px;
+  min-width: 10%;
+  width: 100%;
+  align-self: stretch;
+}
+
+.square {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  border: 1px solid var(--theme-border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--type-scale-fixed-small);
+}
+
+.subItem {
+  list-style-type: none;
+  padding: 0 8px 0 48px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: var(--type-scale-fixed-small);
+}
+
+.subSquare {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  border: 1px solid var(--theme-border);
+  border-radius: 2px;
+}
+
+.largeSquare {
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+  border: 1px solid var(--theme-border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--type-scale-fixed-large);
+}
+
+.containerInput {
+  border-radius: 16px;
+  border: 1px solid var(--theme-border);
+  position: relative;
+  max-width: 768px;
+  margin: 0 auto 0 auto;
+}
+
+.absoluteButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 22px;
+  user-select: none;
+}
+
+.roundButton {
+  border-radius: 32px;
+  height: 32px;
+  width: 32px;
+  background: var(--theme-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-background);
+  user-select: none;
+}
+
+.transparentRoundButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+.input {
+  border: 0;
+  outline: 0;
+  max-width: 768px;
+  margin: 0 auto 0 auto;
+  display: block;
+  box-sizing: border-box;
+  padding: 0 24px 0 24px;
+  height: 64px;
+  font-size: 24px;
+  width: 100%;
+  color: var(--theme-text);
+  background: transparent;
+  transition: 200ms ease all;
+  font-weight: 400;
+
+  &::placeholder {
+    color: var(--theme-text);
+  }
+
+  &:focus {
+    border: 0;
+    outline: 0;
+  }
+}
+
+.user {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 24px 0 24px;
+}
+
+.avatar {
+  height: 48px;
+  width: 48px;
+  border-radius: 48px;
+}
+
+.name {
+  min-width: 10%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 16px;
+  font-size: var(--type-scale-fixed-small);
+  align-self: stretch;
+  flex-direction: column;
+  text-align: left;
+}
+
+.fullName {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.userName {
+  opacity: 0.6;
+}

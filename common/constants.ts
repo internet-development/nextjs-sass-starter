@@ -155,6 +155,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     href: '/examples/components/search-2',
   },
   {
+    name: 'Components ➝ search concept III',
+    href: '/examples/components/search-3',
+  },
+  {
     name: 'Components ➝ windows',
     href: '/examples/components/windows',
     label: 'Windows',
