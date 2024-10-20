@@ -239,7 +239,7 @@ export default function DemoSearchComponentThree(props) {
       </div>
       <div className={styles.children}>
         <div className={styles.containerInput}>
-          <input className={styles.input} placeholder="Search the web" />
+          <input className={styles.input} placeholder="Search everything" />
           <span className={styles.absoluteButton}>
             <span className={styles.transparentRoundButton}>
               <Audio height="24px" />
