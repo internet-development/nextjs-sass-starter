@@ -167,6 +167,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     href: '/examples/components/search-lockscreen',
   },
   {
+    name: 'Components ➝ search lockscreen results',
+    href: '/examples/components/search-lockscreen-results',
+  },
+  {
     name: 'Components ➝ windows',
     href: '/examples/components/windows',
     label: 'Windows',
