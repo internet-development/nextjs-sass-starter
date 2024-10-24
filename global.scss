@@ -433,17 +433,17 @@ body {
   --font-family-mono: 'ServerMono-Regular', Consolas, monaco, monospace;
   --font-family-serif: Georgia, Times New Roman, serif;
 
+  --theme-border: var(--color-gray-20);
+  --theme-primary: var(--color-blue-60);
+  --theme-text: var(--color-black-100);
+
   font-family: var(--font-family);
   background: var(--theme-background);
   color: var(--theme-text);
   font-variant-numeric: tabular-nums;
-
   font-size: 16px;
+
   @media (max-width: 768px) {
     font-size: 12px;
   }
-
-  --theme-border: var(--color-gray-20);
-  --theme-primary: var(--color-blue-60);
-  --theme-text: var(--color-black-100);
 }

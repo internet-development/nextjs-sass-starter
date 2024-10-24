@@ -1,4 +1,8 @@
 .root {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+
   @keyframes fade {
     from {
       transform: translate(var(--fade-initial-x), var(--fade-initial-y));
@@ -11,9 +15,8 @@
     }
   }
 
-  animation: cubic-bezier(0.19, 1, 0.22, 1) fade var(--fade-duration) backwards;
-  animation-delay: var(--fade-delay);
-  width: 100%;
-  height: 100%;
-  display: inline-block;
+  & {
+    animation: cubic-bezier(0.19, 1, 0.22, 1) fade var(--fade-duration) backwards;
+    animation-delay: var(--fade-delay);
+  }
 }
