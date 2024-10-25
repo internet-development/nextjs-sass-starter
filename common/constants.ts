@@ -176,6 +176,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     href: '/examples/components/search-lockscreen-results',
   },
   {
+    name: 'Components ➝ search perplexity agent',
+    href: '/examples/components/search-perplexity-agent',
+  },
+  {
     name: 'Components ➝ windows',
     href: '/examples/components/windows',
     label: 'Windows',
