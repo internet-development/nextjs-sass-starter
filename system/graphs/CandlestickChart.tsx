@@ -4,6 +4,8 @@ import * as React from 'react';
 const CandlestickChart = (props) => {
   const d3Container = React.useRef<HTMLDivElement | null | any>(null);
   const [containerWidth, setContainerWidth] = React.useState(0);
+  const customHeight = props.height ? props.height : 400;
+  console.log(customHeight);
 
   const drawChart = (width) => {
     if (!d3Container.current || width <= 0) return;
@@ -14,7 +16,7 @@ const CandlestickChart = (props) => {
       svg.selectAll('*').remove();
 
       const margin = { top: 16, right: 16, bottom: 32, left: 48 };
-      const height = 400 - margin.top - margin.bottom;
+      const height = customHeight - margin.top - margin.bottom;
       const chartWidth = width - margin.left - margin.right;
 
       const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
@@ -26,24 +28,44 @@ const CandlestickChart = (props) => {
       yScale.domain([d3.min(props.data, (d) => d.low) - 10, d3.max(props.data, (d) => d.high) + 24]);
 
       const xAxis = g.append('g').attr('transform', `translate(0,${height})`).call(d3.axisBottom(xScale));
-      const yAxis = g.append('g').call(d3.axisLeft(yScale));
+
+      if (!props.isHidingYAxis) {
+        const yAxis = g.append('g').call(d3.axisLeft(yScale));
+
+        yAxis.select('.domain').style('stroke', 'var(--theme-border)');
+        yAxis.selectAll('.tick line').style('stroke', 'var(--theme-border)');
+        yAxis
+          .selectAll('text')
+          .style('fill', 'var(--theme-border)')
+          .style('font-size', props.fontSize ? props.fontSize : 'var(--type-scale-fixed-small)')
+          .style('font-family', props.fontFamily);
+      }
 
       xAxis.select('.domain').style('stroke', 'var(--theme-border)');
       xAxis.selectAll('.tick line').style('stroke', 'var(--theme-border)');
-      xAxis.selectAll('text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
-      yAxis.select('.domain').style('stroke', 'var(--theme-border)');
-      yAxis.selectAll('.tick line').style('stroke', 'var(--theme-border)');
-      yAxis.selectAll('text').style('fill', 'var(--theme-border)').style('font-size', 'var(--type-scale-fixed-small)');
+      xAxis
+        .selectAll('text')
+        .style('fill', 'var(--theme-border)')
+        .style('font-size', props.fontSize ? props.fontSize : 'var(--type-scale-fixed-small)')
+        .style('font-family', props.fontFamily);
 
       const defs = svg.append('defs');
-      const colors = {
-        positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
-        negative: ['var(--theme-graph-negative-subdued)', 'var(--theme-graph-negative)'],
-        reversePositive: ['var(--theme-graph-positive)', 'var(--theme-graph-positive-subdued)'],
-        reverseNegative: ['var(--theme-graph-negative)', 'var(--theme-graph-negative-subdued)'],
+
+      type ColorRange = [string, string];
+      type Colors = {
+        [key: string]: ColorRange;
       };
 
-      Object.entries(colors).forEach(([key, colorRange]) => {
+      const colors = props.colors
+        ? props.colors
+        : {
+            positive: ['var(--theme-graph-positive-subdued)', 'var(--theme-graph-positive)'],
+            negative: ['var(--theme-graph-negative-subdued)', 'var(--theme-graph-negative)'],
+            reversePositive: ['var(--theme-graph-positive)', 'var(--theme-graph-positive-subdued)'],
+            reverseNegative: ['var(--theme-graph-negative)', 'var(--theme-graph-negative-subdued)'],
+          };
+
+      Object.entries(colors).forEach(([key, colorRange]: [string, ColorRange]) => {
         const gradient = defs.append('linearGradient').attr('id', `gradient-${key}`).attr('x1', '0%').attr('x2', '0%').attr('y1', '0%').attr('y2', '100%');
 
         gradient.append('stop').attr('offset', '0%').attr('stop-color', colorRange[0]);
@@ -86,7 +108,7 @@ const CandlestickChart = (props) => {
     drawChart(containerWidth);
   }, [containerWidth, props.data]);
 
-  return <svg ref={d3Container} width="100%" height="400" style={props.style} />;
+  return <svg ref={d3Container} width="100%" height={customHeight} style={props.style} />;
 };
 
 export default CandlestickChart;

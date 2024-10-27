@@ -71,6 +71,11 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Lockscreen calendar',
   },
   {
+    name: 'Components ➝ lockscreen, Fey',
+    href: '/examples/components/lockscreen-fey',
+    label: 'Lockscreen Fey',
+  },
+  {
     name: 'Components ➝ navigation, dashboard',
     href: '/examples/components/dashboard',
     label: 'Dashboard skeleton',
