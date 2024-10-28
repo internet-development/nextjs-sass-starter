@@ -76,6 +76,11 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Lockscreen Fey',
   },
   {
+    name: 'Components ➝ lockscreen',
+    href: '/examples/components/lockscreen',
+    label: 'Lockscreen',
+  },
+  {
     name: 'Components ➝ navigation, dashboard',
     href: '/examples/components/dashboard',
     label: 'Dashboard skeleton',
