@@ -118,6 +118,7 @@ function ExampleEmploymentDocuments(props) {
                 manager_shorthand: each.data.manager_shorthand || '',
                 manager_location_corporation: each.data.manager_location_corporation || '',
                 manager_location: each.data.manager_location || '',
+                is_consultant: each.data.is_consultant || '',
               });
             }}
             onDelete={async () => {
@@ -243,6 +244,16 @@ function ExampleEmploymentDocuments(props) {
               style={{ marginTop: 8 }}
               value={updates.employee_price}
             />
+            <Checkbox
+              name="is_consultant"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.checked });
+              }}
+              value={updates.is_consultant}
+              style={{ marginTop: 8 }}
+            >
+              This person is an consultant.
+            </Checkbox>
             <InputLabel style={{ marginTop: 16 }}>Responsibilities</InputLabel>
             <TextArea
               autoComplete="off"

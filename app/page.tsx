@@ -71,6 +71,9 @@ export default async function Page(props) {
       </Script> */}
       <div style={{ lineHeight: '1.6', maxWidth: 768 }}>Showcase — Take a look at what we have done with this template.</div>
       <div>
+        <ListItem href="https://sacred.computer" index={Utilities.leftPad(`1`, 4)} isWIP>
+          sacred.computer
+        </ListItem>
         <ListItem href="https://marble.place" index={Utilities.leftPad(`1`, 4)} isWIP>
           marble.place
         </ListItem>
