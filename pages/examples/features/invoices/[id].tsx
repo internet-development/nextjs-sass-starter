@@ -13,6 +13,7 @@ import { Title, Text } from '@system/typography';
 function ExampleInvoice(props) {
   return (
     <Page
+      isNotOpenSourceExample
       title={`wireframes.internet.dev ➝ invoice ${props.id}`}
       description={`${props.data.payment_date}`}
       url={`https://wireframes.internet.dev/examples/features/invoices/${props.id}`}

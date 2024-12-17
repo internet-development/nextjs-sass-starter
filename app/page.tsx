@@ -74,25 +74,25 @@ export default async function Page(props) {
         <ListItem href="https://sacred.computer" index={Utilities.leftPad(`1`, 4)} isWIP>
           sacred.computer
         </ListItem>
-        <ListItem href="https://marble.place" index={Utilities.leftPad(`1`, 4)} isWIP>
+        <ListItem href="https://marble.place" index={Utilities.leftPad(`2`, 4)} isWIP>
           marble.place
         </ListItem>
-        <ListItem href="https://txt.dev" index={Utilities.leftPad(`2`, 4)}>
+        <ListItem href="https://txt.dev" index={Utilities.leftPad(`3`, 4)}>
           txt.dev
         </ListItem>
-        <ListItem href="https://internet.dev/team" index={Utilities.leftPad(`3`, 4)}>
+        <ListItem href="https://internet.dev/team" index={Utilities.leftPad(`4`, 4)}>
           internet.dev
         </ListItem>
-        <ListItem href="https://github.com/internet-development/nextjs-sass-starter" index={Utilities.leftPad(`4`, 4)} isWIP>
+        <ListItem href="https://github.com/internet-development/nextjs-sass-starter" index={Utilities.leftPad(`5`, 4)} isWIP>
           nextjs-sass-starter source code
         </ListItem>
-        <ListItem href="https://servermono.com" index={Utilities.leftPad(`5`, 4)}>
+        <ListItem href="https://servermono.com" index={Utilities.leftPad(`6`, 4)}>
           servermono.com
         </ListItem>
-        <ListItem href="https://users.garden" index={Utilities.leftPad(`6`, 4)} isWIP>
+        <ListItem href="https://users.garden" index={Utilities.leftPad(`7`, 4)} isWIP>
           users.garden
         </ListItem>
-        <ListItem href="https://beautifulthings.xyz" index={Utilities.leftPad(`7`, 4)} isWIP>
+        <ListItem href="https://beautifulthings.xyz" index={Utilities.leftPad(`8`, 4)} isWIP>
           beautifulthings.xyz
         </ListItem>
       </div>

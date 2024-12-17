@@ -41,6 +41,7 @@ function ExampleEmploymentDocument(props) {
 
   return (
     <Page
+      isNotOpenSourceExample
       title={`wireframes.internet.dev ➝ employment agreement ${props.id}`}
       description={`${props.data.payment_date}`}
       url={`https://wireframes.internet.dev/examples/features/employment/${props.id}`}
@@ -72,12 +73,18 @@ function ExampleEmploymentDocument(props) {
             with the minimum wage and overtime laws of both Delaware and Washington.
           </Text>
         ) : (
-          <Text style={{ marginTop: 16, whiteSpace: 'pre-wrap' }}>
-            The Company agrees to pay the Consultant a total fee of {employee.wage} for services rendered under this Agreement. Payment will be made in full upfront within thirty
-            (30) business days of the acceptance and execution of this contract. The Consultant acknowledges that they are an independent contractor and are solely responsible for
-            their own taxes, fees, and benefits. The Consultant further agrees that they are not entitled to any employee benefits or protections under federal, state, or local
-            employment laws. No deductions for taxes, social security, or other withholdings will be made by the Company.
-          </Text>
+          <>
+            <Text style={{ marginTop: 16, whiteSpace: 'pre-wrap' }}>
+              The Company agrees to pay the Consultant a total fee of {employee.wage} for services rendered under this Agreement over the course of one (1) year. This total fee
+              will be paid in four (4) equal quarterly installments. The first installment shall be paid within thirty (30) business days of the acceptance and execution of this
+              Agreement. Each subsequent installment shall be paid on the first day of each subsequent quarter during the one-year term of the Agreement.
+            </Text>
+            <Text style={{ marginTop: 16, whiteSpace: 'pre-wrap' }}>
+              The Consultant acknowledges that they are an independent contractor and are solely responsible for their own taxes, fees, and benefits. The Consultant further agrees
+              that they are not entitled to any employee benefits or protections under federal, state, or local employment laws. No deductions for taxes, social security, or other
+              withholdings will be made by the Company.
+            </Text>
+          </>
         )}
 
         {!state.consultant ? (
