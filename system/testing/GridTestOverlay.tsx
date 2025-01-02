@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 
 interface GridLines {
-  vertical: JSX.Element[];
-  horizontal: JSX.Element[];
+  vertical: React.ReactNode[];
+  horizontal: React.ReactNode[];
 }
 
 const GridTestOverlay: React.FC = () => {
@@ -12,8 +12,8 @@ const GridTestOverlay: React.FC = () => {
 
   useEffect(() => {
     const generateGrid = () => {
-      const vertical: JSX.Element[] = [];
-      const horizontal: JSX.Element[] = [];
+      const vertical: React.ReactNode[] = [];
+      const horizontal: React.ReactNode[] = [];
       const screenWidth = window.innerWidth;
       const bodyHeight = document.body.scrollHeight;
 

@@ -41,7 +41,7 @@ export default function DemoReportEdit(props) {
         <div className={styles.middle}>
           <div className={styles.sidebar}>
             {(() => {
-              const elements: JSX.Element[] = [];
+              const elements: React.ReactNode[] = [];
               for (let i = 1; i <= 10; i++) {
                 let style: React.CSSProperties = {};
 
