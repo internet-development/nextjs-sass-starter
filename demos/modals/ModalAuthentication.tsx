@@ -14,6 +14,7 @@ import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { FormHeading, FormSubHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 import { ModalComponent } from '@root/system/modals/ModalContext';
+import Apple from '@root/system/svg/social/Apple';
 
 export interface ModalAuthenticationProps {
   active?: string;
@@ -111,12 +112,17 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
           </Button>
           {loading ? null : (
             <Button loading={loading} href="https://api.internet.dev/authenticate-google?domain=REDIRECT_WIREFRAMES_INTERNET_DEV" style={{ marginTop: 16, width: '100%' }}>
-              <Google height="16px" style={{ marginRight: 16 }} /> Sign in with Google
+              <Google height="16px" style={{ marginRight: 12 }} /> Sign in with Google
+            </Button>
+          )}
+          {loading ? null : (
+            <Button loading={loading} href="https://api.internet.dev/authenticate-apple?domain=REDIRECT_WIREFRAMES_INTERNET_DEV" style={{ marginTop: 16, width: '100%' }}>
+              <Apple height="16px" style={{ marginRight: 12 }} /> Sign in with Apple
             </Button>
           )}
           {loading ? null : (
             <Button visual loading={loading} style={{ marginTop: 16, width: '100%' }}>
-              <Bluesky height="16px" style={{ marginRight: 16, color: '#0A7AFF' }} /> Sign in with Bluesky
+              <Bluesky height="16px" style={{ marginRight: 12, color: '#0A7AFF' }} /> Sign in with Bluesky
             </Button>
           )}
         </div>
