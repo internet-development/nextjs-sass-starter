@@ -11,7 +11,7 @@ function OAuthPage(props) {
     }
 
     Cookies.set('sitekey', props.code, { secure: true });
-    window.location.replace('/examples/features/authentication/google');
+    window.location.replace(`/examples/features/authentication/${props.authProvider}`);
   });
 
   return <div>Redirecting...</div>;
@@ -28,10 +28,12 @@ export async function getServerSideProps(context) {
   }
 
   const code = Server.decrypt(String(context.query.key));
+  const authProvider = context.query.authProvider;
 
   return {
     props: {
       code,
+      authProvider,
     },
   };
 }

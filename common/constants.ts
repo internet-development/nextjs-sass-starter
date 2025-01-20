@@ -261,6 +261,11 @@ export const TEMPLATE_EXAMPLES_FEATURES = [
     label: 'Google authentication',
   },
   {
+    name: 'Features ➝ authentication ➝ Apple to API key and optional session',
+    href: '/examples/features/authentication/apple',
+    label: 'Apple authentication',
+  },
+  {
     name: 'Features ➝ authentication ➝ forgot password',
     href: '/examples/features/authentication/forgot-password',
     label: 'Forgot password',
