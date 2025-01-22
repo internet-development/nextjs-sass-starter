@@ -97,7 +97,13 @@ export async function tryKeyWithoutCookie(key): Promise<{ sessionKey?: any; view
   return { sessionKey: key, viewer };
 }
 
-export async function getAppleSigninURL() {
+export async function getAppleSigninURL({ redirect_key }) {
+  let state = JSON.stringify({});
+
+  if (!Utilities.isEmpty(redirect_key)) {
+    state = JSON.stringify({ redirect_key });
+  }
+
   try {
     const params = new URLSearchParams({
       client_id: process.env.APPLE_CLIENT_ID!,
@@ -105,6 +111,7 @@ export async function getAppleSigninURL() {
       response_type: 'code',
       scope: 'email name',
       response_mode: 'form_post',
+      state,
     });
 
     const appleURL = `https://appleid.apple.com/auth/authorize?${params.toString()}`;

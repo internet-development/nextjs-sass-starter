@@ -45,7 +45,7 @@ function ExampleModals(props) {
 
 export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
-  const { appleSigninURL } = await Server.getAppleSigninURL();
+  const { appleSigninURL } = await Server.getAppleSigninURL({ redirect_key: 'REDIRECT_WIREFRAMES_INTERNET_DEV' });
 
   return {
     props: { sessionKey, viewer, appleSigninURL },
