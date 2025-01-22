@@ -10,7 +10,7 @@ import Page from '@components/Page';
 import ThinAppLayout from '@system/layouts/ThinAppLayout';
 import { FormHeading, FormParagraph, InputLabel } from '@system/typography/forms';
 
-function ExampleAuthentication(props) {
+function AppleAuthentication(props) {
   const [currentUser, setUser] = React.useState<Record<string, any> | null>(props.viewer);
   const [key, setKey] = React.useState<string>(props.sessionKey);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -67,7 +67,7 @@ function ExampleAuthentication(props) {
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in with Apple</FormHeading>
         <FormParagraph>Enhance your experience by signing in with Apple. Simply click the button below.</FormParagraph>
-        <Button href="https://api.internet.dev/authenticate-apple?domain=REDIRECT_WIREFRAMES_INTERNET_DEV" style={{ marginTop: 24, width: '100%' }}>
+        <Button onClick={() => window.location.replace(props.appleSigninURL)} style={{ marginTop: 24, width: '100%' }}>
           Sign in with Apple
         </Button>
 
@@ -95,10 +95,11 @@ function ExampleAuthentication(props) {
 
 export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
+  const { appleSigninURL } = await Server.getAppleSigninURL();
 
   return {
-    props: { sessionKey, viewer },
+    props: { sessionKey, viewer, appleSigninURL },
   };
 }
 
-export default ExampleAuthentication;
+export default AppleAuthentication;

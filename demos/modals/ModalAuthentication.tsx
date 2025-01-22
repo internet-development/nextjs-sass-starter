@@ -19,6 +19,7 @@ import Apple from '@root/system/svg/social/Apple';
 export interface ModalAuthenticationProps {
   active?: string;
   viewer: any | null;
+  appleSigninURL: string;
 }
 
 const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) => {
@@ -116,7 +117,13 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
             </Button>
           )}
           {loading ? null : (
-            <Button loading={loading} href="https://api.internet.dev/authenticate-apple?domain=REDIRECT_WIREFRAMES_INTERNET_DEV" style={{ marginTop: 16, width: '100%' }}>
+            <Button
+              loading={loading}
+              onClick={() => {
+                window.location.replace(props.appleSigninURL);
+              }}
+              style={{ marginTop: 16, width: '100%' }}
+            >
               <Apple height="16px" style={{ marginRight: 12 }} /> Sign in with Apple
             </Button>
           )}

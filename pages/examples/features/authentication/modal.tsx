@@ -28,7 +28,10 @@ function ExampleModals(props) {
         <Content>
           <Button
             onClick={() => {
-              modals.open(ModalAuthentication);
+              modals.open(ModalAuthentication, {
+                viewer: props.viewer,
+                appleSigninURL: props.appleSigninURL,
+              });
             }}
           >
             Join or sign in
@@ -42,9 +45,10 @@ function ExampleModals(props) {
 
 export async function getServerSideProps(context) {
   const { sessionKey, viewer } = await Server.setup(context);
+  const { appleSigninURL } = await Server.getAppleSigninURL();
 
   return {
-    props: { sessionKey, viewer },
+    props: { sessionKey, viewer, appleSigninURL },
   };
 }
 
