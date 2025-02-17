@@ -80,7 +80,7 @@ export default async function Page(props) {
         <ListItem href="https://txt.dev" index={Utilities.leftPad(`3`, 4)}>
           txt.dev
         </ListItem>
-        <ListItem href="https://internet.dev/team" index={Utilities.leftPad(`4`, 4)}>
+        <ListItem href="https://internet.dev" index={Utilities.leftPad(`4`, 4)}>
           internet.dev
         </ListItem>
         <ListItem href="https://github.com/internet-development/nextjs-sass-starter" index={Utilities.leftPad(`5`, 4)} isWIP>
