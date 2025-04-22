@@ -95,6 +95,9 @@ export default async function Page(props) {
         <ListItem href="https://beautifulthings.xyz" index={Utilities.leftPad(`8`, 4)} isWIP>
           beautifulthings.xyz
         </ListItem>
+        <ListItem href="https://flagpost.org" index={Utilities.leftPad(`9`, 4)} isWIP>
+          flagpost.org
+        </ListItem>
       </div>
 
       <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
