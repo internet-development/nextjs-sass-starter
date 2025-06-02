@@ -1,6 +1,6 @@
 import * as Utilities from '@common/utilities';
 
-import aesjs from 'aes-js';
+import AESModule from '@modules/aes';
 import Cors from '@modules/cors';
 
 // NOTE(jimmylee)
@@ -13,6 +13,33 @@ API_AES_KEY=
 API_IV_KEY=
 */
 
+export function encrypt(message) {
+  if (Utilities.isEmpty(process.env.API_AES_KEY)) {
+    throw new Error('process.env.API_AES_KEY');
+    return;
+  }
+
+  if (Utilities.isEmpty(process.env.API_IV_KEY)) {
+    throw new Error('process.env.API_IV_KEY');
+    return;
+  }
+
+  const target = AESModule.utils.utf8.toBytes(message);
+  const aesKey = AESModule.utils.utf8.toBytes(process.env.API_AES_KEY);
+  const base64IV = process.env.API_IV_KEY;
+
+  if (!base64IV) {
+    throw new Error('API_IV_KEY is undefined. Please set the environment variable.');
+  }
+
+  const ivBytes = AESModule.utils.hex.toBytes(Buffer.from(base64IV, 'base64').toString('hex'));
+  const aesCtr = new AESModule.ModeOfOperation.ctr(aesKey, new AESModule.Counter(ivBytes));
+  const bytes = aesCtr.encrypt(target);
+  const hex = AESModule.utils.hex.fromBytes(bytes);
+
+  return hex;
+}
+
 export function decrypt(hex) {
   if (Utilities.isEmpty(process.env.API_AES_KEY)) {
     throw new Error('process.env.API_AES_KEY');
@@ -24,18 +51,18 @@ export function decrypt(hex) {
     return;
   }
 
-  const aesKey = aesjs.utils.utf8.toBytes(process.env.API_AES_KEY);
+  const aesKey = AESModule.utils.utf8.toBytes(process.env.API_AES_KEY);
   const base64IV = process.env.API_IV_KEY;
 
   if (!base64IV) {
     throw new Error('process.env.API_IV_KEY is undefined. Please set the environment variable.');
   }
 
-  const ivBytes = aesjs.utils.hex.toBytes(Buffer.from(base64IV, 'base64').toString('hex'));
-  const aesCtr = new aesjs.ModeOfOperation.ctr(aesKey, new aesjs.Counter(ivBytes));
-  const encryptedBytes = aesjs.utils.hex.toBytes(hex);
+  const ivBytes = AESModule.utils.hex.toBytes(Buffer.from(base64IV, 'base64').toString('hex'));
+  const aesCtr = new AESModule.ModeOfOperation.ctr(aesKey, new AESModule.Counter(ivBytes));
+  const encryptedBytes = AESModule.utils.hex.toBytes(hex);
   const decryptedBytes = aesCtr.decrypt(encryptedBytes);
-  const decrypted = aesjs.utils.utf8.fromBytes(decryptedBytes);
+  const decrypted = AESModule.utils.utf8.fromBytes(decryptedBytes);
 
   return decrypted;
 }

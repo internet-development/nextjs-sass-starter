@@ -98,6 +98,9 @@ export default async function Page(props) {
         <ListItem href="https://flagpost.org" index={Utilities.leftPad(`9`, 4)} isWIP>
           flagpost.org
         </ListItem>
+        <ListItem href="https://github.com/internet-development/nextjs-offline-whisper-to-llm" index={Utilities.leftPad(`10`, 4)} isWIP>
+          nextjs-offline-whisper-to-llm source code
+        </ListItem>
       </div>
 
       <div style={{ marginTop: 88, lineHeight: '1.6', maxWidth: 768 }}>
