@@ -51,7 +51,7 @@ const OPTIONS = [
   { id: 35, caption: 'Converse with [CAIDAN]', text: 'Engage in conversation with [CAIDAN].' },
   { id: 36, caption: `[EMEKA]'s Vision`, text: 'Show [JIM] the most extraordinary piece of apparel you know of.' },
   { id: 37, caption: `[SAI]'s Longevity Mandate`, text: 'Go bring [JIM] a bottled beverage.' },
-  { id: 38, caption: 'Journey of the Grail', text: 'Secure a Pathfinder bottle for [JIM].' },
+  { id: 38, caption: `[JAMES]'s Journey of the Grail`, text: 'Secure a Pathfinder bottle for [JIM].' },
   { id: 39, caption: '[HARLEY]’s Envoy', text: `[JIM] will purchase dinner for everyone in the office.` },
   { id: 40, caption: 'Banner Bearer', text: '[JIM] shall gift you a graphic t-shirt of your choosing.' },
 ];
@@ -106,7 +106,7 @@ export default function DemoDocumentationConceptOne(props) {
 
             <div className={styles.row}>
               <span className={styles.left}>commit</span>
-              <span className={styles.right}>ab82b28651726f2e368f7b41ce27fa3923a495d7</span>
+              <span className={styles.right}>fe0158af8d9e9ab07be41e86c80d56dd613b940d</span>
             </div>
             <div className={styles.row}>
               <span className={styles.left}>tree</span>
