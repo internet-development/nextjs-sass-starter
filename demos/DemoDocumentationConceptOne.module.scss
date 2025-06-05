@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'SFMonoSquare-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/d94a73b5-d1c5-4a97-9b2d-18e5941833f6.woff') format('woff');
+}
+
+.root {
+  padding: 24px;
+}
+
+.layout {
+  max-width: 1008px;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  box-shadow: 0 0 0 1px var(--theme-border);
+}
+
+.heading {
+  background: var(--theme-border);
+  padding: 12px;
+  font-size: var(--type-scale-6);
+}
+
+.spacer {
+  padding: 0 8px 0 8px;
+  display: inline-block;
+}
+
+.title {
+  background: var(--theme-border);
+  padding: 12px;
+}
+
+.section {
+  border-bottom: 1px solid var(--theme-border);
+  padding: 12px 12px 24px 12px;
+  font-family: 'SFMonoSquare-Regular';
+
+  &:last-child {
+    border-bottom: 0px solid var(--theme-border);
+  }
+}
+
+.copy {
+  font-size: var(--type-scale-fixed-medium);
+  max-width: 568px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.left {
+  flex-shrink: 0;
+  min-width: 88px;
+}
+
+.right {
+  min-width: 10%;
+  width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}

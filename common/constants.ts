@@ -66,6 +66,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     internal: true,
   },
   {
+    name: 'Components ➝ documentation I',
+    href: '/examples/components/documentation-1',
+  },
+  {
     name: 'Components ➝ lockscreen, calendar',
     href: '/examples/components/lockscreen-calendar',
     label: 'Lockscreen calendar',
