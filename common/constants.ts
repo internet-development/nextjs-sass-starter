@@ -50,6 +50,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Server Mono preview',
   },
   {
+    name: 'Components ➝ button, gradient border',
+    href: '/examples/components/gradient-button',
+  },
+  {
     name: 'Components ➝ navigation, hero section',
     href: '/examples',
     label: 'Hero marketing',

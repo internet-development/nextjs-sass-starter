@@ -1,0 +1,76 @@
+/* Not expected to be set by consumer. managed internally, just needs to be @property to animate */
+@property --degree {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.button {
+  --border-size: 2px;
+  border: none;
+  padding: .5rem 1rem;
+  position: relative;
+  background-color: var(--theme-button);
+  color: var(--theme-button-text);
+  transform-style: preserve-3d;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    --degree: 0deg;
+    content: '';
+    border-radius: 8px;
+    position: absolute;
+    inset: 0;
+    width: calc(100% + var(--border-size) * 2);
+    height: calc(100% + var(--border-size) * 2);
+    translate: calc(-1 * var(--border-size)) calc(-1 * var(--border-size)) -1px;
+    border: none;
+    background-image: conic-gradient(from var(--degree),
+        oklch(0.637 0.237 25.331),
+        oklch(0.705 0.213 47.604),
+        oklch(0.705 0.213 47.604),
+        oklch(0.795 0.184 86.047),
+        oklch(0.795 0.184 86.047),
+        oklch(0.723 0.219 149.579),
+        oklch(0.723 0.219 149.579),
+        oklch(0.623 0.214 259.815),
+        oklch(0.623 0.214 259.815),
+        oklch(0.606 0.25 292.717),
+        oklch(0.606 0.25 292.717),
+        oklch(0.637 0.237 25.331));
+    animation: rotate 5s linear infinite;
+  }
+
+  &::after {
+    transition: filter 0.2s linear;
+    pointer-events: none;
+    border-radius: inherit;
+    filter: blur(0px);
+  }
+
+  &:hover::after {
+    filter: blur(10px);
+  }
+
+  &:active::after {
+    filter: blur(5px);
+  }
+
+  &::after {
+    width: calc(100% + var(--border-size));
+    height: calc(100% + var(--border-size));
+    translate: calc(-1 * var(--border-size) / 2) calc(-1 * var(--border-size) / 2) -1px;
+  }
+}
+
+@keyframes rotate {
+  from {
+    --degree: 0deg;
+  }
+
+  to {
+    --degree: 360deg;
+  }
+}
