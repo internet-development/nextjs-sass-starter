@@ -221,6 +221,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Windows for game levels',
     internal: true,
   },
+  {
+    name: 'Components ➝ gradient button border',
+    href: '/examples/components/gradient-button',
+  },
 ];
 
 export const TEMPLATE_EXAMPLES_EMPTY = [
