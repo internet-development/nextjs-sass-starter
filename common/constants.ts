@@ -50,6 +50,10 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     label: 'Server Mono preview',
   },
   {
+    name: 'Components ➝ button, gradient border',
+    href: '/examples/components/gradient-button',
+  },
+  {
     name: 'Components ➝ navigation, hero section',
     href: '/examples',
     label: 'Hero marketing',
@@ -220,10 +224,6 @@ export const TEMPLATE_EXAMPLES_COMPONENTS = [
     isWIP: true,
     label: 'Windows for game levels',
     internal: true,
-  },
-  {
-    name: 'Components ➝ gradient button border',
-    href: '/examples/components/gradient-button',
   },
 ];
 

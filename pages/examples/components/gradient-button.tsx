@@ -1,14 +1,11 @@
 import * as React from 'react';
-import * as Server from '@common/server';
 
-import FlippableTiltCard from '@system/FlippableTiltCard';
-import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
-import { GradientButton } from '@root/demos/GradientButton';
+import GradientButton from '@root/demos/GradientButton';
 
-export default function ExampleGradientButton(props) {
+export default function ExampleGradientButton() {
   return (
     <Page
       title="wireframes.internet.dev ➝ components ➝ gradient button"
@@ -21,12 +18,4 @@ export default function ExampleGradientButton(props) {
       </GridLayout>
     </Page>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { sessionKey, viewer } = await Server.setup(context);
-
-  return {
-    props: { sessionKey, viewer },
-  };
 }

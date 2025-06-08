@@ -1,11 +1,12 @@
-import React from 'react';
+import styles from '@demos/GradientButton.module.css';
 
-import styles from './GradientButton.module.css';
+import * as React from 'react';
 
-export const GradientButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ children, className, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+const GradientButton: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ children, className, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <button {...rest} className={(className ? className + ' ' : '') + styles.button}>
       {children}
     </button>
   );
 };
+export default GradientButton;
