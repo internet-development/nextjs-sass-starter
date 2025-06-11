@@ -147,7 +147,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   font-size: 12px;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -155,7 +155,6 @@
 
 .column {
   border-left: 1px solid var(--theme-border);
-  border-bottom: 1px solid var(--theme-border);
   min-height: 224px;
   display: flex;
   align-items: flex-end;
@@ -165,6 +164,10 @@
 
   &:first-child {
     border-left: 0px;
+  }
+
+  @media (max-width: 768px) {
+    border-bottom: 1px solid var(--theme-border);
   }
 }
 
