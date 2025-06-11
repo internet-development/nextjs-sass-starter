@@ -154,6 +154,7 @@
 
 .column {
   border-left: 1px solid var(--theme-border);
+  border-bottom: 1px solid var(--theme-border);
   min-height: 224px;
   display: flex;
   align-items: flex-end;
