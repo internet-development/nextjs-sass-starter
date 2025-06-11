@@ -1,6 +1,19 @@
 @font-face {
-  font-family: 'ServerMono-Regular';
-  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/6c8ad1f3-2ad9-44a9-88db-46ff3f19c4f3.woff') format('woff');
+  font-family: 'ServerMono';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/25071f6e-4cc8-4f91-8387-e4c60b9231de.woff2') format('woff2'),
+       url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/2bddcba4-a541-4af6-b4b6-5dfb1e4875f5.woff') format('woff'),
+       url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/45c36a19-7078-4880-89a5-2c700a28070a.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ServerMono';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/923a09aa-c5ae-4cf9-91dd-8047d73f6329.woff2') format('woff2'),
+       url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/9707922b-8bb2-4506-b64f-3f36e8c0dea2.woff') format('woff'),
+       url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/61bbfcb5-8139-4c38-a7ca-75f15ce996a7.otf') format('opentype');
+  font-weight: normal;
+  font-style: oblique;
 }
 
 html,
@@ -430,7 +443,7 @@ body {
   --type-scale-fixed-label: 10px;
 
   --font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
-  --font-family-mono: 'ServerMono-Regular', Consolas, monaco, monospace;
+  --font-family-mono: 'ServerMono', Consolas, monaco, monospace;
   --font-family-serif: Georgia, Times New Roman, serif;
 
   --theme-border: var(--color-gray-20);
