@@ -147,7 +147,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   font-size: 12px;
-    @media (max-width: 768px) {
+  
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 }
