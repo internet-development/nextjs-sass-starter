@@ -25,6 +25,8 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [showHandleInput, setShowHandleInput] = React.useState<boolean>(false);
+  const [blueskyHandle, setBlueskyHandle] = React.useState<string>('');
 
   if (props.viewer) {
     return (
@@ -121,9 +123,21 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
             </Button>
           )}
           {loading ? null : (
-            <Button visual loading={loading} style={{ marginTop: 16, width: '100%' }}>
+            <Button onClick={() => setShowHandleInput(true)} style={{ marginTop: 16, width: '100%' }}>
               <Bluesky height="16px" style={{ marginRight: 12, color: '#0A7AFF' }} /> Sign in with Bluesky
             </Button>
+          )}
+          {showHandleInput && (
+            <div style={{ marginTop: 24 }}>
+              <InputLabel>Enter your Bluesky handle:</InputLabel>
+              <Input value={blueskyHandle} onChange={(e) => setBlueskyHandle(e.target.value)} placeholder="e.g., @yourhandle.bsky.social" style={{ width: '100%', marginTop: 8 }} />
+              <Button
+                href={`https://api.internet.dev/authenticate-bluesky?domain=REDIRECT_WIREFRAMES_INTERNET_DEV&handle=${blueskyHandle}`}
+                style={{ marginTop: 16, width: '100%' }}
+              >
+                Submit
+              </Button>
+            </div>
           )}
         </div>
       </OutsideElementEvent>
