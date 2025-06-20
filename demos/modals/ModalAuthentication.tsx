@@ -132,7 +132,7 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
               <InputLabel>Enter your Bluesky handle:</InputLabel>
               <Input value={blueskyHandle} onChange={(e) => setBlueskyHandle(e.target.value)} placeholder="e.g., @yourhandle.bsky.social" style={{ width: '100%', marginTop: 8 }} />
               <Button
-                href={`https://api.internet.dev/authenticate-bluesky?domain=REDIRECT_WIREFRAMES_INTERNET_DEV&handle=${blueskyHandle}`}
+                href={`https://api.internet.dev/authenticate-bluesky?domain=REDIRECT_WIREFRAMES_INTERNET_DEV&handle=${encodeURIComponent(blueskyHandle)}`}
                 style={{ marginTop: 16, width: '100%' }}
               >
                 Submit

@@ -71,15 +71,19 @@ function ExampleAuthentication(props) {
       <ThinAppLayout>
         <FormHeading style={{ marginTop: 64 }}>Sign in with Bluesky</FormHeading>
         <FormParagraph>
-          Waiting for Paul Frazee to finish the Bluesky OAuth implementation he promised me with route redirects and all. Once that is complete, you will be able to sign in with
-          Bluesky.
+          The Bluesky team has implemented a new OAuth scope, transition:email that clients can request for access to the account's email so now our API supports authentication
+          through Bluesky the same way Google OAuth would work. The email itself can be accessed via the com.atproto.server.getSession endpoint on the PDS, using an OAuth access
+          token. This is a living an example of this method.
         </FormParagraph>
 
         {showHandleInput ? (
           <div style={{ marginTop: 24 }}>
             <InputLabel>Bluesky handle:</InputLabel>
             <Input value={blueskyHandle} onChange={(e) => setBlueskyHandle(e.target.value)} placeholder="@yourhandle.bsky.social" style={{ width: '100%', marginTop: 8 }} />
-            <Button href={`https://api.internet.dev/authenticate-bluesky?domain=REDIRECT_WIREFRAMES_INTERNET_DEV&handle=${blueskyHandle}`} style={{ marginTop: 16, width: '100%' }}>
+            <Button
+              href={`https://api.internet.dev/authenticate-bluesky?domain=REDIRECT_WIREFRAMES_INTERNET_DEV&handle=${encodeURIComponent(blueskyHandle)}`}
+              style={{ marginTop: 16, width: '100%' }}
+            >
               Submit
             </Button>
           </div>
