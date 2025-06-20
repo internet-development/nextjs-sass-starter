@@ -122,7 +122,7 @@ const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) =>
               <Apple height="16px" style={{ marginRight: 12 }} /> Sign in with Apple
             </Button>
           )}
-          {loading ? null : (
+          {loading || showHandleInput ? null : (
             <Button onClick={() => setShowHandleInput(true)} style={{ marginTop: 16, width: '100%' }}>
               <Bluesky height="16px" style={{ marginRight: 12, color: '#0A7AFF' }} /> Sign in with Bluesky
             </Button>
