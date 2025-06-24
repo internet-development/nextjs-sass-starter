@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
-import IntDev from '@system/svg/IntDev';
+import InternetDevelopmentLogoMark from '@components/InternetDevelopmentLogoMark';
 import InvoiceLayout from '@system/layouts/InvoiceLayout';
 import KeyHeader from '@system/KeyHeader';
 import Page from '@components/Page';
@@ -47,9 +47,10 @@ function ExampleEmploymentDocument(props) {
       url={`https://wireframes.internet.dev/examples/features/employment/${props.id}`}
     >
       <InvoiceLayout>
-        <IntDev height="32px" style={{ marginTop: 88 }} />
+        <InternetDevelopmentLogoMark height="32px" style={{ marginTop: 88 }} />
         <Title style={{ marginTop: 16 }}>
-          {manager.company} {documentLabel}
+          {manager.company} <br />
+          {documentLabel}
         </Title>
         <Text style={{ marginTop: 16 }}>
           This {employee.title} {documentLabel} (the "Agreement") is entered into as of {employee.agreementDate} (the “Effective Date”), by and between {manager.company} ("
