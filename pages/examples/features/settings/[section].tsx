@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import DemoSettings from '@demos/DemoSettings';
 import DemoSettingsSidebar from '@demos/DemoSettingsSidebar';
 import GlobalModalManager from '@system/modals/GlobalModalManager';

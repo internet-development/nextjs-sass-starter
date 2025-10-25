@@ -6,7 +6,7 @@ import * as Utilities from '@common/utilities';
 import ActionItem from '@system/documents/ActionItem';
 import Button from '@system/Button';
 import Checkbox from '@system/Checkbox';
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import Content from '@system/layouts/Content';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';

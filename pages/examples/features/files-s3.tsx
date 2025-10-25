@@ -5,7 +5,7 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import FormUpload from '@system/FormUpload';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Input from '@system/Input';

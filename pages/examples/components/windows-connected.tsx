@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';

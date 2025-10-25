@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Utilities from '@common/utilities';
 import * as Server from '@common/server';
 
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 
 function OAuthPage(props) {
   React.useEffect(() => {

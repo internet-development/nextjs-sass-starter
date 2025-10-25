@@ -41,18 +41,22 @@ function ExampleInvoice(props) {
           <strong>Amount Due</strong> ➝ {props.data.amount}
         </Text>
 
-        <Title style={{ marginTop: 48 }}>Customer</Title>
-        <Text style={{ marginTop: 16 }}>
-          {props.data.client}
-          <br />
-          {props.data.address}
-          <br />
-          {props.data.location}
-          <br />
-          {props.data.email}
-          <br />
-          {props.data.phone}
-        </Text>
+        {props.data.client ? (
+          <>
+            <Title style={{ marginTop: 48 }}>Customer</Title>
+            <Text style={{ marginTop: 16 }}>
+              {props.data.client}
+              <br />
+              {props.data.address}
+              <br />
+              {props.data.location}
+              <br />
+              {props.data.email}
+              <br />
+              {props.data.phone}
+            </Text>
+          </>
+        ) : null}
 
         <Title style={{ marginTop: 48 }}>INTDEV Contact</Title>
         <Text style={{ marginTop: 16, whiteSpace: 'pre-wrap' }}>{props.data.contact}</Text>

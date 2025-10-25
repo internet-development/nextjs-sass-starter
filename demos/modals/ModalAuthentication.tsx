@@ -7,7 +7,7 @@ import * as Utilities from '@common/utilities';
 import ActionItem from '@system/documents/ActionItem';
 import Bluesky from '@system/svg/social/Bluesky';
 import Button from '@system/Button';
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import Google from '@system/svg/social/Google';
 import Input from '@system/Input';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
@@ -18,7 +18,8 @@ import Apple from '@root/system/svg/social/Apple';
 
 export interface ModalAuthenticationProps {
   active?: string;
-  viewer: any | null;
+  viewer?: any | null;
+  parentId?: string;
 }
 
 const ModalAuthentication: ModalComponent<ModalAuthenticationProps> = (props) => {

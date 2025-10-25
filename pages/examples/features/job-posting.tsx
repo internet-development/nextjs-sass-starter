@@ -3,7 +3,7 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import CheckmarkItem from '@system/documents/CheckmarkItem';
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';

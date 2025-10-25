@@ -3,10 +3,10 @@ import styles from '@system/Navigation.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import ModalNavigation from '@root/demos/modals/ModalNavigation';
+import ModalAuthentication from '@root/demos/modals/ModalAuthentication';
+import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
 
 import { useModals } from '@root/system/modals/ModalContext';
-import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
 
 export default function Navigation() {
   const modals = useModals();
@@ -31,8 +31,8 @@ export default function Navigation() {
         <a className={styles.item} href="/examples/features/files-s3">
           Files
         </a>
-        <span className={styles.item} onClick={() => modals.open(ModalNavigation, {})}>
-          Sign in
+        <span className={styles.item} id="site-signin-button" onClick={() => modals.open(ModalAuthentication, { parentId: 'site-signin-button' })}>
+          Sign In
         </span>
       </section>
       <section className={styles.right}>

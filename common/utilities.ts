@@ -71,6 +71,9 @@ export function formatDollars(value: number): string {
 }
 
 export function calculatePositionWithGutter(rect, objectWidth, viewportWidth, gutter = 24) {
+  if (!rect) {
+    return { top: 0, right: 0, side: 'right' };
+  }
   const right = viewportWidth - rect.right;
   const top = rect.top + rect.height + gutter;
   const side = right + objectWidth >= viewportWidth ? 'left' : 'right';

@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import GridLayout from '@system/layouts/GridLayout';
 import Navigation from '@system/Navigation';
 import Page from '@components/Page';
+import GlobalModalManager from '@system/modals/GlobalModalManager';
 import GradientButton from '@root/demos/GradientButton';
+import GridLayout from '@system/layouts/GridLayout';
 
 export default function ExampleGradientButton() {
   return (
@@ -16,6 +17,7 @@ export default function ExampleGradientButton() {
       <GridLayout style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
         <GradientButton>Click me!</GradientButton>
       </GridLayout>
+      <GlobalModalManager />
     </Page>
   );
 }

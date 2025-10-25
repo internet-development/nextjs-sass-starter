@@ -4,7 +4,7 @@ import * as Server from '@common/server';
 import * as Utilities from '@common/utilities';
 
 import ActionItem from '@system/documents/ActionItem';
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import DemoThreads from '@demos/DemoThreads';
 import GlobalModalManager from '@system/modals/GlobalModalManager';
 import KeyHeader from '@system/KeyHeader';

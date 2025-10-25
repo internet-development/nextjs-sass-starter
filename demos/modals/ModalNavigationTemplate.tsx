@@ -3,7 +3,7 @@ import styles from '@demos/modals/Modals.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import Cookies from 'js-cookie';
+import Cookies from '@modules/cookies';
 import OutsideElementEvent from '@system/detectors/OutsideElementEvent';
 
 import { ModalComponent } from '@root/system/modals/ModalContext';
