@@ -5,7 +5,7 @@ export function H1(props) {
 }
 
 export function H2(props) {
-  return <h1 className={styles.h2} {...props} />;
+  return <h2 className={styles.h2} {...props} />;
 }
 
 export function H3(props) {
