@@ -57,7 +57,10 @@ function ExampleSOW(props) {
     launch: props.data.service_launch,
     embedding: props.data.service_embedding,
     property_handoff: props.data.service_property_handoff,
+    ownership_handoff: props.data.service_ownership_handoff,
     custom_billing: props.data.service_custom_billing,
+    survival: props.data.service_survival,
+    confidentiality_and_non_disclosure: props.data.service_confidentiality_and_non_disclosure,
   };
 
   return (
@@ -191,6 +194,16 @@ function ExampleSOW(props) {
             1 ➝ the SOW End Date; or
             <br />2 ➝ the completion by {supplier.name} (“{supplier.shorthand}”) and acceptance by Client.
             <br />
+            <br />
+            {supplier.shorthand} will maintain continuous service coverage throughout the SOW Term by ensuring that at least one qualified member of its project roster is available
+            on a full-time basis, seven days a week. This staffing model is designed to accommodate occasional federal holidays and customary vacation periods taken by individual{' '}
+            {supplier.shorthand} personnel without diminishing the overall level of service provided to Client. {supplier.shorthand}’s resource planning and service allocation
+            include sufficient buffer capacity to support timely delivery of the contracted services within the agreed period.
+            <br />
+            <br />
+            {supplier.shorthand} will provide {client.name} with reasonable advance notice of any planned vacation or holiday periods that may have a material impact on
+            project-specific deliverables.
+            <br />
           </section>
         </section>
 
@@ -250,7 +263,7 @@ function ExampleSOW(props) {
           <section className={Utilities.classNames(styles.serviceColumn, styles.right)}>4.4.3. Brand Development</section>
           <section className={styles.serviceRemainder}>
             {supplier.shorthand} will produce materials that assist with the development of a brand history, mission and values, brand logo, color scheme, typefaces, and other
-            elements.
+            elements. All brand materials created under this section, including all iterations, concepts, and derivatives, are the exclusive property of {client.name}.
           </section>
         </section>
 
@@ -369,6 +382,46 @@ function ExampleSOW(props) {
           </section>
         </section>
 
+        {services.ownership_handoff ? (
+          <>
+            <section className={styles.row} style={{ marginTop: 24 }}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}>7. Intellectual Property & Ownership</section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.1. Ownership of Work Product</section>
+              <section className={styles.remainder}>
+                All work product created by {supplier.name} (“{supplier.shorthand}”) during the SOW Term, including but not limited to code, designs, documentation, concepts,
+                methodologies, architectures, brand materials, and any other deliverables or materials created in connection with this engagement, shall be the sole and exclusive
+                property of {client.name} upon creation. This includes any work that incorporates, builds upon, or is inspired by {client.name}'s existing intellectual property,
+                brand, or business.
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.2. Assignment</section>
+              <section className={styles.remainder}>
+                {supplier.name} (“{supplier.shorthand}”) hereby assigns to Parallel Web Systems all rights, title, and interest in and to all intellectual property created under
+                this SOW, including all copyrights, patents, trade secrets, and other proprietary rights. {supplier.shorthand} permanently relinquishes any claim, ownership, or
+                rights to use, copy, distribute, modify, open-source, or otherwise exploit any work product created under this agreement.
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.3. No Open Source</section>
+              <section className={styles.remainder}>
+                {supplier.name} (“{supplier.shorthand}”) shall not release, publish, or contribute any code, designs, documentation, or other materials created under this SOW to
+                open-source repositories or public forums without prior written approval from {client.name}.
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>7.4. Brand Work</section>
+              <section className={styles.remainder}>
+                All brand materials, including logos, color schemes, typefaces, brand guidelines, and any derivatives thereof, are the exclusive property of {client.name} and may
+                not be used, modified, or referenced by {supplier.name} (“{supplier.shorthand}”) in any other context without written permission from {client.name}.
+              </section>
+            </section>
+          </>
+        ) : null}
+
         {services.property_handoff ? (
           <>
             <section className={styles.row} style={{ marginTop: 24 }}>
@@ -406,6 +459,58 @@ function ExampleSOW(props) {
               <section className={styles.remainder}>
                 {supplier.name} (“{supplier.shorthand}”) agrees to waive any moral rights or equivalent rights under applicable laws, to the fullest extent permissible by law, in
                 the Work Product, and shall not make any claims or take any actions based on moral rights in relation to the assigned Work Product.
+              </section>
+            </section>
+          </>
+        ) : null}
+
+        {services.confidentiality_and_non_disclosure ? (
+          <>
+            <section className={styles.row} style={{ marginTop: 24 }}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}>8. Confidentiality and Non-Disclosure</section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>8.1. Confidential Information</section>
+              <section className={styles.remainder}>
+                All information shared by {client.name}, including but not limited to business plans, technical specifications, product roadmaps, customer data, financial
+                information, and strategic initiatives, shall be treated as confidential proprietary information.
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>8.2. Non-Disclosure</section>
+              <section className={styles.remainder}>
+                {supplier.name} (“{supplier.shorthand}”) shall not disclose any confidential information or details about this engagement, Client's business, technology, or work
+                product to any third party without prior written approval from {client.name}.
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>8.3. Publicity Restrictions</section>
+              <section className={styles.remainder}>
+                {supplier.name} (“{supplier.shorthand}”) shall not: <br />
+                Post about this engagement on social media, portfolio sites, or any public forum without written approval from {client.name}. Use {client.name}' name, logo, or
+                brand in any marketing materials, case studies, or promotional content without written approval. Discuss or display any work product created for {client.name}{' '}
+                publicly without written approval
+              </section>
+            </section>
+            <section className={styles.row}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}></section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>8.4. Return of Materials</section>
+              <section className={styles.remainder}>
+                Upon completion or termination of this SOW, {supplier.name} (“{supplier.shorthand}”) shall promptly return or destroy all Parallel Web Systems materials, code,
+                documents, and confidential information in their possession and provide written certification of such destruction if requested.
+              </section>
+            </section>
+          </>
+        ) : null}
+
+        {services.survival ? (
+          <>
+            <section className={styles.row} style={{ marginTop: 24 }}>
+              <section className={Utilities.classNames(styles.column, styles.shaded)}>9. Survival</section>
+              <section className={Utilities.classNames(styles.column, styles.subshaded)}>9.1. Survival Duration</section>
+              <section className={styles.remainder}>
+                Sections 7 (Intellectual Property), 8 (Confidentiality and Non-Disclosure), and 8.4 (Return of Materials) shall survive termination or expiration of this SOW
+                indefinitely.
               </section>
             </section>
           </>

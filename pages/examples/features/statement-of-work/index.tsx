@@ -148,6 +148,9 @@ function ExampleStatementOfWorks(props) {
                 service_embedding: each.data.service_embedding,
                 service_property_handoff: each.data.service_property_handoff,
                 service_custom_billing: each.data.service_custom_billing || '',
+                service_survival: each.data.service_survival || '',
+                service_confidentiality_and_non_disclosure: each.data.service_confidentiality_and_non_disclosure || '',
+                service_ownership_handoff: each.data.service_ownership_handoff || '',
               });
             }}
             onDelete={async () => {
@@ -389,6 +392,39 @@ function ExampleStatementOfWorks(props) {
               style={{ marginTop: 8 }}
             >
               All IP will be handed off.
+            </Checkbox>
+
+            <Checkbox
+              name="service_ownership_handoff"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.checked });
+              }}
+              value={updates.service_ownership_handoff}
+              style={{ marginTop: 8 }}
+            >
+              All IP will be handed off with strict ownership rules.
+            </Checkbox>
+
+            <Checkbox
+              name="service_survival"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.checked });
+              }}
+              value={updates.service_survival}
+              style={{ marginTop: 8 }}
+            >
+              Ownership rules will apply after the SOW is terminated.
+            </Checkbox>
+
+            <Checkbox
+              name="service_confidentiality_and_non_disclosure"
+              onChange={(e) => {
+                setUpdates({ ...updates, [e.target.name]: e.target.checked });
+              }}
+              value={updates.service_confidentiality_and_non_disclosure}
+              style={{ marginTop: 8 }}
+            >
+              There is a non disclosure and confidentiality requirement.
             </Checkbox>
 
             <InputLabel style={{ marginTop: 64 }}>2. Our incorporation state</InputLabel>
