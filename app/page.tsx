@@ -104,7 +104,10 @@ export default async function Page(props) {
         <ListItem href="https://github.com/internet-development/nextjs-intdev-services-auth-payments" index={Utilities.leftPad(`11`, 4)} isWIP>
           nextjs-intdev-services-auth-payments
         </ListItem>
-        <ListItem href="https://omnipost.onrender.com" index={Utilities.leftPad(`12`, 4)}>
+        <ListItem href="https://devfolio.page" index={Utilities.leftPad(`12`, 4)}>
+          devfolio.page
+        </ListItem>
+        <ListItem href="https://omnipost.onrender.com" index={Utilities.leftPad(`13`, 4)}>
           omnipost
         </ListItem>
       </div>
