@@ -1,50 +1,23 @@
-import styles from '@system/animations/TextSwapper.module.scss';
+import { useState, useEffect } from 'react';
 
-import * as React from 'react';
+interface Props {
+  children: string | number;
+  delay?: number;
+}
 
-const buildAnimationStyle = (type: AnimationType, duration: string): object => {
-  return {
-    animation: `${type} ${duration}`,
-    animationFillMode: 'forwards',
-  };
-};
+const TextSwapper: React.FC<Props> = ({ children, delay = 500 }) => {
+  const [displayText, setDisplayText] = useState<string | number>(String(children));
+  const [originalText, setOriginalText] = useState<string | number>(String(children));
 
-type AnimationType = 'fade' | 'slideDown' | 'slideUp' | 'slideLeft' | 'slideRight' | 'blur';
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDisplayText(String(children));
+    }, delay);
 
-type TextSwapProps = {
-  style?: any;
-  strings: string[];
-  interval?: number;
-  animationType?: AnimationType;
-  animationDuration?: string;
-};
+    return () => clearInterval(intervalId);
+  }, [children, delay]);
 
-const TextSwapper = ({ animationType = 'fade', animationDuration = '2.4s', interval = 2400, style, strings }: TextSwapProps) => {
-  const defaultStyle = buildAnimationStyle(animationType, animationDuration);
-
-  const [currString, setCurrString] = React.useState(strings[0]);
-  const [animationStyle, setAnimationStyle] = React.useState(defaultStyle);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      const currIndex: number = strings.indexOf(currString);
-      const nextIndex: number = currIndex < strings.length - 1 ? currIndex + 1 : 0;
-      setCurrString(strings[nextIndex]);
-    }, interval);
-    return () => {
-      setAnimationStyle({});
-      clearInterval(timer);
-      setAnimationStyle(animationStyle);
-    };
-  }, [currString, strings, interval, animationStyle]);
-
-  return (
-    <span className={styles.root} style={style}>
-      <span className={styles.animation} key={currString} style={animationStyle}>
-        {currString}
-      </span>
-    </span>
-  );
+  return <span>{displayText}</span>;
 };
 
 export default TextSwapper;
