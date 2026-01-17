@@ -1,40 +1,41 @@
 .body {
-  font-size: var(--type-scale-5);
   padding: 24px;
 }
 
 .pixel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
+  position: fixed;
   height: 1px;
+  width: 1px;
+  outline: 0px;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .prompt {
-  font-size: var(--type-scale-fixed-tiny);
   position: fixed;
   right: 24px;
   bottom: 24px;
-  max-width: 156px;
-  padding: 16px 16px 16px 16px;
-  border: 1px solid var(--theme-border);
-  background: var(--theme-background);
-  border-radius: 4px;
-  box-shadow: 0 1px 4px var(--theme-box-shadow-modal);
-  z-index: 1;
+  max-width: 228px;
+  font-size: var(--type-scale-fixed-small);
+  line-height: var(--type-scale-fixed-body-line-height);
+  letter-spacing: 0.03rem;
 }
 
-.link {
+.skipLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-120%);
+  background: var(--theme-background);
   color: var(--theme-text);
-  font-weight: 600;
+  padding: 12px 16px;
+  z-index: 1000;
   text-decoration: none;
+  font-size: var(--type-scale-fixed-small);
+  border: 1px solid var(--theme-border);
 
-  &:visited {
-    color: var(--theme-text);
-  }
-
-  &:hover {
-    color: var(--theme-primary);
+  &:focus-visible {
+    transform: translateY(0);
   }
 }
