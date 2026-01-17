@@ -310,26 +310,33 @@ export async function generateNonce() {
 }
 
 // NOTE(jimmylee):
-// Fallback exists for legacy environments without crypto.randomUUID support.
+// Generates a UUID v4 compliant string. Uses crypto.randomUUID when available (Node 18+, modern browsers),
+// falls back to crypto.getRandomValues, then throws if no secure random source is available.
+// This function is NOT safe for security-sensitive use if it ever falls back to an environment
+// without cryptographic randomness (which would throw an error rather than silently degrade).
 export function generateUUID(): string {
-  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
-    return crypto.randomUUID();
+  // Use globalThis.crypto for cross-environment compatibility (browser and Node 18+)
+  const cryptoObj = typeof globalThis !== 'undefined' ? globalThis.crypto : undefined;
+
+  // Primary path: crypto.randomUUID (Node 18+, modern browsers)
+  if (cryptoObj && typeof cryptoObj.randomUUID === 'function') {
+    return cryptoObj.randomUUID();
   }
 
-  if (typeof crypto !== 'undefined' && typeof crypto.getRandomValues === 'function') {
+  // Fallback: crypto.getRandomValues (still cryptographically secure)
+  if (cryptoObj && typeof cryptoObj.getRandomValues === 'function') {
     const bytes = new Uint8Array(16);
-    crypto.getRandomValues(bytes);
+    cryptoObj.getRandomValues(bytes);
+    // Set version bits (4) at bytes[6]
     bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    // Set variant bits (RFC 4122) at bytes[8]
     bytes[8] = (bytes[8] & 0x3f) | 0x80;
     const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('');
     return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
   }
 
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (Math.random() * 16) | 0;
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+  // No secure random source available - throw rather than silently degrade
+  throw new Error('No secure random source available for UUID generation');
 }
 
 export function filterUndefined(obj) {
