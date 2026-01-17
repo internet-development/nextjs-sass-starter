@@ -16,15 +16,17 @@ function ExampleBase(props) {
       description="A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites."
       url="https://wireframes.internet.dev/examples"
     >
-      <Navigation />
+      <Navigation skipLinkTargetId="main-content" />
       <SectionFullHeight>
         <Content>
-          <H1>nextjs-sass-starter</H1>
-          <Lead style={{ marginTop: `var(--type-scale-5)` }}>
-            A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites. <br />
-            <br />
-            This example tests a navigation, theming, SEO pixel, and if scrollbars accidently render since we don't use overflow hacks.
-          </Lead>
+          <div id="main-content">
+            <H1>nextjs-sass-starter</H1>
+            <Lead style={{ marginTop: `var(--type-scale-5)` }}>
+              A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites. <br />
+              <br />
+              This example tests a navigation, theming, SEO pixel, and if scrollbars accidently render since we don't use overflow hacks.
+            </Lead>
+          </div>
         </Content>
       </SectionFullHeight>
       <GlobalModalManager />
@@ -39,3 +41,4 @@ export async function getServerSideProps(context) {
 }
 
 export default ExampleBase;
+

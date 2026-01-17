@@ -1,0 +1,24 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--theme-background);
+  color: var(--theme-text);
+  border: 1px solid var(--theme-border);
+  border-radius: 0 0 4px 0;
+  font-family: var(--font-family);
+  font-size: var(--type-scale);
+  text-decoration: none;
+  transform: translateY(-100%);
+  transition: transform 0.2s ease-in-out;
+
+  &:focus,
+  &:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--theme-focused);
+    outline-offset: 2px;
+  }
+}
+

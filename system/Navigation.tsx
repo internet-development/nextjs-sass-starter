@@ -3,48 +3,46 @@ import styles from '@system/Navigation.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import ModalAuthentication from '@root/demos/modals/ModalAuthentication';
-import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
+import SkipLink from '@system/SkipLink';
 
-import { useModals } from '@root/system/modals/ModalContext';
+import { useModals } from '@system/modals/ModalContext';
 
-export default function Navigation() {
+import ModalNavigation from '@demos/modals/ModalNavigation';
+
+export interface NavigationProps {
+  skipLinkTargetId?: string;
+}
+
+export default function Navigation({ skipLinkTargetId }: NavigationProps) {
   const modals = useModals();
 
   return (
     <nav className={styles.root}>
+      {skipLinkTargetId && <SkipLink targetId={skipLinkTargetId} />}
       <section className={styles.left}>
         <a href="/" className={styles.item}>
-          Template
+          ✶ INTDEV
         </a>
       </section>
-      <section className={styles.stretch}>
+      <section className={styles.stretch} />
+      <section className={styles.right}>
         <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
           Theme
         </span>
-        <a className={styles.item} href="/examples/features/settings">
-          Settings
+        <a className={styles.item} href="/examples">
+          Index
         </a>
-        <a className={styles.item} href="/examples/features/services">
-          Services
-        </a>
-        <a className={styles.item} href="/examples/features/files-s3">
-          Files
-        </a>
-        <span className={styles.item} id="site-signin-button" onClick={() => modals.open(ModalAuthentication, { parentId: 'site-signin-button' })}>
-          Sign In
-        </span>
-      </section>
-      <section className={styles.right}>
         <span
           className={styles.item}
           id="site-navigation-button"
-          onClick={() => modals.open(ModalNavigationV2, { parentId: 'site-navigation-button' })}
-          data-detector-ignore-navigation
+          onClick={() => {
+            modals.open(ModalNavigation, { parentId: 'site-navigation-button' });
+          }}
         >
-          Navigation
+          ✳ Options
         </span>
       </section>
     </nav>
   );
 }
+
