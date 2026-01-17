@@ -3,48 +3,45 @@ import styles from '@system/Navigation.module.scss';
 import * as React from 'react';
 import * as Utilities from '@common/utilities';
 
-import ModalAuthentication from '@root/demos/modals/ModalAuthentication';
-import ModalNavigationV2 from '@root/demos/modals/ModalNavigationV2';
+import SkipToContent from '@system/SkipToContent';
 
-import { useModals } from '@root/system/modals/ModalContext';
+import { useModals } from '@system/modals/ModalContext';
 
-export default function Navigation() {
+import ModalNavigation from '@demos/modals/ModalNavigation';
+
+export default function Navigation(props) {
   const modals = useModals();
 
   return (
     <nav className={styles.root}>
+      <SkipToContent />
       <section className={styles.left}>
         <a href="/" className={styles.item}>
-          Template
+          ✶ INTDEV
+        </a>
+        <a href="/examples" className={styles.item}>
+          Examples
+        </a>
+        <a href="https://github.com/internet-development/nextjs-sass-starter" className={styles.item} target="_blank">
+          GitHub
         </a>
       </section>
-      <section className={styles.stretch}>
+      <section className={styles.stretch} />
+      <section className={styles.right}>
         <span className={styles.item} onClick={() => Utilities.onHandleThemeChange()}>
           Theme
         </span>
-        <a className={styles.item} href="/examples/features/settings">
-          Settings
-        </a>
-        <a className={styles.item} href="/examples/features/services">
-          Services
-        </a>
-        <a className={styles.item} href="/examples/features/files-s3">
-          Files
-        </a>
-        <span className={styles.item} id="site-signin-button" onClick={() => modals.open(ModalAuthentication, { parentId: 'site-signin-button' })}>
-          Sign In
-        </span>
-      </section>
-      <section className={styles.right}>
         <span
           className={styles.item}
           id="site-navigation-button"
-          onClick={() => modals.open(ModalNavigationV2, { parentId: 'site-navigation-button' })}
-          data-detector-ignore-navigation
+          onClick={() => {
+            modals.open(ModalNavigation, { parentId: 'site-navigation-button' });
+          }}
         >
-          Navigation
+          ☰
         </span>
       </section>
     </nav>
   );
 }
+

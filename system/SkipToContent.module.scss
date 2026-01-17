@@ -1,0 +1,30 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transform: translateY(-100%);
+  background: var(--theme-background);
+  color: var(--theme-text);
+  padding: 12px 24px;
+  text-decoration: none;
+  font-size: var(--type-scale-fixed-small);
+  font-family: var(--font-family);
+  border: 1px solid var(--theme-border);
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 4px;
+  transition: transform 0.2s ease-in-out;
+
+  &:focus {
+    transform: translateY(0);
+    outline: 2px solid var(--theme-primary);
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    background: var(--theme-text);
+    color: var(--theme-background);
+  }
+}
+

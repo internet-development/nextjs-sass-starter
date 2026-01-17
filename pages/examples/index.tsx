@@ -18,7 +18,7 @@ function ExampleBase(props) {
     >
       <Navigation />
       <SectionFullHeight>
-        <Content>
+        <Content id="main-content" tabIndex={-1}>
           <H1>nextjs-sass-starter</H1>
           <Lead style={{ marginTop: `var(--type-scale-5)` }}>
             A lightweight website template to test our design system. You can view this template on GitHub and see how we write websites. <br />
@@ -39,3 +39,4 @@ export async function getServerSideProps(context) {
 }
 
 export default ExampleBase;
+
