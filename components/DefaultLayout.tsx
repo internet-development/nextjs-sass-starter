@@ -6,7 +6,10 @@ export default function App(props) {
   return (
     <div className={styles.body}>
       <img className={styles.pixel} src={props.previewPixelSRC} alt={''} />
-      {props.children}
+      <main id="main-content" tabIndex={-1}>
+        {props.children}
+      </main>
     </div>
   );
 }
+

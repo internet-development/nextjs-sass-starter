@@ -42,7 +42,9 @@ export default function Page(props: PageProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <img className={styles.pixel} src="https://intdev-global.s3.us-west-2.amazonaws.com/template-app-icon.png" alt="" />
-      {props.children}
+      <main id="main-content" tabIndex={-1}>
+        {props.children}
+      </main>
       {!props.isNotOpenSourceExample ? (
         <div className={styles.prompt}>
           This is an open source example. Take the code and remix it! <br />
@@ -55,3 +57,4 @@ export default function Page(props: PageProps) {
     </>
   );
 }
+
