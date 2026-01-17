@@ -2,19 +2,27 @@
   padding: 24px;
 }
 
-.pixel {
-  width: 1px;
-  height: 1px;
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
+.mainContent {
+  outline: none;
 }
 
-.mainContent {
-  // Remove focus outline when element is focused programmatically (e.g., via skip link)
-  // but preserve it for keyboard focus-visible interactions
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
+.pixel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.prompt {
+  padding: 24px;
+  max-width: 768px;
+  line-height: 1.6;
+}
+
+.link {
+  color: var(--theme-text);
 }
 

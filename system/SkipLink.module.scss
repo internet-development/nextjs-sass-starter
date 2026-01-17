@@ -1,23 +1,24 @@
 .skipLink {
   position: absolute;
-  top: -100px;
-  left: 0;
+  top: -100%;
+  left: 16px;
   z-index: 9999;
   padding: 8px 16px;
-  background: var(--theme-background);
-  color: var(--theme-text);
+  background: var(--theme-text);
+  color: var(--theme-background);
   text-decoration: none;
-  font-size: var(--type-scale-fixed-small);
-  border: 1px solid var(--theme-border);
+  font-weight: 600;
   border-radius: 4px;
   transition: top 0.1s ease-in-out;
 
-  &:focus,
-  &:focus-visible {
-    top: 8px;
-    left: 8px;
-    outline: 2px solid var(--theme-text);
+  &:focus {
+    top: 16px;
+    outline: 2px solid var(--theme-focused);
     outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }
 

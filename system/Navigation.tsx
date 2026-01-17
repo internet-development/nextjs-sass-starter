@@ -16,6 +16,17 @@ const MODAL_ID = 'modal-navigation';
 export default function Navigation() {
   const modals = useModals();
 
+  /**
+   * Handles keyboard events for the theme toggle.
+   * Activates on Enter or Space key to match native button behavior.
+   */
+  const handleThemeKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      Utilities.onHandleThemeChange();
+    }
+  };
+
   return (
     <nav className={styles.root}>
       <SkipLink />
@@ -25,7 +36,19 @@ export default function Navigation() {
         </a>
         <span className={styles.stretch}></span>
         <span className={styles.right}>
-          <span className={styles.action} onClick={() => Utilities.onHandleThemeChange()}>
+          {/* 
+            Theme toggle implemented as a span with button semantics.
+            Using span instead of button to match existing styling patterns
+            in this codebase. Full keyboard accessibility is provided via
+            role, tabIndex, and onKeyDown attributes.
+          */}
+          <span
+            className={styles.action}
+            onClick={() => Utilities.onHandleThemeChange()}
+            onKeyDown={handleThemeKeyDown}
+            role="button"
+            tabIndex={0}
+          >
             Theme
           </span>
           <a className={styles.link} href="/examples/features/settings">
