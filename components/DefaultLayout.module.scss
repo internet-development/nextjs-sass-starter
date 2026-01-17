@@ -1,40 +1,20 @@
 .body {
-  font-size: var(--type-scale-5);
   padding: 24px;
 }
 
 .pixel {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 1px;
   height: 1px;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
 }
 
-.prompt {
-  font-size: var(--type-scale-fixed-tiny);
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  max-width: 156px;
-  padding: 16px 16px 16px 16px;
-  border: 1px solid var(--theme-border);
-  background: var(--theme-background);
-  border-radius: 4px;
-  box-shadow: 0 1px 4px var(--theme-box-shadow-modal);
-  z-index: 1;
-}
-
-.link {
-  color: var(--theme-text);
-  font-weight: 600;
-  text-decoration: none;
-
-  &:visited {
-    color: var(--theme-text);
-  }
-
-  &:hover {
-    color: var(--theme-primary);
+.mainContent {
+  // Remove focus outline when element is focused programmatically (e.g., via skip link)
+  // but preserve it for keyboard focus-visible interactions
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 }
+

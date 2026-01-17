@@ -37,8 +37,8 @@ export default function SkipLink({ targetId = 'main-content', children = 'Skip t
       // Prevent default only if we can handle focus programmatically
       event.preventDefault();
       target.focus();
-      // Also scroll into view for visual users
-      target.scrollIntoView();
+      // Note: focus() typically scrolls the element into view in most browsers.
+      // We avoid calling scrollIntoView() separately to prevent double-scrolling.
     }
     // If target doesn't exist, let the default anchor behavior work
   };
@@ -48,7 +48,6 @@ export default function SkipLink({ targetId = 'main-content', children = 'Skip t
       href={`#${targetId}`}
       className={styles.skipLink}
       onClick={handleClick}
-      aria-label="Skip navigation, go to main content"
     >
       {children}
     </a>

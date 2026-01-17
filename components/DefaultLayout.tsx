@@ -7,12 +7,14 @@ export interface DefaultLayoutProps {
   previewPixelSRC?: string;
 }
 
-export default function App(props: DefaultLayoutProps) {
+export default function DefaultLayout(props: DefaultLayoutProps) {
   return (
     <div className={styles.body}>
-      <img className={styles.pixel} src={props.previewPixelSRC} alt={''} />
+      {props.previewPixelSRC && (
+        <img className={styles.pixel} src={props.previewPixelSRC} alt="" />
+      )}
       {/* Main landmark with tabIndex={-1} to allow programmatic focus from skip link */}
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" className={styles.mainContent} tabIndex={-1}>
         {props.children}
       </main>
     </div>

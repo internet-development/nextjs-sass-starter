@@ -1,46 +1,23 @@
 .skipLink {
   position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  top: -100px;
+  left: 0;
   z-index: 9999;
-  padding: 1rem;
+  padding: 8px 16px;
   background: var(--theme-background);
   color: var(--theme-text);
-  text-decoration: underline;
-  font-weight: 600;
-  border: 2px solid var(--theme-border);
+  text-decoration: none;
+  font-size: var(--type-scale-fixed-small);
+  border: 1px solid var(--theme-border);
   border-radius: 4px;
+  transition: top 0.1s ease-in-out;
 
-  /* Fallback for older browsers that don't support :focus-visible */
-  &:focus {
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-    width: auto;
-    height: auto;
-    overflow: visible;
-    transform: translateY(0);
-    transition: transform 0.15s ease-out;
-  }
-
-  /* Modern browsers: only show on keyboard focus */
+  &:focus,
   &:focus-visible {
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-    width: auto;
-    height: auto;
-    overflow: visible;
-    transform: translateY(0);
-    transition: transform 0.15s ease-out;
-  }
-
-  /* Respect user motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
+    top: 8px;
+    left: 8px;
+    outline: 2px solid var(--theme-text);
+    outline-offset: 2px;
   }
 }
 
