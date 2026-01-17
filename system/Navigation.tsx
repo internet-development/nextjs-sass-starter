@@ -12,7 +12,7 @@ import { useModals } from '@root/system/modals/ModalContext';
 
 const MODAL_ID = 'modal-navigation';
 
-export default function Navigation(props) {
+export default function Navigation() {
   const modals = useModals();
 
   return (

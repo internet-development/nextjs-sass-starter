@@ -19,6 +19,9 @@ export interface SkipLinkProps {
  * then appears at the top-left of the viewport. Activating it moves
  * focus to the main content area.
  *
+ * Note: The target element must be focusable (e.g., via tabIndex={-1})
+ * to properly receive keyboard focus when the skip link is activated.
+ *
  * @example
  * // Basic usage (renders as first child in Navigation)
  * <SkipLink />
@@ -28,8 +31,25 @@ export interface SkipLinkProps {
  * <SkipLink targetId="content">Skip to content</SkipLink>
  */
 export default function SkipLink({ targetId = 'main-content', children = 'Skip to main content' }: SkipLinkProps) {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = document.getElementById(targetId);
+    if (target) {
+      // Prevent default only if we can handle focus programmatically
+      event.preventDefault();
+      target.focus();
+      // Also scroll into view for visual users
+      target.scrollIntoView();
+    }
+    // If target doesn't exist, let the default anchor behavior work
+  };
+
   return (
-    <a href={`#${targetId}`} className={styles.skipLink}>
+    <a
+      href={`#${targetId}`}
+      className={styles.skipLink}
+      onClick={handleClick}
+      aria-label="Skip navigation, go to main content"
+    >
       {children}
     </a>
   );
