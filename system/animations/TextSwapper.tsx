@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react';
 
-interface Props {
-  children: string | number;
+interface TextSwapperProps {
+  textArray: string[];
   delay?: number;
 }
 
-const TextSwapper: React.FC<Props> = ({ children, delay = 500 }) => {
-  const [displayText, setDisplayText] = useState<string | number>(String(children));
-  const [originalText, setOriginalText] = useState<string | number>(String(children));
+const TextSwapper: React.FC<TextSwapperProps> = ({ textArray, delay = 2000 }) => {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setDisplayText(String(children));
+    const timer = setTimeout(() => {
+      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textArray.length);
     }, delay);
 
-    return () => clearInterval(intervalId);
-  }, [children, delay]);
+    return () => clearTimeout(timer);
+  }, [currentTextIndex, delay, textArray.length]);
 
-  return <span>{displayText}</span>;
+  return <span>{textArray[currentTextIndex]}</span>;
 };
 
 export default TextSwapper;
+
