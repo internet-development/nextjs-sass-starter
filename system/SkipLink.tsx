@@ -35,19 +35,22 @@ export default function SkipLink({ targetId = 'main-content', children = 'Skip t
    * Handles click on the skip link.
    * 
    * Note: document.getElementById is safe here because onClick only fires
-   * in the browser (client-side). If this logic is ever refactored to run
-   * during SSR, add a `typeof document !== 'undefined'` guard.
+   * in the browser (client-side). Adding a defensive check for future-proofing
+   * if this logic is ever refactored to run during SSR.
    */
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof document === 'undefined') return;
+    
     const target = document.getElementById(targetId);
     if (target) {
       // Prevent default only if we can handle focus programmatically
       event.preventDefault();
       target.focus();
       // Ensure consistent scroll behavior across all browsers.
+      // Using 'nearest' to avoid jarring scroll if main-content is already mostly visible.
       // While focus() often scrolls the element into view, this is not
       // guaranteed in all browsers (especially for elements with tabIndex={-1}).
-      target.scrollIntoView({ block: 'start' });
+      target.scrollIntoView({ block: 'nearest' });
     }
     // If target doesn't exist, let the default anchor behavior work
   };

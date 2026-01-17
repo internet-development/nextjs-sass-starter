@@ -1,24 +1,32 @@
+/**
+ * SkipLink styles for WCAG 2.1 SC 2.4.1 compliance.
+ * 
+ * The skip link is visually hidden until focused, then appears
+ * at the top-left of the viewport above all other content.
+ *
+ * z-index: 9999 is intentionally high to ensure the skip link
+ * appears above all content including modals and fixed headers.
+ * If this codebase adopts a z-index scale, this value should
+ * be documented there to prevent future conflicts.
+ */
 .skipLink {
   position: absolute;
-  top: -100%;
-  left: 16px;
+  top: -100px;
+  left: 0;
   z-index: 9999;
   padding: 8px 16px;
   background: var(--theme-text);
   color: var(--theme-background);
   text-decoration: none;
   font-weight: 600;
-  border-radius: 4px;
-  transition: top 0.1s ease-in-out;
+  border-radius: 0 0 4px 0;
+  transition: top 0.15s ease-out;
 
-  &:focus {
-    top: 16px;
+  &:focus,
+  &:focus-visible {
+    top: 0;
     outline: 2px solid var(--theme-focused);
     outline-offset: 2px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
   }
 }
 

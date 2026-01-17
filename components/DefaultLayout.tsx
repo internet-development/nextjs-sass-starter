@@ -13,7 +13,7 @@ export default function DefaultLayout(props: DefaultLayoutProps) {
       {props.previewPixelSRC && (
         <img className={styles.pixel} src={props.previewPixelSRC} alt="" />
       )}
-      {/* Main landmark with tabIndex={-1} to allow programmatic focus from skip link */}
+      {/* Main landmark with tabIndex={-1} to allow programmatic focus from SkipLink component */}
       <main id="main-content" className={styles.mainContent} tabIndex={-1}>
         {props.children}
       </main>

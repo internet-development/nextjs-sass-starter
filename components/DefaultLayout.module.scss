@@ -1,28 +1,46 @@
 .body {
-  padding: 24px;
+  display: block;
+  font-size: var(--type-scale);
+  padding: 88px 24px 128px 24px;
+  margin: 0 auto 0 auto;
+  max-width: 1344px;
+  width: 100%;
+}
+
+.pixel {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 .mainContent {
   outline: none;
 }
 
-.pixel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  visibility: hidden;
-  pointer-events: none;
+.link {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--theme-text);
+  opacity: 0.8;
+}
+
+.link:visited {
+  color: var(--theme-text);
 }
 
 .prompt {
-  padding: 24px;
-  max-width: 768px;
-  line-height: 1.6;
-}
-
-.link {
-  color: var(--theme-text);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 24px 24px 24px;
+  background: linear-gradient(to top, var(--theme-background) 50%, transparent);
+  z-index: 100;
 }
 

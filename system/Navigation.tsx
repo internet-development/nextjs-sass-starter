@@ -5,13 +5,14 @@ import * as Utilities from '@common/utilities';
 
 import Button from '@system/Button';
 import Logo from '@components/InternetDevelopmentLogo';
+import ModalAuthentication from '@demos/modals/ModalAuthentication';
 import ModalNavigationV2 from '@demos/modals/ModalNavigationV2';
 import SkipLink from '@system/SkipLink';
 
 import { useModals } from '@root/system/modals/ModalContext';
 
-// MODAL_ID is used for focus return and modal parenting when the navigation modal is opened
 const MODAL_ID = 'modal-navigation';
+const MODAL_AUTH_ID = 'modal-authentication';
 
 export default function Navigation() {
   const modals = useModals();
@@ -61,16 +62,22 @@ export default function Navigation() {
             Files
           </a>
           <Button
+            data-detector-ignore-navigation
             id={MODAL_ID}
             onClick={() => {
               modals.open(ModalNavigationV2, { parentId: MODAL_ID });
             }}
           >
-            Index
+            Navigation
           </Button>
-          <a className={styles.link} href="/examples/features/authentication">
+          <Button
+            id={MODAL_AUTH_ID}
+            onClick={() => {
+              modals.open(ModalAuthentication, { parentId: MODAL_AUTH_ID });
+            }}
+          >
             Sign In
-          </a>
+          </Button>
         </span>
       </div>
     </nav>
