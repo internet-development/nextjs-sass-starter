@@ -317,12 +317,23 @@ export function filterUndefined(obj) {
   return res;
 }
 
-export async function copyToClipboard(text: string): Promise<boolean> {
+/**
+ * Copies the given text to the clipboard.
+ *
+ * Uses the modern Clipboard API when available, with a fallback to
+ * document.execCommand('copy') for older browsers.
+ *
+ * @param text - The string to copy. Accepts null or undefined for type safety.
+ * @returns A promise that resolves to true if the copy succeeded, false otherwise.
+ *          Returns false on server-side (SSR) or for empty/null/undefined input.
+ *          Never throws exceptions to the caller.
+ */
+export async function copyToClipboard(text?: string | null): Promise<boolean> {
   if (typeof window === 'undefined') {
     return false;
   }
 
-  if (isEmpty(text)) {
+  if (!text) {
     return false;
   }
 
@@ -331,7 +342,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
       await navigator.clipboard.writeText(text);
       return true;
     } catch {
-      // fall through to fallback
+      // Clipboard API failed, try fallback
     }
   }
 
@@ -339,7 +350,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     const textarea = document.createElement('textarea');
     textarea.value = text;
     textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
+    textarea.style.left = '-9999px';
     document.body.appendChild(textarea);
     textarea.select();
 
