@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TextSwapperProps {
   textArray: string[];
@@ -20,4 +20,3 @@ const TextSwapper: React.FC<TextSwapperProps> = ({ textArray, delay = 2000 }) =>
 };
 
 export default TextSwapper;
-
