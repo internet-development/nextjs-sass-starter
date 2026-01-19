@@ -16,6 +16,27 @@
   font-style: oblique;
 }
 
+.theme-pink {
+  --theme-background: #faf9fb;
+  --theme-background-focus: #f2eef2;
+  --theme-foreground: #f6f4f6;
+  --theme-border: #e2c6d3;
+  --theme-border-subdued: #f0dde6;
+  --theme-text: #1a0f14;
+  --theme-primary: #c13a7e;
+  --theme-button-text: #ffffff;
+  --theme-success: #2ea98c;
+  --theme-error: #d13c3c;
+  --theme-error-subdued: #f2c7c7;
+  --theme-input-active: #d46b9a;
+  --theme-focused: #e39ab7;
+  --theme-graph-positive: #2ea98c;
+  --theme-graph-positive-subdued: #ccebe3;
+  --theme-graph-negative: #d13c3c;
+  --theme-graph-negative-subdued: #f2c7c7;
+}
+
+
 html,
 body,
 div,
