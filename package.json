@@ -7,10 +7,10 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next -p 10000",
-    "build": "next build",
-    "start": "PORT=10000 next start",
-    "lint": "next lint"
+    "dev": "npx next -p 10000",
+    "build": "npx next build",
+    "start": "PORT=10000 npx next start",
+    "lint": "npx next lint"
   },
   "dependencies": {
     "d3": "^7.9.0",
