@@ -118,8 +118,9 @@ section {
   display: block;
 }
 
-.theme-pink {
+body.theme-pink {
   --theme-background: #fff8fb;
+  --theme-background-overlay: rgba(255, 248, 251, 0.9);
   --theme-background-subtle: #fdeaf1;
   --theme-text: #1f1b1d;
   --theme-text-subtle: #6b4f5c;
