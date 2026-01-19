@@ -291,6 +291,21 @@ body.theme-blue {
 }
 
 body.theme-neon-green {
+}
+
+.theme-pink {
+  --theme-background: #FFF5F7;
+  --theme-text: #1A1A1A;
+  --theme-border: #E8B4BC;
+  --theme-border-subdued: #F5D5DA;
+  --theme-primary: #D64D6A;
+  --theme-input-active: #F0A0B0;
+  --theme-success: #2E7D32;
+  --theme-error: #C62828;
+  --theme-graph-positive: #2E7D32;
+  --theme-graph-positive-subdued: rgba(46, 125, 50, 0.3);
+  --theme-graph-negative: #C62828;
+  --theme-graph-negative-subdued: rgba(198, 40, 40, 0.3);
   --theme-background: var(--color-neon-green-100);
   --theme-background-overlay: var(--color-black-100-4);
   --theme-background-box-top: var(--color-gray-70);
