@@ -118,6 +118,28 @@ section {
   display: block;
 }
 
+.theme-pink {
+  --theme-background: #fff8fb;
+  --theme-background-subtle: #fdeaf1;
+  --theme-text: #1f1b1d;
+  --theme-text-subtle: #6b4f5c;
+  --theme-primary: #d9468f;
+  --theme-primary-hover: #c63d82;
+  --theme-primary-active: #b33473;
+  --theme-border: #f1c1d6;
+  --theme-border-subdued: #f7d9e6;
+  --theme-input-background: #ffffff;
+  --theme-input-border: #e5a9c5;
+  --theme-input-active: #d9468f;
+  --theme-success: #2e7d6b;
+  --theme-error: #c62828;
+  --theme-graph-positive: #d9468f;
+  --theme-graph-positive-subdued: #f2b6d2;
+  --theme-graph-negative: #c62828;
+  --theme-graph-negative-subdued: #f5c6c6;
+}
+
+
 body.theme-light {
   --theme-background: var(--color-white);
   --theme-background-overlay: var(--color-white-4);
