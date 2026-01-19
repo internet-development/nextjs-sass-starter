@@ -460,3 +460,16 @@ body {
     font-size: 12px;
   }
 }
+
+.theme-pink {
+  --theme-background: #faf8f8;
+  --theme-text: #1a1a1a;
+  --theme-border: #d4a5b0;
+  --theme-border-subdued: #e8d4d9;
+  --theme-primary: #b5627a;
+  --theme-input-active: #d4899e;
+  --theme-success: #4a9b6e;
+  --theme-error: #c44b4b;
+  --theme-graph-negative: #c44b4b;
+  --theme-graph-negative-subdued: #e8a5a5;
+}
