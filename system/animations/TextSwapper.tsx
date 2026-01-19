@@ -1,50 +1,22 @@
-import styles from '@system/animations/TextSwapper.module.scss';
+import { useState, useEffect } from 'react';
 
-import * as React from 'react';
+interface TextSwapperProps {
+  texts: string[];
+  delay?: number;
+}
 
-const buildAnimationStyle = (type: AnimationType, duration: string): object => {
-  return {
-    animation: `${type} ${duration}`,
-    animationFillMode: 'forwards',
-  };
-};
+const TextSwapper: React.FC<TextSwapperProps> = ({ texts, delay = 2000 }) => {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-type AnimationType = 'fade' | 'slideDown' | 'slideUp' | 'slideLeft' | 'slideRight' | 'blur';
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    }, delay);
 
-type TextSwapProps = {
-  style?: any;
-  strings: string[];
-  interval?: number;
-  animationType?: AnimationType;
-  animationDuration?: string;
-};
+    return () => clearTimeout(timer);
+  }, [currentTextIndex, delay, texts.length]);
 
-const TextSwapper = ({ animationType = 'fade', animationDuration = '2.4s', interval = 2400, style, strings }: TextSwapProps) => {
-  const defaultStyle = buildAnimationStyle(animationType, animationDuration);
-
-  const [currString, setCurrString] = React.useState(strings[0]);
-  const [animationStyle, setAnimationStyle] = React.useState(defaultStyle);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      const currIndex: number = strings.indexOf(currString);
-      const nextIndex: number = currIndex < strings.length - 1 ? currIndex + 1 : 0;
-      setCurrString(strings[nextIndex]);
-    }, interval);
-    return () => {
-      setAnimationStyle({});
-      clearInterval(timer);
-      setAnimationStyle(animationStyle);
-    };
-  }, [currString, strings, interval, animationStyle]);
-
-  return (
-    <span className={styles.root} style={style}>
-      <span className={styles.animation} key={currString} style={animationStyle}>
-        {currString}
-      </span>
-    </span>
-  );
+  return <span>{texts[currentTextIndex]}</span>;
 };
 
 export default TextSwapper;
