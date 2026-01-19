@@ -18,22 +18,34 @@
 
 .theme-pink {
   --theme-background: #faf9fb;
+  --theme-background-overlay: rgba(250, 249, 251, 0.4);
   --theme-background-focus: #f2eef2;
+  --theme-background-box-top: rgba(245, 235, 240, 1);
+  --theme-background-box-front: rgba(215, 195, 205, 1);
+  --theme-background-box-side: rgba(235, 220, 228, 1);
   --theme-foreground: #f6f4f6;
+  --theme-foreground-secondary: rgba(226, 198, 211, 0.2);
   --theme-border: #e2c6d3;
+  --theme-border-box: #e2c6d3;
   --theme-border-subdued: #f0dde6;
+  --theme-button: #c13a7e;
+  --theme-button-text: #ffffff;
   --theme-text: #1a0f14;
   --theme-primary: #c13a7e;
-  --theme-button-text: #ffffff;
+  --theme-input-active: #d46b9a;
   --theme-success: #2ea98c;
+  --theme-success-subdued: rgba(46, 169, 140, 0.3);
   --theme-error: #d13c3c;
   --theme-error-subdued: #f2c7c7;
-  --theme-input-active: #d46b9a;
   --theme-focused: #e39ab7;
   --theme-graph-positive: #2ea98c;
   --theme-graph-positive-subdued: #ccebe3;
   --theme-graph-negative: #d13c3c;
   --theme-graph-negative-subdued: #f2c7c7;
+
+  --theme-box-shadow-modal: inset 0 0 0 1px var(--theme-border), 0 0 1px 4px rgba(0, 0, 0, 0.02);
+  --theme-box-shadow-button: 0 1px 2px rgba(0, 0, 0, 0.15);
+  --theme-box-shadow-button-hover: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 
