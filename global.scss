@@ -1,3 +1,7 @@
+// NOTE(jimmylee)
+// Typography: Inter font loaded from Google Fonts (fonts.gstatic.com)
+// This external dependency requires network access. For self-hosting needs,
+// download Inter from https://fonts.google.com/specimen/Inter
 @font-face {
   font-family: 'Inter';
   font-style: normal;
@@ -15,6 +19,8 @@
   font-style: normal;
 }
 
+// NOTE(jimmylee)
+// Design tokens: Global CSS custom properties for typography and layout
 :root {
   --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, helvetica, 'Helvetica Neue', arial, roboto, noto, 'Segoe UI', sans-serif;
   --font-family-paragraph: 'Inter', -apple-system, BlinkMacSystemFont, helvetica, 'Helvetica Neue', arial, roboto, noto, 'Segoe UI', sans-serif;
@@ -41,6 +47,11 @@
   --layout-column-width: 212px;
   --layout-row-height: 32px;
 }
+
+// NOTE(jimmylee)
+// Theme definitions: Each theme provides a complete set of CSS custom properties.
+// To add a new theme, create a new class following this pattern and add it to
+// THEME_ORDER in common/utilities.ts for rotation support.
 
 .theme-light {
   --theme-background: #f5f5f5;
@@ -198,6 +209,8 @@
   --theme-graph-column-five: #550a41;
 }
 
+// NOTE(jimmylee)
+// CSS Reset: Normalize box-sizing and margins across all elements
 html,
 body,
 div,
@@ -302,6 +315,8 @@ section {
   display: block;
 }
 
+// NOTE(jimmylee)
+// Global element defaults: Base styles applied to html and body
 html,
 body {
   background: var(--theme-background);

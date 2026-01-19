@@ -32,40 +32,37 @@ export function getDomainFromEmailWithoutAnySubdomain(email: string): string {
   return mainDomain;
 }
 
+// NOTE(jimmylee)
+// Theme rotation sequence: light → dark → daybreak → blue → neon-green → pink → light
+// This cycles through all available themes in order. To add a new theme,
+// append its class name to the THEME_ORDER array.
+const THEME_ORDER = [
+  'theme-light',
+  'theme-dark',
+  'theme-daybreak',
+  'theme-blue',
+  'theme-neon-green',
+  'theme-pink',
+];
+
 // TODO(jimmylee)
 // Obviously delete this once we implement a theme picker modal.
 export function onHandleThemeChange() {
   const body = document.body;
 
-  if (body.classList.contains('theme-light')) {
-    body.classList.replace('theme-light', 'theme-dark');
-    return;
+  // Find current theme index
+  const currentIndex = THEME_ORDER.findIndex((theme) => body.classList.contains(theme));
+
+  // Calculate next theme index (wrap around to 0 if at end)
+  const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % THEME_ORDER.length;
+
+  // Remove current theme if found
+  if (currentIndex !== -1) {
+    body.classList.remove(THEME_ORDER[currentIndex]);
   }
 
-  if (body.classList.contains('theme-dark')) {
-    body.classList.replace('theme-dark', 'theme-daybreak');
-    return;
-  }
-
-  if (body.classList.contains('theme-daybreak')) {
-    body.classList.replace('theme-daybreak', 'theme-blue');
-    return;
-  }
-
-  if (body.classList.contains('theme-blue')) {
-    body.classList.replace('theme-blue', 'theme-neon-green');
-    return;
-  }
-
-  if (body.classList.contains('theme-neon-green')) {
-    body.classList.replace('theme-neon-green', 'theme-pink');
-    return;
-  }
-
-  if (body.classList.contains('theme-pink')) {
-    body.classList.replace('theme-pink', 'theme-light');
-    return;
-  }
+  // Add next theme
+  body.classList.add(THEME_ORDER[nextIndex]);
 }
 
 export function formatDollars(value: number): string {
