@@ -340,7 +340,7 @@ html,
 body {
   --theme-graph-positive-subdued: rgba(61, 219, 217, 0.01);
   --theme-graph-positive: rgba(61, 219, 217, 1);
-  --theme-graph-netural: var(--theme-foreground);
+  --theme-graph-neutral: var(--theme-foreground);
   --theme-graph-negative: rgba(218, 30, 40, 1);
   --theme-graph-negative-subdued: rgba(218, 30, 40, 0.01);
 
@@ -488,7 +488,7 @@ body {
 
   --theme-graph-positive-subdued: rgba(74, 155, 110, 0.01);
   --theme-graph-positive: rgba(74, 155, 110, 1);
-  --theme-graph-netural: var(--theme-foreground);
+  --theme-graph-neutral: var(--theme-foreground);
   --theme-graph-negative: #c44b4b;
   --theme-graph-negative-subdued: #e8a5a5;
 }
