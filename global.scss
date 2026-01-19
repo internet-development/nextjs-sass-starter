@@ -118,16 +118,23 @@ section {
   display: block;
 }
 
-.theme-pink {
+body.theme-pink {
   --theme-background: hsl(300, 10%, 8%);
+  --theme-background-overlay: hsla(300, 10%, 8%, 0.4);
+  --theme-background-hover: hsl(300, 10%, 14%);
   --theme-background-alert: hsl(335, 65%, 20%);
   --theme-background-focus: hsl(300, 10%, 12%);
+  --theme-background-box-top: hsl(300, 10%, 32%);
+  --theme-background-box-front: hsl(300, 10%, 10%);
+  --theme-background-box-side: hsl(300, 10%, 18%);
   --theme-border: hsl(300, 10%, 20%);
+  --theme-border-box: hsl(300, 10%, 25%);
   --theme-border-subdued: hsl(300, 10%, 15%);
   --theme-button: hsl(335, 65%, 48%);
   --theme-button-text: hsl(0, 0%, 100%);
   --theme-focused-foreground: hsl(0, 0%, 100%);
-  --theme-foreground: hsl(300, 10%, 16%);
+  --theme-foreground: hsl(300, 10%, 70%);
+  --theme-foreground-secondary: hsl(300, 10%, 50%);
   --theme-foreground-subdued: hsl(300, 10%, 12%);
   --theme-input-active: hsl(335, 65%, 48%);
   --theme-divider: hsl(300, 10%, 20%);
@@ -136,10 +143,15 @@ section {
   --theme-success: hsl(150, 55%, 40%);
   --theme-success-subdued: hsl(150, 55%, 20%);
   --theme-error: hsl(5, 70%, 50%);
+  --theme-error-subdued: hsla(5, 70%, 50%, 0.3);
   --theme-warning: hsl(40, 90%, 50%);
   --theme-text: hsl(300, 10%, 90%);
   --theme-text-muted: hsl(300, 10%, 60%);
   --theme-text-subdued: hsl(300, 10%, 50%);
+
+  --theme-box-shadow-modal: inset 0 0 0 1px hsl(300, 10%, 20%);
+  --theme-box-shadow-button: 0 0 0 rgba(0, 0, 0, 0.15);
+  --theme-box-shadow-button-hover: 0 0px 0px 4px rgba(255, 255, 255, 0.2);
 
   --theme-graph-positive: hsl(150, 55%, 40%);
   --theme-graph-positive-subdued: hsl(150, 55%, 25%);
@@ -147,15 +159,31 @@ section {
   --theme-graph-negative-subdued: hsl(5, 70%, 30%);
 
   --graph-color-1: hsl(335, 65%, 48%);
-  --graph-color-2: hsl(200, 65%, 45%);
-  --graph-color-3: hsl(30, 70%, 50%);
-  --graph-color-4: hsl(150, 55%, 40%);
-  --graph-color-5: hsl(270, 50%, 55%);
-  --graph-color-6: hsl(180, 50%, 45%);
-  --graph-color-7: hsl(60, 60%, 50%);
-  --graph-color-8: hsl(300, 45%, 55%);
-}
+  --graph-color-2: hsl(200, 50%, 45%);
+  --graph-color-3: hsl(30, 55%, 50%);
+  --graph-color-4: hsl(150, 45%, 40%);
+  --graph-color-5: hsl(270, 40%, 55%);
+  --graph-color-6: hsl(180, 40%, 45%);
+  --graph-color-7: hsl(60, 50%, 50%);
+  --graph-color-8: hsl(300, 35%, 55%);
 
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--theme-foreground);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--theme-foreground-secondary);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-foreground-secondary);
+  }
+}
 
 body.theme-light {
   --theme-background: var(--color-white);
