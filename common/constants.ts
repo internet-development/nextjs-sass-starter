@@ -374,13 +374,7 @@ export const TEMPLATE_LINKS = [
   { href: 'https://x.com/internetxstudio', label: 'X (formerly Twitter)' },
 ];
 
-export const TEMPLATE_EXAMPLES = [
-  ...TEMPLATE_EXAMPLES_ANIMATIONS,
-  ...TEMPLATE_EXAMPLES_COMPONENTS,
-  ...TEMPLATE_EXAMPLES_EMPTY,
-  ...TEMPLATE_EXAMPLES_FEATURES,
-  ...TEMPLATE_EXAMPLES_SYSTEM,
-];
+export const TEMPLATE_EXAMPLES = [...TEMPLATE_EXAMPLES_ANIMATIONS, ...TEMPLATE_EXAMPLES_COMPONENTS, ...TEMPLATE_EXAMPLES_EMPTY, ...TEMPLATE_EXAMPLES_FEATURES, ...TEMPLATE_EXAMPLES_SYSTEM];
 
 export const Users = {
   tiers: {
@@ -395,13 +389,13 @@ export const Users = {
 
 export const Tiers = {
   PAYING: 899,
-  GENERAL_CO_WORKING: 32900,
+  GENERAL_CO_WORKING: 40400,
   PARTNER: 279000,
 };
 
 export const Payments = {
   899: 'PAYING',
-  32900: 'GENERAL_CO_WORKING',
+  40400: 'GENERAL_CO_WORKING',
   279000: 'PARTNER',
 };
 
