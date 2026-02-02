@@ -101,7 +101,7 @@ export default function DemoBentoLayout(props) {
                 Requires an invitation from our community. Get a reserved desk٭٭ and access to new products as they are released.
               </Text>
               <H5 style={{ marginTop: 24 }}>
-                $329 USD<span className={styles.subtle}>/mo</span>
+                $404 USD<span className={styles.subtle}>/mo</span>
               </H5>
               <Button onClick={() => alert('Coming soon!')} style={{ height: 48, marginTop: 24, width: '100%' }}>
                 Apply
